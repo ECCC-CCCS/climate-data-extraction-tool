@@ -3,7 +3,7 @@
 Canadian Centre for Climate Services [Climate Data Extraction Tool](https://climate-change.canada.ca/climate-data)
 
 Use the climate data extraction tool to download climate data from the selected
-Environment and Climate Change Canada' datasets. You can specify the date
+Environment and Climate Change Canada datasets. You can specify the date
 ranges, variables, download format and other options.
 
 
