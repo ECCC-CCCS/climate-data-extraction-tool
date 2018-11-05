@@ -1,0 +1,68 @@
+<% var item, key %><%
+htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
+%><!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <meta name="description" content="Tool to download subsets of these climate datasets">
+    <meta name="keywords" content="Downscaled, Daily data, CMIP5, AHCCD, CanGRD, Climate Normals, Monthly data, CanSIPS, CaPA, Hydromet, Climate data, Climate maps, Download data, Gridded data, Station data, Data subset, RCP, CCCS, Canadian Centre for Climate Services, Historical data, Observed data, Projected data, Pan-Canadian Framework on Clean Growth and Climate Change, PCF">
+    <meta name="author" content="Environment and Climate Change Canada">
+    <meta property="dcterms.title" content="Climate Data Extraction Tool">
+    <meta property="dcterms.description" content="Tool to download subsets of climate datasets">
+    <meta property="dcterms.creator" content="Environment and Climate Change Canada">
+    <meta property="dcterms.language" title="ISO639-2/T" content="eng">
+    <meta property="dcterms.issued" title="W3CDTF" content="2018-09-27">
+    <meta property="dcterms:modified" title="W3CDTF" content="2018-09-27">
+    <meta property="dcterms.audience" content="general public">
+    <meta property="dcterms:spatial" content="Canada">
+    <meta name="dcterms.source" content="aem">
+    <meta name="dcterms.identifier" content="Environment_and_Climate_Change_Canada">
+
+    <title>Climate data extraction tool</title>
+
+<!--[if gte IE 9 | !IE ]><!-->
+    <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
+<!--<![endif]-->
+<!--[if lt IE 9]>
+    <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="shortcut icon" />
+
+    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/ie8-theme.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/ie8-wet-boew.min.js"></script>
+<![endif]-->
+<!--[if lte IE 9]>
+
+<![endif]-->
+
+    <noscript><link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css" /></noscript>
+<!--
+CCCS Query UI
+climate-data-extraction-tool-[AIV]{version}[/AIV]
+Build date: [AIV]{date}[/AIV]
+-->
+<%
+for (item of htmlWebpackPlugin.options.scripts) { %><%
+  if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
+    <script<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script><%
+} %>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <!--[if gte IE 9 | !IE ]><!-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/ie8-wet-boew2.min.js"></script>
+
+    <![endif]-->
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+  </body>
+</html>
