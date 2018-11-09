@@ -18,6 +18,10 @@
           <summary v-on:click="toggleDetails"
             v-translate>Dataset description</summary>
           <p v-translate>Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
+
+          <p v-html="techDocHtml"></p>
+
+          <p v-html="openPortalHtml"></p>
         </details>
 
         <info-contact-support></info-contact-support>
