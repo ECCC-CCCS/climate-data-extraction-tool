@@ -1,9 +1,5 @@
 <template>
   <div>
-    <span class="small bg-info text-info">
-      <span class="glyphicon glyphicon-info-sign"></span>
-      <span v-html="htmlMetadataLink"></span>
-    </span>
   </div>
 </template>
 
@@ -11,8 +7,10 @@
 export default {
   name: 'MetadataLink',
   props: {
-    openDataId: String,
-    datasetName: String
+    openDataId: {
+      type: String,
+      default: null
+    }
   },
   computed: {
     openDataDatasetBaseUrl: function () {
@@ -22,10 +20,7 @@ export default {
       }
     },
     metadataLink: function () {
-      return this.openDataDatasetBaseUrl[this.$i18n.activeLocale] + this.openDataId
-    },
-    htmlMetadataLink: function () {
-      return this.$_i(this.$gettext('See <a href="{metadataLink}" target="_blank">technical documentation on {datasetName}</a> for more detailed information on this dataset.'), this)
+      return this.openDataDatasetBaseUrl[this.$i18n.activeLocale] // + this.openDataId
     }
   }
 }

@@ -5,7 +5,7 @@ import NotFound from '@/components/404'
 import AHCCDForm from '@/components/AHCCDForm'
 import CanGRDForm from '@/components/CanGRDForm'
 import CanSIPSForm from '@/components/CanSIPSForm'
-import CaPAForm from '@/components/CaPAForm'
+import RDPAForm from '@/components/RDPAForm'
 import DCSForm from '@/components/DCSForm'
 import CMIP5Form from '@/components/CMIP5Form'
 import HydrometricArchiveForm from '@/components/HydrometricArchiveForm'
@@ -36,7 +36,7 @@ const datasetPaths = {
     en: '/seasonal-forecasts',
     fr: '/previsions-saisonnieres'
   },
-  capa: {
+  rdpa: {
     en: '/regional-deterministic-precipitation-analysis',
     fr: '/analyse-regionale-deterministe-precipitation'
   },
@@ -154,14 +154,14 @@ export default new Router({
       }
     },
     {
-      path: datasetPaths.capa.en,
-      alias: datasetPaths.capa.fr,
-      name: 'capa',
-      component: CaPAForm,
+      path: datasetPaths.rdpa.en,
+      alias: datasetPaths.rdpa.fr,
+      name: 'rdpa',
+      component: RDPAForm,
       meta: {
         datasetSectionMenu: true,
-        en_path: datasetPaths.capa.en,
-        fr_path: datasetPaths.capa.fr,
+        en_path: datasetPaths.rdpa.en,
+        fr_path: datasetPaths.rdpa.fr,
         group: 'gridded'
       }
     },
