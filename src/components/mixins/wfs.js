@@ -246,6 +246,7 @@ export const wfs = {
       }
 
       // sort
+      /*
       if (this.$route.name !== 'ahccd') { // AHCCD not yet supported for WFS3 sort
         var dateColName = this.datasetToDateColName[this.$route.name]
         var sortOrder = [provColName]
@@ -259,6 +260,7 @@ export const wfs = {
 
         urlParams.push('sortby=' + sortOrder.join(','))
       }
+      */
 
       // format selection
       if (this.wfs_format !== 'geojson') { // default is geoJSON
