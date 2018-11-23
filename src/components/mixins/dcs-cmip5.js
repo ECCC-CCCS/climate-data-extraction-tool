@@ -273,7 +273,9 @@ export const DCSCMIP5 = {
       var end = this.scenarioType === 'HISTO' ? this.bandMoments.histEnd : this.bandMoments.rcpEnd
 
       // Determine number of months (bands) in date range for monthly
-      if (this.wcs_id_timePeriod === 'ENS' && this.bandsInRange) {
+      if (start === null || end === null) {
+        return 0
+      } else if (this.wcs_id_timePeriod === 'ENS' && this.bandsInRange) {
         return Math.ceil(this.$moment.duration(end.diff(start)).asMonths()) + 1 // +1 because range is inclusive
       } else if (this.bandsInRange) { // yearly date range
         return Math.ceil(this.$moment.duration(end.diff(start)).asYears())

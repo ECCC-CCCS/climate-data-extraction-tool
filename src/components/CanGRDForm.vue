@@ -283,7 +283,9 @@ export default {
       var start = this.bandStartMoment
       var end = this.bandEndMoment
       // Determine number of months (bands) in date range for monthly
-      if (this.wcs_id_timePeriod === 'MONTHLY' && this.bandsInRange) {
+      if (start === null || end === null) {
+        return 0
+      } else if (this.wcs_id_timePeriod === 'MONTHLY' && this.bandsInRange) {
         return Math.ceil(this.$moment.duration(end.diff(start)).asMonths()) + 1 // +1 for range is inclusive
       } else if (this.bandsInRange) { // yearly date range
         return Math.ceil(this.$moment.duration(end.diff(start)).asYears())
