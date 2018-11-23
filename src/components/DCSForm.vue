@@ -11,6 +11,8 @@
           <summary v-on:click="toggleDetails"
             v-translate>Dataset description</summary>
           <p v-translate>Statistically downscaled climate scenarios based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Statistically downscaled multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 10km resolution.  Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.</p>
+
+          <p v-html="techDocHtml"></p>
         </details>
 
         <info-contact-support></info-contact-support>

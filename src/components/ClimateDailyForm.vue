@@ -18,6 +18,10 @@
           <summary v-on:click="toggleDetails"
             v-translate>Dataset description</summary>
           <p v-translate>Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
+
+          <p v-html="techDocHtml"></p>
+
+          <p v-html="openPortalHtml"></p>
         </details>
 
         <info-contact-support></info-contact-support>

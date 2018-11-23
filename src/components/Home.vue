@@ -4,7 +4,7 @@
       <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
         <h1>{{ currentRouteTitle }}</h1>
 
-        <p v-translate>Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada' datasets. You can specify the date ranges, variables, download format and other options.</p>
+        <p v-translate>Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options.</p>
 
         <info-contact-support></info-contact-support>
 

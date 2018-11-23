@@ -28,12 +28,25 @@ export const wfs = {
         daily: 'STN_ID',
         monthly: 'STN_ID'
       },
+      datasetToDateColName: {
+        hydrometric: 'DATE', // MAX_DATE for hydrometric-annual-statistics
+        normals: 'MONTH',
+        daily: 'LOCAL_DATE',
+        monthly: 'LOCAL_DATE'
+      },
       datasetToProvColName: {
         ahccd: 'province__province',
         hydrometric: 'PROV_TERR_STATE_LOC',
         normals: 'PROVINCE_CODE',
         daily: 'PROVINCE_CODE',
         monthly: 'PROVINCE_CODE'
+      },
+      layerToColSortOrder: {
+        'climate-normals': ['STN_ID', 'NORMAL_ID', 'MONTH'],
+        'hydrometric-daily-mean': ['IDENTIFIER'],
+        'hydrometric-monthly-mean': ['IDENTIFIER'],
+        'hydrometric-annual-peaks': ['IDENTIFIER'],
+        'hydrometric-annual-statistics': ['IDENTIFIER']
       }
     }
   },
@@ -207,14 +220,15 @@ export const wfs = {
         urlParams.push(this.temporal)
       }
 
+      var stnColName = this.datasetToStnColName[this.$route.name]
+      var provColName = this.datasetToProvColName[this.$route.name]
+
       // Spatial selection priority: station, province, bbox
       switch (this.spatialSelectPriority) {
         case 'station':
-          var stnColName = this.datasetToStnColName[this.$route.name]
           urlParams.push(stnColName + '=' + this.wfs_selected_station_ids.join('|'))
           break
         case 'province':
-          var provColName = this.datasetToProvColName[this.$route.name]
           urlParams.push(provColName + '=' + this.wfs_province)
           break
         case 'bbox':
@@ -229,6 +243,21 @@ export const wfs = {
         if (this.wfs_limit !== '') {
           urlParams.push('limit=' + this.wfs_limit)
         }
+      }
+
+      // sort
+      if (this.$route.name !== 'ahccd') { // AHCCD not yet supported for WFS3 sort
+        var dateColName = this.datasetToDateColName[this.$route.name]
+        var sortOrder = [provColName]
+
+        // Special case for specific layers
+        if (this.layerToColSortOrder.hasOwnProperty(layerName)) {
+          sortOrder = sortOrder.concat(this.layerToColSortOrder[layerName])
+        } else {
+          sortOrder = sortOrder.concat([stnColName, dateColName])
+        }
+
+        urlParams.push('sortby=' + sortOrder.join(','))
       }
 
       // format selection
