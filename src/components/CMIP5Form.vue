@@ -221,8 +221,7 @@ export default {
         // Auto correct dates for wind selection
         if (this.wcs_id_variable === 'SFCWIND') {
           this.correctDatesSFCWIND()
-          this.valueType = 'ANO'
-        } else if (this.wcs_id_variable === 'SIT' || this.wcs_id_variable === 'SIC' || this.wcs_id_variable === 'SND') { // SIC and SIT not yet supported for non-monthly ABS; auto correct selection
+        } else if (this.wcs_id_variable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
           this.valueType = 'ANO'
         }
       }
@@ -236,8 +235,8 @@ export default {
         this.correctDatesTT_PR()
       }
 
-      // SIC and SIT not yet supported for non-monthly ABS; auto correct selectio
-      if (newVal === 'SIT' || newVal === 'SIC' || newVal === 'SND' || newVal === 'SFCWIND') {
+      // some variables not yet supported for non-monthly ABS; auto correct selectio
+      if (newVal === 'SND') {
         if (this.valueType === 'ABS' && this.wcs_id_timePeriod !== 'ENS') {
           // this.wcs_id_timePeriod = 'ENS'
           this.valueType = 'ANO'
@@ -261,8 +260,8 @@ export default {
       if (newVal === 'ABS') {
         this.rangeType = 'custom'
 
-        // SIC and SIT not yet supported for non-monthly ABS; auto correct selection
-        if (this.wcs_id_variable === 'SIT' || this.wcs_id_variable === 'SIC' || this.wcs_id_variable === 'SND' || this.wcs_id_variable === 'SFCWIND') {
+        // Some variables not yet supported for non-monthly ABS; auto correct selection
+        if (this.wcs_id_variable === 'SND') {
           this.wcs_id_timePeriod = 'ENS'
         }
       }
