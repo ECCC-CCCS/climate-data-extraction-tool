@@ -189,9 +189,9 @@ export const DCSCMIP5 = {
     },
     bandsInRange: function () {
       if (this.scenarioType === 'RCP') {
-        return this.datesInRange(this.dateRcpStart, this.dateRcpEnd)
+        return this.datesInRange(this.bandMoments.rcpStart, this.bandMoments.rcpEnd)
       } else { // history
-        return this.datesInRange(this.dateHistStart, this.dateHistEnd)
+        return this.datesInRange(this.bandMoments.histStart, this.bandMoments.histEnd)
       }
     },
     bandStartIsEmptyOnly: function () {
