@@ -19,9 +19,9 @@
             v-translate>Dataset description</summary>
           <p v-translate>A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.</p>
 
-          <p v-html="techDocHtml"></p>
+          <!-- <p v-html="techDocHtml"></p> -->
 
-          <p v-html="openPortalHtml"></p>
+          <!-- <p v-html="openPortalHtml"></p> -->
         </details>
 
         <info-contact-support></info-contact-support>
