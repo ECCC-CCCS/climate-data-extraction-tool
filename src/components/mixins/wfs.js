@@ -46,7 +46,11 @@ export const wfs = {
         'hydrometric-daily-mean': ['IDENTIFIER'],
         'hydrometric-monthly-mean': ['IDENTIFIER'],
         'hydrometric-annual-peaks': ['IDENTIFIER'],
-        'hydrometric-annual-statistics': ['IDENTIFIER']
+        'hydrometric-annual-statistics': ['IDENTIFIER'],
+        'ahccd-monthly': ['identifier__identifiant'],
+        'ahccd-annual': ['identifier__identifiant'],
+        'ahccd-seasonal': ['identifier__identifiant'],
+        'ahccd-trends': ['identifier__identifiant']
       }
     }
   },
@@ -246,19 +250,17 @@ export const wfs = {
       }
 
       // sort
-      if (this.$route.name !== 'ahccd') { // AHCCD not yet supported for WFS3 sort
-        var dateColName = this.datasetToDateColName[this.$route.name]
-        var sortOrder = [provColName]
+      var dateColName = this.datasetToDateColName[this.$route.name]
+      var sortOrder = [provColName]
 
-        // Special case for specific layers
-        if (this.layerToColSortOrder.hasOwnProperty(layerName)) {
-          sortOrder = sortOrder.concat(this.layerToColSortOrder[layerName])
-        } else {
-          sortOrder = sortOrder.concat([stnColName, dateColName])
-        }
-
-        urlParams.push('sortby=' + sortOrder.join(','))
+      // Special case for specific layers
+      if (this.layerToColSortOrder.hasOwnProperty(layerName)) {
+        sortOrder = sortOrder.concat(this.layerToColSortOrder[layerName])
+      } else {
+        sortOrder = sortOrder.concat([stnColName, dateColName])
       }
+
+      urlParams.push('sortby=' + sortOrder.join(','))
 
       // format selection
       if (this.wfs_format !== 'geojson') { // default is geoJSON
