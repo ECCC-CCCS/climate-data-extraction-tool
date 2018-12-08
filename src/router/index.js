@@ -70,75 +70,15 @@ export default new Router({
       }
     },
     {
-      path: datasetPaths.cmip5.en,
-      alias: datasetPaths.cmip5.fr,
-      name: 'cmip5',
-      component: CMIP5Form,
+      path: datasetPaths.rdpa.en,
+      alias: datasetPaths.rdpa.fr,
+      name: 'rdpa',
+      component: RDPAForm,
       meta: {
         datasetSectionMenu: true,
-        en_path: datasetPaths.cmip5.en,
-        fr_path: datasetPaths.cmip5.fr,
-        group: 'projection'
-      }
-    },
-    {
-      path: datasetPaths.dcs.en,
-      alias: datasetPaths.dcs.fr,
-      name: 'dcs',
-      component: DCSForm,
-      meta: {
-        datasetSectionMenu: true,
-        en_path: datasetPaths.dcs.en,
-        fr_path: datasetPaths.dcs.fr,
-        group: 'projection'
-      }
-    },
-    {
-      path: datasetPaths.normals.en,
-      alias: datasetPaths.normals.fr,
-      name: 'normals',
-      component: ClimateNormalsForm,
-      meta: {
-        datasetSectionMenu: true,
-        en_path: datasetPaths.normals.en,
-        fr_path: datasetPaths.normals.fr,
-        group: 'station'
-      }
-    },
-    {
-      path: datasetPaths.monthly.en,
-      alias: datasetPaths.monthly.fr,
-      name: 'monthly',
-      component: ClimateMonthlyForm,
-      meta: {
-        datasetSectionMenu: true,
-        en_path: datasetPaths.monthly.en,
-        fr_path: datasetPaths.monthly.fr,
-        group: 'station'
-      }
-    },
-    {
-      path: datasetPaths.daily.en,
-      alias: datasetPaths.daily.fr,
-      name: 'daily',
-      component: ClimateDailyForm,
-      meta: {
-        datasetSectionMenu: true,
-        en_path: datasetPaths.daily.en,
-        fr_path: datasetPaths.daily.fr,
-        group: 'station'
-      }
-    },
-    {
-      path: datasetPaths.hydrometric.en,
-      alias: datasetPaths.hydrometric.fr,
-      name: 'hydrometric',
-      component: HydrometricArchiveForm,
-      meta: {
-        datasetSectionMenu: true,
-        en_path: datasetPaths.hydrometric.en,
-        fr_path: datasetPaths.hydrometric.fr,
-        group: 'station'
+        en_path: datasetPaths.rdpa.en,
+        fr_path: datasetPaths.rdpa.fr,
+        group: 'valueAddedHistClimProd'
       }
     },
     {
@@ -150,19 +90,7 @@ export default new Router({
         datasetSectionMenu: true,
         en_path: datasetPaths.ahccd.en,
         fr_path: datasetPaths.ahccd.fr,
-        group: 'station'
-      }
-    },
-    {
-      path: datasetPaths.rdpa.en,
-      alias: datasetPaths.rdpa.fr,
-      name: 'rdpa',
-      component: RDPAForm,
-      meta: {
-        datasetSectionMenu: true,
-        en_path: datasetPaths.rdpa.en,
-        fr_path: datasetPaths.rdpa.fr,
-        group: 'gridded'
+        group: 'valueAddedHistClimProd'
       }
     },
     {
@@ -174,7 +102,31 @@ export default new Router({
         datasetSectionMenu: true,
         en_path: datasetPaths.cangrd.en,
         fr_path: datasetPaths.cangrd.fr,
-        group: 'gridded'
+        group: 'valueAddedHistClimProd'
+      }
+    },
+    {
+      path: datasetPaths.cmip5.en,
+      alias: datasetPaths.cmip5.fr,
+      name: 'cmip5',
+      component: CMIP5Form,
+      meta: {
+        datasetSectionMenu: true,
+        en_path: datasetPaths.cmip5.en,
+        fr_path: datasetPaths.cmip5.fr,
+        group: 'climateSimulation'
+      }
+    },
+    {
+      path: datasetPaths.dcs.en,
+      alias: datasetPaths.dcs.fr,
+      name: 'dcs',
+      component: DCSForm,
+      meta: {
+        datasetSectionMenu: true,
+        en_path: datasetPaths.dcs.en,
+        fr_path: datasetPaths.dcs.fr,
+        group: 'climateSimulation'
       }
     },
     {
@@ -186,7 +138,55 @@ export default new Router({
         datasetSectionMenu: true,
         en_path: datasetPaths.cansips.en,
         fr_path: datasetPaths.cansips.fr,
-        group: 'gridded'
+        group: 'climateSimulation'
+      }
+    },
+    {
+      path: datasetPaths.normals.en,
+      alias: datasetPaths.normals.fr,
+      name: 'normals',
+      component: ClimateNormalsForm,
+      meta: {
+        datasetSectionMenu: true,
+        en_path: datasetPaths.normals.en,
+        fr_path: datasetPaths.normals.fr,
+        group: 'histClimateRiver'
+      }
+    },
+    {
+      path: datasetPaths.monthly.en,
+      alias: datasetPaths.monthly.fr,
+      name: 'monthly',
+      component: ClimateMonthlyForm,
+      meta: {
+        datasetSectionMenu: true,
+        en_path: datasetPaths.monthly.en,
+        fr_path: datasetPaths.monthly.fr,
+        group: 'histClimateRiver'
+      }
+    },
+    {
+      path: datasetPaths.daily.en,
+      alias: datasetPaths.daily.fr,
+      name: 'daily',
+      component: ClimateDailyForm,
+      meta: {
+        datasetSectionMenu: true,
+        en_path: datasetPaths.daily.en,
+        fr_path: datasetPaths.daily.fr,
+        group: 'histClimateRiver'
+      }
+    },
+    {
+      path: datasetPaths.hydrometric.en,
+      alias: datasetPaths.hydrometric.fr,
+      name: 'hydrometric',
+      component: HydrometricArchiveForm,
+      meta: {
+        datasetSectionMenu: true,
+        en_path: datasetPaths.hydrometric.en,
+        fr_path: datasetPaths.hydrometric.fr,
+        group: 'histClimateRiver'
       }
     },
     {

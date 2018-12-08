@@ -16,10 +16,14 @@
 
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
-            v-translate>Dataset description</summary>
+            v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.</p>
 
-          <!-- <p v-html="techDocHtml"></p> -->
+          <p v-html="techDocHtml"></p>
+
+          <p v-html="openPortalHtml"></p>
+
+          <station-list-link v-bind:url-station-list="urlAllHydroStationList"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>
@@ -82,6 +86,8 @@
         <url-box
           v-bind:layer-options="selectedLayerOption"
           v-bind:ows-url-formatter="wfs3_download_url"
+          v-bind:wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+          v-bind:wfs3-download-limit="wfs_limit"
           v-bind:layer-format="wfs_format"
           v-bind:has-errors="hasErrors"
           v-bind:url-box-title="$gettext('Data download links')">
@@ -102,6 +108,7 @@ import FormatSelectVector from './FormatSelectVector'
 import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
+import StationListLink from './StationListLink'
 import { wfs } from './mixins/wfs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -118,7 +125,8 @@ export default {
     'date-select': DateSelect,
     'var-select': VarSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport
+    'info-contact-support': InfoContactSupport,
+    'station-list-link': StationListLink
   },
   data () {
     return {
@@ -141,14 +149,19 @@ export default {
   beforeMount () {
     // Load hydrometric stations
     if (this.hydroStationsGeoJson === null) { // prevent duplicate AJAX
-      var url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?STATUS_EN=Active&limit=' + this.wfs_station_limit
-      this.$store.dispatch('retrieveHydroStations', url)
+      this.$store.dispatch('retrieveHydroStations', this.urlStationList)
     }
 
     // reset existing selections that share with other components
     this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
+    urlStationList: function () {
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?STATUS_EN=Active&limit=' + this.wfs_station_limit
+    },
+    urlAllHydroStationList: function () {
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?limit=' + this.wfs_station_limit
+    },
     hydroStationsGeoJson: function () {
       return this.$store.getters.getHydroStations
     },

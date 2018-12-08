@@ -16,12 +16,14 @@
 
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
-            v-translate>Dataset description</summary>
-          <p v-translate>Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
+            v-translate>Dataset description, technical information and metadata</summary>
+          <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
 
-          <!-- <p v-html="techDocHtml"></p> -->
+          <p v-html="techDocHtml"></p>
 
-          <!-- <p v-html="openPortalHtml"></p> -->
+          <p v-html="openPortalHtml"></p>
+
+          <station-list-link v-bind:url-station-list="urlStationList"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>
@@ -78,6 +80,8 @@
         <url-box
           v-bind:layer-options="layer_options"
           v-bind:ows-url-formatter="wfs3_download_url"
+          v-bind:wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+          v-bind:wfs3-download-limit="wfs_limit"
           v-bind:layer-format="wfs_format"
           v-bind:has-errors="hasErrors"
           v-bind:url-box-title="$gettext('Data download link')">
@@ -97,6 +101,7 @@ import FormatSelectVector from './FormatSelectVector'
 import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
+import StationListLink from './StationListLink'
 import { wfs } from './mixins/wfs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -112,7 +117,8 @@ export default {
     'format-select-vector': FormatSelectVector,
     'date-select': DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport
+    'info-contact-support': InfoContactSupport,
+    'station-list-link': StationListLink
   },
   data () {
     return {
@@ -135,14 +141,16 @@ export default {
   beforeMount () {
     // Load climate stations
     if (this.climateStationsGeoJson === null) { // prevent duplicate AJAX
-      var url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?limit=' + this.wfs_station_limit
-      this.$store.dispatch('retrieveClimateNormalsStations', url)
+      this.$store.dispatch('retrieveClimateNormalsStations', this.urlStationList)
     }
 
     // reset existing selections that share with other components
     this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
+    urlStationList: function () {
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?limit=' + this.wfs_station_limit
+    },
     climateStationsGeoJson: function () {
       return this.$store.getters.getClimateNormalsStations
     },

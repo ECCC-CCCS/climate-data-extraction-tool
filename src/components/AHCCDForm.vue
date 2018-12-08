@@ -16,10 +16,14 @@
 
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
-            v-translate>Dataset description</summary>
+            v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.</p>
 
-          <!-- <p v-html="techDocHtml"></p> -->
+          <p v-html="techDocHtml"></p>
+
+          <p v-html="openPortalHtml"></p>
+
+          <station-list-link v-bind:url-station-list="urlStationList"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>
@@ -84,6 +88,8 @@
         <url-box
           v-bind:layer-options="selectedLayerOption"
           v-bind:ows-url-formatter="wfs3_download_url"
+          v-bind:wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+          v-bind:wfs3-download-limit="wfs_limit"
           v-bind:layer-format="wfs_format"
           v-bind:has-errors="hasErrors"
           v-bind:url-box-title="$gettext('Data download link')">
@@ -104,6 +110,7 @@ import FormatSelectVector from './FormatSelectVector'
 import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
+import StationListLink from './StationListLink'
 import { wfs } from './mixins/wfs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -120,7 +127,8 @@ export default {
     'date-select': DateSelect,
     'var-select': VarSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport
+    'info-contact-support': InfoContactSupport,
+    'station-list-link': StationListLink
   },
   data () {
     return {
@@ -143,14 +151,16 @@ export default {
   beforeMount () {
     // Load ahccd stations
     if (this.ahccdStationsGeoJson === null) { // prevent duplicate AJAX
-      var url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?limit=' + this.wfs_station_limit
-      this.$store.dispatch('retrieveAhccdStations', url)
+      this.$store.dispatch('retrieveAhccdStations', this.urlStationList)
     }
 
     // reset existing selections that share with other components
     this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
+    urlStationList: function () {
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?limit=' + this.wfs_station_limit
+    },
     ahccdStationsGeoJson: function () {
       return this.$store.getters.getAhccdStations
     },
