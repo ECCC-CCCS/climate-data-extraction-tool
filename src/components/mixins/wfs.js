@@ -15,9 +15,9 @@ export const wfs = {
       wfs_layer: null,
       wfs_layer_station: null,
       wfs_selected_station_ids: [],
-      wfs_station_limit: 9999,
-      wfs_limit: 999999,
-      wfs_max_limit: 999999,
+      wfs_station_limit: 10000,
+      wfs_limit: 150000,
+      wfs_max_limit: 1000000,
       wfs_min_limit: 1,
       date_start: null,
       date_end: null,
@@ -213,11 +213,12 @@ export const wfs = {
       this.date_start = null
       this.date_end = null
     },
-    wfs3_download_url: function (layerName) {
-      var url = this.wfs3_url_base
+    getWFS3CommonParams: function (layerName) {
       var urlParams = []
-      url += '/' + layerName
-      url += '/items?'
+
+      if (typeof layerName === 'undefined') {
+        layerName = this.wfs_layer
+      }
 
       // temporal
       if (this.temporal !== null) {
@@ -242,13 +243,6 @@ export const wfs = {
           // No spatial query applied
       }
 
-      // Limit validation
-      if (this.wfs_limit >= this.wfs_min_limit && this.wfs_limit <= this.wfs_max_limit) {
-        if (this.wfs_limit !== '') {
-          urlParams.push('limit=' + this.wfs_limit)
-        }
-      }
-
       // sort
       var dateColName = this.datasetToDateColName[this.$route.name]
       var sortOrder = [provColName]
@@ -261,6 +255,33 @@ export const wfs = {
       }
 
       urlParams.push('sortby=' + sortOrder.join(','))
+
+      return urlParams
+    },
+    getWFS3CommonURL: function (layerName) {
+      var url = this.wfs3_url_base
+      url += '/' + layerName
+      url += '/items?'
+
+      var urlParams = this.getWFS3CommonParams(layerName)
+
+      url += urlParams.join('&')
+
+      return url
+    },
+    wfs3_download_url: function (layerName) {
+      var url = this.wfs3_url_base
+      url += '/' + layerName
+      url += '/items?'
+
+      var urlParams = this.getWFS3CommonParams(layerName)
+
+      // Limit validation
+      if (this.wfs_limit >= this.wfs_min_limit && this.wfs_limit <= this.wfs_max_limit) {
+        if (this.wfs_limit !== '') {
+          urlParams.push('limit=' + this.wfs_limit)
+        }
+      }
 
       // format selection
       if (this.wfs_format !== 'geojson') { // default is geoJSON

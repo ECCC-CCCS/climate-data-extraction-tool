@@ -25,34 +25,36 @@ export const datasets = {
           title: this.$pgettext('Title', 'Climate data extraction tool')
         },
         ahccd: {
-          title: this.$pgettext('Dataset Name', 'Adjusted and homogenized Canadian climate data'),
+          title: this.$pgettext('Dataset Name', 'Adjusted and Homogenized Canadian Climate Data'),
           abbr: this.$pgettext('Abbreviation: Adjusted and Homogenized Canadian Climate Data', 'AHCCD'),
-          datasetGroup: 'station',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-adjusted-climate-data.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-climatiques-ajustees.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Adjusted and Homogenized Canadian Climate Data</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on <abbr title="{datasetName}">AHCCD</abbr></a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/9c4ebc00-3ea4-4fe0-8bf2-66cfe1cddd1d',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         normals: {
           title: this.$pgettext('Dataset Name', 'Climate normals 1981 - 2010'),
           abbr: null,
-          datasetGroup: 'station',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-climate-normals.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-normales-climatiques.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Climate Normals</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Climate normals 1981-2010</a>.')
           },
           openPortal: {
             en: 'https://open.canada.ca/data/en/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652',
             fr: 'https://ouvert.canada.ca/data/fr/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Climate Normals</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         monthly: {
-          title: this.$pgettext('Dataset Name', 'Monthly climate observation summaries'),
+          title: this.$pgettext('Dataset Name', 'Monthly climate summaries'),
           abbr: null,
-          datasetGroup: 'station',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-monthly-climate-summaries.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-sommaires-climatologiques-mensuels.html',
@@ -65,24 +67,22 @@ export const datasets = {
           }
         },
         daily: {
-          title: this.$pgettext('Dataset Name', 'Daily climate observations'),
+          title: this.$pgettext('Dataset Name', 'Daily climate data'),
           abbr: null,
-          datasetGroup: 'station',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-daily-data.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-quotidiennes.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Daily data</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Daily climate data</a>.')
           },
           openPortal: {
             en: 'https://open.canada.ca/data/en/dataset/5f963c2d-d4ed-5a79-8a31-c9c582ca5098',
             fr: 'https://ouvert.canada.ca/data/fr/dataset/5f963c2d-d4ed-5a79-8a31-c9c582ca5098',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         hydrometric: {
-          title: this.$pgettext('Dataset Name', 'Historical Hydrometric Data'),
+          title: this.$pgettext('Dataset Name', 'Historical hydrometric data'),
           abbr: null,
-          datasetGroup: 'station',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-hydrometric-archive.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-archive-hydrometrique.html',
@@ -95,74 +95,157 @@ export const datasets = {
           }
         },
         cangrd: {
-          title: this.$pgettext('Dataset Name', 'Gridded historical climate data'),
-          abbr: this.$pgettext('Abbreviation: Gridded Historical Climate Data ', 'CANGRD'),
-          datasetGroup: 'gridded',
+          title: this.$pgettext('Dataset Name', 'Canadian Gridded Temperature and Precipitation Anomalies'),
+          abbr: this.$pgettext('Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies', 'CANGRD'),
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-historical-climate-data.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-climatiques-historiques.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Gridded historical climate data</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on <abbr title="{datasetName}">CANGRD</abbr></a>.')
           },
           openPortal: {
             en: 'https://open.canada.ca/data/en/dataset/3d4b68a5-13bc-48bb-ad10-801128aa6604',
             fr: 'https://ouvert.canada.ca/data/fr/dataset/3d4b68a5-13bc-48bb-ad10-801128aa6604',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Gridded historical climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         cmip5: {
           title: this.$pgettext('Dataset Name', 'Global climate model scenarios'),
-          abbr: this.$pgettext('Abbreviation: Global Climate Model Scenarios', 'CMIP5'),
-          datasetGroup: 'model',
+          abbr: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-coupled-model-intercomparison-phase5.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-phase5-intercomparaison-modeles-couples.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Coupled Model Intercomparison Project Phase 5 (CMIP5)</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Global climate model scenarios</a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/1e86f4f7-da88-403e-bd44-92065c0fd568',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/1e86f4f7-da88-403e-bd44-92065c0fd568',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.'),
+            phraseList: this.$gettext('The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:'),
+            variables: [{
+              'name': this.$gettext('Mean temperature'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/1e86f4f7-da88-403e-bd44-92065c0fd568',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/1e86f4f7-da88-403e-bd44-92065c0fd568'
+              }
+            }, {
+              'name': this.$gettext('Mean precipitation'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/eddd6eaf-34d7-4452-a994-3d928115a68b',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/eddd6eaf-34d7-4452-a994-3d928115a68b'
+              }
+            }, {
+              'name': this.$gettext('Snow depth'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/0933f0dc-3625-4583-828a-86d032e4b737',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/0933f0dc-3625-4583-828a-86d032e4b737'
+              }
+            }, {
+              'name': this.$gettext('Sea ice thickness'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/b6a68b05-58f3-4d71-89d8-25b5a5277796',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/b6a68b05-58f3-4d71-89d8-25b5a5277796'
+              }
+            }, {
+              'name': this.$gettext('Sea ice concentration'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/78f9e3e0-3a12-4321-99dd-eed047c31e5e',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/78f9e3e0-3a12-4321-99dd-eed047c31e5e'
+              }
+            }, {
+              'name': this.$gettext('Surface wind speed'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/e0c71149-db7a-4700-acfd-1c8f9d778354',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/e0c71149-db7a-4700-acfd-1c8f9d778354'
+              }
+            }]
           }
         },
         dcs: {
           title: this.$pgettext('Dataset Name', 'Statistically downscaled climate scenarios'),
           abbr: null,
-          datasetGroup: 'model',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-downscaled-climate-scenarios.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-scenarios-climatiques-echelle-reduite.html',
             phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">the technical documentation on the Statistically downscaled climate scenarios</a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/958b8357-3690-414d-8bec-d65951041636',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/958b8357-3690-414d-8bec-d65951041636',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.'),
+            phraseList: this.$gettext('The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:'),
+            variables: [{
+              'name': this.$gettext('Mean temperature'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/958b8357-3690-414d-8bec-d65951041636',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/958b8357-3690-414d-8bec-d65951041636'
+              }
+            }, {
+              'name': this.$gettext('Daily minimum temperature'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/3156e7bf-6f11-46f7-b70a-51b6d4e3835b',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/3156e7bf-6f11-46f7-b70a-51b6d4e3835b'
+              }
+            }, {
+              'name': this.$gettext('Daily maximum temperature'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/57fee0af-40ec-4aad-89da-6c0d39a6424d',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/57fee0af-40ec-4aad-89da-6c0d39a6424d'
+              }
+            }, {
+              'name': this.$gettext('Total precipitation'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/286dd106-b507-472a-9a26-f72dceffb475',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/286dd106-b507-472a-9a26-f72dceffb475'
+              }
+            }]
           }
         },
         rdpa: {
-          title: this.$pgettext('Dataset Name', 'Regional deterministic precipitation analysis'),
+          title: this.$pgettext('Dataset Name', 'Regional Deterministic Precipitation Analysis'),
           abbr: this.$pgettext('Abbreviation: Regional Deterministic Precipitation Analysis', 'RDPA'),
-          datasetGroup: 'model',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-regional-precipitation-analysis.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-analyse-regionale-precipitations.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Regional Deterministic Precipitation Analysis</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on <abbr title="{datasetName}">RDPA</abbr></a>.')
           },
           openPortal: {
             en: 'https://open.canada.ca/data/en/dataset/fdd3446a-dc20-5bad-9755-0855e3ec9b19',
             fr: 'https://ouvert.canada.ca/data/fr/dataset/fdd3446a-dc20-5bad-9755-0855e3ec9b19',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Regional Deterministic Precipitation Analysis</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         cansips: {
-          title: this.$pgettext('Dataset Name', 'Canadian seasonal to inter-annual prediction system'),
+          title: this.$pgettext('Dataset Name', 'Canadian Seasonal to Inter-annual Prediction System'),
           abbr: this.$pgettext('Abbreviation: Canadian Seasonal to Inter-annual Prediction System', 'CanSIPS'),
-          datasetGroup: 'model',
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-inter-annual-seasonal-prediction.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-prevision-interannuelle-saisonniere.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Canadian Seasonal to Inter-annual Prediction System</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on <abbr title="{datasetName}">CanSIPS</abbr></a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/922781a9-bfef-56b9-a438-493ada629d47',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/922781a9-bfef-56b9-a438-493ada629d47',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         }
       }
     },
     techDocHtml: function () {
       var techDocLink = this.datasetTitles[this.$route.name].techDoc[this.activeLocale]
-      return this.datasetTitles[this.$route.name].techDoc.phrase.replace('{techDocLink}', techDocLink)
+      var htmlPhrase = this.datasetTitles[this.$route.name].techDoc.phrase
+      htmlPhrase = htmlPhrase.replace('{techDocLink}', techDocLink)
+      htmlPhrase = htmlPhrase.replace('{datasetName}', this.currentRouteTitle)
+      return htmlPhrase
     },
     openPortalHtml: function () {
       var openPortalLink = this.datasetTitles[this.$route.name].openPortal[this.activeLocale]
-      return this.datasetTitles[this.$route.name].openPortal.phrase.replace('{openPortalLink}', openPortalLink)
+      var htmlPhrase = this.datasetTitles[this.$route.name].openPortal.phrase
+      htmlPhrase = htmlPhrase.replace('{openPortalLink}', openPortalLink)
+      htmlPhrase = htmlPhrase.replace('{datasetName}', this.currentRouteTitle)
+      return htmlPhrase
+    },
+    openPortalListHtml: function () {
+      return this.datasetTitles[this.$route.name].openPortal.phraseList
     },
     climateLinks: function () {
       return {
@@ -177,7 +260,7 @@ export const datasets = {
           title: this.$gettext('Environment and natural resources'),
           url: {
             en: this.canadaDomain.en + '/services/environment.html',
-            fr: this.canadaDomain.fr + '/services/environnement'
+            fr: this.canadaDomain.fr + '/services/environnement.html'
           }
         },
         weatherClimateHazards: {

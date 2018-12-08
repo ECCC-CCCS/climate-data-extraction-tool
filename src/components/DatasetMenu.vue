@@ -8,10 +8,10 @@
       </h3>
       <ul class="list-group menu list-unstyled">
         <li>
-          <span class="list-group-item" v-translate>Historical and future climate projections</span>
+          <span class="list-group-item" v-translate>Value-added historical climate data products</span>
           <ul class="list-group menu list-unstyled">
             <li
-              v-for="route in datasetProjectionRoutes"
+              v-for="route in valueAddedHistClimProdRoutes"
               v-bind:key="route.name">
                 <router-link
                   v-bind:to="route.meta[currentLangPath]"
@@ -27,10 +27,10 @@
           </ul>
         </li>
         <li>
-          <span class="list-group-item" v-translate>Historical station data</span>
+          <span class="list-group-item" v-translate>Climate simulations</span>
           <ul class="list-group menu list-unstyled">
             <li
-              v-for="route in datasetStationRoutes"
+              v-for="route in climateSimulationRoutes"
               v-bind:key="route.name">
                 <router-link
                   v-bind:to="route.meta[currentLangPath]"
@@ -46,10 +46,10 @@
           </ul>
         </li>
         <li>
-          <span class="list-group-item" v-translate>Historical gridded data</span>
+          <span class="list-group-item" v-translate>Historical climate and river data</span>
           <ul class="list-group menu list-unstyled">
             <li
-              v-for="route in datasetGriddedRoutes"
+              v-for="route in histClimateRiverRoutes"
               v-bind:key="route.name">
                 <router-link
                   v-bind:to="route.meta[currentLangPath]"
@@ -76,22 +76,22 @@ export default {
   name: 'DatasetMenu',
   mixins: [datasets],
   computed: {
-    datasetStationRoutes: function () {
+    histClimateRiverRoutes: function () {
       return this.$router.options.routes.filter((row, index) => {
         // only return routes marked to display for dataset section menu
-        return row.meta.datasetSectionMenu && (row.meta.group === 'station')
+        return row.meta.datasetSectionMenu && (row.meta.group === 'histClimateRiver')
       })
     },
-    datasetGriddedRoutes: function () {
+    climateSimulationRoutes: function () {
       return this.$router.options.routes.filter((row, index) => {
         // only return routes marked to display for dataset section menu
-        return row.meta.datasetSectionMenu && (row.meta.group === 'gridded')
+        return row.meta.datasetSectionMenu && (row.meta.group === 'climateSimulation')
       })
     },
-    datasetProjectionRoutes: function () {
+    valueAddedHistClimProdRoutes: function () {
       return this.$router.options.routes.filter((row, index) => {
         // only return routes marked to display for dataset section menu
-        return row.meta.datasetSectionMenu && (row.meta.group === 'projection')
+        return row.meta.datasetSectionMenu && (row.meta.group === 'valueAddedHistClimProd')
       })
     }
   }
