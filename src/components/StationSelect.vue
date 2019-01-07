@@ -285,9 +285,8 @@ export default {
     },
     bboxFilter: function (row, index) {
       if (this.bbox !== null) { // bbox filter if applicable
-        if (this.bounds.contains([row.geometry.coordinates[1], row.geometry.coordinates[0]])) {
-          return true
-        }
+        var stnPoint = [row.geometry.coordinates[1], row.geometry.coordinates[0]]
+        return this.bounds.contains(stnPoint)
       } else {
         return true
       }
@@ -352,6 +351,12 @@ export default {
     },
     bbox: function () {
       return this.$store.getters.getBBOX
+    },
+    pixelBounds: function () {
+      return this.$store.getters.getPixelBounds
+    },
+    bboxMap: function () {
+      return this.$store.getters.getMap
     },
     bounds: function () {
       let bboxParts = this.bbox.split(',')

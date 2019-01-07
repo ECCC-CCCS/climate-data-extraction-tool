@@ -9,28 +9,19 @@
 				]
 			}
 		},
+		"Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies": {
+			"CANGRD": {
+				"msgid": "CANGRD",
+				"msgctxt": "Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies",
+				"msgstr": [
+					""
+				]
+			}
+		},
 		"Abbreviation: Canadian Seasonal to Inter-annual Prediction System": {
 			"CanSIPS": {
 				"msgid": "CanSIPS",
 				"msgctxt": "Abbreviation: Canadian Seasonal to Inter-annual Prediction System",
-				"msgstr": [
-					""
-				]
-			}
-		},
-		"Abbreviation: Global Climate Model Scenarios": {
-			"CMIP5": {
-				"msgid": "CMIP5",
-				"msgctxt": "Abbreviation: Global Climate Model Scenarios",
-				"msgstr": [
-					""
-				]
-			}
-		},
-		"Abbreviation: Gridded Historical Climate Data ": {
-			"CANGRD": {
-				"msgid": "CANGRD",
-				"msgctxt": "Abbreviation: Gridded Historical Climate Data ",
 				"msgstr": [
 					""
 				]
@@ -297,15 +288,22 @@
 			}
 		},
 		"Dataset Name": {
-			"Adjusted and homogenized Canadian climate data": {
-				"msgid": "Adjusted and homogenized Canadian climate data",
+			"Adjusted and Homogenized Canadian Climate Data": {
+				"msgid": "Adjusted and Homogenized Canadian Climate Data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					""
 				]
 			},
-			"Canadian seasonal to inter-annual prediction system": {
-				"msgid": "Canadian seasonal to inter-annual prediction system",
+			"Canadian Gridded Temperature and Precipitation Anomalies": {
+				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					""
+				]
+			},
+			"Canadian Seasonal to Inter-annual Prediction System": {
+				"msgid": "Canadian Seasonal to Inter-annual Prediction System",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					""
@@ -318,8 +316,8 @@
 					""
 				]
 			},
-			"Daily climate observations": {
-				"msgid": "Daily climate observations",
+			"Daily climate data": {
+				"msgid": "Daily climate data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					""
@@ -332,29 +330,22 @@
 					""
 				]
 			},
-			"Gridded historical climate data": {
-				"msgid": "Gridded historical climate data",
+			"Historical hydrometric data": {
+				"msgid": "Historical hydrometric data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					""
 				]
 			},
-			"Historical Hydrometric Data": {
-				"msgid": "Historical Hydrometric Data",
+			"Monthly climate summaries": {
+				"msgid": "Monthly climate summaries",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					""
 				]
 			},
-			"Monthly climate observation summaries": {
-				"msgid": "Monthly climate observation summaries",
-				"msgctxt": "Dataset Name",
-				"msgstr": [
-					""
-				]
-			},
-			"Regional deterministic precipitation analysis": {
-				"msgid": "Regional deterministic precipitation analysis",
+			"Regional Deterministic Precipitation Analysis": {
+				"msgid": "Regional Deterministic Precipitation Analysis",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					""
@@ -591,12 +582,6 @@
 					""
 				]
 			},
-			"A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.": {
-				"msgid": "A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.",
-				"msgstr": [
-					""
-				]
-			},
 			"Actual values": {
 				"msgid": "Actual values",
 				"msgstr": [
@@ -729,6 +714,12 @@
 					""
 				]
 			},
+			"Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.": {
+				"msgid": "Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.",
+				"msgstr": [
+					""
+				]
+			},
 			"Clear dates": {
 				"msgid": "Clear dates",
 				"msgstr": [
@@ -759,14 +750,14 @@
 					""
 				]
 			},
-			"Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
-				"msgid": "Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",
+			"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
+				"msgid": "Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",
 				"msgstr": [
 					""
 				]
 			},
-			"Climate scenarios based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
-				"msgid": "Climate scenarios based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
+			"Climate simulations": {
+				"msgid": "Climate simulations",
 				"msgstr": [
 					""
 				]
@@ -777,8 +768,8 @@
 					""
 				]
 			},
-			"Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
-				"msgid": "Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
+			"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
+				"msgid": "Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
 				"msgstr": [
 					""
 				]
@@ -789,8 +780,20 @@
 					""
 				]
 			},
+			"Daily maximum temperature": {
+				"msgid": "Daily maximum temperature",
+				"msgstr": [
+					""
+				]
+			},
 			"Daily mean": {
 				"msgid": "Daily mean",
+				"msgstr": [
+					""
+				]
+			},
+			"Daily minimum temperature": {
+				"msgid": "Daily minimum temperature",
 				"msgstr": [
 					""
 				]
@@ -813,8 +816,8 @@
 					""
 				]
 			},
-			"Dataset description": {
-				"msgid": "Dataset description",
+			"Dataset description, technical information and metadata": {
+				"msgid": "Dataset description, technical information and metadata",
 				"msgstr": [
 					""
 				]
@@ -869,6 +872,12 @@
 			},
 			"Display and Download Climate Data": {
 				"msgid": "Display and Download Climate Data",
+				"msgstr": [
+					""
+				]
+			},
+			"Download records {startNum} - {endNum}": {
+				"msgid": "Download records {startNum} - {endNum}",
 				"msgstr": [
 					""
 				]
@@ -939,38 +948,44 @@
 					""
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Adjusted and Homogenized Canadian Climate Data</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Adjusted and Homogenized Canadian Climate Data</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.",
 				"msgstr": [
 					""
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Canadian Seasonal to Inter-annual Prediction System</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Canadian Seasonal to Inter-annual Prediction System</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CANGRD</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CANGRD</abbr></a>.",
 				"msgstr": [
 					""
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate Normals</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate Normals</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>.",
 				"msgstr": [
 					""
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Coupled Model Intercomparison Project Phase 5 (CMIP5)</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Coupled Model Intercomparison Project Phase 5 (CMIP5)</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.",
 				"msgstr": [
 					""
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily data</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily data</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate normals 1981-2010</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate normals 1981-2010</a>.",
 				"msgstr": [
 					""
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Gridded historical climate data</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Gridded historical climate data</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily climate data</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily climate data</a>.",
+				"msgstr": [
+					""
+				]
+			},
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Global climate model scenarios</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Global climate model scenarios</a>.",
 				"msgstr": [
 					""
 				]
@@ -983,12 +998,6 @@
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.",
-				"msgstr": [
-					""
-				]
-			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Regional Deterministic Precipitation Analysis</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Regional Deterministic Precipitation Analysis</a>.",
 				"msgstr": [
 					""
 				]
@@ -1023,12 +1032,6 @@
 					""
 				]
 			},
-			"Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.": {
-				"msgid": "Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.",
-				"msgstr": [
-					""
-				]
-			},
 			"High emissions scenario (RCP 8.5)": {
 				"msgid": "High emissions scenario (RCP 8.5)",
 				"msgstr": [
@@ -1047,20 +1050,14 @@
 					""
 				]
 			},
-			"Historical and future climate projections": {
-				"msgid": "Historical and future climate projections",
+			"Historical climate and river data": {
+				"msgid": "Historical climate and river data",
 				"msgstr": [
 					""
 				]
 			},
 			"Historical end date": {
 				"msgid": "Historical end date",
-				"msgstr": [
-					""
-				]
-			},
-			"Historical gridded data": {
-				"msgid": "Historical gridded data",
 				"msgstr": [
 					""
 				]
@@ -1073,12 +1070,6 @@
 			},
 			"Historical start date": {
 				"msgid": "Historical start date",
-				"msgstr": [
-					""
-				]
-			},
-			"Historical station data": {
-				"msgid": "Historical station data",
 				"msgstr": [
 					""
 				]
@@ -1199,6 +1190,12 @@
 			},
 			"Monthly": {
 				"msgid": "Monthly",
+				"msgstr": [
+					""
+				]
+			},
+			"Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.": {
+				"msgid": "Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.",
 				"msgstr": [
 					""
 				]
@@ -1353,6 +1350,12 @@
 					""
 				]
 			},
+			"Retrieve download links": {
+				"msgid": "Retrieve download links",
+				"msgstr": [
+					""
+				]
+			},
 			"Saskatchewan": {
 				"msgid": "Saskatchewan",
 				"msgstr": [
@@ -1461,32 +1464,56 @@
 					""
 				]
 			},
-			"Statistically downscaled climate scenarios based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Statistically downscaled multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 10km resolution.  Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
-				"msgid": "Statistically downscaled climate scenarios based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Statistically downscaled multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 10km resolution.  Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
-				"msgstr": [
-					""
-				]
-			},
 			"Summer (June-August)": {
 				"msgid": "Summer (June-August)",
 				"msgstr": [
 					""
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate Normals</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate Normals</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"Surface wind speed": {
+				"msgid": "Surface wind speed",
 				"msgstr": [
 					""
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					""
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Gridded historical climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Gridded historical climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					""
 				]
@@ -1503,14 +1530,32 @@
 					""
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Regional Deterministic Precipitation Analysis</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Regional Deterministic Precipitation Analysis</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					""
 				]
 			},
 			"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.": {
 				"msgid": "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.",
+				"msgstr": [
+					""
+				]
+			},
+			"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
+				"msgid": "The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
+				"msgstr": [
+					""
+				]
+			},
+			"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
+				"msgstr": [
+					""
+				]
+			},
+			"The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
 					""
 				]
@@ -1523,6 +1568,12 @@
 			},
 			"The start date cannot be greater than the end date.": {
 				"msgid": "The start date cannot be greater than the end date.",
+				"msgstr": [
+					""
+				]
+			},
+			"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
+				"msgid": "The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
 				"msgstr": [
 					""
 				]
@@ -1587,6 +1638,12 @@
 					""
 				]
 			},
+			"Total number of records: {numRecords}": {
+				"msgid": "Total number of records: {numRecords}",
+				"msgstr": [
+					""
+				]
+			},
 			"Total precipitation": {
 				"msgid": "Total precipitation",
 				"msgstr": [
@@ -1637,6 +1694,12 @@
 			},
 			"Value type / Time interval": {
 				"msgid": "Value type / Time interval",
+				"msgstr": [
+					""
+				]
+			},
+			"Value-added historical climate data products": {
+				"msgid": "Value-added historical climate data products",
 				"msgstr": [
 					""
 				]
@@ -1725,6 +1788,15 @@
 				]
 			}
 		},
+		"Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies": {
+			"CANGRD": {
+				"msgid": "CANGRD",
+				"msgctxt": "Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies",
+				"msgstr": [
+					"CANGRD"
+				]
+			}
+		},
 		"Abbreviation: Canadian Seasonal to Inter-annual Prediction System": {
 			"CanSIPS": {
 				"msgid": "CanSIPS",
@@ -1734,30 +1806,12 @@
 				]
 			}
 		},
-		"Abbreviation: Global Climate Model Scenarios": {
-			"CMIP5": {
-				"msgid": "CMIP5",
-				"msgctxt": "Abbreviation: Global Climate Model Scenarios",
-				"msgstr": [
-					"CMIP5"
-				]
-			}
-		},
-		"Abbreviation: Gridded Historical Climate Data ": {
-			"CANGRD": {
-				"msgid": "CANGRD",
-				"msgctxt": "Abbreviation: Gridded Historical Climate Data ",
-				"msgstr": [
-					"CANGRD"
-				]
-			}
-		},
 		"Abbreviation: Regional Deterministic Precipitation Analysis": {
 			"RDPA": {
 				"msgid": "RDPA",
 				"msgctxt": "Abbreviation: Regional Deterministic Precipitation Analysis",
 				"msgstr": [
-					"ARPD"
+					"ARDP"
 				]
 			}
 		},
@@ -2013,18 +2067,25 @@
 			}
 		},
 		"Dataset Name": {
-			"Adjusted and homogenized Canadian climate data": {
-				"msgid": "Adjusted and homogenized Canadian climate data",
+			"Adjusted and Homogenized Canadian Climate Data": {
+				"msgid": "Adjusted and Homogenized Canadian Climate Data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					"Données climatiques canadiennes ajustées et homogénéisées"
+					"Analyse régionale déterministe de précipitation"
 				]
 			},
-			"Canadian seasonal to inter-annual prediction system": {
-				"msgid": "Canadian seasonal to inter-annual prediction system",
+			"Canadian Gridded Temperature and Precipitation Anomalies": {
+				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					"Système de Prévision Interannuelle et Saisonnière Canadien"
+					"Anomalies de température et précipitation interpolées pour le Canada"
+				]
+			},
+			"Canadian Seasonal to Inter-annual Prediction System": {
+				"msgid": "Canadian Seasonal to Inter-annual Prediction System",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					"Système de prévision interannuelle et saisonnière canadien"
 				]
 			},
 			"Climate normals 1981 - 2010": {
@@ -2034,11 +2095,11 @@
 					"Normales climatiques 1981-2010"
 				]
 			},
-			"Daily climate observations": {
-				"msgid": "Daily climate observations",
+			"Daily climate data": {
+				"msgid": "Daily climate data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					"Observations climatiques quotidiennes"
+					"Données climatiques quotidiennes"
 				]
 			},
 			"Global climate model scenarios": {
@@ -2048,29 +2109,22 @@
 					"Scénarios basés sur des modèles climatiques globaux"
 				]
 			},
-			"Gridded historical climate data": {
-				"msgid": "Gridded historical climate data",
-				"msgctxt": "Dataset Name",
-				"msgstr": [
-					"Données climatiques maillées historiques"
-				]
-			},
-			"Historical Hydrometric Data": {
-				"msgid": "Historical Hydrometric Data",
+			"Historical hydrometric data": {
+				"msgid": "Historical hydrometric data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					"Données hydrométriques historiques"
 				]
 			},
-			"Monthly climate observation summaries": {
-				"msgid": "Monthly climate observation summaries",
+			"Monthly climate summaries": {
+				"msgid": "Monthly climate summaries",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					"Sommaires climatologiques mensuels des observations"
+					"Sommaires climatiques mensuels"
 				]
 			},
-			"Regional deterministic precipitation analysis": {
-				"msgid": "Regional deterministic precipitation analysis",
+			"Regional Deterministic Precipitation Analysis": {
+				"msgid": "Regional Deterministic Precipitation Analysis",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					"Analyse régionale déterministe de précipitation"
@@ -2307,12 +2361,6 @@
 					"95e percentile"
 				]
 			},
-			"A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.": {
-				"msgid": "A cross-country summary of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days.  This data is available from stations that produce daily data.",
-				"msgstr": [
-					"Un sommaire transcanadien des moyennes et des extrêmes pour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours."
-				]
-			},
 			"Actual values": {
 				"msgid": "Actual values",
 				"msgstr": [
@@ -2445,6 +2493,12 @@
 					"Centre Canadien des Services Climatiques"
 				]
 			},
+			"Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.": {
+				"msgid": "Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.",
+				"msgstr": [
+					"Les anomalies de température et précipitation interpolées pour le Canada (CANGRD) sont des ensembles de données passées sur les anomalies de températures et de précipitations, interpolées à partir de données ajustées et homogénéisées de stations climatologiques à une résolution de 50 km, à l’échelle du Canada. Ce qui est illustré ici représente les tendances saisonnières et annuelles de 1948 à aujourd’hui, et un écart par rapport à la moyenne de la période de référence (1961 à 1990). Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des anomalies mensuelles, saisonnières et annuelles CANGRD, à l’aide de l’outil d’extraction de données climatiques."
+				]
+			},
 			"Clear dates": {
 				"msgid": "Clear dates",
 				"msgstr": [
@@ -2475,16 +2529,16 @@
 					"Renseignements essentiels sur le climat"
 				]
 			},
-			"Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
-				"msgid": "Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",
+			"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
+				"msgid": "Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",
 				"msgstr": [
-					"Les normales et moyennes climatiques servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiques, moyennes et extrêmes climatiques, offertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
+					"Les normales climatiques 1981-2010servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiquesoffertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
 				]
 			},
-			"Climate scenarios based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
-				"msgid": "Climate scenarios based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
+			"Climate simulations": {
+				"msgid": "Climate simulations",
 				"msgstr": [
-					"Des scénarios climatiques qui s’appuient sur un ensemble de projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5) sont fournis. Les changements climatiques projetés, quant à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une grille de résolution de 1 degré x 1 degré. La médiane des changements projetés de l’ensemble multimodèles est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles mensuels, saisonniers et annuels du CMIP5, à l’aide de l’outil d’extraction de données climatiques."
+					"Simulations climatiques"
 				]
 			},
 			"Contact the Climate Services Support Desk": {
@@ -2493,10 +2547,10 @@
 					"Communiquez avec le Centre d&rsquo;aide des Services climatiques"
 				]
 			},
-			"Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
-				"msgid": "Daily data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
+			"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
+				"msgid": "Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
 				"msgstr": [
-					"Les données quotidiennes sont dérivées de deux sources de données; les stations climatologiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
+					"Les données climatiques quotidiennes sont dérivées de deux sources de données; les stations climatologiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
 				]
 			},
 			"Daily max/min": {
@@ -2505,10 +2559,22 @@
 					"Max/min quotidien"
 				]
 			},
+			"Daily maximum temperature": {
+				"msgid": "Daily maximum temperature",
+				"msgstr": [
+					"Température maximale quotidienne"
+				]
+			},
 			"Daily mean": {
 				"msgid": "Daily mean",
 				"msgstr": [
 					"Moyenne quotidienne"
+				]
+			},
+			"Daily minimum temperature": {
+				"msgid": "Daily minimum temperature",
+				"msgstr": [
+					"Température minimale quotidienne"
 				]
 			},
 			"Data download format": {
@@ -2529,10 +2595,10 @@
 					"Liens de téléchargement de données"
 				]
 			},
-			"Dataset description": {
-				"msgid": "Dataset description",
+			"Dataset description, technical information and metadata": {
+				"msgid": "Dataset description, technical information and metadata",
 				"msgstr": [
-					"Description d'un ensemble de données"
+					"Description de l’ensemble de données, informations techniques et métadonnées"
 				]
 			},
 			"Date range": {
@@ -2587,6 +2653,12 @@
 				"msgid": "Display and Download Climate Data",
 				"msgstr": [
 					"Afficher et télécharger les données climatiques"
+				]
+			},
+			"Download records {startNum} - {endNum}": {
+				"msgid": "Download records {startNum} - {endNum}",
+				"msgstr": [
+					"Télécharger des registres {startNum} - {endNum}"
 				]
 			},
 			"Download:": {
@@ -2655,40 +2727,46 @@
 					"Automne (septembre à novembre)"
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Adjusted and Homogenized Canadian Climate Data</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Adjusted and Homogenized Canadian Climate Data</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Données climatiques canadiennes ajustées et homogénéisées</a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux <abbr title=\"{datasetName}\">DCCAH</abbr></a>."
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Canadian Seasonal to Inter-annual Prediction System</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Canadian Seasonal to Inter-annual Prediction System</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CANGRD</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CANGRD</abbr></a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative au Système de prévision interannuelle et saisonnière canadien</a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux <abbr title=\"{datasetName}\">CANGRD</abbr></a>."
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate Normals</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate Normals</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Normales climatiques</a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux <abbr title=\"{datasetName}\">SPISCan</abbr></a>."
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Coupled Model Intercomparison Project Phase 5 (CMIP5)</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Coupled Model Intercomparison Project Phase 5 (CMIP5)</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative à la Phase 5 du Projet d’intercomparaison de modèles couplés</a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative à la <abbr title=\"{datasetName}\">ARDP</abbr></a>."
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily data</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily data</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate normals 1981-2010</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate normals 1981-2010</a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Données quotidiennes</a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Normales climatiques 1981-2010</a>."
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Gridded historical climate data</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Gridded historical climate data</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily climate data</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily climate data</a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Données climatiques maillées historiques</a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Données climatiques quotidiennes</a>."
+				]
+			},
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Global climate model scenarios</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Global climate model scenarios</a>.",
+				"msgstr": [
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Scénarios basés sur des modèles climatiques globaux</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Historical hydrometric data</a>.": {
@@ -2701,12 +2779,6 @@
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.",
 				"msgstr": [
 					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Sommaires climatologiques mensuels</a>."
-				]
-			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Regional Deterministic Precipitation Analysis</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Regional Deterministic Precipitation Analysis</a>.",
-				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative à l’Analyse régionale déterministe de précipitations</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>.": {
@@ -2739,12 +2811,6 @@
 					"Hauteur géopotentielle à 500 mb"
 				]
 			},
-			"Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.": {
-				"msgid": "Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.",
-				"msgstr": [
-					"Les données climatiques historiques reportées sur une grille, aussi appelés données canadiennes maillées (CANGRD) sont des ensembles de données passées sur les anomalies de températures et de précipitations, interpolées à partir de données ajustées et homogénéisées de stations climatologiques à une résolution de 50 km, à l’échelle du Canada. Ce qui est illustré ici représente les tendances saisonnières et annuelles de 1948 à aujourd’hui, et un écart par rapport à la moyenne de la période de référence (1961 à 1990). Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des anomalies mensuelles, saisonnières et annuelles CANGRD, à l’aide de l’outil d’extraction de données climatiques."
-				]
-			},
 			"High emissions scenario (RCP 8.5)": {
 				"msgid": "High emissions scenario (RCP 8.5)",
 				"msgstr": [
@@ -2763,22 +2829,16 @@
 					"Historique"
 				]
 			},
-			"Historical and future climate projections": {
-				"msgid": "Historical and future climate projections",
+			"Historical climate and river data": {
+				"msgid": "Historical climate and river data",
 				"msgstr": [
-					"Données historiques et projections du climat futur"
+					"Données historiques météorologiques et fluviales"
 				]
 			},
 			"Historical end date": {
 				"msgid": "Historical end date",
 				"msgstr": [
 					"Date de fin de l'historique"
-				]
-			},
-			"Historical gridded data": {
-				"msgid": "Historical gridded data",
-				"msgstr": [
-					"Données maillées historiques"
 				]
 			},
 			"Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.": {
@@ -2791,12 +2851,6 @@
 				"msgid": "Historical start date",
 				"msgstr": [
 					"Date de début de l'historique"
-				]
-			},
-			"Historical station data": {
-				"msgid": "Historical station data",
-				"msgstr": [
-					"Historique des données des stations"
 				]
 			},
 			"How to use: interactive map": {
@@ -2917,6 +2971,12 @@
 				"msgid": "Monthly",
 				"msgstr": [
 					"Mensuel"
+				]
+			},
+			"Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.": {
+				"msgid": "Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.",
+				"msgstr": [
+					"Les sommaires climatiques mensuels sont des sommaires transcacanadiens des moyennes et des extrêmespour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours."
 				]
 			},
 			"Monthly mean": {
@@ -3069,6 +3129,12 @@
 					"Réinitialiser la carte"
 				]
 			},
+			"Retrieve download links": {
+				"msgid": "Retrieve download links",
+				"msgstr": [
+					"Obtenir des liens de téléchargement"
+				]
+			},
 			"Saskatchewan": {
 				"msgid": "Saskatchewan",
 				"msgstr": [
@@ -3120,13 +3186,13 @@
 			"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entries)": {
 				"msgid": "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entries)",
 				"msgstr": [
-					"Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de {filteredNumEntries} (filtered from {totalSize} total entries)"
+					"Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de {filteredNumEntries} (filtrées de {totalSize} entrées au total)"
 				]
 			},
 			"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entry)": {
 				"msgid": "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entry)",
 				"msgstr": [
-					"Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de {filteredNumEntries} (filtered from {totalSize} total entry)"
+					"Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de {filteredNumEntries} (filtré de {totalSize} entrée au total)"
 				]
 			},
 			"Snow depth": {
@@ -3177,34 +3243,58 @@
 					"Table de la station"
 				]
 			},
-			"Statistically downscaled climate scenarios based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Statistically downscaled multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 10km resolution.  Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
-				"msgid": "Statistically downscaled climate scenarios based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Statistically downscaled multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 10km resolution.  Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
-				"msgstr": [
-					"Des scénarios climatiques à réduction d’échelle statistique des changements projetés pour les températures et les précipitations, par rapport à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une résolution de 10 km. Les données avec réduction d’échelle statistique s’appuient sur les projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5). La médiane des changements projetés de l’ensemble multimodèles à réduction d’échelle statistique est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles à réduction d’échelle statistique mensuels, saisonniers et annuels, à l’aide de l’outil d’extraction de données climatiques."
-				]
-			},
 			"Summer (June-August)": {
 				"msgid": "Summer (June-August)",
 				"msgstr": [
 					"Été (juin à août)"
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate Normals</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate Normals</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"Surface wind speed": {
+				"msgid": "Surface wind speed",
 				"msgstr": [
-					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Normales climatiques</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+					"Vitesse du vent à la surface"
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Données quotidiennes</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux <abbr title=\"{datasetName}\">DCCAH</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Gridded historical climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Gridded historical climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Données climatiques maillées historiques</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux <abbr title=\"{datasetName}\">CANGRD</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative au <abbr title=\"{datasetName}\">SPISCan</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative à la <abbr title=\"{datasetName}\">ARDP</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Normales climatiques 1981-2010</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Données climatiques quotidiennes</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Scénarios basés sur des modèles climatiques globaux</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -3219,16 +3309,34 @@
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Sommaires climatologiques mensuels</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Regional Deterministic Precipitation Analysis</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Regional Deterministic Precipitation Analysis</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative à l’Analyse régionale déterministe de précipitations</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Scénarios climatiques mis à l’échelle de manière statistique</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
 			"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.": {
 				"msgid": "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.",
 				"msgstr": [
 					"Le Système de Prévision Interannuelle et Saisonnière Canadien (SPISCan) procède à des calculs physiques afin de produire des prévisions probabilistes d'éléments de l'atmosphère du début d'un mois jusqu'à 12 mois dans le futur. Les éléments de l'atmosphère incluent notamment la température, la précipitation, la vitesse et direction des vents. Ce produit contient les résultats numériques bruts de ces calculs. La couverture géographique est mondiale. Les données sont disponibles pour quelques niveaux verticaux choisis et sur une grille de résolution spatiale de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
+				]
+			},
+			"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
+				"msgid": "The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
+				"msgstr": [
+					"Les données des Scénarios basés sur des modèles climatiques globaux s’appuient sur un ensemble de projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5) sont fournis. Les changements climatiques projetés, quant à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une grille de résolution de 1 degré x 1 degré. La médiane des changements projetés de l’ensemble multimodèles est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles \nmensuels, saisonniers et annuels du CMIP5, à l’aide de l’outil d’extraction de données climatiques."
+				]
+			},
+			"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
+				"msgstr": [
+					"La page du portail du gouvernement ouvert relative aux Scénarios basés sur des modèles climatiques globaux fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données :"
+				]
+			},
+			"The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
+				"msgstr": [
+					"La page du portail du gouvernement ouvert relative aux Scénarios climatiques mis à l’échelle de manière statistique fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données :"
 				]
 			},
 			"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.": {
@@ -3241,6 +3349,12 @@
 				"msgid": "The start date cannot be greater than the end date.",
 				"msgstr": [
 					"La date de début ne peut pas être après la date de fin."
+				]
+			},
+			"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
+				"msgid": "The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
+				"msgstr": [
+					"Des scénarios climatiques à réduction d’échelle statistique des changements projetés pour les températures et les précipitations, par rapport à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une résolution de 10 km. Les données avec réduction d’échelle statistique s’appuient sur les projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5). La médiane des changements projetés de l’ensemble multimodèles à réduction d’échelle statistique est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles à réduction d’échelle statistique mensuels, saisonniers et annuels, à l’aide de l’outil d’extraction de données climatiques."
 				]
 			},
 			"This field is not within the date range limits.": {
@@ -3303,6 +3417,12 @@
 					"Pour faire un zoom avant et arrière de la carte, déplacez la souris vers le haut et vers le bas tout en la faisant glisser sur la carte interactive, ou cliquez sur le  <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> et les boutons <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> , respectivement. Ou encore, <kbd>tab</kbd> à partir de la cible de saisie de la boîte de la carte interactive, appuyez sur la touche <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> ou la touche <kbd><abbr title=\"Minus Sign\">-</abbr></kbd>."
 				]
 			},
+			"Total number of records: {numRecords}": {
+				"msgid": "Total number of records: {numRecords}",
+				"msgstr": [
+					"Nombre total d'enregistrements : {numRecords}"
+				]
+			},
 			"Total precipitation": {
 				"msgid": "Total precipitation",
 				"msgstr": [
@@ -3355,6 +3475,12 @@
 				"msgid": "Value type / Time interval",
 				"msgstr": [
 					"Type de valeur / Intervalle de temps"
+				]
+			},
+			"Value-added historical climate data products": {
+				"msgid": "Value-added historical climate data products",
+				"msgstr": [
+					"Produits à valeur ajoutée dérivés de données climatiques historiques"
 				]
 			},
 			"Variable": {

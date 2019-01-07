@@ -26,18 +26,13 @@
       :minZoom="minZoom"
       :maxZoom="maxZoom"
       :center="center"
+      :maxBounds="maxBounds"
+      :continuousWorld="false"
       @moveend="updateBBOXfromMap"
-      :maxBounds="maxBounds">
-        <!-- <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> -->
-        <!-- <l-tile-layer :url="urlTile_CBMT"></l-tile-layer> -->
-        <!-- <l-wms-tile-layer
-          :base-url="urlWMS_CMBT[$i18n.activeLocale]"
-          :layers="layerCBMT[$i18n.activeLocale]"
-          :format="'image/png'"></l-wms-tile-layer> -->
+      >
+        <!-- <l-tile-layer :url="urlWMTS_CMBT[$i18n.activeLocale]"></l-tile-layer> -->
         <l-geo-json ref="geojsonLayer" :geojson="geojson" :options="geoJsonOptions"></l-geo-json>
     </l-map>
-
-    <!-- <div id="bbox-map2"></div> -->
 
     <div class="form-group">
       <button
@@ -71,7 +66,6 @@
 import L from 'leaflet'
 import Vue2Leaflet from 'vue2-leaflet'
 import LW from 'leaflet.wms'
-import 'proj4'
 import 'proj4leaflet'
 import store from '../store/store'
 
@@ -99,7 +93,7 @@ export default {
   props: {
     initialBbox: {
       type: String,
-      default: '-154,38,-49,81'
+      default: '-154,15,25,81'
     },
     geojson: {
       type: Object,
@@ -131,62 +125,48 @@ export default {
       default: false
     }
   },
-  mounted: function () {
-    // CBMT Single tile WMS
-    var map = this.$refs.BBOXMap.mapObject
-    var cbmtWMS = LW.overlay(this.urlWMS_CMBT[this.$i18n.activeLocale], {
-      layers: this.layerCBMT[this.$i18n.activeLocale]
-    })
-    cbmtWMS.addTo(map)
-
-    // Lambert Projection Map Test
-    // var map2 = new L.Map('bbox-map2', {
-    //   zoom: 1,
-    //   crs: this.crs,
-    //   continuousWorld: true
-    // })
-    // var cbmtWMTS = new L.TileLayer(this.urlTile_CBMT2, {
-    //   maxZoom: 17,
-    //   minZoom: 0,
-    //   continousWorld: true
-    // })
-    // cbmtWMTS.addTo(map2)
-  },
   data () {
     return {
-      // epsg3978: new L.Proj.CRS('EPSG:3978', '+proj=lcc +lat_1=49 +lat_2=77 +lat_0=49 +lon_0=-95 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', {
-      //   resolutions: [
-      //     38364.660062653464,
-      //     22489.62831258996,
-      //     13229.193125052918,
-      //     7937.5158750317505,
-      //     4630.2175937685215,
-      //     2645.8386250105837,
-      //     1587.5031750063501,
-      //     926.0435187537042,
-      //     529.1677250021168,
-      //     317.50063500127004,
-      //     185.20870375074085,
-      //     111.12522225044451,
-      //     66.1459656252646,
-      //     38.36466006265346,
-      //     22.48962831258996,
-      //     13.229193125052918,
-      //     7.9375158750317505,
-      //     4.6302175937685215
-      //   ],
-      //   origin: [-34655800, 39310000]
-      // }),
+      epsg3978: new L.Proj.CRS('EPSG:3978', '+proj=lcc +lat_1=49 +lat_2=77 +lat_0=49 +lon_0=-95 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', {
+        resolutions: [
+          38364.660062653464,
+          22489.62831258996,
+          13229.193125052918,
+          7937.5158750317505,
+          4630.2175937685215,
+          2645.8386250105837,
+          1587.5031750063501,
+          926.0435187537042,
+          529.1677250021168,
+          317.50063500127004,
+          185.20870375074085,
+          111.12522225044451,
+          66.1459656252646,
+          38.36466006265346,
+          22.48962831258996,
+          13.229193125052918,
+          7.9375158750317505,
+          4.6302175937685215,
+          2.6458386250105836,
+          1.5875031750063502,
+          0.92604351875370428,
+          0.52916772500211673,
+          0.31750063500127002,
+          0.18520870375074083,
+          0.11112522225044451,
+          0.066145965625264591
+        ],
+        origin: [-34655800, 39310000]
+      }),
       bbox_value: this.initialBbox,
       zoom: 2,
-      minZoom: 2, // set for 400px x 400px map
+      minZoom: 0,
       maxZoom: 9,
-      maxBounds: L.latLngBounds(L.latLng(22, -170), L.latLng(90, -16)), // Canada
-      center: L.latLng(68, -102), // set for 400px x 400px map
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      urlTile_CBMT: 'https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/default/default028mm/{z}/{y}/{x}.jpg',
-      urlTile_CBMT2: 'https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT_CBCT_GEOM_3978/default/default028mm/{z}/{y}/{x}',
-      mercator: L.Projection.Mercator,
+      maxBounds: L.latLngBounds(L.latLng(22, -170), L.latLng(90, -16)),
+      // L.latLngBounds(L.latLng(16, -127), L.latLng(48, 24)), // EPSG:3978
+      center: L.latLng(68, -102),
+      // L.latLng(64, -90), // EPSG:3978
+      urlOSM: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       options: {
         style: function () {
           return {
@@ -286,6 +266,14 @@ export default {
       }
     }
   },
+  mounted: function () {
+    // CBMT Single tile WMS
+    var map = this.$refs.BBOXMap.mapObject
+    var cbmtWMS = LW.overlay(this.urlWMS_CMBT[this.$i18n.activeLocale], {
+      layers: this.layerCBMT[this.$i18n.activeLocale]
+    })
+    cbmtWMS.addTo(map)
+  },
   computed: {
     attribution: function () {
       return '&copy; ' + this.$gettext('<a href="http://osm.org/copyright">OpenStreetMap</a> contributors')
@@ -305,10 +293,10 @@ export default {
         return true
       }
     },
-    urlWMS_CMBT: function () {
+    urlWMTS_CMBT: function () {
       return {
-        en: 'https://geogratis.gc.ca/maps/CBMT?',
-        fr: 'https://geogratis.gc.ca/cartes/CBCT?'
+        en: 'https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/default/default028mm/{z}/{y}/{x}.jpg',
+        fr: 'https://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBCT3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBCT3978/default/default028mm/{z}/{y}/{x}.jpg'
       }
     },
     layerCBMT: function () {
@@ -316,16 +304,22 @@ export default {
         en: 'CBMT',
         fr: 'CBCT'
       }
+    },
+    urlWMS_CMBT: function () {
+      return {
+        en: 'https://geogratis.gc.ca/maps/CBMT?',
+        fr: 'https://geogratis.gc.ca/cartes/CBCT?'
+      }
     }
   },
   methods: {
     toggleDetails: function (event) {
       this.toggleDetailsState = !this.toggleDetailsState
     },
-    updateBBOX (event) {
+    updateBBOX: function (event) {
       this.$emit('change', this.bbox_value)
     },
-    updateBBOXfromMap (event) {
+    updateBBOXfromMap: function (event) {
       this.bbox_value = this.$refs.BBOXMap.mapObject.getBounds().toBBoxString()
       this.updateBBOX(null)
     },
@@ -396,6 +390,7 @@ export default {
 #bbox-map, #bbox-map2 {
   width: 400px;
   height: 400px;
+  background-color: #FFF;
 }
 #bbox-map:focus {
   outline-color: #07F;

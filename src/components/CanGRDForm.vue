@@ -9,12 +9,12 @@
 
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
-            v-translate>Dataset description</summary>
-          <p v-translate>Gridded historical climate data, also referred to as Canadian gridded data (CANGRD), are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
+            v-translate>Dataset description, technical information and metadata</summary>
+          <p v-translate>Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
 
-          <!-- <p v-html="techDocHtml"></p> -->
+          <p v-html="techDocHtml"></p>
 
-          <!-- <p v-html="openPortalHtml"></p> -->
+          <p v-html="openPortalHtml"></p>
         </details>
 
         <info-contact-support></info-contact-support>

@@ -9,10 +9,14 @@
 
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
-            v-translate>Dataset description</summary>
-          <p v-translate>Statistically downscaled climate scenarios based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Statistically downscaled multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 10km resolution.  Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.</p>
+            v-translate>Dataset description, technical information and metadata</summary>
+          <p v-translate>The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.</p>
 
-          <!-- <p v-html="techDocHtml"></p> -->
+          <p v-html="techDocHtml"></p>
+
+          <open-portal-links
+            v-bind:open-portal-list-html="openPortalListHtml"
+            v-bind:open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
         </details>
 
         <info-contact-support></info-contact-support>
@@ -162,6 +166,7 @@ import DateSelect from './DateSelect'
 import OptionRadio from './OptionRadio'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
+import OpenPortalLinks from './OpenPortalLinks'
 import { wcs } from './mixins/wcs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -179,7 +184,8 @@ export default {
     'date-select': DateSelect,
     'option-radio': OptionRadio,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport
+    'info-contact-support': InfoContactSupport,
+    'open-portal-links': OpenPortalLinks
   },
   data () {
     return {

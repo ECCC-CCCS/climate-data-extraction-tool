@@ -16,12 +16,14 @@
 
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
-            v-translate>Dataset description</summary>
-          <p v-translate>Climate Normals and Averages are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its Climate Normals for as many locations and as many climatic characteristics as possible. The Climate Normals, Averages and Extremes offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
+            v-translate>Dataset description, technical information and metadata</summary>
+          <p v-translate>Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
 
-          <!-- <p v-html="techDocHtml"></p> -->
+          <p v-html="techDocHtml"></p>
 
-          <!-- <p v-html="openPortalHtml"></p> -->
+          <p v-html="openPortalHtml"></p>
+
+          <station-list-link v-bind:url-station-list="urlStationList"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>
@@ -49,6 +51,8 @@
         <url-box
           v-bind:layer-options="layer_options"
           v-bind:ows-url-formatter="wfs3_download_url"
+          v-bind:wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+          v-bind:wfs3-download-limit="wfs_limit"
           v-bind:layer-format="wfs_format"
           v-bind:has-errors="hasErrors"
           v-bind:url-box-title="$gettext('Data download link')">
@@ -68,6 +72,7 @@ import FormatSelectVector from './FormatSelectVector'
 import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
+import StationListLink from './StationListLink'
 import { wfs } from './mixins/wfs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -83,7 +88,8 @@ export default {
     'format-select-vector': FormatSelectVector,
     'date-select': DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport
+    'info-contact-support': InfoContactSupport,
+    'station-list-link': StationListLink
   },
   data () {
     return {
@@ -102,14 +108,16 @@ export default {
   beforeMount () {
     // Load climate stations
     if (this.climateStationsGeoJson === null) { // prevent duplicate AJAX
-      var url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit
-      this.$store.dispatch('retrieveClimateStations', url)
+      this.$store.dispatch('retrieveClimateStations', this.urlStationList)
     }
 
     // reset existing selections that share with other components
     this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
+    urlStationList: function () {
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit
+    },
     climateStationsGeoJson: function () {
       return this.$store.getters.getClimateStations
     },
