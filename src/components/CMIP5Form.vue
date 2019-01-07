@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
+        <h1>{{ currentRouteTitle }}</h1>
 
         <p>{{ introDatasetText.gridded.use }}</p>
         <p>{{ introDatasetText.gridded.instructions }}</p>
