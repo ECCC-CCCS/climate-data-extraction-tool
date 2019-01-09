@@ -216,6 +216,20 @@ export const DCSCMIP5 = {
         histEnd: this.formatDateToMoment(this.dateHistEnd)
       }
     },
+    bandStartMoment: function () { // used for chunkedBandsParam
+      if (this.scenarioType === 'RCP') {
+        return this.$moment.utc(this.bandMoments.rcpStart)
+      } else {
+        return this.$moment.utc(this.bandMoments.histStart)
+      }
+    },
+    bandEndMoment: function () { // used for chunkedBandsParam
+      if (this.scenarioType === 'RCP') {
+        return this.$moment.utc(this.bandMoments.rcpEnd)
+      } else {
+        return this.$moment.utc(this.bandMoments.histEnd)
+      }
+    },
     bandDatesFormatted: function () {
       return {
         rcpStart: this.bandMoments.rcpStart === null ? null : this.bandMoments.rcpStart.format(this.dateConfigs.format),
@@ -261,27 +275,14 @@ export const DCSCMIP5 = {
       if (this.rangeType === 'year20') { // no date range checks for 20-year averages
         return false
       } else {
-        return this.bandStartIsEmptyOnly ||
-        this.bandEndIsEmptyOnly ||
-        !this.bandsInRange ||
-        this.bandsPastLimits ||
-        this.tooManyBands
+        return this.hasCommonBandErrors
       }
     },
     dateRangeNumBands: function () {
       var start = this.scenarioType === 'HISTO' ? this.bandMoments.histStart : this.bandMoments.rcpStart
       var end = this.scenarioType === 'HISTO' ? this.bandMoments.histEnd : this.bandMoments.rcpEnd
 
-      // Determine number of months (bands) in date range for monthly
-      if (start === null || end === null) {
-        return 0
-      } else if (this.wcs_id_timePeriod === 'ENS' && this.bandsInRange) {
-        return Math.ceil(this.$moment.duration(end.diff(start)).asMonths()) + 1 // +1 because range is inclusive
-      } else if (this.bandsInRange) { // yearly date range
-        return Math.ceil(this.$moment.duration(end.diff(start)).asYears())
-      } else {
-        return 0
-      }
+      return this.calcDateRangeNumBands(start, end)
     }
   }
 }

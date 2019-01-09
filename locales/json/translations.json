@@ -438,14 +438,14 @@
 					""
 				]
 			},
-			"<strong>Analysis</strong> data is available up to the past 30 days from today.": {
-				"msgid": "<strong>Analysis</strong> data is available up to the past 30 days from today.",
+			"<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.": {
+				"msgid": "<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.",
 				"msgstr": [
 					""
 				]
 			},
-			"<strong>Archive</strong> data is broken down into 10km or 15km resolution. The 10km archives are available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today. 15km archives are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.": {
-				"msgid": "<strong>Archive</strong> data is broken down into 10km or 15km resolution. The 10km archives are available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today. 15km archives are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.",
+			"<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.": {
+				"msgid": "<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.",
 				"msgstr": [
 					""
 				]
@@ -482,12 +482,6 @@
 			},
 			"06Z": {
 				"msgid": "06Z",
-				"msgstr": [
-					""
-				]
-			},
-			"10km": {
-				"msgid": "10km",
 				"msgstr": [
 					""
 				]
@@ -684,12 +678,6 @@
 					""
 				]
 			},
-			"Archive resolution": {
-				"msgid": "Archive resolution",
-				"msgstr": [
-					""
-				]
-			},
 			"Bounding box coordinates": {
 				"msgid": "Bounding box coordinates",
 				"msgstr": [
@@ -834,18 +822,6 @@
 					""
 				]
 			},
-			"Date range selection must be {maxBands} months or less. Current date range selection contains {numBands} months.": {
-				"msgid": "Date range selection must be {maxBands} months or less. Current date range selection contains {numBands} months.",
-				"msgstr": [
-					""
-				]
-			},
-			"Date range selection must be {maxBands} years or less. Current date range selection contains {numBands} years.": {
-				"msgid": "Date range selection must be {maxBands} years or less. Current date range selection contains {numBands} years.",
-				"msgstr": [
-					""
-				]
-			},
 			"Date ranges not required for CanGRD trends": {
 				"msgid": "Date ranges not required for CanGRD trends",
 				"msgstr": [
@@ -882,8 +858,26 @@
 					""
 				]
 			},
+			"Download station list for this dataset.": {
+				"msgid": "Download station list for this dataset.",
+				"msgstr": [
+					""
+				]
+			},
 			"Download:": {
 				"msgid": "Download:",
+				"msgstr": [
+					""
+				]
+			},
+			"Download: {date}": {
+				"msgid": "Download: {date}",
+				"msgstr": [
+					""
+				]
+			},
+			"Download: {startNum} - {endNum}": {
+				"msgid": "Download: {startNum} - {endNum}",
 				"msgstr": [
 					""
 				]
@@ -1034,12 +1028,6 @@
 			},
 			"High emissions scenario (RCP 8.5)": {
 				"msgid": "High emissions scenario (RCP 8.5)",
-				"msgstr": [
-					""
-				]
-			},
-			"Hindcast": {
-				"msgid": "Hindcast",
 				"msgstr": [
 					""
 				]
@@ -1580,6 +1568,12 @@
 			},
 			"This field is not within the date range limits.": {
 				"msgid": "This field is not within the date range limits.",
+				"msgstr": [
+					""
+				]
+			},
+			"This field is required for monthly time intervals.": {
+				"msgid": "This field is required for monthly time intervals.",
 				"msgstr": [
 					""
 				]
@@ -2217,16 +2211,16 @@
 					"Contributeurs à <a href=\"http://osm.org/copyright\">OpenStreetMap</a>"
 				]
 			},
-			"<strong>Analysis</strong> data is available up to the past 30 days from today.": {
-				"msgid": "<strong>Analysis</strong> data is available up to the past 30 days from today.",
+			"<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.": {
+				"msgid": "<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.",
 				"msgstr": [
-					"Les données de <strong>l'analyse</strong> sont disponibles pour les 30 derniers jours."
+					"<strong>Les données de l'analyse à 10km</strong> sont disponibles depuis 2012-10-03 12:00 UTC à aujourd'hui."
 				]
 			},
-			"<strong>Archive</strong> data is broken down into 10km or 15km resolution. The 10km archives are available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today. 15km archives are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.": {
-				"msgid": "<strong>Archive</strong> data is broken down into 10km or 15km resolution. The 10km archives are available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today. 15km archives are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.",
+			"<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.": {
+				"msgid": "<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.",
 				"msgstr": [
-					"Les données de <strong>l'analyse</strong> sont disponibles aux résolutions de 10 ou 15km. Les données d'archives à 10km sont disponibles depuis 2012-10-03 12:00 UTC à aujourd'hui. Les données d'archives à 15km sont disponibles du 2011-04-06 12:00 UTC à 2012-10-02 12:00 UTC."
+					"<strong>Les données d'archives à 15km</strong> sont disponibles du 2011-04-06 12:00 UTC à 2012-10-02 12:00 UTC."
 				]
 			},
 			"<strong>CSV</strong> files can be opened, viewed and manipulated with any word processor or spreadsheet software": {
@@ -2263,12 +2257,6 @@
 				"msgid": "06Z",
 				"msgstr": [
 					"06Z"
-				]
-			},
-			"10km": {
-				"msgid": "10km",
-				"msgstr": [
-					"10 km"
 				]
 			},
 			"12Z": {
@@ -2463,12 +2451,6 @@
 					"Archives"
 				]
 			},
-			"Archive resolution": {
-				"msgid": "Archive resolution",
-				"msgstr": [
-					"Résolution de l'archive"
-				]
-			},
 			"Bounding box coordinates": {
 				"msgid": "Bounding box coordinates",
 				"msgstr": [
@@ -2613,18 +2595,6 @@
 					"Les champs de la plage de dates doivent tous être définis ou effacés."
 				]
 			},
-			"Date range selection must be {maxBands} months or less. Current date range selection contains {numBands} months.": {
-				"msgid": "Date range selection must be {maxBands} months or less. Current date range selection contains {numBands} months.",
-				"msgstr": [
-					"La sélection de la plage de dates doit être de {maxBands} mois ou moins. La sélection de la plage de dates actuelle contient {numBands} mois."
-				]
-			},
-			"Date range selection must be {maxBands} years or less. Current date range selection contains {numBands} years.": {
-				"msgid": "Date range selection must be {maxBands} years or less. Current date range selection contains {numBands} years.",
-				"msgstr": [
-					"La sélection de la plage de dates doit être de {maxBands} années ou moins. La sélection de la plage de dates actuelle contient {numBands} années."
-				]
-			},
 			"Date ranges not required for CanGRD trends": {
 				"msgid": "Date ranges not required for CanGRD trends",
 				"msgstr": [
@@ -2661,10 +2631,28 @@
 					"Télécharger des registres {startNum} - {endNum}"
 				]
 			},
+			"Download station list for this dataset.": {
+				"msgid": "Download station list for this dataset.",
+				"msgstr": [
+					"Télécharger la liste des stations pour cet ensemble de données."
+				]
+			},
 			"Download:": {
 				"msgid": "Download:",
 				"msgstr": [
 					"Télécharger :"
+				]
+			},
+			"Download: {date}": {
+				"msgid": "Download: {date}",
+				"msgstr": [
+					"Télécharger : {date}"
+				]
+			},
+			"Download: {startNum} - {endNum}": {
+				"msgid": "Download: {startNum} - {endNum}",
+				"msgstr": [
+					"Télécharger : {startNum} - {endNum}"
 				]
 			},
 			"Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.": {
@@ -2815,12 +2803,6 @@
 				"msgid": "High emissions scenario (RCP 8.5)",
 				"msgstr": [
 					"Scénario d'émissions élevées (RCP 8.5)"
-				]
-			},
-			"Hindcast": {
-				"msgid": "Hindcast",
-				"msgstr": [
-					"Prévisions rétrospectives"
 				]
 			},
 			"Historical": {
@@ -3361,6 +3343,12 @@
 				"msgid": "This field is not within the date range limits.",
 				"msgstr": [
 					"Ce champ n'est pas dans les limites de la plage de dates."
+				]
+			},
+			"This field is required for monthly time intervals.": {
+				"msgid": "This field is required for monthly time intervals.",
+				"msgstr": [
+					"Cette champ est obligatoire pour les intervalles de temps mensuels."
 				]
 			},
 			"This field is required.": {

@@ -102,6 +102,7 @@
     "vue-gettext": "^2.1.2",
     "vue-gettext-tools": "0.0.7",
     "vue-loader": "^13.7.3",
+    "vue-server-renderer": "^2.5.21",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.21",
     "vue-webpack-gettext": "^0.3.1",
