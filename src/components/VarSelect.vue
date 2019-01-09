@@ -28,6 +28,8 @@
     <select class="form-control" v-bind:id="'var-sel-'+label_id"
       v-bind:value="value"
       v-on:change="emitUpdatedValue"
+      v-bind:disabled="disabled"
+      v-bind:readonly="readonly"
       v-bind:required="required">
         <option v-for="(value, key) in selectOptions" v-bind:key="key" v-bind:value="key">{{ value }}</option>
     </select>
@@ -50,6 +52,14 @@ export default {
           'null': this.$gettext('No options available')
         }
       }
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     },
     required: {
       type: Boolean,

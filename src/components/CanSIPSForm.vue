@@ -4,8 +4,6 @@
       <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
         <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-        <download-warning></download-warning>
-
         <p>{{ introDatasetText.gridded.use }}</p>
         <p>{{ introDatasetText.gridded.instructions }}</p>
 
@@ -31,6 +29,8 @@
         <var-select
           v-model="wcs_id_type"
           v-bind:label="$gettext('Model type')"
+          v-bind:disabled="true"
+          v-bind:readonly="true"
           v-bind:select-options="typeOptions"></var-select>
 
         <num-select
@@ -57,6 +57,8 @@
           v-bind:format="dateConfigs.format"
           v-bind:placeholder="dateConfigs.placeholder"
           v-bind:required="true"
+          v-bind:disabled="true"
+          v-bind:readonly="true"
           v-bind:min-date="forePeriodDateRange.min"
           v-bind:max-date="forePeriodDateRange.max"></date-select>
 
@@ -96,7 +98,6 @@ import NumSelect from './NumSelect'
 import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
-import DownloadWarning from './DownloadWarning'
 import { wcs } from './mixins/wcs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -112,22 +113,21 @@ export default {
     'num-select': NumSelect,
     'date-select': DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
-    'download-warning': DownloadWarning
+    'info-contact-support': InfoContactSupport
   },
   data () {
     return {
       wcs_id_dataset: 'CANSIPS',
-      wcs_id_type: 'HIND',
+      wcs_id_type: 'FORE',
       wcs_id_product: 'MEM',
       wcs_id_variable: 'ETA_PN-SLP',
       wcs_id_member: 1,
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       foreRunMomentMin: this.$moment.utc('2013-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMomentMax: this.$moment.utc('01 00:00:00', 'DD HH:mm:ss'), // this month
-      modelRun: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      forecastPeriod: this.$moment.utc('1981-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      foreRunMomentMax: this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      modelRun: this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      forecastPeriod: this.$moment.utc('2018-10-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       dateConfigs: {
         minimumView: 'month',
         format: 'YYYY-MM',
@@ -168,7 +168,7 @@ export default {
     },
     typeOptions: function () {
       return {
-        'HIND': this.$gettext('Hindcast'),
+        // 'HIND': this.$gettext('Hindcast'),
         'FORE': this.$gettext('Forecast')
       }
     },
@@ -231,7 +231,7 @@ export default {
       // based off of selected model run date
       return {
         min: this.$moment.utc(this.modelRunMoment).add(1, 'months'), // 1 month
-        max: this.$moment.utc(this.modelRunMoment).add(12, 'months') // 12 months ahead; can't add on computed value
+        max: this.$moment.utc(this.modelRunMoment).add(1, 'months') // // TEMP: set to 1 month default // 12 months ahead; can't add on computed value
       }
     },
     forePeriodDateRange: function () {
@@ -275,16 +275,7 @@ export default {
     wcs_download_url: function (coverageId) { // replaces existing function from wcs mixin
       this.splitBBOXString()
       var url = this.wcs2_weather_url_base + '&'
-      var urlParams = []
-
-      urlParams.push('COVERAGEID=' + coverageId)
-      urlParams.push('SUBSETTINGCRS=' + this.ows_crs)
-      var bbox = this.generateWCSBBOXParam()
-      if (bbox !== null) {
-        urlParams.push(bbox.x)
-        urlParams.push(bbox.y)
-      }
-      urlParams.push('FORMAT=' + this.wcs_format)
+      var urlParams = this.getWCSCommonParams(coverageId)
 
       // Model Run
       var mr = this.modelRunISO

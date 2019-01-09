@@ -10,7 +10,7 @@
       class="mrgn-tp-sm"
       v-bind:key="layerName">
       <a
-        v-show="wfs3CommonUrl === null"
+        v-show="wfs3CommonUrl === null && wcsCommonUrl === null"
         v-bind:href="owsUrlFormatter(layerName)"
         target="_blank"
         class="btn btn-default"
@@ -50,6 +50,22 @@
           </a>
         </div>
       </div>
+
+      <div
+        id="wcs-download-links-list"
+        class="mrgn-tp-md"
+        v-show="wcsCommonUrl !== null">
+
+        <div id="wcs-link-list" class="list-group" aria-live="polite">
+          <a
+            v-for="(bandChunk, index) in wcsBandChunks"
+            v-bind:key="index"
+            v-bind:href="wcs_download_url_chunk(bandChunk)"
+            target="_blank"
+            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="wcs_download_name_chunk(bandChunk, title)"></span>
+          </a>
+        </div>
+      </div>
     </div>
     <div
       v-show="hasErrors">
@@ -69,6 +85,18 @@ export default {
       type: Function,
       default: function (layerName) {
         return layerName
+      }
+    },
+    bandRangeFormat: {
+      type: Function,
+      default: function (bandStart, bandEnd) {
+        if (bandStart === null || bandEnd === null || bandStart === 'Invalid date' || bandEnd === 'Invalid date') {
+          return null
+        } else if (bandStart === bandEnd) { // single date
+          return 'B' + bandStart
+        } else { // date range
+          return 'B' + bandStart + ':B' + bandEnd
+        }
       }
     },
     layerOptions: {
@@ -92,6 +120,20 @@ export default {
     wfs3CommonUrl: {
       type: String,
       default: null
+    },
+    wcsCommonUrl: {
+      type: String,
+      default: null
+    },
+    wcsBandChunks: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    },
+    wcsNumBands: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
@@ -160,7 +202,11 @@ export default {
     },
     wfs3_download_url_chunk: function (offset) {
       offset = parseInt(offset)
-      var url = this.wfs3CommonUrl + '&f=' + this.layerFormat + '&limit=' + this.wfs3DownloadLimit + '&offset=' + offset
+      var url = this.wfs3CommonUrl
+      if (this.layerFormat === 'csv') {
+        url += '&f=' + this.layerFormat
+      }
+      url += '&limit=' + this.wfs3DownloadLimit + '&offset=' + offset
       return url
     },
     wfs3_download_name_chunk: function (offset, chunkIndex) {
@@ -168,6 +214,24 @@ export default {
       var startNum = offset + 1
       var endNum = chunkIndex === (this.chunkedOffsets.length - 1) ? this.numRecords : this.chunkedOffsets[chunkIndex + 1]
       return this.$_i(this.$gettext('Download records {startNum} - {endNum}'), {'startNum': startNum, 'endNum': endNum})
+    },
+    wcs_download_name_chunk: function (bandChunk, title) {
+      var rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
+      if (this.wcsNumBands === 0) {
+        return this.$_i(this.$gettext('Download: {date}'), {'date': bandChunk.start})
+      } else if (rangeSubset !== null) {
+        return this.$_i(this.$gettext('Download: {startNum} - {endNum}'), {'startNum': bandChunk.start, 'endNum': bandChunk.end})
+      } else {
+        return this.$gettext('Download:') + ' ' + title
+      }
+    },
+    wcs_download_url_chunk: function (bandChunk) {
+      var rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
+      var url = this.wcsCommonUrl
+      if (rangeSubset !== null) {
+        url += '&RANGESUBSET=' + rangeSubset
+      }
+      return url
     },
     chunkDownload: function (data) {
       this.numRecords = data.numberMatched

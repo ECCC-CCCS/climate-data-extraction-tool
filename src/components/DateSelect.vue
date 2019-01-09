@@ -35,6 +35,8 @@
       :required="required"
       :disabledDates="disabledDates"
       :use-utc="useUtc"
+      :disabled="disabled"
+      :readonly="readonly"
       v-on:input="emitUpdatedValue"></datepicker>
   </div>
 </template>
@@ -87,6 +89,14 @@ export default {
       default: 'year'
     },
     required: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     },

@@ -25,6 +25,65 @@ export const wcs = {
     tooManyBands: function () {
       return this.dateRangeNumBands > this.MAX_BANDS // default; only applies to CanGRD, CMIP5 and DCS
     },
+    timePeriodIsMonthly: function () {
+      // MONTHLY for CanGRD; ENS for DCS/CMIP5
+      return (this.wcs_id_timePeriod === 'MONTHLY' || this.wcs_id_timePeriod === 'ENS')
+    },
+    bandsEmptyOnMonthly: function () {
+      var startDate = this.$moment.utc(this.bandStartMoment).format(this.dateConfigs.format)
+      var endDate = this.$moment.utc(this.bandEndMoment).format(this.dateConfigs.format)
+      return (startDate === 'Invalid date' && endDate === 'Invalid date' && this.timePeriodIsMonthly)
+    },
+    chunkedBandsParam: function () {
+      var momentDateUnit = this.timePeriodIsMonthly ? 'M' : 'y' // Month or year
+      var chunkStartMoment = this.$moment.utc(this.bandStartMoment)
+      var chunkEndMoment = this.$moment.utc(this.bandStartMoment)
+      var chunkDuration
+
+      if (this.wcs_id_dataset === 'CANGRD' && this.wcs_id_cangrdType === 'TREND') { // CanGRD trends don't have date ranges
+        return []
+      } else if (this.hasCommonBandErrors) { // range 0 or errors
+        return []
+      } else if (this.usesBands) {
+        var chunkedBands = []
+        var chunkLimit = this.MAX_BANDS
+        do {
+          var chunkStartDate = chunkStartMoment.format(this.dateConfigs.format)
+          chunkEndMoment.add(chunkLimit, momentDateUnit)
+          if (chunkEndMoment.isAfter(this.bandEndMoment)) { // max date
+            chunkEndMoment = this.$moment.utc(this.bandEndMoment)
+          }
+          var chunkEndDate = chunkEndMoment.format(this.dateConfigs.format)
+
+          chunkDuration = this.$moment.duration(chunkEndMoment.diff(chunkStartMoment))
+          chunkDuration = Math.ceil(this.timePeriodIsMonthly ? chunkDuration.asMonths() : (chunkDuration.asYears() - 1))
+          if (chunkDuration <= 0) {
+            chunkDuration = 1 // case when start === end
+          }
+
+          var bandChunk = {
+            'start': chunkStartDate,
+            'end': chunkEndDate,
+            'duration': chunkDuration
+          }
+          chunkedBands.push(bandChunk)
+
+          // Next chunk
+          chunkStartMoment = this.$moment.utc(chunkEndMoment).add(1, momentDateUnit)
+        } while (chunkEndMoment.isBefore(this.bandEndMoment))
+
+        return chunkedBands
+      } else { // no bands (empty)
+        return [{
+          'start': null,
+          'end': null,
+          'duration': 0
+        }]
+      }
+    },
+    usesBands: function () {
+      return (this.wcs_band !== null && this.wcs_band !== 'Invalid date')
+    },
     dateRangeNumBands: function () {
       return 0 // default; only applies to CanGRD, CMIP5 and DCS
     },
@@ -35,15 +94,24 @@ export const wcs = {
       if (!this.bandsInRange) {
         return this.$gettext('The start date cannot be greater than the end date.')
       }
-      if (this.tooManyBands) {
-        // return this.$_i(this.$gettext('Date range duration must be {maxBands} months ({maxYears} years) or less. Your current date range duration contains {numBands} months.'), {maxBands: this.MAX_BANDS, maxYears: this.MAX_YEARS, numBands: this.dateRangeNumBands})
-        if (this.dateConfigs.minimumView === 'month') {
-          return this.$_i(this.$gettext('Date range selection must be {maxBands} months or less. Current date range selection contains {numBands} months.'), {numBands: this.dateRangeNumBands, maxBands: this.MAX_BANDS})
-        } else if (this.dateConfigs.minimumView === 'year') { // year
-          return this.$_i(this.$gettext('Date range selection must be {maxBands} years or less. Current date range selection contains {numBands} years.'), {numBands: this.dateRangeNumBands, maxBands: this.MAX_BANDS})
-        }
+      if (this.bandsEmptyOnMonthly) { // WCS download limitation: bands < 255
+        return this.$gettext('This field is required for monthly time intervals.')
       }
       return '' // no errors
+    },
+    hasCommonBandErrors: function () {
+      return this.bandStartIsEmptyOnly ||
+        this.bandEndIsEmptyOnly ||
+        !this.bandsInRange ||
+        this.bandsPastLimits ||
+        this.bandsEmptyOnMonthly
+    },
+    wcsCommonUrl: function () {
+      var url = this.wcs2_climate_url_base + '&'
+      var urlParams = this.getWCSCommonParams(this.wcs_coverage_id)
+
+      url += urlParams.join('&')
+      return url
     }
   },
   methods: {
@@ -60,7 +128,7 @@ export const wcs = {
       }
     },
     generateWCSRangeSubsetParam: function () {
-      if (this.wcs_band !== null && this.wcs_band !== 'Invalid date') {
+      if (this.usesBands) {
         return 'RANGESUBSET=' + this.wcs_band
       } else {
         return null
@@ -76,23 +144,28 @@ export const wcs = {
         return 'B' + bandStart + ':B' + bandEnd
       }
     },
-    wcs_download_url: function (coverageId) {
-      this.splitBBOXString()
-      var url = this.wcs2_climate_url_base + '&'
+    getWCSCommonParams: function (coverageId) {
       var urlParams = []
-
       urlParams.push('COVERAGEID=' + coverageId)
-      var band = this.generateWCSRangeSubsetParam()
-      if (band !== null) {
-        urlParams.push(band)
-      }
       urlParams.push('SUBSETTINGCRS=' + this.ows_crs)
+      this.splitBBOXString()
       var bbox = this.generateWCSBBOXParam()
       if (bbox !== null) {
         urlParams.push(bbox.x)
         urlParams.push(bbox.y)
       }
       urlParams.push('FORMAT=' + this.wcs_format)
+
+      return urlParams
+    },
+    wcs_download_url: function (coverageId) {
+      var url = this.wcs2_climate_url_base + '&'
+      var urlParams = this.getWCSCommonParams(coverageId)
+
+      var band = this.generateWCSRangeSubsetParam()
+      if (band !== null) {
+        urlParams.push(band)
+      }
 
       url += urlParams.join('&')
       return url
@@ -122,6 +195,19 @@ export const wcs = {
         return false
       } else {
         return true
+      }
+    },
+    calcDateRangeNumBands: function (start, end) {
+      // Determine number of months/years (bands) in a given date range
+      if (start === null || end === null) {
+        return 0
+      } else if (this.timePeriodIsMonthly && this.bandsInRange) {
+        // MONTHLY for CanGRD; ENS for DCS/CMIP5
+        return Math.ceil(this.$moment.duration(end.diff(start)).asMonths()) + 1 // +1 for range is inclusive
+      } else if (this.bandsInRange) { // yearly date range
+        return Math.ceil(this.$moment.duration(end.diff(start)).asYears())
+      } else {
+        return 0
       }
     }
   }
