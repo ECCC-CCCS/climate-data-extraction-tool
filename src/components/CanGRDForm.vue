@@ -45,6 +45,7 @@
               v-bind:label="$gettext('Start date')"
               v-bind:minimum-view="dateConfigs.minimumView"
               v-bind:format="dateConfigs.format"
+              v-bind:required="timePeriodIsMonthly"
               v-bind:min-date="dateConfigs.dateMin"
               v-bind:max-date="dateConfigs.dateMax"
               v-bind:custom-error-msg="dateRangeErrorMessage"
@@ -55,6 +56,7 @@
               v-bind:label="$gettext('End date')"
               v-bind:minimum-view="dateConfigs.minimumView"
               v-bind:format="dateConfigs.format"
+              v-bind:required="timePeriodIsMonthly"
               v-bind:min-date="dateConfigs.dateMin"
               v-bind:max-date="dateConfigs.dateMax"
               v-bind:custom-error-msg="dateRangeErrorMessage"
@@ -92,6 +94,10 @@
           v-bind:layer-options="selectedCoverageIdOption"
           v-bind:ows-url-formatter="wcs_download_url"
           v-bind:layer-format="wcs_format"
+          v-bind:wcs-common-url="wcsCommonUrl"
+          v-bind:wcs-band-chunks="chunkedBandsParam"
+          v-bind:wcs-num-bands="dateRangeNumBands"
+          v-bind:band-range-format="bandRangeFormat"
           v-bind:has-errors="hasErrors"
           v-bind:url-box-title="$gettext('Data download link')">
         </url-box>
@@ -151,11 +157,12 @@ export default {
     wcs_id_cangrdType: function () {
       // reset unsupported selections for TREND
       if (this.wcs_id_cangrdType === 'TREND') {
+        // autocorrect dependent selections to the first option for TREND
         if (!(this.wcs_id_variable in this.variableOptions)) {
-          this.wcs_id_variable = ''
+          this.wcs_id_variable = Object.keys(this.variableOptions)[0]
         }
         if (!(this.wcs_id_timePeriod in this.timePeriodOptions)) {
-          this.wcs_id_timePeriod = ''
+          this.wcs_id_timePeriod = Object.keys(this.timePeriodOptions)[0]
         }
       }
     },
@@ -202,8 +209,8 @@ export default {
       return this.dateEndIsEmptyOnly(this.bandStart, this.bandEnd)
     },
     bandsPastLimits: function () {
-      var start = this.$moment.utc(this.date_start)
-      var end = this.$moment.utc(this.date_end)
+      var start = this.$moment.utc(this.date_start, this.dateConfigs.format)
+      var end = this.$moment.utc(this.date_end, this.dateConfigs.format)
       var minimumView = this.dateConfigs.minimumView
 
       return start.isBefore(this.dateConfigs.dateMin, minimumView) ||
@@ -273,25 +280,12 @@ export default {
       }
     },
     hasErrors: function () {
-      return this.bandStartIsEmptyOnly ||
-        this.bandEndIsEmptyOnly ||
-        !this.bandsInRange ||
-        this.bandsPastLimits ||
-        this.tooManyBands
+      return this.hasCommonBandErrors
     },
     dateRangeNumBands: function () {
       var start = this.bandStartMoment
       var end = this.bandEndMoment
-      // Determine number of months (bands) in date range for monthly
-      if (start === null || end === null) {
-        return 0
-      } else if (this.wcs_id_timePeriod === 'MONTHLY' && this.bandsInRange) {
-        return Math.ceil(this.$moment.duration(end.diff(start)).asMonths()) + 1 // +1 for range is inclusive
-      } else if (this.bandsInRange) { // yearly date range
-        return Math.ceil(this.$moment.duration(end.diff(start)).asYears())
-      } else {
-        return 0
-      }
+      return this.calcDateRangeNumBands(start, end)
     }
   }
 }
