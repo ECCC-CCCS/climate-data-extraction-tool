@@ -4,7 +4,7 @@
     <a
       v-bind:href="urlStationListCSV"
       target="_blank"
-      download><span class="glyphicon glyphicon-download" aria-hidden="true"></span> <translate>Download station list for this dataset.</translate></a>
+      download><span class="glyphicon glyphicon-download" aria-hidden="true"></span> {{downloadText}}</a>
   </p>
   </div>
 </template>
@@ -13,11 +13,18 @@
 export default {
   name: 'StationlistLink',
   props: {
-    urlStationList: String
+    urlStationList: String,
+    downloadText: String
   },
   computed: {
     urlStationListCSV: function () {
-      return this.urlStationList + '&f=csv'
+      var url = this.urlStationList
+      url = url.replace('STATUS_EN=Active', '') // hydrometric case
+      url += '&f=csv'
+      return url
+    },
+    defaultDownloadText: function () {
+      return this.$gettext('Download station list for this dataset.')
     }
   }
 }
