@@ -23,7 +23,9 @@
 
           <p v-html="openPortalHtml"></p>
 
-          <station-list-link v-bind:url-station-list="urlAllHydroStationList"></station-list-link>
+          <station-list-link
+            v-bind:url-station-list="urlStationList"
+            v-bind:download-text="$gettext('Download a list of detailed information for each Historical hydrometric station.')"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>

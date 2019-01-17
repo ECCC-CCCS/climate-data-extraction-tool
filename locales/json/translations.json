@@ -852,6 +852,36 @@
 					""
 				]
 			},
+			"Download a list of detailed information for each AHCCD station.": {
+				"msgid": "Download a list of detailed information for each AHCCD station.",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a list of detailed information for each Climate normals station.": {
+				"msgid": "Download a list of detailed information for each Climate normals station.",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a list of detailed information for each Daily climate station.": {
+				"msgid": "Download a list of detailed information for each Daily climate station.",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a list of detailed information for each Historical hydrometric station.": {
+				"msgid": "Download a list of detailed information for each Historical hydrometric station.",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a list of detailed information for each Monthly climate summaries dataset.": {
+				"msgid": "Download a list of detailed information for each Monthly climate summaries dataset.",
+				"msgstr": [
+					""
+				]
+			},
 			"Download records {startNum} - {endNum}": {
 				"msgid": "Download records {startNum} - {endNum}",
 				"msgstr": [
@@ -2625,6 +2655,36 @@
 					"Afficher et télécharger les données climatiques"
 				]
 			},
+			"Download a list of detailed information for each AHCCD station.": {
+				"msgid": "Download a list of detailed information for each AHCCD station.",
+				"msgstr": [
+					"Télécharger la liste des informations détaillées pour chaque station DCCAH."
+				]
+			},
+			"Download a list of detailed information for each Climate normals station.": {
+				"msgid": "Download a list of detailed information for each Climate normals station.",
+				"msgstr": [
+					"Télécharger la liste des informations détaillées pour chaque station pour l’ensemble des Normales climatiques 1981-2010."
+				]
+			},
+			"Download a list of detailed information for each Daily climate station.": {
+				"msgid": "Download a list of detailed information for each Daily climate station.",
+				"msgstr": [
+					"Télécharger la liste des informations détaillées pour chaque station pour l’ensemble des Données climatiques quotidiennes."
+				]
+			},
+			"Download a list of detailed information for each Historical hydrometric station.": {
+				"msgid": "Download a list of detailed information for each Historical hydrometric station.",
+				"msgstr": [
+					"Télécharger la liste des informations détaillées pour chaque station hydrométrique historique."
+				]
+			},
+			"Download a list of detailed information for each Monthly climate summaries dataset.": {
+				"msgid": "Download a list of detailed information for each Monthly climate summaries dataset.",
+				"msgstr": [
+					"Télécharger la liste des informations détaillées pour chaque station pour l’ensemble des données sur les Sommaires climatiques mensuels."
+				]
+			},
 			"Download records {startNum} - {endNum}": {
 				"msgid": "Download records {startNum} - {endNum}",
 				"msgstr": [
@@ -3114,7 +3174,7 @@
 			"Retrieve download links": {
 				"msgid": "Retrieve download links",
 				"msgstr": [
-					"Obtenir des liens de téléchargement"
+					"Extraire les liens de téléchargement"
 				]
 			},
 			"Saskatchewan": {
