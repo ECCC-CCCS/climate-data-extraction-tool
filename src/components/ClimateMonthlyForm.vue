@@ -25,7 +25,7 @@
 
           <station-list-link
             v-bind:url-station-list="urlStationList"
-            v-bind:download-text="$gettext('Download a list of detailed information for each Monthly climate summaries dataset.')"></station-list-link>
+            v-bind:download-text="$gettext('Download a list of detailed information for each Monthly climate summaries station.')"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>

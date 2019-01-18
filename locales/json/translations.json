@@ -876,8 +876,8 @@
 					""
 				]
 			},
-			"Download a list of detailed information for each Monthly climate summaries dataset.": {
-				"msgid": "Download a list of detailed information for each Monthly climate summaries dataset.",
+			"Download a list of detailed information for each Monthly climate summaries station.": {
+				"msgid": "Download a list of detailed information for each Monthly climate summaries station.",
 				"msgstr": [
 					""
 				]
@@ -2679,8 +2679,8 @@
 					"Télécharger la liste des informations détaillées pour chaque station hydrométrique historique."
 				]
 			},
-			"Download a list of detailed information for each Monthly climate summaries dataset.": {
-				"msgid": "Download a list of detailed information for each Monthly climate summaries dataset.",
+			"Download a list of detailed information for each Monthly climate summaries station.": {
+				"msgid": "Download a list of detailed information for each Monthly climate summaries station.",
 				"msgstr": [
 					"Télécharger la liste des informations détaillées pour chaque station pour l’ensemble des données sur les Sommaires climatiques mensuels."
 				]
