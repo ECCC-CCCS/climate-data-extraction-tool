@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <main role="main" property="mainContentOfPage" class="container">
-        <div class="row mrgn-tp-lg">
+        <div class="row">
           <h1 class="wb-inv">{{ h1TitleHtml }}</h1>
           <div v-for="lang in langPriority" :key="lang">
             <section v-if="lang === 'en'" class="col-md-6" lang="en">
@@ -40,6 +40,10 @@ export default {
       title404: {
         en: "We couldn't find that Web page (Error 404)",
         fr: 'Nous ne pouvons trouver cette page Web (Erreur 404)'
+      },
+      error404: {
+        en: 'Error 404',
+        fr: 'Erreur 404'
       }
     }
   },
@@ -71,6 +75,5 @@ export default {
 }
 </script>
 
-<style>
-@import 'https://www.canada.ca/etc/designs/canada/wet-boew/css/theme-srv.min.css'
+<style scoped>
 </style>

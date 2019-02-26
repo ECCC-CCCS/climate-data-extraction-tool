@@ -1,7 +1,7 @@
 <template>
-  <header role="banner">
+  <header>
     <div id="wb-bnr" class="container">
-      <section id="wb-lng" class="visible-md visible-lg text-right" v-if="$route.name !== '404'">
+      <section id="wb-lng" class="text-right">
         <h2 class="wb-inv" v-translate t-context="Canada.ca Theme">Language selection</h2>
         <div class="row">
           <div class="col-md-12">
@@ -24,47 +24,40 @@
         </div>
       </section>
 
-      <div class="row" v-if="$route.name === '404'">
-        <div class="col-sm-6">
-          <img id="gcwu-sig" :src="src_sig_blk" alt="Government of Canada / Gouvernement du Canada">
-        </div>
-        <div class="col-sm-6">
-          <img id="wmms" src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" :alt="$pgettext('Canada.ca Theme', 'Symbol of the Government of Canada')">
-        </div>
-      </div>
-
-      <div class="row" v-else>
-        <div class="brand col-xs-8 col-sm-9 col-md-6">
+      <div class="row">
+        <div class="brand col-xs-5 col-md-4">
           <a v-bind:href="'https://www.canada.ca/' + activeLocale + '.html'"><img v-bind:src="src_sig_blk" alt=""><span class="wb-inv"> <span lang="en">Government of Canada</span> / <span lang="fr">Gouvernement du Canada</span></span></a>
         </div>
-        <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
-          <h2>Search and menus</h2>
-          <ul class="list-inline text-right chvrn">
-            <li><a href="#mb-pnl" v-bind:title="$pgettext('Canada.ca Theme', 'Search and menus')" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv" v-translate t-context="Canada.ca Theme">Search and menus</span></span></span></a></li>
-          </ul>
-          <div id="mb-pnl"></div>
-        </section>
+
+        <section id="wb-srch" class="col-lg-8 text-right"><h2 v-translate t-context="Canada.ca Theme">Search</h2><form v-bind:action="'https://www.canada.ca/' + activeLocale + '/sr/srb.html'" method="get" name="cse-search-box" role="search" class="form-inline"><div class="form-group"><label for="wb-srch-q" class="wb-inv" v-translate t-context="Canada.ca Theme">Search Canada.ca</label> <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca"><datalist id="wb-srch-q-ac"></datalist></div><div class="form-group submit"><button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv" v-translate t-context="Canada.ca Theme">Search</span></button></div></form></section>
       </div>
     </div>
-    <nav role="navigation" id="wb-sm" v-bind:data-ajax-replace="'./static/ajax/sitemenu-' + activeLocale + '.html'" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement" v-if="$route.name !== '404'">
-      <div class="container nvbar">
-        <h2 v-translate t-context="Canada.ca Theme">Topics menu</h2>
-        <div class="row">
-          <ul class="list-inline menu">
-            <li><a v-bind:href="'https://www.canada.ca/' + activeLocale + '/services/jobs.html'" v-translate t-context="Canada.ca Theme">Jobs</a></li>
-            <li><a v-bind:href="'https://www.canada.ca/' + activeLocale + '/services/immigration-citizenship.html'" v-translate t-context="Canada.ca Theme">Immigration</a></li>
-            <li><a v-bind:href="'https://travel.gc.ca/'" v-translate t-context="Canada.ca Theme">Travel</a></li>
-            <li><a v-bind:href="'https://www.canada.ca/' + activeLocale + '/services/business.html'" v-translate t-context="Canada.ca Theme">Business</a></li>
-            <li><a v-bind:href="'https://www.canada.ca/' + activeLocale + '/services/benefits.html'" v-translate t-context="Canada.ca Theme">Benefits</a></li>
-            <li><a v-bind:href="'https://www.canada.ca/' + activeLocale + '/services/health.html'" v-translate t-context="Canada.ca Theme">Health</a></li>
-            <li><a v-bind:href="'https://www.canada.ca/' + activeLocale + '/services/taxes.html'" v-translate t-context="Canada.ca Theme">Taxes</a></li>
-            <li><a v-bind:href="'https://www.canada.ca/' + activeLocale + '/services.html'" v-translate t-context="Canada.ca Theme">More services</a></li>
-          </ul>
-        </div>
+
+    <nav class="gcweb-menu" typeof="SiteNavigationElement">
+      <div class="container">
+        <h2 class="wb-inv" v-translate t-context="Canada.ca Theme">Menu</h2>
+        <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+        <ul role="menu" aria-orientation="vertical" v-bind:data-ajax-replace="'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-' + activeLocale + '.html'">
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.job[activeLocale]" v-translate t-context="Canada.ca Theme">Jobs and the workplace</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.immigration[activeLocale]" v-translate t-context="Canada.ca Theme">Immigration and citizenship</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.travel[activeLocale]" v-translate t-context="Canada.ca Theme">Travel and tourism</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.business[activeLocale]" v-translate t-context="Canada.ca Theme">Business and industry</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.benefit[activeLocale]" v-translate t-context="Canada.ca Theme">Benefits</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.health[activeLocale]" v-translate t-context="Canada.ca Theme">Health</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.tax[activeLocale]" v-translate t-context="Canada.ca Theme">Taxes</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.environment[activeLocale]" v-translate t-context="Canada.ca Theme">Environment and natural resources</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.defence[activeLocale]" v-translate t-context="Canada.ca Theme">National security and defence</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.culture[activeLocale]" v-translate t-context="Canada.ca Theme">Culture, history and sport</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.policing[activeLocale]" v-translate t-context="Canada.ca Theme">Policing, justice and emergencies</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.transport[activeLocale]" v-translate t-context="Canada.ca Theme">Transport and infrastructure</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.canada[activeLocale]" v-translate t-context="Canada.ca Theme">Canada and the world</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.finance[activeLocale]" v-translate t-context="Canada.ca Theme">Money and finances</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" v-bind:href="this.menuLink.science[activeLocale]" v-translate t-context="Canada.ca Theme">Science and innovation</a></li>
+        </ul>
       </div>
     </nav>
 
-    <nav role="navigation" id="wb-bc" property="breadcrumb" v-if="$route.name !== '404'">
+    <nav id="wb-bc" property="breadcrumb" v-if="$route.name !== '404'">
       <h2 v-translate t-context="Canada.ca Theme">You are here:</h2>
       <div class="container">
         <div class="row">
@@ -114,6 +107,68 @@ export default {
       langs: { // don't translate
         en: 'English',
         fr: 'Français'
+      },
+      menuLink: {
+        immigration: {
+          en: 'https://www.canada.ca/en/services/immigration-citizenship.html',
+          fr: 'https://www.canada.ca/fr/services/immigration-citoyennete.html'
+        },
+        job: {
+          en: 'https://www.canada.ca/en/services/jobs.html',
+          fr: 'https://www.canada.ca/fr/services/emplois.html'
+        },
+        business: {
+          en: 'https://www.canada.ca/en/services/business.html',
+          fr: 'https://www.canada.ca/fr/services/entreprises.html'
+        },
+        benefit: {
+          en: 'https://www.canada.ca/en/services/benefits.html',
+          fr: 'https://www.canada.ca/fr/services/prestations.html'
+        },
+        health: {
+          en: 'https://www.canada.ca/en/services/health.html',
+          fr: 'https://www.canada.ca/fr/services/sante.html'
+        },
+        tax: {
+          en: 'https://www.canada.ca/en/services/taxes.html',
+          fr: 'https://www.canada.ca/fr/services/impots.html'
+        },
+        environment: {
+          en: 'https://www.canada.ca/en/services/environment.html',
+          fr: 'https://www.canada.ca/fr/services/environnement.html'
+        },
+        travel: {
+          en: 'https://travel.gc.ca/',
+          fr: 'https://voyage.gc.ca/'
+        },
+        defence: {
+          en: 'https://www.canada.ca/en/services/defence.html',
+          fr: 'https://www.canada.ca/fr/services/defense.html'
+        },
+        culture: {
+          en: 'https://www.canada.ca/en/services/culture.html',
+          fr: 'https://www.canada.ca/fr/services/culture.html'
+        },
+        policing: {
+          en: 'https://www.canada.ca/en/services/policing.html',
+          fr: 'https://www.canada.ca/fr/services/police.html'
+        },
+        transport: {
+          en: 'https://www.canada.ca/en/services/transport.html',
+          fr: 'https://www.canada.ca/fr/services/transport.html'
+        },
+        finance: {
+          en: 'https://www.canada.ca/en/services/finance.html',
+          fr: 'https://www.canada.ca/fr/services/finance.html'
+        },
+        science: {
+          en: 'https://www.canada.ca/en/services/science.html',
+          fr: 'https://www.canada.ca/fr/services/science.html'
+        },
+        canada: {
+          en: 'https://international.gc.ca/world-monde/index.aspx?lang=eng',
+          fr: 'https://international.gc.ca/world-monde/index.aspx?lang=fra'
+        }
       }
     }
   },
