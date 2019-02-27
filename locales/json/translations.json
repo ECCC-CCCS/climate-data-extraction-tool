@@ -74,8 +74,15 @@
 					""
 				]
 			},
-			"Business": {
-				"msgid": "Business",
+			"Business and industry": {
+				"msgid": "Business and industry",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
+			"Canada and the world": {
+				"msgid": "Canada and the world",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
@@ -88,8 +95,22 @@
 					""
 				]
 			},
+			"Culture, history and sport": {
+				"msgid": "Culture, history and sport",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
 			"Departments and agencies": {
 				"msgid": "Departments and agencies",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
+			"Environment and natural resources": {
+				"msgid": "Environment and natural resources",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
@@ -116,15 +137,15 @@
 					""
 				]
 			},
-			"Immigration": {
-				"msgid": "Immigration",
+			"Immigration and citizenship": {
+				"msgid": "Immigration and citizenship",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
 				]
 			},
-			"Jobs": {
-				"msgid": "Jobs",
+			"Jobs and the workplace": {
+				"msgid": "Jobs and the workplace",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
@@ -137,6 +158,13 @@
 					""
 				]
 			},
+			"Menu": {
+				"msgid": "Menu",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
 			"Mobile applications": {
 				"msgid": "Mobile applications",
 				"msgctxt": "Canada.ca Theme",
@@ -144,8 +172,15 @@
 					""
 				]
 			},
-			"More services": {
-				"msgid": "More services",
+			"Money and finances": {
+				"msgid": "Money and finances",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
+			"National security and defence": {
+				"msgid": "National security and defence",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
@@ -160,6 +195,13 @@
 			},
 			"Open government": {
 				"msgid": "Open government",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
+			"Policing, justice and emergencies": {
+				"msgid": "Policing, justice and emergencies",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
@@ -186,8 +228,22 @@
 					""
 				]
 			},
-			"Search and menus": {
-				"msgid": "Search and menus",
+			"Science and innovation": {
+				"msgid": "Science and innovation",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
+			"Search": {
+				"msgid": "Search",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					""
+				]
+			},
+			"Search Canada.ca": {
+				"msgid": "Search Canada.ca",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
@@ -242,22 +298,22 @@
 					""
 				]
 			},
-			"Top of Page": {
-				"msgid": "Top of Page",
+			"Top of page": {
+				"msgid": "Top of page",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
 				]
 			},
-			"Topics menu": {
-				"msgid": "Topics menu",
+			"Transport and infrastructure": {
+				"msgid": "Transport and infrastructure",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
 				]
 			},
-			"Travel": {
-				"msgid": "Travel",
+			"Travel and tourism": {
+				"msgid": "Travel and tourism",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					""
@@ -1877,11 +1933,18 @@
 					"Prestations"
 				]
 			},
-			"Business": {
-				"msgid": "Business",
+			"Business and industry": {
+				"msgid": "Business and industry",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					"Entreprises"
+					"Entreprises et industrie"
+				]
+			},
+			"Canada and the world": {
+				"msgid": "Canada and the world",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Canada et le monde"
 				]
 			},
 			"Contact us": {
@@ -1891,11 +1954,25 @@
 					"Contactez-nous"
 				]
 			},
+			"Culture, history and sport": {
+				"msgid": "Culture, history and sport",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Culture, histoire et sport"
+				]
+			},
 			"Departments and agencies": {
 				"msgid": "Departments and agencies",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					"Ministères et organismes"
+				]
+			},
+			"Environment and natural resources": {
+				"msgid": "Environment and natural resources",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Environnement et ressources naturelles"
 				]
 			},
 			"Government-wide reporting": {
@@ -1919,18 +1996,18 @@
 					"Comment le gouvernement fonctionne"
 				]
 			},
-			"Immigration": {
-				"msgid": "Immigration",
+			"Immigration and citizenship": {
+				"msgid": "Immigration and citizenship",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					"Immigration"
+					"Immigration et citoyenneté"
 				]
 			},
-			"Jobs": {
-				"msgid": "Jobs",
+			"Jobs and the workplace": {
+				"msgid": "Jobs and the workplace",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					"Emplois"
+					"Emplois et milieu de travail"
 				]
 			},
 			"Language selection": {
@@ -1940,6 +2017,13 @@
 					"SÃ©lection de la langue"
 				]
 			},
+			"Menu": {
+				"msgid": "Menu",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Menu"
+				]
+			},
 			"Mobile applications": {
 				"msgid": "Mobile applications",
 				"msgctxt": "Canada.ca Theme",
@@ -1947,11 +2031,18 @@
 					"Applications mobiles"
 				]
 			},
-			"More services": {
-				"msgid": "More services",
+			"Money and finances": {
+				"msgid": "Money and finances",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					"Autres services"
+					"Argent et finances"
+				]
+			},
+			"National security and defence": {
+				"msgid": "National security and defence",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Sécurité nationale et défense"
 				]
 			},
 			"News": {
@@ -1966,6 +2057,13 @@
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					"Gouvernement ouvert"
+				]
+			},
+			"Policing, justice and emergencies": {
+				"msgid": "Policing, justice and emergencies",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Services de police, justice et urgences"
 				]
 			},
 			"Prime Minister": {
@@ -1989,11 +2087,25 @@
 					"Fonction publique et force militaire"
 				]
 			},
-			"Search and menus": {
-				"msgid": "Search and menus",
+			"Science and innovation": {
+				"msgid": "Science and innovation",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					"Recherche et menus"
+					"Science et innovation"
+				]
+			},
+			"Search": {
+				"msgid": "Search",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Recherche"
+				]
+			},
+			"Search Canada.ca": {
+				"msgid": "Search Canada.ca",
+				"msgctxt": "Canada.ca Theme",
+				"msgstr": [
+					"Rechercher dans Canada.ca"
 				]
 			},
 			"Section menu": {
@@ -2045,25 +2157,25 @@
 					"Avis"
 				]
 			},
-			"Top of Page": {
-				"msgid": "Top of Page",
+			"Top of page": {
+				"msgid": "Top of page",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
 					"Haut de la page"
 				]
 			},
-			"Topics menu": {
-				"msgid": "Topics menu",
+			"Transport and infrastructure": {
+				"msgid": "Transport and infrastructure",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					"Menu des sujets"
+					"Transport et infrastructure"
 				]
 			},
-			"Travel": {
-				"msgid": "Travel",
+			"Travel and tourism": {
+				"msgid": "Travel and tourism",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					"Voyage"
+					"Voyage et tourisme"
 				]
 			},
 			"Treaties, laws and regulations": {

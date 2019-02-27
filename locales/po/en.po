@@ -321,7 +321,7 @@ msgstr ""
 #: src/components/AHCCDForm.vue:92
 #: src/components/CanGRDForm.vue:76
 #: src/components/ClimateDailyForm.vue:83
-#: src/components/ClimateMonthlyForm.vue:71
+#: src/components/ClimateMonthlyForm.vue:83
 #: src/components/CMIP5Form.vue:109
 #: src/components/CMIP5Form.vue:140
 #: src/components/DCSForm.vue:110
@@ -338,7 +338,7 @@ msgstr ""
 msgid "Climate change"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:98
+#: src/components/GCWebHeader.vue:88
 msgid "Climate data extraction tool"
 msgstr ""
 
@@ -397,7 +397,7 @@ msgstr ""
 #: src/components/CanGRDForm.vue:117
 #: src/components/CanSIPSForm.vue:97
 #: src/components/ClimateDailyForm.vue:103
-#: src/components/ClimateMonthlyForm.vue:89
+#: src/components/ClimateMonthlyForm.vue:103
 #: src/components/ClimateNormalsForm.vue:71
 #: src/components/CMIP5Form.vue:181
 #: src/components/DCSForm.vue:182
@@ -413,7 +413,7 @@ msgstr ""
 #: src/components/CanGRDForm.vue:13
 #: src/components/CanSIPSForm.vue:13
 #: src/components/ClimateDailyForm.vue:20
-#: src/components/ClimateMonthlyForm.vue:18
+#: src/components/ClimateMonthlyForm.vue:20
 #: src/components/ClimateNormalsForm.vue:20
 #: src/components/CMIP5Form.vue:13
 #: src/components/DCSForm.vue:13
@@ -425,7 +425,7 @@ msgstr ""
 #: src/components/AHCCDForm.vue:69
 #: src/components/CanGRDForm.vue:50
 #: src/components/ClimateDailyForm.vue:60
-#: src/components/ClimateMonthlyForm.vue:50
+#: src/components/ClimateMonthlyForm.vue:60
 #: src/components/CMIP5Form.vue:73
 #: src/components/DCSForm.vue:74
 #: src/components/HydrometricArchiveForm.vue:68
@@ -475,7 +475,7 @@ msgid ""
 "station."
 msgstr ""
 
-#: src/components/ClimateMonthlyForm.vue:28
+#: src/components/ClimateMonthlyForm.vue:33
 msgid ""
 "Download a list of detailed information for each Monthly climate summaries "
 "station."
@@ -519,7 +519,7 @@ msgstr ""
 #: src/components/AHCCDForm.vue:83
 #: src/components/CanGRDForm.vue:66
 #: src/components/ClimateDailyForm.vue:74
-#: src/components/ClimateMonthlyForm.vue:63
+#: src/components/ClimateMonthlyForm.vue:74
 #: src/components/CMIP5Form.vue:130
 #: src/components/DCSForm.vue:131
 #: src/components/HydrometricArchiveForm.vue:82
@@ -767,7 +767,7 @@ msgstr ""
 msgid "Monthly"
 msgstr ""
 
-#: src/components/ClimateMonthlyForm.vue:20
+#: src/components/ClimateMonthlyForm.vue:22
 msgid ""
 "Monthly climate summaries are cross-country summaries of the averages and "
 "extremes for the month, including precipitation totals, max-min "
@@ -858,7 +858,7 @@ msgid "Province/Territory"
 msgstr ""
 
 #: src/components/ClimateDailyForm.vue:178
-#: src/components/ClimateMonthlyForm.vue:163
+#: src/components/ClimateMonthlyForm.vue:178
 #: src/components/ClimateNormalsForm.vue:142
 #: src/components/HydrometricArchiveForm.vue:203
 msgid "Province/Territory/State"
@@ -945,7 +945,7 @@ msgstr ""
 #: src/components/AHCCDForm.vue:72
 #: src/components/CanGRDForm.vue:54
 #: src/components/ClimateDailyForm.vue:63
-#: src/components/ClimateMonthlyForm.vue:53
+#: src/components/ClimateMonthlyForm.vue:63
 #: src/components/CMIP5Form.vue:118
 #: src/components/DCSForm.vue:119
 #: src/components/HydrometricArchiveForm.vue:71
@@ -954,7 +954,7 @@ msgstr ""
 
 #: src/components/AHCCDForm.vue:188
 #: src/components/ClimateDailyForm.vue:177
-#: src/components/ClimateMonthlyForm.vue:162
+#: src/components/ClimateMonthlyForm.vue:177
 #: src/components/ClimateNormalsForm.vue:141
 #: src/components/HydrometricArchiveForm.vue:202
 msgid "Station ID"
@@ -966,7 +966,7 @@ msgstr ""
 
 #: src/components/AHCCDForm.vue:187
 #: src/components/ClimateDailyForm.vue:176
-#: src/components/ClimateMonthlyForm.vue:161
+#: src/components/ClimateMonthlyForm.vue:176
 #: src/components/ClimateNormalsForm.vue:140
 #: src/components/HydrometricArchiveForm.vue:201
 msgid "Station name"
@@ -1313,8 +1313,8 @@ msgstr ""
 
 #: src/components/ClimateDailyForm.vue:64
 #: src/components/ClimateDailyForm.vue:75
-#: src/components/ClimateMonthlyForm.vue:54
 #: src/components/ClimateMonthlyForm.vue:64
+#: src/components/ClimateMonthlyForm.vue:75
 msgid "YYYY-MM-DD"
 msgstr ""
 
@@ -1347,64 +1347,79 @@ msgctxt "Breadcrumb"
 msgid "Home"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:25
+#: src/components/GCWebFooter.vue:27
 msgctxt "Canada.ca Theme"
 msgid "About Canada.ca"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:4
+#: src/components/GCWebFooter.vue:5
 msgctxt "Canada.ca Theme"
 msgid "About government"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:21
+#: src/components/GCWebFooter.vue:23
 msgctxt "Canada.ca Theme"
 msgid "About this site"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:60
+#: src/components/GCWebHeader.vue:45
 msgctxt "Canada.ca Theme"
 msgid "Benefits"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:59
+#: src/components/GCWebHeader.vue:44
 msgctxt "Canada.ca Theme"
-msgid "Business"
+msgid "Business and industry"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:6
+#: src/components/GCWebHeader.vue:53
 msgctxt "Canada.ca Theme"
-msgid "Contact us"
+msgid "Canada and the world"
 msgstr ""
 
 #: src/components/GCWebFooter.vue:7
 msgctxt "Canada.ca Theme"
+msgid "Contact us"
+msgstr ""
+
+#: src/components/GCWebHeader.vue:50
+msgctxt "Canada.ca Theme"
+msgid "Culture, history and sport"
+msgstr ""
+
+#: src/components/GCWebFooter.vue:8
+msgctxt "Canada.ca Theme"
 msgid "Departments and agencies"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:11
+#: src/components/GCWebHeader.vue:48
+msgctxt "Canada.ca Theme"
+msgid "Environment and natural resources"
+msgstr ""
+
+#: src/components/GCWebFooter.vue:12
 msgctxt "Canada.ca Theme"
 msgid "Government-wide reporting"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:61
+#: src/components/GCWebHeader.vue:46
 msgctxt "Canada.ca Theme"
 msgid "Health"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:13
+#: src/components/GCWebFooter.vue:14
 msgctxt "Canada.ca Theme"
 msgid "How government works"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:57
+#: src/components/GCWebHeader.vue:42
 msgctxt "Canada.ca Theme"
-msgid "Immigration"
+msgid "Immigration and citizenship"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:56
+#: src/components/GCWebHeader.vue:41
 msgctxt "Canada.ca Theme"
-msgid "Jobs"
+msgid "Jobs and the workplace"
 msgstr ""
 
 #: src/components/GCWebHeader.vue:5
@@ -1412,44 +1427,69 @@ msgctxt "Canada.ca Theme"
 msgid "Language selection"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:24
+#: src/components/GCWebHeader.vue:38
+msgctxt "Canada.ca Theme"
+msgid "Menu"
+msgstr ""
+
+#: src/components/GCWebFooter.vue:26
 msgctxt "Canada.ca Theme"
 msgid "Mobile applications"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:63
+#: src/components/GCWebHeader.vue:54
 msgctxt "Canada.ca Theme"
-msgid "More services"
+msgid "Money and finances"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:9
+#: src/components/GCWebHeader.vue:49
+msgctxt "Canada.ca Theme"
+msgid "National security and defence"
+msgstr ""
+
+#: src/components/GCWebFooter.vue:10
 msgctxt "Canada.ca Theme"
 msgid "News"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:14
+#: src/components/GCWebFooter.vue:15
 msgctxt "Canada.ca Theme"
 msgid "Open government"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:12
+#: src/components/GCWebHeader.vue:51
+msgctxt "Canada.ca Theme"
+msgid "Policing, justice and emergencies"
+msgstr ""
+
+#: src/components/GCWebFooter.vue:13
 msgctxt "Canada.ca Theme"
 msgid "Prime Minister"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:27
+#: src/components/GCWebFooter.vue:29
 msgctxt "Canada.ca Theme"
 msgid "Privacy"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:8
+#: src/components/GCWebFooter.vue:9
 msgctxt "Canada.ca Theme"
 msgid "Public service and military"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:45
+#: src/components/GCWebHeader.vue:55
 msgctxt "Canada.ca Theme"
-msgid "Search and menus"
+msgid "Science and innovation"
+msgstr ""
+
+#: src/components/GCWebHeader.vue:32
+msgctxt "Canada.ca Theme"
+msgid "Search"
+msgstr ""
+
+#: src/components/GCWebHeader.vue:32
+msgctxt "Canada.ca Theme"
+msgid "Search Canada.ca"
 msgstr ""
 
 #: src/components/DatasetMenu.vue:3
@@ -1467,48 +1507,47 @@ msgctxt "Canada.ca Theme"
 msgid "Skip to main content"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:23
+#: src/components/GCWebFooter.vue:25
 msgctxt "Canada.ca Theme"
 msgid "Social media"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:34
-#: src/components/GCWebHeader.vue:33
+#: src/components/GCWebFooter.vue:36
 msgctxt "Canada.ca Theme"
 msgid "Symbol of the Government of Canada"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:62
+#: src/components/GCWebHeader.vue:47
 msgctxt "Canada.ca Theme"
 msgid "Taxes"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:26
+#: src/components/GCWebFooter.vue:28
 msgctxt "Canada.ca Theme"
 msgid "Terms and conditions"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:31
+#: src/components/GCWebFooter.vue:33
 msgctxt "Canada.ca Theme"
-msgid "Top of Page"
+msgid "Top of page"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:53
+#: src/components/GCWebHeader.vue:52
 msgctxt "Canada.ca Theme"
-msgid "Topics menu"
+msgid "Transport and infrastructure"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:58
+#: src/components/GCWebHeader.vue:43
 msgctxt "Canada.ca Theme"
-msgid "Travel"
+msgid "Travel and tourism"
 msgstr ""
 
-#: src/components/GCWebFooter.vue:10
+#: src/components/GCWebFooter.vue:11
 msgctxt "Canada.ca Theme"
 msgid "Treaties, laws and regulations"
 msgstr ""
 
-#: src/components/GCWebHeader.vue:71
+#: src/components/GCWebHeader.vue:61
 msgctxt "Canada.ca Theme"
 msgid "You are here:"
 msgstr ""
@@ -1519,9 +1558,9 @@ msgstr ""
 #: src/components/ClimateDailyForm.vue:186
 #: src/components/ClimateDailyForm.vue:190
 #: src/components/ClimateDailyForm.vue:194
-#: src/components/ClimateMonthlyForm.vue:171
-#: src/components/ClimateMonthlyForm.vue:175
-#: src/components/ClimateMonthlyForm.vue:179
+#: src/components/ClimateMonthlyForm.vue:186
+#: src/components/ClimateMonthlyForm.vue:190
+#: src/components/ClimateMonthlyForm.vue:194
 #: src/components/ClimateNormalsForm.vue:150
 #: src/components/ClimateNormalsForm.vue:154
 #: src/components/ClimateNormalsForm.vue:158
@@ -1589,7 +1628,7 @@ msgstr ""
 
 #: src/App.vue:28
 #: src/components/DatasetMenu.vue:7
-#: src/components/GCWebHeader.vue:97
+#: src/components/GCWebHeader.vue:87
 #: src/components/mixins/datasets.js:25
 msgctxt "Title"
 msgid "Climate data extraction tool"
