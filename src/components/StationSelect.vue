@@ -58,7 +58,9 @@
               <td
                 v-for="(th, prop) in stationPropDisplay"
                 v-bind:key="prop">
-                  {{ stn.properties[prop] }}
+                  <template v-if="prop === 'LATITUDE'">{{ stn.geometry.coordinates[1].toFixed(4) }}</template>
+                  <template v-else-if="prop === 'LONGITUDE'">{{ stn.geometry.coordinates[0].toFixed(4) }}</template>
+                  <template v-else>{{ stn.properties[prop] }}</template>
               </td>
             </tr>
           </tbody>
@@ -124,6 +126,10 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  created: function () {
+    this.stationPropDisplay['LATITUDE'] = this.$gettext('Latitude')
+    this.stationPropDisplay['LONGITUDE'] = this.$gettext('Longitude')
   },
   data () {
     return {

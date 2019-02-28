@@ -8,10 +8,10 @@
       </h3>
       <ul class="list-group menu list-unstyled">
         <li>
-          <span class="list-group-item" v-translate>Value-added historical climate data products</span>
+          <span class="list-group-item" v-translate>Climate simulations</span>
           <ul class="list-group menu list-unstyled">
             <li
-              v-for="route in valueAddedHistClimProdRoutes"
+              v-for="route in climateSimulationRoutes"
               v-bind:key="route.name">
                 <router-link
                   v-bind:to="route.meta[currentLangPath]"
@@ -27,10 +27,10 @@
           </ul>
         </li>
         <li>
-          <span class="list-group-item" v-translate>Climate simulations</span>
+          <span class="list-group-item" v-translate>Value-added historical climate data products</span>
           <ul class="list-group menu list-unstyled">
             <li
-              v-for="route in climateSimulationRoutes"
+              v-for="route in valueAddedHistClimProdRoutes"
               v-bind:key="route.name">
                 <router-link
                   v-bind:to="route.meta[currentLangPath]"

@@ -1172,6 +1172,12 @@
 					""
 				]
 			},
+			"Latitude": {
+				"msgid": "Latitude",
+				"msgstr": [
+					""
+				]
+			},
 			"Learn more about emissions scenarios": {
 				"msgid": "Learn more about emissions scenarios",
 				"msgstr": [
@@ -1180,6 +1186,12 @@
 			},
 			"Library of climate resources": {
 				"msgid": "Library of climate resources",
+				"msgstr": [
+					""
+				]
+			},
+			"Longitude": {
+				"msgid": "Longitude",
 				"msgstr": [
 					""
 				]
@@ -1286,8 +1298,8 @@
 					""
 				]
 			},
-			"More resources from the Canadian Centre for Climate Services": {
-				"msgid": "More resources from the Canadian Centre for Climate Services",
+			"More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>": {
+				"msgid": "More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>",
 				"msgstr": [
 					""
 				]
@@ -3031,6 +3043,12 @@
 					"Taux instantané de précipitations (m/s)"
 				]
 			},
+			"Latitude": {
+				"msgid": "Latitude",
+				"msgstr": [
+					"Latitude"
+				]
+			},
 			"Learn more about emissions scenarios": {
 				"msgid": "Learn more about emissions scenarios",
 				"msgstr": [
@@ -3041,6 +3059,12 @@
 				"msgid": "Library of climate resources",
 				"msgstr": [
 					"Répertoire de ressources climatiques"
+				]
+			},
+			"Longitude": {
+				"msgid": "Longitude",
+				"msgstr": [
+					"Longitude"
 				]
 			},
 			"Low emissions scenario (RCP 2.6)": {
@@ -3145,10 +3169,10 @@
 					"Valeurs mensuelles"
 				]
 			},
-			"More resources from the Canadian Centre for Climate Services": {
-				"msgid": "More resources from the Canadian Centre for Climate Services",
+			"More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>": {
+				"msgid": "More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>",
 				"msgstr": [
-					"Plus de ressources du Centre canadien des services climatiques"
+					"Plus de ressources du <a href=\"{link}\" target=\"_blank\">Centre canadien des services climatiques</a>"
 				]
 			},
 			"Near surface wind speed": {

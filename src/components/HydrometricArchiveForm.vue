@@ -32,6 +32,7 @@
 
         <bbox-map
           v-model="ows_bbox"
+          v-bind:max-zoom="mapMaxZoom"
           v-bind:readable-columns="popup_props_display"
           v-bind:select-disabled="provinceSelected"
           v-bind:geojson="hydroStationsGeoJson"></bbox-map>

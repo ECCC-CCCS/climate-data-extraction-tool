@@ -101,6 +101,10 @@ export default {
         return null
       }
     },
+    maxZoom: {
+      type: Number,
+      default: 9
+    },
     readableColumns: {
       type: Object,
       default: function () {
@@ -161,7 +165,6 @@ export default {
       bbox_value: this.initialBbox,
       zoom: 2,
       minZoom: 0,
-      maxZoom: 9,
       maxBounds: L.latLngBounds(L.latLng(22, -170), L.latLng(90, -16)),
       // L.latLngBounds(L.latLng(16, -127), L.latLng(48, 24)), // EPSG:3978
       center: L.latLng(68, -102),
