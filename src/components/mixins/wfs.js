@@ -21,6 +21,7 @@ export const wfs = {
       wfs_min_limit: 1,
       date_start: null,
       date_end: null,
+      mapMaxZoom: 12,
       datasetToStnColName: {
         ahccd: 'station_id__id_station',
         hydrometric: 'STATION_NUMBER',

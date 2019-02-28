@@ -59,7 +59,7 @@ const datasetPaths = {
 }
 
 export default new Router({
-  // Order matters for DatasetMenu.vue
+  // Order matters here for DatasetMenu.vue
   routes: [
     {
       path: '/',
@@ -67,18 +67,6 @@ export default new Router({
       component: Home,
       meta: {
         datasetSectionMenu: false
-      }
-    },
-    {
-      path: datasetPaths.rdpa.en,
-      alias: datasetPaths.rdpa.fr,
-      name: 'rdpa',
-      component: RDPAForm,
-      meta: {
-        datasetSectionMenu: true,
-        en_path: datasetPaths.rdpa.en,
-        fr_path: datasetPaths.rdpa.fr,
-        group: 'valueAddedHistClimProd'
       }
     },
     {
@@ -102,6 +90,18 @@ export default new Router({
         datasetSectionMenu: true,
         en_path: datasetPaths.cangrd.en,
         fr_path: datasetPaths.cangrd.fr,
+        group: 'valueAddedHistClimProd'
+      }
+    },
+    {
+      path: datasetPaths.rdpa.en,
+      alias: datasetPaths.rdpa.fr,
+      name: 'rdpa',
+      component: RDPAForm,
+      meta: {
+        datasetSectionMenu: true,
+        en_path: datasetPaths.rdpa.en,
+        fr_path: datasetPaths.rdpa.fr,
         group: 'valueAddedHistClimProd'
       }
     },

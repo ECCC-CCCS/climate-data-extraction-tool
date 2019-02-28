@@ -1,7 +1,7 @@
 <template>
   <section class="panel panel-info">
     <header class="panel-heading">
-      <h5 class="panel-title" v-translate>More resources from the Canadian Centre for Climate Services</h5>
+      <h5 class="panel-title" v-html="titleMoreResourcesHtml"></h5>
     </header>
     <div class="panel-body">
       <ul class="list-unstyled">
@@ -58,6 +58,12 @@ export default {
         en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/basics.html',
         fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels.html'
       }
+    },
+    titleMoreResourcesHtml: function () {
+      var link = this.climateLinks.climateServices.url[this.activeLocale]
+      var htmlTitle = this.$gettext('More resources from the <a href="{link}" target="_blank">Canadian Centre for Climate Services</a>')
+      htmlTitle = htmlTitle.replace('{link}', link)
+      return htmlTitle
     }
   }
 }
