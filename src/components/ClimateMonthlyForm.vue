@@ -149,7 +149,7 @@ export default {
     }
 
     // Get min local_date dynamically to set date_min
-    var minDate = this.$store.getters.getClimateNormalsMinDate
+    var minDate = this.$store.getters.getClimateMonthlyMinDate
     if (minDate === null) { // prevent duplicate AJAX
       let thisComp = this // for reference in axios response; "this" reserved in axios
 
