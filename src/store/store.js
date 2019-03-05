@@ -14,7 +14,9 @@ export default new Vuex.Store({
     ahccdStationGeoJson: null,
     stationIdSelected: [],
     bbox: null,
-    maxStationSelection: 20
+    maxStationSelection: 20,
+    minDateClimateDaily: null,
+    minDateClimateMonthly: null
   },
   mutations: {
     changeProvinceMutation (state, payload) {
@@ -51,6 +53,12 @@ export default new Vuex.Store({
     },
     clearStationIdSelectedMutation (state) {
       state.stationIdSelected = []
+    },
+    changeClimateDailyMinDate (state, payload) {
+      state.minDateClimateDaily = payload
+    },
+    changeClimateMonthlyMinDate (state, payload) {
+      state.minDateClimateMonthly = payload
     }
   },
   actions: { // AJAX in stuff; change states
@@ -98,6 +106,12 @@ export default new Vuex.Store({
     },
     clearStationIdSelected: function ({ commit }) {
       commit('clearStationIdSelectedMutation')
+    },
+    setClimateDailyMinDate: function ({ commit }, minDate) {
+      commit('changeClimateDailyMinDate', minDate)
+    },
+    setClimateMonthlyMinDate: function ({ commit }, minDate) {
+      commit('changeClimateMonthlyMinDate', minDate)
     }
   },
   getters: {
@@ -127,6 +141,12 @@ export default new Vuex.Store({
     },
     getMaxStationSelection (state) {
       return state.maxStationSelection
+    },
+    getClimateNormalsMinDate (state) {
+      return state.minDateClimateDaily
+    },
+    getClimateMonthlyMinDate (state) {
+      return state.minDateClimateMonthly
     }
   }
 })

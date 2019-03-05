@@ -108,6 +108,7 @@ import StationListLink from './StationListLink'
 import { wfs } from './mixins/wfs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
+import axios from 'axios'
 
 export default {
   name: 'ClimateMonthlyForm',
@@ -127,9 +128,9 @@ export default {
     return {
       wfs_layer: 'climate-monthly',
       wfs_layer_station: 'climate-stations',
-      date_start: this.$moment.utc('1969-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_start: this.$moment.utc('1908-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_end: this.$moment.utc().toDate(),
-      date_min: this.$moment.utc('1969-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_min: this.$moment.utc('1908-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_max: this.$moment.utc().toDate()
     }
   },
@@ -147,12 +148,34 @@ export default {
       this.$store.dispatch('retrieveClimateMonthlyStations', this.urlStationList)
     }
 
+    // Get min local_date dynamically to set date_min
+    var minDate = this.$store.getters.getClimateNormalsMinDate
+    if (minDate === null) { // prevent duplicate AJAX
+      let thisComp = this // for reference in axios response; "this" reserved in axios
+
+      axios.get(this.urlDatasetMinDate)
+        .then(function (response) {
+          if (response.data.hasOwnProperty('features')) {
+            minDate = response.data.features[0].properties.LOCAL_DATE
+            thisComp.$store.dispatch('setClimateMonthlyMinDate', minDate)
+            thisComp.date_start = thisComp.$moment.utc(minDate, 'YYYY-MM').toDate()
+            thisComp.date_min = thisComp.$moment.utc(minDate, 'YYYY-MM').toDate()
+          }
+        })
+    } else {
+      this.date_start = this.$moment.utc(minDate, 'YYYY-MM').toDate()
+      this.date_min = this.$moment.utc(minDate, 'YYYY-MM').toDate()
+    }
+
     // reset existing selections that share with other components
     this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
     urlStationList: function () {
       return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_MONTHLY_SUMMARY=Y&limit=' + this.wfs_station_limit
+    },
+    urlDatasetMinDate: function () {
+      return this.wfs3_url_base + '/' + this.wfs_layer + '/items?sortby=LOCAL_DATE&limit=1'
     },
     climateStationsGeoJson: function () {
       return this.$store.getters.getClimateMonthlyStations
