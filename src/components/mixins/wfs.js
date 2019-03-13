@@ -4,7 +4,7 @@ Anything common to WFS query UI goes here with default values provided in data()
 export const wfs = {
   data () {
     return {
-      wfs_format: 'geojson',
+      wfs_format: 'csv',
       bbox_parts: {
         min_x: 0,
         min_y: 0,
