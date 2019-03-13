@@ -1,7 +1,7 @@
 <template>
   <section class="panel panel-info">
     <header class="panel-heading">
-      <h5 class="panel-title" v-html="titleMoreResourcesHtml"></h5>
+      <h5 class="panel-title" v-translate>More resources from the Canadian Centre for Climate Services</h5>
     </header>
     <div class="panel-body">
       <ul class="list-unstyled">

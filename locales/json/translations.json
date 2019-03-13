@@ -1304,6 +1304,12 @@
 					""
 				]
 			},
+			"More resources from the Canadian Centre for Climate Services": {
+				"msgid": "More resources from the Canadian Centre for Climate Services",
+				"msgstr": [
+					""
+				]
+			},
 			"Near surface wind speed": {
 				"msgid": "Near surface wind speed",
 				"msgstr": [
@@ -3173,6 +3179,12 @@
 				"msgid": "More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>",
 				"msgstr": [
 					"Plus de ressources du <a href=\"{link}\" target=\"_blank\">Centre canadien des services climatiques</a>"
+				]
+			},
+			"More resources from the Canadian Centre for Climate Services": {
+				"msgid": "More resources from the Canadian Centre for Climate Services",
+				"msgstr": [
+					"Plus de ressources du Centre canadien des services climatiques"
 				]
 			},
 			"Near surface wind speed": {
