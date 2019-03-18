@@ -223,7 +223,7 @@ msgid ""
 "is missing, a trend was not calculated."
 msgstr ""
 
-#: src/components/CanGRDForm.vue:99
+#: src/components/CanGRDForm.vue:87
 #: src/components/CanSIPSForm.vue:82
 #: src/components/CMIP5Form.vue:163
 #: src/components/DCSForm.vue:164
@@ -265,8 +265,8 @@ msgstr ""
 msgid "Analysis run hour"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:260
-#: src/components/CanGRDForm.vue:268
+#: src/components/CanGRDForm.vue:248
+#: src/components/CanGRDForm.vue:256
 #: src/components/mixins/dcs-cmip5.js:149
 msgid "Annual"
 msgstr ""
@@ -279,7 +279,7 @@ msgstr ""
 msgid "Annual values"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:274
+#: src/components/CanGRDForm.vue:262
 #: src/components/mixins/dcs-cmip5.js:115
 msgid "Anomaly values"
 msgstr ""
@@ -319,7 +319,7 @@ msgid ""
 msgstr ""
 
 #: src/components/AHCCDForm.vue:93
-#: src/components/CanGRDForm.vue:76
+#: src/components/CanGRDForm.vue:67
 #: src/components/ClimateDailyForm.vue:84
 #: src/components/ClimateMonthlyForm.vue:84
 #: src/components/CMIP5Form.vue:109
@@ -394,7 +394,7 @@ msgid "Data download format"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:113
-#: src/components/CanGRDForm.vue:117
+#: src/components/CanGRDForm.vue:104
 #: src/components/CanSIPSForm.vue:97
 #: src/components/ClimateDailyForm.vue:104
 #: src/components/ClimateMonthlyForm.vue:104
@@ -423,7 +423,7 @@ msgid "Dataset description, technical information and metadata"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:70
-#: src/components/CanGRDForm.vue:50
+#: src/components/CanGRDForm.vue:43
 #: src/components/ClimateDailyForm.vue:61
 #: src/components/ClimateMonthlyForm.vue:61
 #: src/components/CMIP5Form.vue:73
@@ -437,7 +437,7 @@ msgstr ""
 msgid "Date range fields must be all set or cleared."
 msgstr ""
 
-#: src/components/CanGRDForm.vue:88
+#: src/components/CanGRDForm.vue:78
 msgid "Date ranges not required for CanGRD trends"
 msgstr ""
 
@@ -517,7 +517,7 @@ msgid "Emissions scenario"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:84
-#: src/components/CanGRDForm.vue:66
+#: src/components/CanGRDForm.vue:58
 #: src/components/ClimateDailyForm.vue:75
 #: src/components/ClimateMonthlyForm.vue:75
 #: src/components/CMIP5Form.vue:130
@@ -549,8 +549,8 @@ msgstr ""
 msgid "Explanation of model types"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:258
-#: src/components/CanGRDForm.vue:266
+#: src/components/CanGRDForm.vue:246
+#: src/components/CanGRDForm.vue:254
 #: src/components/mixins/dcs-cmip5.js:147
 msgid "Fall (September-November)"
 msgstr ""
@@ -729,7 +729,7 @@ msgstr ""
 msgid "Maximum date for near surface wind speed is:"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:242
+#: src/components/CanGRDForm.vue:230
 #: src/components/DCSForm.vue:256
 msgid "Maximum temperature"
 msgstr ""
@@ -739,8 +739,8 @@ msgstr ""
 msgid "Mean precipitation"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:240
-#: src/components/CanGRDForm.vue:247
+#: src/components/CanGRDForm.vue:228
+#: src/components/CanGRDForm.vue:235
 #: src/components/CMIP5Form.vue:338
 #: src/components/DCSForm.vue:254
 #: src/components/mixins/datasets.js:125
@@ -752,7 +752,7 @@ msgstr ""
 msgid "Member"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:241
+#: src/components/CanGRDForm.vue:229
 #: src/components/DCSForm.vue:255
 msgid "Minimum temperature"
 msgstr ""
@@ -770,7 +770,7 @@ msgstr ""
 msgid "Moderate emissions scenario (RCP 4.5)"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:255
+#: src/components/CanGRDForm.vue:243
 #: src/components/mixins/dcs-cmip5.js:150
 msgid "Monthly"
 msgstr ""
@@ -791,7 +791,7 @@ msgstr ""
 msgid "Monthly values"
 msgstr ""
 
-#: src/components/MoreResources.vue:64
+#: src/components/MoreResources.vue:65
 msgid ""
 "More resources from the <a href=\"{link}\" target=\"_blank\">Canadian "
 "Centre for Climate Services</a>"
@@ -950,14 +950,14 @@ msgstr ""
 msgid "Snow depth"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:256
-#: src/components/CanGRDForm.vue:264
+#: src/components/CanGRDForm.vue:244
+#: src/components/CanGRDForm.vue:252
 #: src/components/mixins/dcs-cmip5.js:145
 msgid "Spring (March-May)"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:73
-#: src/components/CanGRDForm.vue:54
+#: src/components/CanGRDForm.vue:47
 #: src/components/ClimateDailyForm.vue:64
 #: src/components/ClimateMonthlyForm.vue:64
 #: src/components/CMIP5Form.vue:118
@@ -994,8 +994,8 @@ msgstr ""
 msgid "Station table"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:257
-#: src/components/CanGRDForm.vue:265
+#: src/components/CanGRDForm.vue:245
+#: src/components/CanGRDForm.vue:253
 #: src/components/mixins/dcs-cmip5.js:146
 msgid "Summer (June-August)"
 msgstr ""
@@ -1077,6 +1077,15 @@ msgid ""
 "page for the Statistically downscaled climate scenarios</a> also provides "
 "metadata files for the dataset as well as other avenues for accessing the "
 "dataset."
+msgstr ""
+
+#: src/components/DataAccessDocLink.vue:23
+msgid ""
+"The Canadian Centre for Climate Services also provides both a Datamart and "
+"application program interfaces (API) that will allow you to access this "
+"dataset in a bulk and/or automated fashion. Please refer to <a "
+"href=\"{link}\" target=\"_blank\">the documentation on these advanced "
+"tools</a> for more information."
 msgstr ""
 
 #: src/components/CanSIPSForm.vue:15
@@ -1168,7 +1177,7 @@ msgstr ""
 msgid "This field must be less than or equal to:"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:45
+#: src/components/CanGRDForm.vue:39
 #: src/components/CMIP5Form.vue:55
 #: src/components/DCSForm.vue:55
 msgid "Time interval / Time of year"
@@ -1213,15 +1222,15 @@ msgstr ""
 msgid "Total number of records: {numRecords}"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:243
-#: src/components/CanGRDForm.vue:248
+#: src/components/CanGRDForm.vue:231
+#: src/components/CanGRDForm.vue:236
 #: src/components/DCSForm.vue:257
 #: src/components/mixins/datasets.js:195
 msgid "Total precipitation"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:198
-#: src/components/CanGRDForm.vue:275
+#: src/components/CanGRDForm.vue:263
 msgid "Trend values"
 msgstr ""
 
@@ -1258,7 +1267,7 @@ msgstr ""
 msgid "User defined range"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:33
+#: src/components/CanGRDForm.vue:29
 #: src/components/CMIP5Form.vue:61
 #: src/components/DCSForm.vue:62
 msgid "Value type"
@@ -1273,7 +1282,7 @@ msgstr ""
 msgid "Value-added historical climate data products"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:39
+#: src/components/CanGRDForm.vue:34
 #: src/components/CanSIPSForm.vue:32
 msgid "Variable"
 msgstr ""
@@ -1302,8 +1311,8 @@ msgstr ""
 msgid "Winds at 850mb"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:259
-#: src/components/CanGRDForm.vue:267
+#: src/components/CanGRDForm.vue:247
+#: src/components/CanGRDForm.vue:255
 #: src/components/mixins/dcs-cmip5.js:148
 msgid "Winter (December-February)"
 msgstr ""

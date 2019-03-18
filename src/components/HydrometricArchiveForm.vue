@@ -14,6 +14,8 @@
           </ul>
         </p>
 
+        <data-access-doc-link></data-access-doc-link>
+
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
@@ -112,6 +114,7 @@ import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
 import StationListLink from './StationListLink'
+import DataAccessDocLink from './DataAccessDocLink'
 import { wfs } from './mixins/wfs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -129,7 +132,8 @@ export default {
     'var-select': VarSelect,
     'url-box': URLBox,
     'info-contact-support': InfoContactSupport,
-    'station-list-link': StationListLink
+    'station-list-link': StationListLink,
+    DataAccessDocLink
   },
   data () {
     return {

@@ -7,6 +7,8 @@
         <p>{{ introDatasetText.gridded.use }}</p>
         <p>{{ introDatasetText.gridded.instructions }}</p>
 
+        <data-access-doc-link></data-access-doc-link>
+
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
@@ -175,6 +177,7 @@ import OptionRadio from './OptionRadio'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
 import OpenPortalLinks from './OpenPortalLinks'
+import DataAccessDocLink from './DataAccessDocLink'
 import { wcs } from './mixins/wcs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -193,7 +196,8 @@ export default {
     'option-radio': OptionRadio,
     'url-box': URLBox,
     'info-contact-support': InfoContactSupport,
-    'open-portal-links': OpenPortalLinks
+    'open-portal-links': OpenPortalLinks,
+    DataAccessDocLink
   },
   data () {
     return {
