@@ -7,6 +7,8 @@
         <p>{{ introDatasetText.gridded.use }}</p>
         <p>{{ introDatasetText.gridded.instructions }}</p>
 
+        <data-access-doc-link></data-access-doc-link>
+
         <details v-bind:open="toggleDetailsState">
           <summary v-on:click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
@@ -98,6 +100,7 @@ import NumSelect from './NumSelect'
 import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
+import DataAccessDocLink from './DataAccessDocLink'
 import { wcs } from './mixins/wcs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -113,7 +116,8 @@ export default {
     'num-select': NumSelect,
     'date-select': DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport
+    'info-contact-support': InfoContactSupport,
+    DataAccessDocLink
   },
   data () {
     return {

@@ -1628,6 +1628,12 @@
 					""
 				]
 			},
+			"The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.": {
+				"msgid": "The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.",
+				"msgstr": [
+					""
+				]
+			},
 			"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.": {
 				"msgid": "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.",
 				"msgstr": [
@@ -3503,6 +3509,12 @@
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Scénarios climatiques mis à l’échelle de manière statistique</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.": {
+				"msgid": "The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.",
+				"msgstr": [
+					"Le Centre canadien des services climatiques offre aussi un Datamart et des interfaces pour la programmation d’application (API) qui permettent d’accéder à cet ensemble de données en masse et/ou de manière automatisée. Veuillez vous référer à <a href=\"{link}\" target=\"_blank\">la documentation sur ces outils avancés</a> pour plus d'information."
 				]
 			},
 			"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.": {
