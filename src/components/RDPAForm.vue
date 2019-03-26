@@ -4,6 +4,9 @@
       <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
         <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
+        <!-- temporary: downloads not working -->
+        <download-warning></download-warning>
+
         <p>{{ introDatasetText.gridded.use }}</p>
         <p>{{ introDatasetText.gridded.instructions }}</p>
 
@@ -89,6 +92,7 @@ import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
 import DataAccessDocLink from './DataAccessDocLink'
+import DownloadWarning from './DownloadWarning'
 import { wcs } from './mixins/wcs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -105,7 +109,8 @@ export default {
     'date-select': DateSelect,
     'url-box': URLBox,
     'info-contact-support': InfoContactSupport,
-    DataAccessDocLink
+    DataAccessDocLink,
+    DownloadWarning
   },
   data () {
     return {
