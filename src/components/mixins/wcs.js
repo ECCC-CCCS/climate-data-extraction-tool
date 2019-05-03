@@ -40,9 +40,7 @@ export const wcs = {
       var chunkEndMoment = this.$moment.utc(this.bandStartMoment)
       var chunkDuration
 
-      if (this.wcs_id_dataset === 'CANGRD' && this.wcs_id_cangrdType === 'TREND') { // CanGRD trends don't have date ranges
-        return []
-      } else if (this.hasCommonBandErrors) { // range 0 or errors
+      if (this.hasCommonBandErrors) { // range 0 or errors
         return []
       } else if (this.usesBands) {
         var chunkedBands = []
@@ -74,6 +72,24 @@ export const wcs = {
 
         return chunkedBands
       } else { // no bands (empty)
+        if (this.wcs_id_dataset === 'CANGRD' && this.wcs_id_cangrdType === 'TREND') {
+          // CanGRD trends special title
+          return [{
+            'start': null,
+            'end': null,
+            'duration': 0,
+            'specialTitle': this.variableTypeOptions[this.wcs_id_cangrdType]
+          }]
+        } else if (this.rangeType === 'year20' && (this.wcs_id_dataset === 'DCS' || this.wcs_id_dataset === 'CMIP5')) {
+          // DCS or CMIP5 20-year average special title
+          return [{
+            'start': null,
+            'end': null,
+            'duration': 0,
+            'specialTitle': this.rangeTypeOptions[this.rangeType]
+          }]
+        }
+
         return [{
           'start': null,
           'end': null,
@@ -136,7 +152,7 @@ export const wcs = {
     },
     bandRangeFormat: function (bandStart, bandEnd) {
       // Check for null and append "B"
-      if (bandStart === null || bandEnd === null || bandStart === 'Invalid date' || bandEnd === 'Invalid date') {
+      if (bandStart === null || bandEnd === null || bandStart === 'Invalid date' || bandEnd === 'Invalid date' || typeof bandStart === 'undefined' || typeof bandEnd === 'undefined') {
         return null
       } else if (bandStart === bandEnd) { // single date
         return 'B' + bandStart
