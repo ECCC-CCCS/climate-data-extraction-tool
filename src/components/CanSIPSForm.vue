@@ -117,8 +117,7 @@ export default {
     'date-select': DateSelect,
     'url-box': URLBox,
     'info-contact-support': InfoContactSupport,
-    DataAccessDocLink,
-    DownloadWarning
+    DataAccessDocLink
   },
   data () {
     return {
