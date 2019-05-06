@@ -30,7 +30,7 @@
       <div
         id="wfs3-download-links-list"
         class="mrgn-tp-md"
-        v-show="wfs3CommonUrl !== null && numRecords !== null">
+        v-show="wfs3CommonUrl !== null && numRecords !== null && hasErrors === false">
 
         <p>
           <strong
@@ -54,7 +54,7 @@
       <div
         id="wcs-download-links-list"
         class="mrgn-tp-md"
-        v-show="wcsCommonUrl !== null">
+        v-show="wcsCommonUrl !== null && hasErrors === false">
 
         <div id="wcs-link-list" class="list-group" aria-live="polite">
           <a
@@ -90,7 +90,7 @@ export default {
     bandRangeFormat: {
       type: Function,
       default: function (bandStart, bandEnd) {
-        if (bandStart === null || bandEnd === null || bandStart === 'Invalid date' || bandEnd === 'Invalid date') {
+        if (bandStart === null || bandEnd === null || bandStart === 'Invalid date' || bandEnd === 'Invalid date' || typeof bandStart === 'undefined' || typeof bandEnd === 'undefined') {
           return null
         } else if (bandStart === bandEnd) { // single date
           return 'B' + bandStart
@@ -221,7 +221,9 @@ export default {
         return this.$_i(this.$gettext('Download: {date}'), {'date': bandChunk.start})
       } else if (rangeSubset !== null) {
         return this.$_i(this.$gettext('Download: {startNum} - {endNum}'), {'startNum': bandChunk.start, 'endNum': bandChunk.end})
-      } else {
+      } else if (bandChunk.hasOwnProperty('specialTitle')) {
+        return this.$gettext('Download:') + ' ' + bandChunk.specialTitle
+      } else { // default
         return this.$gettext('Download:') + ' ' + title
       }
     },
