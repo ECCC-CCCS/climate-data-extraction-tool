@@ -16,8 +16,8 @@
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details v-bind:open="toggleDetailsState">
-          <summary v-on:click="toggleDetails"
+        <details :open="toggleDetailsState">
+          <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
 
@@ -26,18 +26,19 @@
           <p v-html="openPortalHtml"></p>
 
           <station-list-link
-            v-bind:url-station-list="urlStationList"
-            v-bind:download-text="$gettext('Download a list of detailed information for each Climate normals station.')"></station-list-link>
+            :url-station-list="urlStationList"
+            :download-text="$gettext('Download a list of detailed information for each Climate normals station.')"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>
 
         <bbox-map
           v-model="ows_bbox"
-          v-bind:max-zoom="mapMaxZoom"
-          v-bind:readable-columns="popup_props_display"
-          v-bind:select-disabled="provinceSelected"
-          v-bind:geojson="climateStationsGeoJson"></bbox-map>
+          :max-zoom="mapMaxZoom"
+          :readable-columns="popup_props_display"
+          :select-disabled="provinceSelected"
+          :geojson="climateStationsGeoJson"
+          :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <province-select
           v-model="wfs_province"></province-select>
@@ -45,22 +46,25 @@
         <station-select
           v-model="wfs_selected_station_ids"
           v-if="climateStationsGeoJson !== null"
-          v-bind:select-disabled="provinceSelected"
-          v-bind:station-data="climateStationsGeoJson.features"
-          v-bind:station-prop-display="station_props_display"></station-select>
+          :select-disabled="provinceSelected"
+          :station-data="climateStationsGeoJson.features"
+          :station-prop-display="station_props_display"
+          :station-prov-col="stationProvCol"
+          :no-province-station-selected="noProvinceStationSelected"
+          :stn-primary-id="stnPrimaryId"></station-select>
 
         <format-select-vector
           class="mrgn-tp-md"
           v-model="wfs_format"></format-select-vector>
 
         <url-box
-          v-bind:layer-options="layer_options"
-          v-bind:ows-url-formatter="wfs3_download_url"
-          v-bind:wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          v-bind:wfs3-download-limit="wfs_limit"
-          v-bind:layer-format="wfs_format"
-          v-bind:has-errors="hasErrors"
-          v-bind:url-box-title="$gettext('Data download link')">
+          :layer-options="layer_options"
+          :ows-url-formatter="wfs3_download_url"
+          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+          :wfs3-download-limit="wfs_limit"
+          :layer-format="wfs_format"
+          :has-errors="hasErrors"
+          :url-box-title="$gettext('Data download link')">
         </url-box>
       </main>
       <dataset-menu></dataset-menu>
@@ -123,17 +127,17 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit
     },
     climateStationsGeoJson: function () {
       return this.$store.getters.getClimateStations
     },
     station_props_display: function () {
-      return {
-        'STATION_NAME': this.$gettext('Station name'),
-        'STN_ID': this.$gettext('Station ID'),
-        'PROV_STATE_TERR_CODE': this.$gettext('Province/Territory/State')
-      }
+      var props = {}
+      props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
+      props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Climate ID')
+      props['PROV_STATE_TERR_CODE'] = this.$gettext('Province/Territory/State')
+      return props
     },
     popup_props_display: function () {
       var stationCols = Object.keys(this.station_props_display)

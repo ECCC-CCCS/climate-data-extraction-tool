@@ -2,7 +2,7 @@
   <div class="form-group">
     <label
       for="rcp_scenario"
-      v-bind:class="{required: required}">
+      :class="{required: required}">
       <translate>Emissions scenario</translate>
       <strong
         v-if="required"
@@ -14,20 +14,20 @@
         class="small bg-info text-info">
         <span class="glyphicon glyphicon-info-sign"></span>
         <a
-          v-bind:href="rcp_link[$i18n.activeLocale]"
+          :href="rcp_link[$i18n.activeLocale]"
           target="_blank"
           v-translate>Learn more about emissions scenarios</a>
       </span>
     </label>
     <select class="form-control" id="rcp_scenario"
-      v-bind:value="value"
-      v-on:change="emitUpdatedValue">
+      :value="value"
+      @change="emitUpdatedValue">
         <option
           v-for="(scenarioValue, key) in selectOptions"
-          v-bind:key="key"
-          v-bind:value="key"
+          :key="key"
+          :value="key"
           v-html="scenarioValue"
-          v-bind:required="required"></option>
+          :required="required"></option>
     </select>
   </div>
 </template>

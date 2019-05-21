@@ -1,10 +1,10 @@
 <template>
   <div
     class="form-group"
-    v-bind:class="{'has-error': markInvalid}">
+    :class="{'has-error': markInvalid}">
     <label
-      v-bind:for="'date-' + label_id"
-      v-bind:class="{required: required}">
+      :for="'date-' + label_id"
+      :class="{required: required}">
       {{ label }}
       <span
         class="date_format"
@@ -15,12 +15,12 @@
         aria-required="true"
         v-translate>(Required)</strong>
       <strong
-          v-show="invalidMsg" class="error">
-          <span class="label label-danger">
-            <span class="prefix" v-translate>Error:</span>
-            {{ invalidMsg }}
-          </span>
-        </strong>
+        v-show="invalidMsg" class="error">
+        <span class="label label-danger">
+          <span class="prefix" v-translate>Error:</span>
+          {{ invalidMsg }}
+        </span>
+      </strong>
     </label>
     <datepicker
       :value="value"
@@ -37,7 +37,7 @@
       :use-utc="useUtc"
       :disabled="disabled"
       :readonly="readonly"
-      v-on:input="emitUpdatedValue"></datepicker>
+      @input="emitUpdatedValue"></datepicker>
   </div>
 </template>
 

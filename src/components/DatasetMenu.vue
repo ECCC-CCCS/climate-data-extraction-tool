@@ -12,15 +12,15 @@
           <ul class="list-group menu list-unstyled">
             <li
               v-for="route in climateSimulationRoutes"
-              v-bind:key="route.name">
+              :key="route.name">
                 <router-link
-                  v-bind:to="route.meta[currentLangPath]"
+                  :to="route.meta[currentLangPath]"
                   class="list-group-item"
-                  v-bind:class="{'wb-navcurr': $route.name === route.name}">
+                  :class="{'wb-navcurr': $route.name === route.name}">
                   {{ datasetTitles[route.name].title }}
                   <span v-if="datasetTitles[route.name].abbr !== null">
                     (<abbr
-                      v-bind:title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
+                      :title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
                   </span>
                 </router-link>
             </li>
@@ -31,15 +31,15 @@
           <ul class="list-group menu list-unstyled">
             <li
               v-for="route in valueAddedHistClimProdRoutes"
-              v-bind:key="route.name">
+              :key="route.name">
                 <router-link
-                  v-bind:to="route.meta[currentLangPath]"
+                  :to="route.meta[currentLangPath]"
                   class="list-group-item"
-                  v-bind:class="{'wb-navcurr': $route.name === route.name}">
+                  :class="{'wb-navcurr': $route.name === route.name}">
                   {{ datasetTitles[route.name].title }}
                   <span v-if="datasetTitles[route.name].abbr !== null">
                     (<abbr
-                      v-bind:title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
+                      :title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
                   </span>
                 </router-link>
             </li>
@@ -50,15 +50,15 @@
           <ul class="list-group menu list-unstyled">
             <li
               v-for="route in histClimateRiverRoutes"
-              v-bind:key="route.name">
+              :key="route.name">
                 <router-link
-                  v-bind:to="route.meta[currentLangPath]"
+                  :to="route.meta[currentLangPath]"
                   class="list-group-item"
-                  v-bind:class="{'wb-navcurr': $route.name === route.name}">
+                  :class="{'wb-navcurr': $route.name === route.name}">
                   {{ datasetTitles[route.name].title }}
                   <span v-if="datasetTitles[route.name].abbr !== null">
                     (<abbr
-                      v-bind:title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
+                      :title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
                   </span>
                 </router-link>
             </li>

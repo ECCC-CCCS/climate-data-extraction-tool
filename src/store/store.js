@@ -16,9 +16,17 @@ export default new Vuex.Store({
     bbox: null,
     maxStationSelection: 20,
     minDateClimateDaily: null,
-    minDateClimateMonthly: null
+    minDateClimateMonthly: null,
+    pointClickOn: false,
+    clickLatLng: null
   },
   mutations: {
+    changeClickLatLng (state, payload) {
+      state.clickLatLng = payload
+    },
+    changePointClickStatus (state, payload) {
+      state.pointClickOn = payload
+    },
     changeProvinceMutation (state, payload) {
       state.province = payload
     },
@@ -62,6 +70,12 @@ export default new Vuex.Store({
     }
   },
   actions: { // AJAX in stuff; change states
+    setClickLatLng: function ({ commit }, latLng) {
+      commit('changeClickLatLng', latLng)
+    },
+    setPointClickStatus: function ({ commit }, status) {
+      commit('changePointClickStatus', status)
+    },
     changeProvince: function ({ commit }, newProv) {
       commit('changeProvinceMutation', newProv)
     },
@@ -115,6 +129,12 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getClickLatLng (state) {
+      return state.clickLatLng
+    },
+    getPointClickStatus (state) {
+      return state.pointClickOn
+    },
     getProvince (state) {
       return state.province
     },

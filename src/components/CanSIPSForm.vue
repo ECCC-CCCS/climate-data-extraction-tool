@@ -9,8 +9,8 @@
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details v-bind:open="toggleDetailsState">
-          <summary v-on:click="toggleDetails"
+        <details :open="toggleDetailsState">
+          <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.</p>
 
@@ -21,69 +21,69 @@
 
         <bbox-map
           v-model="ows_bbox"
-          v-on:change="splitBBOXString"></bbox-map>
+          @change="splitBBOXString"></bbox-map>
 
         <var-select
           v-model="wcs_id_variable"
-          v-bind:label="$gettext('Variable')"
-          v-bind:select-options="variableOptions"></var-select>
+          :label="$gettext('Variable')"
+          :select-options="variableOptions"></var-select>
 
         <var-select
           v-model="wcs_id_type"
-          v-bind:label="$gettext('Model type')"
-          v-bind:disabled="true"
-          v-bind:readonly="true"
-          v-bind:select-options="typeOptions"></var-select>
+          :label="$gettext('Model type')"
+          :disabled="true"
+          :readonly="true"
+          :select-options="typeOptions"></var-select>
 
         <num-select
           v-model="wcs_id_member"
-          v-bind:label="$gettext('Member')"
-          v-bind:required="true"
-          v-bind:max="20"
-          v-bind:min="1"></num-select>
+          :label="$gettext('Member')"
+          :required="true"
+          :max="20"
+          :min="1"></num-select>
 
         <date-select
           v-model="modelRun"
-          v-bind:label="$gettext('Model run month')"
-          v-bind:minimum-view="dateConfigs.minimumView"
-          v-bind:format="dateConfigs.format"
-          v-bind:placeholder="dateConfigs.placeholder"
-          v-bind:required="true"
-          v-bind:min-date="modelRunRange.min"
-          v-bind:max-date="modelRunRange.max"></date-select>
+          :label="$gettext('Model run month')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :placeholder="dateConfigs.placeholder"
+          :required="true"
+          :min-date="modelRunRange.min"
+          :max-date="modelRunRange.max"></date-select>
 
         <date-select
           v-model="forecastPeriod"
-          v-bind:label="$gettext('Forecast month')"
-          v-bind:minimum-view="dateConfigs.minimumView"
-          v-bind:format="dateConfigs.format"
-          v-bind:placeholder="dateConfigs.placeholder"
-          v-bind:required="true"
-          v-bind:disabled="true"
-          v-bind:readonly="true"
-          v-bind:min-date="forePeriodDateRange.min"
-          v-bind:max-date="forePeriodDateRange.max"></date-select>
+          :label="$gettext('Forecast month')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :placeholder="dateConfigs.placeholder"
+          :required="true"
+          :disabled="true"
+          :readonly="true"
+          :min-date="forePeriodDateRange.min"
+          :max-date="forePeriodDateRange.max"></date-select>
 
         <format-select-raster
           v-model="wcs_format"
-          v-bind:info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+          :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
-        <details v-bind:open="toggleDetailsAdvState">
-          <summary v-on:click="toggleDetailsAdv"
+        <details :open="toggleDetailsAdvState">
+          <summary @click="toggleDetailsAdv"
             v-translate>Advanced options</summary>
           <var-select
             v-model="ows_crs"
-            v-bind:label="crsLabel"
-            v-bind:initial-variable="ows_crs"
-            v-bind:select-options="crsOptions"></var-select>
+            :label="crsLabel"
+            :initial-variable="ows_crs"
+            :select-options="crsOptions"></var-select>
         </details>
 
         <url-box
-          v-bind:layer-options="selectedCoverageIdOption"
-          v-bind:ows-url-formatter="wcs_download_url"
-          v-bind:layer-format="wcs_format"
-          v-bind:has-errors="hasErrors"
-          v-bind:url-box-title="$gettext('Data download link')">
+          :layer-options="selectedCoverageIdOption"
+          :ows-url-formatter="wcs_download_url"
+          :layer-format="wcs_format"
+          :has-errors="hasErrors"
+          :url-box-title="$gettext('Data download link')">
         </url-box>
       </main>
       <dataset-menu></dataset-menu>

@@ -1,12 +1,27 @@
 <template>
   <div id="bbox-map-container">
-    <label
-      for="ows_bbox"
-      class="wb-inv"
-      v-translate>Bounding box coordinates</label>
+    <fieldset v-if="allowClickPoint">
+      <legend v-translate>Spatial selection</legend>
 
-    <details v-bind:open="toggleDetailsState">
-      <summary v-on:click="toggleDetails"
+      <option-radio
+        v-model="pointClickOn"
+        :label="$gettext('Map selection type')"
+        :radio-inline="true"
+        :radio-options="pointClickOptions"></option-radio>
+    </fieldset>
+
+    <strong
+      v-show="clickLatLng === null && pointClickOn === 'on'"
+      class="warning">
+      <span class="label label-warning">
+        <span class="prefix"></span>
+        <translate>Please select a point on the map.</translate>
+      </span>
+    </strong>
+
+    <details
+      :open="toggleDetailsState">
+      <summary @click="toggleDetails"
         v-translate>How to use: interactive map</summary>
       <p v-translate>Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.</p>
       <p><strong v-translate>Panning:</strong>
@@ -29,45 +44,43 @@
       :maxBounds="maxBounds"
       :continuousWorld="false"
       @moveend="updateBBOXfromMap"
+      @click="mapClick"
       >
         <!-- <l-tile-layer :url="urlWMTS_CMBT[$i18n.activeLocale]"></l-tile-layer> -->
         <l-geo-json ref="geojsonLayer" :geojson="geojson" :options="geoJsonOptions"></l-geo-json>
+
+        <l-marker
+          title="Popover Title"
+          :lat-lng="clickLatLng"
+          ref="clickMarker"
+          v-if="clickLatLng !== null && allowClickPoint">
+          <l-popup
+            ref="clickMarkerPopup">
+            <translate>Longitude:</translate> {{ clickLatLng.lng.toFixed(4) }}<br>
+            <translate>Latitude:</translate> {{ clickLatLng.lat.toFixed(4) }}
+          </l-popup>
+        </l-marker>
     </l-map>
 
     <div class="form-group">
       <button
-        v-on:click="resetBBOX"
+        @click="resetBBOX"
         type="button"
-        v-bind:disabled="selectDisabled"
-        class="btn btn-primary" v-translate>Reset map</button>
+        :disabled="selectDisabled"
+        class="btn btn-primary btn-sm" v-translate>Reset map</button>
     </div>
-
-    <!-- <div class="form-group">
-      <div class="input-group">
-        <input type="text"
-        class="form-control wb-inv" id="ows_bbox"
-        readonly
-        v-bind:placeholder="$gettext('Enter bounding box in decimal lat/lon')"
-        v-model="bbox_value"
-        v-on:change="updateBBOX">
-        <span class="input-group-btn">
-          <button
-          v-on:click="resetBBOX"
-          type="button"
-          v-bind:disabled="selectDisabled"
-          class="btn btn-primary" v-translate>Reset</button>
-        </span>
-      </div>
-    </div> -->
   </div>
 </template>
 
 <script>
 import L from 'leaflet'
-import Vue2Leaflet from 'vue2-leaflet'
+import { LMap, LTileLayer, LWMSTileLayer, LGeoJson, LMarker, LPopup } from 'vue2-leaflet'
 import LW from 'leaflet.wms'
+// import 'leaflet-graticule'
 import 'proj4leaflet'
 import store from '../store/store'
+
+import OptionRadio from './OptionRadio'
 
 // Default icon settings
 delete L.Icon.Default.prototype._getIconUrl
@@ -80,26 +93,36 @@ L.Icon.Default.mergeOptions({
 export default {
   name: 'BBOXMap',
   components: {
-    'l-map': Vue2Leaflet.LMap,
-    'l-tile-layer': Vue2Leaflet.LTileLayer,
-    'l-wms-tile-layer': Vue2Leaflet.LWMSTileLayer,
-    'l-geo-json': Vue2Leaflet.LGeoJson,
-    'l-marker': Vue2Leaflet.LMarker
+    LMap,
+    LTileLayer,
+    LWMSTileLayer,
+    LGeoJson,
+    LMarker,
+    LPopup,
+    OptionRadio
   },
   model: {
     prop: 'bbox_value',
     event: 'change'
   },
   props: {
+    allowClickPoint: {
+      type: Boolean,
+      default: false
+    },
     initialBbox: {
       type: String,
-      default: '-154,15,25,81'
+      default: '-165,18,-20,87'
     },
     geojson: {
       type: Object,
       default: function () {
         return null
       }
+    },
+    stnPrimaryId: { // geojson feature.properties[primary-id]
+      type: String,
+      default: 'ID'
     },
     maxZoom: {
       type: Number,
@@ -163,12 +186,10 @@ export default {
         origin: [-34655800, 39310000]
       }),
       bbox_value: this.initialBbox,
-      zoom: 2,
+      zoom: 3,
       minZoom: 0,
-      maxBounds: L.latLngBounds(L.latLng(22, -170), L.latLng(90, -16)),
-      // L.latLngBounds(L.latLng(16, -127), L.latLng(48, 24)), // EPSG:3978
-      center: L.latLng(68, -102),
-      // L.latLng(64, -90), // EPSG:3978
+      maxBounds: L.latLngBounds(L.latLng(20, -175), L.latLng(90, -10)),
+      center: L.latLng(66, -105),
       urlOSM: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       options: {
         style: function () {
@@ -201,11 +222,20 @@ export default {
         opacity: 1,
         fillOpacity: 0.8
       },
+      cbmtAttributionURL: {
+        'en': 'https://open.canada.ca/data/en/dataset/296de17c-001c-4435-8f9a-f5acab632e85',
+        'fr': 'https://ouvert.canada.ca/data/fr/dataset/296de17c-001c-4435-8f9a-f5acab632e85'
+      },
       numStationsSelected: 0,
-      toggleDetailsState: false
+      toggleDetailsState: false,
+      pointClickOn: 'off',
+      clickLatLng: null
     }
   },
   watch: {
+    pointClickOn: function (newStatus) {
+      this.resetPointClick(newStatus)
+    },
     selectedStationIds: function (newStations, oldStations) {
       /* Update marker styles and popups when station selection changes are made */
       let stationMarkers = this.getStationMarkers()
@@ -223,11 +253,11 @@ export default {
       if (typeof oldStations !== 'undefined') {
         stationMarkers.forEach((marker) => {
           // Show the popup of last added station
-          if (marker.feature.ID === newStations[newStations.length - 1] && newStations.length > this.numStationsSelected) {
+          if (marker.feature.properties[this.stnPrimaryId] === newStations[newStations.length - 1] && newStations.length > this.numStationsSelected) {
             marker.openPopup()
           }
           // Style selected stations accordingly
-          if (newStations.includes(marker.feature.ID)) {
+          if (newStations.includes(marker.feature.properties[this.stnPrimaryId])) {
             this.markSelectedPoint(marker)
           }
         })
@@ -270,16 +300,56 @@ export default {
     }
   },
   mounted: function () {
-    // CBMT Single tile WMS
     var map = this.$refs.BBOXMap.mapObject
+
+    // graticules
+    // var graticules = L.latlngGraticule({
+    //   showLabel: true,
+    //   zoomInterval: [
+    //     {start: 2, end: 2, interval: 40},
+    //     {start: 3, end: 3, interval: 20},
+    //     {start: 4, end: 4, interval: 10},
+    //     {start: 5, end: 5, interval: 5},
+    //     {start: 6, end: 20, interval: 1}
+    //   ],
+    //   zIndex: 10,
+    //   transparent: true,
+    //   opacity: 1
+    // })
+    // graticules.addTo(map)
+
+    // CBMT Single tile WMS
     var cbmtWMS = LW.overlay(this.urlWMS_CMBT[this.$i18n.activeLocale], {
-      layers: this.layerCBMT[this.$i18n.activeLocale]
+      layers: this.layerCBMT[this.$i18n.activeLocale],
+      attribution: this.attributionCBMT
     })
     cbmtWMS.addTo(map)
+
+    // reset point click
+    this.resetPointClick('off')
+
+    // reset bbox value
+    this.$store.dispatch('changeBBOX', this.bbox_value)
   },
   computed: {
-    attribution: function () {
+    pointClickError: function () {
+      if (this.pointClickOn === 'on' && this.clickLatLng === null) {
+        return true
+      } else {
+        return false
+      }
+    },
+    pointClickOptions: function () {
+      return {
+        'on': this.$gettext('Download data for a single location as a CSV or GeoJSON'),
+        'off': this.$gettext('Download a region')
+      }
+    },
+    attributionOSM: function () {
       return '&copy; ' + this.$gettext('<a href="http://osm.org/copyright">OpenStreetMap</a> contributors')
+    },
+    attributionCBMT: function () {
+      return '<a href="' + this.cbmtAttributionURL[this.$i18n.activeLocale] + '" target="_blank">' + this.$pgettext('Title', 'Canada Base Map Transportation') + '</a>'
     },
     province: function () {
       return this.$store.getters.getProvince
@@ -316,6 +386,19 @@ export default {
     }
   },
   methods: {
+    resetPointClick: function (newStatus) {
+      this.$store.dispatch('setPointClickStatus', newStatus)
+      if (newStatus === 'off') {
+        this.clickLatLng = null
+        this.$store.dispatch('setClickLatLng', this.clickLatLng)
+      }
+    },
+    mapClick: function (event) {
+      if (this.pointClickOn === 'on') {
+        this.clickLatLng = event.latlng
+        this.$store.dispatch('setClickLatLng', this.clickLatLng)
+      }
+    },
     toggleDetails: function (event) {
       this.toggleDetailsState = !this.toggleDetailsState
     },
@@ -323,8 +406,12 @@ export default {
       this.$emit('change', this.bbox_value)
     },
     updateBBOXfromMap: function (event) {
-      this.bbox_value = this.$refs.BBOXMap.mapObject.getBounds().toBBoxString()
-      this.updateBBOX(null)
+      if (this.$refs.hasOwnProperty('BBOXMap')) {
+        if (this.$refs.BBOXMap.hasOwnProperty('mapObject')) {
+          this.bbox_value = this.$refs.BBOXMap.mapObject.getBounds().toBBoxString()
+          this.updateBBOX(null)
+        }
+      }
     },
     markSelectedPoint: function (marker) {
       marker
@@ -356,8 +443,8 @@ export default {
       // add event when marker opens
       stationMarker.on('popupopen', function (evt) {
         // remember station id selected
-        if (!cmp.selectedStationIds.includes(feature.ID) && !cmp.selectDisabled) {
-          store.dispatch('addStationIdSelected', feature.ID)
+        if (!cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]) && !cmp.selectDisabled) {
+          store.dispatch('addStationIdSelected', feature.properties[cmp.stnPrimaryId])
         }
       })
       return stationMarker
@@ -390,9 +477,9 @@ export default {
 
 <style src="../../node_modules/leaflet/dist/leaflet.css"></style>
 <style scoped>
-#bbox-map, #bbox-map2 {
-  width: 400px;
-  height: 400px;
+#bbox-map {
+  width: 100%;
+  height: 500px;
   background-color: #FFF;
 }
 #bbox-map:focus {
