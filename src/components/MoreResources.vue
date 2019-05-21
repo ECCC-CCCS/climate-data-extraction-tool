@@ -7,7 +7,7 @@
       <ul class="list-unstyled">
         <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <a
-            v-bind:href="climateLibraryLink[activeLocale]"
+            :href="climateLibraryLink[activeLocale]"
             target="_blank"
             class="btn-default well text-left"
             style="display: block; text-decoration: none;">
@@ -16,7 +16,7 @@
         </li>
         <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <a
-            v-bind:href="climateInfoBasic[activeLocale]"
+            :href="climateInfoBasic[activeLocale]"
             target="_blank"
             class="btn-default well text-left"
             style="display: block; text-decoration: none;">
@@ -25,7 +25,7 @@
         </li>
         <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <a
-            v-bind:href="supportDeskLink[activeLocale]"
+            :href="supportDeskLink[activeLocale]"
             target="_blank"
             class="btn-default well text-left"
             style="display: block; text-decoration: none;">
@@ -34,7 +34,7 @@
         </li>
         <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <a
-            v-bind:href="climateLinks.climateDisplay.url[activeLocale]"
+            :href="climateLinks.climateDisplay.url[activeLocale]"
             target="_blank"
             class="btn-default well text-left"
             style="display: block; text-decoration: none;">

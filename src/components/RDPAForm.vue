@@ -9,8 +9,8 @@
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details v-bind:open="toggleDetailsState">
-          <summary v-on:click="toggleDetails"
+        <details :open="toggleDetailsState">
+          <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.</p>
 
@@ -23,55 +23,55 @@
 
         <bbox-map
           v-model="ows_bbox"
-          v-on:change="splitBBOXString"></bbox-map>
+          @change="splitBBOXString"></bbox-map>
 
         <var-select
           v-model="wcs_id_type"
-          v-bind:label="$gettext('Model type')"
-          v-bind:details-text="typeDetailsText"
-          v-bind:details-title="typeDetailsTitle"
-          v-bind:select-options="typeOptions"></var-select>
+          :label="$gettext('Model type')"
+          :details-text="typeDetailsText"
+          :details-title="typeDetailsTitle"
+          :select-options="typeOptions"></var-select>
 
         <var-select
           v-model="wcs_id_time"
-          v-bind:label="$gettext('Precipitation accumulation interval')"
-          v-bind:select-options="timeOptions"></var-select>
+          :label="$gettext('Precipitation accumulation interval')"
+          :select-options="timeOptions"></var-select>
 
         <date-select
           v-model="forecastDate"
-          v-bind:label="$gettext('Analysis date')"
-          v-bind:minimum-view="dateConfigs.minimumView"
-          v-bind:format="dateConfigs.format"
-          v-bind:placeholder="dateConfigs.placeholder"
-          v-bind:required="true"
-          v-bind:min-date="forecastDateRange.min"
-          v-bind:max-date="forecastDateRange.max"></date-select>
+          :label="$gettext('Analysis date')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :placeholder="dateConfigs.placeholder"
+          :required="true"
+          :min-date="forecastDateRange.min"
+          :max-date="forecastDateRange.max"></date-select>
 
         <var-select
           v-model="forecastTimeZ"
-          v-bind:label="$gettext('Analysis run hour')"
-          v-bind:select-options="timeZOptions"></var-select>
+          :label="$gettext('Analysis run hour')"
+          :select-options="timeZOptions"></var-select>
 
         <format-select-raster
           v-model="wcs_format"
-          v-bind:info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+          :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
-        <details v-bind:open="toggleDetailsAdvState">
-          <summary v-on:click="toggleDetailsAdv"
+        <details :open="toggleDetailsAdvState">
+          <summary @click="toggleDetailsAdv"
             v-translate>Advanced options</summary>
           <var-select
             v-model="ows_crs"
-            v-bind:label="crsLabel"
-            v-bind:initial-variable="ows_crs"
-            v-bind:select-options="crsOptions"></var-select>
+            :label="crsLabel"
+            :initial-variable="ows_crs"
+            :select-options="crsOptions"></var-select>
         </details>
 
         <url-box
-          v-bind:layer-options="selectedCoverageIdOption"
-          v-bind:ows-url-formatter="wcs_download_url"
-          v-bind:layer-format="wcs_format"
-          v-bind:has-errors="hasErrors"
-          v-bind:url-box-title="$gettext('Data download link')">
+          :layer-options="selectedCoverageIdOption"
+          :ows-url-formatter="wcs_download_url"
+          :layer-format="wcs_format"
+          :has-errors="hasErrors"
+          :url-box-title="$gettext('Data download link')">
         </url-box>
       </main>
       <dataset-menu></dataset-menu>

@@ -15,17 +15,17 @@
           placeholder="Search"
           v-model="searchText">
         <button
-          v-on:click="toggleShowSelected"
+          @click="toggleShowSelected"
           type="button"
           class="btn"
-          v-bind:class="showSelected ? 'btn-primary active' : 'btn-default'"
-          v-bind:disabled="selectedStationIds.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
+          :class="showSelected ? 'btn-primary active' : 'btn-default'"
+          :disabled="selectedStationIds.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
             <span v-show="selectedStationIds.length > 0">({{ selectedStationIds.length }}/{{ maxStationSelection }})</span></button>
         <button
-          v-on:click="clearSelected"
+          @click="clearSelected"
           class="btn btn-danger"
           type="button"
-          v-bind:disabled="selectedStationIds.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
+          :disabled="selectedStationIds.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
       </div>
       <div id="station-select-container">
         <table id="station-select-table" class="table table-striped table-hover">
@@ -35,12 +35,12 @@
                 class="sortable selectable"
                 title="Click to sort this column in ascending or descending order"
                 v-for="(th, prop) in stationPropDisplay"
-                v-bind:key="prop"
-                v-on:click="sort(prop)">
+                :key="prop"
+                @click="sort(prop)">
                   {{ th }}
                   <span
                     v-show="currentSort === prop"
-                    v-bind:class="sortIconClass"
+                    :class="sortIconClass"
                     class="glyphicon"></span>
               </th>
             </tr>
@@ -49,19 +49,40 @@
             <tr
               class="selectable selectableStation"
               v-for="stn in paginatedStations"
-              v-bind:key="stn.ID"
-              v-on:click="selectStation(stn.ID)"
-              v-bind:class="{
-                selectedStation: (selectedStationClass(stn.ID) || selectDisabled),
+              :key="stn.properties[stnPrimaryId]"
+              @click="selectStation(stn.properties[stnPrimaryId])"
+              :class="{
+                selectedStation: (selectedStationClass(stn.properties[stnPrimaryId]) || selectDisabled),
                 noPointerEvents: selectDisabled
               }">
               <td
                 v-for="(th, prop) in stationPropDisplay"
-                v-bind:key="prop">
+                :key="prop">
                   <template v-if="prop === 'LATITUDE'">{{ stn.geometry.coordinates[1].toFixed(4) }}</template>
                   <template v-else-if="prop === 'LONGITUDE'">{{ stn.geometry.coordinates[0].toFixed(4) }}</template>
+                  <template v-else-if="prop === 'FIRST_DATE' || prop === 'LAST_DATE'">{{ dateDisplay(stn.properties[prop]) }}</template>
                   <template v-else>{{ stn.properties[prop] }}</template>
               </td>
+            </tr>
+            <tr
+              v-show="noProvinceStationSelected && filteredNumEntries === 0"
+              class="danger text-danger">
+                <td
+                  :colspan="Object.keys(stationPropDisplay).length">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <translate>Your map view does not contain any stations and you have no stations selected to download data.</translate>
+                  <translate>You can press the "Reset map" button to see the available stations on this table.</translate>
+                </td>
+            </tr>
+            <tr
+              v-show="!noProvinceStationSelected && filteredNumEntries === 0"
+              class="warning text-warning">
+                <td
+                  :colspan="Object.keys(stationPropDisplay).length">
+                  <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                  <translate>You have selected stations but they are not within view of the map.</translate>
+                  <translate>You can press the "Reset map" button to see the available stations on this table.</translate>
+                </td>
             </tr>
           </tbody>
         </table>
@@ -69,29 +90,30 @@
 
       <nav class="form-inline">
         <button
-          v-on:click="prevPage"
+          @click="prevPage"
           class="btn btn-sm btn-default"
-          v-bind:disabled="currentPage === 1"
+          :disabled="currentPage === 1"
           v-translate>Previous</button>
         <button
-          v-on:click="nextPage"
+          @click="nextPage"
           class="btn btn-sm btn-default"
-          v-bind:disabled="(currentPage * pageSize) >= filteredNumEntries"
+          :disabled="(currentPage * pageSize) >= filteredNumEntries"
           v-translate>Next</button>
         <div class="form-group">
           <label v-translate>Page size</label>
           <select
             class="input-sm form-control"
             v-model="pageSize"
-            v-on:change="currentPage = 1">
+            @change="currentPage = 1">
               <option value="100">100</option>
               <option value="500">500</option>
               <option value="1000">1000</option>
-              <option v-bind:value="stationData.length" v-translate t-coment="All entries">All</option>
+              <option :value="stationData.length" v-translate t-coment="All entries">All</option>
           </select>
         </div>
         <span>{{ showingFilterText }}</span>
       </nav>
+
     </fieldset>
   </div>
 </template>
@@ -125,11 +147,24 @@ export default {
     selectDisabled: {
       type: Boolean,
       default: false
-    }
+    },
+    noProvinceStationSelected: Boolean,
+    stationProvCol: String,
+    stnPrimaryId: String
   },
   created: function () {
+    // add lat/lon
     this.stationPropDisplay['LATITUDE'] = this.$gettext('Latitude')
     this.stationPropDisplay['LONGITUDE'] = this.$gettext('Longitude')
+
+    // add start/end dates for certain datasets
+    /*
+    const allowedDatasets = ['normals', 'daily', 'monthly']
+    if (allowedDatasets.indexOf(this.$route.name) !== -1) {
+      this.stationPropDisplay['FIRST_DATE'] = this.$gettext('First date')
+      this.stationPropDisplay['LAST_DATE'] = this.$gettext('Last date')
+    }
+    */
   },
   data () {
     return {
@@ -232,7 +267,7 @@ export default {
       if (this.showSelected) { // show selected is toggled on
         if (this.selectedStationIds.length === 0) {
           return true
-        } else if (this.selectedStationIds.includes(row.ID)) {
+        } else if (this.selectedStationIds.includes(row.properties[this.stnPrimaryId])) {
           return true
         } else {
           return false
@@ -267,23 +302,10 @@ export default {
     },
     provinceFilter: function (row, index) {
       if (this.province !== 'null') {
-        let routeName = this.$route.name
-        let datasetToStnProvColName = {
-          ahccd: 'province__province',
-          hydrometric: 'PROV_TERR_STATE_LOC',
-          normals: 'PROV_STATE_TERR_CODE',
-          daily: 'PROV_STATE_TERR_CODE',
-          monthly: 'PROV_STATE_TERR_CODE'
-        }
-        if (datasetToStnProvColName.hasOwnProperty(routeName)) {
-          let provCol = datasetToStnProvColName[routeName]
-          if (row.properties[provCol].trim() === this.province) {
-            return true
-          } else {
-            return false
-          }
-        } else {
+        if (row.properties[this.stationProvCol].trim() === this.province) {
           return true
+        } else {
+          return false
         }
       } else {
         return true
@@ -296,6 +318,10 @@ export default {
       } else {
         return true
       }
+    },
+    dateDisplay: function (utcString) {
+      return utcString.substr(0, 10)
+      // this.$moment.utc(utcString, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD')
     }
   },
   computed: {
@@ -375,7 +401,9 @@ export default {
     },
     // {{ currentPage }} to {{ maxPages*pageSize }}
     startEntryOfPage: function () {
-      if (this.currentPage === 1) {
+      if (this.filteredNumEntries === 0) {
+        return 0
+      } else if (this.currentPage === 1) {
         return this.currentPage
       } else {
         return ((this.currentPage - 1) * this.pageSize) + 1

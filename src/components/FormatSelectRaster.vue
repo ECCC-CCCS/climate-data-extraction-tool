@@ -2,7 +2,7 @@
   <div class="form-group">
     <label
       for="raster_download_format"
-      v-bind:class="{required: required}">
+      :class="{required: required}">
       <translate>Data download format</translate>
       <strong
         v-if="required"
@@ -19,8 +19,8 @@
         </div>
       </span>
     </label>
-    <details v-bind:open="toggleDetailsState">
-      <summary v-on:click="toggleDetails"
+    <details :open="toggleDetailsState">
+      <summary @click="toggleDetails"
         v-translate>Explanation of data formats</summary>
       <ul>
         <li v-translate t-comment="contains html tags; do not translate those"><strong>GeoTIFF</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href="https://www.r-project.org/" target="_blank">R</a> or <a href="https://www.python.org/" target="_blank">Python</a></li>
@@ -28,9 +28,9 @@
       </ul>
     </details>
     <select class="form-control" id="raster_download_format"
-      v-bind:value="value"
-      v-bind:required="required"
-      v-on:change="updateFormat">
+      :value="value"
+      :required="required"
+      @change="updateFormat">
         <option value="image/tiff">GeoTIFF</option>
         <option value="image/netcdf">NetCDF</option>
     </select>

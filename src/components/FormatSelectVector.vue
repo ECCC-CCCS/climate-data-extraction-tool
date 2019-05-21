@@ -2,7 +2,7 @@
   <div class="form-group">
     <label
       for="vector_download_format"
-      v-bind:class="{required: required}">
+      :class="{required: required}">
       <translate>Data download format</translate>
       <strong
         v-if="required"
@@ -10,8 +10,8 @@
         aria-required="true"
         v-translate>(Required)</strong>
     </label>
-    <details v-bind:open="toggleDetailsState">
-      <summary v-on:click="toggleDetails"
+    <details :open="toggleDetailsState">
+      <summary @click="toggleDetails"
         v-translate>Explanation of data formats</summary>
       <ul>
         <li v-translate><strong>CSV</strong> files can be opened, viewed and manipulated with any word processor or spreadsheet software</li>
@@ -19,9 +19,9 @@
       </ul>
     </details>
     <select class="form-control" id="vector_download_format"
-      v-bind:value="value"
-      v-bind:required="required"
-      v-on:change="updateFormat">
+      :value="value"
+      :required="required"
+      @change="updateFormat">
         <option value="geojson">GeoJSON</option>
         <option value="csv">CSV</option>
     </select>

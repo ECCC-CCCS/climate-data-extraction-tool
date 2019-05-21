@@ -425,9 +425,25 @@
 			}
 		},
 		"Title": {
+			"Canada Base Map Transportation": {
+				"msgid": "Canada Base Map Transportation",
+				"msgctxt": "Title",
+				"msgstr": [
+					""
+				]
+			},
 			"Climate data extraction tool": {
 				"msgid": "Climate data extraction tool",
 				"msgctxt": "Title",
+				"msgstr": [
+					""
+				]
+			}
+		},
+		"Title heading": {
+			"Single grid point download": {
+				"msgid": "Single grid point download",
+				"msgctxt": "Title heading",
 				"msgstr": [
 					""
 				]
@@ -734,12 +750,6 @@
 					""
 				]
 			},
-			"Bounding box coordinates": {
-				"msgid": "Bounding box coordinates",
-				"msgstr": [
-					""
-				]
-			},
 			"British Columbia": {
 				"msgid": "British Columbia",
 				"msgstr": [
@@ -784,6 +794,12 @@
 			},
 			"Climate data extraction tool": {
 				"msgid": "Climate data extraction tool",
+				"msgstr": [
+					""
+				]
+			},
+			"Climate ID": {
+				"msgid": "Climate ID",
 				"msgstr": [
 					""
 				]
@@ -908,6 +924,12 @@
 					""
 				]
 			},
+			"Download": {
+				"msgid": "Download",
+				"msgstr": [
+					""
+				]
+			},
 			"Download a list of detailed information for each AHCCD station.": {
 				"msgid": "Download a list of detailed information for each AHCCD station.",
 				"msgstr": [
@@ -934,6 +956,24 @@
 			},
 			"Download a list of detailed information for each Monthly climate summaries station.": {
 				"msgid": "Download a list of detailed information for each Monthly climate summaries station.",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a region": {
+				"msgid": "Download a region",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a single grid point at:": {
+				"msgid": "Download a single grid point at:",
+				"msgstr": [
+					""
+				]
+			},
+			"Download data for a single location as a CSV of GeoJSON": {
+				"msgid": "Download data for a single location as a CSV of GeoJSON",
 				"msgstr": [
 					""
 				]
@@ -1154,6 +1194,12 @@
 					""
 				]
 			},
+			"If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.": {
+				"msgid": "If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.",
+				"msgstr": [
+					""
+				]
+			},
 			"If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>.": {
 				"msgid": "If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>.",
 				"msgstr": [
@@ -1210,6 +1256,12 @@
 			},
 			"Map Projection": {
 				"msgid": "Map Projection",
+				"msgstr": [
+					""
+				]
+			},
+			"Map selection type": {
+				"msgid": "Map selection type",
 				"msgstr": [
 					""
 				]
@@ -1382,8 +1434,26 @@
 					""
 				]
 			},
+			"Please change your form selection.": {
+				"msgid": "Please change your form selection.",
+				"msgstr": [
+					""
+				]
+			},
 			"Please correct all form errors to download data.": {
 				"msgid": "Please correct all form errors to download data.",
+				"msgstr": [
+					""
+				]
+			},
+			"Please select a different location within the dataset boundary or change your form selection.": {
+				"msgid": "Please select a different location within the dataset boundary or change your form selection.",
+				"msgstr": [
+					""
+				]
+			},
+			"Please select a point on the map.": {
+				"msgid": "Please select a point on the map.",
 				"msgstr": [
 					""
 				]
@@ -1508,8 +1578,20 @@
 					""
 				]
 			},
+			"Single grid point data could not be found.": {
+				"msgid": "Single grid point data could not be found.",
+				"msgstr": [
+					""
+				]
+			},
 			"Snow depth": {
 				"msgid": "Snow depth",
+				"msgstr": [
+					""
+				]
+			},
+			"Spatial selection": {
+				"msgid": "Spatial selection",
 				"msgstr": [
 					""
 				]
@@ -1856,8 +1938,32 @@
 					""
 				]
 			},
+			"You can press the &quot;Reset map&quot; button to see the available stations on this table.": {
+				"msgid": "You can press the &quot;Reset map&quot; button to see the available stations on this table.",
+				"msgstr": [
+					""
+				]
+			},
 			"You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.": {
 				"msgid": "You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.",
+				"msgstr": [
+					""
+				]
+			},
+			"You have selected stations but they are not within view of the map.": {
+				"msgid": "You have selected stations but they are not within view of the map.",
+				"msgstr": [
+					""
+				]
+			},
+			"Your form selection contains no data to download.": {
+				"msgid": "Your form selection contains no data to download.",
+				"msgstr": [
+					""
+				]
+			},
+			"Your map view does not contain any stations and you have no stations selected to download data.": {
+				"msgid": "Your map view does not contain any stations and you have no stations selected to download data.",
 				"msgstr": [
 					""
 				]
@@ -2308,11 +2414,27 @@
 			}
 		},
 		"Title": {
+			"Canada Base Map Transportation": {
+				"msgid": "Canada Base Map Transportation",
+				"msgctxt": "Title",
+				"msgstr": [
+					"Carte de base du Canada - Transport"
+				]
+			},
 			"Climate data extraction tool": {
 				"msgid": "Climate data extraction tool",
 				"msgctxt": "Title",
 				"msgstr": [
 					"Outil d'extraction de données climatiques"
+				]
+			}
+		},
+		"Title heading": {
+			"Single grid point download": {
+				"msgid": "Single grid point download",
+				"msgctxt": "Title heading",
+				"msgstr": [
+					""
 				]
 			}
 		},
@@ -2617,12 +2739,6 @@
 					"Archives"
 				]
 			},
-			"Bounding box coordinates": {
-				"msgid": "Bounding box coordinates",
-				"msgstr": [
-					"Coordonnées du cadre d'objet"
-				]
-			},
 			"British Columbia": {
 				"msgid": "British Columbia",
 				"msgstr": [
@@ -2669,6 +2785,12 @@
 				"msgid": "Climate data extraction tool",
 				"msgstr": [
 					"Outil d'extraction de données climatiques"
+				]
+			},
+			"Climate ID": {
+				"msgid": "Climate ID",
+				"msgstr": [
+					"ID climatique"
 				]
 			},
 			"Climate information basics": {
@@ -2791,6 +2913,12 @@
 					"Afficher et télécharger les données climatiques"
 				]
 			},
+			"Download": {
+				"msgid": "Download",
+				"msgstr": [
+					"Télécharger"
+				]
+			},
 			"Download a list of detailed information for each AHCCD station.": {
 				"msgid": "Download a list of detailed information for each AHCCD station.",
 				"msgstr": [
@@ -2819,6 +2947,24 @@
 				"msgid": "Download a list of detailed information for each Monthly climate summaries station.",
 				"msgstr": [
 					"Télécharger la liste des informations détaillées pour chaque station pour l’ensemble des données sur les Sommaires climatiques mensuels."
+				]
+			},
+			"Download a region": {
+				"msgid": "Download a region",
+				"msgstr": [
+					"Télécharger la région"
+				]
+			},
+			"Download a single grid point at:": {
+				"msgid": "Download a single grid point at:",
+				"msgstr": [
+					""
+				]
+			},
+			"Download data for a single location as a CSV of GeoJSON": {
+				"msgid": "Download data for a single location as a CSV of GeoJSON",
+				"msgstr": [
+					""
 				]
 			},
 			"Download records {startNum} - {endNum}": {
@@ -3037,6 +3183,12 @@
 					"Guide d'utilisation de la carte interactive"
 				]
 			},
+			"If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.": {
+				"msgid": "If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.",
+				"msgstr": [
+					""
+				]
+			},
 			"If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>.": {
 				"msgid": "If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>.",
 				"msgstr": [
@@ -3095,6 +3247,12 @@
 				"msgid": "Map Projection",
 				"msgstr": [
 					"Projection cartographique"
+				]
+			},
+			"Map selection type": {
+				"msgid": "Map selection type",
+				"msgstr": [
+					""
 				]
 			},
 			"Max number of stations selected": {
@@ -3265,10 +3423,28 @@
 					"Faire un panoramique:"
 				]
 			},
+			"Please change your form selection.": {
+				"msgid": "Please change your form selection.",
+				"msgstr": [
+					""
+				]
+			},
 			"Please correct all form errors to download data.": {
 				"msgid": "Please correct all form errors to download data.",
 				"msgstr": [
 					"Veuillez corriger toutes les erreurs de saisie afin de télécharger les données."
+				]
+			},
+			"Please select a different location within the dataset boundary or change your form selection.": {
+				"msgid": "Please select a different location within the dataset boundary or change your form selection.",
+				"msgstr": [
+					""
+				]
+			},
+			"Please select a point on the map.": {
+				"msgid": "Please select a point on the map.",
+				"msgstr": [
+					""
 				]
 			},
 			"Precipitation accumulation interval": {
@@ -3391,10 +3567,22 @@
 					"Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de {filteredNumEntries} (filtré de {totalSize} entrée au total)"
 				]
 			},
+			"Single grid point data could not be found.": {
+				"msgid": "Single grid point data could not be found.",
+				"msgstr": [
+					""
+				]
+			},
 			"Snow depth": {
 				"msgid": "Snow depth",
 				"msgstr": [
 					"Épaisseur de la neige"
+				]
+			},
+			"Spatial selection": {
+				"msgid": "Spatial selection",
+				"msgstr": [
+					"Sélection spatiale"
 				]
 			},
 			"Spring (March-May)": {
@@ -3739,10 +3927,34 @@
 					"World Geodetic System 1984 (EPSG:4326)"
 				]
 			},
+			"You can press the &quot;Reset map&quot; button to see the available stations on this table.": {
+				"msgid": "You can press the &quot;Reset map&quot; button to see the available stations on this table.",
+				"msgstr": [
+					""
+				]
+			},
 			"You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.": {
 				"msgid": "You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.",
 				"msgstr": [
 					"Vous pouvez préciser la période, les variables, le format de téléchargement et d’autres options. Utilisez la carte pour sélectionner un sous-ensemble géographique des données. Le sous-ensemble géographique des données que vous téléchargez correspondra à la zone indiquée sur la carte. Téléchargez les données en cliquant sur le lien de téléchargement des données en bas de la page."
+				]
+			},
+			"You have selected stations but they are not within view of the map.": {
+				"msgid": "You have selected stations but they are not within view of the map.",
+				"msgstr": [
+					""
+				]
+			},
+			"Your form selection contains no data to download.": {
+				"msgid": "Your form selection contains no data to download.",
+				"msgstr": [
+					""
+				]
+			},
+			"Your map view does not contain any stations and you have no stations selected to download data.": {
+				"msgid": "Your map view does not contain any stations and you have no stations selected to download data.",
+				"msgstr": [
+					""
 				]
 			},
 			"Yukon": {

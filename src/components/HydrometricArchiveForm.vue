@@ -16,8 +16,8 @@
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details v-bind:open="toggleDetailsState">
-          <summary v-on:click="toggleDetails"
+        <details :open="toggleDetailsState">
+          <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.</p>
 
@@ -26,18 +26,19 @@
           <p v-html="openPortalHtml"></p>
 
           <station-list-link
-            v-bind:url-station-list="urlStationList"
-            v-bind:download-text="$gettext('Download a list of detailed information for each Historical hydrometric station.')"></station-list-link>
+            :url-station-list="urlStationList"
+            :download-text="$gettext('Download a list of detailed information for each Historical hydrometric station.')"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>
 
         <bbox-map
           v-model="ows_bbox"
-          v-bind:max-zoom="mapMaxZoom"
-          v-bind:readable-columns="popup_props_display"
-          v-bind:select-disabled="provinceSelected"
-          v-bind:geojson="hydroStationsGeoJson"></bbox-map>
+          :max-zoom="mapMaxZoom"
+          :readable-columns="popup_props_display"
+          :select-disabled="provinceSelected"
+          :geojson="hydroStationsGeoJson"
+          :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <province-select
           v-model="wfs_province"></province-select>
@@ -45,43 +46,46 @@
         <station-select
           v-model="wfs_selected_station_ids"
           v-if="hydroStationsGeoJson !== null"
-          v-bind:select-disabled="provinceSelected"
-          v-bind:station-data="hydroStationsGeoJson.features"
-          v-bind:station-prop-display="station_props_display"></station-select>
+          :select-disabled="provinceSelected"
+          :station-data="hydroStationsGeoJson.features"
+          :station-prop-display="station_props_display"
+          :station-prov-col="stationProvCol"
+          :no-province-station-selected="noProvinceStationSelected"
+          :stn-primary-id="stnPrimaryId"></station-select>
 
         <var-select
           class="mrgn-tp-md"
           v-model="wfs_layer"
-          v-bind:label="$gettext('Value type / Time interval')"
-          v-bind:required="true"
-          v-bind:select-options="layer_options"></var-select>
+          :label="$gettext('Value type / Time interval')"
+          :required="true"
+          :select-options="layer_options"></var-select>
 
         <fieldset>
           <legend v-translate>Date range</legend>
           <date-select
             v-model="date_start"
-            v-bind:label="$gettext('Start date')"
-            v-bind:min-date="date_min"
-            v-bind:max-date="date_max"
-            v-bind:minimum-view="dateConfigs.minimumView"
-            v-bind:format="dateConfigs.format"
-            v-bind:custom-error-msg="dateRangeErrorMessage"
-            v-bind:placeholder="dateConfigs.placeholder"></date-select>
+            :label="$gettext('Start date')"
+            :min-date="date_min"
+            :max-date="date_max"
+            :minimum-view="dateConfigs.minimumView"
+            :format="dateConfigs.format"
+            :custom-error-msg="dateRangeErrorMessage"
+            :placeholder="dateConfigs.placeholder"></date-select>
 
           <date-select
             v-model="date_end"
-            v-bind:label="$gettext('End date')"
-            v-bind:min-date="date_min"
-            v-bind:max-date="date_max"
-            v-bind:minimum-view="dateConfigs.minimumView"
-            v-bind:format="dateConfigs.format"
-            v-bind:custom-error-msg="dateRangeErrorMessage"
-            v-bind:placeholder="dateConfigs.placeholder"></date-select>
+            :label="$gettext('End date')"
+            :min-date="date_min"
+            :max-date="date_max"
+            :minimum-view="dateConfigs.minimumView"
+            :format="dateConfigs.format"
+            :custom-error-msg="dateRangeErrorMessage"
+            :placeholder="dateConfigs.placeholder"></date-select>
 
           <button
             class="btn btn-default"
             type="button"
-            v-on:click="clearDates">Clear dates</button>
+            @click="clearDates">Clear dates</button>
         </fieldset>
 
         <format-select-vector
@@ -89,13 +93,13 @@
           v-model="wfs_format"></format-select-vector>
 
         <url-box
-          v-bind:layer-options="selectedLayerOption"
-          v-bind:ows-url-formatter="wfs3_download_url"
-          v-bind:wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          v-bind:wfs3-download-limit="wfs_limit"
-          v-bind:layer-format="wfs_format"
-          v-bind:has-errors="hasErrors"
-          v-bind:url-box-title="$gettext('Data download links')">
+          :layer-options="selectedLayerOption"
+          :ows-url-formatter="wfs3_download_url"
+          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+          :wfs3-download-limit="wfs_limit"
+          :layer-format="wfs_format"
+          :has-errors="hasErrors"
+          :url-box-title="$gettext('Data download links')">
         </url-box>
       </main>
       <dataset-menu></dataset-menu>
@@ -164,10 +168,10 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?STATUS_EN=Active&limit=' + this.wfs_station_limit
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&STATUS_EN=Active&limit=' + this.wfs_station_limit
     },
     urlAllHydroStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?limit=' + this.wfs_station_limit
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
     },
     hydroStationsGeoJson: function () {
       return this.$store.getters.getHydroStations
@@ -186,11 +190,11 @@ export default {
       return selLayer
     },
     station_props_display: function () {
-      return {
-        'STATION_NAME': this.$gettext('Station name'),
-        'IDENTIFIER': this.$gettext('Station ID'),
-        'PROV_TERR_STATE_LOC': this.$gettext('Province/Territory/State')
-      }
+      var props = {}
+      props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
+      props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Station ID')
+      props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province/Territory/State')
+      return props
     },
     popup_props_display: function () {
       var stationCols = Object.keys(this.station_props_display)

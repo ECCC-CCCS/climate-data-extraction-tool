@@ -20,7 +20,7 @@ export const ows = {
         en: process.env.APP_PATH_EN,
         fr: process.env.APP_PATH_FR
       },
-      ows_bbox: '-154,15,25,81',
+      ows_bbox: '-165,18,-20,87',
       ows_crs: 'EPSG:4326',
       bbox_parts: {
         min_x: 0,

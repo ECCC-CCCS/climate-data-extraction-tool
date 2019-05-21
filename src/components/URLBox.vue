@@ -2,19 +2,19 @@
   <div
     id="url_result"
     class="alert mrgn-tp-md"
-    v-bind:class="alertClass">
+    :class="alertClass">
     <h2>{{ urlBoxTitle }}</h2>
     <div
       v-show="!hasErrors"
       v-for="(title, layerName) in layerOptions"
       class="mrgn-tp-sm"
-      v-bind:key="layerName">
+      :key="layerName">
       <a
         v-show="wfs3CommonUrl === null && wcsCommonUrl === null"
-        v-bind:href="owsUrlFormatter(layerName)"
+        :href="owsUrlFormatter(layerName)"
         target="_blank"
         class="btn btn-default"
-        v-bind:download="downloadFormat(layerName)">
+        :download="downloadFormat(layerName)">
         <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
         <translate>Download:</translate> {{ title }}
       </a>
@@ -24,8 +24,14 @@
         type="button"
         v-show="wfs3CommonUrl !== null"
         aria-controls="wfs3-link-list num-records-wfs3-download"
-        v-bind:disabled="retrieved"
-        v-on:click="getNumRecords(layerName)"><translate>Retrieve download links</translate></button>
+        :disabled="retrieved || loading"
+        @click="getNumRecords(layerName)">
+          <translate>Retrieve download links</translate>
+          <pulse-loader
+            :loading="loading"
+            class="loading"
+            :size="5"></pulse-loader>
+        </button>
 
       <div
         id="wfs3-download-links-list"
@@ -42,11 +48,12 @@
 
         <div id="wfs3-link-list" class="list-group" aria-live="polite">
           <a
-            v-for="(offset, index) in chunkedOffsets"
-            v-bind:key="index"
-            v-bind:href="wfs3_download_url_chunk(offset)"
+            v-for="(startIndex, index) in chunkedStartIndexes"
+            v-show="numRecords !== 0"
+            :key="index"
+            :href="wfs3_download_url_chunk(startIndex)"
             target="_blank"
-            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="wfs3_download_name_chunk(offset, index)"></span>
+            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="wfs3_download_name_chunk(startIndex, index)"></span>
           </a>
         </div>
       </div>
@@ -59,8 +66,8 @@
         <div id="wcs-link-list" class="list-group" aria-live="polite">
           <a
             v-for="(bandChunk, index) in wcsBandChunks"
-            v-bind:key="index"
-            v-bind:href="wcs_download_url_chunk(bandChunk)"
+            :key="index"
+            :href="wcs_download_url_chunk(bandChunk)"
             target="_blank"
             class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="wcs_download_name_chunk(bandChunk, title)"></span>
           </a>
@@ -71,14 +78,25 @@
       v-show="hasErrors">
       <p v-translate>Please correct all form errors to download data.</p>
     </div>
+    <div
+      v-show="numRecords === 0">
+      <p>
+        <translate>Your form selection contains no data to download.</translate>
+        <translate>Please change your form selection.</translate>
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { PulseLoader } from '@saeris/vue-spinners'
 
 export default {
   name: 'URLBox',
+  components: {
+    PulseLoader
+  },
   props: {
     layerFormat: String,
     owsUrlFormatter: {
@@ -161,7 +179,8 @@ export default {
     alertClass: function () {
       return {
         'alert-success': !this.hasErrors,
-        'alert-danger': this.hasErrors
+        'alert-danger': this.hasErrors,
+        'alert-warning': this.numRecords === 0
       }
     },
     totalRecords: function () {
@@ -170,16 +189,17 @@ export default {
   },
   data () {
     return {
-      chunkedOffsets: [],
+      chunkedStartIndexes: [],
       numRecords: null,
-      retrieved: false
+      retrieved: false,
+      loading: false
     }
   },
   watch: {
     wfs3CommonUrl: function (newVal, oldVal) {
       if (newVal !== oldVal) { // reset
         this.numRecords = null
-        this.chunkedOffsets = []
+        this.chunkedStartIndexes = []
         this.retrieved = false
       }
     }
@@ -193,26 +213,28 @@ export default {
       }
     },
     getNumRecords: function (layerName) {
-      var urlGetNumRecords = this.wfs3CommonUrl + '&resulttype=hits'
+      var urlGetNumRecords = this.wfs3CommonUrl + '&resulttype=hits&f=json'
+      this.loading = true
       axios.get(urlGetNumRecords)
         .then(response => (
           this.chunkDownload(response.data)
         ))
-      this.retrieved = true
+        .finally(() => {
+          this.loading = false
+          this.retrieved = true
+        })
     },
-    wfs3_download_url_chunk: function (offset) {
-      offset = parseInt(offset)
+    wfs3_download_url_chunk: function (startIndex) {
+      startIndex = parseInt(startIndex)
       var url = this.wfs3CommonUrl
-      if (this.layerFormat === 'csv') {
-        url += '&f=' + this.layerFormat
-      }
-      url += '&limit=' + this.wfs3DownloadLimit + '&offset=' + offset
+      url += '&f=' + this.fileFormat
+      url += '&limit=' + this.wfs3DownloadLimit + '&startindex=' + startIndex
       return url
     },
-    wfs3_download_name_chunk: function (offset, chunkIndex) {
-      offset = parseInt(offset)
-      var startNum = offset + 1
-      var endNum = chunkIndex === (this.chunkedOffsets.length - 1) ? this.numRecords : this.chunkedOffsets[chunkIndex + 1]
+    wfs3_download_name_chunk: function (startIndex, chunkIndex) {
+      startIndex = parseInt(startIndex)
+      var startNum = startIndex + 1
+      var endNum = chunkIndex === (this.chunkedStartIndexes.length - 1) ? this.numRecords : this.chunkedStartIndexes[chunkIndex + 1]
       return this.$_i(this.$gettext('Download records {startNum} - {endNum}'), {'startNum': startNum, 'endNum': endNum})
     },
     wcs_download_name_chunk: function (bandChunk, title) {
@@ -237,12 +259,12 @@ export default {
     },
     chunkDownload: function (data) {
       this.numRecords = data.numberMatched
-      this.chunkedOffsets = []
-      var offset = 0
+      this.chunkedStartIndexes = []
+      var startIndex = 0
       do {
-        this.chunkedOffsets.push(offset)
-        offset += this.wfs3DownloadLimit
-      } while (offset < this.numRecords)
+        this.chunkedStartIndexes.push(startIndex)
+        startIndex += this.wfs3DownloadLimit
+      } while (startIndex < this.numRecords)
     }
   }
 }
@@ -250,4 +272,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.loading {
+  display: inline;
+}
 </style>
