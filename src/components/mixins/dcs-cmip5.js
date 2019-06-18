@@ -141,7 +141,7 @@ export const DCSCMIP5 = {
       }
     },
     timePeriodOptions: function () {
-      return {
+      var options = {
         SPRING: this.$gettext('Spring (March-May)'),
         SUMMER: this.$gettext('Summer (June-August)'),
         FALL: this.$gettext('Fall (September-November)'),
@@ -149,6 +149,10 @@ export const DCSCMIP5 = {
         YEAR: this.$gettext('Annual'),
         ENS: this.$gettext('Monthly')
       }
+      // if (!this.pointDownloadOn) {
+      //   options['ENS'] = this.$gettext('Monthly')
+      // }
+      return options
     },
     scenarioTypeOptions: function () {
       return {

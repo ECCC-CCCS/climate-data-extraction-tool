@@ -22,12 +22,19 @@ export const wfs = {
       date_start: null,
       date_end: null,
       mapMaxZoom: 12,
-      datasetToStnColName: {
+      datasetToStnColName: { // Unique primary ID of MSC climate stations
         ahccd: 'station_id__id_station',
         hydrometric: 'STATION_NUMBER',
-        normals: 'STN_ID',
-        daily: 'STN_ID',
-        monthly: 'STN_ID'
+        normals: 'CLIMATE_IDENTIFIER',
+        daily: 'CLIMATE_IDENTIFIER',
+        monthly: 'CLIMATE_IDENTIFIER'
+      },
+      datasetToNameColName: {
+        ahccd: 'station_name__nom_station',
+        hydrometric: 'STATION_NAME',
+        normals: 'STATION_NAME',
+        daily: 'STATION_NAME',
+        monthly: 'STATION_NAME'
       },
       datasetToDateColName: {
         hydrometric: 'DATE', // MAX_DATE for hydrometric-annual-statistics
@@ -42,8 +49,8 @@ export const wfs = {
         daily: 'PROVINCE_CODE',
         monthly: 'PROVINCE_CODE'
       },
-      layerToColSortOrder: {
-        'climate-normals': ['STN_ID', 'NORMAL_ID', 'MONTH'],
+      layerToColSortOrder: { // default download sort order
+        'climate-normals': ['CLIMATE_IDENTIFIER', 'NORMAL_ID', 'MONTH'],
         'hydrometric-daily-mean': ['IDENTIFIER'],
         'hydrometric-monthly-mean': ['IDENTIFIER'],
         'hydrometric-annual-peaks': ['IDENTIFIER'],
@@ -58,6 +65,18 @@ export const wfs = {
   computed: {
     getProvince: function () {
       return this.$store.getters.getProvince
+    },
+    stationProvCol: function () { // province column for station table
+      const routeName = this.$route.name
+      const climateStationSets = ['monthly', 'daily', 'normals']
+      if (climateStationSets.indexOf(routeName) !== -1) {
+        return 'PROV_STATE_TERR_CODE'
+      } else {
+        return this.datasetToProvColName[routeName]
+      }
+    },
+    stnPrimaryId: function () {
+      return this.datasetToStnColName[this.$route.name]
     },
     dateConfigs: function () {
       if (this.wfs_layer === 'climate-monthly') {
@@ -192,6 +211,9 @@ export const wfs = {
     },
     provinceSelected: function () {
       return this.wfs_province !== 'null'
+    },
+    noProvinceStationSelected: function () {
+      return !this.stationsSelected && !this.provinceSelected
     },
     layer_options: function () {
       var layers = {}

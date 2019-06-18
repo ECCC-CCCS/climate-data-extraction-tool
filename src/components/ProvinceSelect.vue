@@ -2,13 +2,13 @@
   <div class="form-group">
     <label for="cccs_province" v-translate>Province/Territory</label>
     <select class="form-control" id="cccs_province"
-    v-bind:disabled="disabled"
-    v-on:change="emitUpdatedValue">
+    :disabled="disabled"
+    @change="emitUpdatedValue">
       <option
         v-for="(provLabel, key) in selectOptions"
-        v-bind:key="key"
-        v-bind:value="key"
-        v-bind:selected="value === key">{{ provLabel }}</option>
+        :key="key"
+        :value="key"
+        :selected="value === key">{{ provLabel }}</option>
     </select>
   </div>
 </template>

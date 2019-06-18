@@ -1,8 +1,8 @@
 <template>
   <div class="form-group">
     <label
-      v-bind:for="'var-sel-'+label_id"
-      v-bind:class="{required: required}">{{ label }}
+      :for="'var-sel-'+label_id"
+      :class="{required: required}">{{ label }}
       <strong
         v-if="required"
         class="required"
@@ -18,20 +18,20 @@
         </div>
       </span>
     </label>
-    <details v-bind:open="toggleDetailsState" v-if="detailsTitle !== null">
-      <summary v-on:click="toggleDetails">{{ detailsTitle }}</summary>
+    <details :open="toggleDetailsState" v-if="detailsTitle !== null">
+      <summary @click="toggleDetails">{{ detailsTitle }}</summary>
       <p
         v-for="(paragraphText, index) in detailsText"
         :key="index"
         v-html="paragraphText"></p>
     </details>
-    <select class="form-control" v-bind:id="'var-sel-'+label_id"
-      v-bind:value="value"
-      v-on:change="emitUpdatedValue"
-      v-bind:disabled="disabled"
-      v-bind:readonly="readonly"
-      v-bind:required="required">
-        <option v-for="(value, key) in selectOptions" v-bind:key="key" v-bind:value="key">{{ value }}</option>
+    <select class="form-control" :id="'var-sel-'+label_id"
+      :value="value"
+      @change="emitUpdatedValue"
+      :disabled="disabled || oneOptionOnly"
+      :readonly="readonly"
+      :required="required">
+        <option v-for="(value, key) in selectOptions" :key="key" :value="key">{{ value }}</option>
     </select>
   </div>
 </template>
@@ -96,6 +96,9 @@ export default {
   computed: {
     label_id: function () {
       return this.label.replace(' ', '-').trim()
+    },
+    oneOptionOnly: function () {
+      return Object.keys(this.selectOptions).length <= 1
     }
   }
 }

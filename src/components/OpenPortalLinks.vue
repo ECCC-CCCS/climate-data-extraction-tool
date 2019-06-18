@@ -4,7 +4,7 @@
     <ul>
       <li
         v-for="(variable, index) in openPortalVariables"
-        v-bind:key="index"><a v-bind:href="variable.url[$i18n.activeLocale]" target="_blank">{{ variable.name }}</a></li>
+        :key="index"><a :href="variable.url[$i18n.activeLocale]" target="_blank">{{ variable.name }}</a></li>
     </ul>
   </p>
 </template>

@@ -2,7 +2,7 @@
   <div>
   <p>
     <a
-      v-bind:href="urlStationListCSV"
+      :href="urlStationListCSV"
       target="_blank"
       download><span class="glyphicon glyphicon-download" aria-hidden="true"></span> {{downloadText}}</a>
   </p>

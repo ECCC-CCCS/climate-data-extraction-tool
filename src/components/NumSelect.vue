@@ -2,8 +2,8 @@
   <div>
     <div class="form-group">
       <label
-        v-bind:for="'num'+label_id"
-        v-bind:class="{required: required}">
+        :for="'num'+label_id"
+        :class="{required: required}">
         {{ label }}
         <strong
           v-if="required"
@@ -21,11 +21,11 @@
       <input
         type="number"
         class="form-control"
-        v-bind:id="'num'+label_id"
-        v-on:change="emitUpdatedValue"
-        v-bind:min="min"
-        v-bind:max="max"
-        v-bind:value="value">
+        :id="'num'+label_id"
+        @change="emitUpdatedValue"
+        :min="min"
+        :max="max"
+        :value="value">
     </div>
   </div>
 </template>

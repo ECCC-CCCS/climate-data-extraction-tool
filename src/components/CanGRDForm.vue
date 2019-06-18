@@ -9,8 +9,8 @@
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details v-bind:open="toggleDetailsState">
-          <summary v-on:click="toggleDetails"
+        <details :open="toggleDetailsState">
+          <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
 
@@ -23,51 +23,52 @@
 
         <bbox-map
           v-model="ows_bbox"
-          v-on:change="splitBBOXString"></bbox-map>
+          :allow-click-point="true"
+          @change="splitBBOXString"></bbox-map>
         <var-select
           v-model="wcs_id_cangrdType"
-          v-bind:label="$gettext('Value type')"
-          v-bind:select-options="variableTypeOptions"></var-select>
+          :label="$gettext('Value type')"
+          :select-options="variableTypeOptions"></var-select>
 
         <var-select
           v-model="wcs_id_variable"
-          v-bind:label="$gettext('Variable')"
-          v-bind:select-options="variableOptions"></var-select>
+          :label="$gettext('Variable')"
+          :select-options="variableOptions"></var-select>
 
         <var-select
           v-model="wcs_id_timePeriod"
-          v-bind:label="$gettext('Time interval / Time of year')"
-          v-bind:select-options="timePeriodOptions"></var-select>
+          :label="$gettext('Time interval / Time of year')"
+          :select-options="timePeriodOptions"></var-select>
 
-        <fieldset>
+        <fieldset v-show="!pointDownloadOn">
           <legend v-translate>Date range</legend>
           <div v-show="wcs_id_cangrdType === 'ANO'">
             <date-select
               v-model="date_start"
-              v-bind:label="$gettext('Start date')"
-              v-bind:minimum-view="dateConfigs.minimumView"
-              v-bind:format="dateConfigs.format"
-              v-bind:required="timePeriodIsMonthly"
-              v-bind:min-date="dateConfigs.dateMin"
-              v-bind:max-date="dateConfigs.dateMax"
-              v-bind:custom-error-msg="dateRangeErrorMessage"
-              v-bind:placeholder="dateConfigs.placeholder"></date-select>
+              :label="$gettext('Start date')"
+              :minimum-view="dateConfigs.minimumView"
+              :format="dateConfigs.format"
+              :required="timePeriodIsMonthly"
+              :min-date="dateConfigs.dateMin"
+              :max-date="dateConfigs.dateMax"
+              :custom-error-msg="dateRangeErrorMessage"
+              :placeholder="dateConfigs.placeholder"></date-select>
 
             <date-select
               v-model="date_end"
-              v-bind:label="$gettext('End date')"
-              v-bind:minimum-view="dateConfigs.minimumView"
-              v-bind:format="dateConfigs.format"
-              v-bind:required="timePeriodIsMonthly"
-              v-bind:min-date="dateConfigs.dateMin"
-              v-bind:max-date="dateConfigs.dateMax"
-              v-bind:custom-error-msg="dateRangeErrorMessage"
-              v-bind:placeholder="dateConfigs.placeholder"></date-select>
+              :label="$gettext('End date')"
+              :minimum-view="dateConfigs.minimumView"
+              :format="dateConfigs.format"
+              :required="timePeriodIsMonthly"
+              :min-date="dateConfigs.dateMin"
+              :max-date="dateConfigs.dateMax"
+              :custom-error-msg="dateRangeErrorMessage"
+              :placeholder="dateConfigs.placeholder"></date-select>
 
             <button
               class="btn btn-default"
               type="button"
-              v-on:click="clearDates"
+              @click="clearDates"
               v-translate>Clear dates</button>
           </div>
         </fieldset>
@@ -80,29 +81,45 @@
 
         <format-select-raster
           class="mrgn-tp-md"
+          v-show="!pointDownloadOn"
           v-model="wcs_format"
-          v-bind:info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+          :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
-        <details v-bind:open="toggleDetailsAdvState" class="mrgn-tp-md">
-          <summary v-on:click="toggleDetailsAdv"
+        <format-select-vector
+          class="mrgn-tp-md"
+          v-show="pointDownloadOn"
+          v-model="wps_format"></format-select-vector>
+
+        <details
+          :open="toggleDetailsAdvState"
+          class="mrgn-tp-md"
+          v-show="!pointDownloadOn">
+          <summary @click="toggleDetailsAdv"
             v-translate>Advanced options</summary>
           <var-select
             v-model="ows_crs"
-            v-bind:label="crsLabel"
-            v-bind:select-options="crsOptions"></var-select>
+            :label="crsLabel"
+            :select-options="crsOptions"></var-select>
         </details>
 
         <url-box
-          v-bind:layer-options="selectedCoverageIdOption"
-          v-bind:ows-url-formatter="wcs_download_url"
-          v-bind:layer-format="wcs_format"
-          v-bind:wcs-common-url="wcsCommonUrl"
-          v-bind:wcs-band-chunks="chunkedBandsParam"
-          v-bind:wcs-num-bands="dateRangeNumBands"
-          v-bind:band-range-format="bandRangeFormat"
-          v-bind:has-errors="hasErrors"
-          v-bind:url-box-title="$gettext('Data download link')">
+          v-show="!pointDownloadOn"
+          :layer-options="selectedCoverageIdOption"
+          :ows-url-formatter="wcs_download_url"
+          :layer-format="wcs_format"
+          :wcs-common-url="wcsCommonUrl"
+          :wcs-band-chunks="chunkedBandsParam"
+          :wcs-num-bands="dateRangeNumBands"
+          :band-range-format="bandRangeFormat"
+          :has-errors="hasErrors"
+          :url-box-title="$gettext('Data download link')">
         </url-box>
+
+        <point-download-box
+          v-show="pointDownloadOn"
+          :title="titlePointDownload"
+          :hasErrors="invalidPointDownloadInputs"
+          :point-inputs="pointInputs" />
       </main>
       <dataset-menu></dataset-menu>
     </div>
@@ -113,27 +130,32 @@
 import DatasetMenu from './DatasetMenu'
 import BBOXMap from './BBOXMap'
 import FormatSelectRaster from './FormatSelectRaster'
+import FormatSelectVector from './FormatSelectVector'
 import VarSelect from './VarSelect'
 import DateSelect from './DateSelect'
 import URLBox from './URLBox'
 import InfoContactSupport from './InfoContactSupport'
 import DataAccessDocLink from './DataAccessDocLink'
+import PointDownloadBox from './PointDownloadBox'
 import { wcs } from './mixins/wcs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
+import { wps } from './mixins/wps'
 
 export default {
   name: 'CanGRDForm',
-  mixins: [wcs, ows, datasets],
+  mixins: [wcs, ows, datasets, wps],
   components: {
-    'dataset-menu': DatasetMenu,
+    DatasetMenu,
     'bbox-map': BBOXMap,
-    'format-select-raster': FormatSelectRaster,
-    'var-select': VarSelect,
-    'date-select': DateSelect,
+    FormatSelectRaster,
+    VarSelect,
+    DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
-    DataAccessDocLink
+    InfoContactSupport,
+    DataAccessDocLink,
+    PointDownloadBox,
+    FormatSelectVector
   },
   data () {
     return {
@@ -258,10 +280,13 @@ export default {
       }
     },
     variableTypeOptions: function () {
-      return {
-        'ANO': this.$gettext('Anomaly values'),
-        'TREND': this.$gettext('Trend values')
+      var options = {
+        'ANO': this.$gettext('Anomaly values')
       }
+      if (!this.pointDownloadOn) {
+        options['TREND'] = this.$gettext('Trend values')
+      }
+      return options
     },
     dateConfigs: function () {
       var dateMax = this.wcs_id_variable === 'PR' ? this.date_max_pr : this.date_max

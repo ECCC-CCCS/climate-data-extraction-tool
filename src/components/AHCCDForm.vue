@@ -16,8 +16,8 @@
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details v-bind:open="toggleDetailsState">
-          <summary v-on:click="toggleDetails"
+        <details :open="toggleDetailsState">
+          <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.</p>
 
@@ -26,18 +26,19 @@
           <p v-html="openPortalHtml"></p>
 
           <station-list-link
-            v-bind:url-station-list="urlStationList"
-            v-bind:download-text="$gettext('Download a list of detailed information for each AHCCD station.')"></station-list-link>
+            :url-station-list="urlStationList"
+            :download-text="$gettext('Download a list of detailed information for each AHCCD station.')"></station-list-link>
         </details>
 
         <info-contact-support></info-contact-support>
 
         <bbox-map
           v-model="ows_bbox"
-          v-bind:max-zoom="18"
-          v-bind:readable-columns="popup_props_display"
-          v-bind:select-disabled="provinceSelected"
-          v-bind:geojson="ahccdStationsGeoJson"></bbox-map>
+          :max-zoom="18"
+          :readable-columns="popup_props_display"
+          :select-disabled="provinceSelected"
+          :geojson="ahccdStationsGeoJson"
+          :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <province-select
           v-model="wfs_province"></province-select>
@@ -45,44 +46,47 @@
         <station-select
           v-model="wfs_selected_station_ids"
           v-if="ahccdStationsGeoJson !== null"
-          v-bind:select-disabled="provinceSelected"
-          v-bind:station-data="ahccdStationsGeoJson.features"
-          v-bind:station-prop-display="station_props_display"></station-select>
+          :select-disabled="provinceSelected"
+          :station-data="ahccdStationsGeoJson.features"
+          :station-prop-display="station_props_display"
+          :station-prov-col="stationProvCol"
+          :no-province-station-selected="noProvinceStationSelected"
+          :stn-primary-id="stnPrimaryId"></station-select>
 
         <var-select
           class="mrgn-tp-md"
           v-model="wfs_layer"
-          v-bind:label="$gettext('Value type / Time interval')"
-          v-bind:required="true"
-          v-bind:select-options="layer_options"></var-select>
+          :label="$gettext('Value type / Time interval')"
+          :required="true"
+          :select-options="layer_options"></var-select>
 
         <fieldset
           v-show="wfs_layer !== 'ahccd-trends'">
           <legend v-translate>Date range</legend>
           <date-select
             v-model="date_start"
-            v-bind:label="$gettext('Start date')"
-            v-bind:minimum-view="dateConfigs.minimumView"
-            v-bind:format="dateConfigs.format"
-            v-bind:min-date="date_min"
-            v-bind:max-date="date_max"
-            v-bind:custom-error-msg="dateRangeErrorMessage"
-            v-bind:placeholder="dateConfigs.placeholder"></date-select>
+            :label="$gettext('Start date')"
+            :minimum-view="dateConfigs.minimumView"
+            :format="dateConfigs.format"
+            :min-date="date_min"
+            :max-date="date_max"
+            :custom-error-msg="dateRangeErrorMessage"
+            :placeholder="dateConfigs.placeholder"></date-select>
 
           <date-select
             v-model="date_end"
-            v-bind:label="$gettext('End date')"
-            v-bind:minimum-view="dateConfigs.minimumView"
-            v-bind:format="dateConfigs.format"
-            v-bind:min-date="date_min"
-            v-bind:max-date="date_max"
-            v-bind:custom-error-msg="dateRangeErrorMessage"
-            v-bind:placeholder="dateConfigs.placeholder"></date-select>
+            :label="$gettext('End date')"
+            :minimum-view="dateConfigs.minimumView"
+            :format="dateConfigs.format"
+            :min-date="date_min"
+            :max-date="date_max"
+            :custom-error-msg="dateRangeErrorMessage"
+            :placeholder="dateConfigs.placeholder"></date-select>
 
           <button
             class="btn btn-default"
             type="button"
-            v-on:click="clearDates"
+            @click="clearDates"
             v-translate>Clear dates</button>
         </fieldset>
 
@@ -91,13 +95,13 @@
           v-model="wfs_format"></format-select-vector>
 
         <url-box
-          v-bind:layer-options="selectedLayerOption"
-          v-bind:ows-url-formatter="wfs3_download_url"
-          v-bind:wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          v-bind:wfs3-download-limit="wfs_limit"
-          v-bind:layer-format="wfs_format"
-          v-bind:has-errors="hasErrors"
-          v-bind:url-box-title="$gettext('Data download link')">
+          :layer-options="selectedLayerOption"
+          :ows-url-formatter="wfs3_download_url"
+          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+          :wfs3-download-limit="wfs_limit"
+          :layer-format="wfs_format"
+          :has-errors="hasErrors"
+          :url-box-title="$gettext('Data download link')">
         </url-box>
       </main>
       <dataset-menu></dataset-menu>
@@ -166,17 +170,17 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?limit=' + this.wfs_station_limit
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
     },
     ahccdStationsGeoJson: function () {
       return this.$store.getters.getAhccdStations
     },
     station_props_display: function () {
-      return {
-        'station_name__nom_station': this.$gettext('Station name'),
-        'station_id__id_station': this.$gettext('Station ID'),
-        'province__province': this.$gettext('Province/Territory')
-      }
+      var props = {}
+      props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
+      props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Station ID')
+      props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province/Territory')
+      return props
     },
     layer_options: function () {
       return {

@@ -1,20 +1,20 @@
 <template>
   <div class="form-group">
     <div
-    v-bind:class="radioClass"
+    :class="radioClass"
     v-for="(radioLabel, key) in radioOptions"
-    v-bind:key="key">
+    :key="key">
       <label
-      v-bind:for="'val-radio-' + dashAndTrim(radioLabel)"
+      :for="'val-radio-' + dashAndTrim(radioLabel)"
       class="form-check-label">
         <input
-        v-bind:id="'val-radio-' + dashAndTrim(radioLabel)"
+        :id="'val-radio-' + dashAndTrim(radioLabel)"
         class="form-check-input"
         type="radio"
-        v-bind:name="'option-radio-' + label_id"
-        v-bind:value="key"
-        v-model="optionSelected"
-        v-on:change="emitUpdatedValue">{{ radioLabel }}</label>
+        :name="'option-radio-' + label_id"
+        :value="key"
+        :checked="value === key"
+        @change="emitUpdatedValue">{{ radioLabel }}</label>
     </div>
   </div>
 </template>
@@ -22,10 +22,6 @@
 <script>
 export default {
   name: 'OptionRadio',
-  model: {
-    prop: 'optionSelected',
-    event: 'change'
-  },
   props: {
     value: String,
     label: {
@@ -51,22 +47,17 @@ export default {
       default: false
     }
   },
-  data () {
-    return {
-      optionSelected: this.initialValue
-    }
-  },
   watch: {
     radioOptions: function (newOptions, oldOptions) {
       // auto select the first option if option list changes
       if (Object.keys(newOptions).length === 1 && Object.keys(newOptions).length !== Object.keys(oldOptions).length) {
-        this.optionSelected = Object.keys(newOptions)[0]
+        this.value = Object.keys(newOptions)[0]
       }
     }
   },
   methods: {
     emitUpdatedValue: function (event) {
-      this.$emit('change', this.optionSelected)
+      this.$emit('input', event.target.value)
     },
     dashAndTrim: function (str) {
       return str.replace(' ', '-').replace('.', '-').trim()
