@@ -121,9 +121,6 @@ export default {
     if (this.climateStationsGeoJson === null) { // prevent duplicate AJAX
       this.$store.dispatch('retrieveClimateStations', this.urlStationList)
     }
-
-    // reset existing selections that share with other components
-    this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
     urlStationList: function () {

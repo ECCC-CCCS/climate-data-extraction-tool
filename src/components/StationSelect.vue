@@ -70,18 +70,8 @@
                 <td
                   :colspan="Object.keys(stationPropDisplay).length">
                   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                  <translate>Your map view does not contain any stations and you have no stations selected to download data.</translate>
-                  <translate>You can press the "Reset map" button to see the available stations on this table.</translate>
-                </td>
-            </tr>
-            <tr
-              v-show="!noProvinceStationSelected && filteredNumEntries === 0"
-              class="warning text-warning">
-                <td
-                  :colspan="Object.keys(stationPropDisplay).length">
-                  <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                  <translate>You have selected stations but they are not within view of the map.</translate>
-                  <translate>You can press the "Reset map" button to see the available stations on this table.</translate>
+                  <translate t-comment="Warning message when user has no stations selected and no stations are contained in the map viewport">There are no stations available to download data from your current map display.</translate>
+                  <translate>Please press the "Reset map" button to see the stations in this table.</translate>
                 </td>
             </tr>
           </tbody>
@@ -113,7 +103,6 @@
         </div>
         <span>{{ showingFilterText }}</span>
       </nav>
-
     </fieldset>
   </div>
 </template>
@@ -151,6 +140,12 @@ export default {
     noProvinceStationSelected: Boolean,
     stationProvCol: String,
     stnPrimaryId: String
+  },
+  mounted: function () {
+    this.clearSelected()
+
+    // reset bboxStationTotal
+    this.$store.dispatch('setBboxStationTotal', null)
   },
   created: function () {
     // add lat/lon
@@ -195,10 +190,10 @@ export default {
       if (newVal < oldVal) { // reset to page 1 if filtered entries become less
         this.currentPage = 1
       }
+    },
+    bboxStationTotal: function (newVal) {
+      this.$store.dispatch('setBboxStationTotal', newVal)
     }
-  },
-  mounted: function () {
-    this.clearSelected()
   },
   methods: {
     sort: function (s) {
@@ -313,7 +308,7 @@ export default {
     },
     bboxFilter: function (row, index) {
       if (this.bbox !== null) { // bbox filter if applicable
-        var stnPoint = [row.geometry.coordinates[1], row.geometry.coordinates[0]]
+        let stnPoint = [row.geometry.coordinates[1], row.geometry.coordinates[0]]
         return this.bounds.contains(stnPoint)
       } else {
         return true
@@ -326,7 +321,7 @@ export default {
   },
   computed: {
     filteredStations: function () {
-      var cmp = this
+      let cmp = this
       function compareStn (a, b) {
         let modifier = 1
         if (cmp.currentSortDir === 'desc') {
@@ -353,6 +348,11 @@ export default {
       return this.filteredStations
         .slice(0)
         .filter(this.paginateFilter)
+    },
+    bboxStationTotal: function () {
+      return this.stationData
+        .slice(0)
+        .filter(this.bboxFilter).length
     },
     showingFilterText: function () {
       if (this.filteredNumEntries < this.totalSize) {
@@ -410,7 +410,7 @@ export default {
       }
     },
     lastEntryOfPage: function () {
-      var maxEntryThisPage = this.currentPage * this.pageSize
+      let maxEntryThisPage = this.currentPage * this.pageSize
       if (maxEntryThisPage < this.filteredNumEntries) {
         return maxEntryThisPage
       } else {

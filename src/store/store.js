@@ -14,6 +14,7 @@ export default new Vuex.Store({
     ahccdStationGeoJson: null,
     stationIdSelected: [],
     bbox: null,
+    bboxStationTotal: null,
     maxStationSelection: 20,
     minDateClimateDaily: null,
     minDateClimateMonthly: null,
@@ -67,6 +68,9 @@ export default new Vuex.Store({
     },
     changeClimateMonthlyMinDate (state, payload) {
       state.minDateClimateMonthly = payload
+    },
+    changeBboxStationTotal (state, payload) {
+      state.bboxStationTotal = payload
     }
   },
   actions: { // AJAX in stuff; change states
@@ -126,6 +130,9 @@ export default new Vuex.Store({
     },
     setClimateMonthlyMinDate: function ({ commit }, minDate) {
       commit('changeClimateMonthlyMinDate', minDate)
+    },
+    setBboxStationTotal: function ({ commit }, total) {
+      commit('changeBboxStationTotal', total)
     }
   },
   getters: {
@@ -167,6 +174,9 @@ export default new Vuex.Store({
     },
     getClimateMonthlyMinDate (state) {
       return state.minDateClimateMonthly
+    },
+    getBboxStationsTotal: function (state) {
+      return state.bboxStationTotal
     }
   }
 })

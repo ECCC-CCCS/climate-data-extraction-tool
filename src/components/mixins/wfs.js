@@ -62,6 +62,10 @@ export const wfs = {
       }
     }
   },
+  beforeMount () {
+    // reset existing selections that share with other components
+    this.$store.dispatch('changeProvince', 'null') // to share with bbox
+  },
   computed: {
     getProvince: function () {
       return this.$store.getters.getProvince
@@ -192,7 +196,8 @@ export const wfs = {
       return this.dateRangeHasBadRange ||
         this.dateRangePastLimits ||
         this.dateStartIsEmptyOnly ||
-        this.dateEndIsEmptyOnly
+        this.dateEndIsEmptyOnly ||
+        this.noProvinceStationSelected
     },
     spatialSelectPriority: function () {
       // Determines spatial selection priority: point, province, bbox
@@ -213,7 +218,7 @@ export const wfs = {
       return this.wfs_province !== 'null'
     },
     noProvinceStationSelected: function () {
-      return !this.stationsSelected && !this.provinceSelected
+      return !this.stationsSelected && !this.provinceSelected && this.$store.getters.getBboxStationsTotal === 0
     },
     layer_options: function () {
       var layers = {}
