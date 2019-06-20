@@ -19,6 +19,15 @@
       </span>
     </strong>
 
+    <strong
+      v-show="allowClickPoint && pointClickOn === 'off'"
+      class="info">
+      <span class="label label-info">
+        <span class="prefix"></span>
+        <translate>The downloaded area will match the area shown in the map.</translate>
+      </span>
+    </strong>
+
     <details
       :open="toggleDetailsState">
       <summary @click="toggleDetails"
@@ -408,7 +417,16 @@ export default {
     updateBBOXfromMap: function (event) {
       if (this.$refs.hasOwnProperty('BBOXMap')) {
         if (this.$refs.BBOXMap.hasOwnProperty('mapObject')) {
-          this.bbox_value = this.$refs.BBOXMap.mapObject.getBounds().toBBoxString()
+          let bboxBounds = this.$refs.BBOXMap.mapObject.getBounds()
+          // ensure BBOX are within proper lat/lng ranges
+          let fixedBbox = {
+            west: bboxBounds.getWest() < -180 ? -180 : bboxBounds.getWest(), // lng
+            south: bboxBounds.getSouth() < -90 ? -90 : bboxBounds.getSouth(), // lat
+            east: bboxBounds.getEast() > 180 ? 180 : bboxBounds.getEast(), // lng
+            north: bboxBounds.getNorth() > 90 ? 90 : bboxBounds.getNorth() // lat
+          }
+          let fixedBounds = L.latLngBounds(L.latLng(fixedBbox.south, fixedBbox.west), L.latLng(fixedBbox.north, fixedBbox.east))
+          this.bbox_value = fixedBounds.toBBoxString()
           this.updateBBOX(null)
         }
       }

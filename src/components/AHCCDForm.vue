@@ -164,9 +164,6 @@ export default {
     if (this.ahccdStationsGeoJson === null) { // prevent duplicate AJAX
       this.$store.dispatch('retrieveAhccdStations', this.urlStationList)
     }
-
-    // reset existing selections that share with other components
-    this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
     urlStationList: function () {

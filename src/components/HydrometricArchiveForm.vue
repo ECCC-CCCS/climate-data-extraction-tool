@@ -162,9 +162,6 @@ export default {
     if (this.hydroStationsGeoJson === null) { // prevent duplicate AJAX
       this.$store.dispatch('retrieveHydroStations', this.urlStationList)
     }
-
-    // reset existing selections that share with other components
-    this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
     urlStationList: function () {

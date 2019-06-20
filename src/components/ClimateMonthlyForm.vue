@@ -174,9 +174,6 @@ export default {
       this.date_start = this.$moment.utc(minDate, 'YYYY-MM').toDate()
       this.date_min = this.$moment.utc(minDate, 'YYYY-MM').toDate()
     }
-
-    // reset existing selections that share with other components
-    this.$store.dispatch('changeProvince', 'null') // to share with bbox
   },
   computed: {
     urlStationList: function () {

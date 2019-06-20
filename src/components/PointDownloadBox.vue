@@ -22,8 +22,9 @@
     <div
       v-show="downloadError">
       <p>
-        <translate>Single grid point data could not be found.</translate>
-        <translate>Please select a different location within the dataset boundary or change your form selection.</translate>
+        <translate t-comment="WPS error message">Single grid point data could not be found.</translate>
+        <translate t-comment="WPS error message">It's possible that your selected location is not within the dataset boundary.</translate>
+        <translate t-comment="WPS error message">Please select a different location within the dataset boundary or change your form selection.</translate>
       </p>
       <p>
         <code>{{ errorMsg }}</code>
