@@ -966,14 +966,8 @@
 					""
 				]
 			},
-			"Download a single grid point at:": {
-				"msgid": "Download a single grid point at:",
-				"msgstr": [
-					""
-				]
-			},
-			"Download data for a single location as a CSV of GeoJSON": {
-				"msgid": "Download data for a single location as a CSV of GeoJSON",
+			"Download data for a single location as a CSV or GeoJSON": {
+				"msgid": "Download data for a single location as a CSV or GeoJSON",
 				"msgstr": [
 					""
 				]
@@ -1218,8 +1212,20 @@
 					""
 				]
 			},
+			"It's possible that your selected location is not within the dataset boundary.": {
+				"msgid": "It's possible that your selected location is not within the dataset boundary.",
+				"msgstr": [
+					""
+				]
+			},
 			"Latitude": {
 				"msgid": "Latitude",
+				"msgstr": [
+					""
+				]
+			},
+			"Latitude:": {
+				"msgid": "Latitude:",
 				"msgstr": [
 					""
 				]
@@ -1238,6 +1244,12 @@
 			},
 			"Longitude": {
 				"msgid": "Longitude",
+				"msgstr": [
+					""
+				]
+			},
+			"Longitude:": {
+				"msgid": "Longitude:",
 				"msgstr": [
 					""
 				]
@@ -1442,6 +1454,12 @@
 			},
 			"Please correct all form errors to download data.": {
 				"msgid": "Please correct all form errors to download data.",
+				"msgstr": [
+					""
+				]
+			},
+			"Please press the \"Reset map\" button to see the stations in this table.": {
+				"msgid": "Please press the \"Reset map\" button to see the stations in this table.",
 				"msgstr": [
 					""
 				]
@@ -1722,6 +1740,12 @@
 					""
 				]
 			},
+			"The downloaded area will match the area shown in the map.": {
+				"msgid": "The downloaded area will match the area shown in the map.",
+				"msgstr": [
+					""
+				]
+			},
 			"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
 				"msgid": "The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
 				"msgstr": [
@@ -1754,6 +1778,12 @@
 			},
 			"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
 				"msgid": "The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
+				"msgstr": [
+					""
+				]
+			},
+			"There are no stations available to download data from your current map display.": {
+				"msgid": "There are no stations available to download data from your current map display.",
 				"msgstr": [
 					""
 				]
@@ -1938,32 +1968,14 @@
 					""
 				]
 			},
-			"You can press the &quot;Reset map&quot; button to see the available stations on this table.": {
-				"msgid": "You can press the &quot;Reset map&quot; button to see the available stations on this table.",
-				"msgstr": [
-					""
-				]
-			},
 			"You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.": {
 				"msgid": "You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.",
 				"msgstr": [
 					""
 				]
 			},
-			"You have selected stations but they are not within view of the map.": {
-				"msgid": "You have selected stations but they are not within view of the map.",
-				"msgstr": [
-					""
-				]
-			},
 			"Your form selection contains no data to download.": {
 				"msgid": "Your form selection contains no data to download.",
-				"msgstr": [
-					""
-				]
-			},
-			"Your map view does not contain any stations and you have no stations selected to download data.": {
-				"msgid": "Your map view does not contain any stations and you have no stations selected to download data.",
 				"msgstr": [
 					""
 				]
@@ -2955,14 +2967,8 @@
 					"Télécharger la région"
 				]
 			},
-			"Download a single grid point at:": {
-				"msgid": "Download a single grid point at:",
-				"msgstr": [
-					""
-				]
-			},
-			"Download data for a single location as a CSV of GeoJSON": {
-				"msgid": "Download data for a single location as a CSV of GeoJSON",
+			"Download data for a single location as a CSV or GeoJSON": {
+				"msgid": "Download data for a single location as a CSV or GeoJSON",
 				"msgstr": [
 					""
 				]
@@ -3207,10 +3213,22 @@
 					"Taux instantané de précipitations (m/s)"
 				]
 			},
+			"It's possible that your selected location is not within the dataset boundary.": {
+				"msgid": "It's possible that your selected location is not within the dataset boundary.",
+				"msgstr": [
+					""
+				]
+			},
 			"Latitude": {
 				"msgid": "Latitude",
 				"msgstr": [
 					"Latitude"
+				]
+			},
+			"Latitude:": {
+				"msgid": "Latitude:",
+				"msgstr": [
+					"Latitude:"
 				]
 			},
 			"Learn more about emissions scenarios": {
@@ -3229,6 +3247,12 @@
 				"msgid": "Longitude",
 				"msgstr": [
 					"Longitude"
+				]
+			},
+			"Longitude:": {
+				"msgid": "Longitude:",
+				"msgstr": [
+					"Longitude:"
 				]
 			},
 			"Low emissions scenario (RCP 2.6)": {
@@ -3426,13 +3450,19 @@
 			"Please change your form selection.": {
 				"msgid": "Please change your form selection.",
 				"msgstr": [
-					""
+					"Veuillez changer votre sélection de saisie."
 				]
 			},
 			"Please correct all form errors to download data.": {
 				"msgid": "Please correct all form errors to download data.",
 				"msgstr": [
 					"Veuillez corriger toutes les erreurs de saisie afin de télécharger les données."
+				]
+			},
+			"Please press the \"Reset map\" button to see the stations in this table.": {
+				"msgid": "Please press the \"Reset map\" button to see the stations in this table.",
+				"msgstr": [
+					"Appuyiez sur « réinitialiser la carte » pour voir les stations dans ce tableau sur la carte."
 				]
 			},
 			"Please select a different location within the dataset boundary or change your form selection.": {
@@ -3711,6 +3741,12 @@
 					"Le Système de Prévision Interannuelle et Saisonnière Canadien (SPISCan) procède à des calculs physiques afin de produire des prévisions probabilistes d'éléments de l'atmosphère du début d'un mois jusqu'à 12 mois dans le futur. Les éléments de l'atmosphère incluent notamment la température, la précipitation, la vitesse et direction des vents. Ce produit contient les résultats numériques bruts de ces calculs. La couverture géographique est mondiale. Les données sont disponibles pour quelques niveaux verticaux choisis et sur une grille de résolution spatiale de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
 				]
 			},
+			"The downloaded area will match the area shown in the map.": {
+				"msgid": "The downloaded area will match the area shown in the map.",
+				"msgstr": [
+					""
+				]
+			},
 			"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
 				"msgid": "The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
 				"msgstr": [
@@ -3745,6 +3781,12 @@
 				"msgid": "The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
 				"msgstr": [
 					"Des scénarios climatiques à réduction d’échelle statistique des changements projetés pour les températures et les précipitations, par rapport à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une résolution de 10 km. Les données avec réduction d’échelle statistique s’appuient sur les projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5). La médiane des changements projetés de l’ensemble multimodèles à réduction d’échelle statistique est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles à réduction d’échelle statistique mensuels, saisonniers et annuels, à l’aide de l’outil d’extraction de données climatiques."
+				]
+			},
+			"There are no stations available to download data from your current map display.": {
+				"msgid": "There are no stations available to download data from your current map display.",
+				"msgstr": [
+					"L’affichage actuel de votre carte ne contient aucune station pour télécharger des données."
 				]
 			},
 			"This field is not within the date range limits.": {
@@ -3927,34 +3969,16 @@
 					"World Geodetic System 1984 (EPSG:4326)"
 				]
 			},
-			"You can press the &quot;Reset map&quot; button to see the available stations on this table.": {
-				"msgid": "You can press the &quot;Reset map&quot; button to see the available stations on this table.",
-				"msgstr": [
-					""
-				]
-			},
 			"You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.": {
 				"msgid": "You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.",
 				"msgstr": [
 					"Vous pouvez préciser la période, les variables, le format de téléchargement et d’autres options. Utilisez la carte pour sélectionner un sous-ensemble géographique des données. Le sous-ensemble géographique des données que vous téléchargez correspondra à la zone indiquée sur la carte. Téléchargez les données en cliquant sur le lien de téléchargement des données en bas de la page."
 				]
 			},
-			"You have selected stations but they are not within view of the map.": {
-				"msgid": "You have selected stations but they are not within view of the map.",
-				"msgstr": [
-					""
-				]
-			},
 			"Your form selection contains no data to download.": {
 				"msgid": "Your form selection contains no data to download.",
 				"msgstr": [
-					""
-				]
-			},
-			"Your map view does not contain any stations and you have no stations selected to download data.": {
-				"msgid": "Your map view does not contain any stations and you have no stations selected to download data.",
-				"msgstr": [
-					""
+					"Votre sélection de saisie ne contient aucun de données à télécharger."
 				]
 			},
 			"Yukon": {
