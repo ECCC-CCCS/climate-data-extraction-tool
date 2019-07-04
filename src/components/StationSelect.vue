@@ -71,7 +71,7 @@
                   :colspan="Object.keys(stationPropDisplay).length">
                   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                   <translate t-comment="Warning message when user has no stations selected and no stations are contained in the map viewport">There are no stations available to download data from your current map display.</translate>
-                  <translate>Please press the "Reset map" button to see the stations in this table.</translate>
+                  <span v-text="resetMapMessage"></span>
                 </td>
             </tr>
           </tbody>
@@ -422,6 +422,9 @@ export default {
     },
     maxStationSelection: function () {
       return this.$store.getters.getMaxStationSelection
+    },
+    resetMapMessage: function () {
+      return this.$gettext('Please press the "Reset map" button to see the stations in this table.')
     }
   }
 }
