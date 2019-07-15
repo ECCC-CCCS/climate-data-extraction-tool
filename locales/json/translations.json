@@ -486,18 +486,6 @@
 					""
 				]
 			},
-			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in daily data": {
-				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in daily data",
-				"msgstr": [
-					""
-				]
-			},
-			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output": {
-				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output",
-				"msgstr": [
-					""
-				]
-			},
 			"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>": {
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>",
 				"msgstr": [
@@ -1926,6 +1914,18 @@
 					""
 				]
 			},
+			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data": {
+				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data",
+				"msgstr": [
+					""
+				]
+			},
+			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output": {
+				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output",
+				"msgstr": [
+					""
+				]
+			},
 			"Water temperature": {
 				"msgid": "Water temperature",
 				"msgstr": [
@@ -2485,18 +2485,6 @@
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you'd like data for a single grid point only",
 				"msgstr": [
 					"<a href=\"{link}\" target=\"_blank\">Communiquez avec le Centre d’aide des Services climatiques</a> si vous désirez des données pour un seul point de grille"
-				]
-			},
-			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in daily data": {
-				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in daily data",
-				"msgstr": [
-					"<a href=\"{link}\" target=\"_blank\">Communiquez avec le Centre d’aide des Services climatiques</a> si vous désirez des données quotidiennes"
-				]
-			},
-			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output": {
-				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output",
-				"msgstr": [
-					"<a href=\"{link}\" target=\"_blank\">Communiquez avec le Centre d’aide des Services climatiques</a> si vous désirez les résultats d’un modèle individuel"
 				]
 			},
 			"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>": {
@@ -3925,6 +3913,18 @@
 				"msgid": "Variable",
 				"msgstr": [
 					"Variables"
+				]
+			},
+			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data": {
+				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data",
+				"msgstr": [
+					"Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> pour obtenir les données quotidiennes"
+				]
+			},
+			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output": {
+				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output",
+				"msgstr": [
+					"Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> pour obtenir les résultats d’un modèle individuel"
 				]
 			},
 			"Water temperature": {
