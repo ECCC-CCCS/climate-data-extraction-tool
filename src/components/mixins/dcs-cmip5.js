@@ -265,14 +265,16 @@ export const DCSCMIP5 = {
     },
     infoModelOutput: function () {
       return {
-        text: this.$gettext('<a href="{link}" target="_blank">Contact the Climate Services Support Desk</a> if you\'re interested in individual model output'),
-        link: this.supportDeskLink
+        // text: this.$gettext('<a href="{link}" target="_blank">Contact the Climate Services Support Desk</a> if you\'re interested in individual model output'),
+        text: this.$gettext('Visit <a href="{link}" target="_blank">ClimateData.ca</a> to access individual model output'),
+        link: this.climateDataLink
       }
     },
     infoDailyData: function () {
       return {
-        text: this.$gettext('<a href="{link}" target="_blank">Contact the Climate Services Support Desk</a> if you\'re interested in daily data'),
-        link: this.supportDeskLink
+        // text: this.$gettext('<a href="{link}" target="_blank">Contact the Climate Services Support Desk</a> if you\'re interested in daily data'),
+        text: this.$gettext('Visit <a href="{link}" target="_blank">ClimateData.ca</a> to access daily data'),
+        link: this.climateDataLink
       }
     },
     hasErrors: function () {

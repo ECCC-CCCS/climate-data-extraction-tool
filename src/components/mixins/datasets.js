@@ -15,6 +15,10 @@ export const datasets = {
       canadaDomain: {
         en: process.env.CANADA_SERVER_EN,
         fr: process.env.CANADA_SERVER_FR
+      },
+      climateDataLink: {
+        en: 'https://climatedata.ca',
+        fr: 'https://donneesclimatiques.ca'
       }
     }
   },
