@@ -2446,7 +2446,7 @@
 				"msgid": "Single grid point download",
 				"msgctxt": "Title heading",
 				"msgstr": [
-					""
+					"Téléchargement de point de grille unique"
 				]
 			}
 		},
@@ -2958,7 +2958,7 @@
 			"Download data for a single location as a CSV or GeoJSON": {
 				"msgid": "Download data for a single location as a CSV or GeoJSON",
 				"msgstr": [
-					""
+					"Télécharger des données pour un point de grille unique sous forme CSV ou GeoJSON"
 				]
 			},
 			"Download records {startNum} - {endNum}": {
@@ -3180,7 +3180,7 @@
 			"If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.": {
 				"msgid": "If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.",
 				"msgstr": [
-					""
+					"Si cette erreur persiste, veuillez <a href=\"{supportDeskUrl}\">contacter le Centre d’aide des Services climatiques</a>."
 				]
 			},
 			"If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>.": {
@@ -3204,7 +3204,7 @@
 			"It's possible that your selected location is not within the dataset boundary.": {
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
 				"msgstr": [
-					""
+					"Il est possible que l'endroit sélectionné ne se trouve pas dans les limites du jeu de données."
 				]
 			},
 			"Latitude": {
@@ -3264,7 +3264,7 @@
 			"Map selection type": {
 				"msgid": "Map selection type",
 				"msgstr": [
-					""
+					"Type de sélection de carte"
 				]
 			},
 			"Max number of stations selected": {
@@ -3456,13 +3456,13 @@
 			"Please select a different location within the dataset boundary or change your form selection.": {
 				"msgid": "Please select a different location within the dataset boundary or change your form selection.",
 				"msgstr": [
-					""
+					"Veuillez sélectionner un endroit différent dans la limite du jeu de données ou modifier votre sélection de saisie."
 				]
 			},
 			"Please select a point on the map.": {
 				"msgid": "Please select a point on the map.",
 				"msgstr": [
-					""
+					"Veuillez sélectionner un point sur la carte."
 				]
 			},
 			"Precipitation accumulation interval": {
@@ -3588,7 +3588,7 @@
 			"Single grid point data could not be found.": {
 				"msgid": "Single grid point data could not be found.",
 				"msgstr": [
-					""
+					"Aucune donnée de point de grille n'a pu être trouvée."
 				]
 			},
 			"Snow depth": {
@@ -3732,7 +3732,7 @@
 			"The downloaded area will match the area shown in the map.": {
 				"msgid": "The downloaded area will match the area shown in the map.",
 				"msgstr": [
-					""
+					"La zone téléchargée correspondra à la zone indiquée sur la carte."
 				]
 			},
 			"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {

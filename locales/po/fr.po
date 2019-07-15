@@ -561,6 +561,8 @@ msgstr "Télécharger la région"
 #: src/components/BBOXMap.vue:361
 msgid "Download data for a single location as a CSV or GeoJSON"
 msgstr ""
+"Télécharger des données pour un point de grille unique sous forme CSV ou "
+"GeoJSON"
 
 #: src/components/URLBox.vue:245
 msgid "Download records {startNum} - {endNum}"
@@ -808,6 +810,8 @@ msgid ""
 "If this error persists, please <a href=\"{supportDeskUrl}\">contact the "
 "Climate Services Support Desk</a>."
 msgstr ""
+"Si cette erreur persiste, veuillez <a href=\"{supportDeskUrl}\">contacter "
+"le Centre d’aide des Services climatiques</a>."
 
 #: src/components/InfoContactSupport.vue:21
 msgid ""
@@ -831,6 +835,8 @@ msgid ""
 "It's possible that your selected location is not within the dataset "
 "boundary."
 msgstr ""
+"Il est possible que l'endroit sélectionné ne se trouve pas dans les limites "
+"du jeu de données."
 
 #: src/components/StationSelect.vue:152
 msgid "Latitude"
@@ -870,7 +876,7 @@ msgstr "Projection cartographique"
 
 #: src/components/BBOXMap.vue:9
 msgid "Map selection type"
-msgstr ""
+msgstr "Type de sélection de carte"
 
 #: src/components/StationSelect.vue:6
 msgid "Max number of stations selected"
@@ -1030,10 +1036,12 @@ msgid ""
 "Please select a different location within the dataset boundary or change "
 "your form selection."
 msgstr ""
+"Veuillez sélectionner un endroit différent dans la limite du jeu de données "
+"ou modifier votre sélection de saisie."
 
 #: src/components/BBOXMap.vue:20
 msgid "Please select a point on the map."
-msgstr ""
+msgstr "Veuillez sélectionner un point sur la carte."
 
 #: src/components/RDPAForm.vue:46
 msgid "Precipitation accumulation interval"
@@ -1137,7 +1145,7 @@ msgstr ""
 #: src/components/PointDownloadBox.vue:25
 #. WPS error message
 msgid "Single grid point data could not be found."
-msgstr ""
+msgstr "Aucune donnée de point de grille n'a pu être trouvée."
 
 #: src/components/CMIP5Form.vue:366
 #: src/components/mixins/datasets.js:141
@@ -1357,7 +1365,7 @@ msgstr ""
 
 #: src/components/BBOXMap.vue:30
 msgid "The downloaded area will match the area shown in the map."
-msgstr ""
+msgstr "La zone téléchargée correspondra à la zone indiquée sur la carte."
 
 #: src/components/CMIP5Form.vue:18
 msgid ""
@@ -2035,4 +2043,4 @@ msgstr "Outil d'extraction de données climatiques"
 #: src/components/mixins/wps.js:25
 msgctxt "Title heading"
 msgid "Single grid point download"
-msgstr ""
+msgstr "Téléchargement de point de grille unique"
