@@ -26,9 +26,6 @@
         <translate t-comment="WPS error message">It's possible that your selected location is not within the dataset boundary.</translate>
         <translate t-comment="WPS error message">Please select a different location within the dataset boundary or change your form selection.</translate>
       </p>
-      <p>
-        <code>{{ errorMsg }}</code>
-      </p>
     </div>
   </div>
 </template>
@@ -53,8 +50,7 @@ export default {
       loading: false,
       downloadError: false,
       WPS_SERVER: process.env.GEOMET_WEATHER_SERVER,
-      WPS_RASTER_DRILL: process.env.WPS_RASTER_DRILL,
-      errorMsg: ''
+      WPS_RASTER_DRILL: process.env.WPS_RASTER_DRILL
     }
   },
   watch: {
@@ -115,7 +111,6 @@ export default {
 
       this.loading = true
       this.downloadError = false
-      this.errorMsg = ''
       axios.post(rasterDrillUrl, { inputs: inputs }, { timeout: 300000 })
         .then((resp) => {
           var data = resp.data
@@ -126,8 +121,7 @@ export default {
           }
           FileDownload(data, this.pointInputs.layer + '.' + fileFormat)
         }).catch((error) => {
-          console.log(error)
-          this.errorMsg = error
+          // console.log(error)
           this.downloadError = true
         }).finally(() => {
           this.loading = false
