@@ -121,7 +121,7 @@ export default {
           }
           FileDownload(data, this.pointInputs.layer + '.' + fileFormat)
         }).catch((error) => {
-          // console.log(error)
+          console.log(error)
           this.downloadError = true
         }).finally(() => {
           this.loading = false
