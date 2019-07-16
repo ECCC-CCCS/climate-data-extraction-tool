@@ -221,7 +221,8 @@ export default {
   data () {
     return {
       wcs_id_dataset: 'DCS',
-      wcs_id_variable: 'TM'
+      wcs_id_variable: 'TM',
+      MAX_BANDS: 100
     }
   },
   watch: {
