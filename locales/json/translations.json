@@ -804,12 +804,6 @@
 					""
 				]
 			},
-			"Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
-				"msgid": "Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only",
-				"msgstr": [
-					""
-				]
-			},
 			"Contact the Climate Services Support Desk": {
 				"msgid": "Contact the Climate Services Support Desk",
 				"msgstr": [
@@ -1914,6 +1908,12 @@
 					""
 				]
 			},
+			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
+				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only",
+				"msgstr": [
+					""
+				]
+			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data": {
 				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data",
 				"msgstr": [
@@ -2803,12 +2803,6 @@
 				"msgid": "Climate simulations",
 				"msgstr": [
 					"Simulations climatiques"
-				]
-			},
-			"Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
-				"msgid": "Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only",
-				"msgstr": [
-					"Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> si vous désirez des données pour un seul point de grille"
 				]
 			},
 			"Contact the Climate Services Support Desk": {
@@ -3913,6 +3907,12 @@
 				"msgid": "Variable",
 				"msgstr": [
 					"Variables"
+				]
+			},
+			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
+				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only",
+				"msgstr": [
+					"Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> si vous désirez des données pour un seul point de grille"
 				]
 			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data": {

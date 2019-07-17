@@ -344,12 +344,6 @@ msgstr ""
 msgid "Climate simulations"
 msgstr ""
 
-#: src/components/mixins/datasets.js:381
-msgid ""
-"Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd "
-"like data for a single grid point only"
-msgstr ""
-
 #: src/components/MoreResources.vue:32
 msgid "Contact the Climate Services Support Desk"
 msgstr ""
@@ -1350,6 +1344,12 @@ msgstr ""
 #: src/components/CanGRDForm.vue:43
 #: src/components/CanSIPSForm.vue:35
 msgid "Variable"
+msgstr ""
+
+#: src/components/mixins/datasets.js:381
+msgid ""
+"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like "
+"data for a single grid point only"
 msgstr ""
 
 #: src/components/mixins/dcs-cmip5.js:276
