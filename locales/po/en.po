@@ -43,12 +43,6 @@ msgstr ""
 msgid "(Required)"
 msgstr ""
 
-#: src/components/mixins/datasets.js:381
-msgid ""
-"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support "
-"Desk</a> if you'd like data for a single grid point only"
-msgstr ""
-
 #: src/components/mixins/dcs-cmip5.js:262
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr ""
@@ -153,7 +147,7 @@ msgid "24 hours"
 msgstr ""
 
 #: src/components/CMIP5Form.vue:355
-#: src/components/DCSForm.vue:271
+#: src/components/DCSForm.vue:272
 msgid "25th percentile"
 msgstr ""
 
@@ -163,13 +157,13 @@ msgstr ""
 
 #: src/components/CMIP5Form.vue:350
 #: src/components/CMIP5Form.vue:356
-#: src/components/DCSForm.vue:266
-#: src/components/DCSForm.vue:272
+#: src/components/DCSForm.vue:267
+#: src/components/DCSForm.vue:273
 msgid "50th percentile"
 msgstr ""
 
 #: src/components/CMIP5Form.vue:354
-#: src/components/DCSForm.vue:270
+#: src/components/DCSForm.vue:271
 msgid "5th percentile"
 msgstr ""
 
@@ -179,12 +173,12 @@ msgid "6 hours"
 msgstr ""
 
 #: src/components/CMIP5Form.vue:357
-#: src/components/DCSForm.vue:273
+#: src/components/DCSForm.vue:274
 msgid "75th percentile"
 msgstr ""
 
 #: src/components/CMIP5Form.vue:358
-#: src/components/DCSForm.vue:274
+#: src/components/DCSForm.vue:275
 msgid "95th percentile"
 msgstr ""
 
@@ -231,7 +225,7 @@ msgstr ""
 msgid "Alberta"
 msgstr ""
 
-#: src/components/StationSelect.vue:101
+#: src/components/StationSelect.vue:102
 msgid "All"
 msgstr ""
 
@@ -253,8 +247,8 @@ msgstr ""
 msgid "Analysis run hour"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:289
-#: src/components/CanGRDForm.vue:297
+#: src/components/CanGRDForm.vue:282
+#: src/components/CanGRDForm.vue:290
 #: src/components/mixins/dcs-cmip5.js:149
 msgid "Annual"
 msgstr ""
@@ -267,7 +261,7 @@ msgstr ""
 msgid "Annual values"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:303
+#: src/components/CanGRDForm.vue:296
 #: src/components/mixins/dcs-cmip5.js:115
 msgid "Anomaly values"
 msgstr ""
@@ -348,6 +342,12 @@ msgstr ""
 
 #: src/components/DatasetMenu.vue:11
 msgid "Climate simulations"
+msgstr ""
+
+#: src/components/mixins/datasets.js:381
+msgid ""
+"Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd "
+"like data for a single grid point only"
 msgstr ""
 
 #: src/components/MoreResources.vue:32
@@ -552,8 +552,8 @@ msgstr ""
 msgid "Explanation of model types"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:287
-#: src/components/CanGRDForm.vue:295
+#: src/components/CanGRDForm.vue:280
+#: src/components/CanGRDForm.vue:288
 #: src/components/mixins/dcs-cmip5.js:147
 msgid "Fall (September-November)"
 msgstr ""
@@ -681,7 +681,7 @@ msgstr ""
 msgid "How to use: interactive map"
 msgstr ""
 
-#: src/components/PointDownloadBox.vue:90
+#: src/components/PointDownloadBox.vue:86
 msgid ""
 "If this error persists, please <a href=\"{supportDeskUrl}\">contact the "
 "Climate Services Support Desk</a>."
@@ -708,7 +708,7 @@ msgid ""
 "boundary."
 msgstr ""
 
-#: src/components/StationSelect.vue:152
+#: src/components/StationSelect.vue:154
 msgid "Latitude"
 msgstr ""
 
@@ -724,7 +724,7 @@ msgstr ""
 msgid "Library of climate resources"
 msgstr ""
 
-#: src/components/StationSelect.vue:153
+#: src/components/StationSelect.vue:155
 msgid "Longitude"
 msgstr ""
 
@@ -757,8 +757,8 @@ msgstr ""
 msgid "Maximum date for near surface wind speed is:"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:271
-#: src/components/DCSForm.vue:282
+#: src/components/CanGRDForm.vue:264
+#: src/components/DCSForm.vue:283
 msgid "Maximum temperature"
 msgstr ""
 
@@ -767,10 +767,10 @@ msgstr ""
 msgid "Mean precipitation"
 msgstr ""
 
+#: src/components/CanGRDForm.vue:262
 #: src/components/CanGRDForm.vue:269
-#: src/components/CanGRDForm.vue:276
 #: src/components/CMIP5Form.vue:364
-#: src/components/DCSForm.vue:280
+#: src/components/DCSForm.vue:281
 #: src/components/mixins/datasets.js:129
 #: src/components/mixins/datasets.js:181
 msgid "Mean temperature"
@@ -780,8 +780,8 @@ msgstr ""
 msgid "Member"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:270
-#: src/components/DCSForm.vue:281
+#: src/components/CanGRDForm.vue:263
+#: src/components/DCSForm.vue:282
 msgid "Minimum temperature"
 msgstr ""
 
@@ -798,7 +798,7 @@ msgstr ""
 msgid "Moderate emissions scenario (RCP 4.5)"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:284
+#: src/components/CanGRDForm.vue:277
 #: src/components/mixins/dcs-cmip5.js:150
 msgid "Monthly"
 msgstr ""
@@ -841,7 +841,7 @@ msgstr ""
 msgid "Newfoundland and Labrador"
 msgstr ""
 
-#: src/components/StationSelect.vue:87
+#: src/components/StationSelect.vue:88
 msgid "Next"
 msgstr ""
 
@@ -870,7 +870,7 @@ msgstr ""
 msgid "Ontario"
 msgstr ""
 
-#: src/components/StationSelect.vue:93
+#: src/components/StationSelect.vue:94
 msgid "Page size"
 msgstr ""
 
@@ -887,7 +887,7 @@ msgstr ""
 msgid "Please correct all form errors to download data."
 msgstr ""
 
-#: src/components/StationSelect.vue:427
+#: src/components/StationSelect.vue:429
 msgid "Please press the \"Reset map\" button to see the stations in this table."
 msgstr ""
 
@@ -906,7 +906,7 @@ msgstr ""
 msgid "Precipitation accumulation interval"
 msgstr ""
 
-#: src/components/StationSelect.vue:82
+#: src/components/StationSelect.vue:83
 msgid "Previous"
 msgstr ""
 
@@ -977,17 +977,17 @@ msgstr ""
 msgid "Show selected"
 msgstr ""
 
-#: src/components/StationSelect.vue:368
+#: src/components/StationSelect.vue:370
 msgid "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 msgstr ""
 
-#: src/components/StationSelect.vue:364
+#: src/components/StationSelect.vue:366
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entries)"
 msgstr ""
 
-#: src/components/StationSelect.vue:361
+#: src/components/StationSelect.vue:363
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entry)"
@@ -1007,8 +1007,8 @@ msgstr ""
 msgid "Spatial selection"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:285
-#: src/components/CanGRDForm.vue:293
+#: src/components/CanGRDForm.vue:278
+#: src/components/CanGRDForm.vue:286
 #: src/components/mixins/dcs-cmip5.js:145
 msgid "Spring (March-May)"
 msgstr ""
@@ -1048,8 +1048,8 @@ msgstr ""
 msgid "Station table"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:286
-#: src/components/CanGRDForm.vue:294
+#: src/components/CanGRDForm.vue:279
+#: src/components/CanGRDForm.vue:287
 #: src/components/mixins/dcs-cmip5.js:146
 msgid "Summer (June-August)"
 msgstr ""
@@ -1287,15 +1287,15 @@ msgstr ""
 msgid "Total number of records: {numRecords}"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:272
-#: src/components/CanGRDForm.vue:277
-#: src/components/DCSForm.vue:283
+#: src/components/CanGRDForm.vue:265
+#: src/components/CanGRDForm.vue:270
+#: src/components/DCSForm.vue:284
 #: src/components/mixins/datasets.js:199
 msgid "Total precipitation"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:204
-#: src/components/CanGRDForm.vue:306
+#: src/components/CanGRDForm.vue:299
 msgid "Trend values"
 msgstr ""
 
@@ -1388,8 +1388,8 @@ msgstr ""
 msgid "Winds at 850mb"
 msgstr ""
 
-#: src/components/CanGRDForm.vue:288
-#: src/components/CanGRDForm.vue:296
+#: src/components/CanGRDForm.vue:281
+#: src/components/CanGRDForm.vue:289
 #: src/components/mixins/dcs-cmip5.js:148
 msgid "Winter (December-February)"
 msgstr ""
