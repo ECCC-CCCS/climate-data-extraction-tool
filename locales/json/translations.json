@@ -480,12 +480,6 @@
 					""
 				]
 			},
-			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you'd like data for a single grid point only": {
-				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you'd like data for a single grid point only",
-				"msgstr": [
-					""
-				]
-			},
 			"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>": {
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>",
 				"msgstr": [
@@ -806,6 +800,12 @@
 			},
 			"Climate simulations": {
 				"msgid": "Climate simulations",
+				"msgstr": [
+					""
+				]
+			},
+			"Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
+				"msgid": "Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only",
 				"msgstr": [
 					""
 				]
@@ -2481,12 +2481,6 @@
 					"(Obligatoire)"
 				]
 			},
-			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you'd like data for a single grid point only": {
-				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you'd like data for a single grid point only",
-				"msgstr": [
-					"<a href=\"{link}\" target=\"_blank\">Communiquez avec le Centre d’aide des Services climatiques</a> si vous désirez des données pour un seul point de grille"
-				]
-			},
 			"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>": {
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>",
 				"msgstr": [
@@ -2809,6 +2803,12 @@
 				"msgid": "Climate simulations",
 				"msgstr": [
 					"Simulations climatiques"
+				]
+			},
+			"Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
+				"msgid": "Contact <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only",
+				"msgstr": [
+					"Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> si vous désirez des données pour un seul point de grille"
 				]
 			},
 			"Contact the Climate Services Support Desk": {

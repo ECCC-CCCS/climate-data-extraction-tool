@@ -378,8 +378,8 @@ export const datasets = {
     },
     infoSupportDeskGridPoint: function () {
       return {
-        text: this.$gettext('<a href="{link}" target="_blank">Contact the Climate Services Support Desk</a> if you\'d like data for a single grid point only'),
-        link: this.supportDeskLink
+        text: this.$gettext('Contact <a href="{link}" target="_blank">ClimateData.ca</a> if you\'d like data for a single grid point only'),
+        link: this.climateDataLink
       }
     }
   }
