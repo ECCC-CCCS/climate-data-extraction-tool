@@ -12,7 +12,7 @@
         <details :open="toggleDetailsState">
           <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2016 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
+          <p v-translate>Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
 
           <p v-html="techDocHtml"></p>
 
@@ -166,9 +166,9 @@ export default {
       wcs_id_timePeriod: 'ANNUAL',
       ows_bbox: '-154,38,-49,81',
       date_start: this.$moment.utc('1948-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      date_end: this.$moment.utc('2017-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_end: this.$moment.utc('2018-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_min: this.$moment.utc('1948-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      date_max: this.$moment.utc('2017-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_max: this.$moment.utc('2018-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_max_pr: this.$moment.utc('2014-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
     }
   },
