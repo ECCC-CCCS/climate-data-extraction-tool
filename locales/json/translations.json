@@ -1584,6 +1584,18 @@
 					""
 				]
 			},
+			"Single location download is currently unavailable. We apologize for any inconvenience and are working to rectify the problem.": {
+				"msgid": "Single location download is currently unavailable. We apologize for any inconvenience and are working to rectify the problem.",
+				"msgstr": [
+					""
+				]
+			},
+			"Single location download unavailable": {
+				"msgid": "Single location download unavailable",
+				"msgstr": [
+					""
+				]
+			},
 			"Snow depth": {
 				"msgid": "Snow depth",
 				"msgstr": [
@@ -3583,6 +3595,18 @@
 				"msgid": "Single grid point data could not be found.",
 				"msgstr": [
 					"Aucune donnée de point de grille n'a pu être trouvée."
+				]
+			},
+			"Single location download is currently unavailable. We apologize for any inconvenience and are working to rectify the problem.": {
+				"msgid": "Single location download is currently unavailable. We apologize for any inconvenience and are working to rectify the problem.",
+				"msgstr": [
+					"Téléchargement de point de grille unique est actuellement indisponible. Nous vous remercions de votre patience et nous travaillons pour rectifier le problème."
+				]
+			},
+			"Single location download unavailable": {
+				"msgid": "Single location download unavailable",
+				"msgstr": [
+					"Téléchargement de point de grille unique n'est pas disponible"
 				]
 			},
 			"Snow depth": {
