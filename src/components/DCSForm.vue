@@ -4,8 +4,6 @@
       <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
         <h1>{{ currentRouteTitle }}</h1>
 
-        <raster-drill-unavailable-warning></raster-drill-unavailable-warning>
-
         <p>{{ introDatasetText.gridded.use }}</p>
         <p>{{ introDatasetText.gridded.instructions }}</p>
 
@@ -196,7 +194,6 @@ import InfoContactSupport from './InfoContactSupport'
 import OpenPortalLinks from './OpenPortalLinks'
 import DataAccessDocLink from './DataAccessDocLink'
 import PointDownloadBox from './PointDownloadBox'
-import RasterDrillUnavailableWarning from './RasterDrillUnavailableWarning'
 import { wcs } from './mixins/wcs'
 import { ows } from './mixins/ows'
 import { datasets } from './mixins/datasets'
@@ -219,8 +216,7 @@ export default {
     InfoContactSupport,
     OpenPortalLinks,
     DataAccessDocLink,
-    PointDownloadBox,
-    RasterDrillUnavailableWarning
+    PointDownloadBox
   },
   data () {
     return {
