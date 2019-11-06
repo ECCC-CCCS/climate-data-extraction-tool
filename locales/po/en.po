@@ -253,7 +253,7 @@ msgstr ""
 msgid "Annual"
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:197
+#: src/components/HydrometricArchiveForm.vue:180
 msgid "Annual max/min"
 msgstr ""
 
@@ -356,7 +356,7 @@ msgid ""
 "produce more weather elements e.g. wind or snow on ground."
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:198
+#: src/components/HydrometricArchiveForm.vue:181
 msgid "Daily max/min"
 msgstr ""
 
@@ -364,7 +364,7 @@ msgstr ""
 msgid "Daily maximum temperature"
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:195
+#: src/components/HydrometricArchiveForm.vue:178
 msgid "Daily mean"
 msgstr ""
 
@@ -389,7 +389,7 @@ msgstr ""
 msgid "Data download link"
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:118
+#: src/components/HydrometricArchiveForm.vue:102
 msgid "Data download links"
 msgstr ""
 
@@ -401,7 +401,7 @@ msgstr ""
 #: src/components/ClimateNormalsForm.vue:23
 #: src/components/CMIP5Form.vue:16
 #: src/components/DCSForm.vue:16
-#: src/components/HydrometricArchiveForm.vue:23
+#: src/components/HydrometricArchiveForm.vue:20
 #: src/components/RDPAForm.vue:16
 msgid "Dataset description, technical information and metadata"
 msgstr ""
@@ -412,7 +412,7 @@ msgstr ""
 #: src/components/ClimateMonthlyForm.vue:68
 #: src/components/CMIP5Form.vue:76
 #: src/components/DCSForm.vue:77
-#: src/components/HydrometricArchiveForm.vue:76
+#: src/components/HydrometricArchiveForm.vue:64
 msgid "Date range"
 msgstr ""
 
@@ -423,6 +423,10 @@ msgstr ""
 
 #: src/components/CanGRDForm.vue:92
 msgid "Date ranges not required for CanGRD trends"
+msgstr ""
+
+#: src/components/LatestRelease.vue:6
+msgid "Date:"
 msgstr ""
 
 #: src/components/mixins/datasets.js:367
@@ -457,7 +461,7 @@ msgstr ""
 msgid "Download a list of detailed information for each Daily climate station."
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:36
+#: src/components/HydrometricArchiveForm.vue:30
 msgid ""
 "Download a list of detailed information for each Historical hydrometric "
 "station."
@@ -519,7 +523,7 @@ msgstr ""
 #: src/components/ClimateMonthlyForm.vue:82
 #: src/components/CMIP5Form.vue:132
 #: src/components/DCSForm.vue:133
-#: src/components/HydrometricArchiveForm.vue:90
+#: src/components/HydrometricArchiveForm.vue:77
 msgid "End date"
 msgstr ""
 
@@ -655,7 +659,7 @@ msgstr ""
 msgid "Historical end date"
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:25
+#: src/components/HydrometricArchiveForm.vue:22
 msgid ""
 "Historical hydrometric data are standardized water resource data and "
 "information. They are collected, interpreted and disseminated by the Water "
@@ -700,6 +704,10 @@ msgstr ""
 msgid ""
 "It's possible that your selected location is not within the dataset "
 "boundary."
+msgstr ""
+
+#: src/components/LatestRelease.vue:3
+msgid "Latest changes"
 msgstr ""
 
 #: src/components/StationSelect.vue:154
@@ -805,7 +813,7 @@ msgid ""
 "produce daily data."
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:196
+#: src/components/HydrometricArchiveForm.vue:179
 msgid "Monthly mean"
 msgstr ""
 
@@ -916,7 +924,7 @@ msgstr ""
 #: src/components/ClimateDailyForm.vue:208
 #: src/components/ClimateMonthlyForm.vue:208
 #: src/components/ClimateNormalsForm.vue:149
-#: src/components/HydrometricArchiveForm.vue:210
+#: src/components/HydrometricArchiveForm.vue:193
 msgid "Province/Territory/State"
 msgstr ""
 
@@ -1023,12 +1031,12 @@ msgstr ""
 #: src/components/ClimateMonthlyForm.vue:71
 #: src/components/CMIP5Form.vue:120
 #: src/components/DCSForm.vue:121
-#: src/components/HydrometricArchiveForm.vue:79
+#: src/components/HydrometricArchiveForm.vue:67
 msgid "Start date"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:195
-#: src/components/HydrometricArchiveForm.vue:209
+#: src/components/HydrometricArchiveForm.vue:192
 msgid "Station ID"
 msgstr ""
 
@@ -1040,7 +1048,7 @@ msgstr ""
 #: src/components/ClimateDailyForm.vue:206
 #: src/components/ClimateMonthlyForm.vue:206
 #: src/components/ClimateNormalsForm.vue:147
-#: src/components/HydrometricArchiveForm.vue:208
+#: src/components/HydrometricArchiveForm.vue:191
 msgid "Station name"
 msgstr ""
 
@@ -1309,7 +1317,7 @@ msgid ""
 "selected Environment and Climate Change Canada's datasets."
 msgstr ""
 
-#: src/components/Home.vue:8
+#: src/components/Home.vue:9
 msgid ""
 "Use the climate data extraction tool to download climate data from the "
 "selected Environment and Climate Change Canada's datasets. You can specify "
@@ -1343,7 +1351,7 @@ msgid "Value type"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:70
-#: src/components/HydrometricArchiveForm.vue:70
+#: src/components/HydrometricArchiveForm.vue:59
 msgid "Value type / Time interval"
 msgstr ""
 
@@ -1354,6 +1362,10 @@ msgstr ""
 #: src/components/CanGRDForm.vue:43
 #: src/components/CanSIPSForm.vue:35
 msgid "Variable"
+msgstr ""
+
+#: src/components/LatestRelease.vue:7
+msgid "View releases on GitHub"
 msgstr ""
 
 #: src/components/mixins/datasets.js:381
@@ -1678,9 +1690,9 @@ msgstr ""
 #: src/components/ClimateNormalsForm.vue:157
 #: src/components/ClimateNormalsForm.vue:161
 #: src/components/ClimateNormalsForm.vue:165
-#: src/components/HydrometricArchiveForm.vue:218
-#: src/components/HydrometricArchiveForm.vue:222
-#: src/components/HydrometricArchiveForm.vue:226
+#: src/components/HydrometricArchiveForm.vue:201
+#: src/components/HydrometricArchiveForm.vue:205
+#: src/components/HydrometricArchiveForm.vue:209
 msgctxt "Colon"
 msgid ":"
 msgstr ""

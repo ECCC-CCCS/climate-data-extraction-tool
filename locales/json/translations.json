@@ -882,6 +882,12 @@
 					""
 				]
 			},
+			"Date:": {
+				"msgid": "Date:",
+				"msgstr": [
+					""
+				]
+			},
 			"deselect a station by clicking on it again in the table": {
 				"msgid": "deselect a station by clicking on it again in the table",
 				"msgstr": [
@@ -1196,6 +1202,12 @@
 			},
 			"It's possible that your selected location is not within the dataset boundary.": {
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
+				"msgstr": [
+					""
+				]
+			},
+			"Latest changes": {
+				"msgid": "Latest changes",
 				"msgstr": [
 					""
 				]
@@ -1916,6 +1928,12 @@
 			},
 			"Variable": {
 				"msgid": "Variable",
+				"msgstr": [
+					""
+				]
+			},
+			"View releases on GitHub": {
+				"msgid": "View releases on GitHub",
 				"msgstr": [
 					""
 				]
@@ -2895,6 +2913,12 @@
 					"Les plages de dates ne sont pas requises pour les tendances des CanGRD"
 				]
 			},
+			"Date:": {
+				"msgid": "Date:",
+				"msgstr": [
+					"Date :"
+				]
+			},
 			"deselect a station by clicking on it again in the table": {
 				"msgid": "deselect a station by clicking on it again in the table",
 				"msgstr": [
@@ -3211,6 +3235,12 @@
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
 				"msgstr": [
 					"Il est possible que l'endroit sélectionné ne se trouve pas dans les limites du jeu de données."
+				]
+			},
+			"Latest changes": {
+				"msgid": "Latest changes",
+				"msgstr": [
+					"Récents changements"
 				]
 			},
 			"Latitude": {
@@ -3931,6 +3961,12 @@
 				"msgid": "Variable",
 				"msgstr": [
 					"Variables"
+				]
+			},
+			"View releases on GitHub": {
+				"msgid": "View releases on GitHub",
+				"msgstr": [
+					"Voir les communiqués sur GitHub"
 				]
 			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {

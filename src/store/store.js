@@ -19,9 +19,13 @@ export default new Vuex.Store({
     minDateClimateDaily: null,
     minDateClimateMonthly: null,
     pointClickOn: false,
-    clickLatLng: null
+    clickLatLng: null,
+    latestRelease: {}
   },
   mutations: {
+    changeLatestRelease (state, payload) {
+      state.latestRelease = payload
+    },
     changeClickLatLng (state, payload) {
       state.clickLatLng = payload
     },
@@ -74,6 +78,12 @@ export default new Vuex.Store({
     }
   },
   actions: { // AJAX in stuff; change states
+    retrieveLatestRelease: function ({ commit }, url) {
+      axios.get(url)
+        .then(response => (
+          commit('changeLatestRelease', response.data)
+        ))
+    },
     setClickLatLng: function ({ commit }, latLng) {
       commit('changeClickLatLng', latLng)
     },
@@ -136,6 +146,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getLatestRelease (state) {
+      return state.latestRelease
+    },
     getClickLatLng (state) {
       return state.clickLatLng
     },
