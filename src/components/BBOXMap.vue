@@ -159,6 +159,10 @@ export default {
     selectDisabled: {
       type: Boolean,
       default: false
+    },
+    hydroStationDisplay: { // special display purposes for hydro stations
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -212,7 +216,7 @@ export default {
         }
       },
       geoJsonOptions: {
-        // filter: this.filterGeoJson,
+        // filter: this.filterHydroStationActive,
         pointToLayer: this.pointToLayer
       },
       selectedMarkerOptions: {
@@ -226,6 +230,14 @@ export default {
       defaultMarkerOptions: {
         radius: 5,
         fillColor: '#FFCC33',
+        color: '#000',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+      },
+      inactiveMarkerOptions: {
+        radius: 5,
+        fillColor: '#CC0000',
         color: '#000',
         weight: 1,
         opacity: 1,
@@ -438,8 +450,14 @@ export default {
         .redraw()
     },
     markDefaultPoint: function (marker) {
+      let defaultStyle = this.defaultMarkerOptions
+      if (this.hydroStationDisplay) {
+        if (marker.feature.properties.STATUS_EN !== 'Active') {
+          defaultStyle = this.inactiveMarkerOptions
+        }
+      }
       marker
-        .setStyle(this.defaultMarkerOptions)
+        .setStyle(defaultStyle)
         .redraw()
     },
     pointToLayer: function (feature, latlng) {
@@ -453,7 +471,11 @@ export default {
         popupTextHtml += '<br>' + this.readableColumns.prov.label + ' ' + feature.properties[this.readableColumns.prov.col]
       }
       var stationMarker = null
-      stationMarker = L.circleMarker(latlng, this.defaultMarkerOptions)
+      let markerOption = this.defaultMarkerOptions
+      if (this.hydroStationDisplay && feature.properties.STATUS_EN !== 'Active') {
+        markerOption = this.inactiveMarkerOptions
+      }
+      stationMarker = L.circleMarker(latlng, markerOption)
 
       // Add popup content
       stationMarker.bindPopup(popupTextHtml)

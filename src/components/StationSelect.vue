@@ -17,13 +17,23 @@
         <button
           @click="toggleShowSelected"
           type="button"
-          class="btn"
+          class="btn btn-sm"
           :class="showSelected ? 'btn-primary active' : 'btn-default'"
           :disabled="selectedStationIds.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
             <span v-show="selectedStationIds.length > 0">({{ selectedStationIds.length }}/{{ maxStationSelection }})</span></button>
         <button
+          v-if="hydroStationDisplay"
+          @click="toggleActiveStation"
+          class="btn btn-sm"
+          :class="hydroStationActive ? 'btn-warning' : 'btn-primary active'"
+          type="button"
+          :title="$gettext('This will retrieve 7000+ stations and may cause a performance hit to this user interface')">
+            <span v-show="hydroStationActive" class="glyphicon glyphicon-warning-sign"></span>
+            <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
+            <translate>Show discontinued stations</translate></button>
+        <button
           @click="clearSelected"
-          class="btn btn-danger"
+          class="btn btn-sm btn-danger"
           type="button"
           :disabled="selectedStationIds.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
       </div>
@@ -36,7 +46,7 @@
                 title="Click to sort this column in ascending or descending order"
                 v-for="(th, prop) in stationPropDisplay"
                 :key="prop"
-                @click="sort(prop)">
+                @click="sortDir(prop)">
                   {{ th }}
                   <span
                     v-show="currentSort === prop"
@@ -78,7 +88,7 @@
         </table>
       </div>
 
-      <nav class="form-inline">
+      <nav class="form-inline small">
         <button
           @click="prevPage"
           class="btn btn-sm btn-default"
@@ -98,7 +108,7 @@
               <option value="100">100</option>
               <option value="500">500</option>
               <option value="1000">1000</option>
-              <option :value="stationData.length" v-translate t-coment="All entries">All</option>
+              <option :value="totalSize" v-translate t-coment="All entries">All</option>
           </select>
         </div>
         <span>{{ showingFilterText }}</span>
@@ -139,7 +149,11 @@ export default {
     },
     noProvinceStationSelected: Boolean,
     stationProvCol: String,
-    stnPrimaryId: String
+    stnPrimaryId: String,
+    hydroStationDisplay: {
+      type: Boolean,
+      default: false
+    }
   },
   mounted: function () {
     this.clearSelected()
@@ -167,7 +181,6 @@ export default {
       keyColumns: Object.keys(this.stationPropDisplay),
       currentSortDir: 'asc',
       pageSize: this.stationData.length, // initial as All
-      totalSize: this.stationData.length,
       currentPage: 1,
       showSelected: false,
       searchText: ''
@@ -193,10 +206,14 @@ export default {
     },
     bboxStationTotal: function (newVal) {
       this.$store.dispatch('setBboxStationTotal', newVal)
+    },
+    totalSize: function (newVal, oldVal) {
+      this.pageSize = newVal
+      this.currentPage = 1 // reset page
     }
   },
   methods: {
-    sort: function (s) {
+    sortDir: function (s) {
       // if s == current sort, reverse
       if (s === this.currentSort) {
         this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
@@ -237,6 +254,9 @@ export default {
     },
     toggleShowSelected: function (evt) {
       this.showSelected = !this.showSelected
+    },
+    toggleActiveStation: function (evt) {
+      this.$store.dispatch('setHydroStationActive', !this.hydroStationActive)
     },
     isRowSelected: function (stnId) {
       if (this.showSelected) {
@@ -314,23 +334,40 @@ export default {
         return true
       }
     },
+    activeStationFilter: function (row, index) {
+      if (this.hydroStationDisplay) {
+        if (this.hydroStationActive) {
+          return row.properties['STATUS_EN'] === 'Active'
+        } else {
+          return true
+        }
+      } else {
+        return true
+      }
+    },
     dateDisplay: function (utcString) {
       return utcString.substr(0, 10)
       // this.$moment.utc(utcString, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD')
     }
   },
   computed: {
+    totalSize: function () {
+      return this.stationData.length
+    },
+    hydroStationActive: function () {
+      return this.$store.getters.getHydroStationActive
+    },
     filteredStations: function () {
-      let cmp = this
-      function compareStn (a, b) {
+      let _this = this // reference to this inside sort function
+      function compareStn (a, b) { // sort function
         let modifier = 1
-        if (cmp.currentSortDir === 'desc') {
+        if (_this.currentSortDir === 'desc') {
           modifier = -1
         }
-        if (a.properties[cmp.currentSort] < b.properties[cmp.currentSort]) {
+        if (a.properties[_this.currentSort] < b.properties[_this.currentSort]) {
           return -1 * modifier
         }
-        if (a.properties[cmp.currentSort] > b.properties[cmp.currentSort]) {
+        if (a.properties[_this.currentSort] > b.properties[_this.currentSort]) {
           return 1 * modifier
         }
         return 0
@@ -338,6 +375,7 @@ export default {
 
       return this.stationData
         .slice(0) // make a copy of it
+        .filter(this.activeStationFilter)
         .sort(compareStn) // sort
         .filter(this.selectedFilter)
         .filter(this.bboxFilter)

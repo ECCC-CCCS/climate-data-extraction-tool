@@ -20,38 +20,14 @@ export default new Vuex.Store({
     minDateClimateMonthly: null,
     pointClickOn: false,
     clickLatLng: null,
-    latestRelease: {}
+    latestRelease: {},
+    hydroStationActive: true,
+    retrievedAllHydroStations: false
   },
   mutations: {
-    changeLatestRelease (state, payload) {
-      state.latestRelease = payload
-    },
-    changeClickLatLng (state, payload) {
-      state.clickLatLng = payload
-    },
-    changePointClickStatus (state, payload) {
-      state.pointClickOn = payload
-    },
-    changeProvinceMutation (state, payload) {
-      state.province = payload
-    },
-    changeHydroStations (state, payload) {
-      state.hydroStationGeoJson = payload
-    },
-    changeClimateStations (state, payload) {
-      state.climateStationGeoJson = payload
-    },
-    changeClimateNormalsStations (state, payload) {
-      state.climateNormalsStationGeoJson = payload
-    },
-    changeClimateMonthlyStations (state, payload) {
-      state.climateMonthlyStationGeoJson = payload
-    },
-    changeAhccdStations (state, payload) {
-      state.ahccdStationGeoJson = payload
-    },
-    changeBBOXMutation (state, payload) {
-      state.bbox = payload
+    changeState (state, payload) { // universal state mutation changer
+      // payload is object with {stateProp, stateValue}
+      state[payload.stateProp] = payload.stateValue
     },
     addStationIdSelectedMutation (state, payload) {
       if (state.stationIdSelected.length < state.maxStationSelection) { // at most 20
@@ -66,65 +42,117 @@ export default new Vuex.Store({
     },
     clearStationIdSelectedMutation (state) {
       state.stationIdSelected = []
-    },
-    changeClimateDailyMinDate (state, payload) {
-      state.minDateClimateDaily = payload
-    },
-    changeClimateMonthlyMinDate (state, payload) {
-      state.minDateClimateMonthly = payload
-    },
-    changeBboxStationTotal (state, payload) {
-      state.bboxStationTotal = payload
     }
   },
   actions: { // AJAX in stuff; change states
+    setHydroStationActive: function ({ commit }, toggle) {
+      commit('changeState', {
+        stateProp: 'hydroStationActive',
+        stateValue: toggle
+      })
+    },
     retrieveLatestRelease: function ({ commit }, url) {
       axios.get(url)
-        .then(response => (
-          commit('changeLatestRelease', response.data)
-        ))
+        .then((response) => {
+          commit('changeState', {
+            stateProp: 'latestRelease',
+            stateValue: response.data
+          })
+        })
     },
     setClickLatLng: function ({ commit }, latLng) {
-      commit('changeClickLatLng', latLng)
+      commit('changeState', {
+        stateProp: 'clickLatLng',
+        stateValue: latLng
+      })
     },
     setPointClickStatus: function ({ commit }, status) {
-      commit('changePointClickStatus', status)
+      commit('changeState', {
+        stateProp: 'pointClickOn',
+        stateValue: status
+      })
     },
     changeProvince: function ({ commit }, newProv) {
-      commit('changeProvinceMutation', newProv)
+      commit('changeState', {
+        stateProp: 'province',
+        stateValue: newProv
+      })
     },
     changeBBOX: function ({ commit }, newBBOX) {
-      commit('changeBBOXMutation', newBBOX)
+      commit('changeState', {
+        stateProp: 'bbox',
+        stateValue: newBBOX
+      })
     },
-    retrieveHydroStations: function ({ commit }, url) {
+    retrieveHydroStations: function ({ commit, state }, url) {
+      if (state.retrievedAllHydroStations) {
+        return false
+      }
       axios.get(url)
-        .then(response => (
-          commit('changeHydroStations', response.data)
-        ))
+        .then((response) => {
+          commit('changeState', {
+            stateProp: 'hydroStationGeoJson',
+            stateValue: response.data
+          })
+          if (state.hydroStationActive === false) {
+            commit('changeState', {
+              stateProp: 'retrievedAllHydroStations',
+              stateValue: true
+            })
+          }
+        })
     },
+    // retrieveHydroStationsDiscontinued: function ({ commit, state }, url) {
+    //   if (state.retrievedAllHydroStations) {
+    //     return false
+    //   }
+    //   axios.get(url)
+    //     .then((response) => {
+    //       response.data.features = response.data.features.concat(state.hydroStationGeoJson.features)
+    //       response.data.numberMatched += state.hydroStationGeoJson.numberMatched
+    //       response.data.numberReturned += state.hydroStationGeoJson.numberReturned
+    //       commit('changeState', {
+    //         stateProp: 'hydroStationGeoJson',
+    //         stateValue: response.data
+    //       })
+
+    //     })
+    // },
     retrieveClimateStations: function ({ commit }, url) {
       axios.get(url)
-        .then(response => (
-          commit('changeClimateStations', response.data)
-        ))
+        .then((response) => {
+          commit('changeState', {
+            stateProp: 'climateStationGeoJson',
+            stateValue: response.data
+          })
+        })
     },
     retrieveClimateNormalsStations: function ({ commit }, url) {
       axios.get(url)
-        .then(response => (
-          commit('changeClimateNormalsStations', response.data)
-        ))
+        .then((response) => {
+          commit('changeState', {
+            stateProp: 'climateNormalsStationGeoJson',
+            stateValue: response.data
+          })
+        })
     },
     retrieveClimateMonthlyStations: function ({ commit }, url) {
       axios.get(url)
-        .then(response => (
-          commit('changeClimateMonthlyStations', response.data)
-        ))
+        .then((response) => {
+          commit('changeState', {
+            stateProp: 'climateMonthlyStationGeoJson',
+            stateValue: response.data
+          })
+        })
     },
     retrieveAhccdStations: function ({ commit }, url) {
       axios.get(url)
-        .then(response => (
-          commit('changeAhccdStations', response.data)
-        ))
+        .then((response) => {
+          commit('changeState', {
+            stateProp: 'ahccdStationGeoJson',
+            stateValue: response.data
+          })
+        })
     },
     addStationIdSelected: function ({ commit }, id) {
       commit('addStationIdSelectedMutation', id)
@@ -136,16 +164,31 @@ export default new Vuex.Store({
       commit('clearStationIdSelectedMutation')
     },
     setClimateDailyMinDate: function ({ commit }, minDate) {
-      commit('changeClimateDailyMinDate', minDate)
+      commit('changeState', {
+        stateProp: 'minDateClimateDaily',
+        stateValue: minDate
+      })
     },
     setClimateMonthlyMinDate: function ({ commit }, minDate) {
-      commit('changeClimateMonthlyMinDate', minDate)
+      commit('changeState', {
+        stateProp: 'minDateClimateMonthly',
+        stateValue: minDate
+      })
     },
     setBboxStationTotal: function ({ commit }, total) {
-      commit('changeBboxStationTotal', total)
+      commit('changeState', {
+        stateProp: 'bboxStationTotal',
+        stateValue: total
+      })
     }
   },
   getters: {
+    getRetrievedAllHydroStations (state) {
+      return state.retrievedAllHydroStations
+    },
+    getHydroStationActive (state) {
+      return state.hydroStationActive
+    },
     getLatestRelease (state) {
       return state.latestRelease
     },
@@ -188,7 +231,7 @@ export default new Vuex.Store({
     getClimateMonthlyMinDate (state) {
       return state.minDateClimateMonthly
     },
-    getBboxStationsTotal: function (state) {
+    getBboxStationsTotal (state) {
       return state.bboxStationTotal
     }
   }

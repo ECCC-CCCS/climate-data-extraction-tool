@@ -38,7 +38,8 @@
           :readable-columns="popup_props_display"
           :select-disabled="provinceSelected"
           :geojson="hydroStationsGeoJson"
-          :stn-primary-id="stnPrimaryId"></bbox-map>
+          :stn-primary-id="stnPrimaryId"
+          :hydro-station-display="true"></bbox-map>
 
         <province-select
           v-model="wfs_province"></province-select>
@@ -51,7 +52,8 @@
           :station-prop-display="station_props_display"
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"></station-select>
+          :stn-primary-id="stnPrimaryId"
+          :hydro-station-display="true"></station-select>
 
         <var-select
           class="mrgn-tp-md"
@@ -155,6 +157,11 @@ export default {
     },
     ows_bbox: function (newVal, oldVal) {
       this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+    },
+    activeStationsOnly: function (newVal, oldVal) { // display inactive stations
+      if (newVal === false) {
+        this.$store.dispatch('retrieveHydroStations', this.urlStationList)
+      }
     }
   },
   beforeMount () {
@@ -164,14 +171,34 @@ export default {
     }
   },
   computed: {
-    urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&STATUS_EN=Active&limit=' + this.wfs_station_limit
+    activeStationsOnly: function () {
+      return this.$store.getters.getHydroStationActive
     },
-    urlAllHydroStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
+    urlStationListDiscontinued: function () {
+      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?STATUS_EN=Discontinued&f=json&limit=' + this.wfs_station_limit
+      return url
+    },
+    urlStationList: function () {
+      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
+      if (this.activeStationsOnly) {
+        url += '&STATUS_EN=Active'
+      }
+      return url
     },
     hydroStationsGeoJson: function () {
-      return this.$store.getters.getHydroStations
+      let hs = this.$store.getters.getHydroStations
+      if (hs === null) {
+        return null
+      }
+      let hydroStations = Object.assign({}, hs) // Clone object to prevent original alteration
+      if (this.activeStationsOnly) { // filter here so it works with map and table
+        if (hydroStations.hasOwnProperty('features')) {
+          hydroStations.features = hydroStations.features.filter((feature) => {
+            return feature.properties.STATUS_EN === 'Active'
+          })
+        }
+      }
+      return hydroStations
     },
     layer_options: function () {
       return {
