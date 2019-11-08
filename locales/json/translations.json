@@ -1566,6 +1566,12 @@
 					""
 				]
 			},
+			"Show discontinued stations": {
+				"msgid": "Show discontinued stations",
+				"msgstr": [
+					""
+				]
+			},
 			"Show selected": {
 				"msgid": "Show selected",
 				"msgstr": [
@@ -1790,6 +1796,12 @@
 			},
 			"There are no stations available to download data from your current map display.": {
 				"msgid": "There are no stations available to download data from your current map display.",
+				"msgstr": [
+					""
+				]
+			},
+			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
+				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
 				"msgstr": [
 					""
 				]
@@ -3597,6 +3609,12 @@
 					"cliquez sur les stations sur la carte ou dans le tableau pour les sélectionner"
 				]
 			},
+			"Show discontinued stations": {
+				"msgid": "Show discontinued stations",
+				"msgstr": [
+					"Afficher les stations abandonnées"
+				]
+			},
 			"Show selected": {
 				"msgid": "Show selected",
 				"msgstr": [
@@ -3823,6 +3841,12 @@
 				"msgid": "There are no stations available to download data from your current map display.",
 				"msgstr": [
 					"L’affichage actuel de votre carte ne contient aucune station pour télécharger des données."
+				]
+			},
+			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
+				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
+				"msgstr": [
+					"Ce bouton permet de récupérer plus de 7000 stations et peut causer une perte de performance sur cette interface utilisateur graphique"
 				]
 			},
 			"This field is not within the date range limits.": {

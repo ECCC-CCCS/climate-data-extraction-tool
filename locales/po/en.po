@@ -47,7 +47,7 @@ msgstr ""
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr ""
 
-#: src/components/BBOXMap.vue:366
+#: src/components/BBOXMap.vue:370
 msgid "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
 msgstr ""
 
@@ -225,7 +225,7 @@ msgstr ""
 msgid "Alberta"
 msgstr ""
 
-#: src/components/StationSelect.vue:102
+#: src/components/StationSelect.vue:111
 msgid "All"
 msgstr ""
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Annual"
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:180
+#: src/components/HydrometricArchiveForm.vue:207
 msgid "Annual max/min"
 msgstr ""
 
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Clear dates"
 msgstr ""
 
-#: src/components/StationSelect.vue:28
+#: src/components/StationSelect.vue:38
 #. Button to clear selected stations
 msgid "Clear selected"
 msgstr ""
@@ -356,7 +356,7 @@ msgid ""
 "produce more weather elements e.g. wind or snow on ground."
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:181
+#: src/components/HydrometricArchiveForm.vue:208
 msgid "Daily max/min"
 msgstr ""
 
@@ -364,7 +364,7 @@ msgstr ""
 msgid "Daily maximum temperature"
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:178
+#: src/components/HydrometricArchiveForm.vue:205
 msgid "Daily mean"
 msgstr ""
 
@@ -389,7 +389,7 @@ msgstr ""
 msgid "Data download link"
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:102
+#: src/components/HydrometricArchiveForm.vue:104
 msgid "Data download links"
 msgstr ""
 
@@ -412,7 +412,7 @@ msgstr ""
 #: src/components/ClimateMonthlyForm.vue:68
 #: src/components/CMIP5Form.vue:76
 #: src/components/DCSForm.vue:77
-#: src/components/HydrometricArchiveForm.vue:64
+#: src/components/HydrometricArchiveForm.vue:66
 msgid "Date range"
 msgstr ""
 
@@ -425,7 +425,7 @@ msgstr ""
 msgid "Date ranges not required for CanGRD trends"
 msgstr ""
 
-#: src/components/LatestRelease.vue:6
+#: src/components/LatestRelease.vue:8
 msgid "Date:"
 msgstr ""
 
@@ -473,11 +473,11 @@ msgid ""
 "station."
 msgstr ""
 
-#: src/components/BBOXMap.vue:362
+#: src/components/BBOXMap.vue:366
 msgid "Download a region"
 msgstr ""
 
-#: src/components/BBOXMap.vue:361
+#: src/components/BBOXMap.vue:365
 msgid "Download data for a single location as a CSV or GeoJSON"
 msgstr ""
 
@@ -523,7 +523,7 @@ msgstr ""
 #: src/components/ClimateMonthlyForm.vue:82
 #: src/components/CMIP5Form.vue:132
 #: src/components/DCSForm.vue:133
-#: src/components/HydrometricArchiveForm.vue:77
+#: src/components/HydrometricArchiveForm.vue:79
 msgid "End date"
 msgstr ""
 
@@ -675,7 +675,7 @@ msgstr ""
 msgid "Historical start date"
 msgstr ""
 
-#: src/components/BBOXMap.vue:37
+#: src/components/BBOXMap.vue:33
 msgid "How to use: interactive map"
 msgstr ""
 
@@ -706,15 +706,15 @@ msgid ""
 "boundary."
 msgstr ""
 
-#: src/components/LatestRelease.vue:3
+#: src/components/LatestRelease.vue:5
 msgid "Latest changes"
 msgstr ""
 
-#: src/components/StationSelect.vue:154
+#: src/components/StationSelect.vue:166
 msgid "Latitude"
 msgstr ""
 
-#: src/components/BBOXMap.vue:75
+#: src/components/BBOXMap.vue:69
 msgid "Latitude:"
 msgstr ""
 
@@ -726,11 +726,11 @@ msgstr ""
 msgid "Library of climate resources"
 msgstr ""
 
-#: src/components/StationSelect.vue:155
+#: src/components/StationSelect.vue:167
 msgid "Longitude"
 msgstr ""
 
-#: src/components/BBOXMap.vue:74
+#: src/components/BBOXMap.vue:68
 msgid "Longitude:"
 msgstr ""
 
@@ -746,7 +746,7 @@ msgstr ""
 msgid "Map Projection"
 msgstr ""
 
-#: src/components/BBOXMap.vue:9
+#: src/components/BBOXMap.vue:8
 msgid "Map selection type"
 msgstr ""
 
@@ -813,7 +813,7 @@ msgid ""
 "produce daily data."
 msgstr ""
 
-#: src/components/HydrometricArchiveForm.vue:179
+#: src/components/HydrometricArchiveForm.vue:206
 msgid "Monthly mean"
 msgstr ""
 
@@ -843,7 +843,7 @@ msgstr ""
 msgid "Newfoundland and Labrador"
 msgstr ""
 
-#: src/components/StationSelect.vue:88
+#: src/components/StationSelect.vue:97
 msgid "Next"
 msgstr ""
 
@@ -872,11 +872,11 @@ msgstr ""
 msgid "Ontario"
 msgstr ""
 
-#: src/components/StationSelect.vue:94
+#: src/components/StationSelect.vue:103
 msgid "Page size"
 msgstr ""
 
-#: src/components/BBOXMap.vue:40
+#: src/components/BBOXMap.vue:36
 msgid "Panning:"
 msgstr ""
 
@@ -889,7 +889,7 @@ msgstr ""
 msgid "Please correct all form errors to download data."
 msgstr ""
 
-#: src/components/StationSelect.vue:429
+#: src/components/StationSelect.vue:465
 msgid "Please press the \"Reset map\" button to see the stations in this table."
 msgstr ""
 
@@ -900,7 +900,7 @@ msgid ""
 "your form selection."
 msgstr ""
 
-#: src/components/BBOXMap.vue:20
+#: src/components/BBOXMap.vue:18
 msgid "Please select a point on the map."
 msgstr ""
 
@@ -908,7 +908,7 @@ msgstr ""
 msgid "Precipitation accumulation interval"
 msgstr ""
 
-#: src/components/StationSelect.vue:83
+#: src/components/StationSelect.vue:92
 msgid "Previous"
 msgstr ""
 
@@ -924,11 +924,11 @@ msgstr ""
 #: src/components/ClimateDailyForm.vue:208
 #: src/components/ClimateMonthlyForm.vue:208
 #: src/components/ClimateNormalsForm.vue:149
-#: src/components/HydrometricArchiveForm.vue:193
+#: src/components/HydrometricArchiveForm.vue:220
 msgid "Province/Territory/State"
 msgstr ""
 
-#: src/components/BBOXMap.vue:162
+#: src/components/BBOXMap.vue:154
 msgid "Province/Territory/State:"
 msgstr ""
 
@@ -940,7 +940,7 @@ msgstr ""
 msgid "Quebec"
 msgstr ""
 
-#: src/components/BBOXMap.vue:82
+#: src/components/BBOXMap.vue:75
 msgid "Reset map"
 msgstr ""
 
@@ -974,22 +974,26 @@ msgstr ""
 msgid "select stations on the map or in the table by clicking on them"
 msgstr ""
 
+#: src/components/StationSelect.vue:33
+msgid "Show discontinued stations"
+msgstr ""
+
 #: src/components/StationSelect.vue:22
 #. Toggle button to show selected stations in a table
 msgid "Show selected"
 msgstr ""
 
-#: src/components/StationSelect.vue:370
+#: src/components/StationSelect.vue:406
 msgid "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 msgstr ""
 
-#: src/components/StationSelect.vue:366
+#: src/components/StationSelect.vue:402
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entries)"
 msgstr ""
 
-#: src/components/StationSelect.vue:363
+#: src/components/StationSelect.vue:399
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entry)"
@@ -1031,16 +1035,16 @@ msgstr ""
 #: src/components/ClimateMonthlyForm.vue:71
 #: src/components/CMIP5Form.vue:120
 #: src/components/DCSForm.vue:121
-#: src/components/HydrometricArchiveForm.vue:67
+#: src/components/HydrometricArchiveForm.vue:69
 msgid "Start date"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:195
-#: src/components/HydrometricArchiveForm.vue:192
+#: src/components/HydrometricArchiveForm.vue:219
 msgid "Station ID"
 msgstr ""
 
-#: src/components/BBOXMap.vue:158
+#: src/components/BBOXMap.vue:150
 msgid "Station ID:"
 msgstr ""
 
@@ -1048,11 +1052,11 @@ msgstr ""
 #: src/components/ClimateDailyForm.vue:206
 #: src/components/ClimateMonthlyForm.vue:206
 #: src/components/ClimateNormalsForm.vue:147
-#: src/components/HydrometricArchiveForm.vue:191
+#: src/components/HydrometricArchiveForm.vue:218
 msgid "Station name"
 msgstr ""
 
-#: src/components/BBOXMap.vue:154
+#: src/components/BBOXMap.vue:146
 msgid "Station name:"
 msgstr ""
 
@@ -1166,7 +1170,7 @@ msgid ""
 "selected vertical levels. Predictions are made available monthly."
 msgstr ""
 
-#: src/components/BBOXMap.vue:30
+#: src/components/BBOXMap.vue:27
 msgid "The downloaded area will match the area shown in the map."
 msgstr ""
 
@@ -1226,11 +1230,17 @@ msgid ""
 "changes across the downscaled multi-model ensemble are shown."
 msgstr ""
 
-#: src/components/StationSelect.vue:73
+#: src/components/StationSelect.vue:83
 #. Warning message when user has no stations selected and no stations are contained in the map viewport
 msgid ""
 "There are no stations available to download data from your current map "
 "display."
+msgstr ""
+
+#: src/components/StationSelect.vue:30
+msgid ""
+"This button will retrieve more than 7000 stations and may cause a "
+"performance loss on this graphical user interface"
 msgstr ""
 
 #: src/components/DateSelect.vue:169
@@ -1269,7 +1279,7 @@ msgstr ""
 msgid "Tips for using the tool"
 msgstr ""
 
-#: src/components/BBOXMap.vue:41
+#: src/components/BBOXMap.vue:37
 #. <kbd>Tab</kbd> represents the keyboard button name
 msgid ""
 "To pan the map, click and drag over the interactive map. Alternatively, "
@@ -1283,7 +1293,7 @@ msgid ""
 "button"
 msgstr ""
 
-#: src/components/BBOXMap.vue:45
+#: src/components/BBOXMap.vue:41
 #. <kbd> tags represent a keyboard button name. Do not adjust spacing.
 msgid ""
 "To zoom in and out of the map, mouse scroll up and down while you mouse "
@@ -1332,7 +1342,7 @@ msgid ""
 "data by clicking on the data download link at the bottom of the page."
 msgstr ""
 
-#: src/components/BBOXMap.vue:39
+#: src/components/BBOXMap.vue:35
 msgid ""
 "Use this map to select a geographic subset of the data. The geographic "
 "subset of the downloaded data will match the area shown in the map."
@@ -1351,7 +1361,7 @@ msgid "Value type"
 msgstr ""
 
 #: src/components/AHCCDForm.vue:70
-#: src/components/HydrometricArchiveForm.vue:59
+#: src/components/HydrometricArchiveForm.vue:61
 msgid "Value type / Time interval"
 msgstr ""
 
@@ -1364,7 +1374,7 @@ msgstr ""
 msgid "Variable"
 msgstr ""
 
-#: src/components/LatestRelease.vue:7
+#: src/components/LatestRelease.vue:9
 msgid "View releases on GitHub"
 msgstr ""
 
@@ -1444,7 +1454,7 @@ msgstr ""
 msgid "YYYY-MM-DD"
 msgstr ""
 
-#: src/components/BBOXMap.vue:44
+#: src/components/BBOXMap.vue:40
 msgid "Zooming:"
 msgstr ""
 
@@ -1690,9 +1700,9 @@ msgstr ""
 #: src/components/ClimateNormalsForm.vue:157
 #: src/components/ClimateNormalsForm.vue:161
 #: src/components/ClimateNormalsForm.vue:165
-#: src/components/HydrometricArchiveForm.vue:201
-#: src/components/HydrometricArchiveForm.vue:205
-#: src/components/HydrometricArchiveForm.vue:209
+#: src/components/HydrometricArchiveForm.vue:228
+#: src/components/HydrometricArchiveForm.vue:232
+#: src/components/HydrometricArchiveForm.vue:236
 msgctxt "Colon"
 msgid ":"
 msgstr ""
@@ -1752,7 +1762,7 @@ msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr ""
 
-#: src/components/BBOXMap.vue:369
+#: src/components/BBOXMap.vue:373
 msgctxt "Title"
 msgid "Canada Base Map Transportation"
 msgstr ""
