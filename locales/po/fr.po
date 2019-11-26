@@ -2011,7 +2011,7 @@ msgstr ":"
 #: src/components/mixins/datasets.js:32
 msgctxt "Dataset Name"
 msgid "Adjusted and Homogenized Canadian Climate Data"
-msgstr "Analyse régionale déterministe de précipitation"
+msgstr "Données climatiques canadiennes ajustées et homogénéisées"
 
 #: src/components/mixins/datasets.js:102
 msgctxt "Dataset Name"
