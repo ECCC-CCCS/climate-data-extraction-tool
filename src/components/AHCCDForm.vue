@@ -45,7 +45,6 @@
 
         <station-select
           v-model="wfs_selected_station_ids"
-          v-if="ahccdStationsGeoJson !== null"
           :select-disabled="provinceSelected"
           :station-data="ahccdStationsGeoJson.features"
           :station-prop-display="station_props_display"
@@ -161,7 +160,7 @@ export default {
   },
   beforeMount () {
     // Load ahccd stations
-    if (this.ahccdStationsGeoJson === null) { // prevent duplicate AJAX
+    if (this.ahccdStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
       this.$store.dispatch('retrieveAhccdStations', this.urlStationList)
     }
   },

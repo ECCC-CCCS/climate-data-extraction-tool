@@ -8,7 +8,7 @@
           v-show="selectedStationIds.length === maxStationSelection"
           v-translate>Max number of stations selected</span>
       </legend>
-      <div class="form-inline">
+      <div class="form-inline" aria-controls="station-select-table">
         <input
           type="text"
           class="form-control"
@@ -30,7 +30,12 @@
           :title="$gettext('This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface')">
             <span v-show="hydroStationActive" class="glyphicon glyphicon-warning-sign"></span>
             <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
-            <translate>Show discontinued stations</translate></button>
+            <translate>Show discontinued stations</translate>
+            <pulse-loader
+            :loading="isLoadingStations"
+            class="loading"
+            :size="5"></pulse-loader>
+          </button>
         <button
           @click="clearSelected"
           class="btn btn-sm btn-danger"
@@ -38,7 +43,7 @@
           :disabled="selectedStationIds.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
       </div>
       <div id="station-select-container">
-        <table id="station-select-table" class="table table-striped table-hover">
+        <table id="station-select-table" class="table table-striped table-hover" aria-live="polite">
           <thead>
             <tr>
               <th
@@ -56,6 +61,20 @@
             </tr>
           </thead>
           <tbody>
+            <tr
+              v-show="isLoadingStations"
+              aria-busy="true"
+              role="alert">
+              <td
+                :colspan="numColumns"
+                class="text-center">
+                <pulse-loader
+                  :loading="isLoadingStations"
+                  class="loading"
+                  :size="5"></pulse-loader>
+                <span class="hidden" translate>Loading stations...</span>
+              </td>
+            </tr>
             <tr
               class="selectable selectableStation"
               v-for="stn in paginatedStations"
@@ -76,9 +95,9 @@
             </tr>
             <tr
               v-show="noProvinceStationSelected && filteredNumEntries === 0"
-              class="danger text-danger">
+              class="danger text-danger" role="status">
                 <td
-                  :colspan="Object.keys(stationPropDisplay).length">
+                  :colspan="numColumns">
                   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                   <translate t-comment="Warning message when user has no stations selected and no stations are contained in the map viewport">There are no stations available to download data from your current map display.</translate>
                   <span v-text="resetMapMessage"></span>
@@ -88,7 +107,7 @@
         </table>
       </div>
 
-      <nav class="form-inline small">
+      <nav class="form-inline small" aria-live="polite" aria-controls="station-select-table">
         <button
           @click="prevPage"
           class="btn btn-sm btn-default"
@@ -118,10 +137,14 @@
 </template>
 
 <script>
+import { PulseLoader } from '@saeris/vue-spinners'
 import L from 'leaflet'
 
 export default {
   name: 'StationSelect',
+  components: {
+    PulseLoader
+  },
   model: {
     prop: 'selectedStationIds',
     event: 'click'
@@ -139,10 +162,6 @@ export default {
         return {}
       }
     },
-    required: {
-      type: Boolean,
-      default: true
-    },
     selectDisabled: {
       type: Boolean,
       default: false
@@ -155,7 +174,7 @@ export default {
       default: false
     }
   },
-  mounted: function () {
+  beforeMount: function () {
     this.clearSelected()
 
     // reset bboxStationTotal
@@ -351,6 +370,12 @@ export default {
     }
   },
   computed: {
+    numColumns: function () {
+      return Object.keys(this.stationPropDisplay).length
+    },
+    isLoadingStations: function () {
+      return this.$store.getters.getIsLoadingStations
+    },
     totalSize: function () {
       return this.stationData.length
     },
@@ -470,6 +495,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.loading {
+  display: inline;
+}
 #station-select-container {
   height: 400px;
   overflow: scroll;

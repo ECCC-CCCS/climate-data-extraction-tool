@@ -7,11 +7,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     province: 'null',
-    hydroStationGeoJson: null,
-    climateStationGeoJson: null,
-    climateNormalsStationGeoJson: null,
-    climateMonthlyStationGeoJson: null,
-    ahccdStationGeoJson: null,
+    hydroStationGeoJson: {
+      features: []
+    },
+    climateStationGeoJson: {
+      features: []
+    },
+    climateNormalsStationGeoJson: {
+      features: []
+    },
+    climateMonthlyStationGeoJson: {
+      features: []
+    },
+    ahccdStationGeoJson: {
+      features: []
+    },
+    isLoadingStations: false,
     stationIdSelected: [],
     bbox: null,
     bboxStationTotal: null,
@@ -42,9 +53,12 @@ export default new Vuex.Store({
     },
     clearStationIdSelectedMutation (state) {
       state.stationIdSelected = []
+    },
+    changeIsLoadingStations (state, status) {
+      state.isLoadingStations = status
     }
   },
-  actions: { // AJAX in stuff; change states
+  actions: {
     setHydroStationActive: function ({ commit }, toggle) {
       commit('changeState', {
         stateProp: 'hydroStationActive',
@@ -88,6 +102,7 @@ export default new Vuex.Store({
       if (state.retrievedAllHydroStations) {
         return false
       }
+      commit('changeIsLoadingStations', true)
       axios.get(url)
         .then((response) => {
           commit('changeState', {
@@ -101,24 +116,12 @@ export default new Vuex.Store({
             })
           }
         })
+        .finally(() => {
+          commit('changeIsLoadingStations', false)
+        })
     },
-    // retrieveHydroStationsDiscontinued: function ({ commit, state }, url) {
-    //   if (state.retrievedAllHydroStations) {
-    //     return false
-    //   }
-    //   axios.get(url)
-    //     .then((response) => {
-    //       response.data.features = response.data.features.concat(state.hydroStationGeoJson.features)
-    //       response.data.numberMatched += state.hydroStationGeoJson.numberMatched
-    //       response.data.numberReturned += state.hydroStationGeoJson.numberReturned
-    //       commit('changeState', {
-    //         stateProp: 'hydroStationGeoJson',
-    //         stateValue: response.data
-    //       })
-
-    //     })
-    // },
     retrieveClimateStations: function ({ commit }, url) {
+      commit('changeIsLoadingStations', true)
       axios.get(url)
         .then((response) => {
           commit('changeState', {
@@ -126,8 +129,12 @@ export default new Vuex.Store({
             stateValue: response.data
           })
         })
+        .finally(() => {
+          commit('changeIsLoadingStations', false)
+        })
     },
     retrieveClimateNormalsStations: function ({ commit }, url) {
+      commit('changeIsLoadingStations', true)
       axios.get(url)
         .then((response) => {
           commit('changeState', {
@@ -135,8 +142,12 @@ export default new Vuex.Store({
             stateValue: response.data
           })
         })
+        .finally(() => {
+          commit('changeIsLoadingStations', false)
+        })
     },
     retrieveClimateMonthlyStations: function ({ commit }, url) {
+      commit('changeIsLoadingStations', true)
       axios.get(url)
         .then((response) => {
           commit('changeState', {
@@ -144,14 +155,21 @@ export default new Vuex.Store({
             stateValue: response.data
           })
         })
+        .finally(() => {
+          commit('changeIsLoadingStations', false)
+        })
     },
     retrieveAhccdStations: function ({ commit }, url) {
+      commit('changeIsLoadingStations', true)
       axios.get(url)
         .then((response) => {
           commit('changeState', {
             stateProp: 'ahccdStationGeoJson',
             stateValue: response.data
           })
+        })
+        .finally(() => {
+          commit('changeIsLoadingStations', false)
         })
     },
     addStationIdSelected: function ({ commit }, id) {
@@ -183,6 +201,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getIsLoadingStations (state) {
+      return state.isLoadingStations
+    },
     getRetrievedAllHydroStations (state) {
       return state.retrievedAllHydroStations
     },

@@ -46,7 +46,6 @@
 
         <station-select
           v-model="wfs_selected_station_ids"
-          v-if="hydroStationsGeoJson !== null"
           :select-disabled="provinceSelected"
           :station-data="hydroStationsGeoJson.features"
           :station-prop-display="station_props_display"
@@ -166,7 +165,7 @@ export default {
   },
   beforeMount () {
     // Load hydrometric stations
-    if (this.hydroStationsGeoJson === null) { // prevent duplicate AJAX
+    if (this.hydroStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
       this.$store.dispatch('retrieveHydroStations', this.urlStationList)
     }
   },

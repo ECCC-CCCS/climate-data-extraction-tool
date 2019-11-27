@@ -45,7 +45,6 @@
 
         <station-select
           v-model="wfs_selected_station_ids"
-          v-if="climateStationsGeoJson !== null"
           :select-disabled="provinceSelected"
           :station-data="climateStationsGeoJson.features"
           :station-prop-display="station_props_display"
@@ -152,7 +151,7 @@ export default {
   },
   beforeMount () {
     // Load climate stations
-    if (this.climateStationsGeoJson === null) { // prevent duplicate AJAX
+    if (this.climateStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
       this.$store.dispatch('retrieveClimateMonthlyStations', this.urlStationList)
     }
 
