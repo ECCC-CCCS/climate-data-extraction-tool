@@ -1236,6 +1236,12 @@
 					""
 				]
 			},
+			"Loading stations... please wait": {
+				"msgid": "Loading stations... please wait",
+				"msgstr": [
+					""
+				]
+			},
 			"Longitude": {
 				"msgid": "Longitude",
 				"msgstr": [
@@ -3277,6 +3283,12 @@
 				"msgid": "Library of climate resources",
 				"msgstr": [
 					"Répertoire de ressources climatiques"
+				]
+			},
+			"Loading stations... please wait": {
+				"msgid": "Loading stations... please wait",
+				"msgstr": [
+					"Les stations sont en train de télécharger… Veuillez patienter"
 				]
 			},
 			"Longitude": {
