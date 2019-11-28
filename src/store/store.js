@@ -125,13 +125,13 @@ export default new Vuex.Store({
       })
     },
     retrieveHydroStations: function ({ state, commit }, url) {
-      const getActiveStations = url.includes('STATUS_EN=Active')
+      const activeOnly = url.includes('STATUS_EN=Active')
       if (state.retrievedAllHydroStations) {
         return false
       }
       state.cancelSourceStation.cancel('Cancelling existing station request')
       state.cancelSourceStation = axios.CancelToken.source()
-      if (!getActiveStations) {
+      if (!activeOnly) {
         commit('startLoadingAllHydroStations')
       }
       commit('startLoadingStations')
@@ -147,7 +147,7 @@ export default new Vuex.Store({
         })
         .finally(() => {
           commit('finishLoadingStations')
-          if (!getActiveStations) {
+          if (!activeOnly) {
             commit('finishLoadingAllHydroStations')
           }
         })

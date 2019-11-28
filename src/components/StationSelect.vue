@@ -72,7 +72,7 @@
                   :loading="isLoadingStations"
                   class="loading"
                   :size="5"></pulse-loader>
-                <span class="hidden" translate>Loading stations...</span>
+                <span class="hidden"><translate>Loading stations... please wait</translate></span>
               </td>
             </tr>
             <tr
