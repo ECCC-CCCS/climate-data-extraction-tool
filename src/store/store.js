@@ -23,6 +23,7 @@ export default new Vuex.Store({
       features: []
     },
     isLoadingStations: false,
+    isLoadingAllHydroStations: false,
     stationIdSelected: [],
     bbox: null,
     bboxStationTotal: null,
@@ -70,8 +71,17 @@ export default new Vuex.Store({
     clearStationIdSelectedMutation (state) {
       state.stationIdSelected = []
     },
-    changeIsLoadingStations (state, status) {
-      state.isLoadingStations = status
+    startLoadingStations (state) {
+      state.isLoadingStations = true
+    },
+    finishLoadingStations (state) {
+      state.isLoadingStations = false
+    },
+    startLoadingAllHydroStations (state) {
+      state.isLoadingAllHydroStations = true
+    },
+    finishLoadingAllHydroStations (state) {
+      state.isLoadingAllHydroStations = false
     }
   },
   actions: {
@@ -115,12 +125,16 @@ export default new Vuex.Store({
       })
     },
     retrieveHydroStations: function ({ state, commit }, url) {
+      const getActiveStations = url.includes('STATUS_EN=Active')
       if (state.retrievedAllHydroStations) {
         return false
       }
       state.cancelSourceStation.cancel('Cancelling existing station request')
       state.cancelSourceStation = axios.CancelToken.source()
-      commit('changeIsLoadingStations', true)
+      if (!getActiveStations) {
+        commit('startLoadingAllHydroStations')
+      }
+      commit('startLoadingStations')
       axios.get(url, { cancelToken: state.cancelSourceStation.token })
         .then((response) => {
           commit('changeHydroStation', response.data)
@@ -132,55 +146,58 @@ export default new Vuex.Store({
           }
         })
         .finally(() => {
-          commit('changeIsLoadingStations', false)
+          commit('finishLoadingStations')
+          if (!getActiveStations) {
+            commit('finishLoadingAllHydroStations')
+          }
         })
     },
     retrieveClimateStations: function ({ state, commit }, url) {
       state.cancelSourceStation.cancel('Cancelling existing station request')
       state.cancelSourceStation = axios.CancelToken.source()
-      commit('changeIsLoadingStations', true)
+      commit('startLoadingStations')
       axios.get(url, { cancelToken: state.cancelSourceStation.token })
         .then((response) => {
           commit('changeDailyStation', response.data)
         })
         .finally(() => {
-          commit('changeIsLoadingStations', false)
+          commit('finishLoadingStations')
         })
     },
     retrieveClimateNormalsStations: function ({ state, commit }, url) {
       state.cancelSourceStation.cancel('Cancelling existing station request')
       state.cancelSourceStation = axios.CancelToken.source()
-      commit('changeIsLoadingStations', true)
+      commit('startLoadingStations')
       axios.get(url, { cancelToken: state.cancelSourceStation.token })
         .then((response) => {
           commit('changeNormalsStation', response.data)
         })
         .finally(() => {
-          commit('changeIsLoadingStations', false)
+          commit('finishLoadingStations')
         })
     },
     retrieveClimateMonthlyStations: function ({ state, commit }, url) {
       state.cancelSourceStation.cancel('Cancelling existing station request')
       state.cancelSourceStation = axios.CancelToken.source()
-      commit('changeIsLoadingStations', true)
+      commit('startLoadingStations')
       axios.get(url, { cancelToken: state.cancelSourceStation.token })
         .then((response) => {
           commit('changeMonthlyStation', response.data)
         })
         .finally(() => {
-          commit('changeIsLoadingStations', false)
+          commit('finishLoadingStations')
         })
     },
     retrieveAhccdStations: function ({ state, commit }, url) {
       state.cancelSourceStation.cancel('Cancelling existing station request')
       state.cancelSourceStation = axios.CancelToken.source()
-      commit('changeIsLoadingStations', true)
+      commit('startLoadingStations')
       axios.get(url, { cancelToken: state.cancelSourceStation.token })
         .then((response) => {
           commit('changeAhccdStation', response.data)
         })
         .finally(() => {
-          commit('changeIsLoadingStations', false)
+          commit('finishLoadingStations')
         })
     },
     addStationIdSelected: function ({ commit }, id) {
@@ -212,6 +229,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getIsLoadingAllHydroStations (state) {
+      return state.isLoadingAllHydroStations
+    },
     getIsLoadingStations (state) {
       return state.isLoadingStations
     },

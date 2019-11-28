@@ -32,7 +32,7 @@
             <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
             <translate>Show discontinued stations</translate>
             <pulse-loader
-            :loading="isLoadingStations"
+            :loading="isLoadingAllHydroStations"
             class="loading"
             :size="5"></pulse-loader>
           </button>
@@ -375,6 +375,9 @@ export default {
     },
     isLoadingStations: function () {
       return this.$store.getters.getIsLoadingStations
+    },
+    isLoadingAllHydroStations: function () {
+      return this.$store.getters.getIsLoadingAllHydroStations
     },
     totalSize: function () {
       return this.stationData.length

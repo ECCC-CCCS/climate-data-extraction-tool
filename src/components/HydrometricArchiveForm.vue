@@ -173,10 +173,6 @@ export default {
     activeStationsOnly: function () {
       return this.$store.getters.getHydroStationActive
     },
-    urlStationListDiscontinued: function () {
-      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?STATUS_EN=Discontinued&f=json&limit=' + this.wfs_station_limit
-      return url
-    },
     urlStationList: function () {
       let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
       if (this.activeStationsOnly) {
