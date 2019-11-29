@@ -225,7 +225,7 @@ msgstr ""
 msgid "Alberta"
 msgstr ""
 
-#: src/components/StationSelect.vue:130
+#: src/components/StationSelect.vue:131
 msgid "All"
 msgstr ""
 
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Clear dates"
 msgstr ""
 
-#: src/components/StationSelect.vue:43
+#: src/components/StationSelect.vue:44
 #. Button to clear selected stations
 msgid "Clear selected"
 msgstr ""
@@ -642,6 +642,10 @@ msgstr ""
 msgid "Geopotential height at 500mb"
 msgstr ""
 
+#: src/components/StationSelect.vue:34
+msgid "Hide discontinued stations"
+msgstr ""
+
 #: src/components/mixins/dcs-cmip5.js:140
 msgid "High emissions scenario (RCP 8.5)"
 msgstr ""
@@ -710,7 +714,7 @@ msgstr ""
 msgid "Latest changes"
 msgstr ""
 
-#: src/components/StationSelect.vue:185
+#: src/components/StationSelect.vue:186
 msgid "Latitude"
 msgstr ""
 
@@ -726,11 +730,11 @@ msgstr ""
 msgid "Library of climate resources"
 msgstr ""
 
-#: src/components/StationSelect.vue:75
+#: src/components/StationSelect.vue:76
 msgid "Loading stations... please wait"
 msgstr ""
 
-#: src/components/StationSelect.vue:186
+#: src/components/StationSelect.vue:187
 msgid "Longitude"
 msgstr ""
 
@@ -847,7 +851,7 @@ msgstr ""
 msgid "Newfoundland and Labrador"
 msgstr ""
 
-#: src/components/StationSelect.vue:116
+#: src/components/StationSelect.vue:117
 msgid "Next"
 msgstr ""
 
@@ -876,7 +880,7 @@ msgstr ""
 msgid "Ontario"
 msgstr ""
 
-#: src/components/StationSelect.vue:122
+#: src/components/StationSelect.vue:123
 msgid "Page size"
 msgstr ""
 
@@ -893,7 +897,7 @@ msgstr ""
 msgid "Please correct all form errors to download data."
 msgstr ""
 
-#: src/components/StationSelect.vue:493
+#: src/components/StationSelect.vue:494
 msgid "Please press the \"Reset map\" button to see the stations in this table."
 msgstr ""
 
@@ -912,7 +916,7 @@ msgstr ""
 msgid "Precipitation accumulation interval"
 msgstr ""
 
-#: src/components/StationSelect.vue:111
+#: src/components/StationSelect.vue:112
 msgid "Previous"
 msgstr ""
 
@@ -987,17 +991,17 @@ msgstr ""
 msgid "Show selected"
 msgstr ""
 
-#: src/components/StationSelect.vue:434
+#: src/components/StationSelect.vue:435
 msgid "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 msgstr ""
 
-#: src/components/StationSelect.vue:430
+#: src/components/StationSelect.vue:431
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entries)"
 msgstr ""
 
-#: src/components/StationSelect.vue:427
+#: src/components/StationSelect.vue:428
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entry)"
@@ -1234,7 +1238,7 @@ msgid ""
 "changes across the downscaled multi-model ensemble are shown."
 msgstr ""
 
-#: src/components/StationSelect.vue:102
+#: src/components/StationSelect.vue:103
 #. Warning message when user has no stations selected and no stations are contained in the map viewport
 msgid ""
 "There are no stations available to download data from your current map "

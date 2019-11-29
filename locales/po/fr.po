@@ -263,7 +263,7 @@ msgstr "Température de l'air à 850 mb"
 msgid "Alberta"
 msgstr "Alberta"
 
-#: src/components/StationSelect.vue:130
+#: src/components/StationSelect.vue:131
 msgid "All"
 msgstr "Tous"
 
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Clear dates"
 msgstr "Effacer les dates"
 
-#: src/components/StationSelect.vue:43
+#: src/components/StationSelect.vue:44
 #. Button to clear selected stations
 msgid "Clear selected"
 msgstr "Effacer la sélection"
@@ -753,6 +753,10 @@ msgstr "Futur"
 msgid "Geopotential height at 500mb"
 msgstr "Hauteur géopotentielle à 500 mb"
 
+#: src/components/StationSelect.vue:34
+msgid "Hide discontinued stations"
+msgstr "Masquer les stations abandonnées"
+
 #: src/components/mixins/dcs-cmip5.js:140
 msgid "High emissions scenario (RCP 8.5)"
 msgstr "Scénario d'émissions élevées (RCP 8.5)"
@@ -837,7 +841,7 @@ msgstr ""
 msgid "Latest changes"
 msgstr "Récents changements"
 
-#: src/components/StationSelect.vue:185
+#: src/components/StationSelect.vue:186
 msgid "Latitude"
 msgstr "Latitude"
 
@@ -853,11 +857,11 @@ msgstr "En savoir plus sur les scénarios d'émissions"
 msgid "Library of climate resources"
 msgstr "Répertoire de ressources climatiques"
 
-#: src/components/StationSelect.vue:75
+#: src/components/StationSelect.vue:76
 msgid "Loading stations... please wait"
 msgstr "Les stations sont en train de télécharger… Veuillez patienter"
 
-#: src/components/StationSelect.vue:186
+#: src/components/StationSelect.vue:187
 msgid "Longitude"
 msgstr "Longitude"
 
@@ -979,7 +983,7 @@ msgstr "Nouveau-Brunswick"
 msgid "Newfoundland and Labrador"
 msgstr "Terre-Neuve-et-Labrador"
 
-#: src/components/StationSelect.vue:116
+#: src/components/StationSelect.vue:117
 msgid "Next"
 msgstr "Suivant"
 
@@ -1008,7 +1012,7 @@ msgstr "vous ne pouvez sélectionner qu’un maximum de 20 stations à la fois"
 msgid "Ontario"
 msgstr "Ontario"
 
-#: src/components/StationSelect.vue:122
+#: src/components/StationSelect.vue:123
 msgid "Page size"
 msgstr "Format de la page"
 
@@ -1027,7 +1031,7 @@ msgstr ""
 "Veuillez corriger toutes les erreurs de saisie afin de télécharger les "
 "données."
 
-#: src/components/StationSelect.vue:493
+#: src/components/StationSelect.vue:494
 msgid "Please press the \"Reset map\" button to see the stations in this table."
 msgstr ""
 "Appuyiez sur « réinitialiser la carte » pour voir les stations dans ce "
@@ -1050,7 +1054,7 @@ msgstr "Veuillez sélectionner un point sur la carte."
 msgid "Precipitation accumulation interval"
 msgstr "Interval d'accumulation de précipitation"
 
-#: src/components/StationSelect.vue:111
+#: src/components/StationSelect.vue:112
 msgid "Previous"
 msgstr "Précédent"
 
@@ -1127,13 +1131,13 @@ msgstr "Afficher les stations abandonnées"
 msgid "Show selected"
 msgstr "Afficher la sélection"
 
-#: src/components/StationSelect.vue:434
+#: src/components/StationSelect.vue:435
 msgid "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 msgstr ""
 "Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de "
 "{filteredNumEntries}"
 
-#: src/components/StationSelect.vue:430
+#: src/components/StationSelect.vue:431
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entries)"
@@ -1141,7 +1145,7 @@ msgstr ""
 "Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de "
 "{filteredNumEntries} (filtrées de {totalSize} entrées au total)"
 
-#: src/components/StationSelect.vue:427
+#: src/components/StationSelect.vue:428
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entry)"
@@ -1486,7 +1490,7 @@ msgstr ""
 "d’échelle statistique mensuels, saisonniers et annuels, à l’aide de l’outil "
 "d’extraction de données climatiques."
 
-#: src/components/StationSelect.vue:102
+#: src/components/StationSelect.vue:103
 #. Warning message when user has no stations selected and no stations are contained in the map viewport
 msgid ""
 "There are no stations available to download data from your current map "

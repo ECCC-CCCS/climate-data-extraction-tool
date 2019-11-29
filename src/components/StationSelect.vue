@@ -30,7 +30,8 @@
           :title="$gettext('This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface')">
             <span v-show="hydroStationActive" class="glyphicon glyphicon-warning-sign"></span>
             <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
-            <translate>Show discontinued stations</translate>
+            <span v-show="hydroStationActive"><translate>Show discontinued stations</translate></span>
+            <span v-show="!hydroStationActive"><translate>Hide discontinued stations</translate></span>
             <pulse-loader
             :loading="isLoadingAllHydroStations"
             class="loading"

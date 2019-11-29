@@ -1134,6 +1134,12 @@
 					""
 				]
 			},
+			"Hide discontinued stations": {
+				"msgid": "Hide discontinued stations",
+				"msgstr": [
+					""
+				]
+			},
 			"High emissions scenario (RCP 8.5)": {
 				"msgid": "High emissions scenario (RCP 8.5)",
 				"msgstr": [
@@ -3181,6 +3187,12 @@
 				"msgid": "Geopotential height at 500mb",
 				"msgstr": [
 					"Hauteur géopotentielle à 500 mb"
+				]
+			},
+			"Hide discontinued stations": {
+				"msgid": "Hide discontinued stations",
+				"msgstr": [
+					"Masquer les stations abandonnées"
 				]
 			},
 			"High emissions scenario (RCP 8.5)": {
