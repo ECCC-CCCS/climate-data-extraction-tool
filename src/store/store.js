@@ -7,11 +7,23 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     province: 'null',
-    hydroStationGeoJson: null,
-    climateStationGeoJson: null,
-    climateNormalsStationGeoJson: null,
-    climateMonthlyStationGeoJson: null,
-    ahccdStationGeoJson: null,
+    hydroStationGeoJson: {
+      features: []
+    },
+    climateStationGeoJson: {
+      features: []
+    },
+    climateNormalsStationGeoJson: {
+      features: []
+    },
+    climateMonthlyStationGeoJson: {
+      features: []
+    },
+    ahccdStationGeoJson: {
+      features: []
+    },
+    isLoadingStations: false,
+    isLoadingAllHydroStations: false,
     stationIdSelected: [],
     bbox: null,
     bboxStationTotal: null,
@@ -19,35 +31,31 @@ export default new Vuex.Store({
     minDateClimateDaily: null,
     minDateClimateMonthly: null,
     pointClickOn: false,
-    clickLatLng: null
+    clickLatLng: null,
+    latestRelease: {},
+    hydroStationActive: true,
+    retrievedAllHydroStations: false,
+    cancelSourceStation: axios.CancelToken.source()
   },
   mutations: {
-    changeClickLatLng (state, payload) {
-      state.clickLatLng = payload
+    changeState (state, payload) { // universal state mutation changer
+      // payload is object with {stateProp, stateValue}
+      state[payload.stateProp] = payload.stateValue
     },
-    changePointClickStatus (state, payload) {
-      state.pointClickOn = payload
-    },
-    changeProvinceMutation (state, payload) {
-      state.province = payload
-    },
-    changeHydroStations (state, payload) {
-      state.hydroStationGeoJson = payload
-    },
-    changeClimateStations (state, payload) {
+    changeDailyStation (state, payload) {
       state.climateStationGeoJson = payload
     },
-    changeClimateNormalsStations (state, payload) {
-      state.climateNormalsStationGeoJson = payload
-    },
-    changeClimateMonthlyStations (state, payload) {
+    changeMonthlyStation (state, payload) {
       state.climateMonthlyStationGeoJson = payload
     },
-    changeAhccdStations (state, payload) {
+    changeNormalsStation (state, payload) {
+      state.climateNormalsStationGeoJson = payload
+    },
+    changeAhccdStation (state, payload) {
       state.ahccdStationGeoJson = payload
     },
-    changeBBOXMutation (state, payload) {
-      state.bbox = payload
+    changeHydroStation (state, payload) {
+      state.hydroStationGeoJson = payload
     },
     addStationIdSelectedMutation (state, payload) {
       if (state.stationIdSelected.length < state.maxStationSelection) { // at most 20
@@ -63,58 +71,134 @@ export default new Vuex.Store({
     clearStationIdSelectedMutation (state) {
       state.stationIdSelected = []
     },
-    changeClimateDailyMinDate (state, payload) {
-      state.minDateClimateDaily = payload
+    startLoadingStations (state) {
+      state.isLoadingStations = true
     },
-    changeClimateMonthlyMinDate (state, payload) {
-      state.minDateClimateMonthly = payload
+    finishLoadingStations (state) {
+      state.isLoadingStations = false
     },
-    changeBboxStationTotal (state, payload) {
-      state.bboxStationTotal = payload
+    startLoadingAllHydroStations (state) {
+      state.isLoadingAllHydroStations = true
+    },
+    finishLoadingAllHydroStations (state) {
+      state.isLoadingAllHydroStations = false
     }
   },
-  actions: { // AJAX in stuff; change states
+  actions: {
+    setHydroStationActive: function ({ commit }, toggle) {
+      commit('changeState', {
+        stateProp: 'hydroStationActive',
+        stateValue: toggle
+      })
+    },
+    retrieveLatestRelease: function ({ commit }, url) {
+      axios.get(url)
+        .then((response) => {
+          commit('changeState', {
+            stateProp: 'latestRelease',
+            stateValue: response.data
+          })
+        })
+    },
     setClickLatLng: function ({ commit }, latLng) {
-      commit('changeClickLatLng', latLng)
+      commit('changeState', {
+        stateProp: 'clickLatLng',
+        stateValue: latLng
+      })
     },
     setPointClickStatus: function ({ commit }, status) {
-      commit('changePointClickStatus', status)
+      commit('changeState', {
+        stateProp: 'pointClickOn',
+        stateValue: status
+      })
     },
     changeProvince: function ({ commit }, newProv) {
-      commit('changeProvinceMutation', newProv)
+      commit('changeState', {
+        stateProp: 'province',
+        stateValue: newProv
+      })
     },
     changeBBOX: function ({ commit }, newBBOX) {
-      commit('changeBBOXMutation', newBBOX)
+      commit('changeState', {
+        stateProp: 'bbox',
+        stateValue: newBBOX
+      })
     },
-    retrieveHydroStations: function ({ commit }, url) {
-      axios.get(url)
-        .then(response => (
-          commit('changeHydroStations', response.data)
-        ))
+    retrieveHydroStations: function ({ state, commit }, url) {
+      const activeOnly = url.includes('STATUS_EN=Active')
+      if (state.retrievedAllHydroStations) {
+        return false
+      }
+      state.cancelSourceStation.cancel('Cancelling existing station request')
+      state.cancelSourceStation = axios.CancelToken.source()
+      if (!activeOnly) {
+        commit('startLoadingAllHydroStations')
+      }
+      commit('startLoadingStations')
+      axios.get(url, { cancelToken: state.cancelSourceStation.token })
+        .then((response) => {
+          commit('changeHydroStation', response.data)
+          if (state.hydroStationActive === false) {
+            commit('changeState', {
+              stateProp: 'retrievedAllHydroStations',
+              stateValue: true
+            })
+          }
+        })
+        .finally(() => {
+          commit('finishLoadingStations')
+          if (!activeOnly) {
+            commit('finishLoadingAllHydroStations')
+          }
+        })
     },
-    retrieveClimateStations: function ({ commit }, url) {
-      axios.get(url)
-        .then(response => (
-          commit('changeClimateStations', response.data)
-        ))
+    retrieveClimateStations: function ({ state, commit }, url) {
+      state.cancelSourceStation.cancel('Cancelling existing station request')
+      state.cancelSourceStation = axios.CancelToken.source()
+      commit('startLoadingStations')
+      axios.get(url, { cancelToken: state.cancelSourceStation.token })
+        .then((response) => {
+          commit('changeDailyStation', response.data)
+        })
+        .finally(() => {
+          commit('finishLoadingStations')
+        })
     },
-    retrieveClimateNormalsStations: function ({ commit }, url) {
-      axios.get(url)
-        .then(response => (
-          commit('changeClimateNormalsStations', response.data)
-        ))
+    retrieveClimateNormalsStations: function ({ state, commit }, url) {
+      state.cancelSourceStation.cancel('Cancelling existing station request')
+      state.cancelSourceStation = axios.CancelToken.source()
+      commit('startLoadingStations')
+      axios.get(url, { cancelToken: state.cancelSourceStation.token })
+        .then((response) => {
+          commit('changeNormalsStation', response.data)
+        })
+        .finally(() => {
+          commit('finishLoadingStations')
+        })
     },
-    retrieveClimateMonthlyStations: function ({ commit }, url) {
-      axios.get(url)
-        .then(response => (
-          commit('changeClimateMonthlyStations', response.data)
-        ))
+    retrieveClimateMonthlyStations: function ({ state, commit }, url) {
+      state.cancelSourceStation.cancel('Cancelling existing station request')
+      state.cancelSourceStation = axios.CancelToken.source()
+      commit('startLoadingStations')
+      axios.get(url, { cancelToken: state.cancelSourceStation.token })
+        .then((response) => {
+          commit('changeMonthlyStation', response.data)
+        })
+        .finally(() => {
+          commit('finishLoadingStations')
+        })
     },
-    retrieveAhccdStations: function ({ commit }, url) {
-      axios.get(url)
-        .then(response => (
-          commit('changeAhccdStations', response.data)
-        ))
+    retrieveAhccdStations: function ({ state, commit }, url) {
+      state.cancelSourceStation.cancel('Cancelling existing station request')
+      state.cancelSourceStation = axios.CancelToken.source()
+      commit('startLoadingStations')
+      axios.get(url, { cancelToken: state.cancelSourceStation.token })
+        .then((response) => {
+          commit('changeAhccdStation', response.data)
+        })
+        .finally(() => {
+          commit('finishLoadingStations')
+        })
     },
     addStationIdSelected: function ({ commit }, id) {
       commit('addStationIdSelectedMutation', id)
@@ -126,16 +210,40 @@ export default new Vuex.Store({
       commit('clearStationIdSelectedMutation')
     },
     setClimateDailyMinDate: function ({ commit }, minDate) {
-      commit('changeClimateDailyMinDate', minDate)
+      commit('changeState', {
+        stateProp: 'minDateClimateDaily',
+        stateValue: minDate
+      })
     },
     setClimateMonthlyMinDate: function ({ commit }, minDate) {
-      commit('changeClimateMonthlyMinDate', minDate)
+      commit('changeState', {
+        stateProp: 'minDateClimateMonthly',
+        stateValue: minDate
+      })
     },
     setBboxStationTotal: function ({ commit }, total) {
-      commit('changeBboxStationTotal', total)
+      commit('changeState', {
+        stateProp: 'bboxStationTotal',
+        stateValue: total
+      })
     }
   },
   getters: {
+    getIsLoadingAllHydroStations (state) {
+      return state.isLoadingAllHydroStations
+    },
+    getIsLoadingStations (state) {
+      return state.isLoadingStations
+    },
+    getRetrievedAllHydroStations (state) {
+      return state.retrievedAllHydroStations
+    },
+    getHydroStationActive (state) {
+      return state.hydroStationActive
+    },
+    getLatestRelease (state) {
+      return state.latestRelease
+    },
     getClickLatLng (state) {
       return state.clickLatLng
     },
@@ -175,7 +283,7 @@ export default new Vuex.Store({
     getClimateMonthlyMinDate (state) {
       return state.minDateClimateMonthly
     },
-    getBboxStationsTotal: function (state) {
+    getBboxStationsTotal (state) {
       return state.bboxStationTotal
     }
   }

@@ -8,7 +8,7 @@
           v-show="selectedStationIds.length === maxStationSelection"
           v-translate>Max number of stations selected</span>
       </legend>
-      <div class="form-inline">
+      <div class="form-inline" aria-controls="station-select-table">
         <input
           type="text"
           class="form-control"
@@ -17,18 +17,34 @@
         <button
           @click="toggleShowSelected"
           type="button"
-          class="btn"
+          class="btn btn-sm"
           :class="showSelected ? 'btn-primary active' : 'btn-default'"
           :disabled="selectedStationIds.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
             <span v-show="selectedStationIds.length > 0">({{ selectedStationIds.length }}/{{ maxStationSelection }})</span></button>
         <button
+          v-if="hydroStationDisplay"
+          @click="toggleActiveStation"
+          class="btn btn-sm"
+          :class="hydroStationActive ? 'btn-warning' : 'btn-primary active'"
+          type="button"
+          :title="$gettext('This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface')">
+            <span v-show="hydroStationActive" class="glyphicon glyphicon-warning-sign"></span>
+            <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
+            <span v-show="hydroStationActive"><translate>Show discontinued stations</translate></span>
+            <span v-show="!hydroStationActive"><translate>Hide discontinued stations</translate></span>
+            <pulse-loader
+            :loading="isLoadingAllHydroStations"
+            class="loading"
+            :size="5"></pulse-loader>
+          </button>
+        <button
           @click="clearSelected"
-          class="btn btn-danger"
+          class="btn btn-sm btn-danger"
           type="button"
           :disabled="selectedStationIds.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
       </div>
       <div id="station-select-container">
-        <table id="station-select-table" class="table table-striped table-hover">
+        <table id="station-select-table" class="table table-striped table-hover" aria-live="polite">
           <thead>
             <tr>
               <th
@@ -36,7 +52,7 @@
                 title="Click to sort this column in ascending or descending order"
                 v-for="(th, prop) in stationPropDisplay"
                 :key="prop"
-                @click="sort(prop)">
+                @click="sortDir(prop)">
                   {{ th }}
                   <span
                     v-show="currentSort === prop"
@@ -46,6 +62,20 @@
             </tr>
           </thead>
           <tbody>
+            <tr
+              v-show="isLoadingStations"
+              aria-busy="true"
+              role="alert">
+              <td
+                :colspan="numColumns"
+                class="text-center">
+                <pulse-loader
+                  :loading="isLoadingStations"
+                  class="loading"
+                  :size="5"></pulse-loader>
+                <span class="hidden"><translate>Loading stations... please wait</translate></span>
+              </td>
+            </tr>
             <tr
               class="selectable selectableStation"
               v-for="stn in paginatedStations"
@@ -66,9 +96,9 @@
             </tr>
             <tr
               v-show="noProvinceStationSelected && filteredNumEntries === 0"
-              class="danger text-danger">
+              class="danger text-danger" role="status">
                 <td
-                  :colspan="Object.keys(stationPropDisplay).length">
+                  :colspan="numColumns">
                   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                   <translate t-comment="Warning message when user has no stations selected and no stations are contained in the map viewport">There are no stations available to download data from your current map display.</translate>
                   <span v-text="resetMapMessage"></span>
@@ -78,7 +108,7 @@
         </table>
       </div>
 
-      <nav class="form-inline">
+      <nav class="form-inline small" aria-live="polite" aria-controls="station-select-table">
         <button
           @click="prevPage"
           class="btn btn-sm btn-default"
@@ -98,7 +128,7 @@
               <option value="100">100</option>
               <option value="500">500</option>
               <option value="1000">1000</option>
-              <option :value="stationData.length" v-translate t-coment="All entries">All</option>
+              <option :value="totalSize" v-translate t-coment="All entries">All</option>
           </select>
         </div>
         <span>{{ showingFilterText }}</span>
@@ -108,10 +138,14 @@
 </template>
 
 <script>
+import { PulseLoader } from '@saeris/vue-spinners'
 import L from 'leaflet'
 
 export default {
   name: 'StationSelect',
+  components: {
+    PulseLoader
+  },
   model: {
     prop: 'selectedStationIds',
     event: 'click'
@@ -129,19 +163,19 @@ export default {
         return {}
       }
     },
-    required: {
-      type: Boolean,
-      default: true
-    },
     selectDisabled: {
       type: Boolean,
       default: false
     },
     noProvinceStationSelected: Boolean,
     stationProvCol: String,
-    stnPrimaryId: String
+    stnPrimaryId: String,
+    hydroStationDisplay: {
+      type: Boolean,
+      default: false
+    }
   },
-  mounted: function () {
+  beforeMount: function () {
     this.clearSelected()
 
     // reset bboxStationTotal
@@ -167,7 +201,6 @@ export default {
       keyColumns: Object.keys(this.stationPropDisplay),
       currentSortDir: 'asc',
       pageSize: this.stationData.length, // initial as All
-      totalSize: this.stationData.length,
       currentPage: 1,
       showSelected: false,
       searchText: ''
@@ -193,10 +226,14 @@ export default {
     },
     bboxStationTotal: function (newVal) {
       this.$store.dispatch('setBboxStationTotal', newVal)
+    },
+    totalSize: function (newVal, oldVal) {
+      this.pageSize = newVal
+      this.currentPage = 1 // reset page
     }
   },
   methods: {
-    sort: function (s) {
+    sortDir: function (s) {
       // if s == current sort, reverse
       if (s === this.currentSort) {
         this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
@@ -237,6 +274,9 @@ export default {
     },
     toggleShowSelected: function (evt) {
       this.showSelected = !this.showSelected
+    },
+    toggleActiveStation: function (evt) {
+      this.$store.dispatch('setHydroStationActive', !this.hydroStationActive)
     },
     isRowSelected: function (stnId) {
       if (this.showSelected) {
@@ -314,23 +354,49 @@ export default {
         return true
       }
     },
+    activeStationFilter: function (row, index) {
+      if (this.hydroStationDisplay) {
+        if (this.hydroStationActive) {
+          return row.properties['STATUS_EN'] === 'Active'
+        } else {
+          return true
+        }
+      } else {
+        return true
+      }
+    },
     dateDisplay: function (utcString) {
       return utcString.substr(0, 10)
       // this.$moment.utc(utcString, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD')
     }
   },
   computed: {
+    numColumns: function () {
+      return Object.keys(this.stationPropDisplay).length
+    },
+    isLoadingStations: function () {
+      return this.$store.getters.getIsLoadingStations
+    },
+    isLoadingAllHydroStations: function () {
+      return this.$store.getters.getIsLoadingAllHydroStations
+    },
+    totalSize: function () {
+      return this.stationData.length
+    },
+    hydroStationActive: function () {
+      return this.$store.getters.getHydroStationActive
+    },
     filteredStations: function () {
-      let cmp = this
-      function compareStn (a, b) {
+      let _this = this // reference to this inside sort function
+      function compareStn (a, b) { // sort function
         let modifier = 1
-        if (cmp.currentSortDir === 'desc') {
+        if (_this.currentSortDir === 'desc') {
           modifier = -1
         }
-        if (a.properties[cmp.currentSort] < b.properties[cmp.currentSort]) {
+        if (a.properties[_this.currentSort] < b.properties[_this.currentSort]) {
           return -1 * modifier
         }
-        if (a.properties[cmp.currentSort] > b.properties[cmp.currentSort]) {
+        if (a.properties[_this.currentSort] > b.properties[_this.currentSort]) {
           return 1 * modifier
         }
         return 0
@@ -338,6 +404,7 @@ export default {
 
       return this.stationData
         .slice(0) // make a copy of it
+        .filter(this.activeStationFilter)
         .sort(compareStn) // sort
         .filter(this.selectedFilter)
         .filter(this.bboxFilter)
@@ -432,6 +499,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.loading {
+  display: inline;
+}
 #station-select-container {
   height: 400px;
   overflow: scroll;

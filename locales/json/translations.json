@@ -882,6 +882,12 @@
 					""
 				]
 			},
+			"Date:": {
+				"msgid": "Date:",
+				"msgstr": [
+					""
+				]
+			},
 			"deselect a station by clicking on it again in the table": {
 				"msgid": "deselect a station by clicking on it again in the table",
 				"msgstr": [
@@ -1128,6 +1134,12 @@
 					""
 				]
 			},
+			"Hide discontinued stations": {
+				"msgid": "Hide discontinued stations",
+				"msgstr": [
+					""
+				]
+			},
 			"High emissions scenario (RCP 8.5)": {
 				"msgid": "High emissions scenario (RCP 8.5)",
 				"msgstr": [
@@ -1200,6 +1212,12 @@
 					""
 				]
 			},
+			"Latest changes": {
+				"msgid": "Latest changes",
+				"msgstr": [
+					""
+				]
+			},
 			"Latitude": {
 				"msgid": "Latitude",
 				"msgstr": [
@@ -1220,6 +1238,12 @@
 			},
 			"Library of climate resources": {
 				"msgid": "Library of climate resources",
+				"msgstr": [
+					""
+				]
+			},
+			"Loading stations... please wait": {
+				"msgid": "Loading stations... please wait",
 				"msgstr": [
 					""
 				]
@@ -1554,6 +1578,12 @@
 					""
 				]
 			},
+			"Show discontinued stations": {
+				"msgid": "Show discontinued stations",
+				"msgstr": [
+					""
+				]
+			},
 			"Show selected": {
 				"msgid": "Show selected",
 				"msgstr": [
@@ -1782,6 +1812,12 @@
 					""
 				]
 			},
+			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
+				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
+				"msgstr": [
+					""
+				]
+			},
 			"This field is not within the date range limits.": {
 				"msgid": "This field is not within the date range limits.",
 				"msgstr": [
@@ -1916,6 +1952,12 @@
 			},
 			"Variable": {
 				"msgid": "Variable",
+				"msgstr": [
+					""
+				]
+			},
+			"View releases on GitHub": {
+				"msgid": "View releases on GitHub",
 				"msgstr": [
 					""
 				]
@@ -2361,7 +2403,7 @@
 				"msgid": "Adjusted and Homogenized Canadian Climate Data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					"Analyse régionale déterministe de précipitation"
+					"Données climatiques canadiennes ajustées et homogénéisées"
 				]
 			},
 			"Canadian Gridded Temperature and Precipitation Anomalies": {
@@ -2895,6 +2937,12 @@
 					"Les plages de dates ne sont pas requises pour les tendances des CanGRD"
 				]
 			},
+			"Date:": {
+				"msgid": "Date:",
+				"msgstr": [
+					"Date :"
+				]
+			},
 			"deselect a station by clicking on it again in the table": {
 				"msgid": "deselect a station by clicking on it again in the table",
 				"msgstr": [
@@ -3141,6 +3189,12 @@
 					"Hauteur géopotentielle à 500 mb"
 				]
 			},
+			"Hide discontinued stations": {
+				"msgid": "Hide discontinued stations",
+				"msgstr": [
+					"Masquer les stations abandonnées"
+				]
+			},
 			"High emissions scenario (RCP 8.5)": {
 				"msgid": "High emissions scenario (RCP 8.5)",
 				"msgstr": [
@@ -3213,6 +3267,12 @@
 					"Il est possible que l'endroit sélectionné ne se trouve pas dans les limites du jeu de données."
 				]
 			},
+			"Latest changes": {
+				"msgid": "Latest changes",
+				"msgstr": [
+					"Récents changements"
+				]
+			},
 			"Latitude": {
 				"msgid": "Latitude",
 				"msgstr": [
@@ -3235,6 +3295,12 @@
 				"msgid": "Library of climate resources",
 				"msgstr": [
 					"Répertoire de ressources climatiques"
+				]
+			},
+			"Loading stations... please wait": {
+				"msgid": "Loading stations... please wait",
+				"msgstr": [
+					"Les stations sont en train de télécharger… Veuillez patienter"
 				]
 			},
 			"Longitude": {
@@ -3567,6 +3633,12 @@
 					"cliquez sur les stations sur la carte ou dans le tableau pour les sélectionner"
 				]
 			},
+			"Show discontinued stations": {
+				"msgid": "Show discontinued stations",
+				"msgstr": [
+					"Afficher les stations abandonnées"
+				]
+			},
 			"Show selected": {
 				"msgid": "Show selected",
 				"msgstr": [
@@ -3795,6 +3867,12 @@
 					"L’affichage actuel de votre carte ne contient aucune station pour télécharger des données."
 				]
 			},
+			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
+				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
+				"msgstr": [
+					"Ce bouton permet de récupérer plus de 7000 stations et peut causer une perte de performance sur cette interface utilisateur graphique"
+				]
+			},
 			"This field is not within the date range limits.": {
 				"msgid": "This field is not within the date range limits.",
 				"msgstr": [
@@ -3931,6 +4009,12 @@
 				"msgid": "Variable",
 				"msgstr": [
 					"Variables"
+				]
+			},
+			"View releases on GitHub": {
+				"msgid": "View releases on GitHub",
+				"msgstr": [
+					"Voir les communiqués sur GitHub"
 				]
 			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
