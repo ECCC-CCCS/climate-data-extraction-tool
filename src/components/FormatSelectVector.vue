@@ -10,21 +10,23 @@
         aria-required="true"
         v-translate>(Required)</strong>
     </label>
-    <details :open="toggleDetailsState">
-      <summary @click="toggleDetails"
-        v-translate>Explanation of data formats</summary>
-      <ul>
-        <li v-translate><strong>CSV</strong> files can be opened, viewed and manipulated with any word processor or spreadsheet software</li>
-        <li v-translate t-comment="contains html tags; do not translate those"><strong>GeoJSON</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href="https://www.r-project.org/" target="_blank">R</a> or <a href="https://www.python.org/" target="_blank">Python</a></li>
-      </ul>
-    </details>
-    <select class="form-control" id="vector_download_format"
+    <select class="form-control" id="vector_download_format" aria-controls="vectorFormatDescriptions"
       :value="value"
       :required="required"
       @change="updateFormat">
-        <option value="geojson">GeoJSON</option>
-        <option value="csv">CSV</option>
+        <option
+          v-for="(format, key) in formats"
+          :key="key"
+          :value="key">
+          {{ format }}
+        </option>
     </select>
+
+    <div id="vectorFormatDescriptions" class="alert alert-info mrgn-tp-md" aria-live="polite" role="region">
+      <p>
+        <span v-html="formatDescriptionsHtml[value]"></span>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -40,13 +42,31 @@ export default {
   },
   data () {
     return {
-      toggleDetailsState: false
+      formats: {
+        'csv': 'CSV',
+        'geojson': 'GeoJSON'
+      },
+      linkTo: {
+        r: '<a href="https://www.r-project.org/" class="alert-link" target="_blank">R</a>',
+        python: '<a href="https://www.python.org/" class="alert-link" target="_blank">Python</a>'
+      }
+    }
+  },
+  computed: {
+    formatDescriptionsHtml: function () {
+      return {
+        'csv': this.$_i(this.$gettext('{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.'), {
+          formatName: '<strong>CSV</strong>'
+        }),
+        'geojson': this.$_i(this.$gettext('{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.'), {
+          formatName: '<strong>GeoJSON</strong>',
+          linkToR: this.linkTo.r,
+          linkToPython: this.linkTo.python
+        })
+      }
     }
   },
   methods: {
-    toggleDetails: function (event) {
-      this.toggleDetailsState = !this.toggleDetailsState
-    },
     updateFormat: function (event) {
       this.$emit('input', event.target.value)
     }

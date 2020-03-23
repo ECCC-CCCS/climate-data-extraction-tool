@@ -12,7 +12,7 @@
         <br>
         <div v-for="(info, index) in infoText" :key="index">
           <span class="small bg-info text-info">
-          <span class="glyphicon glyphicon-info-sign"></span>
+            <span class="glyphicon glyphicon-info-sign"></span>
             <span v-html="$_i(info.text, {link: info.link[$i18n.activeLocale]})"></span>
           </span>
         </div>
