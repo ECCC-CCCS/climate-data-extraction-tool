@@ -480,6 +480,30 @@
 					""
 				]
 			},
+			"{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.": {
+				"msgid": "{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.",
+				"msgstr": [
+					""
+				]
+			},
+			"{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.": {
+				"msgid": "{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.",
+				"msgstr": [
+					""
+				]
+			},
+			"{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.": {
+				"msgid": "{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.",
+				"msgstr": [
+					""
+				]
+			},
+			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output": {
+				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output",
+				"msgstr": [
+					""
+				]
+			},
 			"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>": {
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>",
 				"msgstr": [
@@ -500,30 +524,6 @@
 			},
 			"<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.": {
 				"msgid": "<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.",
-				"msgstr": [
-					""
-				]
-			},
-			"<strong>CSV</strong> files can be opened, viewed and manipulated with any word processor or spreadsheet software": {
-				"msgid": "<strong>CSV</strong> files can be opened, viewed and manipulated with any word processor or spreadsheet software",
-				"msgstr": [
-					""
-				]
-			},
-			"<strong>GeoJSON</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>": {
-				"msgid": "<strong>GeoJSON</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>",
-				"msgstr": [
-					""
-				]
-			},
-			"<strong>GeoTIFF</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>": {
-				"msgid": "<strong>GeoTIFF</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>",
-				"msgstr": [
-					""
-				]
-			},
-			"<strong>NetCDF</strong> files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a>, <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>, <a href=\"https://www.giss.nasa.gov/tools/panoply/download/\" target=\"_blank\">Panoply</a>, or <a href=\"https://code.mpimet.mpg.de/projects/cdo/\" target=\"_blank\">Climate Data Operators</a>": {
-				"msgid": "<strong>NetCDF</strong> files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a>, <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>, <a href=\"https://www.giss.nasa.gov/tools/panoply/download/\" target=\"_blank\">Panoply</a>, or <a href=\"https://code.mpimet.mpg.de/projects/cdo/\" target=\"_blank\">Climate Data Operators</a>",
 				"msgstr": [
 					""
 				]
@@ -1028,12 +1028,6 @@
 			},
 			"Error:": {
 				"msgid": "Error:",
-				"msgstr": [
-					""
-				]
-			},
-			"Explanation of data formats": {
-				"msgid": "Explanation of data formats",
 				"msgstr": [
 					""
 				]
@@ -2535,6 +2529,30 @@
 					"(Obligatoire)"
 				]
 			},
+			"{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.": {
+				"msgid": "{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.",
+				"msgstr": [
+					"Les fichiers {formatName} peuvent être ouverts, visualisés et manipulés avec n’importe quel logiciel de traitement de texte ou de tableur."
+				]
+			},
+			"{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.": {
+				"msgid": "{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.",
+				"msgstr": [
+					"Les fichiers {formatName} peuvent être ouverts, visualisés et manipulés à l’aide d’un logiciel SIG (système d’information géographique) ou d’outils de programmation scientifique comme {linkToR} ou {linkToPython}."
+				]
+			},
+			"{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.": {
+				"msgid": "{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.",
+				"msgstr": [
+					"Les fichiers {formatName} peuvent être ouverts, visualisés et manipulés à l’aide d’un logiciel SIG (système d’information géographique) ou d’outils de programmation scientifique comme {linkToR}, {linkToPython}, {linkToPanoply}, ou {linkToCDO}."
+				]
+			},
+			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output": {
+				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output",
+				"msgstr": [
+					"<a href=\"{link}\" target=\"_blank\">Communiquez avec le Centre d&rsquo;aide des Services climatiques</a> pour obtenir les résultats d’un modèle individuel"
+				]
+			},
 			"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>": {
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>",
 				"msgstr": [
@@ -2557,30 +2575,6 @@
 				"msgid": "<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.",
 				"msgstr": [
 					"<strong>Les données d'archives à 15km</strong> sont disponibles du 2011-04-06 12:00 UTC à 2012-10-02 12:00 UTC."
-				]
-			},
-			"<strong>CSV</strong> files can be opened, viewed and manipulated with any word processor or spreadsheet software": {
-				"msgid": "<strong>CSV</strong> files can be opened, viewed and manipulated with any word processor or spreadsheet software",
-				"msgstr": [
-					"Les fichiers <strong>CSV</strong>  peuvent être ouverts, visualisés et manipulés avec n’importe quel logiciel de traitement de texte ou de tableur"
-				]
-			},
-			"<strong>GeoJSON</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>": {
-				"msgid": "<strong>GeoJSON</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>",
-				"msgstr": [
-					"Les fichiers <strong>GeoJSON</strong> peuvent être ouverts, visualisés et manipulés à l’aide d’un logiciel SIG (système d’information géographique) ou d’outils de programmation scientifique comme <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> ou <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>"
-				]
-			},
-			"<strong>GeoTIFF</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>": {
-				"msgid": "<strong>GeoTIFF</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> or <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>",
-				"msgstr": [
-					"Les fichiers <strong>GeoTIFF</strong> peuvent être ouverts, visualisés et manipulés à l’aide d’un logiciel SIG (système d’information géographique) ou d’outils de programmation scientifique comme <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a> ou <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>"
-				]
-			},
-			"<strong>NetCDF</strong> files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a>, <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>, <a href=\"https://www.giss.nasa.gov/tools/panoply/download/\" target=\"_blank\">Panoply</a>, or <a href=\"https://code.mpimet.mpg.de/projects/cdo/\" target=\"_blank\">Climate Data Operators</a>": {
-				"msgid": "<strong>NetCDF</strong> files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a>, <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>, <a href=\"https://www.giss.nasa.gov/tools/panoply/download/\" target=\"_blank\">Panoply</a>, or <a href=\"https://code.mpimet.mpg.de/projects/cdo/\" target=\"_blank\">Climate Data Operators</a>",
-				"msgstr": [
-					"Les fichiers <strong>NetCDF</strong> peuvent être ouverts, visualisés et manipulés à l’aide d’un logiciel SIG (système d’information géographique) ou d’outils de programmation scientifique comme <a href=\"https://www.r-project.org/\" target=\"_blank\">R</a>, <a href=\"https://www.python.org/\" target=\"_blank\">Python</a>, ou <a href=\"https://code.mpimet.mpg.de/projects/cdo/\" target=\"_blank\">Climate Data Operators</a>"
 				]
 			},
 			"00Z": {
@@ -3085,12 +3079,6 @@
 				"msgid": "Error:",
 				"msgstr": [
 					"Erreur :"
-				]
-			},
-			"Explanation of data formats": {
-				"msgid": "Explanation of data formats",
-				"msgstr": [
-					"Interprétation des formats des données"
 				]
 			},
 			"Explanation of model types": {

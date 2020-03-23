@@ -19,21 +19,23 @@
         </div>
       </span>
     </label>
-    <details :open="toggleDetailsState">
-      <summary @click="toggleDetails"
-        v-translate>Explanation of data formats</summary>
-      <ul>
-        <li v-translate t-comment="contains html tags; do not translate those"><strong>GeoTIFF</strong> files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as <a href="https://www.r-project.org/" target="_blank">R</a> or <a href="https://www.python.org/" target="_blank">Python</a></li>
-        <li v-translate t-comment="contains html tags; do not translate those"><strong>NetCDF</strong> files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as <a href="https://www.r-project.org/" target="_blank">R</a>, <a href="https://www.python.org/" target="_blank">Python</a>, <a href="https://www.giss.nasa.gov/tools/panoply/download/" target="_blank">Panoply</a>, or <a href="https://code.mpimet.mpg.de/projects/cdo/" target="_blank">Climate Data Operators</a></li>
-      </ul>
-    </details>
-    <select class="form-control" id="raster_download_format"
+    <select class="form-control" id="raster_download_format" aria-controls="rasterFormatDescriptions"
       :value="value"
       :required="required"
       @change="updateFormat">
-        <option value="image/tiff">GeoTIFF</option>
-        <option value="image/netcdf">NetCDF</option>
+        <option
+          v-for="(format, key) in formats"
+          :key="key"
+          :value="key">
+          {{ format }}
+        </option>
     </select>
+
+    <div id="rasterFormatDescriptions" class="alert alert-info mrgn-tp-md" aria-live="polite" role="region">
+      <p>
+        <span v-html="formatDescriptionsHtml[value]"></span>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -53,13 +55,37 @@ export default {
   },
   data () {
     return {
-      toggleDetailsState: false
+      formats: {
+        'image/tiff': 'GeoTIFF',
+        'image/netcdf': 'NetCDF'
+      },
+      linkTo: {
+        r: '<a href="https://www.r-project.org/" class="alert-link" target="_blank">R</a>',
+        python: '<a href="https://www.python.org/" class="alert-link" target="_blank">Python</a>',
+        panoply: '<a href="https://www.giss.nasa.gov/tools/panoply/download/" class="alert-link" target="_blank">Panoply</a>',
+        cdo: '<a href="https://code.mpimet.mpg.de/projects/cdo/" class="alert-link" target="_blank">Climate Data Operators</a>'
+      }
+    }
+  },
+  computed: {
+    formatDescriptionsHtml: function () {
+      return {
+        'image/tiff': this.$_i(this.$gettext('{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.'), {
+          formatName: '<strong>GeoTIFF</strong>',
+          linkToR: this.linkTo.r,
+          linkToPython: this.linkTo.python
+        }),
+        'image/netcdf': this.$_i(this.$gettext('{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.'), {
+          formatName: '<strong>NetCDF</strong>',
+          linkToR: this.linkTo.r,
+          linkToPython: this.linkTo.python,
+          linkToPanoply: this.linkTo.panoply,
+          linkToCDO: this.linkTo.cdo
+        })
+      }
     }
   },
   methods: {
-    toggleDetails: function (event) {
-      this.toggleDetailsState = !this.toggleDetailsState
-    },
     updateFormat: function (event) {
       this.$emit('input', event.target.value)
     }

@@ -55,7 +55,7 @@
         <var-select
           v-model="percentile"
           :label="$gettext('Ensemble percentile')"
-          :info-text="[infoModelOutput, infoPercentile]"
+          :info-text="[infoSupportDeskModelOutput, infoPercentile]"
           :select-options="percentileOptions"></var-select>
 
         <fieldset v-show="!pointDownloadOn">
@@ -136,8 +136,7 @@
         <format-select-raster
           class="mrgn-tp-md"
           v-show="!pointDownloadOn"
-          v-model="wcs_format"
-          :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+          v-model="wcs_format"></format-select-raster>
 
         <format-select-vector
           class="mrgn-tp-md"
