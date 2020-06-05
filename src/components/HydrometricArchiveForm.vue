@@ -251,7 +251,7 @@ export default {
       if (this.dateRangeIsValid) {
         var start = this.$moment.utc(this.date_start).format(this.dateConfigs.format)
         var end = this.$moment.utc(this.date_end).format(this.dateConfigs.format)
-        return 'time=' + start + '/' + end
+        return 'datetime=' + start + '/' + end
       } else {
         return null
       }

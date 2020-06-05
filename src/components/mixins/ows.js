@@ -70,7 +70,7 @@ export const ows = {
     },
     wfs3_url_base: function () {
       // complete url before layer & params
-      return this.GEOMET_WEATHER_SERVER + '/features/collections'
+      return this.GEOMET_WEATHER_SERVER + '/features' + '/collections'
     },
     reprojected_bbox_parts: function () {
       let bottomLeft = [this.bbox_parts.min_x, this.bbox_parts.min_y]
