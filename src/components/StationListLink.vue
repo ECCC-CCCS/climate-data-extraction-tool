@@ -19,8 +19,13 @@ export default {
   computed: {
     urlStationListCSV: function () {
       var url = this.urlStationList
-      url = url.replace('STATUS_EN=Active', '') // hydrometric case
-      url += '&f=csv'
+      url = url.replace('&STATUS_EN=Active', '') // hydrometric case
+
+      // csv format
+      url = url.replace('f=json', 'f=csv')
+      if (!url.includes('f=csv')) {
+        url += '&f=csv'
+      }
       return url
     },
     defaultDownloadText: function () {
