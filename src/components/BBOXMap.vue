@@ -56,7 +56,7 @@
       @click="mapClick"
       >
         <!-- <l-tile-layer :url="urlWMTS_CMBT[$i18n.activeLocale]"></l-tile-layer> -->
-        <l-geo-json ref="geojsonLayer" :geojson="geojson" :options="geoJsonOptions"></l-geo-json>
+        <!-- <l-geo-json ref="geojsonLayer" :geojson="geojson" :options="geoJsonOptions"></l-geo-json> -->
 
         <l-marker
           title="Popover Title"
@@ -85,7 +85,7 @@
 import L from 'leaflet'
 import { LMap, LTileLayer, LWMSTileLayer, LGeoJson, LMarker, LPopup } from 'vue2-leaflet'
 import LW from 'leaflet.wms'
-// import 'leaflet-graticule'
+import 'leaflet.markercluster'
 import 'proj4leaflet'
 import store from '../store/store'
 
@@ -203,6 +203,12 @@ export default {
       minZoom: 0,
       maxBounds: L.latLngBounds(L.latLng(20, -175), L.latLng(90, -10)),
       center: L.latLng(66, -105),
+      markers: L.markerClusterGroup({
+        disableClusteringAtZoom: 9,
+        chunkedLoading: true,
+        chunkInterval: 500
+      }),
+      geojsonLayer: L.geoJSON(null, this.geoJsonOptions),
       urlOSM: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       options: {
         style: function () {
@@ -318,33 +324,28 @@ export default {
           }
         })
       }
+    },
+    geojson: function (newJson, oldJson) {
+      if (newJson !== undefined) {
+        // add marker-clustering
+        let map = this.$refs.BBOXMap.mapObject
+        this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
+        this.markers.clearLayers().addLayer(this.geojsonLayer)
+        map.addLayer(this.markers)
+      }
     }
   },
   mounted: function () {
-    var map = this.$refs.BBOXMap.mapObject
+    this.$nextTick(() => {
+      let map = this.$refs.BBOXMap.mapObject
 
-    // graticules
-    // var graticules = L.latlngGraticule({
-    //   showLabel: true,
-    //   zoomInterval: [
-    //     {start: 2, end: 2, interval: 40},
-    //     {start: 3, end: 3, interval: 20},
-    //     {start: 4, end: 4, interval: 10},
-    //     {start: 5, end: 5, interval: 5},
-    //     {start: 6, end: 20, interval: 1}
-    //   ],
-    //   zIndex: 10,
-    //   transparent: true,
-    //   opacity: 1
-    // })
-    // graticules.addTo(map)
-
-    // CBMT Single tile WMS
-    var cbmtWMS = LW.overlay(this.urlWMS_CMBT[this.$i18n.activeLocale], {
-      layers: this.layerCBMT[this.$i18n.activeLocale],
-      attribution: this.attributionCBMT
+      // CBMT Single tile WMS
+      let cbmtWMS = LW.overlay(this.urlWMS_CMBT[this.$i18n.activeLocale], {
+        layers: this.layerCBMT[this.$i18n.activeLocale],
+        attribution: this.attributionCBMT
+      })
+      cbmtWMS.addTo(map)
     })
-    cbmtWMS.addTo(map)
 
     // reset point click
     this.resetPointClick('off')
@@ -461,8 +462,8 @@ export default {
         .redraw()
     },
     pointToLayer: function (feature, latlng) {
-      var cmp = this
-      var popupTextHtml = '<strong>' + feature.properties[this.readableColumns.name.col] + '</strong>'
+      let cmp = this
+      let popupTextHtml = '<strong>' + feature.properties[this.readableColumns.name.col] + '</strong>'
 
       if (this.readableColumns.id.col !== null) {
         popupTextHtml += '<br>' + this.readableColumns.id.label + ' ' + feature.properties[this.readableColumns.id.col]
@@ -470,7 +471,7 @@ export default {
       if (this.readableColumns.prov.col !== null) {
         popupTextHtml += '<br>' + this.readableColumns.prov.label + ' ' + feature.properties[this.readableColumns.prov.col]
       }
-      var stationMarker = null
+      let stationMarker = null
       let markerOption = this.defaultMarkerOptions
       if (this.hydroStationDisplay && feature.properties.STATUS_EN !== 'Active') {
         markerOption = this.inactiveMarkerOptions
@@ -502,13 +503,22 @@ export default {
     resetBBOX: function (clickEvt) {
       this.$refs.BBOXMap.mapObject.setView(this.center, this.zoom)
     },
-    getStationMarkers: function () {
-      let stationMarkers = null
+    getGeojsonLayer: function () {
       if (this.$refs.hasOwnProperty('geojsonLayer')) {
         if (this.$refs.geojsonLayer.hasOwnProperty('mapObject')) {
-          stationMarkers = this.$refs.geojsonLayer.mapObject.getLayers()
+          return this.$refs.geojsonLayer.mapObject
         }
       }
+      return null
+    },
+    getStationMarkers: function () {
+      // let stationMarkers = null
+      // if (this.$refs.hasOwnProperty('geojsonLayer')) {
+      //   if (this.$refs.geojsonLayer.hasOwnProperty('mapObject')) {
+      //     stationMarkers = this.$refs.geojsonLayer.mapObject.getLayers()
+      //   }
+      // }
+      let stationMarkers = this.geojsonLayer.getLayers()
       return stationMarkers
     }
   }
@@ -516,6 +526,8 @@ export default {
 </script>
 
 <style src="../../node_modules/leaflet/dist/leaflet.css"></style>
+<style src="../../node_modules/leaflet.markercluster/dist/MarkerCluster.css"></style>
+<style src="../../node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css"></style>
 <style scoped>
 #bbox-map {
   width: 100%;
