@@ -248,7 +248,7 @@ export default {
         var format = this.dateConfigs.format
         var start = this.$moment.utc(this.date_start, format).format(format)
         var end = this.$moment.utc(this.date_end, format).format(format)
-        return 'datetime=' + start + '/' + end
+        return 'time=' + start + '/' + end
       } else {
         return null
       }
