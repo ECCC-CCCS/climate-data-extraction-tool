@@ -99,6 +99,10 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 })
 
+L.MarkerCluster.addInitHook(function () {
+  this.options.keyboard = false
+})
+
 export default {
   name: 'BBOXMap',
   components: {
@@ -345,6 +349,14 @@ export default {
         attribution: this.attributionCBMT
       })
       cbmtWMS.addTo(map)
+
+      if (this.geojson !== null) {
+        // add marker-clustering
+        let map = this.$refs.BBOXMap.mapObject
+        this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
+        this.markers.clearLayers().addLayer(this.geojsonLayer)
+        map.addLayer(this.markers)
+      }
     })
 
     // reset point click
