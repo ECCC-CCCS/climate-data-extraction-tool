@@ -148,7 +148,7 @@ export const wfs = {
             start += ' 00:00:00'
             end += ' 00:00:00'
           }
-          return 'time=' + start + '/' + end
+          return 'datetime=' + start + '/' + end
         }
       } else {
         return null
