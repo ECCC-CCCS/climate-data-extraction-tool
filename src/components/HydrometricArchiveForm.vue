@@ -174,7 +174,8 @@ export default {
       return this.$store.getters.getHydroStationActive
     },
     urlStationList: function () {
-      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
+      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit /* +
+        `&properties=${this.datasetToProvColName[this.$route.name]},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}` */
       if (this.activeStationsOnly) {
         url += '&STATUS_EN=Active'
       }
