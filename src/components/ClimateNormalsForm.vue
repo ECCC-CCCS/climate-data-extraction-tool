@@ -123,8 +123,8 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit /* +
-        `&properties=${this.datasetToProvColName[this.$route.name]},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}` */
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit +
+        `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
     },
     climateStationsGeoJson: function () {
       return this.$store.getters.getClimateStations
