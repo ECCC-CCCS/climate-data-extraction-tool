@@ -49,7 +49,7 @@ export default {
     return {
       loading: false,
       downloadError: false,
-      WPS_SERVER: process.env.GEOMET_WEATHER_SERVER,
+      WPS_SERVER: process.env.OPENAPI_SERVER,
       WPS_RASTER_DRILL: process.env.WPS_RASTER_DRILL
     }
   },

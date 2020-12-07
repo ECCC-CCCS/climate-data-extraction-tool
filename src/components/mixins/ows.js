@@ -11,6 +11,7 @@ export const ows = {
   data () {
     return {
       GEOMET_WEATHER_SERVER: process.env.GEOMET_WEATHER_SERVER,
+      OPENAPI_SERVER: process.env.OPENAPI_SERVER,
       GEOMET_CLIMATE_SERVER: process.env.GEOMET_CLIMATE_SERVER,
       WEB_SERVER: {
         en: process.env.WEB_SERVER_EN,
@@ -70,8 +71,7 @@ export const ows = {
     },
     wfs3_url_base: function () {
       // complete url before layer & params
-      return this.GEOMET_WEATHER_SERVER +
-        '/features' + // omit this path for nightly testing
+      return this.OPENAPI_SERVER +
         '/collections'
     },
     reprojected_bbox_parts: function () {

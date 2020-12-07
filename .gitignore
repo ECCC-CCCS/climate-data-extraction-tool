@@ -18,3 +18,4 @@ yarn-error.log*
 /locales/po/untranslated.csv
 /locales/po/fr.csv
 /locales/po/fr_new.po
+*.code-workspace

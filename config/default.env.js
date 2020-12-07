@@ -1,8 +1,9 @@
 'use strict'
-module.exports = {
+module.exports = { // default OPS configuration
   NODE_ENV: '"production"',
   GEOMET_WEATHER_SERVER: '"https://geo.weather.gc.ca/geomet"',
   GEOMET_CLIMATE_SERVER: '"https://geo.weather.gc.ca/geomet-climate"',
+  OPENAPI_SERVER: '"https://api.weather.gc.ca"',
   WPS_RASTER_DRILL: '"/features/processes/raster-drill/jobs"',
   WEB_SERVER_EN: '"https://climate-change.canada.ca"',
   WEB_SERVER_FR: '"https://changements-climatiques.canada.ca"',
