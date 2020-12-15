@@ -4,7 +4,7 @@ module.exports = { // default OPS configuration
   GEOMET_WEATHER_SERVER: '"https://geo.weather.gc.ca/geomet"',
   GEOMET_CLIMATE_SERVER: '"https://geo.weather.gc.ca/geomet-climate"',
   OPENAPI_SERVER: '"https://api.weather.gc.ca"',
-  WPS_RASTER_DRILL: '"/features/processes/raster-drill/jobs"',
+  WPS_RASTER_DRILL: '"/processes/raster-drill/jobs"',
   WEB_SERVER_EN: '"https://climate-change.canada.ca"',
   WEB_SERVER_FR: '"https://changements-climatiques.canada.ca"',
   CANADA_SERVER_EN: '"https://www.canada.ca/en"',
