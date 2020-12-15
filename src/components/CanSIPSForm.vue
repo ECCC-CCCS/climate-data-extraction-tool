@@ -160,7 +160,7 @@ export default {
   computed: {
     wcs_coverage_id: function () {
       // generate coverageID
-      var coverageIdParts = []
+      let coverageIdParts = []
       coverageIdParts.push(this.wcs_id_dataset)
       if (this.wcs_id_type === 'HIND') {
         coverageIdParts.push(this.wcs_id_type)
@@ -189,7 +189,7 @@ export default {
       }
     },
     selectedCoverageIdOption: function () {
-      var wcsCoverage = {}
+      let wcsCoverage = {}
       wcsCoverage[this.wcs_coverage_id] = this.variableOptions[this.wcs_id_variable] + ' (' + this.wcs_coverage_id + ')'
       return wcsCoverage
     },
@@ -197,7 +197,7 @@ export default {
       return this.$moment.utc(this.forecastPeriod)
     },
     forecastPeriodISO: function () {
-      return this.forecastPeriodMoment.toISOString()
+      return this.forecastPeriodMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
     },
     modelRunMoment: function () {
       return this.$moment.utc(this.modelRun)
@@ -209,7 +209,7 @@ export default {
       return this.forecastPeriod === null || this.forecastPeriod === 'Invalid date'
     },
     modelRunISO: function () {
-      return this.modelRunMoment.toISOString()
+      return this.modelRunMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
     },
     modelRunRangeMoment: function () {
       // Model run range limits based on what type selected
@@ -245,8 +245,8 @@ export default {
       }
     },
     forePeriodOutOfRange: function () {
-      var foreDate = this.forecastPeriodMoment
-      var minimumView = this.dateConfigs.minimumView
+      let foreDate = this.forecastPeriodMoment
+      let minimumView = this.dateConfigs.minimumView
 
       // ignore check if null
       if (this.forePeriodIsEmpty) {
@@ -278,17 +278,17 @@ export default {
   methods: {
     wcs_download_url: function (coverageId) { // replaces existing function from wcs mixin
       this.splitBBOXString()
-      var url = this.wcs2_weather_url_base + '&'
-      var urlParams = this.getWCSCommonParams(coverageId)
+      let url = this.wcs2_weather_url_base + '&'
+      let urlParams = this.getWCSCommonParams(coverageId)
 
       // Model Run
-      var mr = this.modelRunISO
+      let mr = this.modelRunISO
       if (mr !== '' && mr !== null) {
         urlParams.push('DIM_REFERENCE_TIME=' + mr)
       }
 
       // Forecast Time
-      var ft = this.forecastPeriodISO
+      let ft = this.forecastPeriodISO
       if (ft !== '' && ft !== null) {
         urlParams.push('TIME=' + ft)
       }
