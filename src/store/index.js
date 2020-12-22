@@ -1,7 +1,10 @@
-import { createStore } from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 import axios from 'axios'
 
-export default createStore({
+Vue.use(Vuex)
+
+export default new Vuex.Store({
   state: {
     province: 'null',
     hydroStationGeoJson: {
@@ -283,5 +286,7 @@ export default createStore({
     getBboxStationsTotal (state) {
       return state.bboxStationTotal
     }
+  },
+  modules: {
   }
 })

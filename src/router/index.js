@@ -1,4 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import NotFound from '@/views/404'
 // import AHCCDForm from '@/views/AHCCDForm'
@@ -11,6 +12,8 @@ import NotFound from '@/views/404'
 // import ClimateNormalsForm from '@/views/ClimateNormalsForm'
 // import ClimateDailyForm from '@/views/ClimateDailyForm'
 // import ClimateMonthlyForm from '@/views/ClimateMonthlyForm'
+
+Vue.use(VueRouter)
 
 const datasetPaths = {
   ahccd: {
@@ -203,8 +206,7 @@ const routes = [
   }
 ]
 
-const router = createRouter({
-  history: createWebHashHistory(),
+const router = new VueRouter({
   routes
 })
 

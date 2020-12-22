@@ -18,7 +18,7 @@
     "leaflet.wms": "^0.2.0",
     "proj4": "^2.6.3",
     "proj4leaflet": "^1.0.2",
-    "vue": "^3.0.4",
+    "vue": "^2.6.12",
     "vue-gettext-tools": "0.0.7",
     "vue-i18n-gettext": "0.0.18",
     "vue-moment": "^4.1.0",
@@ -36,6 +36,9 @@
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0"
-  }
+    "eslint-plugin-vue": "^7.0.0-0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "_id": "cccs-ui-vue-next@0.1.0",
+  "readme": "ERROR: No README data found!"
 }
