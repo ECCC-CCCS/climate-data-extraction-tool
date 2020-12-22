@@ -2,16 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import NotFound from '@/views/404'
-// import AHCCDForm from '@/views/AHCCDForm'
-// import CanGRDForm from '@/views/CanGRDForm'
-// import CanSIPSForm from '@/views/CanSIPSForm'
-// import RDPAForm from '@/views/RDPAForm'
-// import DCSForm from '@/views/DCSForm'
-// import CMIP5Form from '@/views/CMIP5Form'
-// import HydrometricArchiveForm from '@/views/HydrometricArchiveForm'
-// import ClimateNormalsForm from '@/views/ClimateNormalsForm'
-// import ClimateDailyForm from '@/views/ClimateDailyForm'
-// import ClimateMonthlyForm from '@/views/ClimateMonthlyForm'
 
 Vue.use(VueRouter)
 
