@@ -1,18 +1,42 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="row">
+      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
+        <h1>{{ currentRouteTitle }}</h1>
+
+        <latest-release></latest-release>
+
+        <p v-translate>Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options.</p>
+
+        <info-contact-support></info-contact-support>
+
+        <more-resources></more-resources>
+      </main>
+      <dataset-menu></dataset-menu>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import DatasetMenu from '@/components/DatasetMenu'
+import InfoContactSupport from '@/components/InfoContactSupport'
+import MoreResources from '@/components/MoreResources'
+import LatestRelease from '@/components/LatestRelease'
+import { ows } from '@/components/mixins/ows'
+import { datasets } from '@/components/mixins/datasets'
 
 export default {
   name: 'Home',
+  mixins: [ows, datasets],
   components: {
-    HelloWorld
+    DatasetMenu,
+    InfoContactSupport,
+    MoreResources,
+    LatestRelease
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
