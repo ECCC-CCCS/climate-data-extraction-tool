@@ -43,10 +43,13 @@
 
     <noscript><link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/css/noscript.min.css" type="text/css" /></noscript>
 <!--
-CCCS Query UI
-climate-data-extraction-tool-[AIV]{version}[/AIV]
+CCCS Climate Data Extraction Tool
+Version: [AIV]{version}[/AIV]
 Build date: [AIV]{date}[/AIV]
 -->
+<% if (htmlWebpackPlugin.options.deploy === 'ops') { %>
+    <script src="<%= htmlWebpackPlugin.options.webtrends %>"></script>
+<% } %>
   </head>
   <body>
     <div id="app"></div>

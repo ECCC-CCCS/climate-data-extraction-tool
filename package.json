@@ -44,7 +44,9 @@
     "easygettext": "^2.16.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "html-webpack-plugin": "^4.5.0",
     "po-csv": "^1.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-auto-inject-version": "^1.2.2"
   }
 }

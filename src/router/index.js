@@ -81,7 +81,7 @@ const routes = [
       fr_path: datasetPaths.cangrd.fr,
       group: 'valueAddedHistClimProd'
     },
-    component: () => import(/* webpackChunkName: "" */ '../views/CanGRDForm.vue')
+    component: () => import(/* webpackChunkName: "cangrd" */ '../views/CanGRDForm.vue')
   },
   {
     path: datasetPaths.rdpa.en,

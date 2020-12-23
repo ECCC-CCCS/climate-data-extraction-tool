@@ -18,8 +18,8 @@ export const ows = {
         fr: process.env.VUE_APP_WEB_SERVER_FR
       },
       APP_PATH: {
-        en: process.env.VUE_APP_APP_PATH_EN,
-        fr: process.env.VUE_APP_APP_PATH_FR
+        en: process.env.VUE_APP_PUBLIC_PATH_EN,
+        fr: process.env.VUE_APP_PUBLIC_PATH_FR
       },
       ows_bbox: '-165,18,-20,87',
       ows_crs: 'EPSG:4326',
