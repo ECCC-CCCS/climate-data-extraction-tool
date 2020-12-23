@@ -1398,12 +1398,6 @@
 					""
 				]
 			},
-			"No options available": {
-				"msgid": "No options available",
-				"msgstr": [
-					""
-				]
-			},
 			"Northwest Territories": {
 				"msgid": "Northwest Territories",
 				"msgstr": [
@@ -1502,12 +1496,6 @@
 			},
 			"Province/Territory/State": {
 				"msgid": "Province/Territory/State",
-				"msgstr": [
-					""
-				]
-			},
-			"Province/Territory/State:": {
-				"msgid": "Province/Territory/State:",
 				"msgstr": [
 					""
 				]
@@ -1650,20 +1638,8 @@
 					""
 				]
 			},
-			"Station ID:": {
-				"msgid": "Station ID:",
-				"msgstr": [
-					""
-				]
-			},
 			"Station name": {
 				"msgid": "Station name",
-				"msgstr": [
-					""
-				]
-			},
-			"Station name:": {
-				"msgid": "Station name:",
 				"msgstr": [
 					""
 				]
@@ -3447,12 +3423,6 @@
 					"Suivant"
 				]
 			},
-			"No options available": {
-				"msgid": "No options available",
-				"msgstr": [
-					"Aucune option disponible"
-				]
-			},
 			"Northwest Territories": {
 				"msgid": "Northwest Territories",
 				"msgstr": [
@@ -3553,12 +3523,6 @@
 				"msgid": "Province/Territory/State",
 				"msgstr": [
 					"Province / Territoire / État"
-				]
-			},
-			"Province/Territory/State:": {
-				"msgid": "Province/Territory/State:",
-				"msgstr": [
-					"Province / Territoire / État :"
 				]
 			},
 			"Pseudo-Mercator (EPSG:3857)": {
@@ -3699,22 +3663,10 @@
 					"ID de la station"
 				]
 			},
-			"Station ID:": {
-				"msgid": "Station ID:",
-				"msgstr": [
-					"ID de la station :"
-				]
-			},
 			"Station name": {
 				"msgid": "Station name",
 				"msgstr": [
 					"Nom de la station"
-				]
-			},
-			"Station name:": {
-				"msgid": "Station name:",
-				"msgstr": [
-					"Nom de la station :"
 				]
 			},
 			"Station table": {

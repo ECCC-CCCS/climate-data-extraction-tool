@@ -1,5 +1,5 @@
 const { Compiler } = require('vue-gettext-tools')
-const gettextOptions = require('../config/i18n')
+const gettextOptions = require('./config/i18n')
 
 const compilerConfig = {verbose: true}
 const locales = gettextOptions.allLocales
