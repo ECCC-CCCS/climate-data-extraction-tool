@@ -5,16 +5,16 @@ export const datasets = {
   data () {
     return {
       supportDeskLink: {
-        en: process.env.SUPPORT_DESK_EN,
-        fr: process.env.SUPPORT_DESK_FR
+        en: process.env.VUE_APP_SUPPORT_DESK_EN,
+        fr: process.env.VUE_APP_SUPPORT_DESK_FR
       },
       climateLibraryLink: {
-        en: process.env.CLIMATE_LIBRARY_EN,
-        fr: process.env.CLIMATE_LIBRARY_FR
+        en: process.env.VUE_APP_CLIMATE_LIBRARY_EN,
+        fr: process.env.VUE_APP_CLIMATE_LIBRARY_FR
       },
       canadaDomain: {
-        en: process.env.CANADA_SERVER_EN,
-        fr: process.env.CANADA_SERVER_FR
+        en: process.env.VUE_APP_CANADA_SERVER_EN,
+        fr: process.env.VUE_APP_CANADA_SERVER_FR
       },
       climateDataLink: {
         en: 'https://climatedata.ca',

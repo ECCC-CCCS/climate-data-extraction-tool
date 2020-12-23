@@ -10,16 +10,16 @@ Anything common to OWS and web mapping configs
 export const ows = {
   data () {
     return {
-      GEOMET_WEATHER_SERVER: process.env.GEOMET_WEATHER_SERVER,
-      OPENAPI_SERVER: process.env.OPENAPI_SERVER,
-      GEOMET_CLIMATE_SERVER: process.env.GEOMET_CLIMATE_SERVER,
+      GEOMET_WEATHER_SERVER: process.env.VUE_APP_GEOMET_WEATHER_SERVER,
+      OPENAPI_SERVER: process.env.VUE_APP_OPENAPI_SERVER,
+      GEOMET_CLIMATE_SERVER: process.env.VUE_APP_GEOMET_CLIMATE_SERVER,
       WEB_SERVER: {
-        en: process.env.WEB_SERVER_EN,
-        fr: process.env.WEB_SERVER_FR
+        en: process.env.VUE_APP_WEB_SERVER_EN,
+        fr: process.env.VUE_APP_WEB_SERVER_FR
       },
       APP_PATH: {
-        en: process.env.APP_PATH_EN,
-        fr: process.env.APP_PATH_FR
+        en: process.env.VUE_APP_APP_PATH_EN,
+        fr: process.env.VUE_APP_APP_PATH_FR
       },
       ows_bbox: '-165,18,-20,87',
       ows_crs: 'EPSG:4326',

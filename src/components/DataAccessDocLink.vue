@@ -12,8 +12,8 @@ export default {
         fr: '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/outil-avances.html'
       },
       canadaDomain: {
-        en: process.env.CANADA_SERVER_EN,
-        fr: process.env.CANADA_SERVER_FR
+        en: process.env.VUE_APP_CANADA_SERVER_EN,
+        fr: process.env.VUE_APP_CANADA_SERVER_FR
       }
     }
   },

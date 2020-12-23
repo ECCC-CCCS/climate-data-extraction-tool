@@ -49,8 +49,8 @@ export default {
     return {
       loading: false,
       downloadError: false,
-      WPS_SERVER: process.env.OPENAPI_SERVER,
-      WPS_RASTER_DRILL: process.env.WPS_RASTER_DRILL
+      WPS_SERVER: process.env.VUE_APP_OPENAPI_SERVER,
+      WPS_RASTER_DRILL: process.env.VUE_APP_WPS_RASTER_DRILL
     }
   },
   watch: {
