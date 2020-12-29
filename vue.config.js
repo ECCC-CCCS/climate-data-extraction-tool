@@ -21,7 +21,7 @@ module.exports = {
       }),
 
       // Auto inject version
-      new WebpackAutoInject({
+      new WebpackAutoInject({ // Node deprecation warning on build
         SILENT: true,
         // options
         components: {
