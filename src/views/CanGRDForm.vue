@@ -228,9 +228,9 @@ export default {
       return this.dateEndIsEmptyOnly(this.bandStart, this.bandEnd)
     },
     bandsPastLimits: function () {
-      var start = this.$moment.utc(this.date_start, this.dateConfigs.format)
-      var end = this.$moment.utc(this.date_end, this.dateConfigs.format)
-      var minimumView = this.dateConfigs.minimumView
+      let start = this.$moment.utc(this.date_start, this.dateConfigs.format)
+      let end = this.$moment.utc(this.date_end, this.dateConfigs.format)
+      let minimumView = this.dateConfigs.minimumView
 
       return start.isBefore(this.dateConfigs.dateMin, minimumView) ||
         start.isAfter(this.dateConfigs.dateMax, minimumView) ||
@@ -273,7 +273,7 @@ export default {
       }
     },
     variableTypeOptions: function () {
-      var options = {
+      let options = {
         'ANO': this.$gettext('Anomaly values')
       }
       if (!this.pointDownloadOn) {
@@ -282,7 +282,7 @@ export default {
       return options
     },
     dateConfigs: function () {
-      var dateMax = this.wcs_id_variable === 'PR' ? this.date_max_pr : this.date_max
+      let dateMax = this.wcs_id_variable === 'PR' ? this.date_max_pr : this.date_max
       if (this.wcs_id_timePeriod === 'MONTHLY') {
         return {
           minimumView: 'month',
@@ -305,8 +305,8 @@ export default {
       return this.hasCommonBandErrors
     },
     dateRangeNumBands: function () {
-      var start = this.bandStartMoment
-      var end = this.bandEndMoment
+      let start = this.bandStartMoment
+      let end = this.bandEndMoment
       return this.calcDateRangeNumBands(start, end)
     }
   }

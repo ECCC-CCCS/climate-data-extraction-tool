@@ -63,8 +63,8 @@ export default {
     },
     updateLangFromRoute: function () {
       // Change the lang based on the current route (path vs alias)
-      var currentPath = this.$route.path
-      var currentFrPath = ''
+      let currentPath = this.$route.path
+      let currentFrPath = ''
       if (Object.prototype.hasOwnProperty.call(this.$route.meta, 'fr_path')) {
         currentFrPath = this.$route.meta.fr_path
       }

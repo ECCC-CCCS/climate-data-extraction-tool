@@ -98,6 +98,20 @@ export const datasets = {
             phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
+        ltce: {
+          title: this.$pgettext('Dataset Name', 'Long term daily climate extremes'),
+          abbr: this.$pgettext('Abbreviation: Long Term Climate Extremes', 'LTCE'),
+          techDoc: {
+            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-TBD.html',
+            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-TBD.html',
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on <abbr title="{datasetName}">LTCE</abbr></a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/TBD',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/TBD',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+          }
+        },
         cangrd: {
           title: this.$pgettext('Dataset Name', 'Canadian Gridded Temperature and Precipitation Anomalies'),
           abbr: this.$pgettext('Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies', 'CANGRD'),
@@ -235,15 +249,15 @@ export const datasets = {
       }
     },
     techDocHtml: function () {
-      var techDocLink = this.datasetTitles[this.$route.name].techDoc[this.activeLocale]
-      var htmlPhrase = this.datasetTitles[this.$route.name].techDoc.phrase
+      let techDocLink = this.datasetTitles[this.$route.name].techDoc[this.activeLocale]
+      let htmlPhrase = this.datasetTitles[this.$route.name].techDoc.phrase
       htmlPhrase = htmlPhrase.replace('{techDocLink}', techDocLink)
       htmlPhrase = htmlPhrase.replace('{datasetName}', this.currentRouteTitle)
       return htmlPhrase
     },
     openPortalHtml: function () {
-      var openPortalLink = this.datasetTitles[this.$route.name].openPortal[this.activeLocale]
-      var htmlPhrase = this.datasetTitles[this.$route.name].openPortal.phrase
+      let openPortalLink = this.datasetTitles[this.$route.name].openPortal[this.activeLocale]
+      let htmlPhrase = this.datasetTitles[this.$route.name].openPortal.phrase
       htmlPhrase = htmlPhrase.replace('{openPortalLink}', openPortalLink)
       htmlPhrase = htmlPhrase.replace('{datasetName}', this.currentRouteTitle)
       return htmlPhrase
@@ -305,7 +319,7 @@ export const datasets = {
       }
     },
     currentRouteTitle: function () {
-      var currentRouteName = this.$route.name
+      let currentRouteName = this.$route.name
       if (Object.prototype.hasOwnProperty.call(this.datasetTitles, currentRouteName)) {
         return this.datasetTitles[currentRouteName].title
       } else {
@@ -313,7 +327,7 @@ export const datasets = {
       }
     },
     currentRouteAbbr: function () {
-      var currentRouteName = this.$route.name
+      let currentRouteName = this.$route.name
       if (Object.prototype.hasOwnProperty.call(this.datasetTitles, currentRouteName)) {
         return this.datasetTitles[currentRouteName].abbr
       } else {
@@ -321,7 +335,7 @@ export const datasets = {
       }
     },
     currentRouteShortTitle: function () {
-      var currentRouteName = this.$route.name
+      let currentRouteName = this.$route.name
       if (Object.prototype.hasOwnProperty.call(this.datasetTitles, currentRouteName)) {
         if (Object.prototype.hasOwnProperty.call(this.datasetTitles[currentRouteName], 'abbr')) {
           return this.datasetTitles[currentRouteName].abbr
@@ -333,7 +347,7 @@ export const datasets = {
       }
     },
     currentLangPath: function () {
-      var currentLang = this.$i18n.activeLocale
+      let currentLang = this.$i18n.activeLocale
       return currentLang + '_path'
     },
     activeLocale: function () {

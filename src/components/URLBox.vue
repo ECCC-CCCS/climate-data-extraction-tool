@@ -156,7 +156,7 @@ export default {
   },
   computed: {
     fileFormat: function () {
-      var format = ''
+      let format = ''
       switch (this.layerFormat) {
         case 'image/tiff':
           format = 'tiff'
@@ -213,7 +213,7 @@ export default {
       }
     },
     getNumRecords: function () {
-      var urlGetNumRecords = this.wfs3CommonUrl + '&resulttype=hits&f=json'
+      let urlGetNumRecords = this.wfs3CommonUrl + '&resulttype=hits&f=json'
       this.loading = true
       axios.get(urlGetNumRecords)
         .then(response => (
@@ -226,19 +226,19 @@ export default {
     },
     wfs3_download_url_chunk: function (startIndex) {
       startIndex = parseInt(startIndex)
-      var url = this.wfs3CommonUrl
+      let url = this.wfs3CommonUrl
       url += '&f=' + this.fileFormat
       url += '&limit=' + this.wfs3DownloadLimit + '&startindex=' + startIndex
       return url
     },
     wfs3_download_name_chunk: function (startIndex, chunkIndex) {
       startIndex = parseInt(startIndex)
-      var startNum = startIndex + 1
-      var endNum = chunkIndex === (this.chunkedStartIndexes.length - 1) ? this.numRecords : this.chunkedStartIndexes[chunkIndex + 1]
+      let startNum = startIndex + 1
+      let endNum = chunkIndex === (this.chunkedStartIndexes.length - 1) ? this.numRecords : this.chunkedStartIndexes[chunkIndex + 1]
       return this.$_i(this.$gettext('Download records {startNum} - {endNum}'), {'startNum': startNum, 'endNum': endNum})
     },
     wcs_download_name_chunk: function (bandChunk, title) {
-      var rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
+      let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
       if (this.wcsNumBands === 0) {
         return this.$_i(this.$gettext('Download: {date}'), {'date': bandChunk.start})
       } else if (rangeSubset !== null) {
@@ -250,8 +250,8 @@ export default {
       }
     },
     wcs_download_url_chunk: function (bandChunk) {
-      var rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
-      var url = this.wcsCommonUrl
+      let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
+      let url = this.wcsCommonUrl
       if (rangeSubset !== null) {
         url += '&RANGESUBSET=' + rangeSubset
       }
@@ -260,7 +260,7 @@ export default {
     chunkDownload: function (data) {
       this.numRecords = data.numberMatched
       this.chunkedStartIndexes = []
-      var startIndex = 0
+      let startIndex = 0
       do {
         this.chunkedStartIndexes.push(startIndex)
         startIndex += this.wfs3DownloadLimit

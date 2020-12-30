@@ -107,7 +107,7 @@ export default {
   },
   watch: {
     format: function (newFormat, oldFormat) {
-      var dateValue = this.value
+      let dateValue = this.value
       // avoid moment parse warnings
       if (typeof this.value === 'string') {
         dateValue = this.$moment.utc(this.value, oldFormat).toDate()
@@ -168,10 +168,10 @@ export default {
       }
     },
     htmlDateFormatAbbr: function () {
-      var htmlDateFormat
-      var yyyyTitle = this.$gettext('4 digit year')
-      var mmTitle = this.$gettext('2 digit month')
-      var ddTitle = this.$gettext('2 digit day of month')
+      let htmlDateFormat
+      let yyyyTitle = this.$gettext('4 digit year')
+      let mmTitle = this.$gettext('2 digit month')
+      let ddTitle = this.$gettext('2 digit day of month')
       switch (this.format) {
         case 'YYYY-MM-DD':
           htmlDateFormat = '(<abbr title="' + yyyyTitle + '">YYYY</abbr>-<abbr title="' + mmTitle + '">MM</abbr>-<abbr title="' + ddTitle + '">DD</abbr>)'

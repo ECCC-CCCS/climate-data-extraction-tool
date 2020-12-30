@@ -322,7 +322,7 @@ export default {
           } else if (row.properties[key] === null) {
             return false // skip null values
           } else {
-            var valueText = row.properties[key] + '' // convert to string
+            let valueText = row.properties[key] + '' // convert to string
             stationText += '^' + valueText.toLowerCase() + '$' // starts with and ends search helper; like regex
           }
         })

@@ -146,7 +146,7 @@ export default {
   computed: {
     wcs_coverage_id: function () {
       // generate coverageID
-      var coverageIdParts = []
+      let coverageIdParts = []
       coverageIdParts.push(this.wcs_id_dataset)
       if (this.wcs_id_type === 'ARC') {
         coverageIdParts.push(this.wcs_id_type + '_' + this.wcs_id_resolution)
@@ -194,16 +194,16 @@ export default {
       return this.wcs_id_time.includes('24', 0)
     },
     timeZOptions: function () {
-      var allZOptions = {
+      let allZOptions = {
         '00Z': this.$gettext('00Z'),
         '06Z': this.$gettext('06Z'),
         '12Z': this.$gettext('12Z'),
         '18Z': this.$gettext('18Z')
       }
 
-      var forecastDateYYYYMMDD = this.forecastDateMoment.format('YYYY-MM-DD')
-      var maxDateMoment = this.forecastDateMomentRange.max
-      var maxDateMomentYYYYMMDD = maxDateMoment.format('YYYY-MM-DD')
+      let forecastDateYYYYMMDD = this.forecastDateMoment.format('YYYY-MM-DD')
+      let maxDateMoment = this.forecastDateMomentRange.max
+      let maxDateMomentYYYYMMDD = maxDateMoment.format('YYYY-MM-DD')
 
       if (this.timeZis24) { // PT24H; 24 hour interval only allows 12Z selection
         return {
@@ -212,12 +212,12 @@ export default {
       } else { // PT6H; 6 hour interval selection
         // Forecast date + hour options must not exceed max date limit
         if (forecastDateYYYYMMDD === maxDateMomentYYYYMMDD) {
-          var pt6HOptions = ['00', '06', '12', '18']
-          var maxDateISO = maxDateMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
-          var zOptions = {}
-          for (var pt6 of pt6HOptions) {
-            var testForecastPt6H = forecastDateYYYYMMDD + 'T' + pt6 + ':00:00Z'
-            var pt6Z = pt6 + 'Z'
+          let pt6HOptions = ['00', '06', '12', '18']
+          let maxDateISO = maxDateMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
+          let zOptions = {}
+          for (let pt6 of pt6HOptions) {
+            let testForecastPt6H = forecastDateYYYYMMDD + 'T' + pt6 + ':00:00Z'
+            let pt6Z = pt6 + 'Z'
             if (testForecastPt6H <= maxDateISO) {
               zOptions[pt6Z] = allZOptions[pt6Z]
             }
@@ -229,7 +229,7 @@ export default {
       }
     },
     selectedCoverageIdOption: function () {
-      var wcsCoverage = {}
+      let wcsCoverage = {}
       wcsCoverage[this.wcs_coverage_id] = this.currentRouteTitle + ' (' + this.wcs_coverage_id + ')'
       return wcsCoverage
     },
@@ -237,7 +237,7 @@ export default {
       return this.$moment.utc(this.forecastDate)
     },
     forecastDateISO: function () {
-      var hh = this.forecastTimeZ.substring(0, 2) // first 2 are HH
+      let hh = this.forecastTimeZ.substring(0, 2) // first 2 are HH
       return this.forecastDateMoment.format('YYYY-MM-DD') + 'T' + hh + ':00:00Z'
     },
     foreRunMoment06FMax: function () {
@@ -290,8 +290,8 @@ export default {
       return this.forecastDate === null || this.forecastDate === 'Invalid date'
     },
     forecastDateOutOfRange: function () {
-      var foreDate = this.forecastDateMoment
-      var minimumView = this.dateConfigs.minimumView
+      let foreDate = this.forecastDateMoment
+      let minimumView = this.dateConfigs.minimumView
 
       // ignore check if null
       if (this.forecastDateIsEmpty) {
@@ -309,11 +309,11 @@ export default {
   methods: {
     wcs_download_url: function (coverageId) { // replaces existing function from wcs mixin
       this.splitBBOXString()
-      var url = this.wcs2_weather_url_base + '&'
-      var urlParams = this.getWCSCommonParams(coverageId)
+      let url = this.wcs2_weather_url_base + '&'
+      let urlParams = this.getWCSCommonParams(coverageId)
 
       // Forecast Time
-      var ft = this.forecastDateISO
+      let ft = this.forecastDateISO
       if (ft !== '' && ft !== null) {
         urlParams.push('TIME=' + ft)
       }

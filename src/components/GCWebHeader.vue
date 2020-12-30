@@ -174,9 +174,9 @@ export default {
   },
   methods: {
     hrefLang: function (langKey) {
-      var lang = this.langShort(langKey)
-      var langPath = lang + '_path'
-      var href = this.WEB_SERVER[lang]
+      let lang = this.langShort(langKey)
+      let langPath = lang + '_path'
+      let href = this.WEB_SERVER[lang]
       if (this.isDeploymentServer) {
         href += this.APP_PATH[lang]
       }
@@ -189,8 +189,8 @@ export default {
       return href
     },
     routePath: function (langKey) {
-      var lang = this.langShort(langKey)
-      var langPath = lang + '_path'
+      let lang = this.langShort(langKey)
+      let langPath = lang + '_path'
       if (Object.prototype.hasOwnProperty.call(this.$route.meta, langPath)) {
         return this.$route.meta[langPath]
       } else {
@@ -208,7 +208,7 @@ export default {
       return this.APP_PATH.en !== this.APP_PATH.fr
     },
     src_to_root: function () {
-      var src = '/'
+      let src = '/'
       if (this.APP_PATH[this.activeLocale] !== '/') {
         src = this.APP_PATH[this.activeLocale] + '/'
       }

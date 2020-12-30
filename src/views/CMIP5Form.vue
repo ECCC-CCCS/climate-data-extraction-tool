@@ -357,8 +357,8 @@ export default {
     },
     specialErrorMsg: function () {
       // Special case checks for certain selection criteria
-      var historicalYearStart = ''
-      var historicalYearEnd = ''
+      let historicalYearStart = ''
+      let historicalYearEnd = ''
 
       // special case for Monthly surface wind dates
       if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.wcs_id_timePeriod === 'ENS' && this.wcs_id_variable === 'SFCWIND') {

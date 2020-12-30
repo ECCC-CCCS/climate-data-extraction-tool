@@ -60,8 +60,8 @@ export default {
       }
     },
     titleMoreResourcesHtml: function () {
-      var link = this.climateLinks.climateServices.url[this.activeLocale]
-      var htmlTitle = this.$gettext('More resources from the <a href="{link}" target="_blank">Canadian Centre for Climate Services</a>')
+      let link = this.climateLinks.climateServices.url[this.activeLocale]
+      let htmlTitle = this.$gettext('More resources from the <a href="{link}" target="_blank">Canadian Centre for Climate Services</a>')
       htmlTitle = htmlTitle.replace('{link}', link)
       return htmlTitle
     }

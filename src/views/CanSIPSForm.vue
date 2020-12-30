@@ -257,8 +257,8 @@ export default {
         foreDate.isAfter(this.forePeriodMomentRange.max, minimumView)
     },
     modelRunOutOfRange: function () {
-      var modelDate = this.modelRunMoment
-      var minimumView = this.dateConfigs.minimumView
+      let modelDate = this.modelRunMoment
+      let minimumView = this.dateConfigs.minimumView
 
       // ignore check if null
       if (this.modelRunIsEmpty) {

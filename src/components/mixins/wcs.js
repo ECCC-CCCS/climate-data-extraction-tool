@@ -18,7 +18,7 @@ export const wcs = {
       return parseInt(this.MAX_BANDS / 12)
     },
     selectedCoverageIdOption: function () {
-      var wcsCoverage = {}
+      let wcsCoverage = {}
       wcsCoverage[this.wcs_coverage_id] = this.currentRouteTitle
       return wcsCoverage
     },
@@ -30,28 +30,28 @@ export const wcs = {
       return (this.wcs_id_timePeriod === 'MONTHLY' || this.wcs_id_timePeriod === 'ENS')
     },
     bandsEmptyOnMonthly: function () {
-      var startDate = this.$moment.utc(this.bandStartMoment).format(this.dateConfigs.format)
-      var endDate = this.$moment.utc(this.bandEndMoment).format(this.dateConfigs.format)
+      let startDate = this.$moment.utc(this.bandStartMoment).format(this.dateConfigs.format)
+      let endDate = this.$moment.utc(this.bandEndMoment).format(this.dateConfigs.format)
       return (startDate === 'Invalid date' && endDate === 'Invalid date' && this.timePeriodIsMonthly)
     },
     chunkedBandsParam: function () {
-      var momentDateUnit = this.timePeriodIsMonthly ? 'M' : 'y' // Month or year
-      var chunkStartMoment = this.$moment.utc(this.bandStartMoment)
-      var chunkEndMoment = this.$moment.utc(this.bandStartMoment)
-      var chunkDuration
+      let momentDateUnit = this.timePeriodIsMonthly ? 'M' : 'y' // Month or year
+      let chunkStartMoment = this.$moment.utc(this.bandStartMoment)
+      let chunkEndMoment = this.$moment.utc(this.bandStartMoment)
+      let chunkDuration
 
       if (this.hasCommonBandErrors) { // range 0 or errors
         return []
       } else if (this.usesBands) {
-        var chunkedBands = []
-        var chunkLimit = this.MAX_BANDS
+        let chunkedBands = []
+        let chunkLimit = this.MAX_BANDS
         do {
-          var chunkStartDate = chunkStartMoment.format(this.dateConfigs.format)
+          let chunkStartDate = chunkStartMoment.format(this.dateConfigs.format)
           chunkEndMoment.add(chunkLimit, momentDateUnit)
           if (chunkEndMoment.isAfter(this.bandEndMoment)) { // max date
             chunkEndMoment = this.$moment.utc(this.bandEndMoment)
           }
-          var chunkEndDate = chunkEndMoment.format(this.dateConfigs.format)
+          let chunkEndDate = chunkEndMoment.format(this.dateConfigs.format)
 
           chunkDuration = this.$moment.duration(chunkEndMoment.diff(chunkStartMoment))
           chunkDuration = Math.ceil(this.timePeriodIsMonthly ? chunkDuration.asMonths() : (chunkDuration.asYears() - 1))
@@ -59,7 +59,7 @@ export const wcs = {
             chunkDuration = 1 // case when start === end
           }
 
-          var bandChunk = {
+          let bandChunk = {
             'start': chunkStartDate,
             'end': chunkEndDate,
             'duration': chunkDuration
@@ -123,8 +123,8 @@ export const wcs = {
         this.bandsEmptyOnMonthly
     },
     wcsCommonUrl: function () {
-      var url = this.wcs2_climate_url_base + '&'
-      var urlParams = this.getWCSCommonParams(this.wcs_coverage_id)
+      let url = this.wcs2_climate_url_base + '&'
+      let urlParams = this.getWCSCommonParams(this.wcs_coverage_id)
 
       url += urlParams.join('&')
       return url
@@ -135,8 +135,8 @@ export const wcs = {
       if (this.ows_bbox === '') {
         return null
       } else {
-        var xBox = 'SUBSET=x(' + this.reprojected_bbox_parts.min_x + ',' + this.reprojected_bbox_parts.max_x + ')'
-        var yBox = 'SUBSET=y(' + this.reprojected_bbox_parts.min_y + ',' + this.reprojected_bbox_parts.max_y + ')'
+        let xBox = 'SUBSET=x(' + this.reprojected_bbox_parts.min_x + ',' + this.reprojected_bbox_parts.max_x + ')'
+        let yBox = 'SUBSET=y(' + this.reprojected_bbox_parts.min_y + ',' + this.reprojected_bbox_parts.max_y + ')'
         return {
           x: xBox,
           y: yBox
@@ -161,11 +161,11 @@ export const wcs = {
       }
     },
     getWCSCommonParams: function (coverageId) {
-      var urlParams = []
+      let urlParams = []
       urlParams.push('COVERAGEID=' + coverageId)
       urlParams.push('SUBSETTINGCRS=' + this.ows_crs)
       this.splitBBOXString()
-      var bbox = this.generateWCSBBOXParam()
+      let bbox = this.generateWCSBBOXParam()
       if (bbox !== null) {
         urlParams.push(bbox.x)
         urlParams.push(bbox.y)
@@ -175,10 +175,10 @@ export const wcs = {
       return urlParams
     },
     wcs_download_url: function (coverageId) {
-      var url = this.wcs2_climate_url_base + '&'
-      var urlParams = this.getWCSCommonParams(coverageId)
+      let url = this.wcs2_climate_url_base + '&'
+      let urlParams = this.getWCSCommonParams(coverageId)
 
-      var band = this.generateWCSRangeSubsetParam()
+      let band = this.generateWCSRangeSubsetParam()
       if (band !== null) {
         urlParams.push(band)
       }

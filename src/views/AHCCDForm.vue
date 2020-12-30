@@ -161,19 +161,21 @@ export default {
   beforeMount () {
     // Load ahccd stations
     if (this.ahccdStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveAhccdStations', this.urlStationList)
+      this.$store.dispatch('retrieveAhccdStations', this.urlStationMapList)
     }
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit +
-        `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
+    },
+    urlStationMapList: function () {
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
     },
     ahccdStationsGeoJson: function () {
       return this.$store.getters.getAhccdStations
     },
     station_props_display: function () {
-      var props = {}
+      let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
       props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Station ID')
       props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province/Territory')
@@ -188,12 +190,12 @@ export default {
       }
     },
     selectedLayerOption: function () {
-      var selLayer = {}
+      let selLayer = {}
       selLayer[this.wfs_layer] = this.layer_options[this.wfs_layer]
       return selLayer
     },
     popup_props_display: function () {
-      var stationCols = Object.keys(this.station_props_display)
+      let stationCols = Object.keys(this.station_props_display)
       return {
         name: {
           col: stationCols[0],
@@ -246,9 +248,9 @@ export default {
       if (this.wfs_layer === 'ahccd-trends') {
         return null
       } else if (this.dateRangeIsValid) {
-        var format = this.dateConfigs.format
-        var start = this.$moment.utc(this.date_start, format).format(format)
-        var end = this.$moment.utc(this.date_end, format).format(format)
+        let format = this.dateConfigs.format
+        let start = this.$moment.utc(this.date_start, format).format(format)
+        let end = this.$moment.utc(this.date_end, format).format(format)
         return 'datetime=' + start + '/' + end
       } else {
         return null

@@ -19,8 +19,8 @@ export default {
   },
   computed: {
     dataAccessDocHtml: function () {
-      var link = this.canadaDomain[this.$i18n.activeLocale] + this.dataAccessDocUrl[this.$i18n.activeLocale]
-      var html = this.$gettext('The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href="{link}" target="_blank">the documentation on these advanced tools</a> for more information.')
+      let link = this.canadaDomain[this.$i18n.activeLocale] + this.dataAccessDocUrl[this.$i18n.activeLocale]
+      let html = this.$gettext('The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href="{link}" target="_blank">the documentation on these advanced tools</a> for more information.')
       html = html.replace('{link}', link)
       return html
     }

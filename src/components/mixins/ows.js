@@ -44,7 +44,7 @@ export const ows = {
       return langKey.substring(0, 2)
     },
     splitBBOXString: function () {
-      var bboxSplit = this.ows_bbox.split(',')
+      let bboxSplit = this.ows_bbox.split(',')
       this.bbox_parts.min_x = parseFloat(bboxSplit[0])
       this.bbox_parts.min_y = parseFloat(bboxSplit[1])
       this.bbox_parts.max_x = parseFloat(bboxSplit[2])

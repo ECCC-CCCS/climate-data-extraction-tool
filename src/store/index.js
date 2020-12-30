@@ -22,6 +22,9 @@ export default new Vuex.Store({
     ahccdStationGeoJson: {
       features: []
     },
+    ltceStationGeoJson: {
+      features: []
+    },
     isLoadingStations: false,
     isLoadingAllHydroStations: false,
     stationIdSelected: [],
@@ -53,6 +56,9 @@ export default new Vuex.Store({
     },
     changeAhccdStation (state, payload) {
       state.ahccdStationGeoJson = payload
+    },
+    changeLtceStation (state, payload) {
+      state.ltceStationGeoJson = payload
     },
     changeHydroStation (state, payload) {
       state.hydroStationGeoJson = payload
@@ -200,6 +206,28 @@ export default new Vuex.Store({
           commit('finishLoadingStations')
         })
     },
+    retrieveLtceStations: function ({ state, commit }, {url, uniqueCol}) {
+      state.cancelSourceStation.cancel('Cancelling existing station request')
+      state.cancelSourceStation = axios.CancelToken.source()
+      commit('startLoadingStations')
+      axios.get(url, { cancelToken: state.cancelSourceStation.token })
+        .then((response) => {
+          // reduce rows by uniqueCol
+          let uniqueResponseData = {
+            features: []
+          }
+          response.data.features.forEach((row) => {
+            let i = uniqueResponseData.features.findIndex(x => x.properties[uniqueCol] === row.properties[uniqueCol])
+            if (i <= -1) {
+              uniqueResponseData.features.push(row)
+            }
+          })
+          commit('changeLtceStation', uniqueResponseData)
+        })
+        .finally(() => {
+          commit('finishLoadingStations')
+        })
+    },
     addStationIdSelected: function ({ commit }, id) {
       commit('addStationIdSelectedMutation', id)
     },
@@ -267,6 +295,9 @@ export default new Vuex.Store({
     },
     getAhccdStations (state) {
       return state.ahccdStationGeoJson
+    },
+    getLtceStations (state) {
+      return state.ltceStationGeoJson
     },
     getStationIdSelected (state) {
       return state.stationIdSelected

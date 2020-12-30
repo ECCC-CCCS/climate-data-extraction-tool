@@ -159,14 +159,14 @@ export default {
     },
     activeStationsOnly: function (newVal) { // display inactive stations
       if (newVal === false) {
-        this.$store.dispatch('retrieveHydroStations', this.urlStationList)
+        this.$store.dispatch('retrieveHydroStations', this.urlStationMapList)
       }
     }
   },
   beforeMount () {
     // Load hydrometric stations
     if (this.hydroStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveHydroStations', this.urlStationList)
+      this.$store.dispatch('retrieveHydroStations', this.urlStationMapList)
     }
   },
   computed: {
@@ -174,12 +174,14 @@ export default {
       return this.$store.getters.getHydroStationActive
     },
     urlStationList: function () {
-      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit +
-        `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},STATUS_EN`
+      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
       if (this.activeStationsOnly) {
         url += '&STATUS_EN=Active'
       }
       return url
+    },
+    urlStationMapList: function () {
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},STATUS_EN`
     },
     hydroStationsGeoJson: function () {
       let hs = this.$store.getters.getHydroStations
@@ -205,19 +207,19 @@ export default {
       }
     },
     selectedLayerOption: function () {
-      var selLayer = {}
+      let selLayer = {}
       selLayer[this.wfs_layer] = this.layer_options[this.wfs_layer]
       return selLayer
     },
     station_props_display: function () {
-      var props = {}
+      let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
       props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Station ID')
       props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province/Territory/State')
       return props
     },
     popup_props_display: function () {
-      var stationCols = Object.keys(this.station_props_display)
+      let stationCols = Object.keys(this.station_props_display)
       return {
         name: {
           col: stationCols[0],
@@ -250,8 +252,8 @@ export default {
     },
     temporal: function () {
       if (this.dateRangeIsValid) {
-        var start = this.$moment.utc(this.date_start).format(this.dateConfigs.format)
-        var end = this.$moment.utc(this.date_end).format(this.dateConfigs.format)
+        let start = this.$moment.utc(this.date_start).format(this.dateConfigs.format)
+        let end = this.$moment.utc(this.date_end).format(this.dateConfigs.format)
         return 'datetime=' + start + '/' + end
       } else {
         return null

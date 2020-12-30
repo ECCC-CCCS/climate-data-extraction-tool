@@ -27,27 +27,31 @@ export const wfs = {
         hydrometric: 'STATION_NUMBER',
         normals: 'CLIMATE_IDENTIFIER',
         daily: 'CLIMATE_IDENTIFIER',
-        monthly: 'CLIMATE_IDENTIFIER'
+        monthly: 'CLIMATE_IDENTIFIER',
+        ltce: 'VIRTUAL_CLIMATE_ID'
       },
       datasetToNameColName: {
         ahccd: 'station_name__nom_station',
         hydrometric: 'STATION_NAME',
         normals: 'STATION_NAME',
         daily: 'STATION_NAME',
-        monthly: 'STATION_NAME'
+        monthly: 'STATION_NAME',
+        ltce: 'ENG_STN_NAME' // Switch on locale change
       },
       datasetToDateColName: {
         hydrometric: 'DATE', // MAX_DATE for hydrometric-annual-statistics
         normals: 'MONTH',
         daily: 'LOCAL_DATE',
-        monthly: 'LOCAL_DATE'
+        monthly: 'LOCAL_DATE',
+        ltce: 'END_DATE'
       },
       datasetToProvColName: {
         ahccd: 'province__province',
         hydrometric: 'PROV_TERR_STATE_LOC',
         normals: 'PROVINCE_CODE',
         daily: 'PROVINCE_CODE',
-        monthly: 'PROVINCE_CODE'
+        monthly: 'PROVINCE_CODE',
+        ltce: 'PROVINCECODE'
       },
       layerToColSortOrder: { // default download sort order
         'climate-normals': ['CLIMATE_IDENTIFIER', 'NORMAL_ID', 'MONTH'],
@@ -58,7 +62,10 @@ export const wfs = {
         'ahccd-monthly': ['identifier__identifiant'],
         'ahccd-annual': ['identifier__identifiant'],
         'ahccd-seasonal': ['identifier__identifiant'],
-        'ahccd-trends': ['identifier__identifiant']
+        'ahccd-trends': ['identifier__identifiant'],
+        'ltce-temperature': ['IDENTIFIER'],
+        'ltce-precipitation': ['IDENTIFIER'],
+        'ltce-snowfall': ['IDENTIFIER']
       }
     }
   },
@@ -140,9 +147,9 @@ export const wfs = {
         if (this.hasInvalidMomentDate) {
           return null
         } else {
-          var format = this.dateConfigs.format
-          var start = this.$moment.utc(this.date_start).format(format)
-          var end = this.$moment.utc(this.date_end).format(format)
+          let format = this.dateConfigs.format
+          let start = this.$moment.utc(this.date_start).format(format)
+          let end = this.$moment.utc(this.date_end).format(format)
           if (this.wfs_layer === 'climate-daily') {
             // format = 'YYYY-MM-DD HH:mm:ss'
             start += ' 00:00:00'
@@ -155,9 +162,9 @@ export const wfs = {
       }
     },
     hasInvalidMomentDate: function () {
-      var format = this.dateConfigs.format
-      var start = this.$moment.utc(this.date_start, format).format(format)
-      var end = this.$moment.utc(this.date_end, format).format(format)
+      let format = this.dateConfigs.format
+      let start = this.$moment.utc(this.date_start, format).format(format)
+      let end = this.$moment.utc(this.date_end, format).format(format)
 
       return (start === 'Invalid date' || end === 'Invalid date')
     },
@@ -183,9 +190,9 @@ export const wfs = {
       }
     },
     dateRangePastLimits: function () {
-      var start = this.$moment.utc(this.date_start)
-      var end = this.$moment.utc(this.date_end)
-      var minimumView = this.dateConfigs.minimumView
+      let start = this.$moment.utc(this.date_start)
+      let end = this.$moment.utc(this.date_end)
+      let minimumView = this.dateConfigs.minimumView
 
       return start.isBefore(this.date_min, minimumView) ||
         start.isAfter(this.date_max, minimumView) ||
@@ -221,14 +228,14 @@ export const wfs = {
       return !this.stationsSelected && !this.provinceSelected && this.$store.getters.getBboxStationsTotal === 0
     },
     layer_options: function () {
-      var layers = {}
+      let layers = {}
       layers[this.wfs_layer] = this.currentRouteTitle
       return layers
     }
   },
   methods: {
     splitBBOXString: function () {
-      var bboxSplit = this.ows_bbox.split(',')
+      let bboxSplit = this.ows_bbox.split(',')
       this.bbox_parts.min_x = bboxSplit[0]
       this.bbox_parts.min_y = bboxSplit[1]
       this.bbox_parts.max_x = bboxSplit[2]
@@ -242,7 +249,7 @@ export const wfs = {
       this.date_end = null
     },
     getWFS3CommonParams: function (layerName) {
-      var urlParams = []
+      let urlParams = []
 
       if (typeof layerName === 'undefined') {
         layerName = this.wfs_layer
@@ -253,8 +260,8 @@ export const wfs = {
         urlParams.push(this.temporal)
       }
 
-      var stnColName = this.datasetToStnColName[this.$route.name]
-      var provColName = this.datasetToProvColName[this.$route.name]
+      let stnColName = this.datasetToStnColName[this.$route.name]
+      let provColName = this.datasetToProvColName[this.$route.name]
 
       // Spatial selection priority: station, province, bbox
       switch (this.spatialSelectPriority) {
@@ -272,12 +279,17 @@ export const wfs = {
       }
 
       // sort
-      var dateColName = this.datasetToDateColName[this.$route.name]
-      var sortOrder = [provColName]
+      let dateColName = this.datasetToDateColName[this.$route.name]
+      let sortOrder = [provColName]
 
       // Special case for specific layers
       if (Object.prototype.hasOwnProperty.call(this.layerToColSortOrder, layerName)) {
-        sortOrder = sortOrder.concat(this.layerToColSortOrder[layerName])
+        if (layerName.includes('ltce')) {
+          sortOrder = this.layerToColSortOrder[layerName]
+        } else {
+          sortOrder = sortOrder.concat(this.layerToColSortOrder[layerName])
+        }
+
       } else {
         sortOrder = sortOrder.concat([stnColName, dateColName])
       }
@@ -287,22 +299,22 @@ export const wfs = {
       return urlParams
     },
     getWFS3CommonURL: function (layerName) {
-      var url = this.wfs3_url_base
+      let url = this.wfs3_url_base
       url += '/' + layerName
       url += '/items?'
 
-      var urlParams = this.getWFS3CommonParams(layerName)
+      let urlParams = this.getWFS3CommonParams(layerName)
 
       url += urlParams.join('&')
 
       return url
     },
     wfs3_download_url: function (layerName) {
-      var url = this.wfs3_url_base
+      let url = this.wfs3_url_base
       url += '/' + layerName
       url += '/items?'
 
-      var urlParams = this.getWFS3CommonParams(layerName)
+      let urlParams = this.getWFS3CommonParams(layerName)
 
       // Limit validation
       if (this.wfs_limit >= this.wfs_min_limit && this.wfs_limit <= this.wfs_max_limit) {

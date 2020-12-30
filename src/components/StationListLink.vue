@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     urlStationListCSV: function () {
-      var url = this.urlStationList
+      let url = this.urlStationList
       url = url.replace('&STATUS_EN=Active', '') // hydrometric case
 
       // csv format

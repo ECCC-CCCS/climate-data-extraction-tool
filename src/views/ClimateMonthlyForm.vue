@@ -152,11 +152,11 @@ export default {
   beforeMount () {
     // Load climate stations
     if (this.climateStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveClimateMonthlyStations', this.urlStationList)
+      this.$store.dispatch('retrieveClimateMonthlyStations', this.urlStationMapList)
     }
 
     // Get min local_date dynamically to set date_min
-    var minDate = this.$store.getters.getClimateMonthlyMinDate
+    let minDate = this.$store.getters.getClimateMonthlyMinDate
     if (minDate === null) { // prevent duplicate AJAX
       let thisComp = this // for reference in axios response; "this" reserved in axios
 
@@ -176,8 +176,10 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_MONTHLY_SUMMARY=Y&f=json&limit=' + this.wfs_station_limit +
-        `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_MONTHLY_SUMMARY=Y&f=json&limit=' + this.wfs_station_limit
+    },
+    urlStationMapList: function () {
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
     },
     urlDatasetMinDate: function () {
       return this.wfs3_url_base + '/' + this.wfs_layer + '/items?sortby=LOCAL_DATE&limit=1&f=json'
@@ -186,14 +188,14 @@ export default {
       return this.$store.getters.getClimateMonthlyStations
     },
     station_props_display: function () {
-      var props = {}
+      let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
       props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Climate ID')
       props['PROV_STATE_TERR_CODE'] = this.$gettext('Province/Territory/State')
       return props
     },
     popup_props_display: function () {
-      var stationCols = Object.keys(this.station_props_display)
+      let stationCols = Object.keys(this.station_props_display)
       return {
         name: {
           col: stationCols[0],

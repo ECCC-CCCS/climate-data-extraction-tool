@@ -3,7 +3,7 @@
     <label
       for="raster_download_format"
       :class="{required: required}">
-      <translate>Data download format</translate>
+      <translate>Data download format</translate>&nbsp;
       <strong
         v-if="required"
         class="required"

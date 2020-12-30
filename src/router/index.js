@@ -45,6 +45,10 @@ const datasetPaths = {
   hydrometric: {
     en: '/water-quantity-data',
     fr: '/donnees-quantite-eau'
+  },
+  ltce: {
+    en: '/long-term-climate-extremes',
+    fr: ''
   }
 }
 
@@ -185,6 +189,18 @@ const routes = [
       group: 'histClimateRiver'
     },
     component: () => import(/* webpackChunkName: "hydrometric" */ '../views/HydrometricArchiveForm.vue')
+  },
+  {
+    path: datasetPaths.ltce.en,
+    alias: datasetPaths.ltce.fr,
+    name: 'ltce',
+    meta: {
+      datasetSectionMenu: true,
+      en_path: datasetPaths.ltce.en,
+      fr_path: datasetPaths.ltce.fr,
+      group: 'histClimateRiver'
+    },
+    component: () => import(/* webpackChunkName: "ltce" */ '../views/LTCEForm.vue')
   },
   {
     path: '/:pathMatch(.*)',

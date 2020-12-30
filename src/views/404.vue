@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     href_to_home: function (lang) {
-      var src = '/'
+      let src = '/'
       if (this.APP_PATH[lang] !== '/') {
         src = this.APP_PATH[lang] + '/'
       }

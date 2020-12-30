@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     caseSenFileFormat: function () {
-      var format = ''
+      let format = ''
       switch (this.pointInputs.format) {
         case 'geojson':
           format = 'GeoJSON'
@@ -82,7 +82,7 @@ export default {
       }
     },
     errorPersistsMsg: function () {
-      var msg = this.$_i(this.$gettext('If this error persists, please <a href="{supportDeskUrl}">contact the Climate Services Support Desk</a>.'))
+      let msg = this.$_i(this.$gettext('If this error persists, please <a href="{supportDeskUrl}">contact the Climate Services Support Desk</a>.'))
       msg = msg.replace()
       return msg
     }
@@ -104,7 +104,7 @@ export default {
           value: this.caseSenFileFormat
         }
       ]
-      var rasterDrillUrl = this.WPS_SERVER + this.WPS_RASTER_DRILL
+      let rasterDrillUrl = this.WPS_SERVER + this.WPS_RASTER_DRILL
       if (this.pointInputs.format === 'csv') {
         rasterDrillUrl += '?response=raw'
       }
@@ -113,8 +113,8 @@ export default {
       this.downloadError = false
       axios.post(rasterDrillUrl, { inputs: inputs }, { timeout: 300000 })
         .then((resp) => {
-          var data = resp.data
-          var fileFormat = this.pointInputs.format
+          let data = resp.data
+          let fileFormat = this.pointInputs.format
           if (this.pointInputs.format === 'geojson') {
             data = JSON.stringify(resp.data)
             fileFormat = 'json'

@@ -40,7 +40,7 @@ export const DCSCMIP5 = {
 
         // Autocorrect histStart date for DCS if out of range
         if (this.wcs_id_dataset === 'DCS') {
-          var histStart = this.$moment.utc(this.dateHistStart, this.dateConfigs.format)
+          let histStart = this.$moment.utc(this.dateHistStart, this.dateConfigs.format)
           if (histStart.isBefore(this.dateConfigs.dateMin) || histStart.isAfter(this.dateConfigs.dateMax)) {
             this.dateHistStart = this.$moment.utc(this.dateConfigs.dateMin).toDate()
           }
@@ -141,7 +141,7 @@ export const DCSCMIP5 = {
       }
     },
     timePeriodOptions: function () {
-      var options = {
+      let options = {
         SPRING: this.$gettext('Spring (March-May)'),
         SUMMER: this.$gettext('Summer (June-August)'),
         FALL: this.$gettext('Fall (September-November)'),
@@ -171,8 +171,8 @@ export const DCSCMIP5 = {
       return this.$moment.utc('2005-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
     },
     dateConfigs: function () {
-      var dateMin = this.scenarioType === 'RCP' ? this.dateRcpMin : this.dateHistMin
-      var dateMax = this.scenarioType === 'RCP' ? this.dateRcpMax : this.dateHistMax
+      let dateMin = this.scenarioType === 'RCP' ? this.dateRcpMin : this.dateHistMin
+      let dateMax = this.scenarioType === 'RCP' ? this.dateRcpMax : this.dateHistMax
       if (this.wcs_id_timePeriod === 'ENS') {
         return {
           minimumView: 'month',
@@ -243,14 +243,14 @@ export const DCSCMIP5 = {
       }
     },
     bandsPastLimits: function () {
-      var start = this.scenarioType === 'HISTO' ? this.bandMoments.histStart : this.bandMoments.rcpStart
-      var end = this.scenarioType === 'HISTO' ? this.bandMoments.histEnd : this.bandMoments.rcpEnd
+      let start = this.scenarioType === 'HISTO' ? this.bandMoments.histStart : this.bandMoments.rcpStart
+      let end = this.scenarioType === 'HISTO' ? this.bandMoments.histEnd : this.bandMoments.rcpEnd
 
       if (start === null || end === null) {
         return false
       }
 
-      var minimumView = this.dateConfigs.minimumView
+      let minimumView = this.dateConfigs.minimumView
 
       return start.isBefore(this.dateConfigs.dateMin, minimumView) ||
         start.isAfter(this.dateConfigs.dateMax, minimumView) ||
@@ -290,8 +290,8 @@ export const DCSCMIP5 = {
       }
     },
     dateRangeNumBands: function () {
-      var start = this.scenarioType === 'HISTO' ? this.bandMoments.histStart : this.bandMoments.rcpStart
-      var end = this.scenarioType === 'HISTO' ? this.bandMoments.histEnd : this.bandMoments.rcpEnd
+      let start = this.scenarioType === 'HISTO' ? this.bandMoments.histStart : this.bandMoments.rcpStart
+      let end = this.scenarioType === 'HISTO' ? this.bandMoments.histEnd : this.bandMoments.rcpEnd
 
       return this.calcDateRangeNumBands(start, end)
     }
