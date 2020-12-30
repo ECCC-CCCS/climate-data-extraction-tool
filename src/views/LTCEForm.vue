@@ -61,7 +61,7 @@
 
         <date-select
           v-model="date_start"
-          :label="$gettext('Record extreme date')"
+          :label="$gettext('Record local date')"
           :minimum-view="dateConfigs.minimumView"
           :maximum-view="dateConfigs.maximumView"
           :format="dateConfigs.format"
@@ -125,9 +125,10 @@ export default {
     return {
       wfs_layer: 'ltce-temperature',
       wfs_layer_station: 'ltce-stations',
-      date_start: this.$moment.utc(new Date(), 'MM-DD').toDate(),
-      date_min: this.$moment.utc('01-01', 'MM-DD').toDate(),
-      date_max: this.$moment.utc('12-31', 'MM-DD').toDate()
+      wfs_station_limit: 30000,
+      date_start: this.$moment.utc(new Date()).toDate(), // date_start for ease of integrating with error checks
+      date_min: this.$moment.utc(new Date()).subtract(1, 'years').toDate(),
+      date_max: this.$moment.utc(new Date()).toDate()
     }
   },
   watch: {
@@ -196,7 +197,7 @@ export default {
     dateConfigs: function () {
       return {
         minimumView: 'day',
-        maximumView: 'month',
+        maximumView: 'day',
         format: 'MM-DD',
         placeholder: 'MM-DD'
       }
@@ -204,11 +205,21 @@ export default {
     hasErrors: function () {
       return this.dateStartIsEmptyOnly
     },
+    hasInvalidMomentDate: function () {
+      let format = this.dateConfigs.format
+      let start = this.$moment.utc(this.date_start, format).format(format)
+
+      return (start === 'Invalid date')
+    },
+    dateRangeHasNull: function () {
+      return this.dateStartEmpty
+    },
     temporal: function () {
       if (this.dateRangeIsValid) {
         let format = this.dateConfigs.format
-        let start = this.$moment.utc(this.date_start, format).format(format)
-        return 'datetime=' + start
+        let localDay = this.$moment.utc(this.date_start, format).format('DD')
+        let localMonth = this.$moment.utc(this.date_start, format).format('MM')
+        return 'LOCAL_DAY=' + localDay + '&LOCAL_MONTH=' + localMonth
       } else {
         return null
       }

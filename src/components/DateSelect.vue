@@ -182,6 +182,9 @@ export default {
         case 'YYYY':
           htmlDateFormat = '(<abbr title="' + yyyyTitle + '">YYYY</abbr>)'
           break
+        case 'MM-DD':
+          htmlDateFormat = '(<abbr title="' + mmTitle + '">MM</abbr>-<abbr title="' + ddTitle + '">DD</abbr>)'
+          break
       }
       return htmlDateFormat
     }
