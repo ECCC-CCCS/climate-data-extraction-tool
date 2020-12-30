@@ -48,7 +48,7 @@ const datasetPaths = {
   },
   ltce: {
     en: '/long-term-climate-extremes',
-    fr: ''
+    fr: '/extremes-climatiques-a-long-terme'
   }
 }
 
