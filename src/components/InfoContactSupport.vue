@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-info">
+  <div class="alert alert-info" id="info-contact-support">
     <h2 v-translate class="h4">Information</h2>
     <p v-html="pFeedback"></p>
     <p v-html="pOtherData"></p>

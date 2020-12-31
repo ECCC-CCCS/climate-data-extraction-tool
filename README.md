@@ -192,3 +192,21 @@ npm run csv2po
 6. Save the updated `fr.po` file to your repository
 7. Compile the translations into the UI: `npm run gettext-compile`
 8. Rebuild: `npm run build`
+
+## Testing
+
+Cypress E2E testing is used.
+
+Create a `cypress.env.json` at the root of your folder with your proper environments (similar to your `.env` key values):
+```json
+{
+  "VUE_APP_GEOMET_WEATHER_SERVER": "https://geo.weather.ec.gc.ca/geomet",
+  "VUE_APP_GEOMET_CLIMATE_SERVER": "https://geo.weather.ec.gc.ca/geomet-climate",
+  "VUE_APP_OPENAPI_SERVER": "https://api.weather.cmc.ec.gc.ca"
+}
+```
+
+Start up Cypress E2E test UI:
+```bash
+npm run test:e2e
+```

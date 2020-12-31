@@ -25,3 +25,4 @@ pnpm-debug.log*
 # Locale translation files
 *.mo
 *.pot
+/cypress.env.json

@@ -1,5 +1,6 @@
 <template>
   <section
+    id="latest-release"
     class="alert alert-info"
     v-show="descriptionHtml[$i18n.activeLocale] !== ''">
     <h3><translate>Latest changes</translate></h3>
