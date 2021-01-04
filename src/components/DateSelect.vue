@@ -8,7 +8,7 @@
       {{ label }}
       <span
         class="date_format"
-        v-html="htmlDateFormatAbbr"></span>
+        v-html="htmlDateFormatAbbr"></span>&nbsp;
       <strong
         v-if="required"
         class="required"

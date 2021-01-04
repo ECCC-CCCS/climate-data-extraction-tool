@@ -61,7 +61,7 @@
 
         <date-select
           v-model="date_start"
-          :label="$gettext('Record local date')"
+          :label="$gettext('Max recorded day')"
           :minimum-view="dateConfigs.minimumView"
           :maximum-view="dateConfigs.maximumView"
           :format="dateConfigs.format"
@@ -198,7 +198,7 @@ export default {
       return {
         minimumView: 'day',
         maximumView: 'day',
-        format: 'MM-DD',
+        format: 'YYYY-MM-DD',
         placeholder: 'MM-DD'
       }
     },

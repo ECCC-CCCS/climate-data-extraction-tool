@@ -51,7 +51,7 @@ export const wfs = {
         normals: 'PROVINCE_CODE',
         daily: 'PROVINCE_CODE',
         monthly: 'PROVINCE_CODE',
-        ltce: 'PROVINCECODE'
+        ltce: 'PROVINCE_CODE'
       },
       layerToColSortOrder: { // default download sort order
         'climate-normals': ['CLIMATE_IDENTIFIER', 'NORMAL_ID', 'MONTH'],
