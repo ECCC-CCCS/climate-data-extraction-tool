@@ -197,7 +197,7 @@ npm run csv2po
 
 Cypress E2E testing is used.
 
-Create a `cypress.env.json` at the root of your folder with your proper environments (similar to your `.env` key values):
+Create a `cypress.env.json` at the root of your folder with your proper environments to point to (similar to your `.env` key values):
 ```json
 {
   "VUE_APP_GEOMET_WEATHER_SERVER": "https://geo.weather.ec.gc.ca/geomet",
