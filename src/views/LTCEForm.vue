@@ -55,13 +55,13 @@
         <var-select
           class="mrgn-tp-md"
           v-model="wfs_layer"
-          :label="$gettext('Weather element type')"
+          :label="$gettext('Meteorological variable')"
           :required="true"
           :select-options="layer_options"></var-select>
 
         <date-select
           v-model="date_start"
-          :label="$gettext('Max recorded day')"
+          :label="$gettext('Record date')"
           :minimum-view="dateConfigs.minimumView"
           :maximum-view="dateConfigs.maximumView"
           :format="dateConfigs.format"
