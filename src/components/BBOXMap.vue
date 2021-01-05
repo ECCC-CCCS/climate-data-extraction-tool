@@ -204,7 +204,7 @@ export default {
       minZoom: 0,
       maxBounds: L.latLngBounds(L.latLng(20, -175), L.latLng(90, -10)),
       center: L.latLng(66, -105),
-      markers: L.markerClusterGroup({
+      markerClusters: L.markerClusterGroup({
         disableClusteringAtZoom: 9,
         chunkedLoading: true,
         chunkInterval: 500
@@ -327,12 +327,12 @@ export default {
       }
     },
     geojson: function (newJson) {
-      if (newJson !== undefined) {
+      if (newJson !== undefined) { // update geojson layer if new data
         // add marker-clustering
         let map = this.$refs.BBOXMap.mapObject
         this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
-        this.markers.clearLayers().addLayer(this.geojsonLayer)
-        map.addLayer(this.markers)
+        this.markerClusters.clearLayers().addLayer(this.geojsonLayer)
+        map.addLayer(this.markerClusters)
       }
     }
   },
@@ -351,8 +351,8 @@ export default {
         // add marker-clustering
         let map = this.$refs.BBOXMap.mapObject
         this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
-        this.markers.clearLayers().addLayer(this.geojsonLayer)
-        map.addLayer(this.markers)
+        this.markerClusters.clearLayers().addLayer(this.geojsonLayer)
+        map.addLayer(this.markerClusters)
       }
     })
 
@@ -492,10 +492,12 @@ export default {
       // Add popup content
       stationMarker.bindPopup(popupTextHtml)
 
-      // add event when marker opens
-      stationMarker.on('popupopen', function () {
-        // remember station id selected
-        if (!cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]) && !cmp.selectDisabled) {
+      // add click event to marker
+      stationMarker.on('click', function () {
+        console.log(feature.properties[cmp.stnPrimaryId], cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]))
+        if (cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId])) {
+          store.dispatch('removeStationIdSelected', feature.properties[cmp.stnPrimaryId])
+        } else if (!cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]) && !cmp.selectDisabled) {
           store.dispatch('addStationIdSelected', feature.properties[cmp.stnPrimaryId])
         }
       })
@@ -514,21 +516,7 @@ export default {
     resetBBOX: function () {
       this.$refs.BBOXMap.mapObject.setView(this.center, this.zoom)
     },
-    getGeojsonLayer: function () {
-      if (Object.prototype.hasOwnProperty.call(this.$refs, 'geojsonLayer')) {
-        if (Object.prototype.hasOwnProperty.call(this.$refs.geojsonLayer, 'mapObject')) {
-          return this.$refs.geojsonLayer.mapObject
-        }
-      }
-      return null
-    },
     getStationMarkers: function () {
-      // let stationMarkers = null
-      // if (Object.prototype.hasOwnProperty.call(this.$refs, 'geojsonLayer')) {
-      //   if (Object.prototype.hasOwnProperty.call(this.$refs.geojsonLayer, 'mapObject')) {
-      //     stationMarkers = this.$refs.geojsonLayer.mapObject.getLayers()
-      //   }
-      // }
       let stationMarkers = this.geojsonLayer.getLayers()
       return stationMarkers
     }

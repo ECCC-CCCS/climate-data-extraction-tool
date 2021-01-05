@@ -61,7 +61,7 @@
 
         <date-select
           v-model="date_start"
-          :label="$gettext('Record date')"
+          :label="$gettext('Date')"
           :minimum-view="dateConfigs.minimumView"
           :maximum-view="dateConfigs.maximumView"
           :format="dateConfigs.format"
