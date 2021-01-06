@@ -227,7 +227,7 @@ export default {
         pointToLayer: this.pointToLayer
       },
       selectedMarkerOptions: {
-        radius: 5,
+        radius: 6,
         fillColor: '#00FF00',
         color: '#000',
         weight: 1,
@@ -235,7 +235,7 @@ export default {
         fillOpacity: 0.8
       },
       defaultMarkerOptions: {
-        radius: 5,
+        radius: 6,
         fillColor: '#FFCC33',
         color: '#000',
         weight: 1,
@@ -243,7 +243,7 @@ export default {
         fillOpacity: 0.8
       },
       inactiveMarkerOptions: {
-        radius: 5,
+        radius: 6,
         fillColor: '#CC0000',
         color: '#000',
         weight: 1,

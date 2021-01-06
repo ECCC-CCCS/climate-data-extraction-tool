@@ -102,19 +102,19 @@ $gettext('Good morning')
 this.$gettext('Hello')
 
 // Add context to a text for a translator
-$pgettext('Verb', 'Book') // eg. book an appointment
-$pgettext('Noun', 'Book') // eg. read a book
+$pgettext('This word is a verb', 'Book') // eg. book an appointment
+$pgettext('This word is a noun', 'Book') // eg. read a book
 
 // Plural text with interpolation. Format in: 'singular phrase', 'plural phrase', counter
 // See StationSelect.vue as example
 $ngettext('There is %{count} car', 'There are %{count} cars', count)
 
 // Context and plural
-$npgettext('Context description', 'I have %{n} book.', 'I have %{n} books', n)
+$npgettext('Context: %{n} represents the number of books', 'I have %{n} book.', 'I have %{n} books', n)
 
 // Interpolation + Translate; must use with $gettext to tag for translation
 this.$_i(this.$gettext('The date range you have specified contains {numBands} bands and is too large to fit within the file limit (255).'), {numBands: this.dateRangeNumMonths})
-// or passing in "this" as the interpolation object
+// or passing in "this" from your Vue component as the interpolation object
 this.$_i(this.$gettext('Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entries)'), this)
 ```
 

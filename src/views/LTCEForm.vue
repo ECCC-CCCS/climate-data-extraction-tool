@@ -19,7 +19,18 @@
         <details :open="toggleDetailsState">
           <summary @click="toggleDetails"
             v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather. Virtual Climate stations correspond with the city pages of weather.gc.ca. This data provides the daily extremes of record for Temperature for each day of the year. Daily elements include: High Maximum, Low Maximum, High Minimum, Low Minimum.</p>
+          <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.</p>
+
+          <p>
+            <span v-translate>This data provides:</span>
+            <ol>
+              <li v-translate>The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.</li>
+              <li v-translate>The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.</li>
+              <li v-translate>The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.</li>
+            </ol>
+          </p>
+
+          <p v-html="virtualClimateStnDescHtml"></p>
 
           <p v-html="techDocHtml"></p>
 
@@ -55,7 +66,7 @@
         <var-select
           class="mrgn-tp-md"
           v-model="wfs_layer"
-          :label="$gettext('Meteorological variable')"
+          :label="$gettext('Climate element / record type')"
           :required="true"
           :select-options="layer_options"></var-select>
 
@@ -167,9 +178,9 @@ export default {
     },
     layer_options: function () {
       return {
-        'ltce-temperature': this.$gettext('Temperature'),
-        'ltce-precipitation': this.$gettext('Precipitation'),
-        'ltce-snowfall': this.$gettext('Snowfall')
+        'ltce-temperature': this.$gettext('Temperature - Daily extremes of record'),
+        'ltce-precipitation': this.$gettext('Precipitation - Daily extremes of record'),
+        'ltce-snowfall': this.$gettext('Snowfall - Daily extremes of record')
       }
     },
     selectedLayerOption: function () {
@@ -223,6 +234,11 @@ export default {
       } else {
         return null
       }
+    },
+    virtualClimateStnDescHtml: function () {
+      let weatherOfficeLink = (this.activeLocale === 'fr') ? '<a href="https://meteo.gc.ca/" target="_blank">meteo.gc.ca</a>' : '<a href="https://weather.gc.ca/" target="_blank">weather.gc.ca</a>'
+
+      return this.$_i(this.$gettext('Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set.  The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an "Area" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.'), { weatherOfficeLink: weatherOfficeLink })
     }
   }
 }
