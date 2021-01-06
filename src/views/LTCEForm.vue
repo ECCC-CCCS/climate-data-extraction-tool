@@ -150,13 +150,13 @@ export default {
       this.$store.dispatch('changeBBOX', newVal) // to share with station select table
     },
     activeLocale3: function (newLang3) {
-      this.datasetToNameColName.ltce = `${newLang3}_STN_NAME`
+      this.datasetToNameColName.ltce = `VIRTUAL_STATION_NAME_${newLang3[0]}`
     }
   },
   beforeMount () {
     // Load ahccd stations
     if (this.ltceStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.datasetToStnColName[this.$route.name]})
+      this.$store.dispatch('retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
     }
   },
   computed: {
@@ -164,16 +164,17 @@ export default {
       return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
     },
     urlStationMapList: function () {
-      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.stnPrimaryId},ELEMENT_NAME_E`
     },
     ltceStationsGeoJson: function () {
       return this.$store.getters.getLtceStations
     },
     station_props_display: function () {
       let props = {}
-      props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
-      props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Station ID')
+      props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Virtual station name')
+      props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Virtual station ID')
       props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province/Territory')
+      props['ELEMENT_NAME_E'] = this.$gettext('Element name')
       return props
     },
     layer_options: function () {

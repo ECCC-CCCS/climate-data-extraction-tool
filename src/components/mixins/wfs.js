@@ -36,7 +36,7 @@ export const wfs = {
         normals: 'STATION_NAME',
         daily: 'STATION_NAME',
         monthly: 'STATION_NAME',
-        ltce: 'ENG_STN_NAME' // Switch on locale change
+        ltce: 'VIRTUAL_STATION_NAME_E' // Switch on locale change
       },
       datasetToDateColName: {
         hydrometric: 'DATE', // MAX_DATE for hydrometric-annual-statistics

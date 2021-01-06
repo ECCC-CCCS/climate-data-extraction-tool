@@ -220,6 +220,10 @@ export default new Vuex.Store({
             let i = uniqueResponseData.features.findIndex(x => x.properties[uniqueCol] === row.properties[uniqueCol])
             if (i <= -1) {
               uniqueResponseData.features.push(row)
+            } else {
+              if (!uniqueResponseData.features[i].properties['ELEMENT_NAME_E'].includes(row.properties['ELEMENT_NAME_E'])) {
+                uniqueResponseData.features[i].properties['ELEMENT_NAME_E'] += ', ' + row.properties['ELEMENT_NAME_E']
+              }
             }
           })
           commit('changeLtceStation', uniqueResponseData)

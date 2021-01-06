@@ -257,7 +257,15 @@ export default {
       numStationsSelected: 0,
       toggleDetailsState: false,
       pointClickOn: 'off',
-      clickLatLng: null
+      clickLatLng: null,
+      datasetToStnProvColName: { // province property name in station data is different than the province property name in the actual dataset
+        ahccd: 'province__province',
+        hydrometric: 'PROV_TERR_STATE_LOC',
+        normals: 'PROV_STATE_TERR_CODE',
+        daily: 'PROV_STATE_TERR_CODE',
+        monthly: 'PROV_STATE_TERR_CODE',
+        ltce: 'PROVINCE_CODE'
+      }
     }
   },
   watch: {
@@ -291,6 +299,18 @@ export default {
         })
 
         this.numStationsSelected = newStations.length
+
+        // If province selected, zoom to province features
+        let routeName = this.$route.name
+        if (this.province !== 'null' && Object.prototype.hasOwnProperty.call(this.datasetToStnProvColName, routeName)) {
+          let stationMarkers = this.getStationMarkers()
+          let provCol = this.datasetToStnProvColName[routeName]
+
+          let provSelectedMarkers = stationMarkers.filter(marker => marker.feature.properties[provCol] === this.province)
+          let provSelectedGroup = new L.featureGroup(provSelectedMarkers)
+          let map = this.$refs.BBOXMap.mapObject
+          map.fitBounds(provSelectedGroup.getBounds())
+        }
       }
     },
     province: function (newProvince) {
@@ -308,16 +328,9 @@ export default {
       })
 
       let routeName = this.$route.name
-      let datasetToStnProvColName = {
-        ahccd: 'province__province',
-        hydrometric: 'PROV_TERR_STATE_LOC',
-        normals: 'PROV_STATE_TERR_CODE',
-        daily: 'PROV_STATE_TERR_CODE',
-        monthly: 'PROV_STATE_TERR_CODE'
-      }
 
-      if (newProvince !== 'null' && Object.prototype.hasOwnProperty.call(datasetToStnProvColName, routeName)) {
-        let provCol = datasetToStnProvColName[routeName]
+      if (newProvince !== 'null' && Object.prototype.hasOwnProperty.call(this.datasetToStnProvColName, routeName)) {
+        let provCol = this.datasetToStnProvColName[routeName]
         stationMarkers.forEach((marker) => {
           // Style selected stations accordingly
           if (marker.feature.properties[provCol] === newProvince) {
