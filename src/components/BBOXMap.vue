@@ -310,6 +310,8 @@ export default {
           let provSelectedGroup = new L.featureGroup(provSelectedMarkers)
           let map = this.$refs.BBOXMap.mapObject
           map.fitBounds(provSelectedGroup.getBounds())
+        } else if (this.province === 'null') {
+          this.resetBBOX()
         }
       }
     },

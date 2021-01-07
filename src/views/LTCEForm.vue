@@ -36,9 +36,21 @@
 
           <p v-html="openPortalHtml"></p>
 
-          <station-list-link
-            :url-station-list="urlStationList"
-            :download-text="$gettext('Download a list of detailed information for each LTCE station.')"></station-list-link>
+          <strong v-translate>Virtual climate station list download:</strong>
+          <ul>
+            <li><station-list-link
+              :url-station-list="urlStationList"
+              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station')"></station-list-link></li>
+            <li><station-list-link
+              :url-station-list="urlStationListElements.temperature"
+              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with tempearture record type only')"></station-list-link></li>
+            <li><station-list-link
+              :url-station-list="urlStationListElements.precipitation"
+              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with precipitation record type only')"></station-list-link></li>
+            <li><station-list-link
+              :url-station-list="urlStationListElements.snowfall"
+              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with snowfall record type only')"></station-list-link></li>
+          </ul>
         </details>
 
         <info-contact-support></info-contact-support>
@@ -51,6 +63,13 @@
           :geojson="ltceStationsGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
 
+        <var-select
+          class="mrgn-tp-md"
+          v-model="wfs_layer"
+          :label="$gettext('Climate element / record type')"
+          :required="true"
+          :select-options="layer_options"></var-select>
+
         <province-select
           v-model="wfs_province"></province-select>
 
@@ -62,13 +81,6 @@
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
           :stn-primary-id="stnPrimaryId"></station-select>
-
-        <var-select
-          class="mrgn-tp-md"
-          v-model="wfs_layer"
-          :label="$gettext('Climate element / record type')"
-          :required="true"
-          :select-options="layer_options"></var-select>
 
         <date-select
           v-model="date_start"
@@ -162,6 +174,13 @@ export default {
   computed: {
     urlStationList: function () {
       return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
+    },
+    urlStationListElements: function () {
+      return {
+        temperature: this.urlStationList + '&ELEMENT=TEMPERATURE',
+        precipitation: this.urlStationList + '&ELEMENT=PRECIPITATION',
+        snowfall: this.urlStationList + '&ELEMENT=SNOWFALL'
+      }
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.stnPrimaryId},ELEMENT_NAME_E`
