@@ -151,12 +151,22 @@ export default {
       wfs_station_limit: 30000,
       date_start: this.$moment.utc(new Date()).toDate(), // date_start for ease of integrating with error checks
       date_min: this.$moment.utc(new Date()).subtract(1, 'years').toDate(),
-      date_max: this.$moment.utc(new Date()).toDate()
+      date_max: this.$moment.utc(new Date()).toDate(),
+      ltceLayerToElementKey: {
+        'ltce-temperature': 'TEMPERATURE',
+        'ltce-precipitation': 'PRECIPITATION',
+        'ltce-snowfall': 'SNOWFALL'
+      }
     }
   },
   watch: {
     wfs_province: function (newVal) {
       this.$store.dispatch('changeProvince', newVal) // to share with bbox
+    },
+    wfs_layer: function () {
+      // different layer has different stations
+      this.$store.dispatch('clearStationIdSelected') // clear existing selection
+      this.$store.dispatch('retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
     },
     ows_bbox: function (newVal) {
       this.$store.dispatch('changeBBOX', newVal) // to share with station select table
@@ -177,13 +187,13 @@ export default {
     },
     urlStationListElements: function () {
       return {
-        temperature: this.urlStationList + '&ELEMENT=TEMPERATURE',
-        precipitation: this.urlStationList + '&ELEMENT=PRECIPITATION',
-        snowfall: this.urlStationList + '&ELEMENT=SNOWFALL'
+        temperature: this.urlStationList + '&ELEMENT_NAME_E=TEMPERATURE',
+        precipitation: this.urlStationList + '&ELEMENT_NAME_E=PRECIPITATION',
+        snowfall: this.urlStationList + '&ELEMENT_NAME_E=SNOWFALL'
       }
     },
     urlStationMapList: function () {
-      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.stnPrimaryId},ELEMENT_NAME_E`
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.stnPrimaryId},ELEMENT_NAME_E&ELEMENT_NAME_E=${this.ltceLayerToElementKey[this.wfs_layer]}`
     },
     ltceStationsGeoJson: function () {
       return this.$store.getters.getLtceStations

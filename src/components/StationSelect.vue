@@ -30,12 +30,13 @@
           :title="$gettext('This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface')">
             <span v-show="hydroStationActive" class="glyphicon glyphicon-warning-sign"></span>
             <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
+            &nbsp;
             <span v-show="hydroStationActive"><translate>Show discontinued stations</translate></span>
             <span v-show="!hydroStationActive"><translate>Hide discontinued stations</translate></span>
-            <pulse-loader
+            <span><pulse-loader
             :loading="isLoadingAllHydroStations"
             class="loading"
-            :size="5"></pulse-loader>
+            :size="5"></pulse-loader></span>
           </button>
         <button
           @click="clearSelected"
@@ -43,7 +44,10 @@
           type="button"
           :disabled="selectedStationIds.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
       </div>
-      <div id="station-select-container">
+      <div id="station-select-container" class="vld-parent">
+        <loading :active.sync="isLoadingStations" :is-full-page="false" aria-busy="true" role="alert"></loading>
+        <span v-if="isLoadingStations" class="hidden"><translate>Loading stations... please wait</translate></span>
+
         <table id="station-select-table" class="table table-striped table-hover" aria-live="polite">
           <thead>
             <tr>
@@ -62,20 +66,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-show="isLoadingStations"
-              aria-busy="true"
-              role="alert">
-              <td
-                :colspan="numColumns"
-                class="text-center">
-                <pulse-loader
-                  :loading="isLoadingStations"
-                  class="loading"
-                  :size="5"></pulse-loader>
-                <span class="hidden"><translate>Loading stations... please wait</translate></span>
-              </td>
-            </tr>
             <tr
               class="selectable selectableStation"
               v-for="stn in paginatedStations"
@@ -139,12 +129,15 @@
 
 <script>
 import { PulseLoader } from '@saeris/vue-spinners'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 import L from 'leaflet'
 
 export default {
   name: 'StationSelect',
   components: {
-    PulseLoader
+    PulseLoader,
+    Loading
   },
   model: {
     prop: 'selectedStationIds',

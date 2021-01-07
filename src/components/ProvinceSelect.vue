@@ -2,7 +2,7 @@
   <div class="form-group">
     <label for="cccs_province" v-translate>Province/Territory</label>
     <select class="form-control" id="cccs_province"
-    :disabled="disabled"
+    :disabled="disabled || isLoadingStations"
     @change="emitUpdatedValue">
       <option
         v-for="(provLabel, key) in selectOptions"
@@ -51,6 +51,11 @@ export default {
     emitUpdatedValue: function (event) {
       this.$store.dispatch('clearStationIdSelected')
       this.$emit('input', event.target.value)
+    }
+  },
+  computed: {
+    isLoadingStations: function () {
+      return this.$store.getters.getIsLoadingStations
     }
   }
 }

@@ -42,40 +42,44 @@
       </p>
     </details>
 
-    <l-map
-      id="bbox-map"
-      ref="BBOXMap"
-      tabindex="0"
-      :zoom="zoom"
-      :minZoom="minZoom"
-      :maxZoom="maxZoom"
-      :center="center"
-      :maxBounds="maxBounds"
-      :continuousWorld="false"
-      @moveend="updateBBOXfromMap"
-      @click="mapClick"
-      >
-        <!-- <l-tile-layer :url="urlWMTS_CMBT[$i18n.activeLocale]"></l-tile-layer> -->
-        <!-- <l-geo-json ref="geojsonLayer" :geojson="geojson" :options="geoJsonOptions"></l-geo-json> -->
+    <div id="bbox-map-parent" class="vld-parent">
+      <loading :active.sync="isLoadingStations" :is-full-page="false" aria-busy="true" role="alert"></loading>
+      <span v-if="isLoadingStations" class="hidden"><translate>Loading stations... please wait</translate></span>
+      <l-map
+        id="bbox-map"
+        ref="BBOXMap"
+        tabindex="0"
+        :zoom="zoom"
+        :minZoom="minZoom"
+        :maxZoom="maxZoom"
+        :center="center"
+        :maxBounds="maxBounds"
+        :continuousWorld="false"
+        @moveend="updateBBOXfromMap"
+        @click="mapClick"
+        >
+          <!-- <l-tile-layer :url="urlWMTS_CMBT[$i18n.activeLocale]"></l-tile-layer> -->
+          <!-- <l-geo-json ref="geojsonLayer" :geojson="geojson" :options="geoJsonOptions"></l-geo-json> -->
 
-        <l-marker
-          title="Popover Title"
-          :lat-lng="clickLatLng"
-          ref="clickMarker"
-          v-if="clickLatLng !== null && allowClickPoint">
-          <l-popup
-            ref="clickMarkerPopup">
-            <translate>Longitude:</translate> {{ clickLatLng.lng.toFixed(4) }}<br>
-            <translate>Latitude:</translate> {{ clickLatLng.lat.toFixed(4) }}
-          </l-popup>
-        </l-marker>
-    </l-map>
+          <l-marker
+            title="Popover Title"
+            :lat-lng="clickLatLng"
+            ref="clickMarker"
+            v-if="clickLatLng !== null && allowClickPoint">
+            <l-popup
+              ref="clickMarkerPopup">
+              <translate>Longitude:</translate> {{ clickLatLng.lng.toFixed(4) }}<br>
+              <translate>Latitude:</translate> {{ clickLatLng.lat.toFixed(4) }}
+            </l-popup>
+          </l-marker>
+      </l-map>
+    </div>
 
     <div class="form-group">
       <button
         @click="resetBBOX"
         type="button"
-        :disabled="selectDisabled"
+        :disabled="selectDisabled || isLoadingStations"
         class="btn btn-primary btn-sm" v-translate>Reset map</button>
     </div>
   </div>
@@ -87,6 +91,8 @@ import { LMap, LMarker, LPopup } from 'vue2-leaflet'
 import LW from 'leaflet.wms'
 import 'leaflet.markercluster'
 import 'proj4leaflet'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 import store from '@/store'
 
 import OptionRadio from './OptionRadio'
@@ -109,7 +115,8 @@ export default {
     LMap,
     LMarker,
     LPopup,
-    OptionRadio
+    OptionRadio,
+    Loading
   },
   model: {
     prop: 'bbox_value',
@@ -329,16 +336,8 @@ export default {
         this.markDefaultPoint(marker)
       })
 
-      let routeName = this.$route.name
-
-      if (newProvince !== 'null' && Object.prototype.hasOwnProperty.call(this.datasetToStnProvColName, routeName)) {
-        let provCol = this.datasetToStnProvColName[routeName]
-        stationMarkers.forEach((marker) => {
-          // Style selected stations accordingly
-          if (marker.feature.properties[provCol] === newProvince) {
-            this.markSelectedPoint(marker)
-          }
-        })
+      if (newProvince !== 'null') {
+        this.selectMarkersByProvince(newProvince, stationMarkers)
       }
     },
     geojson: function (newJson) {
@@ -348,6 +347,10 @@ export default {
         this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
         this.markerClusters.clearLayers().addLayer(this.geojsonLayer)
         map.addLayer(this.markerClusters)
+
+        if (this.province !== 'null') {
+          this.selectMarkersByProvince(this.province, this.getStationMarkers())
+        }
       }
     }
   },
@@ -431,9 +434,23 @@ export default {
         en: 'https://geogratis.gc.ca/maps/CBMT?',
         fr: 'https://geogratis.gc.ca/cartes/CBCT?'
       }
+    },
+    isLoadingStations: function () {
+      return this.$store.getters.getIsLoadingStations
     }
   },
   methods: {
+    selectMarkersByProvince: function (selProvince, stationMarkers) {
+      if (selProvince !== 'null' && Object.prototype.hasOwnProperty.call(this.datasetToStnProvColName, this.$route.name)) {
+        let provCol = this.datasetToStnProvColName[this.$route.name]
+        stationMarkers.forEach((marker) => {
+          // Style selected stations accordingly
+          if (marker.feature.properties[provCol] === selProvince) {
+            this.markSelectedPoint(marker)
+          }
+        })
+      }
+    },
     resetPointClick: function (newStatus) {
       this.$store.dispatch('setPointClickStatus', newStatus)
       if (newStatus === 'off') {
@@ -507,9 +524,8 @@ export default {
       // Add popup content
       stationMarker.bindPopup(popupTextHtml)
 
-      // add click event to marker
+      // add click event to marker for station selection/deselection
       stationMarker.on('click', function () {
-        console.log(feature.properties[cmp.stnPrimaryId], cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]))
         if (cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId])) {
           store.dispatch('removeStationIdSelected', feature.properties[cmp.stnPrimaryId])
         } else if (!cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]) && !cmp.selectDisabled) {

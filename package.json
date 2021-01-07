@@ -28,6 +28,7 @@
     "vue-gettext": "^2.1.12",
     "vue-gettext-tools": "0.0.7",
     "vue-i18n-gettext": "0.0.18",
+    "vue-loading-overlay": "^3.4.2",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.2.0",
     "vue2-leaflet": "^2.6.0",
