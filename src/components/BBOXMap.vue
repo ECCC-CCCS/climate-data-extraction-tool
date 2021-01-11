@@ -317,8 +317,6 @@ export default {
           let provSelectedGroup = new L.featureGroup(provSelectedMarkers)
           let map = this.$refs.BBOXMap.mapObject
           map.fitBounds(provSelectedGroup.getBounds())
-        } else if (this.province === 'null') {
-          this.resetBBOX()
         }
       }
     },
@@ -338,6 +336,8 @@ export default {
 
       if (newProvince !== 'null') {
         this.selectMarkersByProvince(newProvince, stationMarkers)
+      } else if (newProvince === 'null') {
+        this.resetBBOX()
       }
     },
     geojson: function (newJson) {

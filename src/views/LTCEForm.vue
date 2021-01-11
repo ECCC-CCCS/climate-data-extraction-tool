@@ -90,7 +90,6 @@
           :format="dateConfigs.format"
           :min-date="date_min"
           :max-date="date_max"
-          :required="true"
           :placeholder="dateConfigs.placeholder"></date-select>
 
         <format-select-vector
