@@ -84,20 +84,6 @@ export const datasets = {
             phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
-        hydrometric: {
-          title: this.$pgettext('Dataset Name', 'Historical hydrometric data'),
-          abbr: null,
-          techDoc: {
-            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-hydrometric-archive.html',
-            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-archive-hydrometrique.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Historical hydrometric data</a>.')
-          },
-          openPortal: {
-            en: 'https://open.canada.ca/data/en/dataset/1ee9e14d-0814-5201-a3be-705809d8ee0e',
-            fr: 'https://ouvert.canada.ca/data/fr/dataset/1ee9e14d-0814-5201-a3be-705809d8ee0e',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
-          }
-        },
         ltce: {
           title: this.$pgettext('Dataset Name', 'Long term daily climate extremes'),
           abbr: this.$pgettext('Abbreviation: Long Term Climate Extremes', 'LTCE'),
@@ -110,6 +96,20 @@ export const datasets = {
             en: 'https://open.canada.ca/data/en/dataset/TBD',
             fr: 'https://ouvert.canada.ca/data/fr/dataset/TBD',
             phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+          }
+        },
+        hydrometric: {
+          title: this.$pgettext('Dataset Name', 'Historical hydrometric data'),
+          abbr: null,
+          techDoc: {
+            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-hydrometric-archive.html',
+            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-archive-hydrometrique.html',
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Historical hydrometric data</a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/1ee9e14d-0814-5201-a3be-705809d8ee0e',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/1ee9e14d-0814-5201-a3be-705809d8ee0e',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         cangrd: {

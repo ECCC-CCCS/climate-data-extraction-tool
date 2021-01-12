@@ -43,7 +43,7 @@
               :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station')"></station-list-link></li>
             <li><station-list-link
               :url-station-list="urlStationListElements.temperature"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with tempearture record type only')"></station-list-link></li>
+              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with temperature record type only')"></station-list-link></li>
             <li><station-list-link
               :url-station-list="urlStationListElements.precipitation"
               :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with precipitation record type only')"></station-list-link></li>

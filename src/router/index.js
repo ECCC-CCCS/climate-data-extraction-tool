@@ -52,7 +52,7 @@ const datasetPaths = {
   }
 }
 
-const routes = [
+const routes = [ // order matters for dataset menu
   {
     path: '/',
     name: 'home',
@@ -179,18 +179,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "climateDaily" */ '../views/ClimateDailyForm.vue')
   },
   {
-    path: datasetPaths.hydrometric.en,
-    alias: datasetPaths.hydrometric.fr,
-    name: 'hydrometric',
-    meta: {
-      datasetSectionMenu: true,
-      en_path: datasetPaths.hydrometric.en,
-      fr_path: datasetPaths.hydrometric.fr,
-      group: 'histClimateRiver'
-    },
-    component: () => import(/* webpackChunkName: "hydrometric" */ '../views/HydrometricArchiveForm.vue')
-  },
-  {
     path: datasetPaths.ltce.en,
     alias: datasetPaths.ltce.fr,
     name: 'ltce',
@@ -201,6 +189,18 @@ const routes = [
       group: 'histClimateRiver'
     },
     component: () => import(/* webpackChunkName: "ltce" */ '../views/LTCEForm.vue')
+  },
+  {
+    path: datasetPaths.hydrometric.en,
+    alias: datasetPaths.hydrometric.fr,
+    name: 'hydrometric',
+    meta: {
+      datasetSectionMenu: true,
+      en_path: datasetPaths.hydrometric.en,
+      fr_path: datasetPaths.hydrometric.fr,
+      group: 'histClimateRiver'
+    },
+    component: () => import(/* webpackChunkName: "hydrometric" */ '../views/HydrometricArchiveForm.vue')
   },
   {
     path: '/:pathMatch(.*)',
