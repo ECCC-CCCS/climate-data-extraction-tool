@@ -82,15 +82,17 @@
           :no-province-station-selected="noProvinceStationSelected"
           :stn-primary-id="stnPrimaryId"></station-select>
 
-        <date-select
-          v-model="date_start"
-          :label="$gettext('Date')"
-          :minimum-view="dateConfigs.minimumView"
-          :maximum-view="dateConfigs.maximumView"
-          :format="dateConfigs.format"
-          :min-date="date_min"
-          :max-date="date_max"
-          :placeholder="dateConfigs.placeholder"></date-select>
+        <var-select
+          v-model="local_month"
+          :label="$gettext('Local month (MM)')"
+          :required="false"
+          :select-options="monthOptions"></var-select>
+
+        <var-select
+          v-model="local_day"
+          :label="$gettext('Local day (DD)')"
+          :required="false"
+          :select-options="dayOptions"></var-select>
 
         <format-select-vector
           class="mrgn-tp-md"
@@ -118,7 +120,6 @@ import BBOXMap from '@/components/BBOXMap'
 import ProvinceSelect from '@/components/ProvinceSelect'
 import StationSelect from '@/components/StationSelect'
 import FormatSelectVector from '@/components/FormatSelectVector'
-import DateSelect from '@/components/DateSelect'
 import URLBox from '@/components/URLBox'
 import InfoContactSupport from '@/components/InfoContactSupport'
 import StationListLink from '@/components/StationListLink'
@@ -136,7 +137,6 @@ export default {
     'province-select': ProvinceSelect,
     'station-select': StationSelect,
     'format-select-vector': FormatSelectVector,
-    'date-select': DateSelect,
     'var-select': VarSelect,
     'url-box': URLBox,
     'info-contact-support': InfoContactSupport,
@@ -155,7 +155,9 @@ export default {
         'ltce-temperature': 'TEMPERATURE',
         'ltce-precipitation': 'PRECIPITATION',
         'ltce-snowfall': 'SNOWFALL'
-      }
+      },
+      local_day: this.$moment.utc(new Date()).format('DD'), // today's date
+      local_month: this.$moment.utc(new Date()).format('MM') // today's month
     }
   },
   watch: {
@@ -256,10 +258,14 @@ export default {
     },
     temporal: function () {
       if (this.dateRangeIsValid) {
-        let format = this.dateConfigs.format
-        let localDay = this.$moment.utc(this.date_start, format).format('DD')
-        let localMonth = this.$moment.utc(this.date_start, format).format('MM')
-        return 'LOCAL_DAY=' + localDay + '&LOCAL_MONTH=' + localMonth
+        let dateQuery = []
+        if (this.local_month !== 'all') {
+          dateQuery.push('LOCAL_MONTH=' + this.local_month)
+        }
+        if (this.local_day !== 'all') {
+          dateQuery.push('LOCAL_DAY=' + this.local_day)
+        }
+        return dateQuery.join('&')
       } else {
         return null
       }
@@ -268,6 +274,55 @@ export default {
       let weatherOfficeLink = (this.activeLocale === 'fr') ? '<a href="https://meteo.gc.ca/" target="_blank">meteo.gc.ca</a>' : '<a href="https://weather.gc.ca/" target="_blank">weather.gc.ca</a>'
 
       return this.$_i(this.$gettext('Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set.  The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an "Area" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.'), { weatherOfficeLink: weatherOfficeLink })
+    },
+    daysOfMonth: function () {
+      return {
+        'all': 31,
+        '01': 31,
+        '02': 29,
+        '03': 31,
+        '04': 30,
+        '05': 31,
+        '06': 30,
+        '07': 31,
+        '08': 31,
+        '09': 30,
+        '10': 31,
+        '11': 30,
+        '12': 31
+      }
+    },
+    monthOptions: function () {
+      return {
+        'all': this.$gettext('All 12 record months'),
+        '01': this.$gettext('01 - January'),
+        '02': this.$gettext('02 - February'),
+        '03': this.$gettext('03 - March'),
+        '04': this.$gettext('04 - April'),
+        '05': this.$gettext('05 - May'),
+        '06': this.$gettext('06 - June'),
+        '07': this.$gettext('07 - July'),
+        '08': this.$gettext('08 - August'),
+        '09': this.$gettext('09 - September'),
+        '10': this.$gettext('10 - October'),
+        '11': this.$gettext('11 - November'),
+        '12': this.$gettext('12 - December')
+      }
+    },
+    dayOptions: function () {
+      let days = {
+        'all': this.local_month === 'all' ? this.$gettext('All 366 record days') : this.$gettext('All record days of the month')
+      }
+      const maxDay = this.daysOfMonth[this.local_month]
+      for (let i = 1; i < maxDay; i++) {
+        let dd = i
+        if (i < 10) {
+          dd = '0' + i
+        }
+        dd += ''  // ensure string
+        days[dd] = dd
+      }
+      return days
     }
   }
 }
