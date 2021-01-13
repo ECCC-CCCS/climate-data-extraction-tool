@@ -82,17 +82,23 @@
           :no-province-station-selected="noProvinceStationSelected"
           :stn-primary-id="stnPrimaryId"></station-select>
 
-        <var-select
-          v-model="local_month"
-          :label="$gettext('Local month (MM)')"
-          :required="false"
-          :select-options="monthOptions"></var-select>
+        <div class="form-group">
+          <label
+            :for="'var-sel-local_month'" v-translate>Local month (MM)</label>
+          <select class="form-control" :id="'var-sel-local_month'"
+            v-model="local_month">
+              <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
+          </select>
+        </div>
 
-        <var-select
-          v-model="local_day"
-          :label="$gettext('Local day (DD)')"
-          :required="false"
-          :select-options="dayOptions"></var-select>
+        <div class="form-group">
+          <label
+            :for="'var-sel-local_day'" v-translate>Local day (DD)</label>
+          <select class="form-control" :id="'var-sel-local_day'"
+            v-model="local_day">
+              <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
+          </select>
+        </div>
 
         <format-select-vector
           class="mrgn-tp-md"
@@ -294,7 +300,6 @@ export default {
     },
     monthOptions: function () {
       return {
-        'all': this.$gettext('All 12 record months'),
         '01': this.$gettext('01 - January'),
         '02': this.$gettext('02 - February'),
         '03': this.$gettext('03 - March'),
@@ -306,22 +311,30 @@ export default {
         '09': this.$gettext('09 - September'),
         '10': this.$gettext('10 - October'),
         '11': this.$gettext('11 - November'),
-        '12': this.$gettext('12 - December')
+        '12': this.$gettext('12 - December'),
+        'all': this.$gettext('All months')
       }
     },
-    dayOptions: function () {
-      let days = {
-        'all': this.local_month === 'all' ? this.$gettext('All 366 record days') : this.$gettext('All record days of the month')
-      }
+    sortedMonthOptions: function () {
+      let keys = Object.keys(this.monthOptions).sort()
+      let sorted = []
+      keys.forEach((key) => {
+        sorted.push({val: key, text: this.monthOptions[key]})
+      })
+      return sorted
+    },
+    sortedDayOptions: function () {
+      let days = []
       const maxDay = this.daysOfMonth[this.local_month]
       for (let i = 1; i < maxDay; i++) {
         let dd = i
         if (i < 10) {
-          dd = '0' + i
+          dd = '0' + i // pad with 0
         }
         dd += ''  // ensure string
-        days[dd] = dd
+        days.push({val: dd, text: dd})
       }
+      days.push({val: 'all', text: this.$gettext('All days')})
       return days
     }
   }
