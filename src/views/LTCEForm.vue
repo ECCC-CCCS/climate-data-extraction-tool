@@ -82,22 +82,30 @@
           :no-province-station-selected="noProvinceStationSelected"
           :stn-primary-id="stnPrimaryId"></station-select>
 
-        <div class="form-group">
-          <label
-            :for="'var-sel-local_month'" v-translate>Local month</label>
-          <select class="form-control" :id="'var-sel-local_month'"
-            v-model="local_month">
-              <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
-          </select>
-        </div>
+        <div class="row mrgn-tp-md">
+          <div id="local-month-selection" class="form-group col-md-3 col-sm-4 col-xs-6">
+            <label
+              :for="'var-sel-local_month'" v-translate>Month</label>
+            <select
+              class="form-control"
+              id="'var-sel-local_month'"
+              aria-controls="local-day-selection"
+              v-model="local_month">
+                <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
+            </select>
+          </div>
 
-        <div class="form-group">
-          <label
-            :for="'var-sel-local_day'" v-translate>Local day</label>
-          <select class="form-control" :id="'var-sel-local_day'"
-            v-model="local_day">
-              <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
-          </select>
+          <div id="local-day-selection" class="form-group col-md-9 col-sm-8 col-xs-6">
+            <label
+              :for="'var-sel-local_day'" v-translate>Day</label>
+            <select
+              class="form-control"
+              id="'var-sel-local_day'"
+              aria-live="polite"
+              v-model="local_day">
+                <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
+            </select>
+          </div>
         </div>
 
         <format-select-vector
@@ -180,6 +188,12 @@ export default {
     },
     activeLocale3: function (newLang3) {
       this.datasetToNameColName.ltce = `VIRTUAL_STATION_NAME_${newLang3[0]}`
+    },
+    local_month: function (newMonth) {
+      const maxDays = this.daysOfMonth[newMonth]
+      if (this.local_day !== 'all' && parseInt(this.local_day) > maxDays) { // ensure day selection correspeonds with the month selection
+        this.local_day = maxDays // auto set to max day
+      }
     }
   },
   beforeMount () {
@@ -328,6 +342,8 @@ export default {
     sortedDayOptions: function () {
       let days = []
       const maxDay = this.daysOfMonth[this.local_month]
+      const maxDays = (this.local_month !== 'all') ? maxDay : '366'
+      let textMax = (this.local_month !== 'all') ? this.$gettext('All {maxDays} days of the month') : this.$gettext('All days {maxDays} of the year')
       for (let i = 1; i < maxDay; i++) {
         let dd = i
         if (i < 10) {
@@ -336,7 +352,7 @@ export default {
         dd += ''  // ensure string
         days.push({val: dd, text: dd})
       }
-      days.push({val: 'all', text: this.$gettext('All days') + ` (${(this.local_month !== 'all') ? maxDay : '366'})`})
+      days.push({val: 'all', text: this.$_i(textMax, {maxDays: maxDays})})
       return days
     }
   }
