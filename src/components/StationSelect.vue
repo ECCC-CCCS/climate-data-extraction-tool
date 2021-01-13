@@ -176,8 +176,8 @@ export default {
   },
   mounted: function () {
     // add lat/lon
-    this.tableFieldsDisplay['LATITUDE'] = this.$gettext('Latitude')
-    this.tableFieldsDisplay['LONGITUDE'] = this.$gettext('Longitude')
+    // this.tableFieldsDisplay['LATITUDE'] = this.$gettext('Latitude')
+    // this.tableFieldsDisplay['LONGITUDE'] = this.$gettext('Longitude')
 
     // add start/end dates for certain datasets
     /*

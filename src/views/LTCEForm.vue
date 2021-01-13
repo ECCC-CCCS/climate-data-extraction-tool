@@ -211,6 +211,8 @@ export default {
       props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Virtual station ID')
       props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province/Territory')
       props['ELEMENT_NAME_E'] = this.$gettext('Element name')
+      props['LATITUDE'] = this.$gettext('Latitude')
+      props['LONGITUDE'] = this.$gettext('Longitude')
       return props
     },
     layer_options: function () {
