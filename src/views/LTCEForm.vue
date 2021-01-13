@@ -343,7 +343,7 @@ export default {
       let days = []
       const maxDay = this.daysOfMonth[this.local_month]
       const maxDays = (this.local_month !== 'all') ? maxDay : '366'
-      let textMax = (this.local_month !== 'all') ? this.$gettext('All {maxDays} days of the month') : this.$gettext('All days {maxDays} of the year')
+      let textMax = (this.local_month !== 'all') ? this.$gettext('All {maxDays} days of the month') : this.$gettext('All {maxDays} days of the year')
       for (let i = 1; i < maxDay; i++) {
         let dd = i
         if (i < 10) {
