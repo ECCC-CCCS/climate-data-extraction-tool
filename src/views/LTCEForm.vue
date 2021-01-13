@@ -84,7 +84,7 @@
 
         <div class="form-group">
           <label
-            :for="'var-sel-local_month'" v-translate>Local month (MM)</label>
+            :for="'var-sel-local_month'" v-translate>Local month</label>
           <select class="form-control" :id="'var-sel-local_month'"
             v-model="local_month">
               <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
@@ -93,7 +93,7 @@
 
         <div class="form-group">
           <label
-            :for="'var-sel-local_day'" v-translate>Local day (DD)</label>
+            :for="'var-sel-local_day'" v-translate>Local day</label>
           <select class="form-control" :id="'var-sel-local_day'"
             v-model="local_day">
               <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
@@ -334,7 +334,7 @@ export default {
         dd += ''  // ensure string
         days.push({val: dd, text: dd})
       }
-      days.push({val: 'all', text: this.$gettext('All days')})
+      days.push({val: 'all', text: this.$gettext('All days') + ` (${(this.local_month !== 'all') ? maxDay : '366'})`})
       return days
     }
   }
