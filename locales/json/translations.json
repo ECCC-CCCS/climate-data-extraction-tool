@@ -5,7 +5,7 @@
 				"msgid": "AHCCD",
 				"msgctxt": "Abbreviation: Adjusted and Homogenized Canadian Climate Data",
 				"msgstr": [
-					""
+					"AHCCD"
 				]
 			}
 		},
@@ -14,7 +14,7 @@
 				"msgid": "CANGRD",
 				"msgctxt": "Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies",
 				"msgstr": [
-					""
+					"CANGRD"
 				]
 			}
 		},
@@ -22,6 +22,15 @@
 			"CanSIPS": {
 				"msgid": "CanSIPS",
 				"msgctxt": "Abbreviation: Canadian Seasonal to Inter-annual Prediction System",
+				"msgstr": [
+					"CanSIPS"
+				]
+			}
+		},
+		"Abbreviation: Long Term Climate Extremes": {
+			"LTCE": {
+				"msgid": "LTCE",
+				"msgctxt": "Abbreviation: Long Term Climate Extremes",
 				"msgstr": [
 					""
 				]
@@ -32,7 +41,7 @@
 				"msgid": "RDPA",
 				"msgctxt": "Abbreviation: Regional Deterministic Precipitation Analysis",
 				"msgstr": [
-					""
+					"RDPA"
 				]
 			}
 		},
@@ -41,7 +50,7 @@
 				"msgid": "Home",
 				"msgctxt": "Breadcrumb",
 				"msgstr": [
-					""
+					"Home"
 				]
 			}
 		},
@@ -50,287 +59,287 @@
 				"msgid": "About Canada.ca",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"About Canada.ca"
 				]
 			},
 			"About government": {
 				"msgid": "About government",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"About government"
 				]
 			},
 			"About this site": {
 				"msgid": "About this site",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"About this site"
 				]
 			},
 			"Benefits": {
 				"msgid": "Benefits",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Benefits"
 				]
 			},
 			"Business and industry": {
 				"msgid": "Business and industry",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Business and industry"
 				]
 			},
 			"Canada and the world": {
 				"msgid": "Canada and the world",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Canada and the world"
 				]
 			},
 			"Contact us": {
 				"msgid": "Contact us",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Contact us"
 				]
 			},
 			"Culture, history and sport": {
 				"msgid": "Culture, history and sport",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Culture, history and sport"
 				]
 			},
 			"Departments and agencies": {
 				"msgid": "Departments and agencies",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Departments and agencies"
 				]
 			},
 			"Environment and natural resources": {
 				"msgid": "Environment and natural resources",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Environment and natural resources"
 				]
 			},
 			"Government-wide reporting": {
 				"msgid": "Government-wide reporting",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Government-wide reporting"
 				]
 			},
 			"Health": {
 				"msgid": "Health",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Health"
 				]
 			},
 			"How government works": {
 				"msgid": "How government works",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"How government works"
 				]
 			},
 			"Immigration and citizenship": {
 				"msgid": "Immigration and citizenship",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Immigration and citizenship"
 				]
 			},
 			"Jobs and the workplace": {
 				"msgid": "Jobs and the workplace",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Jobs and the workplace"
 				]
 			},
 			"Language selection": {
 				"msgid": "Language selection",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Language selection"
 				]
 			},
 			"Menu": {
 				"msgid": "Menu",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Menu"
 				]
 			},
 			"Mobile applications": {
 				"msgid": "Mobile applications",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Mobile applications"
 				]
 			},
 			"Money and finances": {
 				"msgid": "Money and finances",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Money and finances"
 				]
 			},
 			"National security and defence": {
 				"msgid": "National security and defence",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"National security and defence"
 				]
 			},
 			"News": {
 				"msgid": "News",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"News"
 				]
 			},
 			"Open government": {
 				"msgid": "Open government",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Open government"
 				]
 			},
 			"Policing, justice and emergencies": {
 				"msgid": "Policing, justice and emergencies",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Policing, justice and emergencies"
 				]
 			},
 			"Prime Minister": {
 				"msgid": "Prime Minister",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Prime Minister"
 				]
 			},
 			"Privacy": {
 				"msgid": "Privacy",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Privacy"
 				]
 			},
 			"Public service and military": {
 				"msgid": "Public service and military",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Public service and military"
 				]
 			},
 			"Science and innovation": {
 				"msgid": "Science and innovation",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Science and innovation"
 				]
 			},
 			"Search": {
 				"msgid": "Search",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Search"
 				]
 			},
 			"Search Canada.ca": {
 				"msgid": "Search Canada.ca",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Search Canada.ca"
 				]
 			},
 			"Section menu": {
 				"msgid": "Section menu",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Section menu"
 				]
 			},
 			"Skip to &quot;About government&quot;": {
 				"msgid": "Skip to &quot;About government&quot;",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Skip to &quot;About government&quot;"
 				]
 			},
 			"Skip to main content": {
 				"msgid": "Skip to main content",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Skip to main content"
 				]
 			},
 			"Social media": {
 				"msgid": "Social media",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Social media"
 				]
 			},
 			"Symbol of the Government of Canada": {
 				"msgid": "Symbol of the Government of Canada",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Symbol of the Government of Canada"
 				]
 			},
 			"Taxes": {
 				"msgid": "Taxes",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Taxes"
 				]
 			},
 			"Terms and conditions": {
 				"msgid": "Terms and conditions",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Terms and conditions"
 				]
 			},
 			"Top of page": {
 				"msgid": "Top of page",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Top of page"
 				]
 			},
 			"Transport and infrastructure": {
 				"msgid": "Transport and infrastructure",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Transport and infrastructure"
 				]
 			},
 			"Travel and tourism": {
 				"msgid": "Travel and tourism",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Travel and tourism"
 				]
 			},
 			"Treaties, laws and regulations": {
 				"msgid": "Treaties, laws and regulations",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"Treaties, laws and regulations"
 				]
 			},
 			"You are here:": {
 				"msgid": "You are here:",
 				"msgctxt": "Canada.ca Theme",
 				"msgstr": [
-					""
+					"You are here:"
 				]
 			}
 		},
@@ -339,7 +348,7 @@
 				"msgid": ":",
 				"msgctxt": "Colon",
 				"msgstr": [
-					""
+					":"
 				]
 			}
 		},
@@ -348,46 +357,53 @@
 				"msgid": "Adjusted and Homogenized Canadian Climate Data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Adjusted and Homogenized Canadian Climate Data"
 				]
 			},
 			"Canadian Gridded Temperature and Precipitation Anomalies": {
 				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Canadian Gridded Temperature and Precipitation Anomalies"
 				]
 			},
 			"Canadian Seasonal to Inter-annual Prediction System": {
 				"msgid": "Canadian Seasonal to Inter-annual Prediction System",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Canadian Seasonal to Inter-annual Prediction System"
 				]
 			},
 			"Climate normals 1981 - 2010": {
 				"msgid": "Climate normals 1981 - 2010",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Climate normals 1981 - 2010"
 				]
 			},
 			"Daily climate data": {
 				"msgid": "Daily climate data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Daily climate data"
 				]
 			},
 			"Global climate model scenarios": {
 				"msgid": "Global climate model scenarios",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Global climate model scenarios"
 				]
 			},
 			"Historical hydrometric data": {
 				"msgid": "Historical hydrometric data",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					"Historical hydrometric data"
+				]
+			},
+			"Long term daily climate extremes": {
+				"msgid": "Long term daily climate extremes",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					""
@@ -397,21 +413,21 @@
 				"msgid": "Monthly climate summaries",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Monthly climate summaries"
 				]
 			},
 			"Regional Deterministic Precipitation Analysis": {
 				"msgid": "Regional Deterministic Precipitation Analysis",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Regional Deterministic Precipitation Analysis"
 				]
 			},
 			"Statistically downscaled climate scenarios": {
 				"msgid": "Statistically downscaled climate scenarios",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Statistically downscaled climate scenarios"
 				]
 			}
 		},
@@ -420,7 +436,7 @@
 				"msgid": "-- None --",
 				"msgctxt": "Select option for None in a dropdown menu",
 				"msgstr": [
-					""
+					"-- None --"
 				]
 			}
 		},
@@ -429,14 +445,14 @@
 				"msgid": "Canada Base Map Transportation",
 				"msgctxt": "Title",
 				"msgstr": [
-					""
+					"Canada Base Map Transportation"
 				]
 			},
 			"Climate data extraction tool": {
 				"msgid": "Climate data extraction tool",
 				"msgctxt": "Title",
 				"msgstr": [
-					""
+					"Climate data extraction tool"
 				]
 			}
 		},
@@ -445,7 +461,7 @@
 				"msgid": "Single grid point download",
 				"msgctxt": "Title heading",
 				"msgstr": [
-					""
+					"Single grid point download"
 				]
 			}
 		},
@@ -453,83 +469,119 @@
 			": 1-833-517-0376; get help finding, understanding and using climate information": {
 				"msgid": ": 1-833-517-0376; get help finding, understanding and using climate information",
 				"msgstr": [
-					""
+					": 1-833-517-0376; get help finding, understanding and using climate information"
 				]
 			},
 			": climate change trends, climate science, climate services": {
 				"msgid": ": climate change trends, climate science, climate services",
 				"msgstr": [
-					""
+					": climate change trends, climate science, climate services"
 				]
 			},
 			": links to datasets, tools, guidance and related resources": {
 				"msgid": ": links to datasets, tools, guidance and related resources",
 				"msgstr": [
-					""
+					": links to datasets, tools, guidance and related resources"
 				]
 			},
 			": search, explore and visualize climate data": {
 				"msgid": ": search, explore and visualize climate data",
 				"msgstr": [
-					""
+					": search, explore and visualize climate data"
 				]
 			},
 			"(Required)": {
 				"msgid": "(Required)",
 				"msgstr": [
-					""
+					"(Required)"
 				]
 			},
 			"{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.": {
 				"msgid": "{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.",
 				"msgstr": [
-					""
+					"{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software."
 				]
 			},
 			"{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.": {
 				"msgid": "{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}.",
 				"msgstr": [
-					""
+					"{formatName} files can be opened, viewed and manipulated with Geographic Information System (GIS) software or scientific programming tools such as {linkToR} or {linkToPython}."
 				]
 			},
 			"{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.": {
 				"msgid": "{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.",
 				"msgstr": [
-					""
+					"{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}."
 				]
 			},
 			"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output": {
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output",
 				"msgstr": [
-					""
+					"<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support Desk</a> if you're interested in individual model output"
 				]
 			},
 			"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>": {
 				"msgid": "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>",
 				"msgstr": [
-					""
+					"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 				]
 			},
 			"<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors": {
 				"msgid": "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
 				"msgstr": [
-					""
+					"<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
 				]
 			},
 			"<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.": {
 				"msgid": "<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.",
 				"msgstr": [
-					""
+					"<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today."
 				]
 			},
 			"<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.": {
 				"msgid": "<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC.",
 				"msgstr": [
-					""
+					"<strong>Archive</strong> data is the 15km archives and are available from 2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC."
 				]
 			},
 			"00Z": {
 				"msgid": "00Z",
+				"msgstr": [
+					"00Z"
+				]
+			},
+			"01 - January": {
+				"msgid": "01 - January",
+				"msgstr": [
+					""
+				]
+			},
+			"02 - February": {
+				"msgid": "02 - February",
+				"msgstr": [
+					""
+				]
+			},
+			"03 - March": {
+				"msgid": "03 - March",
+				"msgstr": [
+					""
+				]
+			},
+			"04 - April": {
+				"msgid": "04 - April",
+				"msgstr": [
+					""
+				]
+			},
+			"05 - May": {
+				"msgid": "05 - May",
+				"msgstr": [
+					""
+				]
+			},
+			"06 - June": {
+				"msgid": "06 - June",
 				"msgstr": [
 					""
 				]
@@ -537,143 +589,197 @@
 			"06Z": {
 				"msgid": "06Z",
 				"msgstr": [
+					"06Z"
+				]
+			},
+			"07 - July": {
+				"msgid": "07 - July",
+				"msgstr": [
+					""
+				]
+			},
+			"08 - August": {
+				"msgid": "08 - August",
+				"msgstr": [
+					""
+				]
+			},
+			"09 - September": {
+				"msgid": "09 - September",
+				"msgstr": [
+					""
+				]
+			},
+			"10 - October": {
+				"msgid": "10 - October",
+				"msgstr": [
+					""
+				]
+			},
+			"11 - November": {
+				"msgid": "11 - November",
+				"msgstr": [
+					""
+				]
+			},
+			"12 - December": {
+				"msgid": "12 - December",
+				"msgstr": [
 					""
 				]
 			},
 			"12Z": {
 				"msgid": "12Z",
 				"msgstr": [
-					""
+					"12Z"
 				]
 			},
 			"15km": {
 				"msgid": "15km",
 				"msgstr": [
-					""
+					"15km"
 				]
 			},
 			"18Z": {
 				"msgid": "18Z",
 				"msgstr": [
-					""
+					"18Z"
 				]
 			},
 			"2 digit day of month": {
 				"msgid": "2 digit day of month",
 				"msgstr": [
-					""
+					"2 digit day of month"
 				]
 			},
 			"2 digit month": {
 				"msgid": "2 digit month",
 				"msgstr": [
-					""
+					"2 digit month"
 				]
 			},
 			"20-Year average": {
 				"msgid": "20-Year average",
 				"msgstr": [
-					""
+					"20-Year average"
 				]
 			},
 			"20-Year average range": {
 				"msgid": "20-Year average range",
 				"msgstr": [
-					""
+					"20-Year average range"
 				]
 			},
 			"24 hours": {
 				"msgid": "24 hours",
 				"msgstr": [
-					""
+					"24 hours"
 				]
 			},
 			"25th percentile": {
 				"msgid": "25th percentile",
 				"msgstr": [
-					""
+					"25th percentile"
 				]
 			},
 			"4 digit year": {
 				"msgid": "4 digit year",
 				"msgstr": [
-					""
+					"4 digit year"
 				]
 			},
 			"50th percentile": {
 				"msgid": "50th percentile",
 				"msgstr": [
-					""
+					"50th percentile"
 				]
 			},
 			"5th percentile": {
 				"msgid": "5th percentile",
 				"msgstr": [
-					""
+					"5th percentile"
 				]
 			},
 			"6 hours": {
 				"msgid": "6 hours",
 				"msgstr": [
-					""
+					"6 hours"
 				]
 			},
 			"75th percentile": {
 				"msgid": "75th percentile",
 				"msgstr": [
-					""
+					"75th percentile"
 				]
 			},
 			"95th percentile": {
 				"msgid": "95th percentile",
 				"msgstr": [
-					""
+					"95th percentile"
 				]
 			},
 			"Actual values": {
 				"msgid": "Actual values",
 				"msgstr": [
-					""
+					"Actual values"
 				]
 			},
 			"Adapting to Climate Change": {
 				"msgid": "Adapting to Climate Change",
 				"msgstr": [
-					""
+					"Adapting to Climate Change"
 				]
 			},
 			"Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.": {
 				"msgid": "Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.",
 				"msgstr": [
-					""
+					"Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated."
 				]
 			},
 			"Advanced options": {
 				"msgid": "Advanced options",
 				"msgstr": [
-					""
+					"Advanced options"
 				]
 			},
 			"Air temperature": {
 				"msgid": "Air temperature",
 				"msgstr": [
-					""
+					"Air temperature"
 				]
 			},
 			"Air temperature at 850mb": {
 				"msgid": "Air temperature at 850mb",
 				"msgstr": [
-					""
+					"Air temperature at 850mb"
 				]
 			},
 			"Alberta": {
 				"msgid": "Alberta",
 				"msgstr": [
-					""
+					"Alberta"
 				]
 			},
 			"All": {
 				"msgid": "All",
+				"msgstr": [
+					"All"
+				]
+			},
+			"All {maxDays} days of the month": {
+				"msgid": "All {maxDays} days of the month",
+				"msgstr": [
+					""
+				]
+			},
+			"All {maxDays} days of the year": {
+				"msgid": "All {maxDays} days of the year",
+				"msgstr": [
+					""
+				]
+			},
+			"All months": {
+				"msgid": "All months",
 				"msgstr": [
 					""
 				]
@@ -681,41 +787,47 @@
 			"alternatively, for most datasets, you can select all stations within a province or territory with the \"Province/Territory\" menu": {
 				"msgid": "alternatively, for most datasets, you can select all stations within a province or territory with the \"Province/Territory\" menu",
 				"msgstr": [
-					""
+					"alternatively, for most datasets, you can select all stations within a province or territory with the \"Province/Territory\" menu"
 				]
 			},
 			"Analysis": {
 				"msgid": "Analysis",
 				"msgstr": [
-					""
+					"Analysis"
 				]
 			},
 			"Analysis date": {
 				"msgid": "Analysis date",
 				"msgstr": [
-					""
+					"Analysis date"
 				]
 			},
 			"Analysis run hour": {
 				"msgid": "Analysis run hour",
 				"msgstr": [
-					""
+					"Analysis run hour"
 				]
 			},
 			"Annual": {
 				"msgid": "Annual",
 				"msgstr": [
-					""
+					"Annual"
 				]
 			},
 			"Annual max/min": {
 				"msgid": "Annual max/min",
 				"msgstr": [
-					""
+					"Annual max/min"
 				]
 			},
 			"Annual values": {
 				"msgid": "Annual values",
+				"msgstr": [
+					"Annual values"
+				]
+			},
+			"Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.": {
+				"msgid": "Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.",
 				"msgstr": [
 					""
 				]
@@ -723,59 +835,65 @@
 			"Anomaly values": {
 				"msgid": "Anomaly values",
 				"msgstr": [
-					""
+					"Anomaly values"
 				]
 			},
 			"Archive": {
 				"msgid": "Archive",
 				"msgstr": [
-					""
+					"Archive"
 				]
 			},
 			"British Columbia": {
 				"msgid": "British Columbia",
 				"msgstr": [
-					""
+					"British Columbia"
 				]
 			},
 			"Canada Atlas Lambert (EPSG:3978)": {
 				"msgid": "Canada Atlas Lambert (EPSG:3978)",
 				"msgstr": [
-					""
+					"Canada Atlas Lambert (EPSG:3978)"
 				]
 			},
 			"Canadian Centre for Climate Services": {
 				"msgid": "Canadian Centre for Climate Services",
 				"msgstr": [
-					""
+					"Canadian Centre for Climate Services"
 				]
 			},
 			"Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.": {
 				"msgid": "Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.",
 				"msgstr": [
-					""
+					"Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download."
 				]
 			},
 			"Clear dates": {
 				"msgid": "Clear dates",
 				"msgstr": [
-					""
+					"Clear dates"
 				]
 			},
 			"Clear selected": {
 				"msgid": "Clear selected",
 				"msgstr": [
-					""
+					"Clear selected"
 				]
 			},
 			"Climate change": {
 				"msgid": "Climate change",
 				"msgstr": [
-					""
+					"Climate change"
 				]
 			},
 			"Climate data extraction tool": {
 				"msgid": "Climate data extraction tool",
+				"msgstr": [
+					"Climate data extraction tool"
+				]
+			},
+			"Climate element / record type": {
+				"msgid": "Climate element / record type",
 				"msgstr": [
 					""
 				]
@@ -783,107 +901,113 @@
 			"Climate ID": {
 				"msgid": "Climate ID",
 				"msgstr": [
-					""
+					"Climate ID"
 				]
 			},
 			"Climate information basics": {
 				"msgid": "Climate information basics",
 				"msgstr": [
-					""
+					"Climate information basics"
 				]
 			},
 			"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
 				"msgid": "Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",
 				"msgstr": [
-					""
+					"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
 				]
 			},
 			"Climate simulations": {
 				"msgid": "Climate simulations",
 				"msgstr": [
-					""
+					"Climate simulations"
 				]
 			},
 			"Contact the Climate Services Support Desk": {
 				"msgid": "Contact the Climate Services Support Desk",
 				"msgstr": [
-					""
+					"Contact the Climate Services Support Desk"
 				]
 			},
 			"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
 				"msgid": "Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
 				"msgstr": [
-					""
+					"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
 				]
 			},
 			"Daily max/min": {
 				"msgid": "Daily max/min",
 				"msgstr": [
-					""
+					"Daily max/min"
 				]
 			},
 			"Daily maximum temperature": {
 				"msgid": "Daily maximum temperature",
 				"msgstr": [
-					""
+					"Daily maximum temperature"
 				]
 			},
 			"Daily mean": {
 				"msgid": "Daily mean",
 				"msgstr": [
-					""
+					"Daily mean"
 				]
 			},
 			"Daily minimum temperature": {
 				"msgid": "Daily minimum temperature",
 				"msgstr": [
-					""
+					"Daily minimum temperature"
 				]
 			},
 			"Data download format": {
 				"msgid": "Data download format",
 				"msgstr": [
-					""
+					"Data download format"
 				]
 			},
 			"Data download link": {
 				"msgid": "Data download link",
 				"msgstr": [
-					""
+					"Data download link"
 				]
 			},
 			"Data download links": {
 				"msgid": "Data download links",
 				"msgstr": [
-					""
+					"Data download links"
 				]
 			},
 			"Dataset description, technical information and metadata": {
 				"msgid": "Dataset description, technical information and metadata",
 				"msgstr": [
-					""
+					"Dataset description, technical information and metadata"
 				]
 			},
 			"Date range": {
 				"msgid": "Date range",
 				"msgstr": [
-					""
+					"Date range"
 				]
 			},
 			"Date range fields must be all set or cleared.": {
 				"msgid": "Date range fields must be all set or cleared.",
 				"msgstr": [
-					""
+					"Date range fields must be all set or cleared."
 				]
 			},
 			"Date ranges not required for CanGRD trends": {
 				"msgid": "Date ranges not required for CanGRD trends",
 				"msgstr": [
-					""
+					"Date ranges not required for CanGRD trends"
 				]
 			},
 			"Date:": {
 				"msgid": "Date:",
+				"msgstr": [
+					"Date:"
+				]
+			},
+			"Day": {
+				"msgid": "Day",
 				"msgstr": [
 					""
 				]
@@ -891,53 +1015,77 @@
 			"deselect a station by clicking on it again in the table": {
 				"msgid": "deselect a station by clicking on it again in the table",
 				"msgstr": [
-					""
+					"deselect a station by clicking on it again in the table"
 				]
 			},
 			"deselect all stations by clicking the \"Clear selected\" button": {
 				"msgid": "deselect all stations by clicking the \"Clear selected\" button",
 				"msgstr": [
-					""
+					"deselect all stations by clicking the \"Clear selected\" button"
 				]
 			},
 			"Display and download climate data": {
 				"msgid": "Display and download climate data",
 				"msgstr": [
-					""
+					"Display and download climate data"
 				]
 			},
 			"Display and Download Climate Data": {
 				"msgid": "Display and Download Climate Data",
 				"msgstr": [
-					""
+					"Display and Download Climate Data"
 				]
 			},
 			"Download": {
 				"msgid": "Download",
 				"msgstr": [
-					""
+					"Download"
 				]
 			},
 			"Download a list of detailed information for each AHCCD station.": {
 				"msgid": "Download a list of detailed information for each AHCCD station.",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each AHCCD station."
 				]
 			},
 			"Download a list of detailed information for each Climate normals station.": {
 				"msgid": "Download a list of detailed information for each Climate normals station.",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each Climate normals station."
 				]
 			},
 			"Download a list of detailed information for each Daily climate station.": {
 				"msgid": "Download a list of detailed information for each Daily climate station.",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each Daily climate station."
 				]
 			},
 			"Download a list of detailed information for each Historical hydrometric station.": {
 				"msgid": "Download a list of detailed information for each Historical hydrometric station.",
+				"msgstr": [
+					"Download a list of detailed information for each Historical hydrometric station."
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station with precipitation record type only": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station with precipitation record type only",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station with snowfall record type only": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station with snowfall record type only",
+				"msgstr": [
+					""
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station with temperature record type only": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station with temperature record type only",
 				"msgstr": [
 					""
 				]
@@ -945,59 +1093,65 @@
 			"Download a list of detailed information for each Monthly climate summaries station.": {
 				"msgid": "Download a list of detailed information for each Monthly climate summaries station.",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each Monthly climate summaries station."
 				]
 			},
 			"Download a region": {
 				"msgid": "Download a region",
 				"msgstr": [
-					""
+					"Download a region"
 				]
 			},
 			"Download data for a single location as a CSV or GeoJSON": {
 				"msgid": "Download data for a single location as a CSV or GeoJSON",
 				"msgstr": [
-					""
+					"Download data for a single location as a CSV or GeoJSON"
 				]
 			},
 			"Download records {startNum} - {endNum}": {
 				"msgid": "Download records {startNum} - {endNum}",
 				"msgstr": [
-					""
+					"Download records {startNum} - {endNum}"
 				]
 			},
 			"Download station list for this dataset.": {
 				"msgid": "Download station list for this dataset.",
 				"msgstr": [
-					""
+					"Download station list for this dataset."
 				]
 			},
 			"Download:": {
 				"msgid": "Download:",
 				"msgstr": [
-					""
+					"Download:"
 				]
 			},
 			"Download: {date}": {
 				"msgid": "Download: {date}",
 				"msgstr": [
-					""
+					"Download: {date}"
 				]
 			},
 			"Download: {startNum} - {endNum}": {
 				"msgid": "Download: {startNum} - {endNum}",
 				"msgstr": [
-					""
+					"Download: {startNum} - {endNum}"
 				]
 			},
 			"Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.": {
 				"msgid": "Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.",
 				"msgstr": [
-					""
+					"Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem."
 				]
 			},
 			"Downloads not working": {
 				"msgid": "Downloads not working",
+				"msgstr": [
+					"Downloads not working"
+				]
+			},
+			"Element name": {
+				"msgid": "Element name",
 				"msgstr": [
 					""
 				]
@@ -1005,59 +1159,65 @@
 			"Emissions scenario": {
 				"msgid": "Emissions scenario",
 				"msgstr": [
-					""
+					"Emissions scenario"
 				]
 			},
 			"End date": {
 				"msgid": "End date",
 				"msgstr": [
-					""
+					"End date"
 				]
 			},
 			"Ensemble percentile": {
 				"msgid": "Ensemble percentile",
 				"msgstr": [
-					""
+					"Ensemble percentile"
 				]
 			},
 			"Environment and natural resources": {
 				"msgid": "Environment and natural resources",
 				"msgstr": [
-					""
+					"Environment and natural resources"
 				]
 			},
 			"Error:": {
 				"msgid": "Error:",
 				"msgstr": [
-					""
+					"Error:"
 				]
 			},
 			"Explanation of model types": {
 				"msgid": "Explanation of model types",
 				"msgstr": [
-					""
+					"Explanation of model types"
 				]
 			},
 			"Fall (September-November)": {
 				"msgid": "Fall (September-November)",
 				"msgstr": [
-					""
+					"Fall (September-November)"
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CANGRD</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CANGRD</abbr></a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CANGRD</abbr></a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>.",
+				"msgstr": [
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>."
+				]
+			},
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.",
 				"msgstr": [
 					""
 				]
@@ -1065,275 +1225,281 @@
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate normals 1981-2010</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate normals 1981-2010</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Climate normals 1981-2010</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily climate data</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily climate data</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Daily climate data</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Global climate model scenarios</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Global climate model scenarios</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Global climate model scenarios</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Historical hydrometric data</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Historical hydrometric data</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Historical hydrometric data</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>."
 				]
 			},
 			"Forecast": {
 				"msgid": "Forecast",
 				"msgstr": [
-					""
+					"Forecast"
 				]
 			},
 			"Forecast month": {
 				"msgid": "Forecast month",
 				"msgstr": [
-					""
+					"Forecast month"
 				]
 			},
 			"Future": {
 				"msgid": "Future",
 				"msgstr": [
-					""
+					"Future"
 				]
 			},
 			"Geopotential height at 500mb": {
 				"msgid": "Geopotential height at 500mb",
 				"msgstr": [
-					""
+					"Geopotential height at 500mb"
 				]
 			},
 			"Hide discontinued stations": {
 				"msgid": "Hide discontinued stations",
 				"msgstr": [
-					""
+					"Hide discontinued stations"
 				]
 			},
 			"High emissions scenario (RCP 8.5)": {
 				"msgid": "High emissions scenario (RCP 8.5)",
 				"msgstr": [
-					""
+					"High emissions scenario (RCP 8.5)"
 				]
 			},
 			"Historical": {
 				"msgid": "Historical",
 				"msgstr": [
-					""
+					"Historical"
 				]
 			},
 			"Historical climate and river data": {
 				"msgid": "Historical climate and river data",
 				"msgstr": [
-					""
+					"Historical climate and river data"
 				]
 			},
 			"Historical end date": {
 				"msgid": "Historical end date",
 				"msgstr": [
-					""
+					"Historical end date"
 				]
 			},
 			"Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.": {
 				"msgid": "Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.",
 				"msgstr": [
-					""
+					"Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada."
 				]
 			},
 			"Historical start date": {
 				"msgid": "Historical start date",
 				"msgstr": [
-					""
+					"Historical start date"
 				]
 			},
 			"How to use: interactive map": {
 				"msgid": "How to use: interactive map",
 				"msgstr": [
-					""
+					"How to use: interactive map"
 				]
 			},
 			"If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.": {
 				"msgid": "If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.",
 				"msgstr": [
-					""
+					"If this error persists, please <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>."
 				]
 			},
 			"If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>.": {
 				"msgid": "If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>.",
 				"msgstr": [
-					""
+					"If you are looking for other datasets, explore the <a href=\"{climateLibraryUrl}\">Library of climate resources</a>."
 				]
 			},
 			"Information": {
 				"msgid": "Information",
 				"msgstr": [
-					""
+					"Information"
 				]
 			},
 			"Instantaneous precipitation rate (m/s)": {
 				"msgid": "Instantaneous precipitation rate (m/s)",
 				"msgstr": [
-					""
+					"Instantaneous precipitation rate (m/s)"
 				]
 			},
 			"It's possible that your selected location is not within the dataset boundary.": {
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
 				"msgstr": [
-					""
+					"It's possible that your selected location is not within the dataset boundary."
 				]
 			},
 			"Latest changes": {
 				"msgid": "Latest changes",
 				"msgstr": [
-					""
+					"Latest changes"
 				]
 			},
 			"Latitude": {
 				"msgid": "Latitude",
 				"msgstr": [
-					""
+					"Latitude"
 				]
 			},
 			"Latitude:": {
 				"msgid": "Latitude:",
 				"msgstr": [
-					""
+					"Latitude:"
 				]
 			},
 			"Learn more about emissions scenarios": {
 				"msgid": "Learn more about emissions scenarios",
 				"msgstr": [
-					""
+					"Learn more about emissions scenarios"
 				]
 			},
 			"Library of climate resources": {
 				"msgid": "Library of climate resources",
 				"msgstr": [
-					""
+					"Library of climate resources"
 				]
 			},
 			"Loading stations... please wait": {
 				"msgid": "Loading stations... please wait",
 				"msgstr": [
-					""
+					"Loading stations... please wait"
 				]
 			},
 			"Longitude": {
 				"msgid": "Longitude",
 				"msgstr": [
-					""
+					"Longitude"
 				]
 			},
 			"Longitude:": {
 				"msgid": "Longitude:",
 				"msgstr": [
-					""
+					"Longitude:"
 				]
 			},
 			"Low emissions scenario (RCP 2.6)": {
 				"msgid": "Low emissions scenario (RCP 2.6)",
 				"msgstr": [
-					""
+					"Low emissions scenario (RCP 2.6)"
 				]
 			},
 			"Manitoba": {
 				"msgid": "Manitoba",
 				"msgstr": [
-					""
+					"Manitoba"
 				]
 			},
 			"Map Projection": {
 				"msgid": "Map Projection",
 				"msgstr": [
-					""
+					"Map Projection"
 				]
 			},
 			"Map selection type": {
 				"msgid": "Map selection type",
 				"msgstr": [
-					""
+					"Map selection type"
 				]
 			},
 			"Max number of stations selected": {
 				"msgid": "Max number of stations selected",
 				"msgstr": [
-					""
+					"Max number of stations selected"
 				]
 			},
 			"Maximum date for near surface wind speed is:": {
 				"msgid": "Maximum date for near surface wind speed is:",
 				"msgstr": [
-					""
+					"Maximum date for near surface wind speed is:"
 				]
 			},
 			"Maximum temperature": {
 				"msgid": "Maximum temperature",
 				"msgstr": [
-					""
+					"Maximum temperature"
 				]
 			},
 			"Mean precipitation": {
 				"msgid": "Mean precipitation",
 				"msgstr": [
-					""
+					"Mean precipitation"
 				]
 			},
 			"Mean temperature": {
 				"msgid": "Mean temperature",
 				"msgstr": [
-					""
+					"Mean temperature"
 				]
 			},
 			"Member": {
 				"msgid": "Member",
 				"msgstr": [
-					""
+					"Member"
 				]
 			},
 			"Minimum temperature": {
 				"msgid": "Minimum temperature",
 				"msgstr": [
-					""
+					"Minimum temperature"
 				]
 			},
 			"Model run month": {
 				"msgid": "Model run month",
 				"msgstr": [
-					""
+					"Model run month"
 				]
 			},
 			"Model type": {
 				"msgid": "Model type",
 				"msgstr": [
-					""
+					"Model type"
 				]
 			},
 			"Moderate emissions scenario (RCP 4.5)": {
 				"msgid": "Moderate emissions scenario (RCP 4.5)",
+				"msgstr": [
+					"Moderate emissions scenario (RCP 4.5)"
+				]
+			},
+			"Month": {
+				"msgid": "Month",
 				"msgstr": [
 					""
 				]
@@ -1341,131 +1507,137 @@
 			"Monthly": {
 				"msgid": "Monthly",
 				"msgstr": [
-					""
+					"Monthly"
 				]
 			},
 			"Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.": {
 				"msgid": "Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.",
 				"msgstr": [
-					""
+					"Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data."
 				]
 			},
 			"Monthly mean": {
 				"msgid": "Monthly mean",
 				"msgstr": [
-					""
+					"Monthly mean"
 				]
 			},
 			"Monthly values": {
 				"msgid": "Monthly values",
 				"msgstr": [
-					""
+					"Monthly values"
 				]
 			},
 			"More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>": {
 				"msgid": "More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>",
 				"msgstr": [
-					""
+					"More resources from the <a href=\"{link}\" target=\"_blank\">Canadian Centre for Climate Services</a>"
 				]
 			},
 			"More resources from the Canadian Centre for Climate Services": {
 				"msgid": "More resources from the Canadian Centre for Climate Services",
 				"msgstr": [
-					""
+					"More resources from the Canadian Centre for Climate Services"
 				]
 			},
 			"Near surface wind speed": {
 				"msgid": "Near surface wind speed",
 				"msgstr": [
-					""
+					"Near surface wind speed"
 				]
 			},
 			"New Brunswick": {
 				"msgid": "New Brunswick",
 				"msgstr": [
-					""
+					"New Brunswick"
 				]
 			},
 			"Newfoundland and Labrador": {
 				"msgid": "Newfoundland and Labrador",
 				"msgstr": [
-					""
+					"Newfoundland and Labrador"
 				]
 			},
 			"Next": {
 				"msgid": "Next",
 				"msgstr": [
-					""
+					"Next"
 				]
 			},
 			"Northwest Territories": {
 				"msgid": "Northwest Territories",
 				"msgstr": [
-					""
+					"Northwest Territories"
 				]
 			},
 			"Nova Scotia": {
 				"msgid": "Nova Scotia",
 				"msgstr": [
-					""
+					"Nova Scotia"
 				]
 			},
 			"Nunavut": {
 				"msgid": "Nunavut",
 				"msgstr": [
-					""
+					"Nunavut"
 				]
 			},
 			"only 20 stations can be selected at once": {
 				"msgid": "only 20 stations can be selected at once",
 				"msgstr": [
-					""
+					"only 20 stations can be selected at once"
 				]
 			},
 			"Ontario": {
 				"msgid": "Ontario",
 				"msgstr": [
-					""
+					"Ontario"
 				]
 			},
 			"Page size": {
 				"msgid": "Page size",
 				"msgstr": [
-					""
+					"Page size"
 				]
 			},
 			"Panning:": {
 				"msgid": "Panning:",
 				"msgstr": [
-					""
+					"Panning:"
 				]
 			},
 			"Please change your form selection.": {
 				"msgid": "Please change your form selection.",
 				"msgstr": [
-					""
+					"Please change your form selection."
 				]
 			},
 			"Please correct all form errors to download data.": {
 				"msgid": "Please correct all form errors to download data.",
 				"msgstr": [
-					""
+					"Please correct all form errors to download data."
 				]
 			},
 			"Please press the \"Reset map\" button to see the stations in this table.": {
 				"msgid": "Please press the \"Reset map\" button to see the stations in this table.",
 				"msgstr": [
-					""
+					"Please press the \"Reset map\" button to see the stations in this table."
 				]
 			},
 			"Please select a different location within the dataset boundary or change your form selection.": {
 				"msgid": "Please select a different location within the dataset boundary or change your form selection.",
 				"msgstr": [
-					""
+					"Please select a different location within the dataset boundary or change your form selection."
 				]
 			},
 			"Please select a point on the map.": {
 				"msgid": "Please select a point on the map.",
+				"msgstr": [
+					"Please select a point on the map."
+				]
+			},
+			"Precipitation - Daily extremes of record": {
+				"msgid": "Precipitation - Daily extremes of record",
 				"msgstr": [
 					""
 				]
@@ -1473,143 +1645,149 @@
 			"Precipitation accumulation interval": {
 				"msgid": "Precipitation accumulation interval",
 				"msgstr": [
-					""
+					"Precipitation accumulation interval"
 				]
 			},
 			"Previous": {
 				"msgid": "Previous",
 				"msgstr": [
-					""
+					"Previous"
 				]
 			},
 			"Prince Edward Island": {
 				"msgid": "Prince Edward Island",
 				"msgstr": [
-					""
+					"Prince Edward Island"
 				]
 			},
 			"Province/Territory": {
 				"msgid": "Province/Territory",
 				"msgstr": [
-					""
+					"Province/Territory"
 				]
 			},
 			"Province/Territory/State": {
 				"msgid": "Province/Territory/State",
 				"msgstr": [
-					""
+					"Province/Territory/State"
 				]
 			},
 			"Pseudo-Mercator (EPSG:3857)": {
 				"msgid": "Pseudo-Mercator (EPSG:3857)",
 				"msgstr": [
-					""
+					"Pseudo-Mercator (EPSG:3857)"
 				]
 			},
 			"Quebec": {
 				"msgid": "Quebec",
 				"msgstr": [
-					""
+					"Quebec"
 				]
 			},
 			"Reset map": {
 				"msgid": "Reset map",
 				"msgstr": [
-					""
+					"Reset map"
 				]
 			},
 			"Retrieve download links": {
 				"msgid": "Retrieve download links",
 				"msgstr": [
-					""
+					"Retrieve download links"
 				]
 			},
 			"Saskatchewan": {
 				"msgid": "Saskatchewan",
 				"msgstr": [
-					""
+					"Saskatchewan"
 				]
 			},
 			"Sea ice concentration": {
 				"msgid": "Sea ice concentration",
 				"msgstr": [
-					""
+					"Sea ice concentration"
 				]
 			},
 			"Sea ice thickness": {
 				"msgid": "Sea ice thickness",
 				"msgstr": [
-					""
+					"Sea ice thickness"
 				]
 			},
 			"Sea level pressure": {
 				"msgid": "Sea level pressure",
 				"msgstr": [
-					""
+					"Sea level pressure"
 				]
 			},
 			"Seasonal values": {
 				"msgid": "Seasonal values",
 				"msgstr": [
-					""
+					"Seasonal values"
 				]
 			},
 			"select stations on the map or in the table by clicking on them": {
 				"msgid": "select stations on the map or in the table by clicking on them",
 				"msgstr": [
-					""
+					"select stations on the map or in the table by clicking on them"
 				]
 			},
 			"Show discontinued stations": {
 				"msgid": "Show discontinued stations",
 				"msgstr": [
-					""
+					"Show discontinued stations"
 				]
 			},
 			"Show selected": {
 				"msgid": "Show selected",
 				"msgstr": [
-					""
+					"Show selected"
 				]
 			},
 			"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}": {
 				"msgid": "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}",
 				"msgstr": [
-					""
+					"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 				]
 			},
 			"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entries)": {
 				"msgid": "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entries)",
 				"msgstr": [
-					""
+					"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entries)"
 				]
 			},
 			"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entry)": {
 				"msgid": "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entry)",
 				"msgstr": [
-					""
+					"Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} (filtered from {totalSize} total entry)"
 				]
 			},
 			"Single grid point data could not be found.": {
 				"msgid": "Single grid point data could not be found.",
 				"msgstr": [
-					""
+					"Single grid point data could not be found."
 				]
 			},
 			"Single location download is currently unavailable. We apologize for any inconvenience and are working to rectify the problem.": {
 				"msgid": "Single location download is currently unavailable. We apologize for any inconvenience and are working to rectify the problem.",
 				"msgstr": [
-					""
+					"Single location download is currently unavailable. We apologize for any inconvenience and are working to rectify the problem."
 				]
 			},
 			"Single location download unavailable": {
 				"msgid": "Single location download unavailable",
 				"msgstr": [
-					""
+					"Single location download unavailable"
 				]
 			},
 			"Snow depth": {
 				"msgid": "Snow depth",
+				"msgstr": [
+					"Snow depth"
+				]
+			},
+			"Snowfall - Daily extremes of record": {
+				"msgid": "Snowfall - Daily extremes of record",
 				"msgstr": [
 					""
 				]
@@ -1617,47 +1795,53 @@
 			"Spatial selection": {
 				"msgid": "Spatial selection",
 				"msgstr": [
-					""
+					"Spatial selection"
 				]
 			},
 			"Spring (March-May)": {
 				"msgid": "Spring (March-May)",
 				"msgstr": [
-					""
+					"Spring (March-May)"
 				]
 			},
 			"Start date": {
 				"msgid": "Start date",
 				"msgstr": [
-					""
+					"Start date"
 				]
 			},
 			"Station ID": {
 				"msgid": "Station ID",
 				"msgstr": [
-					""
+					"Station ID"
 				]
 			},
 			"Station name": {
 				"msgid": "Station name",
 				"msgstr": [
-					""
+					"Station name"
 				]
 			},
 			"Station table": {
 				"msgid": "Station table",
 				"msgstr": [
-					""
+					"Station table"
 				]
 			},
 			"Summer (June-August)": {
 				"msgid": "Summer (June-August)",
 				"msgstr": [
-					""
+					"Summer (June-August)"
 				]
 			},
 			"Surface wind speed": {
 				"msgid": "Surface wind speed",
+				"msgstr": [
+					"Surface wind speed"
+				]
+			},
+			"Temperature - Daily extremes of record": {
+				"msgid": "Temperature - Daily extremes of record",
 				"msgstr": [
 					""
 				]
@@ -1665,17 +1849,23 @@
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					""
 				]
@@ -1683,53 +1873,71 @@
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Monthly climate summaries</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Monthly climate summaries</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Monthly climate summaries</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.": {
 				"msgid": "The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.",
 				"msgstr": [
-					""
+					"The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information."
 				]
 			},
 			"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.": {
 				"msgid": "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.",
+				"msgstr": [
+					"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly."
+				]
+			},
+			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
+				"msgid": "The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.",
+				"msgstr": [
+					""
+				]
+			},
+			"The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.": {
+				"msgid": "The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.",
+				"msgstr": [
+					""
+				]
+			},
+			"The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.": {
+				"msgid": "The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.",
 				"msgstr": [
 					""
 				]
@@ -1737,53 +1945,59 @@
 			"The downloaded area will match the area shown in the map.": {
 				"msgid": "The downloaded area will match the area shown in the map.",
 				"msgstr": [
-					""
+					"The downloaded area will match the area shown in the map."
 				]
 			},
 			"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.": {
 				"msgid": "The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
 				"msgstr": [
-					""
+					"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download."
 				]
 			},
 			"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
 				"msgid": "The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
-					""
+					"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:"
 				]
 			},
 			"The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
 				"msgid": "The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
-					""
+					"The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:"
 				]
 			},
 			"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.": {
 				"msgid": "The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.",
 				"msgstr": [
-					""
+					"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later."
 				]
 			},
 			"The start date cannot be greater than the end date.": {
 				"msgid": "The start date cannot be greater than the end date.",
 				"msgstr": [
-					""
+					"The start date cannot be greater than the end date."
 				]
 			},
 			"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
 				"msgid": "The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
 				"msgstr": [
-					""
+					"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown."
 				]
 			},
 			"There are no stations available to download data from your current map display.": {
 				"msgid": "There are no stations available to download data from your current map display.",
 				"msgstr": [
-					""
+					"There are no stations available to download data from your current map display."
 				]
 			},
 			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
 				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
+				"msgstr": [
+					"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface"
+				]
+			},
+			"This data provides:": {
+				"msgid": "This data provides:",
 				"msgstr": [
 					""
 				]
@@ -1791,143 +2005,167 @@
 			"This field is not within the date range limits.": {
 				"msgid": "This field is not within the date range limits.",
 				"msgstr": [
-					""
+					"This field is not within the date range limits."
 				]
 			},
 			"This field is required for monthly time intervals.": {
 				"msgid": "This field is required for monthly time intervals.",
 				"msgstr": [
-					""
+					"This field is required for monthly time intervals."
 				]
 			},
 			"This field is required.": {
 				"msgid": "This field is required.",
 				"msgstr": [
-					""
+					"This field is required."
 				]
 			},
 			"This field must be greater than or equal to:": {
 				"msgid": "This field must be greater than or equal to:",
 				"msgstr": [
-					""
+					"This field must be greater than or equal to:"
 				]
 			},
 			"This field must be less than or equal to:": {
 				"msgid": "This field must be less than or equal to:",
 				"msgstr": [
-					""
+					"This field must be less than or equal to:"
 				]
 			},
 			"Time interval / Time of year": {
 				"msgid": "Time interval / Time of year",
 				"msgstr": [
-					""
+					"Time interval / Time of year"
 				]
 			},
 			"Time range type": {
 				"msgid": "Time range type",
 				"msgstr": [
-					""
+					"Time range type"
 				]
 			},
 			"Tips for using the tool": {
 				"msgid": "Tips for using the tool",
 				"msgstr": [
-					""
+					"Tips for using the tool"
 				]
 			},
 			"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.": {
 				"msgid": "To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.",
 				"msgstr": [
-					""
+					"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys."
 				]
 			},
 			"to see only selected stations in the table, click the \"Show selected\" button": {
 				"msgid": "to see only selected stations in the table, click the \"Show selected\" button",
 				"msgstr": [
-					""
+					"to see only selected stations in the table, click the \"Show selected\" button"
 				]
 			},
 			"To zoom in and out of the map, mouse scroll up and down while you mouse over the interactive map or click on the <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> and <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> buttons respectively. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> or <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> keys.": {
 				"msgid": "To zoom in and out of the map, mouse scroll up and down while you mouse over the interactive map or click on the <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> and <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> buttons respectively. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> or <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> keys.",
 				"msgstr": [
-					""
+					"To zoom in and out of the map, mouse scroll up and down while you mouse over the interactive map or click on the <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> and <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> buttons respectively. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the <kbd><abbr title=\"Plus Sign\">+</abbr></kbd> or <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> keys."
 				]
 			},
 			"Total number of records: {numRecords}": {
 				"msgid": "Total number of records: {numRecords}",
 				"msgstr": [
-					""
+					"Total number of records: {numRecords}"
 				]
 			},
 			"Total precipitation": {
 				"msgid": "Total precipitation",
 				"msgstr": [
-					""
+					"Total precipitation"
 				]
 			},
 			"Trend values": {
 				"msgid": "Trend values",
 				"msgstr": [
-					""
+					"Trend values"
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets.": {
 				"msgid": "Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets.",
 				"msgstr": [
-					""
+					"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets."
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options.": {
 				"msgid": "Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options.",
 				"msgstr": [
-					""
+					"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options."
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page.": {
 				"msgid": "Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page.",
 				"msgstr": [
-					""
+					"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page."
 				]
 			},
 			"Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.": {
 				"msgid": "Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.",
 				"msgstr": [
-					""
+					"Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map."
 				]
 			},
 			"User defined range": {
 				"msgid": "User defined range",
 				"msgstr": [
-					""
+					"User defined range"
 				]
 			},
 			"Value type": {
 				"msgid": "Value type",
 				"msgstr": [
-					""
+					"Value type"
 				]
 			},
 			"Value type / Time interval": {
 				"msgid": "Value type / Time interval",
 				"msgstr": [
-					""
+					"Value type / Time interval"
 				]
 			},
 			"Value-added historical climate data products": {
 				"msgid": "Value-added historical climate data products",
 				"msgstr": [
-					""
+					"Value-added historical climate data products"
 				]
 			},
 			"Variable": {
 				"msgid": "Variable",
 				"msgstr": [
-					""
+					"Variable"
 				]
 			},
 			"View releases on GitHub": {
 				"msgid": "View releases on GitHub",
+				"msgstr": [
+					"View releases on GitHub"
+				]
+			},
+			"Virtual climate station list download:": {
+				"msgid": "Virtual climate station list download:",
+				"msgstr": [
+					""
+				]
+			},
+			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {
+				"msgid": "Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.",
+				"msgstr": [
+					""
+				]
+			},
+			"Virtual station ID": {
+				"msgid": "Virtual station ID",
+				"msgstr": [
+					""
+				]
+			},
+			"Virtual station name": {
+				"msgid": "Virtual station name",
 				"msgstr": [
 					""
 				]
@@ -1935,91 +2173,91 @@
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
 				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only",
 				"msgstr": [
-					""
+					"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only"
 				]
 			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data": {
 				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data",
 				"msgstr": [
-					""
+					"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access daily data"
 				]
 			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output": {
 				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output",
 				"msgstr": [
-					""
+					"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output"
 				]
 			},
 			"Water temperature": {
 				"msgid": "Water temperature",
 				"msgstr": [
-					""
+					"Water temperature"
 				]
 			},
 			"We value your feedback and are updating this tool continuously to ensure that it meets your needs. If you have any questions, comments or suggestions, <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.": {
 				"msgid": "We value your feedback and are updating this tool continuously to ensure that it meets your needs. If you have any questions, comments or suggestions, <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.",
 				"msgstr": [
-					""
+					"We value your feedback and are updating this tool continuously to ensure that it meets your needs. If you have any questions, comments or suggestions, <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>."
 				]
 			},
 			"Weather, climate and hazards": {
 				"msgid": "Weather, climate and hazards",
 				"msgstr": [
-					""
+					"Weather, climate and hazards"
 				]
 			},
 			"Winds at 200mb": {
 				"msgid": "Winds at 200mb",
 				"msgstr": [
-					""
+					"Winds at 200mb"
 				]
 			},
 			"Winds at 850mb": {
 				"msgid": "Winds at 850mb",
 				"msgstr": [
-					""
+					"Winds at 850mb"
 				]
 			},
 			"Winter (December-February)": {
 				"msgid": "Winter (December-February)",
 				"msgstr": [
-					""
+					"Winter (December-February)"
 				]
 			},
 			"World Geodetic System 1984 (EPSG:4326)": {
 				"msgid": "World Geodetic System 1984 (EPSG:4326)",
 				"msgstr": [
-					""
+					"World Geodetic System 1984 (EPSG:4326)"
 				]
 			},
 			"You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.": {
 				"msgid": "You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.",
 				"msgstr": [
-					""
+					"You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page."
 				]
 			},
 			"Your form selection contains no data to download.": {
 				"msgid": "Your form selection contains no data to download.",
 				"msgstr": [
-					""
+					"Your form selection contains no data to download."
 				]
 			},
 			"Yukon": {
 				"msgid": "Yukon",
 				"msgstr": [
-					""
+					"Yukon"
 				]
 			},
 			"YYYY-MM-DD": {
 				"msgid": "YYYY-MM-DD",
 				"msgstr": [
-					""
+					"YYYY-MM-DD"
 				]
 			},
 			"Zooming:": {
 				"msgid": "Zooming:",
 				"msgstr": [
-					""
+					"Zooming:"
 				]
 			}
 		}
@@ -2049,6 +2287,15 @@
 				"msgctxt": "Abbreviation: Canadian Seasonal to Inter-annual Prediction System",
 				"msgstr": [
 					"SPISCan"
+				]
+			}
+		},
+		"Abbreviation: Long Term Climate Extremes": {
+			"LTCE": {
+				"msgid": "LTCE",
+				"msgctxt": "Abbreviation: Long Term Climate Extremes",
+				"msgstr": [
+					""
 				]
 			}
 		},
@@ -2418,6 +2665,13 @@
 					"Données hydrométriques historiques"
 				]
 			},
+			"Long term daily climate extremes": {
+				"msgid": "Long term daily climate extremes",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					""
+				]
+			},
 			"Monthly climate summaries": {
 				"msgid": "Monthly climate summaries",
 				"msgctxt": "Dataset Name",
@@ -2559,10 +2813,82 @@
 					"00Z"
 				]
 			},
+			"01 - January": {
+				"msgid": "01 - January",
+				"msgstr": [
+					"01 - Janvier"
+				]
+			},
+			"02 - February": {
+				"msgid": "02 - February",
+				"msgstr": [
+					"02 - Février"
+				]
+			},
+			"03 - March": {
+				"msgid": "03 - March",
+				"msgstr": [
+					"03 - Mars"
+				]
+			},
+			"04 - April": {
+				"msgid": "04 - April",
+				"msgstr": [
+					"04 - Avril"
+				]
+			},
+			"05 - May": {
+				"msgid": "05 - May",
+				"msgstr": [
+					"05 - Mai"
+				]
+			},
+			"06 - June": {
+				"msgid": "06 - June",
+				"msgstr": [
+					"06 - Juin"
+				]
+			},
 			"06Z": {
 				"msgid": "06Z",
 				"msgstr": [
 					"06Z"
+				]
+			},
+			"07 - July": {
+				"msgid": "07 - July",
+				"msgstr": [
+					"07 - Juillet"
+				]
+			},
+			"08 - August": {
+				"msgid": "08 - August",
+				"msgstr": [
+					"08 - Août"
+				]
+			},
+			"09 - September": {
+				"msgid": "09 - September",
+				"msgstr": [
+					"09 - Septembre"
+				]
+			},
+			"10 - October": {
+				"msgid": "10 - October",
+				"msgstr": [
+					"10 - Octobre"
+				]
+			},
+			"11 - November": {
+				"msgid": "11 - November",
+				"msgstr": [
+					"11 - Novembre"
+				]
+			},
+			"12 - December": {
+				"msgid": "12 - December",
+				"msgstr": [
+					"12- Décembre"
 				]
 			},
 			"12Z": {
@@ -2703,6 +3029,24 @@
 					"Tous"
 				]
 			},
+			"All {maxDays} days of the month": {
+				"msgid": "All {maxDays} days of the month",
+				"msgstr": [
+					"Tous les {maxDays} jours du moi"
+				]
+			},
+			"All {maxDays} days of the year": {
+				"msgid": "All {maxDays} days of the year",
+				"msgstr": [
+					"Tous les {maxDays} jours de l'année"
+				]
+			},
+			"All months": {
+				"msgid": "All months",
+				"msgstr": [
+					"Tous les mois"
+				]
+			},
 			"alternatively, for most datasets, you can select all stations within a province or territory with the \"Province/Territory\" menu": {
 				"msgid": "alternatively, for most datasets, you can select all stations within a province or territory with the \"Province/Territory\" menu",
 				"msgstr": [
@@ -2743,6 +3087,12 @@
 				"msgid": "Annual values",
 				"msgstr": [
 					"Valeurs annuelles"
+				]
+			},
+			"Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.": {
+				"msgid": "Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.",
+				"msgstr": [
+					""
 				]
 			},
 			"Anomaly values": {
@@ -2803,6 +3153,12 @@
 				"msgid": "Climate data extraction tool",
 				"msgstr": [
 					"Outil d'extraction de données climatiques"
+				]
+			},
+			"Climate element / record type": {
+				"msgid": "Climate element / record type",
+				"msgstr": [
+					"Élément climatique / type d'enregistrement"
 				]
 			},
 			"Climate ID": {
@@ -2913,6 +3269,12 @@
 					"Date :"
 				]
 			},
+			"Day": {
+				"msgid": "Day",
+				"msgstr": [
+					"Jour"
+				]
+			},
 			"deselect a station by clicking on it again in the table": {
 				"msgid": "deselect a station by clicking on it again in the table",
 				"msgstr": [
@@ -2965,6 +3327,30 @@
 				"msgid": "Download a list of detailed information for each Historical hydrometric station.",
 				"msgstr": [
 					"Télécharger la liste des informations détaillées pour chaque station hydrométrique historique."
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station",
+				"msgstr": [
+					"Téléchargez une liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE"
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station with precipitation record type only": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station with precipitation record type only",
+				"msgstr": [
+					"Télécharger la liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE avec le type d'enregistrement des précipitations uniquement"
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station with snowfall record type only": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station with snowfall record type only",
+				"msgstr": [
+					"Télécharger la liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE avec le type d'enregistrement des chutes de neige uniquement"
+				]
+			},
+			"Download a list of detailed information for each LTCE virtual climate station with temperature record type only": {
+				"msgid": "Download a list of detailed information for each LTCE virtual climate station with temperature record type only",
+				"msgstr": [
+					"Téléchargez la liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE avec le type d'enregistrement de température uniquement"
 				]
 			},
 			"Download a list of detailed information for each Monthly climate summaries station.": {
@@ -3027,6 +3413,12 @@
 					"Les téléchargements ne fonctionnent pas"
 				]
 			},
+			"Element name": {
+				"msgid": "Element name",
+				"msgstr": [
+					"Nom de l'élément"
+				]
+			},
 			"Emissions scenario": {
 				"msgid": "Emissions scenario",
 				"msgstr": [
@@ -3085,6 +3477,12 @@
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">CanSIPS</abbr></a>.",
 				"msgstr": [
 					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux <abbr title=\"{datasetName}\">SPISCan</abbr></a>."
+				]
+			},
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.",
+				"msgstr": [
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux <abbr title=\"{datasetName}\">LTCE</abbr></a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.": {
@@ -3363,6 +3761,12 @@
 					"Scénario d'émissions modérées (RCP 4.5)"
 				]
 			},
+			"Month": {
+				"msgid": "Month",
+				"msgstr": [
+					"Mois"
+				]
+			},
 			"Monthly": {
 				"msgid": "Monthly",
 				"msgstr": [
@@ -3493,6 +3897,12 @@
 				"msgid": "Please select a point on the map.",
 				"msgstr": [
 					"Veuillez sélectionner un point sur la carte."
+				]
+			},
+			"Precipitation - Daily extremes of record": {
+				"msgid": "Precipitation - Daily extremes of record",
+				"msgstr": [
+					"Précipitations - Extrêmes quotidiens"
 				]
 			},
 			"Precipitation accumulation interval": {
@@ -3639,6 +4049,12 @@
 					"Épaisseur de la neige"
 				]
 			},
+			"Snowfall - Daily extremes of record": {
+				"msgid": "Snowfall - Daily extremes of record",
+				"msgstr": [
+					"Chutes de neige - Records extrêmes quotidiens"
+				]
+			},
 			"Spatial selection": {
 				"msgid": "Spatial selection",
 				"msgstr": [
@@ -3687,6 +4103,12 @@
 					"Vitesse du vent à la surface"
 				]
 			},
+			"Temperature - Daily extremes of record": {
+				"msgid": "Temperature - Daily extremes of record",
+				"msgstr": [
+					"Température - Extrêmes quotidiens du record"
+				]
+			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
@@ -3703,6 +4125,12 @@
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative au <abbr title=\"{datasetName}\">SPISCan</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux <abbr title=\"{datasetName}\">LTCE</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -3759,6 +4187,24 @@
 					"Le Système de Prévision Interannuelle et Saisonnière Canadien (SPISCan) procède à des calculs physiques afin de produire des prévisions probabilistes d'éléments de l'atmosphère du début d'un mois jusqu'à 12 mois dans le futur. Les éléments de l'atmosphère incluent notamment la température, la précipitation, la vitesse et direction des vents. Ce produit contient les résultats numériques bruts de ces calculs. La couverture géographique est mondiale. Les données sont disponibles pour quelques niveaux verticaux choisis et sur une grille de résolution spatiale de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
 				]
 			},
+			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
+				"msgid": "The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.",
+				"msgstr": [
+					"Les extrêmes quotidiens des précipitations pour chaque jour de l'année. Les éléments quotidiens comprennent : les plus grandes précipitations."
+				]
+			},
+			"The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.": {
+				"msgid": "The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.",
+				"msgstr": [
+					"Les extrêmes journaliers de l'enregistrement des chutes de neige pour chaque jour de l'année. Les éléments quotidiens comprennent : la plus grande chute de neige."
+				]
+			},
+			"The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.": {
+				"msgid": "The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.",
+				"msgstr": [
+					"Les températures extrêmes enregistrées pour chaque jour de l'année. Les éléments quotidiens comprennent : maximum élevé, maximum bas, minimum élevé, minimum bas."
+				]
+			},
 			"The downloaded area will match the area shown in the map.": {
 				"msgid": "The downloaded area will match the area shown in the map.",
 				"msgstr": [
@@ -3811,6 +4257,12 @@
 				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
 				"msgstr": [
 					"Ce bouton permet de récupérer plus de 7000 stations et peut causer une perte de performance sur cette interface utilisateur graphique"
+				]
+			},
+			"This data provides:": {
+				"msgid": "This data provides:",
+				"msgstr": [
+					"Ces données fournissent :"
 				]
 			},
 			"This field is not within the date range limits.": {
@@ -3955,6 +4407,30 @@
 				"msgid": "View releases on GitHub",
 				"msgstr": [
 					"Voir les communiqués sur GitHub"
+				]
+			},
+			"Virtual climate station list download:": {
+				"msgid": "Virtual climate station list download:",
+				"msgstr": [
+					"Téléchargement de la liste des stations climatiques virtuelles :"
+				]
+			},
+			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {
+				"msgid": "Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.",
+				"msgstr": [
+					""
+				]
+			},
+			"Virtual station ID": {
+				"msgid": "Virtual station ID",
+				"msgstr": [
+					"ID de la station virtuelle"
+				]
+			},
+			"Virtual station name": {
+				"msgid": "Virtual station name",
+				"msgstr": [
+					"Nom de la station virtuelle"
 				]
 			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
