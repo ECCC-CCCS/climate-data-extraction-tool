@@ -3,17 +3,15 @@
 describe('CCCS Query UI E2E Test', () => {
   it('Visits the app home page and gets expected response', () => {
     // XHR to get latest GitHub release details on page load
-    cy.server({ delay: 1500 })
-      .route('GET', 'https://api.github.com/repos/ECCC-CCCS/climate-data-extraction-tool/releases/latest').as('apiGithubReleaseLatest')
+    cy.intercept('GET', /https:\/\/api\.github\.com\/repos\/ECCC-CCCS\/climate-data-extraction-tool\/releases\/latest/).as('apiGithubReleaseLatest')
     cy.visit('/') // App home page
-    cy.wait('@apiGithubReleaseLatest').should((req) => {
-      expect(req.method).to.equal('GET')
-      expect(req, 'has duration in ms').to.have.property('duration').and.be.a('number')
-    })
-    cy.get('@apiGithubReleaseLatest').its('response').then((res) => {
-      expect(res.body).to.have.property('url')
-      expect(res.body.url).to.match(/^https:\/\/api\.github\.com\/repos\/ECCC-CCCS\/climate-data-extraction-tool\/releases\/\d+$/)
-      expect(res.body.tag_name).to.match(/^\d{1,2}\.\d{1,2}\.\d{1,2}$/)
+    cy.wait('@apiGithubReleaseLatest').then((xhr) => {
+      expect(xhr.request.method).to.equal('GET')
+      console.log(xhr)
+      expect(xhr.response.statusCode).to.equal(200)
+      expect(xhr.response.body).to.have.property('url')
+      expect(xhr.response.body.url).to.match(/^https:\/\/api\.github\.com\/repos\/ECCC-CCCS\/climate-data-extraction-tool\/releases\/\d+$/)
+      expect(xhr.response.body.tag_name).to.match(/^\d{1,2}\.\d{1,2}\.\d{1,2}$/)
     })
 
     // Title

@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     label_id: function () {
-      return this.label.replace(' ', '-').trim()
+      return this.label.replaceAll(' ', '-').replaceAll('/', '').toLowerCase().trim()
     },
     invalidMsg: function () {
       if (this.customErrorMsg !== '') { // custom error

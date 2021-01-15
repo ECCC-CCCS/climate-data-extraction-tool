@@ -95,7 +95,7 @@ export default {
   },
   computed: {
     label_id: function () {
-      return this.label.replace(' ', '-').trim()
+      return this.label.replaceAll(' ', '-').replaceAll('/', '').toLowerCase().trim()
     },
     oneOptionOnly: function () {
       return Object.keys(this.selectOptions).length <= 1

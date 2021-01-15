@@ -15,6 +15,7 @@
           placeholder="Search"
           v-model="searchText">
         <button
+          id="show-selected-stations"
           @click="toggleShowSelected"
           type="button"
           class="btn btn-sm"

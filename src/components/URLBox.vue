@@ -20,6 +20,7 @@
       </a>
 
       <button
+        id="retrieve-download-links"
         class="btn btn-primary"
         type="button"
         v-show="wfs3CommonUrl !== null"
