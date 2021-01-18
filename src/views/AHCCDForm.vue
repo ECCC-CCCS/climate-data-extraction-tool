@@ -60,6 +60,7 @@
           :select-options="layer_options"></var-select>
 
         <fieldset
+          id="date-range-field"
           v-show="wfs_layer !== 'ahccd-trends'">
           <legend v-translate>Date range</legend>
           <date-select

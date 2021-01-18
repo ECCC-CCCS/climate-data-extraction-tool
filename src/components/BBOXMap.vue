@@ -43,7 +43,7 @@
     </details>
 
     <div id="bbox-map-parent" class="vld-parent">
-      <loading :active.sync="isLoadingStations" :is-full-page="false" aria-busy="true" role="alert"></loading>
+      <loading id="map-loading-screen" :active.sync="isLoadingStations" :is-full-page="false" aria-busy="true" role="alert"></loading>
       <span v-if="isLoadingStations" class="hidden"><translate>Loading stations... please wait</translate></span>
       <l-map
         id="bbox-map"
