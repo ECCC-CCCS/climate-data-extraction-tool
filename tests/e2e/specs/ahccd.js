@@ -1,9 +1,8 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('CCCS Query UI E2E Test', () => {
-  it('Gets expected response of AHCCD stations and loaded into leaflet map and download trends as CSV', () => {
-    cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*/)
-      .as('ahccdStations')
+describe('E2E test for AHCCD page', () => {
+  it('Loads AHCCD stations into leaflet map and download trends data as CSV', () => {
+    cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*/).as('ahccdStations')
     cy.visit('/#/adjusted-station-data')
     cy.wait('@ahccdStations').then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
@@ -14,30 +13,22 @@ describe('CCCS Query UI E2E Test', () => {
     })
 
     // Stations are loaded on the map as clusters
-    cy.get('div.leaflet-container div.leaflet-map-pane div.leaflet-marker-pane')
-      .find('div.marker-cluster')
-      .should(($div) => {
-        expect($div.length).to.be.greaterThan(10)
-      })
-
-    // csv
-    cy.get('select#vector_download_format')
-      .select('CSV')
-      .should('have.value', 'csv')
+    cy.get('div.leaflet-container div.leaflet-map-pane div.leaflet-marker-pane').scrollIntoView().wait(250).find('div.marker-cluster').should(($div) => {
+      expect($div.length).to.be.greaterThan(10)
+    })
 
     // ahccd-annual
-    cy.get('select#var-sel-value-type--time-interval')
-      .select('Trend values')
-      .should('have.value', 'ahccd-trends')
+    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Trend values').should('have.value', 'ahccd-trends')
+
+    // csv
+    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('CSV').should('have.value', 'csv')
 
     // date selections are removed
-    cy.get('#date-range-field')
-      .should('be.hidden')
+    cy.get('#date-range-field').should('be.hidden')
 
     // retrieve download list
-    cy.intercept('GET', /.*\/collections\/ahccd-trends\/items.*/)
-      .as('countSelectTrend')
-    cy.get('#retrieve-download-links').click()
+    cy.intercept('GET', /.*\/collections\/ahccd-trends\/items.*/).as('countSelectTrend')
+    cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countSelectTrend').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
@@ -47,7 +38,7 @@ describe('CCCS Query UI E2E Test', () => {
     })
 
     // visit download link (limit 1)
-    cy.get('#wfs3-link-list').should('be.visible')
+    cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -57,32 +48,24 @@ describe('CCCS Query UI E2E Test', () => {
     })
   })
 
-  it('Performs a data download annual values by province', () => {
+  it('Download annual values by province', () => {
     cy.visit('/#/adjusted-station-data')
-    cy.get('select#cccs_province')
-      .select('British Columbia')
-      .should('have.value', 'BC')
 
-    cy.get('table#station-select-table')
-      .find('tr.selectedStation')
-      .should(($tr) => {
-        expect($tr.length).to.be.greaterThan(240)
-      })
-
-    // geojson
-    cy.get('select#vector_download_format')
-      .select('GeoJSON')
-      .should('have.value', 'geojson')
+    // Province
+    cy.get('select#cccs_province').scrollIntoView().wait(250).select('British Columbia').should('have.value', 'BC')
+    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectedStation').should(($tr) => {
+      expect($tr.length).to.be.greaterThan(240)
+    })
 
     // ahccd-annual
-    cy.get('select#var-sel-value-type--time-interval')
-      .select('Annual values')
-      .should('have.value', 'ahccd-annual')
+    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Annual values').should('have.value', 'ahccd-annual')
+
+    // geojson
+    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('GeoJSON').should('have.value', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-annual\/items\?.*province__province=BC.*resulttype=hits.*f=json.*/)
-      .as('countProvinceAnnual')
-    cy.get('#retrieve-download-links').click()
+    cy.intercept('GET', /.*\/collections\/ahccd-annual\/items\?.*province__province=BC.*resulttype=hits.*f=json.*/).as('countProvinceAnnual')
+    cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countProvinceAnnual').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
@@ -92,7 +75,7 @@ describe('CCCS Query UI E2E Test', () => {
     })
 
     // visit download link (limit 1)
-    cy.get('#wfs3-link-list').should('be.visible')
+    cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -102,33 +85,27 @@ describe('CCCS Query UI E2E Test', () => {
     })
   })
 
-  it('Performs a data download seasonal values by a select few stations', () => {
+  it('Download seasonal values by a select few stations', () => {
     cy.visit('/#/adjusted-station-data')
 
     // Select stations by table
+    cy.get('table#station-select-table').scrollIntoView().wait(250)
     cy.get('table#station-select-table tr.selectable:contains(1100030):first').click()
     cy.get('table#station-select-table tr.selectable:contains(4020020):first').click()
     cy.get('table#station-select-table tr.selectable:contains(7100075):first').click()
     cy.get('button#show-selected-stations').click()
-    cy.get('table#station-select-table')
-      .find('tr.selectedStation')
-      .should(($tr) => {
-        expect($tr.length).to.equal(3)
-      })
-
-    // geojson
-    cy.get('select#vector_download_format')
-      .select('GeoJSON')
-      .should('have.value', 'geojson')
+    cy.get('table#station-select-table').find('tr.selectedStation').should(($tr) => {
+      expect($tr.length).to.equal(3)
+    })
 
     // ahccd-seasonal
-    cy.get('select#var-sel-value-type--time-interval')
-      .select('Seasonal values')
-      .should('have.value', 'ahccd-seasonal')
+    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Seasonal values').should('have.value', 'ahccd-seasonal')
+
+    // geojson
+    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('GeoJSON').should('have.value', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-seasonal\/items.*/)
-      .as('countSelectSeasonal')
+    cy.intercept('GET', /.*\/collections\/ahccd-seasonal\/items.*/).as('countSelectSeasonal')
     cy.get('#retrieve-download-links').click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countSelectSeasonal').then((xhr) => {
@@ -149,40 +126,31 @@ describe('CCCS Query UI E2E Test', () => {
     })
   })
 
-  it('Performs a data download monthly values by a zoomed BBOX and date range change', () => {
+  it('Download monthly values by a zoomed BBOX and date range change', () => {
     cy.visit('/#/adjusted-station-data')
 
     cy.get('#map-loading-screen').should('be.hidden')
 
     // Zoom in to map
-    cy.get('a.leaflet-control-zoom-in').click()
+    cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
-    cy.get('table#station-select-table')
-      .find('tr.selectableStation')
-      .should(($tr) => {
-        expect($tr.length).to.be.lessThan(50)
-      })
+    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
+      expect($tr.length).to.be.lessThan(50)
+    })
 
     // date change
-    cy.get('input#date-start-date')
-      .clear()
-      .type('2000-01')
-
-    // geojson
-    cy.get('select#vector_download_format')
-      .select('GeoJSON')
-      .should('have.value', 'geojson')
+    cy.get('input#date-start-date').scrollIntoView().wait(250).clear().type('2000-01')
 
     // ahccd-monthly
-    cy.get('select#var-sel-value-type--time-interval')
-      .select('Monthly values')
-      .should('have.value', 'ahccd-monthly')
+    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Monthly values').should('have.value', 'ahccd-monthly')
+
+    // geojson
+    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('GeoJSON').should('have.value', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-monthly\/items.*/)
-      .as('countSelectMonthly')
-    cy.get('#retrieve-download-links').click()
+    cy.intercept('GET', /.*\/collections\/ahccd-monthly\/items.*/).as('countSelectMonthly')
+    cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countSelectMonthly', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
@@ -193,7 +161,7 @@ describe('CCCS Query UI E2E Test', () => {
     })
 
     // visit download link (limit 1)
-    cy.get('#wfs3-link-list').should('be.visible')
+    cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {

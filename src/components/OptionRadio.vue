@@ -65,12 +65,12 @@ export default {
       this.$emit('input', event.target.value)
     },
     dashAndTrim: function (str) {
-      return str.replace(' ', '-').replace('.', '-').trim()
+      return str.replaceAll(' ', '-').replaceAll('.', '-').trim().toLowerCase()
     }
   },
   computed: {
     label_id: function () {
-      return this.label.replace(' ', '-').replace('.', '-').trim()
+      return this.label.replaceAll(' ', '-').replaceAll('.', '-').trim().toLowerCase()
     },
     radioClass: function () {
       return {

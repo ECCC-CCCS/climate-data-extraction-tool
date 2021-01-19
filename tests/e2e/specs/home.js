@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('CCCS Query UI E2E Test', () => {
+describe('E2E test for home page', () => {
   it('Visits the app home page and gets expected response', () => {
     // XHR to get latest GitHub release details on page load
     cy.intercept('GET', /https:\/\/api\.github\.com\/repos\/ECCC-CCCS\/climate-data-extraction-tool\/releases\/latest/).as('apiGithubReleaseLatest')
@@ -15,17 +15,17 @@ describe('CCCS Query UI E2E Test', () => {
     })
 
     // Title
-    cy.contains('h1', 'Climate data extraction tool').should('be.visible')
+    cy.contains('h1', 'Climate data extraction tool').scrollIntoView().wait(250).should('be.visible')
 
     // Latest release details
-    cy.contains('#latest-release h3', 'Latest changes').should('be.visible')
+    cy.contains('#latest-release h3', 'Latest changes').scrollIntoView().wait(250).should('be.visible')
     cy.contains('#latest-release', /Date: \d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/).should('be.visible')
 
     // Information section
-    cy.get('#info-contact-support').contains('h2', 'Information').should('be.visible')
+    cy.get('#info-contact-support').scrollIntoView().wait(250).contains('h2', 'Information').should('be.visible')
 
     // More resources
-    cy.contains('#more-resources h5', 'More resources from the Canadian Centre for Climate Services').should('be.visible')
+    cy.contains('#more-resources h5', 'More resources from the Canadian Centre for Climate Services').scrollIntoView().wait(250).should('be.visible')
 
     // Side navigation (datasets)
     cy.contains('nav#wb-sec h2', 'Section menu').should('be.visible')

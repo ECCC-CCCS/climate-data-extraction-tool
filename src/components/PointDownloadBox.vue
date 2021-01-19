@@ -1,6 +1,6 @@
 <template>
   <div
-    id="url_result"
+    id="point-download-box"
     class="alert mrgn-tp-md"
     :class="alertClass">
     <h2>{{ title }}</h2>
