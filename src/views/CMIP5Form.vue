@@ -91,6 +91,7 @@
               :placeholder="dateConfigs.placeholder"></date-select>
 
             <button
+              id="clear-hist-dates-btn"
               class="btn btn-default"
               type="button"
               @click="clearDates"
@@ -120,6 +121,7 @@
               :placeholder="dateConfigs.placeholder"></date-select>
 
             <button
+              id="clear-dates-btn"
               class="btn btn-default"
               type="button"
               @click="clearDates"
@@ -258,7 +260,7 @@ export default {
         if (this.wcs_id_variable === 'SFCWIND') {
           this.correctDatesSFCWIND()
         } else if (this.wcs_id_variable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
-          this.valueType = 'ANO'
+          // this.valueType = 'ANO'
         }
       }
       // adjust dates if they are strings to match new date format

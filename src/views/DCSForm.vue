@@ -92,6 +92,7 @@
               :placeholder="dateConfigs.placeholder"></date-select>
 
             <button
+              id="clear-hist-dates-btn"
               class="btn btn-default"
               type="button"
               @click="clearDates"
@@ -121,6 +122,7 @@
               :placeholder="dateConfigs.placeholder"></date-select>
 
             <button
+              id="clear-dates-btn"
               class="btn btn-default"
               type="button"
               @click="clearDates"

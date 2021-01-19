@@ -13,12 +13,10 @@ describe('E2E test for AHCCD page', () => {
     })
 
     // Stations are loaded on the map as clusters
-    cy.get('div.leaflet-container div.leaflet-map-pane div.leaflet-marker-pane').scrollIntoView().wait(250).find('div.marker-cluster').should(($div) => {
-      expect($div.length).to.be.greaterThan(10)
-    })
+    cy.checkMarkerClusters(10)
 
     // ahccd-annual
-    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Trend values').should('have.value', 'ahccd-trends')
+    cy.selectVar('select#var-sel-value-type--time-interval', 'Trend values', 'ahccd-trends')
 
     // csv
     cy.get('select#vector_download_format').scrollIntoView().wait(250).select('CSV').should('have.value', 'csv')
@@ -52,16 +50,16 @@ describe('E2E test for AHCCD page', () => {
     cy.visit('/#/adjusted-station-data')
 
     // Province
-    cy.get('select#cccs_province').scrollIntoView().wait(250).select('British Columbia').should('have.value', 'BC')
+    cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectedStation').should(($tr) => {
       expect($tr.length).to.be.greaterThan(240)
     })
 
     // ahccd-annual
-    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Annual values').should('have.value', 'ahccd-annual')
+    cy.selectVar('select#var-sel-value-type--time-interval', 'Annual values', 'ahccd-annual')
 
     // geojson
-    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('GeoJSON').should('have.value', 'geojson')
+    cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/ahccd-annual\/items\?.*province__province=BC.*resulttype=hits.*f=json.*/).as('countProvinceAnnual')
@@ -99,10 +97,10 @@ describe('E2E test for AHCCD page', () => {
     })
 
     // ahccd-seasonal
-    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Seasonal values').should('have.value', 'ahccd-seasonal')
+    cy.selectVar('select#var-sel-value-type--time-interval', 'Seasonal values', 'ahccd-seasonal')
 
     // geojson
-    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('GeoJSON').should('have.value', 'geojson')
+    cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/ahccd-seasonal\/items.*/).as('countSelectSeasonal')
@@ -140,13 +138,13 @@ describe('E2E test for AHCCD page', () => {
     })
 
     // date change
-    cy.get('input#date-start-date').scrollIntoView().wait(250).clear().type('2000-01')
+    cy.inputText('input#date-start-date', '2000-01{enter}')
 
     // ahccd-monthly
-    cy.get('select#var-sel-value-type--time-interval').scrollIntoView().wait(250).select('Monthly values').should('have.value', 'ahccd-monthly')
+    cy.selectVar('select#var-sel-value-type--time-interval', 'Monthly values', 'ahccd-monthly')
 
     // geojson
-    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('GeoJSON').should('have.value', 'geojson')
+    cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/ahccd-monthly\/items.*/).as('countSelectMonthly')

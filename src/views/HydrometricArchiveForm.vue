@@ -84,9 +84,11 @@
             :placeholder="dateConfigs.placeholder"></date-select>
 
           <button
+            id="clear-dates-btn"
             class="btn btn-default"
             type="button"
-            @click="clearDates">Clear dates</button>
+            @click="clearDates"
+            v-translate>Clear dates</button>
         </fieldset>
 
         <format-select-vector

@@ -66,6 +66,7 @@
               :placeholder="dateConfigs.placeholder"></date-select>
 
             <button
+              id="clear-dates-btn"
               class="btn btn-default"
               type="button"
               @click="clearDates"
