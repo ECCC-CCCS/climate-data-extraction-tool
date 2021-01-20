@@ -46,3 +46,10 @@ Cypress.Commands.add('checkMarkerClusters', (minClusterCount) => {
     expect($div.length).to.be.greaterThan(minClusterCount)
   })
 })
+
+// Click on leaflet map
+Cypress.Commands.add('clickOnMap', (clickInput) => {
+  cy.get('#bbox-map').scrollIntoView().wait(250).click(clickInput)
+  cy.get('.leaflet-pane.leaflet-marker-pane').find('img.leaflet-marker-icon').should('be.visible')
+  cy.wait(250) // mimic mini pause after clicking on map
+})
