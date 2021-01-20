@@ -133,6 +133,7 @@ describe('E2E test for AHCCD page', () => {
     cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
+    cy.wait(500) // mimic user pause after a zoom click
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
       expect($tr.length).to.be.lessThan(50)
     })

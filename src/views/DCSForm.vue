@@ -68,7 +68,7 @@
             :radio-inline="true"
             :radio-options="rangeTypeOptions"></option-radio>
 
-          <div v-show="scenarioType === 'HISTO' && rangeType !=='year20'">
+          <div id="historical-date-range" v-show="scenarioType === 'HISTO' && rangeType !=='year20'">
             <date-select
               v-model="dateHistStart"
               :label="$gettext('Historical start date')"
@@ -98,7 +98,7 @@
               @click="clearDates"
               v-translate>Clear dates</button>
           </div>
-          <div v-show="scenarioType === 'RCP' && rangeType !=='year20'">
+          <div id="rcp-date-range" v-show="scenarioType === 'RCP' && rangeType !=='year20'">
             <date-select
               v-model="dateRcpStart"
               :label="$gettext('Start date')"

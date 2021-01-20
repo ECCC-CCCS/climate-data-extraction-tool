@@ -75,6 +75,7 @@
         </fieldset>
 
         <div
+          id="info-date-not-required-trends"
           v-show="wcs_id_cangrdType !== 'ANO'"
           class="alert alert-info">
           <p v-translate>Date ranges not required for CanGRD trends</p>

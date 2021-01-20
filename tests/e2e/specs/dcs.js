@@ -1,8 +1,8 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('E2E test for CMIP5 page with WCS data', () => {
+describe('E2E test for DCS page with WCS data', () => {
   it('Performs various combination of form changes with expected response', () => {
-    cy.visit('/#/cmip5-data')
+    cy.visit('/#/downscaled-data')
 
     // historical
     cy.selRadio('option-radio-options', 'HISTO')
@@ -19,7 +19,7 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.get('#date-historical-start-date').should('have.attr', 'required', 'required')
     cy.get('#date-historical-end-date').should('have.attr', 'required', 'required')
     cy.get('#val-radio-20-year-average').should('not.exist')
-    cy.get('#wcs-link-list').find('a').should('have.lengthOf', 5)
+    cy.get('#wcs-link-list').find('a').should('have.lengthOf', 7)
     cy.get('button#clear-hist-dates-btn').click()
     cy.get('label[for="date-historical-start-date"').contains('This field is required')
     cy.get('label[for="date-historical-end-date"').contains('This field is required')
@@ -33,11 +33,15 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.get('#val-radio-20-year-average').should('exist')
   })
 
-  it('Download data as TT, RCP26, Annual, Anomaly, PCTL50, 2010-2050, GeoTIFF', () => {
-    cy.visit('/#/cmip5-data')
+  it('Download data as TM, RCP26, Annual, Anomaly, PCTL50, 2099-2100, GeoTIFF', () => {
+    cy.visit('/#/downscaled-data')
+
+    // Zoom in to map
+    cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
+    cy.wait(500) // mimic user pause after a zoom click
 
     // variable
-    cy.selectVar('#var-sel-variable', 'Mean temperature', 'TT')
+    cy.selectVar('#var-sel-variable', 'Mean temperature', 'TM')
 
     // future
     cy.selRadio('option-radio-options', 'RCP')
@@ -52,16 +56,16 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.selectVar('#var-sel-value-type', 'Anomaly values', 'ANO')
 
     // Ensemble percentile
-    cy.get('#var-sel-ensemble-percentile').scrollIntoView().wait(250).should('be.disabled').should('have.value', 'PCTL50') // .select('50th percentile').should('have.value', 'PCTL50')
+    cy.get('#var-sel-ensemble-percentile').scrollIntoView().wait(250).should('be.disabled').should('have.value', 'PCTL50')
 
     // time range type
     cy.selRadio('option-radio-time-range-type', 'custom')
 
     // start date
-    cy.get('input#date-start-date').clear().type('2010{enter}')
+    cy.get('input#date-start-date').clear().type('2099{enter}')
 
     // end date
-    cy.get('input#date-end-date').clear().type('2050{enter}')
+    cy.get('input#date-end-date').clear().type('2100{enter}')
 
     // 20-year average
     cy.get('#var-sel-20-year-average-range').should('be.hidden') // .select('2081-2100').should('have.value', '2081-2100')
@@ -78,20 +82,22 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-CMIP5\.TT\.RCP26.*tif.*$/)
+        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.TM\.RCP26.*tif.*$/)
       })
     })
   })
 
-  it('Download data as SFCWIND, historical, monthly, 1990-01 to 1999-12, GeoTIFF', () => {
-    cy.visit('/#/cmip5-data')
+  it('Download data as TN, historical, monthly, 1999-11 to 1999-12, GeoTIFF', () => {
+    cy.visit('/#/downscaled-data')
 
     // Zoom in to map
     cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
     cy.wait(500) // mimic user pause after a zoom click
+    cy.get('a.leaflet-control-zoom-in').click() // zoom twice
+    cy.wait(500)
 
     // variable
-    cy.selectVar('#var-sel-variable', 'Near surface wind speed', 'SFCWIND')
+    cy.selectVar('#var-sel-variable', 'Minimum temperature', 'TN')
 
     // historical
     cy.selRadio('option-radio-options', 'HISTO')
@@ -100,7 +106,7 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Monthly', 'ENS')
 
     // Date range
-    cy.inputText('#date-historical-start-date', '1990-01{enter}')
+    cy.inputText('#date-historical-start-date', '1999-11{enter}')
     cy.inputText('#date-historical-end-date', '1999-12{enter}')
 
     // visit download link
@@ -108,16 +114,16 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-CMIP5\.SFCWIND\.HISTO\.ENS.*tif.*$/)
+        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.TN\.HISTO\.ENS.*tif.*$/)
       })
     })
   })
 
   it('Download data as PR, RCP26, 20-year average, 2081-2100, NetCDF', () => {
-    cy.visit('/#/cmip5-data')
+    cy.visit('/#/downscaled-data')
 
     // variable
-    cy.selectVar('#var-sel-variable', 'Mean precipitation', 'PR')
+    cy.selectVar('#var-sel-variable', 'Total precipitation', 'PR')
 
     // future
     cy.selRadio('option-radio-options', 'RCP')
@@ -134,15 +140,15 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-CMIP5\.PR.*nc.*$/)
+        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.PR.*nc.*$/)
       })
     })
 
 
   })
 
-  it('Download data as Snow depth, RCP85, Monthly, 2010-01 to 2019-12, NetCDF', () => {
-    cy.visit('/#/cmip5-data')
+  it('Download data as TX, RCP85, Monthly, 2010-01 to 2010-02, NetCDF', () => {
+    cy.visit('/#/downscaled-data')
 
     // Zoom in to map
     cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
@@ -151,7 +157,7 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.wait(500)
 
     // variable
-    cy.selectVar('#var-sel-variable', 'Snow depth', 'SND')
+    cy.selectVar('#var-sel-variable', 'Maximum temperature', 'TX')
 
     // future
     cy.selRadio('option-radio-options', 'RCP')
@@ -164,7 +170,7 @@ describe('E2E test for CMIP5 page with WCS data', () => {
 
     // Date range
     cy.inputText('#date-start-date', '2010-01{enter}')
-    cy.inputText('#date-end-date', '2019-12{enter}')
+    cy.inputText('#date-end-date', '2010-02{enter}')
 
     // download format
     cy.selectVar('#raster_download_format', 'NetCDF', 'image/netcdf')
@@ -174,7 +180,7 @@ describe('E2E test for CMIP5 page with WCS data', () => {
     cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-CMIP5\.SND\.RCP.*ENS\.ABS.*nc.*$/)
+        expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.TX\.RCP.*ENS\.ABS.*nc.*$/)
       })
     })
   })
