@@ -47,7 +47,8 @@ describe('E2E test for AHCCD page', () => {
   })
 
   it('Download annual values by province', () => {
-    cy.visit('/#/adjusted-station-data')
+    // Reset map
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
@@ -84,7 +85,11 @@ describe('E2E test for AHCCD page', () => {
   })
 
   it('Download seasonal values by a select few stations', () => {
-    cy.visit('/#/adjusted-station-data')
+    // Reset province
+    cy.selectVar('select#cccs_province', '-- None --', 'null')
+
+    // Reset map
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Select stations by table
     cy.get('table#station-select-table').scrollIntoView().wait(250)
@@ -125,7 +130,11 @@ describe('E2E test for AHCCD page', () => {
   })
 
   it('Download monthly values by a zoomed BBOX and date range change', () => {
-    cy.visit('/#/adjusted-station-data')
+    // Reset map
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
+
+    // Reset station selection
+    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click()
 
     cy.get('#map-loading-screen').should('be.hidden')
 
@@ -155,8 +164,7 @@ describe('E2E test for AHCCD page', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.lessThan(9300)
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(9200)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(9000)
     })
 
     // visit download link (limit 1)
@@ -165,7 +173,7 @@ describe('E2E test for AHCCD page', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(9200)
+        expect(response.body.numberMatched).to.be.greaterThan(9000)
       })
     })
   })
