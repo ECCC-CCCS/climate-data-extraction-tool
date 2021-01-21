@@ -110,6 +110,8 @@ L.MarkerCluster.addInitHook(function () {
   this.options.keyboard = false
 })
 
+const INIT_BBOX = '-165,18,-20,87'
+
 export default {
   name: 'BBOXMap',
   components: {
@@ -130,7 +132,7 @@ export default {
     },
     initialBbox: {
       type: String,
-      default: '-165,18,-20,87'
+      default: INIT_BBOX
     },
     geojson: {
       type: Object,
@@ -484,7 +486,7 @@ export default {
           }
           let fixedBounds = L.latLngBounds(L.latLng(fixedBbox.south, fixedBbox.west), L.latLng(fixedBbox.north, fixedBbox.east))
           this.bbox_value = fixedBounds.toBBoxString()
-          this.updateBBOX(null)
+          this.updateBBOX()
         }
       }
     },
@@ -546,7 +548,13 @@ export default {
       }
     },
     resetBBOX: function () {
+      this.$refs.BBOXMap.mapObject.off('moveend') // prevent moveend propagation event
       this.$refs.BBOXMap.mapObject.setView(this.center, this.zoom)
+      this.bbox_value = INIT_BBOX
+      this.updateBBOX()
+      setTimeout(() => {
+        this.$refs.BBOXMap.mapObject.on('moveend', this.updateBBOXfromMap)
+      }, 500) // resume moveend event after a delay
     },
     getStationMarkers: function () {
       let stationMarkers = this.geojsonLayer.getLayers()
