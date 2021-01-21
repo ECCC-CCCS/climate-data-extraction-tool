@@ -1,5 +1,50 @@
 {
 	"en": {
+		"Abbreviatio definition for: CanSIPS": {
+			"Canadian Seasonal to Inter-annual Prediction System": {
+				"msgid": "Canadian Seasonal to Inter-annual Prediction System",
+				"msgctxt": "Abbreviatio definition for: CanSIPS",
+				"msgstr": [
+					"Canadian Seasonal to Inter-annual Prediction System"
+				]
+			}
+		},
+		"Abbreviation definition for: AHCCD": {
+			"Adjusted and Homogenized Canadian Climate Data": {
+				"msgid": "Adjusted and Homogenized Canadian Climate Data",
+				"msgctxt": "Abbreviation definition for: AHCCD",
+				"msgstr": [
+					"Adjusted and Homogenized Canadian Climate Data"
+				]
+			}
+		},
+		"Abbreviation definition for: CANGRD": {
+			"Canadian Gridded Temperature and Precipitation Anomalies": {
+				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
+				"msgctxt": "Abbreviation definition for: CANGRD",
+				"msgstr": [
+					"Canadian Gridded Temperature and Precipitation Anomalies"
+				]
+			}
+		},
+		"Abbreviation definition for: LTCE": {
+			"Long Term Climate Extremes": {
+				"msgid": "Long Term Climate Extremes",
+				"msgctxt": "Abbreviation definition for: LTCE",
+				"msgstr": [
+					"Long Term Climate Extremes"
+				]
+			}
+		},
+		"Abbreviation definition for: RDPA": {
+			"Regional Deterministic Precipitation Analysis": {
+				"msgid": "Regional Deterministic Precipitation Analysis",
+				"msgctxt": "Abbreviation definition for: RDPA",
+				"msgstr": [
+					"Regional Deterministic Precipitation Analysis"
+				]
+			}
+		},
 		"Abbreviation: Adjusted and Homogenized Canadian Climate Data": {
 			"AHCCD": {
 				"msgid": "AHCCD",
@@ -32,7 +77,7 @@
 				"msgid": "LTCE",
 				"msgctxt": "Abbreviation: Long Term Climate Extremes",
 				"msgstr": [
-					""
+					"LTCE"
 				]
 			}
 		},
@@ -388,6 +433,13 @@
 					"Daily climate data"
 				]
 			},
+			"Daily climate records": {
+				"msgid": "Daily climate records",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					"Daily climate records"
+				]
+			},
 			"Global climate model scenarios": {
 				"msgid": "Global climate model scenarios",
 				"msgctxt": "Dataset Name",
@@ -400,13 +452,6 @@
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					"Historical hydrometric data"
-				]
-			},
-			"Long term daily climate extremes": {
-				"msgid": "Long term daily climate extremes",
-				"msgctxt": "Dataset Name",
-				"msgstr": [
-					""
 				]
 			},
 			"Monthly climate summaries": {
@@ -553,37 +598,37 @@
 			"01 - January": {
 				"msgid": "01 - January",
 				"msgstr": [
-					""
+					"01 - January"
 				]
 			},
 			"02 - February": {
 				"msgid": "02 - February",
 				"msgstr": [
-					""
+					"02 - February"
 				]
 			},
 			"03 - March": {
 				"msgid": "03 - March",
 				"msgstr": [
-					""
+					"03 - March"
 				]
 			},
 			"04 - April": {
 				"msgid": "04 - April",
 				"msgstr": [
-					""
+					"04 - April"
 				]
 			},
 			"05 - May": {
 				"msgid": "05 - May",
 				"msgstr": [
-					""
+					"05 - May"
 				]
 			},
 			"06 - June": {
 				"msgid": "06 - June",
 				"msgstr": [
-					""
+					"06 - June"
 				]
 			},
 			"06Z": {
@@ -595,37 +640,37 @@
 			"07 - July": {
 				"msgid": "07 - July",
 				"msgstr": [
-					""
+					"07 - July"
 				]
 			},
 			"08 - August": {
 				"msgid": "08 - August",
 				"msgstr": [
-					""
+					"08 - August"
 				]
 			},
 			"09 - September": {
 				"msgid": "09 - September",
 				"msgstr": [
-					""
+					"09 - September"
 				]
 			},
 			"10 - October": {
 				"msgid": "10 - October",
 				"msgstr": [
-					""
+					"10 - October"
 				]
 			},
 			"11 - November": {
 				"msgid": "11 - November",
 				"msgstr": [
-					""
+					"11 - November"
 				]
 			},
 			"12 - December": {
 				"msgid": "12 - December",
 				"msgstr": [
-					""
+					"12 - December"
 				]
 			},
 			"12Z": {
@@ -769,19 +814,19 @@
 			"All {maxDays} days of the month": {
 				"msgid": "All {maxDays} days of the month",
 				"msgstr": [
-					""
+					"All {maxDays} days of the month"
 				]
 			},
 			"All {maxDays} days of the year": {
 				"msgid": "All {maxDays} days of the year",
 				"msgstr": [
-					""
+					"All {maxDays} days of the year"
 				]
 			},
 			"All months": {
 				"msgid": "All months",
 				"msgstr": [
-					""
+					"All months"
 				]
 			},
 			"alternatively, for most datasets, you can select all stations within a province or territory with the \"Province/Territory\" menu": {
@@ -829,7 +874,7 @@
 			"Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.": {
 				"msgid": "Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.",
 				"msgstr": [
-					""
+					"Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather."
 				]
 			},
 			"Anomaly values": {
@@ -895,7 +940,7 @@
 			"Climate element / record type": {
 				"msgid": "Climate element / record type",
 				"msgstr": [
-					""
+					"Climate element / record type"
 				]
 			},
 			"Climate ID": {
@@ -1009,7 +1054,7 @@
 			"Day": {
 				"msgid": "Day",
 				"msgstr": [
-					""
+					"Day"
 				]
 			},
 			"deselect a station by clicking on it again in the table": {
@@ -1069,25 +1114,25 @@
 			"Download a list of detailed information for each LTCE virtual climate station": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each LTCE virtual climate station"
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with precipitation record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with precipitation record type only",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each LTCE virtual climate station with precipitation record type only"
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with snowfall record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with snowfall record type only",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each LTCE virtual climate station with snowfall record type only"
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with temperature record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with temperature record type only",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each LTCE virtual climate station with temperature record type only"
 				]
 			},
 			"Download a list of detailed information for each Monthly climate summaries station.": {
@@ -1153,7 +1198,7 @@
 			"Element name": {
 				"msgid": "Element name",
 				"msgstr": [
-					""
+					"Element name"
 				]
 			},
 			"Emissions scenario": {
@@ -1219,7 +1264,7 @@
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.": {
@@ -1501,7 +1546,7 @@
 			"Month": {
 				"msgid": "Month",
 				"msgstr": [
-					""
+					"Month"
 				]
 			},
 			"Monthly": {
@@ -1639,7 +1684,7 @@
 			"Precipitation - Daily extremes of record": {
 				"msgid": "Precipitation - Daily extremes of record",
 				"msgstr": [
-					""
+					"Precipitation - Daily extremes of record"
 				]
 			},
 			"Precipitation accumulation interval": {
@@ -1789,7 +1834,7 @@
 			"Snowfall - Daily extremes of record": {
 				"msgid": "Snowfall - Daily extremes of record",
 				"msgstr": [
-					""
+					"Snowfall - Daily extremes of record"
 				]
 			},
 			"Spatial selection": {
@@ -1843,7 +1888,7 @@
 			"Temperature - Daily extremes of record": {
 				"msgid": "Temperature - Daily extremes of record",
 				"msgstr": [
-					""
+					"Temperature - Daily extremes of record"
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -1864,12 +1909,6 @@
 					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
-				"msgstr": [
-					""
-				]
-			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
@@ -1886,6 +1925,12 @@
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Global climate model scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -1924,22 +1969,28 @@
 					"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly."
 				]
 			},
+			"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
+				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
+				"msgstr": [
+					"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area."
+				]
+			},
 			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
 				"msgid": "The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.",
 				"msgstr": [
-					""
+					"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation."
 				]
 			},
 			"The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.": {
 				"msgid": "The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.",
 				"msgstr": [
-					""
+					"The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall."
 				]
 			},
 			"The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.": {
 				"msgid": "The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.",
 				"msgstr": [
-					""
+					"The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum."
 				]
 			},
 			"The downloaded area will match the area shown in the map.": {
@@ -1999,7 +2050,7 @@
 			"This data provides:": {
 				"msgid": "This data provides:",
 				"msgstr": [
-					""
+					"This data provides:"
 				]
 			},
 			"This field is not within the date range limits.": {
@@ -2149,25 +2200,25 @@
 			"Virtual climate station list download:": {
 				"msgid": "Virtual climate station list download:",
 				"msgstr": [
-					""
+					"Virtual climate station list download:"
 				]
 			},
 			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {
 				"msgid": "Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.",
 				"msgstr": [
-					""
+					"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location."
 				]
 			},
 			"Virtual station ID": {
 				"msgid": "Virtual station ID",
 				"msgstr": [
-					""
+					"Virtual station ID"
 				]
 			},
 			"Virtual station name": {
 				"msgid": "Virtual station name",
 				"msgstr": [
-					""
+					"Virtual station name"
 				]
 			},
 			"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like data for a single grid point only": {
@@ -2263,6 +2314,51 @@
 		}
 	},
 	"fr": {
+		"Abbreviatio definition for: CanSIPS": {
+			"Canadian Seasonal to Inter-annual Prediction System": {
+				"msgid": "Canadian Seasonal to Inter-annual Prediction System",
+				"msgctxt": "Abbreviatio definition for: CanSIPS",
+				"msgstr": [
+					"Système de prévision interannuelle et saisonnière canadien"
+				]
+			}
+		},
+		"Abbreviation definition for: AHCCD": {
+			"Adjusted and Homogenized Canadian Climate Data": {
+				"msgid": "Adjusted and Homogenized Canadian Climate Data",
+				"msgctxt": "Abbreviation definition for: AHCCD",
+				"msgstr": [
+					"Données climatiques canadiennes ajustées et homogénéisées"
+				]
+			}
+		},
+		"Abbreviation definition for: CANGRD": {
+			"Canadian Gridded Temperature and Precipitation Anomalies": {
+				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
+				"msgctxt": "Abbreviation definition for: CANGRD",
+				"msgstr": [
+					"Anomalies de température et précipitation interpolées pour le Canada"
+				]
+			}
+		},
+		"Abbreviation definition for: LTCE": {
+			"Long Term Climate Extremes": {
+				"msgid": "Long Term Climate Extremes",
+				"msgctxt": "Abbreviation definition for: LTCE",
+				"msgstr": [
+					"Extrêmes climatiques à long terme"
+				]
+			}
+		},
+		"Abbreviation definition for: RDPA": {
+			"Regional Deterministic Precipitation Analysis": {
+				"msgid": "Regional Deterministic Precipitation Analysis",
+				"msgctxt": "Abbreviation definition for: RDPA",
+				"msgstr": [
+					"Analyse régionale déterministe de précipitation"
+				]
+			}
+		},
 		"Abbreviation: Adjusted and Homogenized Canadian Climate Data": {
 			"AHCCD": {
 				"msgid": "AHCCD",
@@ -2295,7 +2391,7 @@
 				"msgid": "LTCE",
 				"msgctxt": "Abbreviation: Long Term Climate Extremes",
 				"msgstr": [
-					""
+					"ECLT"
 				]
 			}
 		},
@@ -2651,6 +2747,13 @@
 					"Données climatiques quotidiennes"
 				]
 			},
+			"Daily climate records": {
+				"msgid": "Daily climate records",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					"Données climatiques quotidiennes"
+				]
+			},
 			"Global climate model scenarios": {
 				"msgid": "Global climate model scenarios",
 				"msgctxt": "Dataset Name",
@@ -2663,13 +2766,6 @@
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					"Données hydrométriques historiques"
-				]
-			},
-			"Long term daily climate extremes": {
-				"msgid": "Long term daily climate extremes",
-				"msgctxt": "Dataset Name",
-				"msgstr": [
-					""
 				]
 			},
 			"Monthly climate summaries": {
@@ -4127,12 +4223,6 @@
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative au <abbr title=\"{datasetName}\">SPISCan</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
-				"msgstr": [
-					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux <abbr title=\"{datasetName}\">LTCE</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
-				]
-			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
@@ -4147,6 +4237,12 @@
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Données climatiques quotidiennes</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Données climatiques quotidiennes</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
@@ -4185,6 +4281,12 @@
 				"msgid": "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.",
 				"msgstr": [
 					"Le Système de Prévision Interannuelle et Saisonnière Canadien (SPISCan) procède à des calculs physiques afin de produire des prévisions probabilistes d'éléments de l'atmosphère du début d'un mois jusqu'à 12 mois dans le futur. Les éléments de l'atmosphère incluent notamment la température, la précipitation, la vitesse et direction des vents. Ce produit contient les résultats numériques bruts de ces calculs. La couverture géographique est mondiale. Les données sont disponibles pour quelques niveaux verticaux choisis et sur une grille de résolution spatiale de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
+				]
+			},
+			"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
+				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
+				"msgstr": [
+					""
 				]
 			},
 			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
