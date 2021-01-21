@@ -1,7 +1,7 @@
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('E2E test for raster drill pages', () => {
-  it('Visits CMIP5 and perform raster drill downloads', () => {
+  it('Visits CMIP5 and perform raster drill downloads, as GeoJSON format', () => {
     cy.visit('/#/cmip5-data')
 
     // point selection
@@ -32,7 +32,7 @@ describe('E2E test for raster drill pages', () => {
     })
   })
 
-  it('Visits DCS and perform raster drill downloads', () => {
+  it('Visits DCS and perform raster drill downloads, as CSV format', () => {
     cy.visit('/#/downscaled-data')
 
     // point selection
@@ -63,7 +63,7 @@ describe('E2E test for raster drill pages', () => {
     })
   })
 
-  it('Visits CANGRD and perform raster drill downloads', () => {
+  it('Visits CANGRD and perform raster drill downloads, as GeoJSON format', () => {
     cy.visit('/#/historical-gridded-data')
 
     // point selection
