@@ -4,6 +4,8 @@
       <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
         <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
+        <p v-translate>The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, "virtual" climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.</p>
+
         <p>{{ introDatasetText.station.instructions }}</p>
         <p>
           <strong>{{ introDatasetText.station.tipTitle }}</strong>

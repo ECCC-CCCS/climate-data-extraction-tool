@@ -31,6 +31,7 @@ export const datasets = {
         ahccd: {
           title: this.$pgettext('Dataset Name', 'Adjusted and Homogenized Canadian Climate Data'),
           abbr: this.$pgettext('Abbreviation: Adjusted and Homogenized Canadian Climate Data', 'AHCCD'),
+          abbrName: this.$pgettext('Abbreviation definition for: AHCCD', 'Adjusted and Homogenized Canadian Climate Data'),
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-adjusted-climate-data.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-climatiques-ajustees.html',
@@ -45,6 +46,7 @@ export const datasets = {
         normals: {
           title: this.$pgettext('Dataset Name', 'Climate normals 1981 - 2010'),
           abbr: null,
+          abbrName: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-climate-normals.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-normales-climatiques.html',
@@ -59,6 +61,7 @@ export const datasets = {
         monthly: {
           title: this.$pgettext('Dataset Name', 'Monthly climate summaries'),
           abbr: null,
+          abbrName: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-monthly-climate-summaries.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-sommaires-climatologiques-mensuels.html',
@@ -73,6 +76,7 @@ export const datasets = {
         daily: {
           title: this.$pgettext('Dataset Name', 'Daily climate data'),
           abbr: null,
+          abbrName: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-daily-data.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-quotidiennes.html',
@@ -85,8 +89,9 @@ export const datasets = {
           }
         },
         ltce: {
-          title: this.$pgettext('Dataset Name', 'Long term daily climate extremes'),
+          title: this.$pgettext('Dataset Name', 'Daily climate records'),
           abbr: this.$pgettext('Abbreviation: Long Term Climate Extremes', 'LTCE'),
+          abbrName: this.$pgettext('Abbreviation definition for: LTCE', 'Long Term Climate Extremes'),
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-TBD.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-TBD.html',
@@ -95,12 +100,13 @@ export const datasets = {
           openPortal: {
             en: 'https://open.canada.ca/data/en/dataset/TBD',
             fr: 'https://ouvert.canada.ca/data/fr/dataset/TBD',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">LTCE</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         hydrometric: {
           title: this.$pgettext('Dataset Name', 'Historical hydrometric data'),
           abbr: null,
+          abbrName: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-hydrometric-archive.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-archive-hydrometrique.html',
@@ -115,6 +121,7 @@ export const datasets = {
         cangrd: {
           title: this.$pgettext('Dataset Name', 'Canadian Gridded Temperature and Precipitation Anomalies'),
           abbr: this.$pgettext('Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies', 'CANGRD'),
+          abbrName: this.$pgettext('Abbreviation definition for: CANGRD', 'Canadian Gridded Temperature and Precipitation Anomalies'),
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-historical-climate-data.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-climatiques-historiques.html',
@@ -129,6 +136,7 @@ export const datasets = {
         cmip5: {
           title: this.$pgettext('Dataset Name', 'Global climate model scenarios'),
           abbr: null,
+          abbrName: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-coupled-model-intercomparison-phase5.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-phase5-intercomparaison-modeles-couples.html',
@@ -181,6 +189,7 @@ export const datasets = {
         dcs: {
           title: this.$pgettext('Dataset Name', 'Statistically downscaled climate scenarios'),
           abbr: null,
+          abbrName: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-downscaled-climate-scenarios.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-scenarios-climatiques-echelle-reduite.html',
@@ -221,6 +230,7 @@ export const datasets = {
         rdpa: {
           title: this.$pgettext('Dataset Name', 'Regional Deterministic Precipitation Analysis'),
           abbr: this.$pgettext('Abbreviation: Regional Deterministic Precipitation Analysis', 'RDPA'),
+          abbrName: this.$pgettext('Abbreviation definition for: RDPA', 'Regional Deterministic Precipitation Analysis'),
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-regional-precipitation-analysis.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-analyse-regionale-precipitations.html',
@@ -235,6 +245,7 @@ export const datasets = {
         cansips: {
           title: this.$pgettext('Dataset Name', 'Canadian Seasonal to Inter-annual Prediction System'),
           abbr: this.$pgettext('Abbreviation: Canadian Seasonal to Inter-annual Prediction System', 'CanSIPS'),
+          abbrName: this.$pgettext('Abbreviatio definition for: CanSIPS', 'Canadian Seasonal to Inter-annual Prediction System'),
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-inter-annual-seasonal-prediction.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-prevision-interannuelle-saisonniere.html',

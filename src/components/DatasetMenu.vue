@@ -20,7 +20,7 @@
                   {{ datasetTitles[route.name].title }}
                   <span v-if="datasetTitles[route.name].abbr !== null">
                     (<abbr
-                      :title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
+                      :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
                   </span>
                 </router-link>
             </li>
@@ -39,7 +39,7 @@
                   {{ datasetTitles[route.name].title }}
                   <span v-if="datasetTitles[route.name].abbr !== null">
                     (<abbr
-                      :title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
+                      :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
                   </span>
                 </router-link>
             </li>
@@ -58,7 +58,7 @@
                   {{ datasetTitles[route.name].title }}
                   <span v-if="datasetTitles[route.name].abbr !== null">
                     (<abbr
-                      :title="datasetTitles[route.name].title">{{ datasetTitles[route.name].abbr }}</abbr>)
+                      :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
                   </span>
                 </router-link>
             </li>

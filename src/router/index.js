@@ -47,8 +47,8 @@ const datasetPaths = {
     fr: '/donnees-quantite-eau'
   },
   ltce: {
-    en: '/long-term-climate-extremes',
-    fr: '/extremes-climatiques-a-long-terme'
+    en: '/daily-climate-records',
+    fr: '/records-climatiques-quotidiens'
   }
 }
 
