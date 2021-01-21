@@ -2,9 +2,9 @@
 
 describe('E2E test for AHCCD page', () => {
   it('Loads AHCCD stations into leaflet map and download trends data as CSV', () => {
-    cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*/).as('ahccdStations')
+    cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*/).as('stationData')
     cy.visit('/#/adjusted-station-data')
-    cy.wait('@ahccdStations').then((xhr) => {
+    cy.wait('@stationData').then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
@@ -19,16 +19,16 @@ describe('E2E test for AHCCD page', () => {
     cy.selectVar('select#var-sel-value-type--time-interval', 'Trend values', 'ahccd-trends')
 
     // csv
-    cy.get('select#vector_download_format').scrollIntoView().wait(250).select('CSV').should('have.value', 'csv')
+    cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
     // date selections are removed
     cy.get('#date-range-field').should('be.hidden')
 
     // retrieve download list
-    cy.intercept('GET', /.*\/collections\/ahccd-trends\/items.*/).as('countSelectTrend')
+    cy.intercept('GET', /.*\/collections\/ahccd-trends\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countSelectTrend').then((xhr) => {
+    cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -103,10 +103,10 @@ describe('E2E test for AHCCD page', () => {
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-seasonal\/items.*/).as('countSelectSeasonal')
+    cy.intercept('GET', /.*\/collections\/ahccd-seasonal\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countSelectSeasonal').then((xhr) => {
+    cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -148,10 +148,10 @@ describe('E2E test for AHCCD page', () => {
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-monthly\/items.*/).as('countSelectMonthly')
+    cy.intercept('GET', /.*\/collections\/ahccd-monthly\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countSelectMonthly', {timeout: 20000}).then((xhr) => {
+    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')

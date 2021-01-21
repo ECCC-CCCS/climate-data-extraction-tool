@@ -31,7 +31,7 @@ Cypress.Commands.add('selectVar', (getInput, text, value) => {
 })
 
 // OptionRadio.vue or radio components
-Cypress.Commands.add('selRadio', (name, value) => {
+Cypress.Commands.add('selectRadio', (name, value) => {
   cy.get(`[name="${name}"]`).check(value).should('have.value', value)
 })
 

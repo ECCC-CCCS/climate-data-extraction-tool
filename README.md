@@ -202,4 +202,4 @@ Start up Cypress E2E test UI:
 npm run test:e2e
 ```
 
-When initiated, it will start up a dev instance on localhost, which relies on your `.env.development` (and `.env`). Modify your `.env` files accordingly for testing.
+When initiated, it will start up a dev instance on localhost, which relies on your `.env.testing` (and `.env`) file. Modify your `.env` files accordingly for testing.

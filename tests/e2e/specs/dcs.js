@@ -5,7 +5,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.visit('/#/downscaled-data')
 
     // historical
-    cy.selRadio('option-radio-options', 'HISTO')
+    cy.selectRadio('option-radio-options', 'HISTO')
     cy.get('#rcp_scenario').should('be.hidden')
     cy.get('#historical-date-range').should('be.visible')
     cy.get('#rcp-date-range').should('be.hidden')
@@ -25,7 +25,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.get('label[for="date-historical-end-date"').contains('This field is required')
 
     // future
-    cy.selRadio('option-radio-options', 'RCP')
+    cy.selectRadio('option-radio-options', 'RCP')
     cy.get('#var-sel-value-type').should('be.disabled')
     cy.selectVar('#rcp_scenario', 'High emissions scenario (RCP 8.5)', 'RCP85')
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Spring (March-May)', 'SPRING')
@@ -44,7 +44,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.selectVar('#var-sel-variable', 'Mean temperature', 'TM')
 
     // future
-    cy.selRadio('option-radio-options', 'RCP')
+    cy.selectRadio('option-radio-options', 'RCP')
 
     // scenario
     cy.selectVar('#rcp_scenario', 'Low emissions scenario (RCP 2.6)', 'RCP26')
@@ -59,7 +59,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.get('#var-sel-ensemble-percentile').scrollIntoView().wait(250).should('be.disabled').should('have.value', 'PCTL50')
 
     // time range type
-    cy.selRadio('option-radio-time-range-type', 'custom')
+    cy.selectRadio('option-radio-time-range-type', 'custom')
 
     // start date
     cy.get('input#date-start-date').clear().type('2099{enter}')
@@ -100,7 +100,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.selectVar('#var-sel-variable', 'Minimum temperature', 'TN')
 
     // historical
-    cy.selRadio('option-radio-options', 'HISTO')
+    cy.selectRadio('option-radio-options', 'HISTO')
 
     // Monthly
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Monthly', 'ENS')
@@ -126,10 +126,10 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.selectVar('#var-sel-variable', 'Total precipitation', 'PR')
 
     // future
-    cy.selRadio('option-radio-options', 'RCP')
+    cy.selectRadio('option-radio-options', 'RCP')
 
     // 20-year average
-    cy.selRadio('option-radio-time-range-type', 'year20')
+    cy.selectRadio('option-radio-time-range-type', 'year20')
     cy.selectVar('#var-sel-20-year-average-range', '2081-2100', '2081-2100')
 
     // download format
@@ -160,7 +160,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.selectVar('#var-sel-variable', 'Maximum temperature', 'TX')
 
     // future
-    cy.selRadio('option-radio-options', 'RCP')
+    cy.selectRadio('option-radio-options', 'RCP')
 
     // RCP85
     cy.selectVar('#rcp_scenario', 'High emissions scenario (RCP 8.5)', 'RCP85')
