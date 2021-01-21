@@ -40,6 +40,7 @@
             :size="5"></pulse-loader></span>
           </button>
         <button
+          id="clear-selected-stations"
           @click="clearSelected"
           class="btn btn-sm btn-danger"
           type="button"

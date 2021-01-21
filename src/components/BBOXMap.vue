@@ -77,6 +77,7 @@
 
     <div class="form-group">
       <button
+        id="reset-map-view"
         @click="resetBBOX"
         type="button"
         :disabled="selectDisabled || isLoadingStations"
