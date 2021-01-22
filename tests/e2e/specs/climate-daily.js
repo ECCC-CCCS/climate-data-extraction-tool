@@ -1,76 +1,81 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('E2E test for AHCCD data with various form options', () => {
-  it('Check AHCCD stations and download trend values as CSV', () => {
-    cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*/).as('stationData')
-    cy.visit('/#/adjusted-station-data')
-    cy.wait('@stationData').then((xhr) => {
+describe('E2E test for climate daily data with various form options', () => {
+  it('Check daily climate stations and download data as CSV', () => {
+    // station data and daterange
+    cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*properties=PROV_STATE_TERR_CODE,STATION_NAME,CLIMATE_IDENTIFIER.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/climate-daily\/items\?.*sortby=LOCAL_DATE&limit=1.*/).as('dateRangeData')
+    cy.visit('/#/daily-climate-data')
+    cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.features.length).to.be.greaterThan(1300)
+      expect(xhr.response.body.features.length).to.be.greaterThan(8400)
+    })
+    cy.wait('@dateRangeData').then((xhr) => {
+      expect(xhr.response.headers).to.have.property('access-control-allow-headers')
+      expect(xhr.response.headers).to.have.property('access-control-allow-origin')
+      expect(xhr.response.body).to.have.property('type')
+      expect(xhr.response.body.type).to.equal('FeatureCollection')
+      expect(xhr.response.body.numberReturned).to.be.equal(1)
     })
 
     // Stations are loaded on the map as clusters
     cy.checkMarkerClusters(10)
 
-    // ahccd-annual
-    cy.selectVar('select#var-sel-value-type--time-interval', 'Trend values', 'ahccd-trends')
-
-    // csv
+    // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
-    // date selections are removed
-    cy.get('#date-range-field').should('be.hidden')
-
     // retrieve download list
-    cy.intercept('GET', /.*\/collections\/ahccd-trends\/items.*/).as('countData')
+    cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countData').then((xhr) => {
+    cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(87000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(60450000)
     })
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
+    cy.get('#wfs3-link-list').find('a').should('have.lengthOf', 404)
     cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body).to.match(/^x,y,.*station_id__id_station.*province__province.*year.*trend_value__valeur_tendance.*/)
+        expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,LOCAL_DATE,PROVINCE_CODE,LOCAL_YEAR,LOCAL_MONTH,LOCAL_DAY,MEAN_TEMPERATURE.*/)
       })
     })
   })
 
-  it('Download annual values as GeoJSON by province', () => {
+  it('Download data as GeoJSON by province', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectedStation').should(($tr) => {
-      expect($tr.length).to.be.greaterThan(240)
+      expect($tr.length).to.be.greaterThan(1600)
     })
 
-    // ahccd-annual
-    cy.selectVar('select#var-sel-value-type--time-interval', 'Annual values', 'ahccd-annual')
+    // date change
+    cy.inputText('input#date-start-date', '1899-01-01{enter}')
+    cy.inputText('input#date-end-date', '2020-12-31{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-annual\/items\?.*province__province=BC.*resulttype=hits.*f=json.*/).as('countProvinceAnnual')
+    cy.intercept('GET', /.*\/collections\/climate-daily\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countProvinceAnnual').then((xhr) => {
+    cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(20700) // 20771
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(12331000)
     })
 
     // visit download link (limit 1)
@@ -79,12 +84,12 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(20700)
+        expect(response.body.numberMatched).to.be.greaterThan(12331000)
       })
     })
   })
 
-  it('Download seasonal values as GeoJSON by a select few stations', () => {
+  it('Download data as GeoJSON by a select few stations', () => {
     // Reset province
     cy.selectVar('select#cccs_province', '-- None --', 'null')
 
@@ -93,29 +98,30 @@ describe('E2E test for AHCCD data with various form options', () => {
 
     // Select stations by table
     cy.get('table#station-select-table').scrollIntoView().wait(250)
-    cy.get('table#station-select-table tr.selectable:contains(1100030):first').click()
-    cy.get('table#station-select-table tr.selectable:contains(4020020):first').click()
-    cy.get('table#station-select-table tr.selectable:contains(7100075):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(1108395):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(6158731):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(702S006):first').click()
     cy.get('button#show-selected-stations').click()
     cy.get('table#station-select-table').find('tr.selectedStation').should(($tr) => {
       expect($tr.length).to.equal(3)
     })
 
-    // ahccd-seasonal
-    cy.selectVar('select#var-sel-value-type--time-interval', 'Seasonal values', 'ahccd-seasonal')
+    // date change
+    cy.inputText('input#date-start-date', '2000-01-01{enter}')
+    cy.inputText('input#date-end-date', '2010-12-31{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-seasonal\/items.*/).as('countData')
+    cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.equal(708)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(2900)
     })
 
     // visit download link (limit 1)
@@ -124,12 +130,12 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(700)
+        expect(response.body.numberMatched).to.be.greaterThan(2900)
       })
     })
   })
 
-  it('Download monthly values as GeoJSON by a zoomed BBOX and date range change', () => {
+  it('Download data as GeoJSON by a zoomed BBOX', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -144,27 +150,25 @@ describe('E2E test for AHCCD data with various form options', () => {
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.lessThan(50)
+      expect($tr.length).to.be.lessThan(200)
     })
 
     // date change
-    cy.inputText('input#date-start-date', '2000-01{enter}')
-
-    // ahccd-monthly
-    cy.selectVar('select#var-sel-value-type--time-interval', 'Monthly values', 'ahccd-monthly')
+    cy.inputText('input#date-start-date', '2010-01-01{enter}')
+    cy.inputText('input#date-end-date', '2020-12-31{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
-    cy.intercept('GET', /.*\/collections\/ahccd-monthly\/items.*/).as('countData')
+    cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(9000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(123500)
     })
 
     // visit download link (limit 1)
@@ -173,7 +177,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(9000)
+        expect(response.body.numberMatched).to.be.greaterThan(123500)
       })
     })
   })

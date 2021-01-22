@@ -1,7 +1,7 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('E2E test for Climate Normals page', () => {
-  it('Loads climate normals stations into leaflet map and download data as CSV', () => {
+describe('E2E test for climate normals data with various form options', () => {
+  it('Check climate normals stations and download data as CSV', () => {
     cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*HAS_NORMALS_DATA=Y.*/).as('stationData')
     cy.visit('/#/climate-normals')
     cy.wait('@stationData').then((xhr) => {
@@ -44,8 +44,9 @@ describe('E2E test for Climate Normals page', () => {
     })
   })
 
-  it('Download data by province', () => {
-    cy.visit('/#/climate-normals')
+  it('Download data as GeoJSON by province', () => {
+    // Reset map
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
@@ -78,8 +79,12 @@ describe('E2E test for Climate Normals page', () => {
     })
   })
 
-  it('Download by a select few stations', () => {
-    cy.visit('/#/climate-normals')
+  it('Download data as GeoJSON by a select few stations', () => {
+    // Reset province
+    cy.selectVar('select#cccs_province', '-- None --', 'null')
+
+    // Reset map
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Select stations by table
     cy.get('table#station-select-table').scrollIntoView().wait(250)
@@ -116,8 +121,12 @@ describe('E2E test for Climate Normals page', () => {
     })
   })
 
-  it('Download monthly values by a zoomed BBOX', () => {
-    cy.visit('/#/climate-normals')
+  it('Download data as GeoJSON by a zoomed BBOX', () => {
+    // Reset map
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
+
+    // Reset station selection
+    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click()
 
     cy.get('#map-loading-screen').should('be.hidden')
 

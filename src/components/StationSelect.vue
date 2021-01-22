@@ -23,6 +23,7 @@
           :disabled="selectedStationIds.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
             <span v-show="selectedStationIds.length > 0">({{ selectedStationIds.length }}/{{ maxStationSelection }})</span></button>
         <button
+          id="toggle-discontinued-stations"
           v-if="hydroStationDisplay"
           @click="toggleActiveStation"
           class="btn btn-sm"

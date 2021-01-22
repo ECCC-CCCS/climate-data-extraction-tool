@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('E2E test for raster drill pages', () => {
+describe('E2E test for raster drill data with various form options', () => {
   it('Visits CMIP5 and perform raster drill downloads, as GeoJSON format', () => {
     cy.visit('/#/cmip5-data')
 

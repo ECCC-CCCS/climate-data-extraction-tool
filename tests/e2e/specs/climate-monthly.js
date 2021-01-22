@@ -1,7 +1,7 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('E2E test for climate monthly page', () => {
-  it('Loads climate monthly stations into leaflet map and download data as CSV', () => {
+describe('E2E test for climate monthly data with various form options', () => {
+  it('Check climate monthly stations and download data as CSV', () => {
     // station data and daterange
     cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*HAS_MONTHLY_SUMMARY=Y.*f=json.*/).as('stationData')
     cy.intercept('GET', /.*\/collections\/climate-monthly\/items\?.*sortby=LOCAL_DATE&limit=1.*f=json.*/).as('dateRangeData')
@@ -50,7 +50,7 @@ describe('E2E test for climate monthly page', () => {
     })
   })
 
-  it('Download data by province', () => {
+  it('Download data as GeoJSON by province', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -89,7 +89,7 @@ describe('E2E test for climate monthly page', () => {
     })
   })
 
-  it('Download by a select few stations', () => {
+  it('Download data as GeoJSON by a select few stations', () => {
     // Reset province
     cy.selectVar('select#cccs_province', '-- None --', 'null')
 
@@ -135,7 +135,7 @@ describe('E2E test for climate monthly page', () => {
     })
   })
 
-  it('Download monthly values by a zoomed BBOX', () => {
+  it('Download data as GeoJSON by a zoomed BBOX', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
