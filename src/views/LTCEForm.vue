@@ -87,10 +87,10 @@
         <div class="row mrgn-tp-md">
           <div id="local-month-selection" class="form-group col-md-3 col-sm-4 col-xs-6">
             <label
-              :for="'var-sel-local_month'" v-translate>Month</label>
+              for="var-sel-local_month" v-translate>Month</label>
             <select
               class="form-control"
-              id="'var-sel-local_month'"
+              id="var-sel-local_month"
               aria-controls="local-day-selection"
               v-model="local_month">
                 <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
@@ -99,10 +99,10 @@
 
           <div id="local-day-selection" class="form-group col-md-9 col-sm-8 col-xs-6">
             <label
-              :for="'var-sel-local_day'" v-translate>Day</label>
+              for="var-sel-local_day" v-translate>Day</label>
             <select
               class="form-control"
-              id="'var-sel-local_day'"
+              id="var-sel-local_day"
               aria-live="polite"
               v-model="local_day">
                 <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
@@ -346,7 +346,7 @@ export default {
       const maxDay = this.daysOfMonth[this.local_month]
       const maxDays = (this.local_month !== 'all') ? maxDay : '366'
       let textMax = (this.local_month !== 'all') ? this.$gettext('All {maxDays} days of the month') : this.$gettext('All {maxDays} days of the year')
-      for (let i = 1; i < maxDay; i++) {
+      for (let i = 1; i <= maxDay; i++) {
         let dd = i
         if (i < 10) {
           dd = '0' + i // pad with 0
