@@ -129,9 +129,9 @@ export default {
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       foreRunMomentMin: this.$moment.utc('2013-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMomentMax: this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      modelRun: this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      forecastPeriod: this.$moment.utc('2018-10-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      foreRunMomentMax: this.$moment.utc('2018-07-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // disable 2018 Aug and Sept; unavailable data
+      modelRun: this.$moment.utc('2018-07-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      forecastPeriod: this.$moment.utc('2018-08-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       dateConfigs: {
         minimumView: 'month',
         format: 'YYYY-MM',
@@ -183,9 +183,9 @@ export default {
         'ETA_TT': this.$gettext('Air temperature'),
         'ETA_WTMP': this.$gettext('Water temperature'),
         'PRES_GZ.500': this.$gettext('Geopotential height at 500mb'),
-        'PRES_TT.850': this.$gettext('Air temperature at 850mb'),
-        'PRES_UU.200': this.$gettext('Winds at 200mb'),
-        'PRES_UU.850': this.$gettext('Winds at 850mb')
+        'PRES_TT.850': this.$gettext('Air temperature at 850mb')
+        // 'PRES_UU.200': this.$gettext('Winds at 200mb'), // PRES_UU is unavailable; never was available
+        // 'PRES_UU.850': this.$gettext('Winds at 850mb')
       }
     },
     selectedCoverageIdOption: function () {
