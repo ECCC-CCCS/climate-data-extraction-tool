@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('E2E test for CANGRD page with WCS data', () => {
+describe('E2E test for CANGRD WCS data with various form options', () => {
   it('Performs various combination of form changes with expected response', () => {
     cy.visit('/#/historical-gridded-data')
 
