@@ -198,8 +198,11 @@ npm run csv2po
 Cypress E2E testing is used as the UI heavily relies on the web services to work.
 
 Start up Cypress E2E test UI:
-```bash
+```sh
 npm run test:e2e
+
+# headless mode
+npx vue-cli-service test:e2e --mode testing --headless
 ```
 
 When initiated, it will start up a dev instance on localhost, which relies on your `.env.testing` (and `.env`) file. Modify your `.env` files accordingly for testing.
