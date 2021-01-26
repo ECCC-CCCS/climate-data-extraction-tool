@@ -26,3 +26,7 @@ pnpm-debug.log*
 *.mo
 *.pot
 /cypress.env.json
+/debug.log
+/cypress
+/tests/e2e/screenshots
+/tests/e2e/videos
