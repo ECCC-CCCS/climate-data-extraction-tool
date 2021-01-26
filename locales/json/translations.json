@@ -3188,7 +3188,7 @@
 			"Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.": {
 				"msgid": "Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.",
 				"msgstr": [
-					""
+					"Des températures et precipitations extremes se produisent presque toutes les jours quelque part au Canada. Afin d’identifier et de tabuler les extrêmes quotidiens des températures, des précipitations et des chutes de neige et de surveiller les records météorologiques, le Service Météorologique du Canada a « maillé » les données de stations étroitement liées pour compiler une longue série chronologique de données pour environ 750 endroits au Canada."
 				]
 			},
 			"Anomaly values": {
@@ -3428,25 +3428,25 @@
 			"Download a list of detailed information for each LTCE virtual climate station": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station",
 				"msgstr": [
-					"Téléchargez une liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE"
+					"Téléchargez une liste d'informations détaillées pour chaque station climatologique virtuelle de la ECLT"
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with precipitation record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with precipitation record type only",
 				"msgstr": [
-					"Télécharger la liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE avec le type d'enregistrement des précipitations uniquement"
+					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de précipitation."
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with snowfall record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with snowfall record type only",
 				"msgstr": [
-					"Télécharger la liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE avec le type d'enregistrement des chutes de neige uniquement"
+					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de neige."
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with temperature record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with temperature record type only",
 				"msgstr": [
-					"Téléchargez la liste d'informations détaillées pour chaque station climatique virtuelle de la LTCE avec le type d'enregistrement de température uniquement"
+					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de température."
 				]
 			},
 			"Download a list of detailed information for each Monthly climate summaries station.": {
@@ -3578,7 +3578,7 @@
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">LTCE</abbr></a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux <abbr title=\"{datasetName}\">LTCE</abbr></a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux <abbr title=\"{datasetName}\">ECLT</abbr></a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">RDPA</abbr></a>.": {
@@ -4148,7 +4148,7 @@
 			"Snowfall - Daily extremes of record": {
 				"msgid": "Snowfall - Daily extremes of record",
 				"msgstr": [
-					"Chutes de neige - Records extrêmes quotidiens"
+					"Neige - Extrêmes quotidiens"
 				]
 			},
 			"Spatial selection": {
@@ -4202,7 +4202,7 @@
 			"Temperature - Daily extremes of record": {
 				"msgid": "Temperature - Daily extremes of record",
 				"msgstr": [
-					"Température - Extrêmes quotidiens du record"
+					"Température - Extrêmes quotidiens"
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -4286,7 +4286,7 @@
 			"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
 				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
 				"msgstr": [
-					""
+					"Les Records des Extrêmes Quotidiens (ECLT) visent à combler les lacunes de la fragmentation de l’information sur le climat en raison de changements apportés aux stations au fil du temps. Dans 750 endroits répartis sur le territoire canadien, des stations climatologiques , &quot;virtual&quot; ont été construites en procédant au « remaillage » des données pour un lieu urbain, à partir de stations proches. Ces données fournissent les records des extrêmes quotidiens de la température, la précipitation et la neige pour chaque jour de l'année. La majorité des plus longs ensembles de données des extrêmes datent des années 1800s. Cet ensemble de données identifie, par exemple, la température la plus élevée ou la plus grande chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée."
 				]
 			},
 			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
@@ -4520,7 +4520,7 @@
 			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {
 				"msgid": "Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.",
 				"msgstr": [
-					""
+					"Les stations climatiques virtuelles correspondent aux pages des villes de {weatherOfficeLink}. Une station climatologique virtuelle est le résultat du « remaillage » des données provenant de stations actuelles et historiques proches pour construire un ensemble de données « maillées ». La durée de la série chronologique de stations virtuelles est souvent plus que 100 ans. Une station climatologique virtuelle est toujours nommée pour une « région » plutôt qu’un point (par exemple la région de Winnipeg) pour indiquer que les données sont tirées d’une région (avec un rayon de 20 km du centre urbain) plutôt qu’à un seul emplacement précis."
 				]
 			},
 			"Virtual station ID": {
