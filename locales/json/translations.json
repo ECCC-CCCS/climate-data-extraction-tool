@@ -2257,18 +2257,6 @@
 					"Weather, climate and hazards"
 				]
 			},
-			"Winds at 200mb": {
-				"msgid": "Winds at 200mb",
-				"msgstr": [
-					"Winds at 200mb"
-				]
-			},
-			"Winds at 850mb": {
-				"msgid": "Winds at 850mb",
-				"msgstr": [
-					"Winds at 850mb"
-				]
-			},
 			"Winter (December-February)": {
 				"msgid": "Winter (December-February)",
 				"msgstr": [
@@ -4286,7 +4274,7 @@
 			"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
 				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
 				"msgstr": [
-					"Les Records des Extrêmes Quotidiens (ECLT) visent à combler les lacunes de la fragmentation de l’information sur le climat en raison de changements apportés aux stations au fil du temps. Dans 750 endroits répartis sur le territoire canadien, des stations climatologiques , &quot;virtual&quot; ont été construites en procédant au « remaillage » des données pour un lieu urbain, à partir de stations proches. Ces données fournissent les records des extrêmes quotidiens de la température, la précipitation et la neige pour chaque jour de l'année. La majorité des plus longs ensembles de données des extrêmes datent des années 1800s. Cet ensemble de données identifie, par exemple, la température la plus élevée ou la plus grande chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée."
+					"Les Records des Extrêmes Quotidiens (ECLT) visent à combler les lacunes de la fragmentation de l’information sur le climat en raison de changements apportés aux stations au fil du temps. Dans 750 endroits répartis sur le territoire canadien, des stations climatologiques « virtual » ont été construites en procédant au « remaillage » des données pour un lieu urbain, à partir de stations proches. Ces données fournissent les records des extrêmes quotidiens de la température, la précipitation et la neige pour chaque jour de l'année. La majorité des plus longs ensembles de données des extrêmes datent des années 1800s. Cet ensemble de données identifie, par exemple, la température la plus élevée ou la plus grande chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée."
 				]
 			},
 			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
@@ -4569,18 +4557,6 @@
 				"msgid": "Weather, climate and hazards",
 				"msgstr": [
 					"Météo, climat et catastrophes naturelles"
-				]
-			},
-			"Winds at 200mb": {
-				"msgid": "Winds at 200mb",
-				"msgstr": [
-					"Vents à 200 mb"
-				]
-			},
-			"Winds at 850mb": {
-				"msgid": "Winds at 850mb",
-				"msgstr": [
-					"Vents à 850 mb"
 				]
 			},
 			"Winter (December-February)": {

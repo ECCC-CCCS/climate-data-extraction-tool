@@ -93,7 +93,7 @@ msgstr ""
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr "<a href=\"{link}\" target=\"_blank\">En savoir plus sur les percentiles</a>"
 
-#: src/components/BBOXMap.vue:399
+#: src/components/BBOXMap.vue:401
 msgid "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
 msgstr "Contributeurs à <a href=\"http://osm.org/copyright\">OpenStreetMap</a>"
 
@@ -117,27 +117,27 @@ msgstr ""
 msgid "00Z"
 msgstr "00Z"
 
-#: src/views/LTCEForm.vue:321
+#: src/views/LTCEForm.vue:324
 msgid "01 - January"
 msgstr "01 - Janvier"
 
-#: src/views/LTCEForm.vue:322
+#: src/views/LTCEForm.vue:325
 msgid "02 - February"
 msgstr "02 - Février"
 
-#: src/views/LTCEForm.vue:323
+#: src/views/LTCEForm.vue:326
 msgid "03 - March"
 msgstr "03 - Mars"
 
-#: src/views/LTCEForm.vue:324
+#: src/views/LTCEForm.vue:327
 msgid "04 - April"
 msgstr "04 - Avril"
 
-#: src/views/LTCEForm.vue:325
+#: src/views/LTCEForm.vue:328
 msgid "05 - May"
 msgstr "05 - Mai"
 
-#: src/views/LTCEForm.vue:326
+#: src/views/LTCEForm.vue:329
 msgid "06 - June"
 msgstr "06 - Juin"
 
@@ -145,27 +145,27 @@ msgstr "06 - Juin"
 msgid "06Z"
 msgstr "06Z"
 
-#: src/views/LTCEForm.vue:327
+#: src/views/LTCEForm.vue:330
 msgid "07 - July"
 msgstr "07 - Juillet"
 
-#: src/views/LTCEForm.vue:328
+#: src/views/LTCEForm.vue:331
 msgid "08 - August"
 msgstr "08 - Août"
 
-#: src/views/LTCEForm.vue:329
+#: src/views/LTCEForm.vue:332
 msgid "09 - September"
 msgstr "09 - Septembre"
 
-#: src/views/LTCEForm.vue:330
+#: src/views/LTCEForm.vue:333
 msgid "10 - October"
 msgstr "10 - Octobre"
 
-#: src/views/LTCEForm.vue:331
+#: src/views/LTCEForm.vue:334
 msgid "11 - November"
 msgstr "11 - Novembre"
 
-#: src/views/LTCEForm.vue:332
+#: src/views/LTCEForm.vue:335
 msgid "12 - December"
 msgstr "12- Décembre"
 
@@ -272,18 +272,18 @@ msgstr ""
 "données climatiques."
 
 #: src/views/CanGRDForm.vue:99
-#: src/views/CanSIPSForm.vue:85
+#: src/views/CanSIPSForm.vue:72
 #: src/views/CMIP5Form.vue:151
 #: src/views/DCSForm.vue:153
 #: src/views/RDPAForm.vue:73
 msgid "Advanced options"
 msgstr "Options avancées"
 
-#: src/views/CanSIPSForm.vue:198
+#: src/views/CanSIPSForm.vue:183
 msgid "Air temperature"
 msgstr "Température de l'air"
 
-#: src/views/CanSIPSForm.vue:201
+#: src/views/CanSIPSForm.vue:186
 msgid "Air temperature at 850mb"
 msgstr "Température de l'air à 850 mb"
 
@@ -291,19 +291,19 @@ msgstr "Température de l'air à 850 mb"
 msgid "Alberta"
 msgstr "Alberta"
 
-#: src/components/StationSelect.vue:123
+#: src/components/StationSelect.vue:124
 msgid "All"
 msgstr "Tous"
 
-#: src/views/LTCEForm.vue:348
+#: src/views/LTCEForm.vue:351
 msgid "All {maxDays} days of the month"
 msgstr "Tous les {maxDays} jours du moi"
 
-#: src/views/LTCEForm.vue:348
+#: src/views/LTCEForm.vue:351
 msgid "All {maxDays} days of the year"
 msgstr "Tous les {maxDays} jours de l'année"
 
-#: src/views/LTCEForm.vue:333
+#: src/views/LTCEForm.vue:336
 msgid "All months"
 msgstr "Tous les mois"
 
@@ -416,7 +416,7 @@ msgstr ""
 msgid "Clear dates"
 msgstr "Effacer les dates"
 
-#: src/components/StationSelect.vue:47
+#: src/components/StationSelect.vue:48
 #. Button to clear selected stations
 msgid "Clear selected"
 msgstr "Effacer la sélection"
@@ -505,7 +505,7 @@ msgstr "Format du téléchargement de données"
 
 #: src/views/AHCCDForm.vue:105
 #: src/views/CanGRDForm.vue:117
-#: src/views/CanSIPSForm.vue:100
+#: src/views/CanSIPSForm.vue:86
 #: src/views/ClimateDailyForm.vue:96
 #: src/views/ClimateMonthlyForm.vue:96
 #: src/views/ClimateNormalsForm.vue:66
@@ -522,7 +522,7 @@ msgstr "Liens de téléchargement de données"
 
 #: src/views/AHCCDForm.vue:20
 #: src/views/CanGRDForm.vue:13
-#: src/views/CanSIPSForm.vue:16
+#: src/views/CanSIPSForm.vue:13
 #: src/views/ClimateDailyForm.vue:20
 #: src/views/ClimateMonthlyForm.vue:20
 #: src/views/ClimateNormalsForm.vue:20
@@ -652,11 +652,11 @@ msgstr ""
 "Télécharger la liste des informations détaillées pour chaque station pour "
 "l’ensemble des données sur les Sommaires climatiques mensuels."
 
-#: src/components/BBOXMap.vue:395
+#: src/components/BBOXMap.vue:397
 msgid "Download a region"
 msgstr "Télécharger la région"
 
-#: src/components/BBOXMap.vue:394
+#: src/components/BBOXMap.vue:396
 msgid "Download data for a single location as a CSV or GeoJSON"
 msgstr ""
 "Télécharger des données pour un point de grille unique sous forme CSV ou "
@@ -849,11 +849,11 @@ msgstr ""
 "target=\"_blank\">documentation technique relative aux Scénarios "
 "climatiques mis à l’échelle de manière statistique</a>."
 
-#: src/views/CanSIPSForm.vue:191
+#: src/views/CanSIPSForm.vue:176
 msgid "Forecast"
 msgstr "Prévision"
 
-#: src/views/CanSIPSForm.vue:68
+#: src/views/CanSIPSForm.vue:57
 msgid "Forecast month"
 msgstr "Mois de la prévision"
 
@@ -861,11 +861,11 @@ msgstr "Mois de la prévision"
 msgid "Future"
 msgstr "Futur"
 
-#: src/views/CanSIPSForm.vue:200
+#: src/views/CanSIPSForm.vue:185
 msgid "Geopotential height at 500mb"
 msgstr "Hauteur géopotentielle à 500 mb"
 
-#: src/components/StationSelect.vue:36
+#: src/components/StationSelect.vue:37
 msgid "Hide discontinued stations"
 msgstr "Masquer les stations abandonnées"
 
@@ -936,7 +936,7 @@ msgstr ""
 msgid "Information"
 msgstr "Information"
 
-#: src/views/CanSIPSForm.vue:197
+#: src/views/CanSIPSForm.vue:182
 msgid "Instantaneous precipitation rate (m/s)"
 msgstr "Taux instantané de précipitations (m/s)"
 
@@ -975,7 +975,7 @@ msgid "Library of climate resources"
 msgstr "Répertoire de ressources climatiques"
 
 #: src/components/BBOXMap.vue:47
-#: src/components/StationSelect.vue:51
+#: src/components/StationSelect.vue:52
 msgid "Loading stations... please wait"
 msgstr "Les stations sont en train de télécharger… Veuillez patienter"
 
@@ -1036,7 +1036,7 @@ msgstr "Moyenne des précipitations"
 msgid "Mean temperature"
 msgstr "Température moyenne"
 
-#: src/views/CanSIPSForm.vue:49
+#: src/views/CanSIPSForm.vue:40
 msgid "Member"
 msgstr "Membre"
 
@@ -1045,11 +1045,11 @@ msgstr "Membre"
 msgid "Minimum temperature"
 msgstr "Température minimale"
 
-#: src/views/CanSIPSForm.vue:57
+#: src/views/CanSIPSForm.vue:47
 msgid "Model run month"
 msgstr "Mois de la simulation du modèle"
 
-#: src/views/CanSIPSForm.vue:41
+#: src/views/CanSIPSForm.vue:33
 #: src/views/RDPAForm.vue:38
 msgid "Model type"
 msgstr "Type de modèle"
@@ -1110,7 +1110,7 @@ msgstr "Nouveau-Brunswick"
 msgid "Newfoundland and Labrador"
 msgstr "Terre-Neuve-et-Labrador"
 
-#: src/components/StationSelect.vue:109
+#: src/components/StationSelect.vue:110
 msgid "Next"
 msgstr "Suivant"
 
@@ -1134,7 +1134,7 @@ msgstr "vous ne pouvez sélectionner qu’un maximum de 20 stations à la fois"
 msgid "Ontario"
 msgstr "Ontario"
 
-#: src/components/StationSelect.vue:115
+#: src/components/StationSelect.vue:116
 msgid "Page size"
 msgstr "Format de la page"
 
@@ -1153,7 +1153,7 @@ msgstr ""
 "Veuillez corriger toutes les erreurs de saisie afin de télécharger les "
 "données."
 
-#: src/components/StationSelect.vue:490
+#: src/components/StationSelect.vue:491
 msgid "Please press the \"Reset map\" button to see the stations in this table."
 msgstr ""
 "Appuyiez sur « réinitialiser la carte » pour voir les stations dans ce "
@@ -1180,7 +1180,7 @@ msgstr "Précipitations - Extrêmes quotidiens"
 msgid "Precipitation accumulation interval"
 msgstr "Interval d'accumulation de précipitation"
 
-#: src/components/StationSelect.vue:104
+#: src/components/StationSelect.vue:105
 msgid "Previous"
 msgstr "Précédent"
 
@@ -1231,7 +1231,7 @@ msgstr "Concentration des glaces de mer"
 msgid "Sea ice thickness"
 msgstr "Épaisseur de la glace de mer"
 
-#: src/views/CanSIPSForm.vue:196
+#: src/views/CanSIPSForm.vue:181
 msgid "Sea level pressure"
 msgstr "Pression au niveau de la mer"
 
@@ -1245,7 +1245,7 @@ msgstr ""
 "cliquez sur les stations sur la carte ou dans le tableau pour les "
 "sélectionner"
 
-#: src/components/StationSelect.vue:35
+#: src/components/StationSelect.vue:36
 msgid "Show discontinued stations"
 msgstr "Afficher les stations abandonnées"
 
@@ -1254,13 +1254,13 @@ msgstr "Afficher les stations abandonnées"
 msgid "Show selected"
 msgstr "Afficher la sélection"
 
-#: src/components/StationSelect.vue:431
+#: src/components/StationSelect.vue:432
 msgid "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 msgstr ""
 "Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de "
 "{filteredNumEntries}"
 
-#: src/components/StationSelect.vue:427
+#: src/components/StationSelect.vue:428
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entries)"
@@ -1268,7 +1268,7 @@ msgstr ""
 "Affichage de {startEntryOfPage} jusqu'à {lastEntryOfPage} de "
 "{filteredNumEntries} (filtrées de {totalSize} entrées au total)"
 
-#: src/components/StationSelect.vue:424
+#: src/components/StationSelect.vue:425
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entry)"
@@ -1500,7 +1500,7 @@ msgstr ""
 "Veuillez vous référer à <a href=\"{link}\" target=\"_blank\">la "
 "documentation sur ces outils avancés</a> pour plus d'information."
 
-#: src/views/CanSIPSForm.vue:18
+#: src/views/CanSIPSForm.vue:15
 msgid ""
 "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries "
 "out physics calculations to arrive at probabilistic predictions of "
@@ -1521,7 +1521,7 @@ msgstr ""
 "quelques niveaux verticaux choisis et sur une grille de résolution spatiale "
 "de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
 
-#: src/views/LTCEForm.vue:7
+#: src/views/LTCEForm.vue:303
 msgid ""
 "The daily climate records database, also known as Long Term Climate "
 "Extremes (LTCE), was developed to address the fragmentation of climate "
@@ -1539,15 +1539,14 @@ msgstr ""
 "Les Records des Extrêmes Quotidiens (ECLT) visent à combler les lacunes de "
 "la fragmentation de l’information sur le climat en raison de changements "
 "apportés aux stations au fil du temps. Dans 750 endroits répartis sur le "
-"territoire canadien, des stations climatologiques , &quot;virtual&quot; ont "
-"été construites en procédant au « remaillage » des données pour un lieu "
-"urbain, à partir de stations proches. Ces données fournissent les records "
-"des extrêmes quotidiens de la température, la précipitation et la neige "
-"pour chaque jour de l'année. La majorité des plus longs ensembles de "
-"données des extrêmes datent des années 1800s. Cet ensemble de données "
-"identifie, par exemple, la température la plus élevée ou la plus grande "
-"chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine "
-"sélectionnée."
+"territoire canadien, des stations climatologiques « virtual » ont été "
+"construites en procédant au « remaillage » des données pour un lieu urbain, "
+"à partir de stations proches. Ces données fournissent les records des "
+"extrêmes quotidiens de la température, la précipitation et la neige pour "
+"chaque jour de l'année. La majorité des plus longs ensembles de données des "
+"extrêmes datent des années 1800s. Cet ensemble de données identifie, par "
+"exemple, la température la plus élevée ou la plus grande chute de neige "
+"enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée."
 
 #: src/views/LTCEForm.vue:30
 msgid ""
@@ -1679,7 +1678,7 @@ msgstr ""
 "d’échelle statistique mensuels, saisonniers et annuels, à l’aide de l’outil "
 "d’extraction de données climatiques."
 
-#: src/components/StationSelect.vue:95
+#: src/components/StationSelect.vue:96
 #. Warning message when user has no stations selected and no stations are contained in the map viewport
 msgid ""
 "There are no stations available to download data from your current map "
@@ -1688,7 +1687,7 @@ msgstr ""
 "L’affichage actuel de votre carte ne contient aucune station pour "
 "télécharger des données."
 
-#: src/components/StationSelect.vue:31
+#: src/components/StationSelect.vue:32
 msgid ""
 "This button will retrieve more than 7000 stations and may cause a "
 "performance loss on this graphical user interface"
@@ -1856,7 +1855,7 @@ msgid "Value-added historical climate data products"
 msgstr "Produits à valeur ajoutée dérivés de données climatiques historiques"
 
 #: src/views/CanGRDForm.vue:35
-#: src/views/CanSIPSForm.vue:35
+#: src/views/CanSIPSForm.vue:28
 msgid "Variable"
 msgstr "Variables"
 
@@ -1921,7 +1920,7 @@ msgstr ""
 "Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> "
 "pour obtenir les résultats d’un modèle individuel"
 
-#: src/views/CanSIPSForm.vue:199
+#: src/views/CanSIPSForm.vue:184
 msgid "Water temperature"
 msgstr "Température de l'eau"
 
@@ -1940,14 +1939,6 @@ msgstr ""
 #: src/components/mixins/datasets.js:296
 msgid "Weather, climate and hazards"
 msgstr "Météo, climat et catastrophes naturelles"
-
-#: src/views/CanSIPSForm.vue:202
-msgid "Winds at 200mb"
-msgstr "Vents à 200 mb"
-
-#: src/views/CanSIPSForm.vue:203
-msgid "Winds at 850mb"
-msgstr "Vents à 850 mb"
 
 #: src/components/mixins/dcs-cmip5.js:148
 #: src/views/CanGRDForm.vue:264
@@ -2335,7 +2326,7 @@ msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr "-- Aucun --"
 
-#: src/components/BBOXMap.vue:402
+#: src/components/BBOXMap.vue:404
 msgctxt "Title"
 msgid "Canada Base Map Transportation"
 msgstr "Carte de base du Canada - Transport"
