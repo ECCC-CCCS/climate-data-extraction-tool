@@ -117,27 +117,27 @@ msgstr ""
 msgid "00Z"
 msgstr "00Z"
 
-#: src/views/LTCEForm.vue:324
+#: src/views/LTCEForm.vue:327
 msgid "01 - January"
 msgstr "01 - Janvier"
 
-#: src/views/LTCEForm.vue:325
+#: src/views/LTCEForm.vue:328
 msgid "02 - February"
 msgstr "02 - Février"
 
-#: src/views/LTCEForm.vue:326
+#: src/views/LTCEForm.vue:329
 msgid "03 - March"
 msgstr "03 - Mars"
 
-#: src/views/LTCEForm.vue:327
+#: src/views/LTCEForm.vue:330
 msgid "04 - April"
 msgstr "04 - Avril"
 
-#: src/views/LTCEForm.vue:328
+#: src/views/LTCEForm.vue:331
 msgid "05 - May"
 msgstr "05 - Mai"
 
-#: src/views/LTCEForm.vue:329
+#: src/views/LTCEForm.vue:332
 msgid "06 - June"
 msgstr "06 - Juin"
 
@@ -145,27 +145,27 @@ msgstr "06 - Juin"
 msgid "06Z"
 msgstr "06Z"
 
-#: src/views/LTCEForm.vue:330
+#: src/views/LTCEForm.vue:333
 msgid "07 - July"
 msgstr "07 - Juillet"
 
-#: src/views/LTCEForm.vue:331
+#: src/views/LTCEForm.vue:334
 msgid "08 - August"
 msgstr "08 - Août"
 
-#: src/views/LTCEForm.vue:332
+#: src/views/LTCEForm.vue:335
 msgid "09 - September"
 msgstr "09 - Septembre"
 
-#: src/views/LTCEForm.vue:333
+#: src/views/LTCEForm.vue:336
 msgid "10 - October"
 msgstr "10 - Octobre"
 
-#: src/views/LTCEForm.vue:334
+#: src/views/LTCEForm.vue:337
 msgid "11 - November"
 msgstr "11 - Novembre"
 
-#: src/views/LTCEForm.vue:335
+#: src/views/LTCEForm.vue:338
 msgid "12 - December"
 msgstr "12- Décembre"
 
@@ -295,15 +295,15 @@ msgstr "Alberta"
 msgid "All"
 msgstr "Tous"
 
-#: src/views/LTCEForm.vue:351
+#: src/views/LTCEForm.vue:354
 msgid "All {maxDays} days of the month"
 msgstr "Tous les {maxDays} jours du moi"
 
-#: src/views/LTCEForm.vue:351
+#: src/views/LTCEForm.vue:354
 msgid "All {maxDays} days of the year"
 msgstr "Tous les {maxDays} jours de l'année"
 
-#: src/views/LTCEForm.vue:336
+#: src/views/LTCEForm.vue:339
 msgid "All months"
 msgstr "Tous les mois"
 
@@ -857,6 +857,10 @@ msgstr "Prévision"
 msgid "Forecast month"
 msgstr "Mois de la prévision"
 
+#: src/views/LTCEForm.vue:303
+msgid "Frequently asked questions about LTCE"
+msgstr "Foire aux questions à propos de l'ECLT"
+
 #: src/components/mixins/dcs-cmip5.js:159
 msgid "Future"
 msgstr "Futur"
@@ -1239,6 +1243,10 @@ msgstr "Pression au niveau de la mer"
 msgid "Seasonal values"
 msgstr "Valeurs saisonnières"
 
+#: src/views/LTCEForm.vue:303
+msgid "see FAQ"
+msgstr "voir la FAQ"
+
 #: src/components/mixins/datasets.js:390
 msgid "select stations on the map or in the table by clicking on them"
 msgstr ""
@@ -1521,32 +1529,33 @@ msgstr ""
 "quelques niveaux verticaux choisis et sur une grille de résolution spatiale "
 "de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
 
-#: src/views/LTCEForm.vue:303
+#: src/views/LTCEForm.vue:306
 msgid ""
 "The daily climate records database, also known as Long Term Climate "
-"Extremes (LTCE), was developed to address the fragmentation of climate "
-"information due to station changes (opening, closing, relocation, etc.) "
-"over time. For approximately 750 locations in Canada, &quot;virtual&quot; "
-"climate stations have been developed by joining (threading) climate data "
-"for an urban location, from nearby stations to make long-term records. Each "
-"long-term record consists of the extremes (record values) of daily "
-"maximum/minimum temperatures, total precipitation and snowfall for each day "
-"of the year. Many of the longest data sets of extremes date as far back as "
-"the 1800s. This dataset identifies, for example, the highest temperature or "
-"the greatest snowfall on record for each day of the year for the selected "
-"urban area."
+"Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation "
+"of climate information due to station changes (opening, closing, "
+"relocation, etc.) over time. For approximately 750 locations in Canada, "
+"&quot;virtual&quot; climate stations have been developed by joining "
+"(threading) climate data for an urban location, from nearby stations to "
+"make long-term records. Each long-term record consists of the extremes "
+"(record values) of daily maximum/minimum temperatures, total precipitation "
+"and snowfall for each day of the year. Many of the longest data sets of "
+"extremes date as far back as the 1800s. This dataset identifies, for "
+"example, the highest temperature or the greatest snowfall on record for "
+"each day of the year for the selected urban area."
 msgstr ""
-"Les Records des Extrêmes Quotidiens (ECLT) visent à combler les lacunes de "
-"la fragmentation de l’information sur le climat en raison de changements "
-"apportés aux stations au fil du temps. Dans 750 endroits répartis sur le "
-"territoire canadien, des stations climatologiques « virtual » ont été "
-"construites en procédant au « remaillage » des données pour un lieu urbain, "
-"à partir de stations proches. Ces données fournissent les records des "
-"extrêmes quotidiens de la température, la précipitation et la neige pour "
-"chaque jour de l'année. La majorité des plus longs ensembles de données des "
-"extrêmes datent des années 1800s. Cet ensemble de données identifie, par "
-"exemple, la température la plus élevée ou la plus grande chute de neige "
-"enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée."
+"Les Records des Extrêmes Quotidiens (ECLT; {seeFAQLink}) visent à combler "
+"les lacunes de la fragmentation de l’information sur le climat en raison de "
+"changements apportés aux stations au fil du temps. Dans 750 endroits "
+"répartis sur le territoire canadien, des stations climatologiques « virtual "
+"» ont été construites en procédant au « remaillage » des données pour un "
+"lieu urbain, à partir de stations proches. Ces données fournissent les "
+"records des extrêmes quotidiens de la température, la précipitation et la "
+"neige pour chaque jour de l'année. La majorité des plus longs ensembles de "
+"données des extrêmes datent des années 1800s. Cet ensemble de données "
+"identifie, par exemple, la température la plus élevée ou la plus grande "
+"chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine "
+"sélectionnée."
 
 #: src/views/LTCEForm.vue:30
 msgid ""

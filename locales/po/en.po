@@ -110,27 +110,27 @@ msgstr ""
 msgid "00Z"
 msgstr "00Z"
 
-#: src/views/LTCEForm.vue:324
+#: src/views/LTCEForm.vue:327
 msgid "01 - January"
 msgstr "01 - January"
 
-#: src/views/LTCEForm.vue:325
+#: src/views/LTCEForm.vue:328
 msgid "02 - February"
 msgstr "02 - February"
 
-#: src/views/LTCEForm.vue:326
+#: src/views/LTCEForm.vue:329
 msgid "03 - March"
 msgstr "03 - March"
 
-#: src/views/LTCEForm.vue:327
+#: src/views/LTCEForm.vue:330
 msgid "04 - April"
 msgstr "04 - April"
 
-#: src/views/LTCEForm.vue:328
+#: src/views/LTCEForm.vue:331
 msgid "05 - May"
 msgstr "05 - May"
 
-#: src/views/LTCEForm.vue:329
+#: src/views/LTCEForm.vue:332
 msgid "06 - June"
 msgstr "06 - June"
 
@@ -138,27 +138,27 @@ msgstr "06 - June"
 msgid "06Z"
 msgstr "06Z"
 
-#: src/views/LTCEForm.vue:330
+#: src/views/LTCEForm.vue:333
 msgid "07 - July"
 msgstr "07 - July"
 
-#: src/views/LTCEForm.vue:331
+#: src/views/LTCEForm.vue:334
 msgid "08 - August"
 msgstr "08 - August"
 
-#: src/views/LTCEForm.vue:332
+#: src/views/LTCEForm.vue:335
 msgid "09 - September"
 msgstr "09 - September"
 
-#: src/views/LTCEForm.vue:333
+#: src/views/LTCEForm.vue:336
 msgid "10 - October"
 msgstr "10 - October"
 
-#: src/views/LTCEForm.vue:334
+#: src/views/LTCEForm.vue:337
 msgid "11 - November"
 msgstr "11 - November"
 
-#: src/views/LTCEForm.vue:335
+#: src/views/LTCEForm.vue:338
 msgid "12 - December"
 msgstr "12 - December"
 
@@ -290,15 +290,15 @@ msgstr "Alberta"
 msgid "All"
 msgstr "All"
 
-#: src/views/LTCEForm.vue:351
+#: src/views/LTCEForm.vue:354
 msgid "All {maxDays} days of the month"
 msgstr "All {maxDays} days of the month"
 
-#: src/views/LTCEForm.vue:351
+#: src/views/LTCEForm.vue:354
 msgid "All {maxDays} days of the year"
 msgstr "All {maxDays} days of the year"
 
-#: src/views/LTCEForm.vue:336
+#: src/views/LTCEForm.vue:339
 msgid "All months"
 msgstr "All months"
 
@@ -833,6 +833,10 @@ msgstr "Forecast"
 msgid "Forecast month"
 msgstr "Forecast month"
 
+#: src/views/LTCEForm.vue:303
+msgid "Frequently asked questions about LTCE"
+msgstr ""
+
 #: src/components/mixins/dcs-cmip5.js:159
 msgid "Future"
 msgstr "Future"
@@ -1209,6 +1213,10 @@ msgstr "Sea level pressure"
 msgid "Seasonal values"
 msgstr "Seasonal values"
 
+#: src/views/LTCEForm.vue:303
+msgid "see FAQ"
+msgstr ""
+
 #: src/components/mixins/datasets.js:390
 msgid "select stations on the map or in the table by clicking on them"
 msgstr "select stations on the map or in the table by clicking on them"
@@ -1473,33 +1481,21 @@ msgstr ""
 "available on a grid at a horizontal resolution of 2.5 degrees and for a few "
 "selected vertical levels. Predictions are made available monthly."
 
-#: src/views/LTCEForm.vue:303
+#: src/views/LTCEForm.vue:306
 msgid ""
 "The daily climate records database, also known as Long Term Climate "
-"Extremes (LTCE), was developed to address the fragmentation of climate "
-"information due to station changes (opening, closing, relocation, etc.) "
-"over time. For approximately 750 locations in Canada, &quot;virtual&quot; "
-"climate stations have been developed by joining (threading) climate data "
-"for an urban location, from nearby stations to make long-term records. Each "
-"long-term record consists of the extremes (record values) of daily "
-"maximum/minimum temperatures, total precipitation and snowfall for each day "
-"of the year. Many of the longest data sets of extremes date as far back as "
-"the 1800s. This dataset identifies, for example, the highest temperature or "
-"the greatest snowfall on record for each day of the year for the selected "
-"urban area."
+"Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation "
+"of climate information due to station changes (opening, closing, "
+"relocation, etc.) over time. For approximately 750 locations in Canada, "
+"&quot;virtual&quot; climate stations have been developed by joining "
+"(threading) climate data for an urban location, from nearby stations to "
+"make long-term records. Each long-term record consists of the extremes "
+"(record values) of daily maximum/minimum temperatures, total precipitation "
+"and snowfall for each day of the year. Many of the longest data sets of "
+"extremes date as far back as the 1800s. This dataset identifies, for "
+"example, the highest temperature or the greatest snowfall on record for "
+"each day of the year for the selected urban area."
 msgstr ""
-"The daily climate records database, also known as Long Term Climate "
-"Extremes (LTCE), was developed to address the fragmentation of climate "
-"information due to station changes (opening, closing, relocation, etc.) "
-"over time. For approximately 750 locations in Canada, &quot;virtual&quot; "
-"climate stations have been developed by joining (threading) climate data "
-"for an urban location, from nearby stations to make long-term records. Each "
-"long-term record consists of the extremes (record values) of daily "
-"maximum/minimum temperatures, total precipitation and snowfall for each day "
-"of the year. Many of the longest data sets of extremes date as far back as "
-"the 1800s. This dataset identifies, for example, the highest temperature or "
-"the greatest snowfall on record for each day of the year for the selected "
-"urban area."
 
 #: src/views/LTCEForm.vue:30
 msgid ""

@@ -1321,6 +1321,12 @@
 					"Forecast month"
 				]
 			},
+			"Frequently asked questions about LTCE": {
+				"msgid": "Frequently asked questions about LTCE",
+				"msgstr": [
+					""
+				]
+			},
 			"Future": {
 				"msgid": "Future",
 				"msgstr": [
@@ -1771,6 +1777,12 @@
 					"Seasonal values"
 				]
 			},
+			"see FAQ": {
+				"msgid": "see FAQ",
+				"msgstr": [
+					""
+				]
+			},
 			"select stations on the map or in the table by clicking on them": {
 				"msgid": "select stations on the map or in the table by clicking on them",
 				"msgstr": [
@@ -1969,10 +1981,10 @@
 					"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly."
 				]
 			},
-			"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
-				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
+			"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
+				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
 				"msgstr": [
-					"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area."
+					""
 				]
 			},
 			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
@@ -3623,6 +3635,12 @@
 					"Mois de la prévision"
 				]
 			},
+			"Frequently asked questions about LTCE": {
+				"msgid": "Frequently asked questions about LTCE",
+				"msgstr": [
+					"Foire aux questions à propos de l'ECLT"
+				]
+			},
 			"Future": {
 				"msgid": "Future",
 				"msgstr": [
@@ -4073,6 +4091,12 @@
 					"Valeurs saisonnières"
 				]
 			},
+			"see FAQ": {
+				"msgid": "see FAQ",
+				"msgstr": [
+					"voir la FAQ"
+				]
+			},
 			"select stations on the map or in the table by clicking on them": {
 				"msgid": "select stations on the map or in the table by clicking on them",
 				"msgstr": [
@@ -4271,10 +4295,10 @@
 					"Le Système de Prévision Interannuelle et Saisonnière Canadien (SPISCan) procède à des calculs physiques afin de produire des prévisions probabilistes d'éléments de l'atmosphère du début d'un mois jusqu'à 12 mois dans le futur. Les éléments de l'atmosphère incluent notamment la température, la précipitation, la vitesse et direction des vents. Ce produit contient les résultats numériques bruts de ces calculs. La couverture géographique est mondiale. Les données sont disponibles pour quelques niveaux verticaux choisis et sur une grille de résolution spatiale de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
 				]
 			},
-			"The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
-				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
+			"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
+				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
 				"msgstr": [
-					"Les Records des Extrêmes Quotidiens (ECLT) visent à combler les lacunes de la fragmentation de l’information sur le climat en raison de changements apportés aux stations au fil du temps. Dans 750 endroits répartis sur le territoire canadien, des stations climatologiques « virtual » ont été construites en procédant au « remaillage » des données pour un lieu urbain, à partir de stations proches. Ces données fournissent les records des extrêmes quotidiens de la température, la précipitation et la neige pour chaque jour de l'année. La majorité des plus longs ensembles de données des extrêmes datent des années 1800s. Cet ensemble de données identifie, par exemple, la température la plus élevée ou la plus grande chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée."
+					"Les Records des Extrêmes Quotidiens (ECLT; {seeFAQLink}) visent à combler les lacunes de la fragmentation de l’information sur le climat en raison de changements apportés aux stations au fil du temps. Dans 750 endroits répartis sur le territoire canadien, des stations climatologiques « virtual » ont été construites en procédant au « remaillage » des données pour un lieu urbain, à partir de stations proches. Ces données fournissent les records des extrêmes quotidiens de la température, la précipitation et la neige pour chaque jour de l'année. La majorité des plus longs ensembles de données des extrêmes datent des années 1800s. Cet ensemble de données identifie, par exemple, la température la plus élevée ou la plus grande chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine sélectionnée."
 				]
 			},
 			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
