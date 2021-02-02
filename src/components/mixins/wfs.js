@@ -63,9 +63,9 @@ export const wfs = {
         'ahccd-annual': ['identifier__identifiant'],
         'ahccd-seasonal': ['identifier__identifiant'],
         'ahccd-trends': ['identifier__identifiant'],
-        'ltce-temperature': ['IDENTIFIER'],
-        'ltce-precipitation': ['IDENTIFIER'],
-        'ltce-snowfall': ['IDENTIFIER']
+        'ltce-temperature': ['VIRTUAL_CLIMATE_ID', 'LOCAL_MONTH', 'LOCAL_DAY'],
+        'ltce-precipitation': ['VIRTUAL_CLIMATE_ID', 'LOCAL_MONTH', 'LOCAL_DAY'],
+        'ltce-snowfall': ['VIRTUAL_CLIMATE_ID', 'LOCAL_MONTH', 'LOCAL_DAY']
       }
     }
   },
@@ -256,7 +256,7 @@ export const wfs = {
       }
 
       // temporal
-      if (this.temporal !== null) {
+      if (this.temporal !== null && this.temporal !== '') {
         urlParams.push(this.temporal)
       }
 
@@ -280,7 +280,7 @@ export const wfs = {
 
       // sort
       let dateColName = this.datasetToDateColName[this.$route.name]
-      let sortOrder = [provColName]
+      let sortOrder = [provColName] // default with province
 
       // Special case for specific layers
       if (Object.prototype.hasOwnProperty.call(this.layerToColSortOrder, layerName)) {
@@ -289,7 +289,6 @@ export const wfs = {
         } else {
           sortOrder = sortOrder.concat(this.layerToColSortOrder[layerName])
         }
-
       } else {
         sortOrder = sortOrder.concat([stnColName, dateColName])
       }

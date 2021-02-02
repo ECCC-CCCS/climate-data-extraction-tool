@@ -289,7 +289,7 @@ export default {
         if (this.local_day !== 'all') {
           dateQuery.push('LOCAL_DAY=' + this.local_day)
         }
-        return dateQuery.join('&')
+        return dateQuery.length >= 1 ? dateQuery.join('&') : dateQuery.join('')
       } else {
         return null
       }
