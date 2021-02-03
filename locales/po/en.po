@@ -110,27 +110,27 @@ msgstr ""
 msgid "00Z"
 msgstr "00Z"
 
-#: src/views/LTCEForm.vue:327
+#: src/views/LTCEForm.vue:331
 msgid "01 - January"
 msgstr "01 - January"
 
-#: src/views/LTCEForm.vue:328
+#: src/views/LTCEForm.vue:332
 msgid "02 - February"
 msgstr "02 - February"
 
-#: src/views/LTCEForm.vue:329
+#: src/views/LTCEForm.vue:333
 msgid "03 - March"
 msgstr "03 - March"
 
-#: src/views/LTCEForm.vue:330
+#: src/views/LTCEForm.vue:334
 msgid "04 - April"
 msgstr "04 - April"
 
-#: src/views/LTCEForm.vue:331
+#: src/views/LTCEForm.vue:335
 msgid "05 - May"
 msgstr "05 - May"
 
-#: src/views/LTCEForm.vue:332
+#: src/views/LTCEForm.vue:336
 msgid "06 - June"
 msgstr "06 - June"
 
@@ -138,27 +138,27 @@ msgstr "06 - June"
 msgid "06Z"
 msgstr "06Z"
 
-#: src/views/LTCEForm.vue:333
+#: src/views/LTCEForm.vue:337
 msgid "07 - July"
 msgstr "07 - July"
 
-#: src/views/LTCEForm.vue:334
+#: src/views/LTCEForm.vue:338
 msgid "08 - August"
 msgstr "08 - August"
 
-#: src/views/LTCEForm.vue:335
+#: src/views/LTCEForm.vue:339
 msgid "09 - September"
 msgstr "09 - September"
 
-#: src/views/LTCEForm.vue:336
+#: src/views/LTCEForm.vue:340
 msgid "10 - October"
 msgstr "10 - October"
 
-#: src/views/LTCEForm.vue:337
+#: src/views/LTCEForm.vue:341
 msgid "11 - November"
 msgstr "11 - November"
 
-#: src/views/LTCEForm.vue:338
+#: src/views/LTCEForm.vue:342
 msgid "12 - December"
 msgstr "12 - December"
 
@@ -238,7 +238,7 @@ msgstr "95th percentile"
 msgid "Actual values"
 msgstr "Actual values"
 
-#: src/components/mixins/datasets.js:310
+#: src/components/mixins/datasets.js:336
 msgid "Adapting to Climate Change"
 msgstr "Adapting to Climate Change"
 
@@ -290,19 +290,19 @@ msgstr "Alberta"
 msgid "All"
 msgstr "All"
 
-#: src/views/LTCEForm.vue:354
+#: src/views/LTCEForm.vue:358
 msgid "All {maxDays} days of the month"
 msgstr "All {maxDays} days of the month"
 
-#: src/views/LTCEForm.vue:354
+#: src/views/LTCEForm.vue:358
 msgid "All {maxDays} days of the year"
 msgstr "All {maxDays} days of the year"
 
-#: src/views/LTCEForm.vue:339
+#: src/views/LTCEForm.vue:343
 msgid "All months"
 msgstr "All months"
 
-#: src/components/mixins/datasets.js:395
+#: src/components/mixins/datasets.js:421
 msgid ""
 "alternatively, for most datasets, you can select all stations within a "
 "province or territory with the \"Province/Territory\" menu"
@@ -369,7 +369,7 @@ msgstr "British Columbia"
 msgid "Canada Atlas Lambert (EPSG:3978)"
 msgstr "Canada Atlas Lambert (EPSG:3978)"
 
-#: src/components/mixins/datasets.js:317
+#: src/components/mixins/datasets.js:343
 msgid "Canadian Centre for Climate Services"
 msgstr "Canadian Centre for Climate Services"
 
@@ -414,7 +414,7 @@ msgstr "Clear dates"
 msgid "Clear selected"
 msgstr "Clear selected"
 
-#: src/components/mixins/datasets.js:303
+#: src/components/mixins/datasets.js:329
 msgid "Climate change"
 msgstr "Climate change"
 
@@ -422,7 +422,7 @@ msgstr "Climate change"
 msgid "Climate data extraction tool"
 msgstr "Climate data extraction tool"
 
-#: src/views/LTCEForm.vue:71
+#: src/views/LTCEForm.vue:73
 msgid "Climate element / record type"
 msgstr "Climate element / record type"
 
@@ -476,7 +476,7 @@ msgstr ""
 msgid "Daily max/min"
 msgstr "Daily max/min"
 
-#: src/components/mixins/datasets.js:216
+#: src/components/mixins/datasets.js:242
 msgid "Daily maximum temperature"
 msgstr "Daily maximum temperature"
 
@@ -484,7 +484,7 @@ msgstr "Daily maximum temperature"
 msgid "Daily mean"
 msgstr "Daily mean"
 
-#: src/components/mixins/datasets.js:210
+#: src/components/mixins/datasets.js:236
 msgid "Daily minimum temperature"
 msgstr "Daily minimum temperature"
 
@@ -501,7 +501,7 @@ msgstr "Data download format"
 #: src/views/ClimateNormalsForm.vue:66
 #: src/views/CMIP5Form.vue:169
 #: src/views/DCSForm.vue:171
-#: src/views/LTCEForm.vue:124
+#: src/views/LTCEForm.vue:126
 #: src/views/RDPAForm.vue:88
 msgid "Data download link"
 msgstr "Data download link"
@@ -547,15 +547,15 @@ msgstr "Date ranges not required for CanGRD trends"
 msgid "Date:"
 msgstr "Date:"
 
-#: src/views/LTCEForm.vue:101
+#: src/views/LTCEForm.vue:103
 msgid "Day"
 msgstr "Day"
 
-#: src/components/mixins/datasets.js:392
+#: src/components/mixins/datasets.js:418
 msgid "deselect a station by clicking on it again in the table"
 msgstr "deselect a station by clicking on it again in the table"
 
-#: src/components/mixins/datasets.js:393
+#: src/components/mixins/datasets.js:419
 msgid "deselect all stations by clicking the \"Clear selected\" button"
 msgstr "deselect all stations by clicking the \"Clear selected\" button"
 
@@ -563,7 +563,7 @@ msgstr "deselect all stations by clicking the \"Clear selected\" button"
 msgid "Display and download climate data"
 msgstr "Display and download climate data"
 
-#: src/components/mixins/datasets.js:324
+#: src/components/mixins/datasets.js:350
 msgid "Display and Download Climate Data"
 msgstr "Display and Download Climate Data"
 
@@ -591,7 +591,7 @@ msgstr ""
 "Download a list of detailed information for each Historical hydrometric "
 "station."
 
-#: src/views/LTCEForm.vue:45
+#: src/views/LTCEForm.vue:47
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station"
@@ -599,7 +599,7 @@ msgstr ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station"
 
-#: src/views/LTCEForm.vue:51
+#: src/views/LTCEForm.vue:53
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with precipitation record type only"
@@ -607,7 +607,7 @@ msgstr ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with precipitation record type only"
 
-#: src/views/LTCEForm.vue:54
+#: src/views/LTCEForm.vue:56
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with snowfall record type only"
@@ -615,7 +615,7 @@ msgstr ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with snowfall record type only"
 
-#: src/views/LTCEForm.vue:48
+#: src/views/LTCEForm.vue:50
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with temperature record type only"
@@ -673,7 +673,7 @@ msgstr ""
 msgid "Downloads not working"
 msgstr "Downloads not working"
 
-#: src/views/LTCEForm.vue:229
+#: src/views/LTCEForm.vue:233
 msgid "Element name"
 msgstr "Element name"
 
@@ -696,7 +696,7 @@ msgstr "End date"
 msgid "Ensemble percentile"
 msgstr "Ensemble percentile"
 
-#: src/components/mixins/datasets.js:289
+#: src/components/mixins/datasets.js:315
 msgid "Environment and natural resources"
 msgstr "Environment and natural resources"
 
@@ -725,7 +725,7 @@ msgstr ""
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr "
 "title=\"{datasetName}\">AHCCD</abbr></a>."
 
-#: src/components/mixins/datasets.js:128
+#: src/components/mixins/datasets.js:154
 msgid ""
 "For more detailed information on this dataset, see the <a "
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr "
@@ -735,7 +735,7 @@ msgstr ""
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr "
 "title=\"{datasetName}\">CANGRD</abbr></a>."
 
-#: src/components/mixins/datasets.js:252
+#: src/components/mixins/datasets.js:278
 msgid ""
 "For more detailed information on this dataset, see the <a "
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr "
@@ -755,7 +755,7 @@ msgstr ""
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr "
 "title=\"{datasetName}\">LTCE</abbr></a>."
 
-#: src/components/mixins/datasets.js:237
+#: src/components/mixins/datasets.js:263
 msgid ""
 "For more detailed information on this dataset, see the <a "
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr "
@@ -785,7 +785,7 @@ msgstr ""
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on the "
 "Daily climate data</a>."
 
-#: src/components/mixins/datasets.js:143
+#: src/components/mixins/datasets.js:169
 msgid ""
 "For more detailed information on this dataset, see the <a "
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on the "
@@ -795,7 +795,7 @@ msgstr ""
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on the "
 "Global climate model scenarios</a>."
 
-#: src/components/mixins/datasets.js:113
+#: src/components/mixins/datasets.js:139
 msgid ""
 "For more detailed information on this dataset, see the <a "
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on the "
@@ -815,7 +815,7 @@ msgstr ""
 "href=\"{techDocLink}\" target=\"_blank\">technical documentation on the "
 "Monthly climate summaries</a>."
 
-#: src/components/mixins/datasets.js:196
+#: src/components/mixins/datasets.js:222
 msgid ""
 "For more detailed information on this dataset, see the <a "
 "href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the "
@@ -833,9 +833,9 @@ msgstr "Forecast"
 msgid "Forecast month"
 msgstr "Forecast month"
 
-#: src/views/LTCEForm.vue:303
+#: src/views/LTCEForm.vue:307
 msgid "Frequently asked questions about LTCE"
-msgstr ""
+msgstr "Frequently asked questions about LTCE"
 
 #: src/components/mixins/dcs-cmip5.js:159
 msgid "Future"
@@ -935,7 +935,7 @@ msgstr "Latest changes"
 #: src/views/ClimateMonthlyForm.vue:196
 #: src/views/ClimateNormalsForm.vue:137
 #: src/views/HydrometricArchiveForm.vue:221
-#: src/views/LTCEForm.vue:230
+#: src/views/LTCEForm.vue:234
 msgid "Latitude"
 msgstr "Latitude"
 
@@ -961,7 +961,7 @@ msgstr "Loading stations... please wait"
 #: src/views/ClimateMonthlyForm.vue:197
 #: src/views/ClimateNormalsForm.vue:138
 #: src/views/HydrometricArchiveForm.vue:222
-#: src/views/LTCEForm.vue:231
+#: src/views/LTCEForm.vue:235
 msgid "Longitude"
 msgstr "Longitude"
 
@@ -999,13 +999,13 @@ msgstr "Maximum date for near surface wind speed is:"
 msgid "Maximum temperature"
 msgstr "Maximum temperature"
 
-#: src/components/mixins/datasets.js:157
+#: src/components/mixins/datasets.js:183
 #: src/views/CMIP5Form.vue:339
 msgid "Mean precipitation"
 msgstr "Mean precipitation"
 
-#: src/components/mixins/datasets.js:151
-#: src/components/mixins/datasets.js:204
+#: src/components/mixins/datasets.js:177
+#: src/components/mixins/datasets.js:230
 #: src/views/CanGRDForm.vue:245
 #: src/views/CanGRDForm.vue:252
 #: src/views/CMIP5Form.vue:338
@@ -1035,7 +1035,7 @@ msgstr "Model type"
 msgid "Moderate emissions scenario (RCP 4.5)"
 msgstr "Moderate emissions scenario (RCP 4.5)"
 
-#: src/views/LTCEForm.vue:89
+#: src/views/LTCEForm.vue:91
 msgid "Month"
 msgstr "Month"
 
@@ -1104,7 +1104,7 @@ msgstr "Nova Scotia"
 msgid "Nunavut"
 msgstr "Nunavut"
 
-#: src/components/mixins/datasets.js:394
+#: src/components/mixins/datasets.js:420
 msgid "only 20 stations can be selected at once"
 msgstr "only 20 stations can be selected at once"
 
@@ -1146,7 +1146,8 @@ msgstr ""
 msgid "Please select a point on the map."
 msgstr "Please select a point on the map."
 
-#: src/views/LTCEForm.vue:237
+#: src/components/mixins/datasets.js:112
+#: src/views/LTCEForm.vue:241
 msgid "Precipitation - Daily extremes of record"
 msgstr "Precipitation - Daily extremes of record"
 
@@ -1164,7 +1165,7 @@ msgstr "Prince Edward Island"
 
 #: src/components/ProvinceSelect.vue:3
 #: src/views/AHCCDForm.vue:183
-#: src/views/LTCEForm.vue:228
+#: src/views/LTCEForm.vue:232
 msgid "Province/Territory"
 msgstr "Province/Territory"
 
@@ -1195,12 +1196,12 @@ msgstr "Retrieve download links"
 msgid "Saskatchewan"
 msgstr "Saskatchewan"
 
-#: src/components/mixins/datasets.js:175
+#: src/components/mixins/datasets.js:201
 #: src/views/CMIP5Form.vue:342
 msgid "Sea ice concentration"
 msgstr "Sea ice concentration"
 
-#: src/components/mixins/datasets.js:169
+#: src/components/mixins/datasets.js:195
 #: src/views/CMIP5Form.vue:341
 msgid "Sea ice thickness"
 msgstr "Sea ice thickness"
@@ -1213,11 +1214,11 @@ msgstr "Sea level pressure"
 msgid "Seasonal values"
 msgstr "Seasonal values"
 
-#: src/views/LTCEForm.vue:303
+#: src/views/LTCEForm.vue:307
 msgid "see FAQ"
-msgstr ""
+msgstr "see FAQ"
 
-#: src/components/mixins/datasets.js:390
+#: src/components/mixins/datasets.js:416
 msgid "select stations on the map or in the table by clicking on them"
 msgstr "select stations on the map or in the table by clicking on them"
 
@@ -1267,12 +1268,13 @@ msgstr ""
 msgid "Single location download unavailable"
 msgstr "Single location download unavailable"
 
-#: src/components/mixins/datasets.js:163
+#: src/components/mixins/datasets.js:189
 #: src/views/CMIP5Form.vue:340
 msgid "Snow depth"
 msgstr "Snow depth"
 
-#: src/views/LTCEForm.vue:238
+#: src/components/mixins/datasets.js:118
+#: src/views/LTCEForm.vue:242
 msgid "Snowfall - Daily extremes of record"
 msgstr "Snowfall - Daily extremes of record"
 
@@ -1319,11 +1321,12 @@ msgstr "Station table"
 msgid "Summer (June-August)"
 msgstr "Summer (June-August)"
 
-#: src/components/mixins/datasets.js:181
+#: src/components/mixins/datasets.js:207
 msgid "Surface wind speed"
 msgstr "Surface wind speed"
 
-#: src/views/LTCEForm.vue:236
+#: src/components/mixins/datasets.js:106
+#: src/views/LTCEForm.vue:240
 msgid "Temperature - Daily extremes of record"
 msgstr "Temperature - Daily extremes of record"
 
@@ -1339,7 +1342,7 @@ msgstr ""
 "metadata files for the dataset as well as other avenues for accessing the "
 "dataset."
 
-#: src/components/mixins/datasets.js:133
+#: src/components/mixins/datasets.js:159
 msgid ""
 "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
 "page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides "
@@ -1351,7 +1354,7 @@ msgstr ""
 "metadata files for the dataset as well as other avenues for accessing the "
 "dataset."
 
-#: src/components/mixins/datasets.js:257
+#: src/components/mixins/datasets.js:283
 msgid ""
 "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
 "page for <abbr title=\"{datasetName}\">CanSIPS</abbr></a> also provides "
@@ -1363,7 +1366,7 @@ msgstr ""
 "metadata files for the dataset as well as other avenues for accessing the "
 "dataset."
 
-#: src/components/mixins/datasets.js:242
+#: src/components/mixins/datasets.js:268
 msgid ""
 "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
 "page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides "
@@ -1405,7 +1408,7 @@ msgstr ""
 "page for the Daily climate records</a> also provides metadata files for the "
 "dataset as well as other avenues for accessing the dataset."
 
-#: src/components/mixins/datasets.js:148
+#: src/components/mixins/datasets.js:174
 msgid ""
 "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
 "page for the Global climate model scenarios</a> also provides metadata "
@@ -1415,7 +1418,7 @@ msgstr ""
 "page for the Global climate model scenarios</a> also provides metadata "
 "files for the dataset as well as other avenues for accessing the dataset."
 
-#: src/components/mixins/datasets.js:118
+#: src/components/mixins/datasets.js:144
 msgid ""
 "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
 "page for the Historical hydrometric data</a> also provides metadata files "
@@ -1435,7 +1438,7 @@ msgstr ""
 "page for the Monthly climate summaries</a> also provides metadata files for "
 "the dataset as well as other avenues for accessing the dataset."
 
-#: src/components/mixins/datasets.js:201
+#: src/components/mixins/datasets.js:227
 msgid ""
 "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
 "page for the Statistically downscaled climate scenarios</a> also provides "
@@ -1481,7 +1484,7 @@ msgstr ""
 "available on a grid at a horizontal resolution of 2.5 degrees and for a few "
 "selected vertical levels. Predictions are made available monthly."
 
-#: src/views/LTCEForm.vue:306
+#: src/views/LTCEForm.vue:310
 msgid ""
 "The daily climate records database, also known as Long Term Climate "
 "Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation "
@@ -1496,6 +1499,18 @@ msgid ""
 "example, the highest temperature or the greatest snowfall on record for "
 "each day of the year for the selected urban area."
 msgstr ""
+"The daily climate records database, also known as Long Term Climate "
+"Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation "
+"of climate information due to station changes (opening, closing, "
+"relocation, etc.) over time. For approximately 750 locations in Canada, "
+"&quot;virtual&quot; climate stations have been developed by joining "
+"(threading) climate data for an urban location, from nearby stations to "
+"make long-term records. Each long-term record consists of the extremes "
+"(record values) of daily maximum/minimum temperatures, total precipitation "
+"and snowfall for each day of the year. Many of the longest data sets of "
+"extremes date as far back as the 1800s. This dataset identifies, for "
+"example, the highest temperature or the greatest snowfall on record for "
+"each day of the year for the selected urban area."
 
 #: src/views/LTCEForm.vue:30
 msgid ""
@@ -1547,7 +1562,21 @@ msgstr ""
 "the reference period of 1986-2005. A range of percentiles across the "
 "multi-model ensembles are available for download."
 
-#: src/components/mixins/datasets.js:149
+#: src/components/mixins/datasets.js:104
+#| msgid ""
+#| "The open government portal page for the Global climate model scenarios "
+#| "also provides metadata files for the dataset as well as other avenues for "
+#| "accessing the dataset:"
+msgid ""
+"The open government portal page for the Daily climate records also provides "
+"metadata files for the dataset as well as other avenues for accessing the "
+"dataset:"
+msgstr ""
+"The open government portal page for the Daily climate records also provides "
+"metadata files for the dataset as well as other avenues for accessing the "
+"dataset:"
+
+#: src/components/mixins/datasets.js:175
 msgid ""
 "The open government portal page for the Global climate model scenarios also "
 "provides metadata files for the dataset as well as other avenues for "
@@ -1557,7 +1586,7 @@ msgstr ""
 "provides metadata files for the dataset as well as other avenues for "
 "accessing the dataset:"
 
-#: src/components/mixins/datasets.js:202
+#: src/components/mixins/datasets.js:228
 msgid ""
 "The open government portal page for the Statistically downscaled climate "
 "scenarios also provides metadata files for the dataset as well as other "
@@ -1667,7 +1696,7 @@ msgstr "Time interval / Time of year"
 msgid "Time range type"
 msgstr "Time range type"
 
-#: src/components/mixins/datasets.js:388
+#: src/components/mixins/datasets.js:414
 msgid "Tips for using the tool"
 msgstr "Tips for using the tool"
 
@@ -1682,7 +1711,7 @@ msgstr ""
 "<kbd>tab</kbd> focus to the interactive map box and then press the arrow "
 "keys."
 
-#: src/components/mixins/datasets.js:391
+#: src/components/mixins/datasets.js:417
 msgid ""
 "to see only selected stations in the table, click the \"Show selected\" "
 "button"
@@ -1713,7 +1742,7 @@ msgstr ""
 msgid "Total number of records: {numRecords}"
 msgstr "Total number of records: {numRecords}"
 
-#: src/components/mixins/datasets.js:222
+#: src/components/mixins/datasets.js:248
 #: src/views/CanGRDForm.vue:248
 #: src/views/CanGRDForm.vue:253
 #: src/views/DCSForm.vue:259
@@ -1725,7 +1754,7 @@ msgstr "Total precipitation"
 msgid "Trend values"
 msgstr "Trend values"
 
-#: src/components/mixins/datasets.js:383
+#: src/components/mixins/datasets.js:409
 msgid ""
 "Use the climate data extraction tool to download climate data from the "
 "selected Environment and Climate Change Canada's datasets."
@@ -1743,7 +1772,7 @@ msgstr ""
 "selected Environment and Climate Change Canada's datasets. You can specify "
 "the date ranges, variables, download format and other options."
 
-#: src/components/mixins/datasets.js:387
+#: src/components/mixins/datasets.js:413
 msgid ""
 "Use the climate data extraction tool to download climate data from the "
 "selected Environment and Climate Change Canada's datasets. You can specify "
@@ -1793,11 +1822,15 @@ msgstr "Variable"
 msgid "View releases on GitHub"
 msgstr "View releases on GitHub"
 
-#: src/views/LTCEForm.vue:41
+#: src/views/LTCEForm.vue:43
 msgid "Virtual climate station list download:"
 msgstr "Virtual climate station list download:"
 
-#: src/views/LTCEForm.vue:300
+#: src/components/mixins/datasets.js:124
+msgid "Virtual Climate stations"
+msgstr "Virtual climate stations"
+
+#: src/views/LTCEForm.vue:304
 msgid ""
 "Virtual Climate stations correspond with the city pages of "
 "{weatherOfficeLink}. A Virtual Climate station is the result of threading "
@@ -1817,15 +1850,15 @@ msgstr ""
 "indicate that the data are drawn from that area(within a 20km radius from "
 "the urban center) rather than a single precise location."
 
-#: src/views/LTCEForm.vue:227
+#: src/views/LTCEForm.vue:231
 msgid "Virtual station ID"
 msgstr "Virtual station ID"
 
-#: src/views/LTCEForm.vue:226
+#: src/views/LTCEForm.vue:230
 msgid "Virtual station name"
 msgstr "Virtual station name"
 
-#: src/components/mixins/datasets.js:406
+#: src/components/mixins/datasets.js:432
 msgid ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like "
 "data for a single grid point only"
@@ -1865,7 +1898,7 @@ msgstr ""
 "suggestions, <a href=\"{supportDeskUrl}\">contact the Climate Services "
 "Support Desk</a>."
 
-#: src/components/mixins/datasets.js:296
+#: src/components/mixins/datasets.js:322
 msgid "Weather, climate and hazards"
 msgstr "Weather, climate and hazards"
 
@@ -1879,7 +1912,7 @@ msgstr "Winter (December-February)"
 msgid "World Geodetic System 1984 (EPSG:4326)"
 msgstr "World Geodetic System 1984 (EPSG:4326)"
 
-#: src/components/mixins/datasets.js:384
+#: src/components/mixins/datasets.js:410
 msgid ""
 "You can specify the date ranges, variables, download format and other "
 "options. Use the map to select a geographic subset of the data. The "
@@ -1912,7 +1945,7 @@ msgstr "YYYY-MM-DD"
 msgid "Zooming:"
 msgstr "Zooming:"
 
-#: src/components/mixins/datasets.js:248
+#: src/components/mixins/datasets.js:274
 msgctxt "Abbreviatio definition for: CanSIPS"
 msgid "Canadian Seasonal to Inter-annual Prediction System"
 msgstr "Canadian Seasonal to Inter-annual Prediction System"
@@ -1922,7 +1955,7 @@ msgctxt "Abbreviation definition for: AHCCD"
 msgid "Adjusted and Homogenized Canadian Climate Data"
 msgstr "Adjusted and Homogenized Canadian Climate Data"
 
-#: src/components/mixins/datasets.js:124
+#: src/components/mixins/datasets.js:150
 msgctxt "Abbreviation definition for: CANGRD"
 msgid "Canadian Gridded Temperature and Precipitation Anomalies"
 msgstr "Canadian Gridded Temperature and Precipitation Anomalies"
@@ -1932,7 +1965,7 @@ msgctxt "Abbreviation definition for: LTCE"
 msgid "Long Term Climate Extremes"
 msgstr "Long Term Climate Extremes"
 
-#: src/components/mixins/datasets.js:233
+#: src/components/mixins/datasets.js:259
 msgctxt "Abbreviation definition for: RDPA"
 msgid "Regional Deterministic Precipitation Analysis"
 msgstr "Regional Deterministic Precipitation Analysis"
@@ -1942,12 +1975,12 @@ msgctxt "Abbreviation: Adjusted and Homogenized Canadian Climate Data"
 msgid "AHCCD"
 msgstr "AHCCD"
 
-#: src/components/mixins/datasets.js:123
+#: src/components/mixins/datasets.js:149
 msgctxt "Abbreviation: Canadian Gridded Temperature and Precipitation Anomalies"
 msgid "CANGRD"
 msgstr "CANGRD"
 
-#: src/components/mixins/datasets.js:247
+#: src/components/mixins/datasets.js:273
 msgctxt "Abbreviation: Canadian Seasonal to Inter-annual Prediction System"
 msgid "CanSIPS"
 msgstr "CanSIPS"
@@ -1957,12 +1990,12 @@ msgctxt "Abbreviation: Long Term Climate Extremes"
 msgid "LTCE"
 msgstr "LTCE"
 
-#: src/components/mixins/datasets.js:232
+#: src/components/mixins/datasets.js:258
 msgctxt "Abbreviation: Regional Deterministic Precipitation Analysis"
 msgid "RDPA"
 msgstr "RDPA"
 
-#: src/components/mixins/datasets.js:282
+#: src/components/mixins/datasets.js:308
 msgctxt "Breadcrumb"
 msgid "Home"
 msgstr "Home"
@@ -2187,9 +2220,9 @@ msgstr "You are here:"
 #: src/views/HydrometricArchiveForm.vue:230
 #: src/views/HydrometricArchiveForm.vue:234
 #: src/views/HydrometricArchiveForm.vue:238
-#: src/views/LTCEForm.vue:251
 #: src/views/LTCEForm.vue:255
 #: src/views/LTCEForm.vue:259
+#: src/views/LTCEForm.vue:263
 msgctxt "Colon"
 msgid ":"
 msgstr ":"
@@ -2199,12 +2232,12 @@ msgctxt "Dataset Name"
 msgid "Adjusted and Homogenized Canadian Climate Data"
 msgstr "Adjusted and Homogenized Canadian Climate Data"
 
-#: src/components/mixins/datasets.js:122
+#: src/components/mixins/datasets.js:148
 msgctxt "Dataset Name"
 msgid "Canadian Gridded Temperature and Precipitation Anomalies"
 msgstr "Canadian Gridded Temperature and Precipitation Anomalies"
 
-#: src/components/mixins/datasets.js:246
+#: src/components/mixins/datasets.js:272
 msgctxt "Dataset Name"
 msgid "Canadian Seasonal to Inter-annual Prediction System"
 msgstr "Canadian Seasonal to Inter-annual Prediction System"
@@ -2224,12 +2257,12 @@ msgctxt "Dataset Name"
 msgid "Daily climate records"
 msgstr "Daily climate records"
 
-#: src/components/mixins/datasets.js:137
+#: src/components/mixins/datasets.js:163
 msgctxt "Dataset Name"
 msgid "Global climate model scenarios"
 msgstr "Global climate model scenarios"
 
-#: src/components/mixins/datasets.js:107
+#: src/components/mixins/datasets.js:133
 msgctxt "Dataset Name"
 msgid "Historical hydrometric data"
 msgstr "Historical hydrometric data"
@@ -2239,12 +2272,12 @@ msgctxt "Dataset Name"
 msgid "Monthly climate summaries"
 msgstr "Monthly climate summaries"
 
-#: src/components/mixins/datasets.js:231
+#: src/components/mixins/datasets.js:257
 msgctxt "Dataset Name"
 msgid "Regional Deterministic Precipitation Analysis"
 msgstr "Regional Deterministic Precipitation Analysis"
 
-#: src/components/mixins/datasets.js:190
+#: src/components/mixins/datasets.js:216
 msgctxt "Dataset Name"
 msgid "Statistically downscaled climate scenarios"
 msgstr "Statistically downscaled climate scenarios"

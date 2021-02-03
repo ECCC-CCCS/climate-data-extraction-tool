@@ -36,7 +36,9 @@
 
           <p v-html="techDocHtml"></p>
 
-          <p v-html="openPortalHtml"></p>
+          <open-portal-links
+            :open-portal-list-html="openPortalListHtml"
+            :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
 
           <strong v-translate>Virtual climate station list download:</strong>
           <ul>
@@ -140,6 +142,7 @@ import URLBox from '@/components/URLBox'
 import InfoContactSupport from '@/components/InfoContactSupport'
 import StationListLink from '@/components/StationListLink'
 import DataAccessDocLink from '@/components/DataAccessDocLink'
+import OpenPortalLinks from '@/components/OpenPortalLinks'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
@@ -157,7 +160,8 @@ export default {
     'url-box': URLBox,
     'info-contact-support': InfoContactSupport,
     'station-list-link': StationListLink,
-    DataAccessDocLink
+    DataAccessDocLink,
+    OpenPortalLinks
   },
   data () {
     return {

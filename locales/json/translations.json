@@ -1324,7 +1324,7 @@
 			"Frequently asked questions about LTCE": {
 				"msgid": "Frequently asked questions about LTCE",
 				"msgstr": [
-					""
+					"Frequently asked questions about LTCE"
 				]
 			},
 			"Future": {
@@ -1780,7 +1780,7 @@
 			"see FAQ": {
 				"msgid": "see FAQ",
 				"msgstr": [
-					""
+					"see FAQ"
 				]
 			},
 			"select stations on the map or in the table by clicking on them": {
@@ -1984,7 +1984,7 @@
 			"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
 				"msgid": "The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.",
 				"msgstr": [
-					""
+					"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area."
 				]
 			},
 			"The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.": {
@@ -2015,6 +2015,12 @@
 				"msgid": "The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.",
 				"msgstr": [
 					"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download."
+				]
+			},
+			"The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
+				"msgstr": [
+					"The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:"
 				]
 			},
 			"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
@@ -2213,6 +2219,12 @@
 				"msgid": "Virtual climate station list download:",
 				"msgstr": [
 					"Virtual climate station list download:"
+				]
+			},
+			"Virtual Climate stations": {
+				"msgid": "Virtual Climate stations",
+				"msgstr": [
+					"Virtual climate stations"
 				]
 			},
 			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {
@@ -4331,6 +4343,12 @@
 					"Les données des Scénarios basés sur des modèles climatiques globaux s’appuient sur un ensemble de projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5) sont fournis. Les changements climatiques projetés, quant à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une grille de résolution de 1 degré x 1 degré. La médiane des changements projetés de l’ensemble multimodèles est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles \nmensuels, saisonniers et annuels du CMIP5, à l’aide de l’outil d’extraction de données climatiques."
 				]
 			},
+			"The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
+				"msgstr": [
+					"La page du portail du gouvernement ouvert relative aux Données climatiques quotidiennes fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données :"
+				]
+			},
 			"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
 				"msgid": "The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
@@ -4527,6 +4545,12 @@
 				"msgid": "Virtual climate station list download:",
 				"msgstr": [
 					"Téléchargement de la liste des stations climatiques virtuelles :"
+				]
+			},
+			"Virtual Climate stations": {
+				"msgid": "Virtual Climate stations",
+				"msgstr": [
+					"Les stations climatiques virtuelles"
 				]
 			},
 			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {

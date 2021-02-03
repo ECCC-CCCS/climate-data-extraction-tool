@@ -98,9 +98,35 @@ export const datasets = {
             phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on <abbr title="{datasetName}">LTCE</abbr></a>.')
           },
           openPortal: {
-            en: 'https://open.canada.ca/data/en/dataset/TBD',
-            fr: 'https://ouvert.canada.ca/data/fr/dataset/TBD',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+            en: 'https://open.canada.ca/data/en/dataset/',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.'),
+            phraseList: this.$gettext('The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:'),
+            variables: [{
+              'name': this.$gettext('Temperature - Daily extremes of record'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+              }
+            }, {
+              'name': this.$gettext('Precipitation - Daily extremes of record'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+              }
+            }, {
+              'name': this.$gettext('Snowfall - Daily extremes of record'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+              }
+            }, {
+              'name': this.$gettext('Virtual Climate stations'),
+              'url': {
+                'en': 'https://open.canada.ca/data/en/dataset/',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+              }
+            }]
           }
         },
         hydrometric: {
