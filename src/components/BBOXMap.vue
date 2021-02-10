@@ -210,6 +210,7 @@ export default {
         origin: [-34655800, 39310000]
       }),
       bbox_value: this.initialBbox,
+      moveendPause: false,
       zoom: 3,
       minZoom: 0,
       maxBounds: L.latLngBounds(L.latLng(20, -175), L.latLng(90, -10)),
@@ -474,6 +475,9 @@ export default {
       this.$emit('change', this.bbox_value)
     },
     updateBBOXfromMap: function () {
+      if (this.moveendPause) {
+        return false
+      }
       if (Object.prototype.hasOwnProperty.call(this.$refs, 'BBOXMap')) {
         if (Object.prototype.hasOwnProperty.call(this.$refs.BBOXMap, 'mapObject')) {
           let bboxBounds = this.$refs.BBOXMap.mapObject.getBounds()
@@ -548,12 +552,12 @@ export default {
       }
     },
     resetBBOX: function () {
-      this.$refs.BBOXMap.mapObject.off('moveend') // prevent moveend propagation event
+      this.moveendPause = false
       this.$refs.BBOXMap.mapObject.setView(this.center, this.zoom)
       this.bbox_value = INIT_BBOX
       this.updateBBOX()
       setTimeout(() => {
-        this.$refs.BBOXMap.mapObject.on('moveend', this.updateBBOXfromMap)
+        this.moveendPause = false
       }, 500) // resume moveend event after a delay
     },
     getStationMarkers: function () {
