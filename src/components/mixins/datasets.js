@@ -93,8 +93,8 @@ export const datasets = {
           abbr: this.$pgettext('Abbreviation: Long Term Climate Extremes', 'LTCE'),
           abbrName: this.$pgettext('Abbreviation definition for: LTCE', 'Long Term Climate Extremes'),
           techDoc: {
-            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-TBD.html',
-            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-TBD.html',
+            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-daily-climate-records.html',
+            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-records-extremes-quotidiens.html',
             phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on <abbr title="{datasetName}">LTCE</abbr></a>.')
           },
           openPortal: {
