@@ -123,8 +123,8 @@ export const datasets = {
             }, {
               'name': this.$gettext('Virtual Climate stations'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+                'en': 'https://open.canada.ca/data/en/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652'
               }
             }]
           }
