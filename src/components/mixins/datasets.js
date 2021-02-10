@@ -105,20 +105,20 @@ export const datasets = {
             variables: [{
               'name': this.$gettext('Temperature - Daily extremes of record'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset?q=record+temperature&organization=ec',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset?q=record+temperature&organization=ec'
+                'en': 'https://open.canada.ca/data/en/dataset/8a12c7f4-b9c9-54bc-a72a-2d59faed4cd3',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/8a12c7f4-b9c9-54bc-a72a-2d59faed4cd3'
               }
             }, {
               'name': this.$gettext('Precipitation - Daily extremes of record'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset?q=record+precipitation&organization=ec',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset?q=record+precipitation&organization=ec'
+                'en': 'https://open.canada.ca/data/en/dataset/341ae11e-e29d-5f8e-a504-c29b26450e7e',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/341ae11e-e29d-5f8e-a504-c29b26450e7e'
               }
             }, {
               'name': this.$gettext('Snowfall - Daily extremes of record'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset?q=record+snowfall&organization=ec',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset?q=record+snowfall&organization=ec'
+                'en': 'https://open.canada.ca/data/en/dataset/b6915a49-f101-571d-952a-375021062172',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/b6915a49-f101-571d-952a-375021062172'
               }
             }, {
               'name': this.$gettext('Virtual Climate stations'),
