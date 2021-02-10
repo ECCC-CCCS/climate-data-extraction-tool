@@ -105,20 +105,20 @@ export const datasets = {
             variables: [{
               'name': this.$gettext('Temperature - Daily extremes of record'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+                'en': 'https://open.canada.ca/data/en/dataset?q=record+temperature&organization=ec',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset?q=record+temperature&organization=ec'
               }
             }, {
               'name': this.$gettext('Precipitation - Daily extremes of record'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+                'en': 'https://open.canada.ca/data/en/dataset?q=record+precipitation&organization=ec',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset?q=record+precipitation&organization=ec'
               }
             }, {
               'name': this.$gettext('Snowfall - Daily extremes of record'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/'
+                'en': 'https://open.canada.ca/data/en/dataset?q=record+snowfall&organization=ec',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset?q=record+snowfall&organization=ec'
               }
             }, {
               'name': this.$gettext('Virtual Climate stations'),
