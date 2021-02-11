@@ -359,6 +359,7 @@ export default {
       }
     },
     windowWidth: function (newWidth) {
+      // adjust initial/reset zoom level for smaller screen sizes
       if (newWidth <= 560) {
         this.zoom = 2
       } else {
