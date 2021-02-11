@@ -209,6 +209,7 @@ export default {
         ],
         origin: [-34655800, 39310000]
       }),
+      windowWidth: window.innerWidth,
       bbox_value: this.initialBbox,
       moveendPause: false,
       zoom: 3,
@@ -356,6 +357,13 @@ export default {
           this.selectMarkersByProvince(this.province, this.getStationMarkers())
         }
       }
+    },
+    windowWidth: function (newWidth) {
+      if (newWidth <= 560) {
+        this.zoom = 2
+      } else {
+        this.zoom = 3
+      }
     }
   },
   mounted: function () {
@@ -383,6 +391,12 @@ export default {
 
     // reset bbox value
     this.$store.dispatch('changeBBOX', this.bbox_value)
+
+    // window resize
+    window.addEventListener('resize', this.onResize)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
   },
   computed: {
     pointClickError: function () {
@@ -552,17 +566,20 @@ export default {
       }
     },
     resetBBOX: function () {
-      this.moveendPause = false
+      this.moveendPause = true
       this.$refs.BBOXMap.mapObject.setView(this.center, this.zoom)
       this.bbox_value = INIT_BBOX
       this.updateBBOX()
       setTimeout(() => {
         this.moveendPause = false
-      }, 500) // resume moveend event after a delay
+      }, 900) // resume moveend event after a delay
     },
     getStationMarkers: function () {
       let stationMarkers = this.geojsonLayer.getLayers()
       return stationMarkers
+    },
+    onResize: function () {
+      this.windowWidth = window.innerWidth
     }
   }
 }

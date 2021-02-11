@@ -103,25 +103,25 @@ export const datasets = {
             phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate records</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.'),
             phraseList: this.$gettext('The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:'),
             variables: [{
-              'name': this.$gettext('Temperature - Daily extremes of record'),
+              'name': this.$gettext('Daily extremes of record (LTCE) - Temperature'),
               'url': {
                 'en': 'https://open.canada.ca/data/en/dataset/8a12c7f4-b9c9-54bc-a72a-2d59faed4cd3',
                 'fr': 'https://ouvert.canada.ca/data/fr/dataset/8a12c7f4-b9c9-54bc-a72a-2d59faed4cd3'
               }
             }, {
-              'name': this.$gettext('Precipitation - Daily extremes of record'),
+              'name': this.$gettext('Daily extremes of record (LTCE) - Precipitation'),
               'url': {
                 'en': 'https://open.canada.ca/data/en/dataset/341ae11e-e29d-5f8e-a504-c29b26450e7e',
                 'fr': 'https://ouvert.canada.ca/data/fr/dataset/341ae11e-e29d-5f8e-a504-c29b26450e7e'
               }
             }, {
-              'name': this.$gettext('Snowfall - Daily extremes of record'),
+              'name': this.$gettext('Daily extremes of record (LTCE) - Snowfall'),
               'url': {
                 'en': 'https://open.canada.ca/data/en/dataset/b6915a49-f101-571d-952a-375021062172',
                 'fr': 'https://ouvert.canada.ca/data/fr/dataset/b6915a49-f101-571d-952a-375021062172'
               }
             }, {
-              'name': this.$gettext('Virtual Climate stations'),
+              'name': this.$gettext('Long Term Climate Extremes, Virtual Climate Stations'),
               'url': {
                 'en': 'https://open.canada.ca/data/en/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652',
                 'fr': 'https://ouvert.canada.ca/data/fr/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652'

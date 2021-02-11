@@ -199,7 +199,11 @@ Cypress E2E testing is used as the UI heavily relies on the web services to work
 
 Start up Cypress E2E test UI:
 ```sh
+# test with .env only
 npm run test:e2e
+
+# test with .env.testing (and .env)
+npx vue-cli-service test:e2e --mode testing
 
 # headless mode
 npx vue-cli-service test:e2e --mode testing --headless

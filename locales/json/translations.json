@@ -979,6 +979,24 @@
 					"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground."
 				]
 			},
+			"Daily extremes of record (LTCE) - Precipitation": {
+				"msgid": "Daily extremes of record (LTCE) - Precipitation",
+				"msgstr": [
+					"Daily extremes of record (LTCE) - Precipitation"
+				]
+			},
+			"Daily extremes of record (LTCE) - Snowfall": {
+				"msgid": "Daily extremes of record (LTCE) - Snowfall",
+				"msgstr": [
+					"Daily extremes of record (LTCE) - Snowfall"
+				]
+			},
+			"Daily extremes of record (LTCE) - Temperature": {
+				"msgid": "Daily extremes of record (LTCE) - Temperature",
+				"msgstr": [
+					"Daily extremes of record (LTCE) - Temperature"
+				]
+			},
 			"Daily max/min": {
 				"msgid": "Daily max/min",
 				"msgstr": [
@@ -1451,6 +1469,12 @@
 				"msgid": "Loading stations... please wait",
 				"msgstr": [
 					"Loading stations... please wait"
+				]
+			},
+			"Long Term Climate Extremes, Virtual Climate Stations": {
+				"msgid": "Long Term Climate Extremes, Virtual Climate Stations",
+				"msgstr": [
+					"Long Term Climate Extremes, Virtual Climate Stations"
 				]
 			},
 			"Longitude": {
@@ -2219,12 +2243,6 @@
 				"msgid": "Virtual climate station list download:",
 				"msgstr": [
 					"Virtual climate station list download:"
-				]
-			},
-			"Virtual Climate stations": {
-				"msgid": "Virtual Climate stations",
-				"msgstr": [
-					"Virtual climate stations"
 				]
 			},
 			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {
@@ -3305,6 +3323,24 @@
 					"Les données climatiques quotidiennes sont dérivées de deux sources de données; les stations climatologiques quotidiennes qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
 				]
 			},
+			"Daily extremes of record (LTCE) - Precipitation": {
+				"msgid": "Daily extremes of record (LTCE) - Precipitation",
+				"msgstr": [
+					"Extrêmes quotidiens (ECLT) - Précipitations"
+				]
+			},
+			"Daily extremes of record (LTCE) - Snowfall": {
+				"msgid": "Daily extremes of record (LTCE) - Snowfall",
+				"msgstr": [
+					"Extrêmes quotidiens (ECLT) - Neige"
+				]
+			},
+			"Daily extremes of record (LTCE) - Temperature": {
+				"msgid": "Daily extremes of record (LTCE) - Temperature",
+				"msgstr": [
+					"Extrêmes quotidiens (ECLT) - Température"
+				]
+			},
 			"Daily max/min": {
 				"msgid": "Daily max/min",
 				"msgstr": [
@@ -3777,6 +3813,12 @@
 				"msgid": "Loading stations... please wait",
 				"msgstr": [
 					"Les stations sont en train de télécharger… Veuillez patienter"
+				]
+			},
+			"Long Term Climate Extremes, Virtual Climate Stations": {
+				"msgid": "Long Term Climate Extremes, Virtual Climate Stations",
+				"msgstr": [
+					"Extrêmes climatiques à long terme, les stations climatiques virtuelles"
 				]
 			},
 			"Longitude": {
@@ -4545,12 +4587,6 @@
 				"msgid": "Virtual climate station list download:",
 				"msgstr": [
 					"Téléchargement de la liste des stations climatiques virtuelles :"
-				]
-			},
-			"Virtual Climate stations": {
-				"msgid": "Virtual Climate stations",
-				"msgstr": [
-					"Les stations climatiques virtuelles"
 				]
 			},
 			"Virtual Climate stations correspond with the city pages of {weatherOfficeLink}. A Virtual Climate station is the result of threading together climate data from proximate current and historical stations to construct a long term threaded data set. The length of the time series of virtual stations is often greater than 100 years. A Virtual Climate station is always named for an \"Area\" rather than a point, e.g. Winnipeg Area, to indicate that the data are drawn from that area(within a 20km radius from the urban center) rather than a single precise location.": {

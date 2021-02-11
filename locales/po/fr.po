@@ -93,7 +93,7 @@ msgstr ""
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr "<a href=\"{link}\" target=\"_blank\">En savoir plus sur les percentiles</a>"
 
-#: src/components/BBOXMap.vue:401
+#: src/components/BBOXMap.vue:416
 msgid "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
 msgstr "Contributeurs à <a href=\"http://osm.org/copyright\">OpenStreetMap</a>"
 
@@ -482,6 +482,18 @@ msgstr ""
 "produisent habituellement plus d’éléments météorologiques, p. ex, le vent "
 "ou la neige au sol."
 
+#: src/components/mixins/datasets.js:112
+msgid "Daily extremes of record (LTCE) - Precipitation"
+msgstr "Extrêmes quotidiens (ECLT) - Précipitations"
+
+#: src/components/mixins/datasets.js:118
+msgid "Daily extremes of record (LTCE) - Snowfall"
+msgstr "Extrêmes quotidiens (ECLT) - Neige"
+
+#: src/components/mixins/datasets.js:106
+msgid "Daily extremes of record (LTCE) - Temperature"
+msgstr "Extrêmes quotidiens (ECLT) - Température"
+
 #: src/views/HydrometricArchiveForm.vue:208
 msgid "Daily max/min"
 msgstr "Max/min quotidien"
@@ -652,11 +664,11 @@ msgstr ""
 "Télécharger la liste des informations détaillées pour chaque station pour "
 "l’ensemble des données sur les Sommaires climatiques mensuels."
 
-#: src/components/BBOXMap.vue:397
+#: src/components/BBOXMap.vue:412
 msgid "Download a region"
 msgstr "Télécharger la région"
 
-#: src/components/BBOXMap.vue:396
+#: src/components/BBOXMap.vue:411
 msgid "Download data for a single location as a CSV or GeoJSON"
 msgstr ""
 "Télécharger des données pour un point de grille unique sous forme CSV ou "
@@ -983,6 +995,10 @@ msgstr "Répertoire de ressources climatiques"
 msgid "Loading stations... please wait"
 msgstr "Les stations sont en train de télécharger… Veuillez patienter"
 
+#: src/components/mixins/datasets.js:124
+msgid "Long Term Climate Extremes, Virtual Climate Stations"
+msgstr "Extrêmes climatiques à long terme, les stations climatiques virtuelles"
+
 #: src/views/AHCCDForm.vue:185
 #: src/views/ClimateDailyForm.vue:197
 #: src/views/ClimateMonthlyForm.vue:197
@@ -1176,7 +1192,6 @@ msgstr ""
 msgid "Please select a point on the map."
 msgstr "Veuillez sélectionner un point sur la carte."
 
-#: src/components/mixins/datasets.js:112
 #: src/views/LTCEForm.vue:241
 msgid "Precipitation - Daily extremes of record"
 msgstr "Précipitations - Extrêmes quotidiens"
@@ -1308,7 +1323,6 @@ msgstr "Téléchargement de point de grille unique n'est pas disponible"
 msgid "Snow depth"
 msgstr "Épaisseur de la neige"
 
-#: src/components/mixins/datasets.js:118
 #: src/views/LTCEForm.vue:242
 msgid "Snowfall - Daily extremes of record"
 msgstr "Neige - Extrêmes quotidiens"
@@ -1360,7 +1374,6 @@ msgstr "Été (juin à août)"
 msgid "Surface wind speed"
 msgstr "Vitesse du vent à la surface"
 
-#: src/components/mixins/datasets.js:106
 #: src/views/LTCEForm.vue:240
 msgid "Temperature - Daily extremes of record"
 msgstr "Température - Extrêmes quotidiens"
@@ -1889,10 +1902,6 @@ msgstr "Voir les communiqués sur GitHub"
 msgid "Virtual climate station list download:"
 msgstr "Téléchargement de la liste des stations climatiques virtuelles :"
 
-#: src/components/mixins/datasets.js:124
-msgid "Virtual Climate stations"
-msgstr "Les stations climatiques virtuelles"
-
 #: src/views/LTCEForm.vue:304
 msgid ""
 "Virtual Climate stations correspond with the city pages of "
@@ -2352,7 +2361,7 @@ msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr "-- Aucun --"
 
-#: src/components/BBOXMap.vue:404
+#: src/components/BBOXMap.vue:419
 msgctxt "Title"
 msgid "Canada Base Map Transportation"
 msgstr "Carte de base du Canada - Transport"
