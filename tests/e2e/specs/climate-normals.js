@@ -13,7 +13,7 @@ describe('E2E test for climate normals data with various form options', () => {
     })
 
     // Stations are loaded on the map as clusters
-    cy.checkMarkerClusters(10)
+    cy.checkMarkerClusters(6)
 
     // Zoom in to map
     cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
