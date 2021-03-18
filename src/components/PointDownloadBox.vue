@@ -103,13 +103,18 @@ export default {
         }
       ]
       let rasterDrillUrl = this.WPS_SERVER + this.WPS_RASTER_DRILL
-      if (this.pointInputs.format === 'csv') {
-        rasterDrillUrl += '?response=raw'
+
+      const inputData = {
+        inputs: inputs
       }
+      if (this.pointInputs.format === 'csv') {
+        inputData.response = 'raw'
+      }
+
 
       this.loading = true
       this.downloadError = false
-      axios.post(rasterDrillUrl, { inputs: inputs }, { timeout: 300000 })
+      axios.post(rasterDrillUrl, inputData, { timeout: 300000 })
         .then((resp) => {
           let data = resp.data
           let fileFormat = this.pointInputs.format
