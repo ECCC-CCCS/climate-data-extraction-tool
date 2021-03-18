@@ -161,7 +161,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Reset station selection
-    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click()
+    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click({force: true})
 
     cy.get('#map-loading-screen').should('be.hidden')
 
