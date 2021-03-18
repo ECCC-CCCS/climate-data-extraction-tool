@@ -156,7 +156,7 @@ describe('E2E test for LTCE data with various form options', () => {
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Reset station selection
-    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click()
+    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click({force: true})
 
     // value type
     cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=SNOWFALL.*/).as('stationData')
