@@ -105,8 +105,10 @@ export default {
       let rasterDrillUrl = this.WPS_SERVER + this.WPS_RASTER_DRILL
 
       const inputData = {
-        inputs: inputs,
-        response: 'raw' // removes "outputs" wrapper for geoJSON and CSV response.
+        inputs: inputs
+      }
+      if (this.pointInputs.format === 'csv') {
+        inputData.response = 'raw'
       }
 
 
