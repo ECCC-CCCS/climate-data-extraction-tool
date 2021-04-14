@@ -13,7 +13,7 @@ describe('E2E test for climate monthly data with various form options', () => {
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.features.length).to.be.greaterThan(8200)
     })
-    cy.wait('@dateRangeData').then((xhr) => {
+    cy.wait('@dateRangeData', {timeout: 20000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
@@ -31,7 +31,7 @@ describe('E2E test for climate monthly data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-monthly\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countData').then((xhr) => {
+    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -71,7 +71,7 @@ describe('E2E test for climate monthly data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-monthly\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countData').then((xhr) => {
+    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -117,7 +117,7 @@ describe('E2E test for climate monthly data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-monthly\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countData').then((xhr) => {
+    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')

@@ -4,7 +4,7 @@ describe('E2E test for climate normals data with various form options', () => {
   it('Check climate normals stations and download data as CSV', () => {
     cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*HAS_NORMALS_DATA=Y.*/).as('stationData')
     cy.visit('/#/climate-normals')
-    cy.wait('@stationData').then((xhr) => {
+    cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
@@ -26,7 +26,7 @@ describe('E2E test for climate normals data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-normals\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countData').then((xhr) => {
+    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -61,7 +61,7 @@ describe('E2E test for climate normals data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-normals\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countData').then((xhr) => {
+    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -103,7 +103,7 @@ describe('E2E test for climate normals data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-normals\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
-    cy.wait('@countData').then((xhr) => {
+    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
