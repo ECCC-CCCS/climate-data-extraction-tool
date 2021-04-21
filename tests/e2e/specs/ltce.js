@@ -30,13 +30,13 @@ describe('E2E test for LTCE data with various form options', () => {
     // retrieve download list
     cy.intercept('GET', /.*\/collections\/ltce-temperature\/items.*resulttype=hits.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(270000)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
@@ -74,13 +74,13 @@ describe('E2E test for LTCE data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/ltce-temperature\/items\?.*LOCAL_MONTH=03.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(2900)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
@@ -132,13 +132,13 @@ describe('E2E test for LTCE data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/ltce-precipitation\/items.*resulttype=hits.*/).as('countData')
     cy.get('#retrieve-download-links').click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.equal(3)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').should('be.visible')
@@ -189,13 +189,13 @@ describe('E2E test for LTCE data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/ltce-snowfall\/items.*resulttype=hits.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.equal(14)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')

@@ -45,13 +45,13 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download list
     cy.intercept('GET', /.*\/collections\/hydrometric-daily-mean\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(62976000)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
@@ -88,13 +88,13 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-monthly-mean\/items\?.*PROV_TERR_STATE_LOC=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(428000)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
@@ -137,13 +137,13 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-peaks\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(20)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').should('be.visible')
@@ -187,13 +187,13 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-statistics\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(500)
     })
+    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
