@@ -5,6 +5,11 @@
         <h1>{{ currentRouteTitle }}</h1>
 
         <p>{{ introDatasetText.station.instructions }}</p>
+
+        <div class="alert alert-info">
+          <p v-html="htmlNoteMoreData"></p>
+        </div>
+
         <p>
           <strong>{{ introDatasetText.station.tipTitle }}</strong>
           <ul>
@@ -213,6 +218,14 @@ export default {
           label: this.station_props_display[stationCols[2]] + this.$pgettext('Colon', ':')
         }
       }
+    },
+    htmlNoteMoreData: function () {
+      const url = {
+        en: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_EN + '/prods_servs/cdn_climate_summary_e.html',
+        fr: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_FR + '/prods_servs/cdn_climate_summary_f.html'
+      }
+      const website = `<a href="${url[this.$i18n.activeLocale]}" target="_blank">` + this.$pgettext('a phrase that is mid sentence', 'Government of Canada Historical Climate Data website') + '</a>'
+      return this.$_i(this.$gettext('Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.'), {website: website})
     }
   }
 }
