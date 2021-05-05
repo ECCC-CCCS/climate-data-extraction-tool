@@ -1,5 +1,21 @@
 {
 	"en": {
+		"a phrase that is mid sentence": {
+			"Government of Canada Canadian Climate Normals website": {
+				"msgid": "Government of Canada Canadian Climate Normals website",
+				"msgctxt": "a phrase that is mid sentence",
+				"msgstr": [
+					""
+				]
+			},
+			"Government of Canada Historical Climate Data website": {
+				"msgid": "Government of Canada Historical Climate Data website",
+				"msgctxt": "a phrase that is mid sentence",
+				"msgstr": [
+					""
+				]
+			}
+		},
 		"Abbreviatio definition for: CanSIPS": {
 			"Canadian Seasonal to Inter-annual Prediction System": {
 				"msgid": "Canadian Seasonal to Inter-annual Prediction System",
@@ -1399,6 +1415,12 @@
 					"Historical start date"
 				]
 			},
+			"Hourly data for some stations and variables can be found on the {website}.": {
+				"msgid": "Hourly data for some stations and variables can be found on the {website}.",
+				"msgstr": [
+					""
+				]
+			},
 			"How to use: interactive map": {
 				"msgid": "How to use: interactive map",
 				"msgstr": [
@@ -1591,6 +1613,12 @@
 					"Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data."
 				]
 			},
+			"Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.": {
+				"msgid": "Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.",
+				"msgstr": [
+					""
+				]
+			},
 			"Monthly mean": {
 				"msgid": "Monthly mean",
 				"msgstr": [
@@ -1661,6 +1689,12 @@
 				"msgid": "only 20 stations can be selected at once",
 				"msgstr": [
 					"only 20 stations can be selected at once"
+				]
+			},
+			"Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.": {
+				"msgid": "Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.",
+				"msgstr": [
+					""
 				]
 			},
 			"Ontario": {
@@ -2344,6 +2378,22 @@
 		}
 	},
 	"fr": {
+		"a phrase that is mid sentence": {
+			"Government of Canada Canadian Climate Normals website": {
+				"msgid": "Government of Canada Canadian Climate Normals website",
+				"msgctxt": "a phrase that is mid sentence",
+				"msgstr": [
+					"normales climatiques du gouvernement du Canada"
+				]
+			},
+			"Government of Canada Historical Climate Data website": {
+				"msgid": "Government of Canada Historical Climate Data website",
+				"msgctxt": "a phrase that is mid sentence",
+				"msgstr": [
+					"données climatiques historiques du gouvernement du Canada"
+				]
+			}
+		},
 		"Abbreviatio definition for: CanSIPS": {
 			"Canadian Seasonal to Inter-annual Prediction System": {
 				"msgid": "Canadian Seasonal to Inter-annual Prediction System",
@@ -3743,6 +3793,12 @@
 					"Date de début de l'historique"
 				]
 			},
+			"Hourly data for some stations and variables can be found on the {website}.": {
+				"msgid": "Hourly data for some stations and variables can be found on the {website}.",
+				"msgstr": [
+					"Les données horaires sont disponibles pour certaines stations et variables sur le site Web des {website}."
+				]
+			},
 			"How to use: interactive map": {
 				"msgid": "How to use: interactive map",
 				"msgstr": [
@@ -3935,6 +3991,12 @@
 					"Les sommaires climatiques mensuels sont des sommaires transcacanadiens des moyennes et des extrêmespour le mois, y compris les précipitations totales, les températures maximales et minimales et les degrés-jours."
 				]
 			},
+			"Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.": {
+				"msgid": "Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.",
+				"msgstr": [
+					"Les sommaires climatiques mensuels sont disponibles pour être téléchargés par province/territoire sur le site Web des {website}. Les sommaires disponibles sur chacun des sites sont dérivés à partir des mêmes données, mais certains paramètres climatiques y sont présentés différemment en fonction du site."
+				]
+			},
 			"Monthly mean": {
 				"msgid": "Monthly mean",
 				"msgstr": [
@@ -4005,6 +4067,12 @@
 				"msgid": "only 20 stations can be selected at once",
 				"msgstr": [
 					"vous ne pouvez sélectionner qu’un maximum de 20 stations à la fois"
+				]
+			},
+			"Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.": {
+				"msgid": "Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.",
+				"msgstr": [
+					"Seul un sous-ensemble des stations de normales climatiques avec la plus longue période d'enregistrement entre 1981-2010 est disponible sur notre site. Une liste complète de toutes les normales climatiques canadiennes est disponible sur le site Web des {website}."
 				]
 			},
 			"Ontario": {

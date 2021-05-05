@@ -5,6 +5,11 @@
         <h1>{{ currentRouteTitle }}</h1>
 
         <p>{{ introDatasetText.station.instructions }}</p>
+
+        <div class="alert alert-info">
+          <p v-html="htmlNoteMoreData"></p>
+        </div>
+
         <p>
           <strong>{{ introDatasetText.station.tipTitle }}</strong>
           <ul>
@@ -154,6 +159,14 @@ export default {
           label: this.station_props_display[stationCols[2]] + this.$pgettext('Colon', ':')
         }
       }
+    },
+    htmlNoteMoreData: function () {
+      const url = {
+        en: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_EN + '/climate_normals/index_e.html',
+        fr: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_FR + '/climate_normals/index_f.html'
+      }
+      const website = `<a href="${url[this.$i18n.activeLocale]}" target="_blank">` + this.$pgettext('a phrase that is mid sentence', 'Government of Canada Canadian Climate Normals website') + '</a>'
+      return this.$_i(this.$gettext('Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.'), {website: website})
     }
   }
 }

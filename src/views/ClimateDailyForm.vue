@@ -5,6 +5,11 @@
         <h1>{{ currentRouteTitle }}</h1>
 
         <p>{{ introDatasetText.station.instructions }}</p>
+
+        <div class="alert alert-info">
+          <p v-html="htmlNoteMoreData"></p>
+        </div>
+
         <p>
           <strong>{{ introDatasetText.station.tipTitle }}</strong>
           <ul>
@@ -213,6 +218,14 @@ export default {
           label: this.station_props_display[stationCols[2]] + this.$pgettext('Colon', ':')
         }
       }
+    },
+    htmlNoteMoreData: function () {
+      const url = {
+        en: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_EN + '/historical_data/search_historic_data_e.html',
+        fr: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_FR + '/historical_data/search_historic_data_f.html'
+      }
+      const website = `<a href="${url[this.$i18n.activeLocale]}" target="_blank">` + this.$pgettext('a phrase that is mid sentence', 'Government of Canada Historical Climate Data website') + '</a>'
+      return this.$_i(this.$gettext('Hourly data for some stations and variables can be found on the {website}.'), {website: website})
     }
   }
 }
