@@ -147,9 +147,9 @@ export default {
       wfs_layer: 'ahccd-annual',
       wfs_layer_station: 'ahccd-stations',
       date_start: this.$moment.utc('1840-01-01', 'YYYY-MM-DD').toDate(),
-      date_end: this.$moment.utc('2019-12-31', 'YYYY-MM-DD').toDate(),
+      date_end: this.$moment.utc('2020-12-31', 'YYYY-MM-DD').toDate(),
       date_min: this.$moment.utc('1840-01-01', 'YYYY-MM-DD').toDate(),
-      date_max: this.$moment.utc('2019-12-31', 'YYYY-MM-DD').toDate()
+      date_max: this.$moment.utc('2020-12-31', 'YYYY-MM-DD').toDate()
     }
   },
   watch: {

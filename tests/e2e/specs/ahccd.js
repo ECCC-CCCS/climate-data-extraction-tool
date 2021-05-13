@@ -79,7 +79,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(20700)
+        expect(response.body.numberMatched).to.be.greaterThan(20800)
       })
     })
   })
@@ -93,9 +93,9 @@ describe('E2E test for AHCCD data with various form options', () => {
 
     // Select stations by table
     cy.get('table#station-select-table').scrollIntoView().wait(250)
-    cy.get('table#station-select-table tr.selectable:contains(1100030):first').click()
-    cy.get('table#station-select-table tr.selectable:contains(4020020):first').click()
-    cy.get('table#station-select-table tr.selectable:contains(7100075):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(1108447):first').click() // Vancouver airport
+    cy.get('table#station-select-table tr.selectable:contains(7025250):first').click() // Montreal airport
+    cy.get('table#station-select-table tr.selectable:contains(6158733):first').click() // Toronto airport
     cy.get('button#show-selected-stations').click()
     cy.get('table#station-select-table').find('tr.selectedStation').should(($tr) => {
       expect($tr.length).to.equal(3)
@@ -114,7 +114,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.equal(708)
+      expect(xhr.response.body.numberMatched).to.equal(1392)
     })
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
@@ -124,7 +124,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(700)
+        expect(response.body.numberMatched).to.be.greaterThan(1300)
       })
     })
   })
@@ -163,7 +163,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(9000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(9800)
     })
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
@@ -173,7 +173,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(9000)
+        expect(response.body.numberMatched).to.be.greaterThan(9800)
       })
     })
   })
