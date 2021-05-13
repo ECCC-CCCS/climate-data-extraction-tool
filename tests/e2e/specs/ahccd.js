@@ -70,7 +70,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(20700) // 20771
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(20800) // 20888
     })
 
     // visit download link (limit 1)
