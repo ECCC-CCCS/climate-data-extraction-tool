@@ -1277,6 +1277,12 @@
 					"Fall (September-November)"
 				]
 			},
+			"First date": {
+				"msgid": "First date",
+				"msgstr": [
+					""
+				]
+			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.",
 				"msgstr": [
@@ -1455,6 +1461,12 @@
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
 				"msgstr": [
 					"It's possible that your selected location is not within the dataset boundary."
+				]
+			},
+			"Last date": {
+				"msgid": "Last date",
+				"msgstr": [
+					""
 				]
 			},
 			"Latest changes": {
@@ -3661,6 +3673,12 @@
 					"Automne (septembre à novembre)"
 				]
 			},
+			"First date": {
+				"msgid": "First date",
+				"msgstr": [
+					"Date de début"
+				]
+			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.",
 				"msgstr": [
@@ -3839,6 +3857,12 @@
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
 				"msgstr": [
 					"Il est possible que l'endroit sélectionné ne se trouve pas dans les limites du jeu de données."
+				]
+			},
+			"Last date": {
+				"msgid": "Last date",
+				"msgstr": [
+					"Date de fin"
 				]
 			},
 			"Latest changes": {

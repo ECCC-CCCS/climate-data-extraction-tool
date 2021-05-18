@@ -129,7 +129,7 @@ export default {
       return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit
     },
     urlStationMapList: function () {
-      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},FIRST_DATE,LAST_DATE`
     },
     climateStationsGeoJson: function () {
       return this.$store.getters.getClimateStations
@@ -141,6 +141,8 @@ export default {
       props['PROV_STATE_TERR_CODE'] = this.$gettext('Province / Territory / State')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
+      props['FIRST_DATE'] = this.$gettext('First date')
+      props['LAST_DATE'] = this.$gettext('Last date')
       return props
     },
     popup_props_display: function () {

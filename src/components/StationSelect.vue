@@ -177,20 +177,6 @@ export default {
     // reset bboxStationTotal
     this.$store.dispatch('setBboxStationTotal', null)
   },
-  mounted: function () {
-    // add lat/lon
-    // this.tableFieldsDisplay['LATITUDE'] = this.$gettext('Latitude')
-    // this.tableFieldsDisplay['LONGITUDE'] = this.$gettext('Longitude')
-
-    // add start/end dates for certain datasets
-    /*
-    const allowedDatasets = ['normals', 'daily', 'monthly']
-    if (allowedDatasets.indexOf(this.$route.name) !== -1) {
-      this.tableFieldsDisplay['FIRST_DATE'] = this.$gettext('First date')
-      this.tableFieldsDisplay['LAST_DATE'] = this.$gettext('Last date')
-    }
-    */
-  },
   data () {
     return {
       tableFieldsDisplay: this.stationPropDisplay,

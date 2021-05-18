@@ -171,7 +171,7 @@ export default {
       return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
     },
     urlStationMapList: function () {
-      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]}`
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},start_date__date_debut,end_date__date_fin`
     },
     ahccdStationsGeoJson: function () {
       return this.$store.getters.getAhccdStations
@@ -183,6 +183,8 @@ export default {
       props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province / Territory')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
+      props['start_date__date_debut'] = this.$gettext('First date')
+      props['end_date__date_fin'] = this.$gettext('Last date')
       return props
     },
     layer_options: function () {
