@@ -80,7 +80,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '1899-01{enter}')
-    cy.inputText('input#date-end-date', '2020-12{enter}')
+    cy.inputText('input#date-end-date', '2021-05{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
@@ -92,7 +92,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(428000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(430570)
     })
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
@@ -102,7 +102,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(428000)
+        expect(response.body.numberMatched).to.be.greaterThan(430570)
       })
     })
   })
@@ -128,8 +128,8 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#var-sel-value-type--time-interval', 'Annual max/min', 'hydrometric-annual-peaks')
 
     // date change
-    cy.inputText('input#date-start-date', '2000-01-01{enter}')
-    cy.inputText('input#date-end-date', '2010-12-31{enter}')
+    cy.inputText('input#date-start-date', '2010-01-01{enter}')
+    cy.inputText('input#date-end-date', '2021-05-10{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
@@ -141,7 +141,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(20)
+      expect(xhr.response.body.numberMatched).to.equal(34)
     })
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
@@ -151,7 +151,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(20)
+        expect(response.body.numberMatched).to.equal(34)
       })
     })
   })
@@ -179,7 +179,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '2010-01-01{enter}')
-    cy.inputText('input#date-end-date', '2020-12-31{enter}')
+    cy.inputText('input#date-end-date', '2021-05-10{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
