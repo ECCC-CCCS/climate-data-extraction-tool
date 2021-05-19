@@ -5,39 +5,44 @@ describe('E2E test for hydrometric data with various form options', () => {
     // station data
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*/).as('stationData')
     cy.visit('/#/water-quantity-data')
+    const minNumStations = 2780
     cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.features.length).to.be.greaterThan(2700)
+      expect(xhr.response.body.features.length).to.be.greaterThan(minNumStations)
     })
 
     // discontinued stations
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?f=json&limit=10000&properties=PROV_TERR_STATE_LOC,STATION_NAME,STATION_NUMBER,STATUS_EN$/).as('entireStationData')
     cy.get('#toggle-discontinued-stations').click()
+    const minNumStationsDiscontinued = 7910
     cy.wait('@entireStationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.features.length).to.be.greaterThan(7800)
+      expect(xhr.response.body.features.length).to.be.greaterThan(minNumStationsDiscontinued)
     })
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.greaterThan(7800)
+      expect($tr.length).to.be.greaterThan(minNumStationsDiscontinued)
     })
 
     // Remove showing discontinued stations
     cy.get('#toggle-discontinued-stations').click()
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.lessThan(2800)
+      expect($tr.length).to.be.lessThan(minNumStations + 10) // +offset from minimum expected count
     })
 
     // Stations are loaded on the map as clusters
-    cy.checkMarkerClusters(10)
+    cy.checkMarkerClusters(8)
 
     // value type
     cy.selectVar('select#var-sel-value-type--time-interval', 'Daily mean', 'hydrometric-daily-mean')
+
+    // date change
+    cy.inputText('input#date-end-date', '2021-05-10{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
@@ -55,7 +60,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wfs3-link-list').find('a').should('have.lengthOf', 422)
+    cy.get('#wfs3-link-list').find('a').should('have.lengthOf', 427)
     cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
