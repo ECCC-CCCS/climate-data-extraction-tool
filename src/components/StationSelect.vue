@@ -83,7 +83,7 @@
                 :key="prop">
                   <template v-if="prop === 'LATITUDE'">{{ stn.geometry.coordinates[1].toFixed(4) }}</template>
                   <template v-else-if="prop === 'LONGITUDE'">{{ stn.geometry.coordinates[0].toFixed(4) }}</template>
-                  <template v-else-if="prop === 'FIRST_DATE' || prop === 'LAST_DATE'">{{ dateDisplay(stn.properties[prop]) }}</template>
+                  <template v-else-if="prop.match(/date/ig)">{{ dateDisplay(stn.properties[prop]) }}</template>
                   <template v-else>{{ stn.properties[prop] }}</template>
               </td>
             </tr>

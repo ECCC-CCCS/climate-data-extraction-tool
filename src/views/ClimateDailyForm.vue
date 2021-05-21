@@ -185,7 +185,7 @@ export default {
       return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
     },
     urlStationMapList: function () {
-      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},FIRST_DATE,LAST_DATE`
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},DLY_FIRST_DATE,DLY_LAST_DATE`
     },
     urlDatasetMinDate: function () {
       return this.wfs3_url_base + '/' + this.wfs_layer + '/items?f=json&sortby=LOCAL_DATE&limit=1'
@@ -200,8 +200,8 @@ export default {
       props['PROV_STATE_TERR_CODE'] = this.$gettext('Province / Territory / State')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
-      props['FIRST_DATE'] = this.$gettext('First date')
-      props['LAST_DATE'] = this.$gettext('Last date')
+      props['DLY_FIRST_DATE'] = this.$gettext('First date')
+      props['DLY_LAST_DATE'] = this.$gettext('Last date')
       return props
     },
     popup_props_display: function () {
