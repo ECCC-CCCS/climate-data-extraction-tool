@@ -349,6 +349,9 @@ export default {
       }
     },
     dateDisplay: function (utcString) {
+      if (utcString === null) {
+        return ''
+      }
       return utcString.substr(0, 10)
       // this.$moment.utc(utcString, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD')
     }
