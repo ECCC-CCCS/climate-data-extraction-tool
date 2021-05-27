@@ -40,6 +40,8 @@ describe('E2E test for climate normals data with various form options', () => {
     cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
+        expect(response.headers).to.have.property('content-encoding')
+        expect(response.headers['content-encoding']).to.match(/gzip/ig)
         expect(response.status).to.equal(200)
         expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,PERIOD,CURRENT_FLAG,NORMAL_CODE.*/)
       })
