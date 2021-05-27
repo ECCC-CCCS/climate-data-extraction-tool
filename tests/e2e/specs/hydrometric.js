@@ -9,6 +9,8 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
+      expect(xhr.response.headers).to.have.property('content-encoding')
+      expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.features.length).to.be.greaterThan(minNumStations)
@@ -21,6 +23,8 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.wait('@entireStationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
+      expect(xhr.response.headers).to.have.property('content-encoding')
+      expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.features.length).to.be.greaterThan(minNumStationsDiscontinued)
