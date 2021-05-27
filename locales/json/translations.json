@@ -1769,16 +1769,22 @@
 					"Prince Edward Island"
 				]
 			},
+			"Province / Territory": {
+				"msgid": "Province / Territory",
+				"msgstr": [
+					""
+				]
+			},
+			"Province / Territory / State": {
+				"msgid": "Province / Territory / State",
+				"msgstr": [
+					""
+				]
+			},
 			"Province/Territory": {
 				"msgid": "Province/Territory",
 				"msgstr": [
 					"Province/Territory"
-				]
-			},
-			"Province/Territory/State": {
-				"msgid": "Province/Territory/State",
-				"msgstr": [
-					"Province/Territory/State"
 				]
 			},
 			"Pseudo-Mercator (EPSG:3857)": {
@@ -4147,16 +4153,22 @@
 					"Île-du-Prince-Édouard"
 				]
 			},
-			"Province/Territory": {
-				"msgid": "Province/Territory",
+			"Province / Territory": {
+				"msgid": "Province / Territory",
 				"msgstr": [
 					"Province / Territoire"
 				]
 			},
-			"Province/Territory/State": {
-				"msgid": "Province/Territory/State",
+			"Province / Territory / State": {
+				"msgid": "Province / Territory / State",
 				"msgstr": [
 					"Province / Territoire / État"
+				]
+			},
+			"Province/Territory": {
+				"msgid": "Province/Territory",
+				"msgstr": [
+					"Province / Territoire"
 				]
 			},
 			"Pseudo-Mercator (EPSG:3857)": {

@@ -197,7 +197,7 @@ export default {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
       props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Climate ID')
-      props['PROV_STATE_TERR_CODE'] = this.$gettext('Province/Territory/State')
+      props['PROV_STATE_TERR_CODE'] = this.$gettext('Province / Territory / State')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
       return props

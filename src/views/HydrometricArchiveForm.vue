@@ -217,7 +217,7 @@ export default {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
       props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Station ID')
-      props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province/Territory/State')
+      props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province / Territory / State')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
       return props
