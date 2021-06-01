@@ -1787,12 +1787,6 @@
 					""
 				]
 			},
-			"Province / Territory / State": {
-				"msgid": "Province / Territory / State",
-				"msgstr": [
-					""
-				]
-			},
 			"Province/Territory": {
 				"msgid": "Province/Territory",
 				"msgstr": [
@@ -1941,6 +1935,12 @@
 				"msgid": "Start date",
 				"msgstr": [
 					"Start date"
+				]
+			},
+			"State": {
+				"msgid": "State",
+				"msgstr": [
+					""
 				]
 			},
 			"Station ID": {
@@ -4189,12 +4189,6 @@
 					"Province"
 				]
 			},
-			"Province / Territory / State": {
-				"msgid": "Province / Territory / State",
-				"msgstr": [
-					"Province / Territoire / État"
-				]
-			},
 			"Province/Territory": {
 				"msgid": "Province/Territory",
 				"msgstr": [
@@ -4343,6 +4337,12 @@
 				"msgid": "Start date",
 				"msgstr": [
 					"Date de début"
+				]
+			},
+			"State": {
+				"msgid": "State",
+				"msgstr": [
+					"État"
 				]
 			},
 			"Station ID": {
