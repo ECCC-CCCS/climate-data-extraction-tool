@@ -60,7 +60,7 @@
                 v-for="(th, prop) in tableFieldsDisplay"
                 :key="prop"
                 @click="sortDir(prop)">
-                  {{ th }}
+                  <span v-html="th"></span>
                   <span
                     v-show="currentSort === prop"
                     :class="sortIconClass"

@@ -1781,8 +1781,8 @@
 					"Prince Edward Island"
 				]
 			},
-			"Province / Territory": {
-				"msgid": "Province / Territory",
+			"Province": {
+				"msgid": "Province",
 				"msgstr": [
 					""
 				]
@@ -1977,6 +1977,12 @@
 				"msgid": "Temperature - Daily extremes of record",
 				"msgstr": [
 					"Temperature - Daily extremes of record"
+				]
+			},
+			"Territory": {
+				"msgid": "Territory",
+				"msgstr": [
+					""
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -4177,10 +4183,10 @@
 					"Île-du-Prince-Édouard"
 				]
 			},
-			"Province / Territory": {
-				"msgid": "Province / Territory",
+			"Province": {
+				"msgid": "Province",
 				"msgstr": [
-					"Province / Territoire"
+					"Province"
 				]
 			},
 			"Province / Territory / State": {
@@ -4373,6 +4379,12 @@
 				"msgid": "Temperature - Daily extremes of record",
 				"msgstr": [
 					"Température - Extrêmes quotidiens"
+				]
+			},
+			"Territory": {
+				"msgid": "Territory",
+				"msgstr": [
+					"Territoire"
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {

@@ -229,7 +229,7 @@ export default {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Virtual station name')
       props[this.datasetToStnColName[this.$route.name]] = this.$gettext('Virtual station ID')
-      props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province / Territory')
+      props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province') + '&nbsp/<br>' + this.$gettext('Territory')
       props['ELEMENT_NAME_E'] = this.$gettext('Element name')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
