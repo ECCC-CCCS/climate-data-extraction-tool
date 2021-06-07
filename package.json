@@ -1,6 +1,6 @@
 {
   "name": "climate-data-extraction-tool",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "private": true,
   "description": "Climate data extraction tool for CCCS",
   "author": "Kevin Ngai <kevin.ngai@canada.ca>",
