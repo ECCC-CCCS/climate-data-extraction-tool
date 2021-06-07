@@ -60,7 +60,7 @@
                 v-for="(th, prop) in tableFieldsDisplay"
                 :key="prop"
                 @click="sortDir(prop)">
-                  {{ th }}
+                  <span v-html="th"></span>
                   <span
                     v-show="currentSort === prop"
                     :class="sortIconClass"
@@ -83,7 +83,7 @@
                 :key="prop">
                   <template v-if="prop === 'LATITUDE'">{{ stn.geometry.coordinates[1].toFixed(4) }}</template>
                   <template v-else-if="prop === 'LONGITUDE'">{{ stn.geometry.coordinates[0].toFixed(4) }}</template>
-                  <template v-else-if="prop === 'FIRST_DATE' || prop === 'LAST_DATE'">{{ dateDisplay(stn.properties[prop]) }}</template>
+                  <template v-else-if="prop.match(/date/ig)">{{ dateDisplay(stn.properties[prop]) }}</template>
                   <template v-else>{{ stn.properties[prop] }}</template>
               </td>
             </tr>
@@ -176,20 +176,6 @@ export default {
 
     // reset bboxStationTotal
     this.$store.dispatch('setBboxStationTotal', null)
-  },
-  mounted: function () {
-    // add lat/lon
-    // this.tableFieldsDisplay['LATITUDE'] = this.$gettext('Latitude')
-    // this.tableFieldsDisplay['LONGITUDE'] = this.$gettext('Longitude')
-
-    // add start/end dates for certain datasets
-    /*
-    const allowedDatasets = ['normals', 'daily', 'monthly']
-    if (allowedDatasets.indexOf(this.$route.name) !== -1) {
-      this.tableFieldsDisplay['FIRST_DATE'] = this.$gettext('First date')
-      this.tableFieldsDisplay['LAST_DATE'] = this.$gettext('Last date')
-    }
-    */
   },
   data () {
     return {
@@ -363,6 +349,9 @@ export default {
       }
     },
     dateDisplay: function (utcString) {
+      if (utcString === null) {
+        return ''
+      }
       return utcString.substr(0, 10)
       // this.$moment.utc(utcString, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD')
     }

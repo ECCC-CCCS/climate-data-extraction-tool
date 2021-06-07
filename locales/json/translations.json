@@ -1277,6 +1277,12 @@
 					"Fall (September-November)"
 				]
 			},
+			"First date": {
+				"msgid": "First date",
+				"msgstr": [
+					""
+				]
+			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.",
 				"msgstr": [
@@ -1455,6 +1461,12 @@
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
 				"msgstr": [
 					"It's possible that your selected location is not within the dataset boundary."
+				]
+			},
+			"Last date": {
+				"msgid": "Last date",
+				"msgstr": [
+					""
 				]
 			},
 			"Latest changes": {
@@ -1769,14 +1781,8 @@
 					"Prince Edward Island"
 				]
 			},
-			"Province / Territory": {
-				"msgid": "Province / Territory",
-				"msgstr": [
-					""
-				]
-			},
-			"Province / Territory / State": {
-				"msgid": "Province / Territory / State",
+			"Province": {
+				"msgid": "Province",
 				"msgstr": [
 					""
 				]
@@ -1931,6 +1937,12 @@
 					"Start date"
 				]
 			},
+			"State": {
+				"msgid": "State",
+				"msgstr": [
+					""
+				]
+			},
 			"Station ID": {
 				"msgid": "Station ID",
 				"msgstr": [
@@ -1965,6 +1977,12 @@
 				"msgid": "Temperature - Daily extremes of record",
 				"msgstr": [
 					"Temperature - Daily extremes of record"
+				]
+			},
+			"Territory": {
+				"msgid": "Territory",
+				"msgstr": [
+					""
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -3661,6 +3679,12 @@
 					"Automne (septembre à novembre)"
 				]
 			},
+			"First date": {
+				"msgid": "First date",
+				"msgstr": [
+					"Date de début"
+				]
+			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.",
 				"msgstr": [
@@ -3839,6 +3863,12 @@
 				"msgid": "It's possible that your selected location is not within the dataset boundary.",
 				"msgstr": [
 					"Il est possible que l'endroit sélectionné ne se trouve pas dans les limites du jeu de données."
+				]
+			},
+			"Last date": {
+				"msgid": "Last date",
+				"msgstr": [
+					"Date de fin"
 				]
 			},
 			"Latest changes": {
@@ -4153,16 +4183,10 @@
 					"Île-du-Prince-Édouard"
 				]
 			},
-			"Province / Territory": {
-				"msgid": "Province / Territory",
+			"Province": {
+				"msgid": "Province",
 				"msgstr": [
-					"Province / Territoire"
-				]
-			},
-			"Province / Territory / State": {
-				"msgid": "Province / Territory / State",
-				"msgstr": [
-					"Province / Territoire / État"
+					"Province"
 				]
 			},
 			"Province/Territory": {
@@ -4315,6 +4339,12 @@
 					"Date de début"
 				]
 			},
+			"State": {
+				"msgid": "State",
+				"msgstr": [
+					"État"
+				]
+			},
 			"Station ID": {
 				"msgid": "Station ID",
 				"msgstr": [
@@ -4349,6 +4379,12 @@
 				"msgid": "Temperature - Daily extremes of record",
 				"msgstr": [
 					"Température - Extrêmes quotidiens"
+				]
+			},
+			"Territory": {
+				"msgid": "Territory",
+				"msgstr": [
+					"Territoire"
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {

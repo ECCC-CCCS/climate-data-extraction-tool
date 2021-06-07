@@ -128,7 +128,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(1300)
+        expect(response.body.numberMatched).to.be.greaterThan(1390)
       })
     })
   })
@@ -151,11 +151,12 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect($tr.length).to.be.lessThan(50)
     })
 
-    // date change
-    cy.inputText('input#date-start-date', '2000-01{enter}')
-
     // ahccd-monthly
     cy.selectVar('select#var-sel-value-type--time-interval', 'Monthly values', 'ahccd-monthly')
+
+    // date change
+    cy.inputText('input#date-start-date', '2000-01{enter}')
+    cy.inputText('input#date-end-date', '2020-12{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
