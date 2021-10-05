@@ -10,20 +10,19 @@
           <p v-html="htmlNoteMoreData"></p>
         </div>
 
-        <p>
-          <strong>{{ introDatasetText.station.tipTitle }}</strong>
+        <details>
+          <summary>{{ introDatasetText.station.tipTitle }}</summary>
           <ul>
             <li
               v-for="(pointText, index) in introDatasetText.station.tipPoints"
               :key="index">{{ pointText }}</li>
           </ul>
-        </p>
+        </details>
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details :open="toggleDetailsState">
-          <summary @click="toggleDetails"
-            v-translate>Dataset description, technical information and metadata</summary>
+        <details>
+          <summary v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
 
           <p v-html="techDocHtml"></p>
@@ -34,8 +33,6 @@
             :url-station-list="urlStationList"
             :download-text="$gettext('Download a list of detailed information for each Daily climate station.')"></station-list-link>
         </details>
-
-        <info-contact-support></info-contact-support>
 
         <bbox-map
           v-model="ows_bbox"
@@ -100,6 +97,8 @@
           :has-errors="hasErrors"
           :url-box-title="$gettext('Data download link')">
         </url-box>
+
+        <info-contact-support></info-contact-support>
       </main>
       <dataset-menu></dataset-menu>
     </div>

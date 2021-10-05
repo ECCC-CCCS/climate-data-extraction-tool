@@ -18,8 +18,8 @@
         </div>
       </span>
     </label>
-    <details :open="toggleDetailsState" v-if="detailsTitle !== null">
-      <summary @click="toggleDetails">{{ detailsTitle }}</summary>
+    <details v-if="detailsTitle !== null">
+      <summary>{{ detailsTitle }}</summary>
       <p
         v-for="(paragraphText, index) in detailsText"
         :key="index"
@@ -80,17 +80,9 @@ export default {
       default: null
     }
   },
-  data () {
-    return {
-      toggleDetailsState: false
-    }
-  },
   methods: {
     emitUpdatedValue: function (event) {
       this.$emit('input', event.target.value)
-    },
-    toggleDetails: function () {
-      this.toggleDetailsState = !this.toggleDetailsState
     }
   },
   computed: {

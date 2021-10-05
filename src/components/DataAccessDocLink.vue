@@ -1,5 +1,8 @@
 <template>
-  <p v-html="dataAccessDocHtml"></p>
+  <details>
+    <summary v-translate>Bulk downloads</summary>
+    <p v-html="dataAccessDocHtml"></p>
+  </details>
 </template>
 
 <script>

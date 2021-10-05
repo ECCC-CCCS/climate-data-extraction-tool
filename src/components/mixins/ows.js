@@ -28,18 +28,10 @@ export const ows = {
         min_y: 0,
         max_x: 0,
         max_y: 0
-      },
-      toggleDetailsState: false,
-      toggleDetailsAdvState: false
+      }
     }
   },
   methods: {
-    toggleDetails: function () {
-      this.toggleDetailsState = !this.toggleDetailsState
-    },
-    toggleDetailsAdv: function () {
-      this.toggleDetailsAdvState = !this.toggleDetailsAdvState
-    },
     langShort: function (langKey) {
       return langKey.substring(0, 2)
     },

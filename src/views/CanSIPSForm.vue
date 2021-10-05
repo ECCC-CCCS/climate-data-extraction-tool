@@ -9,9 +9,8 @@
 
         <data-access-doc-link></data-access-doc-link>
 
-        <details :open="toggleDetailsState">
-          <summary @click="toggleDetails"
-            v-translate>Dataset description, technical information and metadata</summary>
+        <details>
+          <summary v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.</p>
 
           <p v-html="openPortalHtml"></p>
@@ -68,9 +67,8 @@
           v-model="wcs_format"
           :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
-        <details :open="toggleDetailsAdvState">
-          <summary @click="toggleDetailsAdv"
-            v-translate>Advanced options</summary>
+        <details>
+          <summary v-translate>Advanced options</summary>
           <var-select
             v-model="ows_crs"
             :label="crsLabel"

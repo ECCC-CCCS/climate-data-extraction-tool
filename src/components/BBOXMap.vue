@@ -28,10 +28,8 @@
       </span>
     </strong>
 
-    <details
-      :open="toggleDetailsState">
-      <summary @click="toggleDetails"
-        v-translate>How to use: interactive map</summary>
+    <details>
+      <summary v-translate>How to use: interactive map</summary>
       <p v-translate>Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.</p>
       <p><strong v-translate>Panning:</strong>
         <translate
@@ -267,7 +265,6 @@ export default {
         'fr': 'https://ouvert.canada.ca/data/fr/dataset/296de17c-001c-4435-8f9a-f5acab632e85'
       },
       numStationsSelected: 0,
-      toggleDetailsState: false,
       pointClickOn: 'off',
       clickLatLng: null,
       datasetToStnProvColName: { // province property name in station data is different than the province property name in the actual dataset
@@ -482,9 +479,6 @@ export default {
         this.clickLatLng = event.latlng
         this.$store.dispatch('setClickLatLng', this.clickLatLng)
       }
-    },
-    toggleDetails: function () {
-      this.toggleDetailsState = !this.toggleDetailsState
     },
     updateBBOX: function () {
       this.$emit('change', this.bbox_value)
