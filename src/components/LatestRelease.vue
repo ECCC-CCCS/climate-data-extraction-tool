@@ -1,14 +1,15 @@
 <template>
   <section
     id="latest-release"
-    class="alert alert-info"
     v-show="descriptionHtml[$i18n.activeLocale] !== ''">
-    <h3><translate>Latest changes</translate></h3>
-    <p v-html="descriptionHtml[$i18n.activeLocale]"></p>
-    <p>
-      <small class="text-muted text-left"><translate>Date:</translate> {{createdDate}}</small>
-      <small class="text-muted text-right pull-right"><a :href="urlRepoGitRelease" target="_blank"><translate>View releases on GitHub</translate></a></small>
-    </p>
+    <details>
+      <summary><translate>Latest changes</translate> ({{createdDate}})</summary>
+      <p v-html="descriptionHtml[$i18n.activeLocale]"></p>
+      <p>
+        <small class="text-muted text-left"><translate>Date:</translate> {{createdDate}}</small>
+        <small class="text-muted text-right pull-right"><a :href="urlRepoGitRelease" target="_blank"><translate>View releases on GitHub</translate></a></small>
+      </p>
+    </details>
   </section>
 </template>
 
@@ -36,6 +37,7 @@ export default {
         en: '',
         fr: ''
       }
+      // en and fr description of changes is seperated by 2 \r\n
       if (Object.prototype.hasOwnProperty.call(this.latestRelease, 'body')) {
         let bodyParts = this.latestRelease.body.split('\r\n\r\n')
         bodyHtml.en = bodyParts[0].trim().replace(/\r\n/g, '<br>')

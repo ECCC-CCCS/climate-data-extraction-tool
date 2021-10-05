@@ -8,7 +8,13 @@
 
         <p v-translate>Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options.</p>
 
-        <info-contact-support></info-contact-support>
+        <strong v-translate>Get started</strong>
+        <ol>
+          <li v-translate>Select a dataset from the menu on the left</li>
+          <li v-translate>Select your locations/stations of interest</li>
+          <li v-translate>Specify the rest of your download request</li>
+          <li v-translate>Retrieve your download links and then download the data from the links provided</li>
+        </ol>
 
         <more-resources></more-resources>
       </main>
@@ -19,7 +25,6 @@
 
 <script>
 import DatasetMenu from '@/components/DatasetMenu'
-import InfoContactSupport from '@/components/InfoContactSupport'
 import MoreResources from '@/components/MoreResources'
 import LatestRelease from '@/components/LatestRelease'
 import { ows } from '@/components/mixins/ows'
@@ -30,7 +35,6 @@ export default {
   mixins: [ows, datasets],
   components: {
     DatasetMenu,
-    InfoContactSupport,
     MoreResources,
     LatestRelease
   }
