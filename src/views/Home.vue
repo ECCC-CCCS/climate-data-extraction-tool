@@ -10,7 +10,7 @@
 
         <strong v-translate>Get started</strong>
         <ol>
-          <li v-translate>Select a dataset from the menu on the left</li>
+          <li v-translate>Select a dataset from the menu</li>
           <li v-translate>Select your locations/stations of interest</li>
           <li v-translate>Specify the rest of your download request</li>
           <li v-translate>Retrieve your download links and then download the data from the links provided</li>
