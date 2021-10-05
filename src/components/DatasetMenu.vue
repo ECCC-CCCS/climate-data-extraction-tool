@@ -4,7 +4,7 @@
     <section class="list-group menu list-unstyled">
       <h3>
         <router-link
-          to="/"><translate t-context="Title">Climate data extraction tool menu</translate></router-link>
+          to="/"><translate t-context="Title">Climate data extraction tool</translate></router-link>
       </h3>
       <ul class="list-group menu list-unstyled mrgn-lft-0-important">
         <li>
