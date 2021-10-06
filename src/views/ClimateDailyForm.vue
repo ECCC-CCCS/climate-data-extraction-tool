@@ -108,7 +108,7 @@
           :url-box-title="$gettext('Data download link')">
         </url-box>
 
-        <info-contact-support></info-contact-support>
+        <more-resources></more-resources>
       </main>
       <dataset-menu></dataset-menu>
     </div>
@@ -123,9 +123,9 @@ import StationSelect from '@/components/StationSelect'
 import FormatSelectVector from '@/components/FormatSelectVector'
 import DateSelect from '@/components/DateSelect'
 import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
 import StationListLink from '@/components/StationListLink'
 import DataAccessDocLink from '@/components/DataAccessDocLink'
+import MoreResources from '@/components/MoreResources'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
@@ -142,9 +142,9 @@ export default {
     'format-select-vector': FormatSelectVector,
     'date-select': DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
     'station-list-link': StationListLink,
-    DataAccessDocLink
+    DataAccessDocLink,
+    MoreResources
   },
   data () {
     return {
