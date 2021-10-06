@@ -70,23 +70,25 @@
               <translate>Latitude:</translate> {{ clickLatLng.lat.toFixed(4) }}
             </l-popup>
           </l-marker>
-      </l-map>
-    </div>
 
-    <div class="form-group">
-      <button
-        id="reset-map-view"
-        @click="resetBBOX"
-        type="button"
-        :disabled="selectDisabled || isLoadingStations"
-        class="btn btn-primary btn-sm" v-translate>Reset map</button>
+          <l-control
+            position="bottomleft"
+            disableClickPropagation>
+            <button
+              id="reset-map-view"
+              @click="resetBBOX"
+              type="button"
+              :disabled="selectDisabled || isLoadingStations"
+              class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-refresh"></span> <translate>Reset map</translate></button>
+          </l-control>
+      </l-map>
     </div>
   </div>
 </template>
 
 <script>
 import L from 'leaflet'
-import { LMap, LMarker, LPopup } from 'vue2-leaflet'
+import { LMap, LMarker, LPopup, LControl } from 'vue2-leaflet'
 import LW from 'leaflet.wms'
 import 'leaflet.markercluster'
 import 'proj4leaflet'
@@ -116,6 +118,7 @@ export default {
     LMap,
     LMarker,
     LPopup,
+    LControl,
     OptionRadio,
     Loading
   },

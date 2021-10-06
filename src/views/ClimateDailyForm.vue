@@ -34,6 +34,49 @@
             :download-text="$gettext('Download a list of detailed information for each Daily climate station.')"></station-list-link>
         </details>
 
+        <details open>
+          <summary v-translate>Map filters</summary>
+
+          <province-select
+            v-model="wfs_province"></province-select>
+
+          <fieldset>
+            <legend v-translate>Date range</legend>
+            <div class="row">
+              <div class="col-sm-6">
+                <date-select
+                  v-model="date_start"
+                  :label="$gettext('Start date')"
+                  :placeholder="$gettext('YYYY-MM-DD')"
+                  :minimum-view="dateConfigs.minimumView"
+                  :format="dateConfigs.format"
+                  :min-date="date_min"
+                  :max-date="date_max"
+                  :custom-error-msg="dateRangeErrorMessage"></date-select>
+              </div>
+
+              <div class="col-sm-6">
+                <date-select
+                  v-model="date_end"
+                  :label="$gettext('End date')"
+                  :placeholder="$gettext('YYYY-MM-DD')"
+                  :minimum-view="dateConfigs.minimumView"
+                  :format="dateConfigs.format"
+                  :min-date="date_min"
+                  :max-date="date_max"
+                  :custom-error-msg="dateRangeErrorMessage"></date-select>
+              </div>
+            </div>
+
+            <button
+              id="clear-dates-btn"
+              class="btn btn-default"
+              type="button"
+              @click="clearDates"
+              v-translate>Clear dates</button>
+          </fieldset>
+        </details>
+
         <bbox-map
           v-model="ows_bbox"
           :max-zoom="mapMaxZoom"
@@ -41,9 +84,6 @@
           :select-disabled="provinceSelected"
           :geojson="climateStationsGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
-
-        <province-select
-          v-model="wfs_province"></province-select>
 
         <station-select
           v-model="wfs_selected_station_ids"
@@ -53,36 +93,6 @@
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
           :stn-primary-id="stnPrimaryId"></station-select>
-
-        <fieldset>
-          <legend v-translate>Date range</legend>
-          <date-select
-            v-model="date_start"
-            :label="$gettext('Start date')"
-            :placeholder="$gettext('YYYY-MM-DD')"
-            :minimum-view="dateConfigs.minimumView"
-            :format="dateConfigs.format"
-            :min-date="date_min"
-            :max-date="date_max"
-            :custom-error-msg="dateRangeErrorMessage"></date-select>
-
-          <date-select
-            v-model="date_end"
-            :label="$gettext('End date')"
-            :placeholder="$gettext('YYYY-MM-DD')"
-            :minimum-view="dateConfigs.minimumView"
-            :format="dateConfigs.format"
-            :min-date="date_min"
-            :max-date="date_max"
-            :custom-error-msg="dateRangeErrorMessage"></date-select>
-
-          <button
-            id="clear-dates-btn"
-            class="btn btn-default"
-            type="button"
-            @click="clearDates"
-            v-translate>Clear dates</button>
-        </fieldset>
 
         <format-select-vector
           class="mrgn-tp-md"
