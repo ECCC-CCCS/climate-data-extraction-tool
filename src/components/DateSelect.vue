@@ -201,5 +201,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.vdp-datepicker__calendar {
+  z-index: 500 !important; /* go over leaflet map */
+}
 </style>
