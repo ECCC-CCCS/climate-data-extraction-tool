@@ -6,6 +6,10 @@
 
         <p>{{ introDatasetText.station.instructions }}</p>
 
+        <p v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</p>
+
+        <p v-html="htmlReferAHCCD"></p>
+
         <details>
           <summary>{{ introDatasetText.station.tipTitle }}</summary>
           <ul>
@@ -145,6 +149,7 @@ import URLBox from '@/components/URLBox'
 import StationListLink from '@/components/StationListLink'
 import DataAccessDocLink from '@/components/DataAccessDocLink'
 import OpenPortalLinks from '@/components/OpenPortalLinks'
+import datasetPaths from '@/static/datasetPaths.js'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
@@ -371,6 +376,10 @@ export default {
       }
       days.push({val: 'all', text: this.$_i(textMax, {maxDays: maxDays})})
       return days
+    },
+    htmlReferAHCCD: function () {
+      const ahccdPath = datasetPaths.ahccd[this.$i18n.activeLocale]
+      return this.$_i(this.$gettext('Please refer to the <a href="#{ahccdPath}">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.'), {ahccdPath: ahccdPath})
     }
   }
 }

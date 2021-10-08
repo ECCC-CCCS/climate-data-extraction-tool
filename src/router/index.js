@@ -2,55 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import NotFound from '@/views/404'
+import datasetPaths from '@/static/datasetPaths.js'
 
 Vue.use(VueRouter)
-
-const datasetPaths = {
-  ahccd: {
-    en: '/adjusted-station-data',
-    fr: '/donnees-climatiques-ajustees'
-  },
-  normals: {
-    en: '/climate-normals',
-    fr: '/normales-climatiques'
-  },
-  daily: {
-    en: '/daily-climate-data',
-    fr: '/donnees-climatiques-quotidennes'
-  },
-  monthly: {
-    en: '/monthly-climate-summaries',
-    fr: '/sommaires-climatiques-mensuels'
-  },
-  cansips: {
-    en: '/seasonal-forecasts',
-    fr: '/previsions-saisonnieres'
-  },
-  rdpa: {
-    en: '/regional-deterministic-precipitation-analysis',
-    fr: '/analyse-regionale-deterministe-precipitation'
-  },
-  cangrd: {
-    en: '/historical-gridded-data',
-    fr: '/donnees-maillees-historiques'
-  },
-  cmip5: {
-    en: '/cmip5-data',
-    fr: '/simulations-cmip5'
-  },
-  dcs: {
-    en: '/downscaled-data',
-    fr: '/donnees-echelle-reduite'
-  },
-  hydrometric: {
-    en: '/water-quantity-data',
-    fr: '/donnees-quantite-eau'
-  },
-  ltce: {
-    en: '/daily-climate-records',
-    fr: '/records-climatiques-quotidiens'
-  }
-}
 
 const routes = [ // order matters for dataset menu
   {
