@@ -6,9 +6,9 @@
 
         <p>{{ introDatasetText.station.instructions }}</p>
 
-        <p v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</p>
-
-        <p v-html="htmlReferAHCCD"></p>
+        <div class="alert alert-warning">
+          <p><span v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</span> <span v-html="htmlReferAHCCD"></span></p>
+        </div>
 
         <details>
           <summary>{{ introDatasetText.station.tipTitle }}</summary>
