@@ -4,22 +4,22 @@
       <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
         <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-        <p v-html="ltceIntroBlurbHtml"></p>
-
         <p>{{ introDatasetText.station.instructions }}</p>
-        <p>
-          <strong>{{ introDatasetText.station.tipTitle }}</strong>
+
+        <details>
+          <summary>{{ introDatasetText.station.tipTitle }}</summary>
           <ul>
             <li
               v-for="(pointText, index) in introDatasetText.station.tipPoints"
               :key="index">{{ pointText }}</li>
           </ul>
-        </p>
-
-        <data-access-doc-link></data-access-doc-link>
+        </details>
 
         <details>
           <summary v-translate>Dataset description, technical information and metadata</summary>
+
+          <p v-html="ltceIntroBlurbHtml"></p>
+
           <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.</p>
 
           <p>
@@ -56,7 +56,21 @@
           </ul>
         </details>
 
-        <info-contact-support></info-contact-support>
+        <data-access-doc-link></data-access-doc-link>
+
+        <details open>
+          <summary v-translate>Map filters</summary>
+
+          <var-select
+            class="mrgn-tp-md"
+            v-model="wfs_layer"
+            :label="$gettext('Climate element / record type')"
+            :required="true"
+            :select-options="layer_options"></var-select>
+
+          <province-select
+            v-model="wfs_province"></province-select>
+        </details>
 
         <bbox-map
           v-model="ows_bbox"
@@ -65,16 +79,6 @@
           :select-disabled="provinceSelected"
           :geojson="ltceStationsGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
-
-        <var-select
-          class="mrgn-tp-md"
-          v-model="wfs_layer"
-          :label="$gettext('Climate element / record type')"
-          :required="true"
-          :select-options="layer_options"></var-select>
-
-        <province-select
-          v-model="wfs_province"></province-select>
 
         <station-select
           v-model="wfs_selected_station_ids"
@@ -138,7 +142,6 @@ import ProvinceSelect from '@/components/ProvinceSelect'
 import StationSelect from '@/components/StationSelect'
 import FormatSelectVector from '@/components/FormatSelectVector'
 import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
 import StationListLink from '@/components/StationListLink'
 import DataAccessDocLink from '@/components/DataAccessDocLink'
 import OpenPortalLinks from '@/components/OpenPortalLinks'
@@ -157,7 +160,6 @@ export default {
     'format-select-vector': FormatSelectVector,
     'var-select': VarSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
     'station-list-link': StationListLink,
     DataAccessDocLink,
     OpenPortalLinks

@@ -19,8 +19,6 @@
           </ul>
         </details>
 
-        <data-access-doc-link></data-access-doc-link>
-
         <details>
           <summary v-translate>Dataset description, technical information and metadata</summary>
           <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
@@ -33,6 +31,8 @@
             :url-station-list="urlStationList"
             :download-text="$gettext('Download a list of detailed information for each Daily climate station.')"></station-list-link>
         </details>
+
+        <data-access-doc-link></data-access-doc-link>
 
         <details open>
           <summary v-translate>Map filters</summary>

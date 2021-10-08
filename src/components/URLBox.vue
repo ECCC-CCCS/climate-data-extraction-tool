@@ -87,8 +87,7 @@
     <div
       v-show="numRecords === 0">
       <p>
-        <translate>Your form selection contains no data to download.</translate>
-        <translate>Please change your form selection.</translate>
+        <span v-translate>Your form selection contains no data to download.</span> <span v-translate>Please change your form selection.</span>
       </p>
     </div>
   </div>
