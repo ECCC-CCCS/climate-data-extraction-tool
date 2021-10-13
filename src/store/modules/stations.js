@@ -7,10 +7,7 @@ import axios from 'axios'
 // initial state
 const state = {
   province: 'null',
-  hydroStationGeoJson: {
-    features: []
-  },
-  climateDailyStationGeoJson: { // daily
+  climateDailyStationGeoJson: {
     features: []
   },
   climateNormalsStationGeoJson: {
@@ -20,6 +17,9 @@ const state = {
     features: []
   },
   ahccdStationGeoJson: {
+    features: []
+  },
+  hydroStationGeoJson: {
     features: []
   },
   ltceStationGeoJson: {
@@ -40,6 +40,24 @@ const state = {
 
 // getters
 const getters = {
+  numStationClimateDaily (state) {
+    return state.climateDailyStationGeoJson.features.length
+  },
+  numStationClimateNormals (state) {
+    return state.climateNormalsStationGeoJson.features.length
+  },
+  numStationClimateMonthly (state) {
+    return state.climateMonthlyStationGeoJson.features.length
+  },
+  numStationAhccd (state) {
+    return state.ahccdStationGeoJson.features.length
+  },
+  numStationLtce (state) {
+    return state.ltceStationGeoJson.features.length
+  },
+  numStationHydro (state) {
+    return state.hydroStationGeoJson.features.length
+  },
   getClimateDailyMinDate (state) {
     return state.minDateClimateDaily
   },

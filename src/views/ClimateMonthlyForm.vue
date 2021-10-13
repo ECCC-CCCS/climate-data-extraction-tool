@@ -120,7 +120,7 @@ import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
 import axios from 'axios'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'ClimateMonthlyForm',
@@ -157,7 +157,7 @@ export default {
   },
   beforeMount () {
     // Load climate stations
-    if (this.climateMonthlyStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+    if (this.numStationClimateMonthly === 0) { // prevent duplicate AJAX
       this.$store.dispatch('stations/retrieveClimateMonthlyStations', this.urlStationMapList)
     }
 
@@ -192,6 +192,9 @@ export default {
     },
     ...mapState('stations', [
       'climateMonthlyStationGeoJson'
+    ]),
+    ...mapGetters('stations', [
+      'numStationClimateMonthly'
     ]),
     station_props_display: function () {
       let props = {}

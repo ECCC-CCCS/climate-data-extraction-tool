@@ -124,7 +124,7 @@ import DataAccessDocLink from '@/components/DataAccessDocLink'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'AHCCDForm',
@@ -162,7 +162,7 @@ export default {
   },
   beforeMount () {
     // Load ahccd stations
-    if (this.ahccdStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+    if (this.numStationAhccd === 0) { // prevent duplicate AJAX
       this.$store.dispatch('stations/retrieveAhccdStations', this.urlStationMapList)
     }
   },
@@ -175,6 +175,9 @@ export default {
     },
     ...mapState('stations', [
       'ahccdStationGeoJson'
+    ]),
+    ...mapGetters('stations', [
+      'numStationAhccd'
     ]),
     station_props_display: function () {
       let props = {}

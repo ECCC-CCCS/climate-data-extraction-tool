@@ -88,7 +88,7 @@ import DataAccessDocLink from '@/components/DataAccessDocLink'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'ClimateNormalsForm',
@@ -120,7 +120,7 @@ export default {
   },
   beforeMount () {
     // Load climate stations
-    if (this.climateNormalsStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+    if (this.numStationClimateNormals === 0) { // prevent duplicate AJAX
       this.$store.dispatch('stations/retrieveClimateNormalsStations', this.urlStationMapList)
     }
   },
@@ -133,6 +133,9 @@ export default {
     },
     ...mapState('stations', [
       'climateNormalsStationGeoJson'
+    ]),
+    ...mapGetters('stations', [
+      'numStationClimateNormals'
     ]),
     station_props_display: function () {
       let props = {}

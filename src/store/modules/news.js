@@ -11,9 +11,7 @@ const state = {
 
 // getters
 const getters = {
-  getLatestRelease (state) {
-    return state.latestRelease
-  }
+
 }
 
 // mutations

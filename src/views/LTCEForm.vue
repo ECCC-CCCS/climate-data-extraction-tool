@@ -153,7 +153,7 @@ import datasetPaths from '@/static/datasetPaths.js'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'LTCEForm',
@@ -211,7 +211,7 @@ export default {
   },
   beforeMount () {
     // Load ahccd stations
-    if (this.ltceStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+    if (this.numStationLtce === 0) { // prevent duplicate AJAX
       this.$store.dispatch('stations/retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
     }
   },
@@ -231,6 +231,9 @@ export default {
     },
     ...mapState('stations', [
       'ltceStationGeoJson'
+    ]),
+    ...mapGetters('stations', [
+      'numStationLtce'
     ]),
     station_props_display: function () {
       let props = {}

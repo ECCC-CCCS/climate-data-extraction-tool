@@ -124,7 +124,7 @@ import DataAccessDocLink from '@/components/DataAccessDocLink'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'HydrometricArchiveForm',
@@ -167,7 +167,7 @@ export default {
   },
   beforeMount () {
     // Load hydrometric stations
-    if (this.hydroStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+    if (this.numStationHydro === 0) { // prevent duplicate AJAX
       this.$store.dispatch('stations/retrieveHydroStations', this.urlStationMapList)
     }
   },
@@ -190,6 +190,9 @@ export default {
         return hydroStations
       }
     }),
+    ...mapGetters('stations', [
+      'numStationHydro'
+    ]),
     urlStationList: function () {
       let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
       if (this.hydroStationActive) {
