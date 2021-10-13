@@ -30,7 +30,6 @@ const state = {
   stationIdSelected: [],
   maxStationSelection: 20,
   minDateClimateDaily: null,
-  minDateClimateNormals: null,
   minDateClimateMonthly: null,
   dateStart: null,
   dateEnd: null,
@@ -41,56 +40,11 @@ const state = {
 
 // getters
 const getters = {
-  getIsLoadingAllHydroStations (state) {
-    return state.isLoadingAllHydroStations
-  },
-  getIsLoadingStations (state) {
-    return state.isLoadingStations
-  },
-  getRetrievedAllHydroStations (state) {
-    return state.retrievedAllHydroStations
-  },
-  getHydroStationActive (state) {
-    return state.hydroStationActive
-  },
-  getHydroStations (state) {
-    return state.hydroStationGeoJson
-  },
-  getClimateStations (state) {
-    return state.climateDailyStationGeoJson
-  },
-  getClimateNormalsStations (state) {
-    return state.climateNormalsStationGeoJson
-  },
-  getClimateMonthlyStations (state) {
-    return state.climateMonthlyStationGeoJson
-  },
-  getAhccdStations (state) {
-    return state.ahccdStationGeoJson
-  },
-  getLtceStations (state) {
-    return state.ltceStationGeoJson
-  },
-  getStationIdSelected (state) {
-    return state.stationIdSelected
-  },
-  getMaxStationSelection (state) {
-    return state.maxStationSelection
-  },
   getClimateDailyMinDate (state) {
     return state.minDateClimateDaily
   },
-  getClimateNormalsMinDate (state) {
-    return state.minDateClimateNormals
-  },
   getClimateMonthlyMinDate (state) {
     return state.minDateClimateMonthly
-  },
-  getDateStart (state) {
-    return state.dateStart
-  },
-  getDateEnd (state) {
-    return state.dateEnd
   }
 }
 

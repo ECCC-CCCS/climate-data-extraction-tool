@@ -12,15 +12,6 @@ const state = {
 
 // getters
 const getters = {
-  getClickLatLng (state) {
-    return state.clickLatLng
-  },
-  getPointClickStatus (state) {
-    return state.pointClickOn
-  },
-  getBBOX (state) {
-    return state.bbox
-  },
   getBboxStationsTotal (state) {
     return state.bboxStationTotal
   }

@@ -121,7 +121,7 @@ export default {
   beforeMount () {
     // Load climate stations
     if (this.climateNormalsStationGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('stations/retrieveClimateStations', this.urlStationMapList)
+      this.$store.dispatch('stations/retrieveClimateNormalsStations', this.urlStationMapList)
     }
   },
   computed: {

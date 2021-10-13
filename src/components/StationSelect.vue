@@ -361,6 +361,10 @@ export default {
       // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + row.properties[this.dateStartProp] + ' | row end date: ' + row.properties[this.dateEndProp])
       // date values use date ISOString for comparison
 
+      // no date range applied
+      if (this.dateStart == null || this.dateEnd == null) {
+        return true
+      }
       // within range from either start/end dates
       if (this.dateStart >= row.properties[this.dateStartProp] || this.dateEnd <= row.properties[this.dateEndProp]) {
         return true

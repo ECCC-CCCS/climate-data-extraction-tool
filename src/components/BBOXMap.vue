@@ -94,7 +94,6 @@ import 'leaflet.markercluster'
 import 'proj4leaflet'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
-import { mapGetters } from 'vuex'
 import { mapState } from 'vuex'
 
 import OptionRadio from './OptionRadio'
@@ -422,6 +421,7 @@ export default {
     },
     ...mapState('stations', {
       province: 'province',
+      isLoadingStations: 'isLoadingStations',
       stationIdSelected (state) {
         if (this.showGeoJson) {
           return state.stationIdSelected
@@ -454,10 +454,7 @@ export default {
         en: 'https://geogratis.gc.ca/maps/CBMT?',
         fr: 'https://geogratis.gc.ca/cartes/CBCT?'
       }
-    },
-    ...mapGetters('stations', {
-      isLoadingStations: 'getIsLoadingStations'
-    })
+    }
   },
   methods: {
     selectMarkersByProvince: function (selProvince, stationMarkers) {
