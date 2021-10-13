@@ -57,7 +57,7 @@
           :info-text="[infoSupportDeskModelOutput, infoPercentile]"
           :select-options="percentileOptions"></var-select>
 
-        <fieldset v-show="!pointDownloadOn">
+        <fieldset v-show="!pointClickOn">
           <legend v-translate>Date range</legend>
 
           <option-radio
@@ -136,16 +136,16 @@
 
         <format-select-raster
           class="mrgn-tp-md"
-          v-show="!pointDownloadOn"
+          v-show="!pointClickOn"
           v-model="wcs_format"></format-select-raster>
 
         <format-select-vector
           class="mrgn-tp-md"
-          v-show="pointDownloadOn"
+          v-show="pointClickOn"
           v-model="wps_format"></format-select-vector>
 
         <details
-          v-show="!pointDownloadOn">
+          v-show="!pointClickOn">
           <summary v-translate>Advanced options</summary>
           <var-select
             v-model="ows_crs"
@@ -154,7 +154,7 @@
         </details>
 
         <url-box
-          v-show="!pointDownloadOn"
+          v-show="!pointClickOn"
           :layer-options="selectedCoverageIdOption"
           :ows-url-formatter="wcs_download_url"
           :layer-format="wcs_format"
@@ -167,7 +167,7 @@
         </url-box>
 
         <point-download-box
-          v-show="pointDownloadOn"
+          v-show="pointClickOn"
           :title="titlePointDownload"
           :hasErrors="invalidPointDownloadInputs"
           :point-inputs="pointInputs" />

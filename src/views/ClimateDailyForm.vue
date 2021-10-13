@@ -82,17 +82,19 @@
           :max-zoom="mapMaxZoom"
           :readable-columns="popup_props_display"
           :select-disabled="provinceSelected"
-          :geojson="climateStationsGeoJson"
+          :geojson="climateDailyStationGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <station-select
           v-model="wfs_selected_station_ids"
           :select-disabled="provinceSelected"
-          :station-data="climateStationsGeoJson.features"
+          :station-data="climateDailyStationGeoJson.features"
           :station-prop-display="station_props_display"
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"></station-select>
+          :stn-primary-id="stnPrimaryId"
+          :date-start-prop="prop_date_start"
+          :date-end-prop="prop_date_end"></station-select>
 
         <format-select-vector
           class="mrgn-tp-md"
@@ -130,6 +132,7 @@ import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ClimateDailyForm',
@@ -153,35 +156,54 @@ export default {
       date_start: this.$moment.utc('1840-03-01', 'YYYY-MM-DD').toDate(),
       date_end: this.$moment.utc().toDate(),
       date_min: this.$moment.utc('1840-03-01', 'YYYY-MM-DD').toDate(),
-      date_max: this.$moment.utc().toDate()
+      date_max: this.$moment.utc().toDate(),
+      prop_date_start: 'DLY_FIRST_DATE',
+      prop_date_end: 'DLY_LAST_DATE'
     }
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
+    },
+    date_start: function (newVal) {
+      this.$store.commit('stations/changeStationState', {
+        stateProp: 'dateStart',
+        stateValue: this.$moment.utc(newVal).format(this.dateConfigs.format)
+      })
+    },
+    date_end: function (newVal) {
+      this.$store.commit('stations/changeStationState', {
+        stateProp: 'dateEnd',
+        stateValue: this.$moment.utc(newVal).format(this.dateConfigs.format)
+      })
     }
   },
   beforeMount () {
     // Load climate stations
-    if (this.climateStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveClimateNormalsStations', this.urlStationMapList)
+    if (this.climateDailyStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveClimateStations', this.urlStationMapList)
     }
 
     // Get min local_date dynamically to set date_min
-    let minDate = this.$store.getters.getClimateNormalsMinDate
+    let minDate = this.$store.getters['stations/getClimateDailyMinDate']
     if (minDate === null) { // prevent duplicate AJAX
-      let thisComp = this // for reference in axios response; "this" reserved in axios
+      let this_ = this // for reference in axios response; "this" reserved in axios
 
       axios.get(this.urlDatasetMinDate)
         .then(function (response) {
           if (Object.prototype.hasOwnProperty.call(response.data, 'features')) {
             minDate = response.data.features[0].properties.LOCAL_DATE
-            thisComp.$store.dispatch('setClimateDailyMinDate', minDate)
-            thisComp.date_start = thisComp.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
-            thisComp.date_min = thisComp.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
+            this_.$store.dispatch('stations/setClimateDailyMinDate', minDate)
+            this_.date_start = this_.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
+            this_.date_min = this_.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
+            // initialize dateEnd in store
+            this_.$store.commit('stations/changeStationState', {
+              stateProp: 'dateEnd',
+              stateValue: this_.$moment.utc(this_.date_end).format(this_.dateConfigs.format)
+            })
           }
         })
     } else {
@@ -199,9 +221,9 @@ export default {
     urlDatasetMinDate: function () {
       return this.wfs3_url_base + '/' + this.wfs_layer + '/items?f=json&sortby=LOCAL_DATE&limit=1'
     },
-    climateStationsGeoJson: function () {
-      return this.$store.getters.getClimateNormalsStations
-    },
+    ...mapState('stations', [
+      'climateDailyStationGeoJson'
+    ]),
     station_props_display: function () {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')
@@ -209,8 +231,8 @@ export default {
       props['PROV_STATE_TERR_CODE'] = this.$gettext('Province') + '&nbsp/<br>' + this.$gettext('Territory')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
-      props['DLY_FIRST_DATE'] = this.$gettext('First date')
-      props['DLY_LAST_DATE'] = this.$gettext('Last date')
+      props[this.prop_date_start] = this.$gettext('First date')
+      props[this.prop_date_end] = this.$gettext('Last date')
       return props
     },
     popup_props_display: function () {

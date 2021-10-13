@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'ProvinceSelect',
   props: {
@@ -49,14 +51,14 @@ export default {
   },
   methods: {
     emitUpdatedValue: function (event) {
-      this.$store.dispatch('clearStationIdSelected')
+      this.$store.dispatch('stations/clearStationIdSelected')
       this.$emit('input', event.target.value)
     }
   },
   computed: {
-    isLoadingStations: function () {
-      return this.$store.getters.getIsLoadingStations
-    }
+    ...mapState('stations', [
+      'isLoadingStations'
+    ])
   }
 }
 </script>

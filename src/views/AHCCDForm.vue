@@ -36,7 +36,7 @@
           :max-zoom="18"
           :readable-columns="popup_props_display"
           :select-disabled="provinceSelected"
-          :geojson="ahccdStationsGeoJson"
+          :geojson="ahccdStationGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <province-select
@@ -45,7 +45,7 @@
         <station-select
           v-model="wfs_selected_station_ids"
           :select-disabled="provinceSelected"
-          :station-data="ahccdStationsGeoJson.features"
+          :station-data="ahccdStationGeoJson.features"
           :station-prop-display="station_props_display"
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
@@ -124,6 +124,7 @@ import DataAccessDocLink from '@/components/DataAccessDocLink'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
+import { mapState } from 'vuex'
 
 export default {
   name: 'AHCCDForm',
@@ -153,16 +154,16 @@ export default {
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     }
   },
   beforeMount () {
     // Load ahccd stations
-    if (this.ahccdStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveAhccdStations', this.urlStationMapList)
+    if (this.ahccdStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveAhccdStations', this.urlStationMapList)
     }
   },
   computed: {
@@ -172,9 +173,9 @@ export default {
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},start_date__date_debut,end_date__date_fin`
     },
-    ahccdStationsGeoJson: function () {
-      return this.$store.getters.getAhccdStations
-    },
+    ...mapState('stations', [
+      'ahccdStationGeoJson'
+    ]),
     station_props_display: function () {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')

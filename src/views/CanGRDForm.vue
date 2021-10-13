@@ -39,7 +39,7 @@
           :label="$gettext('Time interval / Time of year')"
           :select-options="timePeriodOptions"></var-select>
 
-        <fieldset v-show="!pointDownloadOn">
+        <fieldset v-show="!pointClickOn">
           <legend v-translate>Date range</legend>
           <div v-show="wcs_id_cangrdType === 'ANO'">
             <date-select
@@ -82,18 +82,18 @@
 
         <format-select-raster
           class="mrgn-tp-md"
-          v-show="!pointDownloadOn"
+          v-show="!pointClickOn"
           v-model="wcs_format"
           :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
         <format-select-vector
           class="mrgn-tp-md"
-          v-show="pointDownloadOn"
+          v-show="pointClickOn"
           v-model="wps_format"></format-select-vector>
 
         <details
           class="mrgn-tp-md"
-          v-show="!pointDownloadOn">
+          v-show="!pointClickOn">
           <summary v-translate>Advanced options</summary>
           <var-select
             v-model="ows_crs"
@@ -102,7 +102,7 @@
         </details>
 
         <url-box
-          v-show="!pointDownloadOn"
+          v-show="!pointClickOn"
           :layer-options="selectedCoverageIdOption"
           :ows-url-formatter="wcs_download_url"
           :layer-format="wcs_format"
@@ -115,7 +115,7 @@
         </url-box>
 
         <point-download-box
-          v-show="pointDownloadOn"
+          v-show="pointClickOn"
           :title="titlePointDownload"
           :hasErrors="invalidPointDownloadInputs"
           :point-inputs="pointInputs" />
@@ -275,7 +275,7 @@ export default {
       let options = {
         'ANO': this.$gettext('Anomaly values')
       }
-      if (!this.pointDownloadOn) {
+      if (!this.pointClickOn) {
         options['TREND'] = this.$gettext('Trend values')
       }
       return options

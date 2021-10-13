@@ -94,7 +94,8 @@ import 'leaflet.markercluster'
 import 'proj4leaflet'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
-import store from '@/store'
+import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 import OptionRadio from './OptionRadio'
 
@@ -284,7 +285,7 @@ export default {
     pointClickOn: function (newStatus) {
       this.resetPointClick(newStatus)
     },
-    selectedStationIds: function (newStations, oldStations) {
+    stationIdSelected: function (newStations, oldStations) {
       /* Update marker styles and popups when station selection changes are made */
       let stationMarkers = this.getStationMarkers()
 
@@ -391,7 +392,7 @@ export default {
     this.resetPointClick('off')
 
     // reset bbox value
-    this.$store.dispatch('changeBBOX', this.bbox_value)
+    this.$store.dispatch('map/changeBBOX', this.bbox_value)
 
     // window resize
     window.addEventListener('resize', this.onResize)
@@ -419,16 +420,16 @@ export default {
     attributionCBMT: function () {
       return '<a href="' + this.cbmtAttributionURL[this.$i18n.activeLocale] + '" target="_blank">' + this.$pgettext('Title', 'Canada Base Map Transportation') + '</a>'
     },
-    province: function () {
-      return this.$store.getters.getProvince
-    },
-    selectedStationIds: function () {
-      if (this.showGeoJson) {
-        return this.$store.getters.getStationIdSelected
-      } else {
-        return null
+    ...mapState('stations', {
+      province: 'province',
+      stationIdSelected (state) {
+        if (this.showGeoJson) {
+          return state.stationIdSelected
+        } else {
+          return []
+        }
       }
-    },
+    }),
     showGeoJson: function () {
       if (this.geojson === null) {
         return false
@@ -454,9 +455,9 @@ export default {
         fr: 'https://geogratis.gc.ca/cartes/CBCT?'
       }
     },
-    isLoadingStations: function () {
-      return this.$store.getters.getIsLoadingStations
-    }
+    ...mapGetters('stations', {
+      isLoadingStations: 'getIsLoadingStations'
+    })
   },
   methods: {
     selectMarkersByProvince: function (selProvince, stationMarkers) {
@@ -471,16 +472,16 @@ export default {
       }
     },
     resetPointClick: function (newStatus) {
-      this.$store.dispatch('setPointClickStatus', newStatus)
+      this.$store.dispatch('map/setPointClickStatus', newStatus)
       if (newStatus === 'off') {
         this.clickLatLng = null
-        this.$store.dispatch('setClickLatLng', this.clickLatLng)
+        this.$store.dispatch('map/setClickLatLng', this.clickLatLng)
       }
     },
     mapClick: function (event) {
       if (this.pointClickOn === 'on') {
         this.clickLatLng = event.latlng
-        this.$store.dispatch('setClickLatLng', this.clickLatLng)
+        this.$store.dispatch('map/setClickLatLng', this.clickLatLng)
       }
     },
     updateBBOX: function () {
@@ -524,7 +525,7 @@ export default {
         .redraw()
     },
     pointToLayer: function (feature, latlng) {
-      let cmp = this
+      let this_ = this
       let popupTextHtml = '<strong>' + feature.properties[this.readableColumns.name.col] + '</strong>'
 
       if (this.readableColumns.id.col !== null) {
@@ -545,16 +546,16 @@ export default {
 
       // add click event to marker for station selection/deselection
       stationMarker.on('click', function () {
-        if (cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId])) {
-          store.dispatch('removeStationIdSelected', feature.properties[cmp.stnPrimaryId])
-        } else if (!cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]) && !cmp.selectDisabled) {
-          store.dispatch('addStationIdSelected', feature.properties[cmp.stnPrimaryId])
+        if (this_.stationIdSelected.includes(feature.properties[this_.stnPrimaryId])) {
+          this_.$store.dispatch('stations/removeStationIdSelected', feature.properties[this_.stnPrimaryId])
+        } else if (!this_.stationIdSelected.includes(feature.properties[this_.stnPrimaryId]) && !this_.selectDisabled) {
+          this_.$store.dispatch('stations/addStationIdSelected', feature.properties[this_.stnPrimaryId])
         }
       })
       return stationMarker
     },
     filterGeoJson: function (geoJsonFeature) {
-      return this.selectedStationIds.includes(geoJsonFeature.properties.IDENTIFIER)
+      return this.stationIdSelected.includes(geoJsonFeature.properties.IDENTIFIER)
     },
     activeClass: function (statusEn) {
       if (statusEn === 'Active') {

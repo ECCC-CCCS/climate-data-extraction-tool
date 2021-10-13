@@ -81,13 +81,13 @@
           :max-zoom="18"
           :readable-columns="popup_props_display"
           :select-disabled="provinceSelected"
-          :geojson="ltceStationsGeoJson"
+          :geojson="ltceStationGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <station-select
           v-model="wfs_selected_station_ids"
           :select-disabled="provinceSelected"
-          :station-data="ltceStationsGeoJson.features"
+          :station-data="ltceStationGeoJson.features"
           :station-prop-display="station_props_display"
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
@@ -153,6 +153,7 @@ import datasetPaths from '@/static/datasetPaths.js'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LTCEForm',
@@ -188,15 +189,15 @@ export default {
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     wfs_layer: function () {
       // different layer has different stations
-      this.$store.dispatch('clearStationIdSelected') // clear existing selection
-      this.$store.dispatch('retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
+      this.$store.dispatch('stations/clearStationIdSelected') // clear existing selection
+      this.$store.dispatch('stations/retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     },
     activeLocale3: function (newLang3) {
       this.datasetToNameColName.ltce = `VIRTUAL_STATION_NAME_${newLang3[0]}`
@@ -210,8 +211,8 @@ export default {
   },
   beforeMount () {
     // Load ahccd stations
-    if (this.ltceStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
+    if (this.ltceStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
     }
   },
   computed: {
@@ -228,9 +229,9 @@ export default {
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.stnPrimaryId},ELEMENT_NAME_E&ELEMENT_NAME_E=${this.ltceLayerToElementKey[this.wfs_layer]}`
     },
-    ltceStationsGeoJson: function () {
-      return this.$store.getters.getLtceStations
-    },
+    ...mapState('stations', [
+      'ltceStationGeoJson'
+    ]),
     station_props_display: function () {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Virtual station name')

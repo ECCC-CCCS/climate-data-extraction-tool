@@ -41,7 +41,7 @@
           :max-zoom="mapMaxZoom"
           :readable-columns="popup_props_display"
           :select-disabled="provinceSelected"
-          :geojson="climateStationsGeoJson"
+          :geojson="climateNormalsStationGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <province-select
@@ -50,7 +50,7 @@
         <station-select
           v-model="wfs_selected_station_ids"
           :select-disabled="provinceSelected"
-          :station-data="climateStationsGeoJson.features"
+          :station-data="climateNormalsStationGeoJson.features"
           :station-prop-display="station_props_display"
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
@@ -88,6 +88,7 @@ import DataAccessDocLink from '@/components/DataAccessDocLink'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ClimateNormalsForm',
@@ -111,16 +112,16 @@ export default {
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     }
   },
   beforeMount () {
     // Load climate stations
-    if (this.climateStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveClimateStations', this.urlStationMapList)
+    if (this.climateNormalsStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveClimateStations', this.urlStationMapList)
     }
   },
   computed: {
@@ -130,9 +131,9 @@ export default {
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},DLY_FIRST_DATE,DLY_LAST_DATE`
     },
-    climateStationsGeoJson: function () {
-      return this.$store.getters.getClimateStations
-    },
+    ...mapState('stations', [
+      'climateNormalsStationGeoJson'
+    ]),
     station_props_display: function () {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')

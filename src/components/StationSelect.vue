@@ -5,7 +5,7 @@
         <translate>Station table</translate>
         <span
           class="label label-warning"
-          v-show="selectedStationIds.length === maxStationSelection"
+          v-show="stationIdSelected.length === maxStationSelection"
           v-translate>Max number of stations selected</span>
       </legend>
       <div class="form-inline" aria-controls="station-select-table">
@@ -20,8 +20,8 @@
           type="button"
           class="btn btn-sm"
           :class="showSelected ? 'btn-primary active' : 'btn-default'"
-          :disabled="selectedStationIds.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
-            <span v-show="selectedStationIds.length > 0">({{ selectedStationIds.length }}/{{ maxStationSelection }})</span></button>
+          :disabled="stationIdSelected.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
+            <span v-show="stationIdSelected.length > 0">({{ stationIdSelected.length }}/{{ maxStationSelection }})</span></button>
         <button
           id="toggle-discontinued-stations"
           v-if="hydroStationDisplay"
@@ -45,7 +45,7 @@
           @click="clearSelected"
           class="btn btn-sm btn-danger"
           type="button"
-          :disabled="selectedStationIds.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
+          :disabled="stationIdSelected.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
       </div>
       <div id="station-select-container" class="vld-parent">
         <loading :active.sync="isLoadingStations" :is-full-page="false" aria-busy="true" role="alert"></loading>
@@ -135,6 +135,7 @@ import { PulseLoader } from '@saeris/vue-spinners'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import L from 'leaflet'
+import { mapState } from 'vuex'
 
 export default {
   name: 'StationSelect',
@@ -143,7 +144,7 @@ export default {
     Loading
   },
   model: {
-    prop: 'selectedStationIds',
+    prop: 'stationIdSelected',
     event: 'click'
   },
   props: {
@@ -169,13 +170,21 @@ export default {
     hydroStationDisplay: {
       type: Boolean,
       default: false
+    },
+    dateStartProp: {
+      type: String,
+      default: null
+    },
+    dateEndProp: {
+      type: String,
+      default: null
     }
   },
   beforeMount: function () {
     this.clearSelected()
 
     // reset bboxStationTotal
-    this.$store.dispatch('setBboxStationTotal', null)
+    this.$store.dispatch('map/setBboxStationTotal', null)
   },
   data () {
     return {
@@ -190,7 +199,7 @@ export default {
     }
   },
   watch: {
-    selectedStationIds: function (newVal) {
+    stationIdSelected: function (newVal) {
       if (newVal.length === 0) { // auto toggle false if no stations selected
         this.showSelected = false
       }
@@ -208,7 +217,7 @@ export default {
       }
     },
     bboxStationTotal: function (newVal) {
-      this.$store.dispatch('setBboxStationTotal', newVal)
+      this.$store.dispatch('map/setBboxStationTotal', newVal)
     },
     totalSize: function (newVal) {
       this.pageSize = newVal
@@ -234,22 +243,22 @@ export default {
       }
     },
     clearSelected: function () {
-      this.$store.dispatch('clearStationIdSelected')
-      this.$emit('click', this.selectedStationIds)
+      this.$store.dispatch('stations/clearStationIdSelected')
+      this.$emit('click', this.stationIdSelected)
     },
     selectStation: function (selectedStnId) {
       if (this.selectDisabled) {
         return false // early exit
       }
-      if (this.selectedStationIds.includes(selectedStnId)) { // remove
-        this.$store.dispatch('removeStationIdSelected', selectedStnId)
+      if (this.stationIdSelected.includes(selectedStnId)) { // remove
+        this.$store.dispatch('stations/removeStationIdSelected', selectedStnId)
       } else { // add
-        this.$store.dispatch('addStationIdSelected', selectedStnId)
+        this.$store.dispatch('stations/addStationIdSelected', selectedStnId)
       }
-      this.$emit('click', this.selectedStationIds)
+      this.$emit('click', this.stationIdSelected)
     },
     selectedStationClass: function (stnId) {
-      if (this.selectedStationIds.includes(stnId)) {
+      if (this.stationIdSelected.includes(stnId)) {
         return true
       } else {
         return false
@@ -259,11 +268,11 @@ export default {
       this.showSelected = !this.showSelected
     },
     toggleActiveStation: function () {
-      this.$store.dispatch('setHydroStationActive', !this.hydroStationActive)
+      this.$store.dispatch('stations/setHydroStationActive', !this.hydroStationActive)
     },
     isRowSelected: function (stnId) {
       if (this.showSelected) {
-        if (this.selectedStationIds.length === 0 || this.selectedStationIds.includes(stnId)) {
+        if (this.stationIdSelected.length === 0 || this.stationIdSelected.includes(stnId)) {
           return true
         } else {
           return false
@@ -283,9 +292,9 @@ export default {
     },
     selectedFilter: function (row) {
       if (this.showSelected) { // show selected is toggled on
-        if (this.selectedStationIds.length === 0) {
+        if (this.stationIdSelected.length === 0) {
           return true
-        } else if (this.selectedStationIds.includes(row.properties[this.stnPrimaryId])) {
+        } else if (this.stationIdSelected.includes(row.properties[this.stnPrimaryId])) {
           return true
         } else {
           return false
@@ -348,6 +357,31 @@ export default {
         return true
       }
     },
+    dateRangeFilter: function (row) {
+      // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + row.properties[this.dateStartProp] + ' | row end date: ' + row.properties[this.dateEndProp])
+      // date values use date ISOString for comparison
+
+      // within range from either start/end dates
+      if (this.dateStart >= row.properties[this.dateStartProp] || this.dateEnd <= row.properties[this.dateEndProp]) {
+        return true
+      // within range of end date only
+      } else if (this.dateStart < row.properties[this.dateStartProp]) {
+        if (this.dateEnd >= row.properties[this.dateStartProp]) {
+          return true
+        } else {
+          return false
+        }
+      // within range of start date only
+      } else if (this.dateEnd > row.properties[this.dateEndProp]) {
+        if (this.dateStart <= row.properties[this.dateEndProp]) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    },
     dateDisplay: function (utcString) {
       if (utcString === null) {
         return ''
@@ -357,20 +391,24 @@ export default {
     }
   },
   computed: {
+    ...mapState('stations', [
+      'dateStart',
+      'dateEnd',
+      'isLoadingStations',
+      'isLoadingAllHydroStations',
+      'hydroStationActive',
+      'stationIdSelected',
+      'province',
+      'maxStationSelection'
+    ]),
+    ...mapState('map', [
+      'bbox'
+    ]),
     numColumns: function () {
       return Object.keys(this.tableFieldsDisplay).length
     },
-    isLoadingStations: function () {
-      return this.$store.getters.getIsLoadingStations
-    },
-    isLoadingAllHydroStations: function () {
-      return this.$store.getters.getIsLoadingAllHydroStations
-    },
     totalSize: function () {
       return this.stationData.length
-    },
-    hydroStationActive: function () {
-      return this.$store.getters.getHydroStationActive
     },
     filteredStations: function () {
       let _this = this // reference to this inside sort function
@@ -396,6 +434,7 @@ export default {
         .filter(this.bboxFilter)
         .filter(this.provinceFilter)
         .filter(this.searchFilter)
+        .filter(this.dateRangeFilter)
     },
     paginatedStations: function () {
       return this.filteredStations
@@ -431,18 +470,6 @@ export default {
         return 'glyphicon-sort-by-attributes-alt'
       }
     },
-    selectedStationIds: function () {
-      return this.$store.getters.getStationIdSelected
-    },
-    bbox: function () {
-      return this.$store.getters.getBBOX
-    },
-    pixelBounds: function () {
-      return this.$store.getters.getPixelBounds
-    },
-    bboxMap: function () {
-      return this.$store.getters.getMap
-    },
     bounds: function () {
       let bboxParts = this.bbox.split(',')
       let corner1 = L.latLng(bboxParts[1], bboxParts[0])
@@ -452,7 +479,6 @@ export default {
     maxPages: function () {
       return Math.ceil(this.filteredNumEntries / this.pageSize)
     },
-    // {{ currentPage }} to {{ maxPages*pageSize }}
     startEntryOfPage: function () {
       if (this.filteredNumEntries === 0) {
         return 0
@@ -469,12 +495,6 @@ export default {
       } else {
         return this.filteredNumEntries
       }
-    },
-    province: function () {
-      return this.$store.getters.getProvince
-    },
-    maxStationSelection: function () {
-      return this.$store.getters.getMaxStationSelection
     },
     resetMapMessage: function () {
       return this.$gettext('Please press the "Reset map" button to see the stations in this table.')

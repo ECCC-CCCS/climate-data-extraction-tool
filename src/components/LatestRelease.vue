@@ -14,10 +14,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'LatestRelease',
   mounted () {
-    this.$store.dispatch('retrieveLatestRelease', this.urlGitReleaseAPI)
+    this.$store.dispatch('news/retrieveLatestRelease', this.urlGitReleaseAPI)
   },
   data () {
     return {
@@ -26,9 +28,9 @@ export default {
     }
   },
   computed: {
-    latestRelease: function () {
-      return this.$store.getters.getLatestRelease
-    },
+    ...mapState('news', [
+      'latestRelease'
+    ]),
     releaseName: function () {
       return this.latestRelease.name
     },

@@ -41,7 +41,7 @@
           :max-zoom="mapMaxZoom"
           :readable-columns="popup_props_display"
           :select-disabled="provinceSelected"
-          :geojson="climateStationsGeoJson"
+          :geojson="climateMonthlyStationGeoJson"
           :stn-primary-id="stnPrimaryId"></bbox-map>
 
         <province-select
@@ -50,7 +50,7 @@
         <station-select
           v-model="wfs_selected_station_ids"
           :select-disabled="provinceSelected"
-          :station-data="climateStationsGeoJson.features"
+          :station-data="climateMonthlyStationGeoJson.features"
           :station-prop-display="station_props_display"
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
@@ -120,6 +120,7 @@ import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ClimateMonthlyForm',
@@ -148,20 +149,20 @@ export default {
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     }
   },
   beforeMount () {
     // Load climate stations
-    if (this.climateStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveClimateMonthlyStations', this.urlStationMapList)
+    if (this.climateMonthlyStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveClimateMonthlyStations', this.urlStationMapList)
     }
 
     // Get min local_date dynamically to set date_min
-    let minDate = this.$store.getters.getClimateMonthlyMinDate
+    let minDate = this.$store.getters['stations/getClimateMonthlyMinDate']
     if (minDate === null) { // prevent duplicate AJAX
       let thisComp = this // for reference in axios response; "this" reserved in axios
 
@@ -169,7 +170,7 @@ export default {
         .then(function (response) {
           if (Object.prototype.hasOwnProperty.call(response.data, 'features')) {
             minDate = response.data.features[0].properties.LOCAL_DATE
-            thisComp.$store.dispatch('setClimateMonthlyMinDate', minDate)
+            thisComp.$store.dispatch('stations/setClimateMonthlyMinDate', minDate)
             thisComp.date_start = thisComp.$moment.utc(minDate, 'YYYY-MM').toDate()
             thisComp.date_min = thisComp.$moment.utc(minDate, 'YYYY-MM').toDate()
           }
@@ -189,9 +190,9 @@ export default {
     urlDatasetMinDate: function () {
       return this.wfs3_url_base + '/' + this.wfs_layer + '/items?sortby=LOCAL_DATE&limit=1&f=json'
     },
-    climateStationsGeoJson: function () {
-      return this.$store.getters.getClimateMonthlyStations
-    },
+    ...mapState('stations', [
+      'climateMonthlyStationGeoJson'
+    ]),
     station_props_display: function () {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Station name')

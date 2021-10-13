@@ -1,3 +1,5 @@
+import { mapState } from "vuex"
+
 /*
 Anything common to wps setup; works in conjunction with wcs mixin data()
 */
@@ -8,7 +10,7 @@ export const wps = {
     }
   },
   watch: {
-    pointDownloadOn: function (newVal) {
+    pointClickOn: function (newVal) {
       if (newVal === true) {
         this.rangeType = 'custom'
         if (this.wcs_id_timePeriod === 'ENS') { // DCS, CMIP5
@@ -21,6 +23,10 @@ export const wps = {
     }
   },
   computed: {
+    ...mapState('map', [
+      'pointClickOn',
+      'clickLatLng'
+    ]),
     titlePointDownload: function () {
       return this.$pgettext('Title heading', 'Single grid point download')
     },
@@ -30,12 +36,6 @@ export const wps = {
       } else {
         return false
       }
-    },
-    pointDownloadOn: function () {
-      return this.$store.getters.getPointClickStatus === 'on'
-    },
-    clickLatLng: function () {
-      return this.$store.getters.getClickLatLng
     },
     pointInputs: function () {
       return {

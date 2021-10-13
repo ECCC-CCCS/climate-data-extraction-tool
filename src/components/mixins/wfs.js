@@ -36,7 +36,7 @@ export const wfs = {
         normals: 'STATION_NAME',
         daily: 'STATION_NAME',
         monthly: 'STATION_NAME',
-        ltce: 'VIRTUAL_STATION_NAME_E' // Switch on locale change
+        ltce: 'VIRTUAL_STATION_NAME_E' // Switches on locale change
       },
       datasetToDateColName: {
         hydrometric: 'DATE', // MAX_DATE for hydrometric-annual-statistics
@@ -71,12 +71,9 @@ export const wfs = {
   },
   beforeMount () {
     // reset existing selections that share with other components
-    this.$store.dispatch('changeProvince', 'null') // to share with bbox
+    this.$store.dispatch('stations/changeProvince', 'null') // to share with bbox
   },
   computed: {
-    getProvince: function () {
-      return this.$store.getters.getProvince
-    },
     stationProvCol: function () { // province column for station table
       const routeName = this.$route.name
       const climateStationSets = ['monthly', 'daily', 'normals']
@@ -225,7 +222,7 @@ export const wfs = {
       return this.wfs_province !== 'null'
     },
     noProvinceStationSelected: function () {
-      return !this.stationsSelected && !this.provinceSelected && this.$store.getters.getBboxStationsTotal === 0
+      return !this.stationsSelected && !this.provinceSelected && this.$store.getters['map/getBboxStationsTotal'] === 0
     },
     layer_options: function () {
       let layers = {}

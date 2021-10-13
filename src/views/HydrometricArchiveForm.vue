@@ -36,7 +36,7 @@
           :max-zoom="mapMaxZoom"
           :readable-columns="popup_props_display"
           :select-disabled="provinceSelected"
-          :geojson="hydroStationsGeoJson"
+          :geojson="hydroStationGeoJson"
           :stn-primary-id="stnPrimaryId"
           :hydro-station-display="true"></bbox-map>
 
@@ -46,7 +46,7 @@
         <station-select
           v-model="wfs_selected_station_ids"
           :select-disabled="provinceSelected"
-          :station-data="hydroStationsGeoJson.features"
+          :station-data="hydroStationGeoJson.features"
           :station-prop-display="station_props_display"
           :station-prov-col="stationProvCol"
           :no-province-station-selected="noProvinceStationSelected"
@@ -124,6 +124,7 @@ import DataAccessDocLink from '@/components/DataAccessDocLink'
 import { wfs } from '@/components/mixins/wfs'
 import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
+import { mapState } from 'vuex'
 
 export default {
   name: 'HydrometricArchiveForm',
@@ -153,51 +154,51 @@ export default {
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     },
-    activeStationsOnly: function (newVal) { // display inactive stations
+    hydroStationActive: function (newVal) { // display inactive stations
       if (newVal === false) {
-        this.$store.dispatch('retrieveHydroStations', this.urlStationMapList)
+        this.$store.dispatch('stations/retrieveHydroStations', this.urlStationMapList)
       }
     }
   },
   beforeMount () {
     // Load hydrometric stations
-    if (this.hydroStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveHydroStations', this.urlStationMapList)
+    if (this.hydroStationGeoJson.features.length === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveHydroStations', this.urlStationMapList)
     }
   },
   computed: {
-    activeStationsOnly: function () {
-      return this.$store.getters.getHydroStationActive
-    },
+    ...mapState('stations', {
+      hydroStationActive: 'hydroStationActive',
+      hydroStationGeoJson (state) {
+        let hs = state.hydroStationGeoJson
+        if (hs === null) {
+          return null
+        }
+        let hydroStations = Object.assign({}, hs) // Clone object to prevent original alteration
+        if (this.hydroStationActive) { // filter here so it works with map and table
+          if (Object.prototype.hasOwnProperty.call(hydroStations, 'features')) {
+            hydroStations.features = hydroStations.features.filter((feature) => {
+              return feature.properties.STATUS_EN === 'Active'
+            })
+          }
+        }
+        return hydroStations
+      }
+    }),
     urlStationList: function () {
       let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
-      if (this.activeStationsOnly) {
+      if (this.hydroStationActive) {
         url += '&STATUS_EN=Active'
       }
       return url
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},STATUS_EN`
-    },
-    hydroStationsGeoJson: function () {
-      let hs = this.$store.getters.getHydroStations
-      if (hs === null) {
-        return null
-      }
-      let hydroStations = Object.assign({}, hs) // Clone object to prevent original alteration
-      if (this.activeStationsOnly) { // filter here so it works with map and table
-        if (Object.prototype.hasOwnProperty.call(hydroStations, 'features')) {
-          hydroStations.features = hydroStations.features.filter((feature) => {
-            return feature.properties.STATUS_EN === 'Active'
-          })
-        }
-      }
-      return hydroStations
     },
     layer_options: function () {
       return {
