@@ -178,6 +178,10 @@ export default {
     dateEndProp: {
       type: String,
       default: null
+    },
+    useDateRangeFilter: {
+      type: Boolean,
+      default: false
     }
   },
   beforeMount: function () {
@@ -361,8 +365,8 @@ export default {
       // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + row.properties[this.dateStartProp] + ' | row end date: ' + row.properties[this.dateEndProp])
       // date values use date ISOString for comparison
 
-      // no date range applied
-      if (this.dateStart == null || this.dateEnd == null) {
+      // no date range filter applied
+      if (this.dateStart == null || this.dateEnd == null || !this.useDateRangeFilter) {
         return true
       }
       // within range from either start/end dates
