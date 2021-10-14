@@ -1,112 +1,106 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }}</h1>
+  <section>
+    <h1>{{ currentRouteTitle }}</h1>
 
-        <p>{{ introDatasetText.station.instructions }}</p>
+    <p>{{ introDatasetText.station.instructions }}</p>
 
-        <div class="alert alert-info">
-          <p v-html="htmlNoteMoreData"></p>
-        </div>
-
-        <p>
-          <strong>{{ introDatasetText.station.tipTitle }}</strong>
-          <ul>
-            <li
-              v-for="(pointText, index) in introDatasetText.station.tipPoints"
-              :key="index">{{ pointText }}</li>
-          </ul>
-        </p>
-
-        <data-access-doc-link></data-access-doc-link>
-
-        <details>
-          <summary v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.</p>
-
-          <p v-html="techDocHtml"></p>
-
-          <p v-html="openPortalHtml"></p>
-
-          <station-list-link
-            :url-station-list="urlStationList"
-            :download-text="$gettext('Download a list of detailed information for each Monthly climate summaries station.')"></station-list-link>
-        </details>
-
-        <info-contact-support></info-contact-support>
-
-        <bbox-map
-          v-model="ows_bbox"
-          :max-zoom="mapMaxZoom"
-          :readable-columns="popup_props_display"
-          :select-disabled="provinceSelected"
-          :geojson="climateMonthlyStationGeoJson"
-          :stn-primary-id="stnPrimaryId"></bbox-map>
-
-        <province-select
-          v-model="wfs_province"></province-select>
-
-        <station-select
-          v-model="wfs_selected_station_ids"
-          :select-disabled="provinceSelected"
-          :station-data="climateMonthlyStationGeoJson.features"
-          :station-prop-display="station_props_display"
-          :station-prov-col="stationProvCol"
-          :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"></station-select>
-
-        <fieldset>
-          <legend v-translate>Date range</legend>
-          <date-select
-            v-model="date_start"
-            :label="$gettext('Start date')"
-            :placeholder="$gettext('YYYY-MM-DD')"
-            :minimum-view="dateConfigs.minimumView"
-            :format="dateConfigs.format"
-            :min-date="date_min"
-            :max-date="date_max"
-            :custom-error-msg="dateRangeErrorMessage"></date-select>
-
-          <date-select
-            v-model="date_end"
-            :label="$gettext('End date')"
-            :placeholder="$gettext('YYYY-MM-DD')"
-            :minimum-view="dateConfigs.minimumView"
-            :format="dateConfigs.format"
-            :min-date="date_min"
-            :max-date="date_max"
-            :custom-error-msg="dateRangeErrorMessage"></date-select>
-
-          <button
-            id="clear-dates-btn"
-            class="btn btn-default"
-            type="button"
-            @click="clearDates"
-            v-translate>Clear dates</button>
-        </fieldset>
-
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-model="wfs_format"></format-select-vector>
-
-        <url-box
-          :layer-options="layer_options"
-          :ows-url-formatter="wfs3_download_url"
-          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          :wfs3-download-limit="wfs_limit"
-          :layer-format="wfs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-      </main>
-      <dataset-menu></dataset-menu>
+    <div class="alert alert-info">
+      <p v-html="htmlNoteMoreData"></p>
     </div>
-  </div>
+
+    <p>
+      <strong>{{ introDatasetText.station.tipTitle }}</strong>
+      <ul>
+        <li
+          v-for="(pointText, index) in introDatasetText.station.tipPoints"
+          :key="index">{{ pointText }}</li>
+      </ul>
+    </p>
+
+    <data-access-doc-link></data-access-doc-link>
+
+    <details>
+      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <p v-translate>Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.</p>
+
+      <p v-html="techDocHtml"></p>
+
+      <p v-html="openPortalHtml"></p>
+
+      <station-list-link
+        :url-station-list="urlStationList"
+        :download-text="$gettext('Download a list of detailed information for each Monthly climate summaries station.')"></station-list-link>
+    </details>
+
+    <info-contact-support></info-contact-support>
+
+    <bbox-map
+      v-model="ows_bbox"
+      :max-zoom="mapMaxZoom"
+      :readable-columns="popup_props_display"
+      :select-disabled="provinceSelected"
+      :geojson="climateMonthlyStationGeoJson"
+      :stn-primary-id="stnPrimaryId"></bbox-map>
+
+    <province-select
+      v-model="wfs_province"></province-select>
+
+    <station-select
+      v-model="wfs_selected_station_ids"
+      :select-disabled="provinceSelected"
+      :station-data="climateMonthlyStationGeoJson.features"
+      :station-prop-display="station_props_display"
+      :station-prov-col="stationProvCol"
+      :no-province-station-selected="noProvinceStationSelected"
+      :stn-primary-id="stnPrimaryId"></station-select>
+
+    <fieldset>
+      <legend v-translate>Date range</legend>
+      <date-select
+        v-model="date_start"
+        :label="$gettext('Start date')"
+        :placeholder="$gettext('YYYY-MM-DD')"
+        :minimum-view="dateConfigs.minimumView"
+        :format="dateConfigs.format"
+        :min-date="date_min"
+        :max-date="date_max"
+        :custom-error-msg="dateRangeErrorMessage"></date-select>
+
+      <date-select
+        v-model="date_end"
+        :label="$gettext('End date')"
+        :placeholder="$gettext('YYYY-MM-DD')"
+        :minimum-view="dateConfigs.minimumView"
+        :format="dateConfigs.format"
+        :min-date="date_min"
+        :max-date="date_max"
+        :custom-error-msg="dateRangeErrorMessage"></date-select>
+
+      <button
+        id="clear-dates-btn"
+        class="btn btn-default"
+        type="button"
+        @click="clearDates"
+        v-translate>Clear dates</button>
+    </fieldset>
+
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-model="wfs_format"></format-select-vector>
+
+    <url-box
+      :layer-options="layer_options"
+      :ows-url-formatter="wfs3_download_url"
+      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+      :wfs3-download-limit="wfs_limit"
+      :layer-format="wfs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import BBOXMap from '@/components/BBOXMap'
 import ProvinceSelect from '@/components/ProvinceSelect'
 import StationSelect from '@/components/StationSelect'
@@ -126,7 +120,6 @@ export default {
   name: 'ClimateMonthlyForm',
   mixins: [wfs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
     'bbox-map': BBOXMap,
     'province-select': ProvinceSelect,
     'station-select': StationSelect,

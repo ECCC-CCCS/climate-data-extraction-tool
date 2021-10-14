@@ -1,82 +1,76 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }}</h1>
+  <section>
+    <h1>{{ currentRouteTitle }}</h1>
 
-        <p>{{ introDatasetText.station.instructions }}</p>
+    <p>{{ introDatasetText.station.instructions }}</p>
 
-        <div class="alert alert-info">
-          <p v-html="htmlNoteMoreData"></p>
-        </div>
-
-        <p>
-          <strong>{{ introDatasetText.station.tipTitle }}</strong>
-          <ul>
-            <li
-              v-for="(pointText, index) in introDatasetText.station.tipPoints"
-              :key="index">{{ pointText }}</li>
-          </ul>
-        </p>
-
-        <data-access-doc-link></data-access-doc-link>
-
-        <details>
-          <summary v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
-
-          <p v-html="techDocHtml"></p>
-
-          <p v-html="openPortalHtml"></p>
-
-          <station-list-link
-            :url-station-list="urlStationList"
-            :download-text="$gettext('Download a list of detailed information for each Climate normals station.')"></station-list-link>
-        </details>
-
-        <info-contact-support></info-contact-support>
-
-        <bbox-map
-          v-model="ows_bbox"
-          :max-zoom="mapMaxZoom"
-          :readable-columns="popup_props_display"
-          :select-disabled="provinceSelected"
-          :geojson="climateNormalsStationGeoJson"
-          :stn-primary-id="stnPrimaryId"></bbox-map>
-
-        <province-select
-          v-model="wfs_province"></province-select>
-
-        <station-select
-          v-model="wfs_selected_station_ids"
-          :select-disabled="provinceSelected"
-          :station-data="climateNormalsStationGeoJson.features"
-          :station-prop-display="station_props_display"
-          :station-prov-col="stationProvCol"
-          :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"></station-select>
-
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-model="wfs_format"></format-select-vector>
-
-        <url-box
-          :layer-options="layer_options"
-          :ows-url-formatter="wfs3_download_url"
-          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          :wfs3-download-limit="wfs_limit"
-          :layer-format="wfs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-      </main>
-      <dataset-menu></dataset-menu>
+    <div class="alert alert-info">
+      <p v-html="htmlNoteMoreData"></p>
     </div>
-  </div>
+
+    <p>
+      <strong>{{ introDatasetText.station.tipTitle }}</strong>
+      <ul>
+        <li
+          v-for="(pointText, index) in introDatasetText.station.tipPoints"
+          :key="index">{{ pointText }}</li>
+      </ul>
+    </p>
+
+    <data-access-doc-link></data-access-doc-link>
+
+    <details>
+      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <p v-translate>Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
+
+      <p v-html="techDocHtml"></p>
+
+      <p v-html="openPortalHtml"></p>
+
+      <station-list-link
+        :url-station-list="urlStationList"
+        :download-text="$gettext('Download a list of detailed information for each Climate normals station.')"></station-list-link>
+    </details>
+
+    <info-contact-support></info-contact-support>
+
+    <bbox-map
+      v-model="ows_bbox"
+      :max-zoom="mapMaxZoom"
+      :readable-columns="popup_props_display"
+      :select-disabled="provinceSelected"
+      :geojson="climateNormalsStationGeoJson"
+      :stn-primary-id="stnPrimaryId"></bbox-map>
+
+    <province-select
+      v-model="wfs_province"></province-select>
+
+    <station-select
+      v-model="wfs_selected_station_ids"
+      :select-disabled="provinceSelected"
+      :station-data="climateNormalsStationGeoJson.features"
+      :station-prop-display="station_props_display"
+      :station-prov-col="stationProvCol"
+      :no-province-station-selected="noProvinceStationSelected"
+      :stn-primary-id="stnPrimaryId"></station-select>
+
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-model="wfs_format"></format-select-vector>
+
+    <url-box
+      :layer-options="layer_options"
+      :ows-url-formatter="wfs3_download_url"
+      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+      :wfs3-download-limit="wfs_limit"
+      :layer-format="wfs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import BBOXMap from '@/components/BBOXMap'
 import ProvinceSelect from '@/components/ProvinceSelect'
 import StationSelect from '@/components/StationSelect'
@@ -94,7 +88,6 @@ export default {
   name: 'ClimateNormalsForm',
   mixins: [wfs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
     'bbox-map': BBOXMap,
     'province-select': ProvinceSelect,
     'station-select': StationSelect,

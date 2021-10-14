@@ -1,145 +1,139 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
+  <section>
+    <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-        <p>{{ introDatasetText.station.instructions }}</p>
+    <p>{{ introDatasetText.station.instructions }}</p>
 
-        <div class="alert alert-warning">
-          <p><span v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</span> <span v-html="htmlReferAHCCD"></span></p>
-        </div>
-
-        <details>
-          <summary>{{ introDatasetText.station.tipTitle }}</summary>
-          <ul>
-            <li
-              v-for="(pointText, index) in introDatasetText.station.tipPoints"
-              :key="index">{{ pointText }}</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary v-translate>Dataset description, technical information and metadata</summary>
-
-          <p v-html="ltceIntroBlurbHtml"></p>
-
-          <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.</p>
-
-          <p>
-            <span v-translate>This data provides:</span>
-            <ol>
-              <li v-translate>The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.</li>
-              <li v-translate>The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.</li>
-              <li v-translate>The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.</li>
-            </ol>
-          </p>
-
-          <p v-html="virtualClimateStnDescHtml"></p>
-
-          <p v-html="techDocHtml"></p>
-
-          <open-portal-links
-            :open-portal-list-html="openPortalListHtml"
-            :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
-
-          <strong v-translate>Virtual climate station list download:</strong>
-          <ul>
-            <li><station-list-link
-              :url-station-list="urlStationList"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station')"></station-list-link></li>
-            <li><station-list-link
-              :url-station-list="urlStationListElements.temperature"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with temperature record type only')"></station-list-link></li>
-            <li><station-list-link
-              :url-station-list="urlStationListElements.precipitation"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with precipitation record type only')"></station-list-link></li>
-            <li><station-list-link
-              :url-station-list="urlStationListElements.snowfall"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with snowfall record type only')"></station-list-link></li>
-          </ul>
-        </details>
-
-        <data-access-doc-link></data-access-doc-link>
-
-        <details open>
-          <summary v-translate>Map filters</summary>
-
-          <var-select
-            class="mrgn-tp-md"
-            v-model="wfs_layer"
-            :label="$gettext('Climate element / record type')"
-            :required="true"
-            :select-options="layer_options"></var-select>
-
-          <province-select
-            v-model="wfs_province"></province-select>
-        </details>
-
-        <bbox-map
-          v-model="ows_bbox"
-          :max-zoom="18"
-          :readable-columns="popup_props_display"
-          :select-disabled="provinceSelected"
-          :geojson="ltceStationGeoJson"
-          :stn-primary-id="stnPrimaryId"></bbox-map>
-
-        <station-select
-          v-model="wfs_selected_station_ids"
-          :select-disabled="provinceSelected"
-          :station-data="ltceStationGeoJson.features"
-          :station-prop-display="station_props_display"
-          :station-prov-col="stationProvCol"
-          :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"></station-select>
-
-        <div class="row mrgn-tp-md">
-          <div id="local-month-selection" class="form-group col-md-3 col-sm-4 col-xs-6">
-            <label
-              for="var-sel-local_month" v-translate>Month</label>
-            <select
-              class="form-control"
-              id="var-sel-local_month"
-              aria-controls="local-day-selection"
-              v-model="local_month">
-                <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
-            </select>
-          </div>
-
-          <div id="local-day-selection" class="form-group col-md-9 col-sm-8 col-xs-6">
-            <label
-              for="var-sel-local_day" v-translate>Day</label>
-            <select
-              class="form-control"
-              id="var-sel-local_day"
-              aria-live="polite"
-              v-model="local_day">
-                <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
-            </select>
-          </div>
-        </div>
-
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-model="wfs_format"></format-select-vector>
-
-        <url-box
-          :layer-options="selectedLayerOption"
-          :ows-url-formatter="wfs3_download_url"
-          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          :wfs3-download-limit="wfs_limit"
-          :layer-format="wfs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-      </main>
-      <dataset-menu></dataset-menu>
+    <div class="alert alert-warning">
+      <p><span v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</span> <span v-html="htmlReferAHCCD"></span></p>
     </div>
-  </div>
+
+    <details>
+      <summary>{{ introDatasetText.station.tipTitle }}</summary>
+      <ul>
+        <li
+          v-for="(pointText, index) in introDatasetText.station.tipPoints"
+          :key="index">{{ pointText }}</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary v-translate>Dataset description, technical information and metadata</summary>
+
+      <p v-html="ltceIntroBlurbHtml"></p>
+
+      <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.</p>
+
+      <p>
+        <span v-translate>This data provides:</span>
+        <ol>
+          <li v-translate>The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.</li>
+          <li v-translate>The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.</li>
+          <li v-translate>The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.</li>
+        </ol>
+      </p>
+
+      <p v-html="virtualClimateStnDescHtml"></p>
+
+      <p v-html="techDocHtml"></p>
+
+      <open-portal-links
+        :open-portal-list-html="openPortalListHtml"
+        :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
+
+      <strong v-translate>Virtual climate station list download:</strong>
+      <ul>
+        <li><station-list-link
+          :url-station-list="urlStationList"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station')"></station-list-link></li>
+        <li><station-list-link
+          :url-station-list="urlStationListElements.temperature"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with temperature record type only')"></station-list-link></li>
+        <li><station-list-link
+          :url-station-list="urlStationListElements.precipitation"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with precipitation record type only')"></station-list-link></li>
+        <li><station-list-link
+          :url-station-list="urlStationListElements.snowfall"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with snowfall record type only')"></station-list-link></li>
+      </ul>
+    </details>
+
+    <data-access-doc-link></data-access-doc-link>
+
+    <details open>
+      <summary v-translate>Map filters</summary>
+
+      <var-select
+        class="mrgn-tp-md"
+        v-model="wfs_layer"
+        :label="$gettext('Climate element / record type')"
+        :required="true"
+        :select-options="layer_options"></var-select>
+
+      <province-select
+        v-model="wfs_province"></province-select>
+    </details>
+
+    <bbox-map
+      v-model="ows_bbox"
+      :max-zoom="18"
+      :readable-columns="popup_props_display"
+      :select-disabled="provinceSelected"
+      :geojson="ltceStationGeoJson"
+      :stn-primary-id="stnPrimaryId"></bbox-map>
+
+    <station-select
+      v-model="wfs_selected_station_ids"
+      :select-disabled="provinceSelected"
+      :station-data="ltceStationGeoJson.features"
+      :station-prop-display="station_props_display"
+      :station-prov-col="stationProvCol"
+      :no-province-station-selected="noProvinceStationSelected"
+      :stn-primary-id="stnPrimaryId"></station-select>
+
+    <div class="row mrgn-tp-md">
+      <div id="local-month-selection" class="form-group col-md-3 col-sm-4 col-xs-6">
+        <label
+          for="var-sel-local_month" v-translate>Month</label>
+        <select
+          class="form-control"
+          id="var-sel-local_month"
+          aria-controls="local-day-selection"
+          v-model="local_month">
+            <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
+        </select>
+      </div>
+
+      <div id="local-day-selection" class="form-group col-md-9 col-sm-8 col-xs-6">
+        <label
+          for="var-sel-local_day" v-translate>Day</label>
+        <select
+          class="form-control"
+          id="var-sel-local_day"
+          aria-live="polite"
+          v-model="local_day">
+            <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
+        </select>
+      </div>
+    </div>
+
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-model="wfs_format"></format-select-vector>
+
+    <url-box
+      :layer-options="selectedLayerOption"
+      :ows-url-formatter="wfs3_download_url"
+      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+      :wfs3-download-limit="wfs_limit"
+      :layer-format="wfs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import VarSelect from '@/components/VarSelect'
 import BBOXMap from '@/components/BBOXMap'
 import ProvinceSelect from '@/components/ProvinceSelect'
@@ -159,7 +153,6 @@ export default {
   name: 'LTCEForm',
   mixins: [wfs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
     'bbox-map': BBOXMap,
     'province-select': ProvinceSelect,
     'station-select': StationSelect,

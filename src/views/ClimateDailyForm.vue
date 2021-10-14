@@ -1,124 +1,118 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }}</h1>
+  <section>
+    <h1>{{ currentRouteTitle }}</h1>
 
-        <p>{{ introDatasetText.station.instructions }}</p>
+    <p>{{ introDatasetText.station.instructions }}</p>
 
-        <div class="alert alert-info">
-          <p v-html="htmlNoteMoreData"></p>
+    <div class="alert alert-info">
+      <p v-html="htmlNoteMoreData"></p>
+    </div>
+
+    <details>
+      <summary>{{ introDatasetText.station.tipTitle }}</summary>
+      <ul>
+        <li
+          v-for="(pointText, index) in introDatasetText.station.tipPoints"
+          :key="index">{{ pointText }}</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
+
+      <p v-html="techDocHtml"></p>
+
+      <p v-html="openPortalHtml"></p>
+
+      <station-list-link
+        :url-station-list="urlStationList"
+        :download-text="$gettext('Download a list of detailed information for each Daily climate station.')"></station-list-link>
+    </details>
+
+    <data-access-doc-link></data-access-doc-link>
+
+    <details open>
+      <summary v-translate>Map filters</summary>
+
+      <province-select
+        v-model="wfs_province"></province-select>
+
+      <fieldset>
+        <legend v-translate>Date range</legend>
+        <div class="row">
+          <div class="col-sm-6">
+            <date-select
+              v-model="date_start"
+              :label="$gettext('Start date')"
+              :placeholder="$gettext('YYYY-MM-DD')"
+              :minimum-view="dateConfigs.minimumView"
+              :format="dateConfigs.format"
+              :min-date="date_min"
+              :max-date="date_max"
+              :custom-error-msg="dateRangeErrorMessage"></date-select>
+          </div>
+
+          <div class="col-sm-6">
+            <date-select
+              v-model="date_end"
+              :label="$gettext('End date')"
+              :placeholder="$gettext('YYYY-MM-DD')"
+              :minimum-view="dateConfigs.minimumView"
+              :format="dateConfigs.format"
+              :min-date="date_min"
+              :max-date="date_max"
+              :custom-error-msg="dateRangeErrorMessage"></date-select>
+          </div>
         </div>
 
-        <details>
-          <summary>{{ introDatasetText.station.tipTitle }}</summary>
-          <ul>
-            <li
-              v-for="(pointText, index) in introDatasetText.station.tipPoints"
-              :key="index">{{ pointText }}</li>
-          </ul>
-        </details>
+        <button
+          id="clear-dates-btn"
+          class="btn btn-default"
+          type="button"
+          @click="clearDates"
+          v-translate>Clear dates</button>
+      </fieldset>
+    </details>
 
-        <details>
-          <summary v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
+    <bbox-map
+      v-model="ows_bbox"
+      :max-zoom="mapMaxZoom"
+      :readable-columns="popup_props_display"
+      :select-disabled="provinceSelected"
+      :geojson="climateDailyStationGeoJson"
+      :stn-primary-id="stnPrimaryId"></bbox-map>
 
-          <p v-html="techDocHtml"></p>
+    <station-select
+      v-model="wfs_selected_station_ids"
+      :select-disabled="provinceSelected"
+      :station-data="climateDailyStationGeoJson.features"
+      :station-prop-display="station_props_display"
+      :station-prov-col="stationProvCol"
+      :no-province-station-selected="noProvinceStationSelected"
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"></station-select>
 
-          <p v-html="openPortalHtml"></p>
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-model="wfs_format"></format-select-vector>
 
-          <station-list-link
-            :url-station-list="urlStationList"
-            :download-text="$gettext('Download a list of detailed information for each Daily climate station.')"></station-list-link>
-        </details>
+    <url-box
+      :layer-options="layer_options"
+      :ows-url-formatter="wfs3_download_url"
+      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+      :wfs3-download-limit="wfs_limit"
+      :layer-format="wfs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
 
-        <data-access-doc-link></data-access-doc-link>
-
-        <details open>
-          <summary v-translate>Map filters</summary>
-
-          <province-select
-            v-model="wfs_province"></province-select>
-
-          <fieldset>
-            <legend v-translate>Date range</legend>
-            <div class="row">
-              <div class="col-sm-6">
-                <date-select
-                  v-model="date_start"
-                  :label="$gettext('Start date')"
-                  :placeholder="$gettext('YYYY-MM-DD')"
-                  :minimum-view="dateConfigs.minimumView"
-                  :format="dateConfigs.format"
-                  :min-date="date_min"
-                  :max-date="date_max"
-                  :custom-error-msg="dateRangeErrorMessage"></date-select>
-              </div>
-
-              <div class="col-sm-6">
-                <date-select
-                  v-model="date_end"
-                  :label="$gettext('End date')"
-                  :placeholder="$gettext('YYYY-MM-DD')"
-                  :minimum-view="dateConfigs.minimumView"
-                  :format="dateConfigs.format"
-                  :min-date="date_min"
-                  :max-date="date_max"
-                  :custom-error-msg="dateRangeErrorMessage"></date-select>
-              </div>
-            </div>
-
-            <button
-              id="clear-dates-btn"
-              class="btn btn-default"
-              type="button"
-              @click="clearDates"
-              v-translate>Clear dates</button>
-          </fieldset>
-        </details>
-
-        <bbox-map
-          v-model="ows_bbox"
-          :max-zoom="mapMaxZoom"
-          :readable-columns="popup_props_display"
-          :select-disabled="provinceSelected"
-          :geojson="climateDailyStationGeoJson"
-          :stn-primary-id="stnPrimaryId"></bbox-map>
-
-        <station-select
-          v-model="wfs_selected_station_ids"
-          :select-disabled="provinceSelected"
-          :station-data="climateDailyStationGeoJson.features"
-          :station-prop-display="station_props_display"
-          :station-prov-col="stationProvCol"
-          :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"
-          :date-start-prop="prop_date_start"
-          :date-end-prop="prop_date_end"></station-select>
-
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-model="wfs_format"></format-select-vector>
-
-        <url-box
-          :layer-options="layer_options"
-          :ows-url-formatter="wfs3_download_url"
-          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          :wfs3-download-limit="wfs_limit"
-          :layer-format="wfs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-
-        <more-resources></more-resources>
-      </main>
-      <dataset-menu></dataset-menu>
-    </div>
-  </div>
+    <more-resources></more-resources>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import BBOXMap from '@/components/BBOXMap'
 import ProvinceSelect from '@/components/ProvinceSelect'
 import StationSelect from '@/components/StationSelect'
@@ -138,7 +132,6 @@ export default {
   name: 'ClimateDailyForm',
   mixins: [wfs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
     'bbox-map': BBOXMap,
     'province-select': ProvinceSelect,
     'station-select': StationSelect,

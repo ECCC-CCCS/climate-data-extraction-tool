@@ -1,132 +1,126 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
+  <section>
+    <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-        <p>{{ introDatasetText.gridded.use }}</p>
-        <p>{{ introDatasetText.gridded.instructions }}</p>
+    <p>{{ introDatasetText.gridded.use }}</p>
+    <p>{{ introDatasetText.gridded.instructions }}</p>
 
-        <data-access-doc-link></data-access-doc-link>
+    <data-access-doc-link></data-access-doc-link>
 
-        <details>
-          <summary v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
+    <details>
+      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <p v-translate>Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
 
-          <p v-html="techDocHtml"></p>
+      <p v-html="techDocHtml"></p>
 
-          <p v-html="openPortalHtml"></p>
-        </details>
+      <p v-html="openPortalHtml"></p>
+    </details>
 
-        <info-contact-support></info-contact-support>
+    <info-contact-support></info-contact-support>
 
-        <bbox-map
-          v-model="ows_bbox"
-          :allow-click-point="true"
-          @change="splitBBOXString"></bbox-map>
-        <var-select
-          v-model="wcs_id_cangrdType"
-          :label="$gettext('Value type')"
-          :select-options="variableTypeOptions"></var-select>
+    <bbox-map
+      v-model="ows_bbox"
+      :allow-click-point="true"
+      @change="splitBBOXString"></bbox-map>
+    <var-select
+      v-model="wcs_id_cangrdType"
+      :label="$gettext('Value type')"
+      :select-options="variableTypeOptions"></var-select>
 
-        <var-select
-          v-model="wcs_id_variable"
-          :label="$gettext('Variable')"
-          :select-options="variableOptions"></var-select>
+    <var-select
+      v-model="wcs_id_variable"
+      :label="$gettext('Variable')"
+      :select-options="variableOptions"></var-select>
 
-        <var-select
-          v-model="wcs_id_timePeriod"
-          :label="$gettext('Time interval / Time of year')"
-          :select-options="timePeriodOptions"></var-select>
+    <var-select
+      v-model="wcs_id_timePeriod"
+      :label="$gettext('Time interval / Time of year')"
+      :select-options="timePeriodOptions"></var-select>
 
-        <fieldset v-show="!pointClickOn">
-          <legend v-translate>Date range</legend>
-          <div v-show="wcs_id_cangrdType === 'ANO'">
-            <date-select
-              v-model="date_start"
-              :label="$gettext('Start date')"
-              :minimum-view="dateConfigs.minimumView"
-              :format="dateConfigs.format"
-              :required="timePeriodIsMonthly"
-              :min-date="dateConfigs.dateMin"
-              :max-date="dateConfigs.dateMax"
-              :custom-error-msg="dateRangeErrorMessage"
-              :placeholder="dateConfigs.placeholder"></date-select>
+    <fieldset v-show="!pointClickOn">
+      <legend v-translate>Date range</legend>
+      <div v-show="wcs_id_cangrdType === 'ANO'">
+        <date-select
+          v-model="date_start"
+          :label="$gettext('Start date')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :required="timePeriodIsMonthly"
+          :min-date="dateConfigs.dateMin"
+          :max-date="dateConfigs.dateMax"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-            <date-select
-              v-model="date_end"
-              :label="$gettext('End date')"
-              :minimum-view="dateConfigs.minimumView"
-              :format="dateConfigs.format"
-              :required="timePeriodIsMonthly"
-              :min-date="dateConfigs.dateMin"
-              :max-date="dateConfigs.dateMax"
-              :custom-error-msg="dateRangeErrorMessage"
-              :placeholder="dateConfigs.placeholder"></date-select>
+        <date-select
+          v-model="date_end"
+          :label="$gettext('End date')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :required="timePeriodIsMonthly"
+          :min-date="dateConfigs.dateMin"
+          :max-date="dateConfigs.dateMax"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-            <button
-              id="clear-dates-btn"
-              class="btn btn-default"
-              type="button"
-              @click="clearDates"
-              v-translate>Clear dates</button>
-          </div>
-        </fieldset>
+        <button
+          id="clear-dates-btn"
+          class="btn btn-default"
+          type="button"
+          @click="clearDates"
+          v-translate>Clear dates</button>
+      </div>
+    </fieldset>
 
-        <div
-          id="info-date-not-required-trends"
-          v-show="wcs_id_cangrdType !== 'ANO'"
-          class="alert alert-info">
-          <p v-translate>Date ranges not required for CanGRD trends</p>
-        </div>
-
-        <format-select-raster
-          class="mrgn-tp-md"
-          v-show="!pointClickOn"
-          v-model="wcs_format"
-          :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
-
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-show="pointClickOn"
-          v-model="wps_format"></format-select-vector>
-
-        <details
-          class="mrgn-tp-md"
-          v-show="!pointClickOn">
-          <summary v-translate>Advanced options</summary>
-          <var-select
-            v-model="ows_crs"
-            :label="crsLabel"
-            :select-options="crsOptions"></var-select>
-        </details>
-
-        <url-box
-          v-show="!pointClickOn"
-          :layer-options="selectedCoverageIdOption"
-          :ows-url-formatter="wcs_download_url"
-          :layer-format="wcs_format"
-          :wcs-common-url="wcsCommonUrl"
-          :wcs-band-chunks="chunkedBandsParam"
-          :wcs-num-bands="dateRangeNumBands"
-          :band-range-format="bandRangeFormat"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-
-        <point-download-box
-          v-show="pointClickOn"
-          :title="titlePointDownload"
-          :hasErrors="invalidPointDownloadInputs"
-          :point-inputs="pointInputs" />
-      </main>
-      <dataset-menu></dataset-menu>
+    <div
+      id="info-date-not-required-trends"
+      v-show="wcs_id_cangrdType !== 'ANO'"
+      class="alert alert-info">
+      <p v-translate>Date ranges not required for CanGRD trends</p>
     </div>
-  </div>
+
+    <format-select-raster
+      class="mrgn-tp-md"
+      v-show="!pointClickOn"
+      v-model="wcs_format"
+      :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-show="pointClickOn"
+      v-model="wps_format"></format-select-vector>
+
+    <details
+      class="mrgn-tp-md"
+      v-show="!pointClickOn">
+      <summary v-translate>Advanced options</summary>
+      <var-select
+        v-model="ows_crs"
+        :label="crsLabel"
+        :select-options="crsOptions"></var-select>
+    </details>
+
+    <url-box
+      v-show="!pointClickOn"
+      :layer-options="selectedCoverageIdOption"
+      :ows-url-formatter="wcs_download_url"
+      :layer-format="wcs_format"
+      :wcs-common-url="wcsCommonUrl"
+      :wcs-band-chunks="chunkedBandsParam"
+      :wcs-num-bands="dateRangeNumBands"
+      :band-range-format="bandRangeFormat"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
+
+    <point-download-box
+      v-show="pointClickOn"
+      :title="titlePointDownload"
+      :hasErrors="invalidPointDownloadInputs"
+      :point-inputs="pointInputs" />
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import BBOXMap from '@/components/BBOXMap'
 import FormatSelectRaster from '@/components/FormatSelectRaster'
 import FormatSelectVector from '@/components/FormatSelectVector'
@@ -145,7 +139,6 @@ export default {
   name: 'CanGRDForm',
   mixins: [wcs, ows, datasets, wps],
   components: {
-    DatasetMenu,
     'bbox-map': BBOXMap,
     FormatSelectRaster,
     VarSelect,

@@ -1,96 +1,90 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
+  <section>
+    <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-        <p>{{ introDatasetText.gridded.use }}</p>
-        <p>{{ introDatasetText.gridded.instructions }}</p>
+    <p>{{ introDatasetText.gridded.use }}</p>
+    <p>{{ introDatasetText.gridded.instructions }}</p>
 
-        <data-access-doc-link></data-access-doc-link>
+    <data-access-doc-link></data-access-doc-link>
 
-        <details>
-          <summary v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.</p>
+    <details>
+      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <p v-translate>The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.</p>
 
-          <p v-html="openPortalHtml"></p>
-        </details>
+      <p v-html="openPortalHtml"></p>
+    </details>
 
-        <info-contact-support></info-contact-support>
+    <info-contact-support></info-contact-support>
 
-        <bbox-map
-          v-model="ows_bbox"
-          @change="splitBBOXString"></bbox-map>
+    <bbox-map
+      v-model="ows_bbox"
+      @change="splitBBOXString"></bbox-map>
 
-        <var-select
-          v-model="wcs_id_variable"
-          :label="$gettext('Variable')"
-          :select-options="variableOptions"></var-select>
+    <var-select
+      v-model="wcs_id_variable"
+      :label="$gettext('Variable')"
+      :select-options="variableOptions"></var-select>
 
-        <var-select
-          v-model="wcs_id_type"
-          :label="$gettext('Model type')"
-          :disabled="true"
-          :readonly="true"
-          :select-options="typeOptions"></var-select>
+    <var-select
+      v-model="wcs_id_type"
+      :label="$gettext('Model type')"
+      :disabled="true"
+      :readonly="true"
+      :select-options="typeOptions"></var-select>
 
-        <num-select
-          v-model="wcs_id_member"
-          :label="$gettext('Member')"
-          :required="true"
-          :max="20"
-          :min="1"></num-select>
+    <num-select
+      v-model="wcs_id_member"
+      :label="$gettext('Member')"
+      :required="true"
+      :max="20"
+      :min="1"></num-select>
 
-        <date-select
-          v-model="modelRun"
-          :label="$gettext('Model run month')"
-          :minimum-view="dateConfigs.minimumView"
-          :format="dateConfigs.format"
-          :placeholder="dateConfigs.placeholder"
-          :required="true"
-          :min-date="modelRunRange.min"
-          :max-date="modelRunRange.max"></date-select>
+    <date-select
+      v-model="modelRun"
+      :label="$gettext('Model run month')"
+      :minimum-view="dateConfigs.minimumView"
+      :format="dateConfigs.format"
+      :placeholder="dateConfigs.placeholder"
+      :required="true"
+      :min-date="modelRunRange.min"
+      :max-date="modelRunRange.max"></date-select>
 
-        <date-select
-          v-model="forecastPeriod"
-          :label="$gettext('Forecast month')"
-          :minimum-view="dateConfigs.minimumView"
-          :format="dateConfigs.format"
-          :placeholder="dateConfigs.placeholder"
-          :required="true"
-          :disabled="true"
-          :readonly="true"
-          :min-date="forePeriodDateRange.min"
-          :max-date="forePeriodDateRange.max"></date-select>
+    <date-select
+      v-model="forecastPeriod"
+      :label="$gettext('Forecast month')"
+      :minimum-view="dateConfigs.minimumView"
+      :format="dateConfigs.format"
+      :placeholder="dateConfigs.placeholder"
+      :required="true"
+      :disabled="true"
+      :readonly="true"
+      :min-date="forePeriodDateRange.min"
+      :max-date="forePeriodDateRange.max"></date-select>
 
-        <format-select-raster
-          v-model="wcs_format"
-          :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+    <format-select-raster
+      v-model="wcs_format"
+      :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
-        <details>
-          <summary v-translate>Advanced options</summary>
-          <var-select
-            v-model="ows_crs"
-            :label="crsLabel"
-            :initial-variable="ows_crs"
-            :select-options="crsOptions"></var-select>
-        </details>
+    <details>
+      <summary v-translate>Advanced options</summary>
+      <var-select
+        v-model="ows_crs"
+        :label="crsLabel"
+        :initial-variable="ows_crs"
+        :select-options="crsOptions"></var-select>
+    </details>
 
-        <url-box
-          :layer-options="selectedCoverageIdOption"
-          :ows-url-formatter="wcs_download_url"
-          :layer-format="wcs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-      </main>
-      <dataset-menu></dataset-menu>
-    </div>
-  </div>
+    <url-box
+      :layer-options="selectedCoverageIdOption"
+      :ows-url-formatter="wcs_download_url"
+      :layer-format="wcs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import BBOXMap from '@/components/BBOXMap'
 import FormatSelectRaster from '@/components/FormatSelectRaster'
 import VarSelect from '@/components/VarSelect'
@@ -107,7 +101,6 @@ export default {
   name: 'CanSIPSForm',
   mixins: [wcs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
     'bbox-map': BBOXMap,
     'format-select-raster': FormatSelectRaster,
     'var-select': VarSelect,

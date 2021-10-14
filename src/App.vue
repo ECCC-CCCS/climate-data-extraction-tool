@@ -2,7 +2,14 @@
   <div id="app">
     <gc-skip></gc-skip>
     <gc-header></gc-header>
-    <router-view/>
+    <div class="container">
+      <div class="row">
+        <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
+          <router-view/>
+        </main>
+        <dataset-menu></dataset-menu>
+      </div>
+    </div>
     <gc-footer></gc-footer>
   </div>
 </template>
@@ -13,6 +20,7 @@ import GCWebFooter from './components/GCWebFooter'
 import GCWebSkip from './components/GCWebSkip'
 import { ows } from './components/mixins/ows'
 import { datasets } from './components/mixins/datasets'
+import DatasetMenu from './components/DatasetMenu'
 
 export default {
   name: 'App',
@@ -20,7 +28,8 @@ export default {
   components: {
     'gc-header': GCWebHeader,
     'gc-footer': GCWebFooter,
-    'gc-skip': GCWebSkip
+    'gc-skip': GCWebSkip,
+    DatasetMenu
   },
   created: function () {
     // determine language based on current URL matching
