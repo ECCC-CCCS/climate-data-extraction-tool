@@ -233,7 +233,13 @@ export default {
         },
         prov: {
           col: stationCols[2],
-          label: this.station_props_display[stationCols[2]] + this.$pgettext('Colon', ':')
+          label: this.$gettext('Province') + ' / ' + this.$gettext('Territory') + this.$pgettext('Colon', ':')
+        },
+        dateRange: {
+          colStart: this.prop_date_start,
+          colEnd: this.prop_date_end,
+          label: this.$gettext('Date range') + this.$pgettext('Colon', ':'),
+          format: this.dateConfigs.format
         }
       }
     },

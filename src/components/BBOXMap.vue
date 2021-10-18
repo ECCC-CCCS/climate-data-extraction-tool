@@ -531,6 +531,11 @@ export default {
       if (this.readableColumns.prov.col !== null) {
         popupTextHtml += '<br>' + this.readableColumns.prov.label + ' ' + feature.properties[this.readableColumns.prov.col]
       }
+      if (Object.prototype.hasOwnProperty.call(this.readableColumns, 'dateRange')) {
+        const format = this.readableColumns.dateRange.format
+        popupTextHtml += '<br>' + this.readableColumns.dateRange.label + ' ' + this.$moment.utc(feature.properties[this.readableColumns.dateRange.colStart]).format(format) + ' ' + this.$gettext('to') + ' ' + this.$moment.utc(feature.properties[this.readableColumns.dateRange.colEnd]).format(format)
+      }
+
       let stationMarker = null
       let markerOption = this.defaultMarkerOptions
       if (this.hydroStationDisplay && feature.properties.STATUS_EN !== 'Active') {
