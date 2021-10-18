@@ -73,6 +73,20 @@ export const wfs = {
     // reset existing selections that share with other components
     this.$store.dispatch('stations/changeProvince', 'null') // to share with bbox
   },
+  watch: {
+    date_start: function (newVal) {
+      this.$store.commit('stations/changeStationState', {
+        stateProp: 'dateStart',
+        stateValue: this.$moment.utc(newVal).format(this.dateConfigs.format)
+      })
+    },
+    date_end: function (newVal) {
+      this.$store.commit('stations/changeStationState', {
+        stateProp: 'dateEnd',
+        stateValue: this.$moment.utc(newVal).format(this.dateConfigs.format)
+      })
+    }
+  },
   computed: {
     stationProvCol: function () { // province column for station table
       const routeName = this.$route.name

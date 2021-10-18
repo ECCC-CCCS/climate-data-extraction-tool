@@ -63,6 +63,20 @@ const getters = {
   },
   getClimateMonthlyMinDate (state) {
     return state.minDateClimateMonthly
+  },
+  dateStart (state) {
+    if (state.dateStart == 'Invalid date') {
+      return null
+    } else {
+      return state.dateStart
+    }
+  },
+  dateEnd (state) {
+    if (state.dateEnd == 'Invalid date') {
+      return null
+    } else {
+      return state.dateEnd
+    }
   }
 }
 

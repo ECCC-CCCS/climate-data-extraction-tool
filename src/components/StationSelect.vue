@@ -135,7 +135,7 @@ import { PulseLoader } from '@saeris/vue-spinners'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import L from 'leaflet'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'StationSelect',
@@ -369,8 +369,9 @@ export default {
       if (this.dateStart == null || this.dateEnd == null || !this.useDateRangeFilter) {
         return true
       }
-      // within range from either start/end dates
-      if (this.dateStart >= row.properties[this.dateStartProp] || this.dateEnd <= row.properties[this.dateEndProp]) {
+
+      // within range completely
+      if (this.dateStart >= row.properties[this.dateStartProp] && this.dateEnd <= row.properties[this.dateEndProp]) {
         return true
       // within range of end date only
       } else if (this.dateStart < row.properties[this.dateStartProp]) {
@@ -400,14 +401,16 @@ export default {
   },
   computed: {
     ...mapState('stations', [
-      'dateStart',
-      'dateEnd',
       'isLoadingStations',
       'isLoadingAllHydroStations',
       'hydroStationActive',
       'stationIdSelected',
       'province',
       'maxStationSelection'
+    ]),
+    ...mapGetters('stations', [
+      'dateStart',
+      'dateEnd'
     ]),
     ...mapState('map', [
       'bbox'

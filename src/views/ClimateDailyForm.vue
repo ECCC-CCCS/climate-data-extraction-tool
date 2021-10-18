@@ -92,7 +92,8 @@
       :no-province-station-selected="noProvinceStationSelected"
       :stn-primary-id="stnPrimaryId"
       :date-start-prop="prop_date_start"
-      :date-end-prop="prop_date_end"></station-select>
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></station-select>
 
     <format-select-vector
       class="mrgn-tp-md"
@@ -160,18 +161,6 @@ export default {
     },
     ows_bbox: function (newVal) {
       this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
-    },
-    date_start: function (newVal) {
-      this.$store.commit('stations/changeStationState', {
-        stateProp: 'dateStart',
-        stateValue: this.$moment.utc(newVal).format(this.dateConfigs.format)
-      })
-    },
-    date_end: function (newVal) {
-      this.$store.commit('stations/changeStationState', {
-        stateProp: 'dateEnd',
-        stateValue: this.$moment.utc(newVal).format(this.dateConfigs.format)
-      })
     }
   },
   beforeMount () {
