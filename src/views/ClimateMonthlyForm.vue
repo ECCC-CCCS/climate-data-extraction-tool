@@ -2,20 +2,13 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ introDatasetText.station.instructions }}</p>
+    <p>{{ textTipUsingTool.station.instructions }}</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>
     </div>
 
-    <p>
-      <strong>{{ introDatasetText.station.tipTitle }}</strong>
-      <ul>
-        <li
-          v-for="(pointText, index) in introDatasetText.station.tipPoints"
-          :key="index">{{ pointText }}</li>
-      </ul>
-    </p>
+    <tips-using-tool></tips-using-tool>
 
     <data-access-doc-link></data-access-doc-link>
 
@@ -32,15 +25,16 @@
         :download-text="$gettext('Download a list of detailed information for each Monthly climate summaries station.')"></station-list-link>
     </details>
 
-    <info-contact-support></info-contact-support>
-
     <bbox-map
       v-model="ows_bbox"
       :max-zoom="mapMaxZoom"
       :readable-columns="popup_props_display"
       :select-disabled="provinceSelected"
       :geojson="climateMonthlyStationGeoJson"
-      :stn-primary-id="stnPrimaryId"></bbox-map>
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></bbox-map>
 
     <province-select
       v-model="wfs_province"></province-select>
@@ -97,22 +91,25 @@
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download link')">
     </url-box>
+
+    <more-resources></more-resources>
   </section>
 </template>
 
 <script>
-import BBOXMap from '@/components/BBOXMap'
-import ProvinceSelect from '@/components/ProvinceSelect'
-import StationSelect from '@/components/StationSelect'
-import FormatSelectVector from '@/components/FormatSelectVector'
-import DateSelect from '@/components/DateSelect'
-import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
-import StationListLink from '@/components/StationListLink'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import { wfs } from '@/components/mixins/wfs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
+import BBOXMap from '@/components/BBOXMap.vue'
+import ProvinceSelect from '@/components/ProvinceSelect.vue'
+import StationSelect from '@/components/StationSelect.vue'
+import FormatSelectVector from '@/components/FormatSelectVector.vue'
+import DateSelect from '@/components/DateSelect.vue'
+import URLBox from '@/components/URLBox.vue'
+import StationListLink from '@/components/StationListLink.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import { wfs } from '@/components/mixins/wfs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
 import axios from 'axios'
 import { mapState, mapGetters } from 'vuex'
 
@@ -121,14 +118,15 @@ export default {
   mixins: [wfs, ows, datasets],
   components: {
     'bbox-map': BBOXMap,
-    'province-select': ProvinceSelect,
-    'station-select': StationSelect,
-    'format-select-vector': FormatSelectVector,
-    'date-select': DateSelect,
+    ProvinceSelect,
+    StationSelect,
+    FormatSelectVector,
+    DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
-    'station-list-link': StationListLink,
-    DataAccessDocLink
+    StationListLink,
+    DataAccessDocLink,
+    TipsUsingTool,
+    MoreResources,
   },
   data () {
     return {
@@ -137,7 +135,9 @@ export default {
       date_start: this.$moment.utc('1908-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_end: this.$moment.utc().toDate(),
       date_min: this.$moment.utc('1908-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      date_max: this.$moment.utc().toDate()
+      date_max: this.$moment.utc().toDate(),
+      prop_date_start: 'DLY_FIRST_DATE',
+      prop_date_end: 'DLY_LAST_DATE'
     }
   },
   watch: {
@@ -196,8 +196,8 @@ export default {
       props['PROV_STATE_TERR_CODE'] = this.$gettext('Province') + '&nbsp/<br>' + this.$gettext('Territory')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
-      props['DLY_FIRST_DATE'] = this.$gettext('First date')
-      props['DLY_LAST_DATE'] = this.$gettext('Last date')
+      props[this.prop_date_start] = this.$gettext('First date')
+      props[this.prop_date_end] = this.$gettext('Last date')
       return props
     },
     popup_props_display: function () {
@@ -213,7 +213,13 @@ export default {
         },
         prov: {
           col: stationCols[2],
-          label: this.station_props_display[stationCols[2]] + this.$pgettext('Colon', ':')
+          label: this.$gettext('Province') + ' / ' + this.$gettext('Territory') + this.$pgettext('Colon', ':')
+        },
+        dateRange: {
+          colStart: this.prop_date_start,
+          colEnd: this.prop_date_end,
+          label: this.$gettext('Date range') + this.$pgettext('Colon', ':'),
+          format: this.dateConfigs.format
         }
       }
     },

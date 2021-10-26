@@ -2,8 +2,8 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ introDatasetText.gridded.use }}</p>
-    <p>{{ introDatasetText.gridded.instructions }}</p>
+    <p>{{ textTipUsingTool.gridded.use }}</p>
+    <p>{{ textTipUsingTool.gridded.instructions }}</p>
 
     <data-access-doc-link></data-access-doc-link>
 
@@ -124,7 +124,7 @@
 import BBOXMap from '@/components/BBOXMap'
 import FormatSelectRaster from '@/components/FormatSelectRaster'
 import FormatSelectVector from '@/components/FormatSelectVector'
-import VarSelect from '@/components/VarSelect'
+import VarSelect from '@/components/VarSelect.vue'
 import DateSelect from '@/components/DateSelect'
 import URLBox from '@/components/URLBox'
 import InfoContactSupport from '@/components/InfoContactSupport'

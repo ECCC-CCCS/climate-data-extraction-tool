@@ -362,8 +362,10 @@ export default {
       }
     },
     dateRangeFilter: function (row) {
-      // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + row.properties[this.dateStartProp] + ' | row end date: ' + row.properties[this.dateEndProp])
-      // date values use date ISOString for comparison
+      // date values use momentjs for filtering comparison
+      const rowDateStart = this.$moment.utc(row.properties[this.dateStartProp])
+      const rowDateEnd = this.$moment.utc(row.properties[this.dateEndProp])
+      // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + rowDateStart+ ' | row end date: ' + rowDateEnd)
 
       // no date range filter applied
       if (this.dateStart == null || this.dateEnd == null || !this.useDateRangeFilter) {
@@ -371,18 +373,18 @@ export default {
       }
 
       // within range completely
-      if (this.dateStart >= row.properties[this.dateStartProp] && this.dateEnd <= row.properties[this.dateEndProp]) {
+      if (this.dateStart.isSameOrAfter(rowDateStart) && this.dateEnd.isSameOrBefore(rowDateEnd)) {
         return true
       // within range of end date only
-      } else if (this.dateStart < row.properties[this.dateStartProp]) {
-        if (this.dateEnd >= row.properties[this.dateStartProp]) {
+      } else if (this.dateStart.isBefore(rowDateStart)) {
+        if (this.dateEnd.isSameOrAfter(rowDateStart)) {
           return true
         } else {
           return false
         }
       // within range of start date only
-      } else if (this.dateEnd > row.properties[this.dateEndProp]) {
-        if (this.dateStart <= row.properties[this.dateEndProp]) {
+      } else if (this.dateEnd.isAfter(rowDateEnd)) {
+        if (this.dateStart.isSameOrBefore(rowDateEnd)) {
           return true
         } else {
           return false

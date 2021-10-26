@@ -2,20 +2,13 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ introDatasetText.station.instructions }}</p>
+    <p>{{ textTipUsingTool.station.instructions }}</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>
     </div>
 
-    <details>
-      <summary>{{ introDatasetText.station.tipTitle }}</summary>
-      <ul>
-        <li
-          v-for="(pointText, index) in introDatasetText.station.tipPoints"
-          :key="index">{{ pointText }}</li>
-      </ul>
-    </details>
+    <tips-using-tool></tips-using-tool>
 
     <details>
       <summary v-translate>Dataset description, technical information and metadata</summary>
@@ -114,18 +107,19 @@
 </template>
 
 <script>
-import BBOXMap from '@/components/BBOXMap'
-import ProvinceSelect from '@/components/ProvinceSelect'
-import StationSelect from '@/components/StationSelect'
-import FormatSelectVector from '@/components/FormatSelectVector'
-import DateSelect from '@/components/DateSelect'
-import URLBox from '@/components/URLBox'
-import StationListLink from '@/components/StationListLink'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import MoreResources from '@/components/MoreResources'
-import { wfs } from '@/components/mixins/wfs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
+import BBOXMap from '@/components/BBOXMap.vue'
+import ProvinceSelect from '@/components/ProvinceSelect.vue'
+import StationSelect from '@/components/StationSelect.vue'
+import FormatSelectVector from '@/components/FormatSelectVector.vue'
+import DateSelect from '@/components/DateSelect.vue'
+import URLBox from '@/components/URLBox.vue'
+import StationListLink from '@/components/StationListLink.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import { wfs } from '@/components/mixins/wfs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
 import axios from 'axios'
 import { mapState, mapGetters } from 'vuex'
 
@@ -134,14 +128,15 @@ export default {
   mixins: [wfs, ows, datasets],
   components: {
     'bbox-map': BBOXMap,
-    'province-select': ProvinceSelect,
-    'station-select': StationSelect,
-    'format-select-vector': FormatSelectVector,
-    'date-select': DateSelect,
+    ProvinceSelect,
+    StationSelect,
+    FormatSelectVector,
+    DateSelect,
     'url-box': URLBox,
-    'station-list-link': StationListLink,
+    StationListLink,
     DataAccessDocLink,
-    MoreResources
+    TipsUsingTool,
+    MoreResources,
   },
   data () {
     return {
@@ -181,11 +176,7 @@ export default {
             this_.$store.dispatch('stations/setClimateDailyMinDate', minDate)
             this_.date_start = this_.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
             this_.date_min = this_.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
-            // initialize dateEnd in store
-            this_.$store.commit('stations/changeStationState', {
-              stateProp: 'dateEnd',
-              stateValue: this_.$moment.utc(this_.date_end).format(this_.dateConfigs.format)
-            })
+            this_.date_end = this_.$moment.utc(this_.date_end).toDate() // initialize dateEnd in store
           }
         })
     } else {

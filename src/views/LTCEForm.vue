@@ -2,20 +2,13 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ introDatasetText.station.instructions }}</p>
+    <p>{{ textTipUsingTool.station.instructions }}</p>
 
     <div class="alert alert-warning">
       <p><span v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</span> <span v-html="htmlReferAHCCD"></span></p>
     </div>
 
-    <details>
-      <summary>{{ introDatasetText.station.tipTitle }}</summary>
-      <ul>
-        <li
-          v-for="(pointText, index) in introDatasetText.station.tipPoints"
-          :key="index">{{ pointText }}</li>
-      </ul>
-    </details>
+    <tips-using-tool></tips-using-tool>
 
     <details>
       <summary v-translate>Dataset description, technical information and metadata</summary>
@@ -130,38 +123,42 @@
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download link')">
     </url-box>
+
+    <more-resources></more-resources>
   </section>
 </template>
 
 <script>
-import VarSelect from '@/components/VarSelect'
-import BBOXMap from '@/components/BBOXMap'
-import ProvinceSelect from '@/components/ProvinceSelect'
-import StationSelect from '@/components/StationSelect'
-import FormatSelectVector from '@/components/FormatSelectVector'
-import URLBox from '@/components/URLBox'
-import StationListLink from '@/components/StationListLink'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import OpenPortalLinks from '@/components/OpenPortalLinks'
+import VarSelect from '@/components/VarSelect.vue'
+import BBOXMap from '@/components/BBOXMap.vue'
+import ProvinceSelect from '@/components/ProvinceSelect.vue'
+import StationSelect from '@/components/StationSelect.vue'
+import FormatSelectVector from '@/components/FormatSelectVector.vue'
+import URLBox from '@/components/URLBox.vue'
+import StationListLink from '@/components/StationListLink.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import datasetPaths from '@/static/datasetPaths.js'
-import { wfs } from '@/components/mixins/wfs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
+import { wfs } from '@/components/mixins/wfs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'LTCEForm',
   mixins: [wfs, ows, datasets],
   components: {
+    VarSelect,
     'bbox-map': BBOXMap,
-    'province-select': ProvinceSelect,
-    'station-select': StationSelect,
-    'format-select-vector': FormatSelectVector,
-    'var-select': VarSelect,
+    ProvinceSelect,
+    StationSelect,
+    FormatSelectVector,
     'url-box': URLBox,
-    'station-list-link': StationListLink,
+    StationListLink,
     DataAccessDocLink,
-    OpenPortalLinks
+    TipsUsingTool,
+    MoreResources,
   },
   data () {
     return {
