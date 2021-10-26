@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ textTipUsingTool.station.instructions }}</p>
+    <p>{{ textIntroTip.station.instructions }}</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>

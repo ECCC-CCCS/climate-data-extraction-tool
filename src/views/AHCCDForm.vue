@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ textTipUsingTool.station.instructions }}</p>
+    <p>{{ textIntroTip.station.instructions }}</p>
     <tips-using-tool></tips-using-tool>
 
     <data-access-doc-link></data-access-doc-link>
