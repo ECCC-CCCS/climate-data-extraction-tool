@@ -2,8 +2,8 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ textTipUsingTool.gridded.use }}</p>
-    <p>{{ textTipUsingTool.gridded.instructions }}</p>
+    <p>{{ textIntroTip.gridded.use }}</p>
+    <p>{{ textIntroTip.gridded.instructions }}</p>
 
     <data-access-doc-link></data-access-doc-link>
 

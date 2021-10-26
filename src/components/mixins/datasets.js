@@ -403,7 +403,7 @@ export const datasets = {
     climateLibraryUrl: function () {
       return this.climateLibraryLink[this.activeLocale]
     },
-    textTipUsingTool: function () {
+    textIntroTip: function () {
       return {
         gridded: {
           use: this.$gettext('Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada\'s datasets.'),
