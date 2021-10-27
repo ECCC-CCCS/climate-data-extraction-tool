@@ -10,8 +10,6 @@
 
     <tips-using-tool></tips-using-tool>
 
-    <data-access-doc-link></data-access-doc-link>
-
     <details>
       <summary v-translate>Dataset description, technical information and metadata</summary>
       <p v-translate>Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.</p>
@@ -25,6 +23,45 @@
         :download-text="$gettext('Download a list of detailed information for each Monthly climate summaries station.')"></station-list-link>
     </details>
 
+    <data-access-doc-link></data-access-doc-link>
+
+    <details open>
+      <summary v-translate>Map filters</summary>
+
+      <province-select
+        v-model="wfs_province"></province-select>
+
+      <fieldset>
+        <legend v-translate>Date range</legend>
+        <date-select
+          v-model="date_start"
+          :label="$gettext('Start date')"
+          :placeholder="$gettext('YYYY-MM-DD')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :min-date="date_min"
+          :max-date="date_max"
+          :custom-error-msg="dateRangeErrorMessage"></date-select>
+
+        <date-select
+          v-model="date_end"
+          :label="$gettext('End date')"
+          :placeholder="$gettext('YYYY-MM-DD')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :min-date="date_min"
+          :max-date="date_max"
+          :custom-error-msg="dateRangeErrorMessage"></date-select>
+
+        <button
+          id="clear-dates-btn"
+          class="btn btn-default"
+          type="button"
+          @click="clearDates"
+          v-translate>Clear dates</button>
+      </fieldset>
+    </details>
+
     <bbox-map
       v-model="ows_bbox"
       :max-zoom="mapMaxZoom"
@@ -36,9 +73,6 @@
       :date-end-prop="prop_date_end"
       :use-date-range-filter="true"></bbox-map>
 
-    <province-select
-      v-model="wfs_province"></province-select>
-
     <station-select
       v-model="wfs_selected_station_ids"
       :select-disabled="provinceSelected"
@@ -47,36 +81,6 @@
       :station-prov-col="stationProvCol"
       :no-province-station-selected="noProvinceStationSelected"
       :stn-primary-id="stnPrimaryId"></station-select>
-
-    <fieldset>
-      <legend v-translate>Date range</legend>
-      <date-select
-        v-model="date_start"
-        :label="$gettext('Start date')"
-        :placeholder="$gettext('YYYY-MM-DD')"
-        :minimum-view="dateConfigs.minimumView"
-        :format="dateConfigs.format"
-        :min-date="date_min"
-        :max-date="date_max"
-        :custom-error-msg="dateRangeErrorMessage"></date-select>
-
-      <date-select
-        v-model="date_end"
-        :label="$gettext('End date')"
-        :placeholder="$gettext('YYYY-MM-DD')"
-        :minimum-view="dateConfigs.minimumView"
-        :format="dateConfigs.format"
-        :min-date="date_min"
-        :max-date="date_max"
-        :custom-error-msg="dateRangeErrorMessage"></date-select>
-
-      <button
-        id="clear-dates-btn"
-        class="btn btn-default"
-        type="button"
-        @click="clearDates"
-        v-translate>Clear dates</button>
-    </fieldset>
 
     <format-select-vector
       class="mrgn-tp-md"

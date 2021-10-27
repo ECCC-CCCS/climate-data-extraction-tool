@@ -34,7 +34,6 @@ export const wfs = {
   },
   watch: {
     date_start: function (newVal) {
-      console.log(newVal)
       this.$store.commit('stations/changeStationState', {
         stateProp: 'dateStart',
         stateValue: this.$moment.utc(newVal, this.dateConfigs.format)
