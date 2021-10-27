@@ -68,10 +68,7 @@
       :readable-columns="popup_props_display"
       :select-disabled="provinceSelected"
       :geojson="climateMonthlyStationGeoJson"
-      :stn-primary-id="stnPrimaryId"
-      :date-start-prop="prop_date_start"
-      :date-end-prop="prop_date_end"
-      :use-date-range-filter="true"></bbox-map>
+      :stn-primary-id="stnPrimaryId"></bbox-map>
 
     <station-select
       v-model="wfs_selected_station_ids"
@@ -80,7 +77,10 @@
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"
       :no-province-station-selected="noProvinceStationSelected"
-      :stn-primary-id="stnPrimaryId"></station-select>
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></station-select>
 
     <format-select-vector
       class="mrgn-tp-md"
@@ -161,15 +161,16 @@ export default {
     // Get min local_date dynamically to set date_min
     let minDate = this.$store.getters['stations/getClimateMonthlyMinDate']
     if (minDate === null) { // prevent duplicate AJAX
-      let thisComp = this // for reference in axios response; "this" reserved in axios
+      let this_ = this // for reference in axios response; "this" reserved in axios
 
       axios.get(this.urlDatasetMinDate)
         .then(function (response) {
           if (Object.prototype.hasOwnProperty.call(response.data, 'features')) {
             minDate = response.data.features[0].properties.LOCAL_DATE
-            thisComp.$store.dispatch('stations/setClimateMonthlyMinDate', minDate)
-            thisComp.date_start = thisComp.$moment.utc(minDate, 'YYYY-MM').toDate()
-            thisComp.date_min = thisComp.$moment.utc(minDate, 'YYYY-MM').toDate()
+            this_.$store.dispatch('stations/setClimateMonthlyMinDate', minDate)
+            this_.date_start = this_.$moment.utc(minDate, 'YYYY-MM').toDate()
+            this_.date_min = this_.$moment.utc(minDate, 'YYYY-MM').toDate()
+            this_.date_end = this_.$moment.utc(this_.date_end).toDate() // initialize dateEnd in store
           }
         })
     } else {
