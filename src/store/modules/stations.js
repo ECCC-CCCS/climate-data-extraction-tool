@@ -31,8 +31,8 @@ const state = {
   maxStationSelection: 20,
   minDateClimateDaily: null,
   minDateClimateMonthly: null,
-  dateStart: null,
-  dateEnd: null,
+  dateStart: null, // momentjs date
+  dateEnd: null, // momentjs date
   hydroStationActive: true,
   retrievedAllHydroStations: false,
   cancelSourceStation: axios.CancelToken.source()

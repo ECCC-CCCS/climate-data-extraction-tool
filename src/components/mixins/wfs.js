@@ -36,13 +36,13 @@ export const wfs = {
     date_start: function (newVal) {
       this.$store.commit('stations/changeStationState', {
         stateProp: 'dateStart',
-        stateValue: this.$moment.utc(newVal, this.dateConfigs.format)
+        stateValue: this.convertDateToMoment(newVal)
       })
     },
     date_end: function (newVal) {
       this.$store.commit('stations/changeStationState', {
         stateProp: 'dateEnd',
-        stateValue: this.$moment.utc(newVal, this.dateConfigs.format)
+        stateValue: this.convertDateToMoment(newVal)
       })
     }
   },
@@ -299,6 +299,13 @@ export const wfs = {
 
       url += urlParams.join('&')
       return url
+    },
+    convertDateToMoment: function (date) {
+      if (Object.prototype.toString.call(date) === '[object Date]') {
+        return this.$moment.utc(date)
+      } else {
+        return this.$moment.utc(date, this.dateConfigs.format)
+      }
     }
   }
 }
