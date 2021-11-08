@@ -72,7 +72,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // visit download link (limit 1)
     cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wfs3-link-list').find('a').should('have.lengthOf', 428)
+    cy.get('#wfs3-link-list').find('a').should('have.lengthOf', 429)
     cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -164,7 +164,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.equal(34)
+      expect(xhr.response.body.numberMatched).to.equal(36)
     })
     cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
 
