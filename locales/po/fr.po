@@ -1346,8 +1346,8 @@ msgid "see FAQ"
 msgstr "voir la FAQ"
 
 #: src/views/Home.vue:11
-msgid "Select a dataset from the menu"
-msgstr "Sélectionnez un jeu de données dans le menu"
+msgid "Select a dataset from the menu to the left"
+msgstr "Sélectionnez un jeu de données dans le menu à gauche"
 
 #: src/components/TipsUsingTool.vue:22
 msgid "select stations on the map or in the table by clicking on them"

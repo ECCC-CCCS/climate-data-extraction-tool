@@ -1296,7 +1296,7 @@ msgid "see FAQ"
 msgstr "see FAQ"
 
 #: src/views/Home.vue:11
-msgid "Select a dataset from the menu"
+msgid "Select a dataset from the menu to the left"
 msgstr ""
 
 #: src/components/TipsUsingTool.vue:22

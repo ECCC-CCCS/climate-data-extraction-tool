@@ -1889,8 +1889,8 @@
 					"see FAQ"
 				]
 			},
-			"Select a dataset from the menu": {
-				"msgid": "Select a dataset from the menu",
+			"Select a dataset from the menu to the left": {
+				"msgid": "Select a dataset from the menu to the left",
 				"msgstr": [
 					""
 				]
@@ -4369,10 +4369,10 @@
 					"voir la FAQ"
 				]
 			},
-			"Select a dataset from the menu": {
-				"msgid": "Select a dataset from the menu",
+			"Select a dataset from the menu to the left": {
+				"msgid": "Select a dataset from the menu to the left",
 				"msgstr": [
-					"Sélectionnez un jeu de données dans le menu"
+					"Sélectionnez un jeu de données dans le menu à gauche"
 				]
 			},
 			"select stations on the map or in the table by clicking on them": {
