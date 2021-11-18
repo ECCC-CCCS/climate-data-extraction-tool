@@ -29,7 +29,6 @@ export default {
   name: 'Home',
   mixins: [ows, datasets],
   components: {
-
     MoreResources,
     LatestRelease
   }

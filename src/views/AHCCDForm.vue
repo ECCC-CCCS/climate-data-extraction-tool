@@ -22,8 +22,16 @@
 
     <details>
       <summary v-translate>Map filters</summary>
+
       <province-select
         v-model="wfs_province"></province-select>
+
+      <var-select
+        class="mrgn-tp-md"
+        v-model="wfs_layer"
+        :label="$gettext('Value type / Time interval')"
+        :required="true"
+        :select-options="layer_options"></var-select>
 
       <fieldset
         id="date-range-field"
@@ -74,15 +82,10 @@
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"
       :no-province-station-selected="noProvinceStationSelected"
-      :stn-primary-id="stnPrimaryId"></station-select>
-
-    <var-select
-      class="mrgn-tp-md"
-      v-model="wfs_layer"
-      :label="$gettext('Value type / Time interval')"
-      :required="true"
-      :select-options="layer_options"></var-select>
-
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></station-select>
 
     <format-select-vector
       class="mrgn-tp-md"
@@ -142,7 +145,9 @@ export default {
       date_start: this.$moment.utc('1840-01-01', 'YYYY-MM-DD').toDate(),
       date_end: this.$moment.utc('2020-12-31', 'YYYY-MM-DD').toDate(),
       date_min: this.$moment.utc('1840-01-01', 'YYYY-MM-DD').toDate(),
-      date_max: this.$moment.utc('2020-12-31', 'YYYY-MM-DD').toDate()
+      date_max: this.$moment.utc('2020-12-31', 'YYYY-MM-DD').toDate(),
+      prop_date_start: 'start_date__date_debut',
+      prop_date_end: 'end_date__date_fin'
     }
   },
   watch: {
@@ -158,6 +163,10 @@ export default {
     if (this.numStationAhccd === 0) { // prevent duplicate AJAX
       this.$store.dispatch('stations/retrieveAhccdStations', this.urlStationMapList)
     }
+
+    // Trigger save to store
+    this.date_start = this.$moment.utc('1840-01-01', 'YYYY-MM-DD').toDate()
+    this.date_end = this.$moment.utc('2020-12-31', 'YYYY-MM-DD').toDate()
   },
   computed: {
     urlStationList: function () {
@@ -179,8 +188,8 @@ export default {
       props[this.datasetToProvColName[this.$route.name]] = this.$gettext('Province') + '&nbsp/<br>' + this.$gettext('Territory')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
-      props['start_date__date_debut'] = this.$gettext('First date')
-      props['end_date__date_fin'] = this.$gettext('Last date')
+      props[this.prop_date_start] = this.$gettext('First date')
+      props[this.prop_date_end] = this.$gettext('Last date')
       return props
     },
     layer_options: function () {

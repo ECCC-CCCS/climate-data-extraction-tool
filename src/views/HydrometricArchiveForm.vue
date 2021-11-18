@@ -22,19 +22,19 @@
 
     <details>
       <summary v-translate>Map filters</summary>
+
       <province-select
         v-model="wfs_province"></province-select>
 
-
-      <fieldset>
-        <legend v-translate>Date range</legend>
-
-        <var-select
+      <var-select
           class="mrgn-tp-md"
           v-model="wfs_layer"
           :label="$gettext('Value type / Time interval')"
           :required="true"
           :select-options="layer_options"></var-select>
+
+      <fieldset>
+        <legend v-translate>Date range</legend>
 
         <date-select
           v-model="date_start"
