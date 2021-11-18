@@ -11,7 +11,7 @@
       <li v-translate>Select a dataset from the menu</li>
       <li v-translate>Select your locations/stations of interest</li>
       <li v-translate>Specify the rest of your download request</li>
-      <li v-translate>Retrieve your download links and then download the data from the links provided</li>
+      <li v-translate>Click "retrieve your download links" at the bottom of the page and then download the data from the links provided</li>
     </ol>
 
     <more-resources></more-resources>

@@ -11,7 +11,7 @@
     <tips-using-tool></tips-using-tool>
 
     <details>
-      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <summary v-translate>Technical information and metadata</summary>
 
       <p v-html="ltceIntroBlurbHtml"></p>
 
@@ -53,7 +53,7 @@
 
     <data-access-doc-link></data-access-doc-link>
 
-    <details open>
+    <details>
       <summary v-translate>Map filters</summary>
 
       <var-select

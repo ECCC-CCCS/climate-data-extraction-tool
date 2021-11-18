@@ -5,10 +5,8 @@
     <p>{{ textIntroTip.station.instructions }}</p>
     <tips-using-tool></tips-using-tool>
 
-    <data-access-doc-link></data-access-doc-link>
-
     <details>
-      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <summary v-translate>Technical information and metadata</summary>
       <p v-translate>Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.</p>
 
       <p v-html="techDocHtml"></p>
@@ -20,6 +18,53 @@
         :download-text="$gettext('Download a list of detailed information for each Historical hydrometric station.')"></station-list-link>
     </details>
 
+    <data-access-doc-link></data-access-doc-link>
+
+    <details>
+      <summary v-translate>Map filters</summary>
+      <province-select
+        v-model="wfs_province"></province-select>
+
+
+      <fieldset>
+        <legend v-translate>Date range</legend>
+
+        <var-select
+          class="mrgn-tp-md"
+          v-model="wfs_layer"
+          :label="$gettext('Value type / Time interval')"
+          :required="true"
+          :select-options="layer_options"></var-select>
+
+        <date-select
+          v-model="date_start"
+          :label="$gettext('Start date')"
+          :min-date="date_min"
+          :max-date="date_max"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
+
+        <date-select
+          v-model="date_end"
+          :label="$gettext('End date')"
+          :min-date="date_min"
+          :max-date="date_max"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
+
+        <button
+          id="clear-dates-btn"
+          class="btn btn-default"
+          type="button"
+          @click="clearDates"
+          v-translate>Clear dates</button>
+      </fieldset>
+    </details>
+
     <bbox-map
       v-model="ows_bbox"
       :max-zoom="mapMaxZoom"
@@ -28,9 +73,6 @@
       :geojson="hydroStationGeoJson"
       :stn-primary-id="stnPrimaryId"
       :hydro-station-display="true"></bbox-map>
-
-    <province-select
-      v-model="wfs_province"></province-select>
 
     <station-select
       v-model="wfs_selected_station_ids"
@@ -41,43 +83,6 @@
       :no-province-station-selected="noProvinceStationSelected"
       :stn-primary-id="stnPrimaryId"
       :hydro-station-display="true"></station-select>
-
-    <var-select
-      class="mrgn-tp-md"
-      v-model="wfs_layer"
-      :label="$gettext('Value type / Time interval')"
-      :required="true"
-      :select-options="layer_options"></var-select>
-
-    <fieldset>
-      <legend v-translate>Date range</legend>
-      <date-select
-        v-model="date_start"
-        :label="$gettext('Start date')"
-        :min-date="date_min"
-        :max-date="date_max"
-        :minimum-view="dateConfigs.minimumView"
-        :format="dateConfigs.format"
-        :custom-error-msg="dateRangeErrorMessage"
-        :placeholder="dateConfigs.placeholder"></date-select>
-
-      <date-select
-        v-model="date_end"
-        :label="$gettext('End date')"
-        :min-date="date_min"
-        :max-date="date_max"
-        :minimum-view="dateConfigs.minimumView"
-        :format="dateConfigs.format"
-        :custom-error-msg="dateRangeErrorMessage"
-        :placeholder="dateConfigs.placeholder"></date-select>
-
-      <button
-        id="clear-dates-btn"
-        class="btn btn-default"
-        type="button"
-        @click="clearDates"
-        v-translate>Clear dates</button>
-    </fieldset>
 
     <format-select-vector
       class="mrgn-tp-md"

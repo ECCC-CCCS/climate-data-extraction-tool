@@ -9,7 +9,7 @@
       <ul class="list-group menu list-unstyled mrgn-lft-0-important">
         <li>
           <details>
-            <summary class="list-group-item"><translate>Climate simulations</translate> <span v-text="`(${climateSimulationRoutes.length})`"></span></summary>
+            <summary class="list-group-item"><translate>Climate projections</translate> <span v-text="`(${climateSimulationRoutes.length})`"></span></summary>
             <ul class="list-group menu list-unstyled mrgn-lft-0-important">
               <li
                 v-for="route in climateSimulationRoutes"

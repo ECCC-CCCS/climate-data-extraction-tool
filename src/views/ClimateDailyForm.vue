@@ -11,7 +11,7 @@
     <tips-using-tool></tips-using-tool>
 
     <details>
-      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <summary v-translate>Technical information and metadata</summary>
       <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
 
       <p v-html="techDocHtml"></p>
@@ -25,7 +25,7 @@
 
     <data-access-doc-link></data-access-doc-link>
 
-    <details open>
+    <details>
       <summary v-translate>Map filters</summary>
 
       <province-select

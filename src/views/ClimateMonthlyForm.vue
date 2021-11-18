@@ -11,7 +11,7 @@
     <tips-using-tool></tips-using-tool>
 
     <details>
-      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <summary v-translate>Technical information and metadata</summary>
       <p v-translate>Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.</p>
 
       <p v-html="techDocHtml"></p>
@@ -25,7 +25,7 @@
 
     <data-access-doc-link></data-access-doc-link>
 
-    <details open>
+    <details>
       <summary v-translate>Map filters</summary>
 
       <province-select

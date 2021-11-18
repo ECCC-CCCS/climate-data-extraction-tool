@@ -10,10 +10,8 @@
 
     <tips-using-tool></tips-using-tool>
 
-    <data-access-doc-link></data-access-doc-link>
-
     <details>
-      <summary v-translate>Dataset description, technical information and metadata</summary>
+      <summary v-translate>Technical information and metadata</summary>
       <p v-translate>Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
 
       <p v-html="techDocHtml"></p>
@@ -25,6 +23,15 @@
         :download-text="$gettext('Download a list of detailed information for each Climate normals station.')"></station-list-link>
     </details>
 
+    <data-access-doc-link></data-access-doc-link>
+
+    <details>
+      <summary v-translate>Map filters</summary>
+
+      <province-select
+        v-model="wfs_province"></province-select>
+    </details>
+
     <bbox-map
       v-model="ows_bbox"
       :max-zoom="mapMaxZoom"
@@ -32,9 +39,6 @@
       :select-disabled="provinceSelected"
       :geojson="climateNormalsStationGeoJson"
       :stn-primary-id="stnPrimaryId"></bbox-map>
-
-    <province-select
-      v-model="wfs_province"></province-select>
 
     <station-select
       v-model="wfs_selected_station_ids"
