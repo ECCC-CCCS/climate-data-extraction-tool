@@ -149,7 +149,7 @@ export const DCSCMIP5 = {
         YEAR: this.$gettext('Annual'),
         ENS: this.$gettext('Monthly')
       }
-      // if (!this.pointDownloadOn) {
+      // if (!this.pointClickOn) {
       //   options['ENS'] = this.$gettext('Monthly')
       // }
       return options

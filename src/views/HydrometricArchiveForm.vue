@@ -1,146 +1,139 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }}</h1>
+  <section>
+    <h1>{{ currentRouteTitle }}</h1>
 
-        <p>{{ introDatasetText.station.instructions }}</p>
-        <p>
-          <strong>{{ introDatasetText.station.tipTitle }}</strong>
-          <ul>
-            <li
-              v-for="(pointText, index) in introDatasetText.station.tipPoints"
-              :key="index">{{ pointText }}</li>
-          </ul>
-        </p>
+    <p>{{ textIntroTip.station.instructions }}</p>
+    <tips-using-tool></tips-using-tool>
 
-        <data-access-doc-link></data-access-doc-link>
+    <details>
+      <summary v-translate>Technical information and metadata</summary>
+      <p v-translate>Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.</p>
 
-        <details :open="toggleDetailsState">
-          <summary @click="toggleDetails"
-            v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.</p>
+      <p v-html="techDocHtml"></p>
 
-          <p v-html="techDocHtml"></p>
+      <p v-html="openPortalHtml"></p>
 
-          <p v-html="openPortalHtml"></p>
+      <station-list-link
+        :url-station-list="urlStationList"
+        :download-text="$gettext('Download a list of detailed information for each Historical hydrometric station.')"></station-list-link>
+    </details>
 
-          <station-list-link
-            :url-station-list="urlStationList"
-            :download-text="$gettext('Download a list of detailed information for each Historical hydrometric station.')"></station-list-link>
-        </details>
+    <data-access-doc-link></data-access-doc-link>
 
-        <info-contact-support></info-contact-support>
+    <details>
+      <summary v-translate>Map filters</summary>
 
-        <bbox-map
-          v-model="ows_bbox"
-          :max-zoom="mapMaxZoom"
-          :readable-columns="popup_props_display"
-          :select-disabled="provinceSelected"
-          :geojson="hydroStationsGeoJson"
-          :stn-primary-id="stnPrimaryId"
-          :hydro-station-display="true"></bbox-map>
+      <province-select
+        v-model="wfs_province"></province-select>
 
-        <province-select
-          v-model="wfs_province"></province-select>
-
-        <station-select
-          v-model="wfs_selected_station_ids"
-          :select-disabled="provinceSelected"
-          :station-data="hydroStationsGeoJson.features"
-          :station-prop-display="station_props_display"
-          :station-prov-col="stationProvCol"
-          :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"
-          :hydro-station-display="true"></station-select>
-
-        <var-select
+      <var-select
           class="mrgn-tp-md"
           v-model="wfs_layer"
           :label="$gettext('Value type / Time interval')"
           :required="true"
           :select-options="layer_options"></var-select>
 
-        <fieldset>
-          <legend v-translate>Date range</legend>
-          <date-select
-            v-model="date_start"
-            :label="$gettext('Start date')"
-            :min-date="date_min"
-            :max-date="date_max"
-            :minimum-view="dateConfigs.minimumView"
-            :format="dateConfigs.format"
-            :custom-error-msg="dateRangeErrorMessage"
-            :placeholder="dateConfigs.placeholder"></date-select>
+      <fieldset>
+        <legend v-translate>Date range</legend>
 
-          <date-select
-            v-model="date_end"
-            :label="$gettext('End date')"
-            :min-date="date_min"
-            :max-date="date_max"
-            :minimum-view="dateConfigs.minimumView"
-            :format="dateConfigs.format"
-            :custom-error-msg="dateRangeErrorMessage"
-            :placeholder="dateConfigs.placeholder"></date-select>
+        <date-select
+          v-model="date_start"
+          :label="$gettext('Start date')"
+          :min-date="date_min"
+          :max-date="date_max"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-          <button
-            id="clear-dates-btn"
-            class="btn btn-default"
-            type="button"
-            @click="clearDates"
-            v-translate>Clear dates</button>
-        </fieldset>
+        <date-select
+          v-model="date_end"
+          :label="$gettext('End date')"
+          :min-date="date_min"
+          :max-date="date_max"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-model="wfs_format"></format-select-vector>
+        <button
+          id="clear-dates-btn"
+          class="btn btn-default"
+          type="button"
+          @click="clearDates"
+          v-translate>Clear dates</button>
+      </fieldset>
+    </details>
 
-        <url-box
-          :layer-options="selectedLayerOption"
-          :ows-url-formatter="wfs3_download_url"
-          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          :wfs3-download-limit="wfs_limit"
-          :layer-format="wfs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download links')">
-        </url-box>
-      </main>
-      <dataset-menu></dataset-menu>
-    </div>
-  </div>
+    <bbox-map
+      v-model="ows_bbox"
+      :max-zoom="mapMaxZoom"
+      :readable-columns="popup_props_display"
+      :select-disabled="provinceSelected"
+      :geojson="hydroStationGeoJson"
+      :stn-primary-id="stnPrimaryId"
+      :hydro-station-display="true"></bbox-map>
+
+    <station-select
+      v-model="wfs_selected_station_ids"
+      :select-disabled="provinceSelected"
+      :station-data="hydroStationGeoJson.features"
+      :station-prop-display="station_props_display"
+      :station-prov-col="stationProvCol"
+      :no-province-station-selected="noProvinceStationSelected"
+      :stn-primary-id="stnPrimaryId"
+      :hydro-station-display="true"></station-select>
+
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-model="wfs_format"></format-select-vector>
+
+    <url-box
+      :layer-options="selectedLayerOption"
+      :ows-url-formatter="wfs3_download_url"
+      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+      :wfs3-download-limit="wfs_limit"
+      :layer-format="wfs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download links')">
+    </url-box>
+
+    <more-resources></more-resources>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
-import VarSelect from '@/components/VarSelect'
-import BBOXMap from '@/components/BBOXMap'
-import ProvinceSelect from '@/components/ProvinceSelect'
-import StationSelect from '@/components/StationSelect'
-import FormatSelectVector from '@/components/FormatSelectVector'
-import DateSelect from '@/components/DateSelect'
-import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
-import StationListLink from '@/components/StationListLink'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import { wfs } from '@/components/mixins/wfs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
+import VarSelect from '@/components/VarSelect.vue'
+import BBOXMap from '@/components/BBOXMap.vue'
+import ProvinceSelect from '@/components/ProvinceSelect.vue'
+import StationSelect from '@/components/StationSelect.vue'
+import FormatSelectVector from '@/components/FormatSelectVector.vue'
+import DateSelect from '@/components/DateSelect.vue'
+import URLBox from '@/components/URLBox.vue'
+import StationListLink from '@/components/StationListLink.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import { wfs } from '@/components/mixins/wfs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'HydrometricArchiveForm',
   mixins: [wfs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
+    VarSelect,
     'bbox-map': BBOXMap,
-    'province-select': ProvinceSelect,
-    'station-select': StationSelect,
-    'format-select-vector': FormatSelectVector,
-    'date-select': DateSelect,
-    'var-select': VarSelect,
+    ProvinceSelect,
+    StationSelect,
+    FormatSelectVector,
+    DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
-    'station-list-link': StationListLink,
-    DataAccessDocLink
+    StationListLink,
+    DataAccessDocLink,
+    TipsUsingTool,
+    MoreResources,
   },
   data () {
     return {
@@ -154,51 +147,54 @@ export default {
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     },
-    activeStationsOnly: function (newVal) { // display inactive stations
+    hydroStationActive: function (newVal) { // display inactive stations
       if (newVal === false) {
-        this.$store.dispatch('retrieveHydroStations', this.urlStationMapList)
+        this.$store.dispatch('stations/retrieveHydroStations', this.urlStationMapList)
       }
     }
   },
   beforeMount () {
     // Load hydrometric stations
-    if (this.hydroStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveHydroStations', this.urlStationMapList)
+    if (this.numStationHydro === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveHydroStations', this.urlStationMapList)
     }
   },
   computed: {
-    activeStationsOnly: function () {
-      return this.$store.getters.getHydroStationActive
-    },
+    ...mapState('stations', {
+      hydroStationActive: 'hydroStationActive',
+      hydroStationGeoJson (state) {
+        let hs = state.hydroStationGeoJson
+        if (hs === null) {
+          return null
+        }
+        let hydroStations = Object.assign({}, hs) // Clone object to prevent original alteration
+        if (this.hydroStationActive) { // filter here so it works with map and table
+          if (Object.prototype.hasOwnProperty.call(hydroStations, 'features')) {
+            hydroStations.features = hydroStations.features.filter((feature) => {
+              return feature.properties.STATUS_EN === 'Active'
+            })
+          }
+        }
+        return hydroStations
+      }
+    }),
+    ...mapGetters('stations', [
+      'numStationHydro'
+    ]),
     urlStationList: function () {
       let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
-      if (this.activeStationsOnly) {
+      if (this.hydroStationActive) {
         url += '&STATUS_EN=Active'
       }
       return url
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},STATUS_EN`
-    },
-    hydroStationsGeoJson: function () {
-      let hs = this.$store.getters.getHydroStations
-      if (hs === null) {
-        return null
-      }
-      let hydroStations = Object.assign({}, hs) // Clone object to prevent original alteration
-      if (this.activeStationsOnly) { // filter here so it works with map and table
-        if (Object.prototype.hasOwnProperty.call(hydroStations, 'features')) {
-          hydroStations.features = hydroStations.features.filter((feature) => {
-            return feature.properties.STATUS_EN === 'Active'
-          })
-        }
-      }
-      return hydroStations
     },
     layer_options: function () {
       return {

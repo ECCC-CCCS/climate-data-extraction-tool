@@ -1,89 +1,81 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
+  <section>
+    <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-        <p>{{ introDatasetText.gridded.use }}</p>
-        <p>{{ introDatasetText.gridded.instructions }}</p>
+    <p>{{ textIntroTip.gridded.use }}</p>
+    <p>{{ textIntroTip.gridded.instructions }}</p>
 
-        <data-access-doc-link></data-access-doc-link>
+    <data-access-doc-link></data-access-doc-link>
 
-        <details :open="toggleDetailsState">
-          <summary @click="toggleDetails"
-            v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.</p>
+    <details>
+      <summary v-translate>Technical information and metadata</summary>
+      <p v-translate>The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.</p>
 
-          <p v-html="techDocHtml"></p>
+      <p v-html="techDocHtml"></p>
 
-          <p v-html="openPortalHtml"></p>
-        </details>
+      <p v-html="openPortalHtml"></p>
+    </details>
 
-        <info-contact-support></info-contact-support>
+    <info-contact-support></info-contact-support>
 
-        <bbox-map
-          v-model="ows_bbox"
-          @change="splitBBOXString"></bbox-map>
+    <bbox-map
+      v-model="ows_bbox"
+      @change="splitBBOXString"></bbox-map>
 
-        <var-select
-          v-model="wcs_id_type"
-          :label="$gettext('Model type')"
-          :details-text="typeDetailsText"
-          :details-title="typeDetailsTitle"
-          :select-options="typeOptions"></var-select>
+    <var-select
+      v-model="wcs_id_type"
+      :label="$gettext('Model type')"
+      :details-text="typeDetailsText"
+      :details-title="typeDetailsTitle"
+      :select-options="typeOptions"></var-select>
 
-        <var-select
-          v-model="wcs_id_time"
-          :label="$gettext('Precipitation accumulation interval')"
-          :select-options="timeOptions"></var-select>
+    <var-select
+      v-model="wcs_id_time"
+      :label="$gettext('Precipitation accumulation interval')"
+      :select-options="timeOptions"></var-select>
 
-        <date-select
-          v-model="forecastDate"
-          :label="$gettext('Analysis date')"
-          :minimum-view="dateConfigs.minimumView"
-          :format="dateConfigs.format"
-          :placeholder="dateConfigs.placeholder"
-          :required="true"
-          :min-date="forecastDateRange.min"
-          :max-date="forecastDateRange.max"></date-select>
+    <date-select
+      v-model="forecastDate"
+      :label="$gettext('Analysis date')"
+      :minimum-view="dateConfigs.minimumView"
+      :format="dateConfigs.format"
+      :placeholder="dateConfigs.placeholder"
+      :required="true"
+      :min-date="forecastDateRange.min"
+      :max-date="forecastDateRange.max"></date-select>
 
-        <var-select
-          v-model="forecastTimeZ"
-          :label="$gettext('Analysis run hour')"
-          :select-options="timeZOptions"></var-select>
+    <var-select
+      v-model="forecastTimeZ"
+      :label="$gettext('Analysis run hour')"
+      :select-options="timeZOptions"></var-select>
 
-        <format-select-raster
-          v-model="wcs_format"
-          :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+    <format-select-raster
+      v-model="wcs_format"
+      :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
-        <details :open="toggleDetailsAdvState">
-          <summary @click="toggleDetailsAdv"
-            v-translate>Advanced options</summary>
-          <var-select
-            v-model="ows_crs"
-            :label="crsLabel"
-            :initial-variable="ows_crs"
-            :select-options="crsOptions"></var-select>
-        </details>
+    <details>
+      <summary v-translate>Advanced options</summary>
+      <var-select
+        v-model="ows_crs"
+        :label="crsLabel"
+        :initial-variable="ows_crs"
+        :select-options="crsOptions"></var-select>
+    </details>
 
-        <url-box
-          :layer-options="selectedCoverageIdOption"
-          :ows-url-formatter="wcs_download_url"
-          :layer-format="wcs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-      </main>
-      <dataset-menu></dataset-menu>
-    </div>
-  </div>
+    <url-box
+      :layer-options="selectedCoverageIdOption"
+      :ows-url-formatter="wcs_download_url"
+      :layer-format="wcs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import BBOXMap from '@/components/BBOXMap'
 import FormatSelectRaster from '@/components/FormatSelectRaster'
-import VarSelect from '@/components/VarSelect'
+import VarSelect from '@/components/VarSelect.vue'
 import DateSelect from '@/components/DateSelect'
 import URLBox from '@/components/URLBox'
 import InfoContactSupport from '@/components/InfoContactSupport'
@@ -96,7 +88,6 @@ export default {
   name: 'RDPAForm',
   mixins: [wcs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
     'bbox-map': BBOXMap,
     'format-select-raster': FormatSelectRaster,
     'var-select': VarSelect,

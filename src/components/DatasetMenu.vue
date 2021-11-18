@@ -6,66 +6,76 @@
         <router-link
           to="/"><translate t-context="Title">Climate data extraction tool</translate></router-link>
       </h3>
-      <ul class="list-group menu list-unstyled">
+      <ul class="list-group menu list-unstyled mrgn-lft-0-important">
         <li>
-          <span class="list-group-item" v-translate>Climate simulations</span>
-          <ul class="list-group menu list-unstyled">
-            <li
-              v-for="route in climateSimulationRoutes"
-              :key="route.name">
-                <router-link
-                  :to="route.meta[currentLangPath]"
-                  class="list-group-item"
-                  :class="{'wb-navcurr': $route.name === route.name}">
-                  {{ datasetTitles[route.name].title }}
-                  <span v-if="datasetTitles[route.name].abbr !== null">
-                    (<abbr
-                      :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
-                  </span>
-                </router-link>
-            </li>
-          </ul>
+          <details>
+            <summary class="list-group-item"><translate>Climate projections</translate> <span v-text="`(${climateSimulationRoutes.length})`"></span></summary>
+            <ul class="list-group menu list-unstyled mrgn-lft-0-important">
+              <li
+                v-for="route in climateSimulationRoutes"
+                :key="route.name">
+                  <router-link
+                    :to="route.meta[currentLangPath]"
+                    class="list-group-item"
+                    :class="{'wb-navcurr': $route.name === route.name}">
+                    {{ datasetTitles[route.name].title }}
+                    <span v-if="datasetTitles[route.name].abbr !== null">
+                      (<abbr
+                        :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
+                    </span>
+                  </router-link>
+              </li>
+            </ul>
+          </details>
         </li>
         <li>
-          <span class="list-group-item" v-translate>Value-added historical climate data products</span>
-          <ul class="list-group menu list-unstyled">
-            <li
-              v-for="route in valueAddedHistClimProdRoutes"
-              :key="route.name">
-                <router-link
-                  :to="route.meta[currentLangPath]"
-                  class="list-group-item"
-                  :class="{'wb-navcurr': $route.name === route.name}">
-                  {{ datasetTitles[route.name].title }}
-                  <span v-if="datasetTitles[route.name].abbr !== null">
-                    (<abbr
-                      :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
-                  </span>
-                </router-link>
-            </li>
-          </ul>
+          <details>
+            <summary class="list-group-item"><translate>Value-added historical climate data products</translate> <span v-text="`(${valueAddedHistClimProdRoutes.length})`"></span></summary>
+            <ul class="list-group menu list-unstyled mrgn-lft-0-important">
+              <li
+                v-for="route in valueAddedHistClimProdRoutes"
+                :key="route.name">
+                  <router-link
+                    :to="route.meta[currentLangPath]"
+                    class="list-group-item"
+                    :class="{'wb-navcurr': $route.name === route.name}">
+                    {{ datasetTitles[route.name].title }}
+                    <span v-if="datasetTitles[route.name].abbr !== null">
+                      (<abbr
+                        :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
+                    </span>
+                  </router-link>
+              </li>
+            </ul>
+          </details>
         </li>
         <li>
-          <span class="list-group-item" v-translate>Historical climate and river data</span>
-          <ul class="list-group menu list-unstyled">
-            <li
-              v-for="route in histClimateRiverRoutes"
-              :key="route.name">
-                <router-link
-                  :to="route.meta[currentLangPath]"
-                  class="list-group-item"
-                  :class="{'wb-navcurr': $route.name === route.name}">
-                  {{ datasetTitles[route.name].title }}
-                  <span v-if="datasetTitles[route.name].abbr !== null">
-                    (<abbr
-                      :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
-                  </span>
-                </router-link>
-            </li>
-          </ul>
+          <details>
+            <summary class="list-group-item"><translate>Historical climate and river data</translate> <span v-text="`(${histClimateRiverRoutes.length})`"></span></summary>
+            <ul class="list-group menu list-unstyled">
+              <li
+                v-for="route in histClimateRiverRoutes"
+                :key="route.name">
+                  <router-link
+                    :to="route.meta[currentLangPath]"
+                    class="list-group-item"
+                    :class="{'wb-navcurr': $route.name === route.name}">
+                    {{ datasetTitles[route.name].title }}
+                    <span v-if="datasetTitles[route.name].abbr !== null">
+                      (<abbr
+                        :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
+                    </span>
+                  </router-link>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <a class="btn btn-success btn-block" :href="supportDeskLink[activeLocale]" target="_blank"><span class="glyphicon glyphicon-bullhorn"></span> <translate>Help us improve!</translate></a>
         </li>
       </ul>
     </section>
+
   </nav>
 </template>
 
@@ -98,5 +108,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.mrgn-lft-0-important {
+  margin-left: 0px !important;
+}
 </style>

@@ -28,10 +28,8 @@
       </span>
     </strong>
 
-    <details
-      :open="toggleDetailsState">
-      <summary @click="toggleDetails"
-        v-translate>How to use: interactive map</summary>
+    <details>
+      <summary v-translate>How to use: interactive map</summary>
       <p v-translate>Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.</p>
       <p><strong v-translate>Panning:</strong>
         <translate
@@ -72,29 +70,31 @@
               <translate>Latitude:</translate> {{ clickLatLng.lat.toFixed(4) }}
             </l-popup>
           </l-marker>
-      </l-map>
-    </div>
 
-    <div class="form-group">
-      <button
-        id="reset-map-view"
-        @click="resetBBOX"
-        type="button"
-        :disabled="selectDisabled || isLoadingStations"
-        class="btn btn-primary btn-sm" v-translate>Reset map</button>
+          <l-control
+            position="bottomleft"
+            disableClickPropagation>
+            <button
+              id="reset-map-view"
+              @click="resetBBOX"
+              type="button"
+              :disabled="selectDisabled || isLoadingStations"
+              class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-refresh"></span> <translate>Reset map</translate></button>
+          </l-control>
+      </l-map>
     </div>
   </div>
 </template>
 
 <script>
 import L from 'leaflet'
-import { LMap, LMarker, LPopup } from 'vue2-leaflet'
+import { LMap, LMarker, LPopup, LControl } from 'vue2-leaflet'
 import LW from 'leaflet.wms'
 import 'leaflet.markercluster'
 import 'proj4leaflet'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
-import store from '@/store'
+import { mapState } from 'vuex'
 
 import OptionRadio from './OptionRadio'
 
@@ -118,6 +118,7 @@ export default {
     LMap,
     LMarker,
     LPopup,
+    LControl,
     OptionRadio,
     Loading
   },
@@ -267,7 +268,6 @@ export default {
         'fr': 'https://ouvert.canada.ca/data/fr/dataset/296de17c-001c-4435-8f9a-f5acab632e85'
       },
       numStationsSelected: 0,
-      toggleDetailsState: false,
       pointClickOn: 'off',
       clickLatLng: null,
       datasetToStnProvColName: { // province property name in station data is different than the province property name in the actual dataset
@@ -284,7 +284,7 @@ export default {
     pointClickOn: function (newStatus) {
       this.resetPointClick(newStatus)
     },
-    selectedStationIds: function (newStations, oldStations) {
+    stationIdSelected: function (newStations, oldStations) {
       /* Update marker styles and popups when station selection changes are made */
       let stationMarkers = this.getStationMarkers()
 
@@ -391,7 +391,7 @@ export default {
     this.resetPointClick('off')
 
     // reset bbox value
-    this.$store.dispatch('changeBBOX', this.bbox_value)
+    this.$store.dispatch('map/changeBBOX', this.bbox_value)
 
     // window resize
     window.addEventListener('resize', this.onResize)
@@ -419,16 +419,17 @@ export default {
     attributionCBMT: function () {
       return '<a href="' + this.cbmtAttributionURL[this.$i18n.activeLocale] + '" target="_blank">' + this.$pgettext('Title', 'Canada Base Map Transportation') + '</a>'
     },
-    province: function () {
-      return this.$store.getters.getProvince
-    },
-    selectedStationIds: function () {
-      if (this.showGeoJson) {
-        return this.$store.getters.getStationIdSelected
-      } else {
-        return null
+    ...mapState('stations', {
+      province: 'province',
+      isLoadingStations: 'isLoadingStations',
+      stationIdSelected (state) {
+        if (this.showGeoJson) {
+          return state.stationIdSelected
+        } else {
+          return []
+        }
       }
-    },
+    }),
     showGeoJson: function () {
       if (this.geojson === null) {
         return false
@@ -453,9 +454,6 @@ export default {
         en: 'https://geogratis.gc.ca/maps/CBMT?',
         fr: 'https://geogratis.gc.ca/cartes/CBCT?'
       }
-    },
-    isLoadingStations: function () {
-      return this.$store.getters.getIsLoadingStations
     }
   },
   methods: {
@@ -471,20 +469,17 @@ export default {
       }
     },
     resetPointClick: function (newStatus) {
-      this.$store.dispatch('setPointClickStatus', newStatus)
+      this.$store.dispatch('map/setPointClickStatus', newStatus)
       if (newStatus === 'off') {
         this.clickLatLng = null
-        this.$store.dispatch('setClickLatLng', this.clickLatLng)
+        this.$store.dispatch('map/setClickLatLng', this.clickLatLng)
       }
     },
     mapClick: function (event) {
       if (this.pointClickOn === 'on') {
         this.clickLatLng = event.latlng
-        this.$store.dispatch('setClickLatLng', this.clickLatLng)
+        this.$store.dispatch('map/setClickLatLng', this.clickLatLng)
       }
-    },
-    toggleDetails: function () {
-      this.toggleDetailsState = !this.toggleDetailsState
     },
     updateBBOX: function () {
       this.$emit('change', this.bbox_value)
@@ -527,7 +522,7 @@ export default {
         .redraw()
     },
     pointToLayer: function (feature, latlng) {
-      let cmp = this
+      let this_ = this
       let popupTextHtml = '<strong>' + feature.properties[this.readableColumns.name.col] + '</strong>'
 
       if (this.readableColumns.id.col !== null) {
@@ -536,6 +531,11 @@ export default {
       if (this.readableColumns.prov.col !== null) {
         popupTextHtml += '<br>' + this.readableColumns.prov.label + ' ' + feature.properties[this.readableColumns.prov.col]
       }
+      if (Object.prototype.hasOwnProperty.call(this.readableColumns, 'dateRange')) {
+        const format = this.readableColumns.dateRange.format
+        popupTextHtml += '<br>' + this.readableColumns.dateRange.label + ' ' + this.$moment.utc(feature.properties[this.readableColumns.dateRange.colStart]).format(format) + ' ' + this.$gettext('to') + ' ' + this.$moment.utc(feature.properties[this.readableColumns.dateRange.colEnd]).format(format)
+      }
+
       let stationMarker = null
       let markerOption = this.defaultMarkerOptions
       if (this.hydroStationDisplay && feature.properties.STATUS_EN !== 'Active') {
@@ -548,16 +548,16 @@ export default {
 
       // add click event to marker for station selection/deselection
       stationMarker.on('click', function () {
-        if (cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId])) {
-          store.dispatch('removeStationIdSelected', feature.properties[cmp.stnPrimaryId])
-        } else if (!cmp.selectedStationIds.includes(feature.properties[cmp.stnPrimaryId]) && !cmp.selectDisabled) {
-          store.dispatch('addStationIdSelected', feature.properties[cmp.stnPrimaryId])
+        if (this_.stationIdSelected.includes(feature.properties[this_.stnPrimaryId])) {
+          this_.$store.dispatch('stations/removeStationIdSelected', feature.properties[this_.stnPrimaryId])
+        } else if (!this_.stationIdSelected.includes(feature.properties[this_.stnPrimaryId]) && !this_.selectDisabled) {
+          this_.$store.dispatch('stations/addStationIdSelected', feature.properties[this_.stnPrimaryId])
         }
       })
       return stationMarker
     },
     filterGeoJson: function (geoJsonFeature) {
-      return this.selectedStationIds.includes(geoJsonFeature.properties.IDENTIFIER)
+      return this.stationIdSelected.includes(geoJsonFeature.properties.IDENTIFIER)
     },
     activeClass: function (statusEn) {
       if (statusEn === 'Active') {

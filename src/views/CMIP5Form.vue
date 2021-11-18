@@ -1,191 +1,182 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }}</h1>
+  <section>
+    <h1>{{ currentRouteTitle }}</h1>
 
-        <p>{{ introDatasetText.gridded.use }}</p>
-        <p>{{ introDatasetText.gridded.instructions }}</p>
+    <p>{{ textIntroTip.gridded.use }}</p>
+    <p>{{ textIntroTip.gridded.instructions }}</p>
 
-        <data-access-doc-link></data-access-doc-link>
+    <data-access-doc-link></data-access-doc-link>
 
-        <details :open="toggleDetailsState">
-          <summary @click="toggleDetails"
-            v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.</p>
+    <details>
+      <summary v-translate>Technical information and metadata</summary>
+      <p v-translate>The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.</p>
 
-          <p v-html="techDocHtml"></p>
+      <p v-html="techDocHtml"></p>
 
-          <open-portal-links
-            :open-portal-list-html="openPortalListHtml"
-            :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
-        </details>
+      <open-portal-links
+        :open-portal-list-html="openPortalListHtml"
+        :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
+    </details>
 
-        <info-contact-support></info-contact-support>
+    <info-contact-support></info-contact-support>
 
-        <bbox-map
-          v-model="ows_bbox"
-          :allow-click-point="true"
-          @change="splitBBOXString"></bbox-map>
+    <bbox-map
+      v-model="ows_bbox"
+      :allow-click-point="true"
+      @change="splitBBOXString"></bbox-map>
 
-        <var-select
-          v-model="wcs_id_variable"
-          :select-options="variableOptions"></var-select>
+    <var-select
+      v-model="wcs_id_variable"
+      :select-options="variableOptions"></var-select>
 
-        <option-radio
-          v-model="scenarioType"
-          :radio-inline="true"
-          :radio-options="scenarioTypeOptions"></option-radio>
+    <option-radio
+      v-model="scenarioType"
+      :radio-inline="true"
+      :radio-options="scenarioTypeOptions"></option-radio>
 
-        <scenario-select
-          v-show="scenarioType === 'RCP'"
-          v-model="wcs_id_scenario"
-          :select-options="scenarioOptions"></scenario-select>
+    <scenario-select
+      v-show="scenarioType === 'RCP'"
+      v-model="wcs_id_scenario"
+      :select-options="scenarioOptions"></scenario-select>
 
-        <var-select
-          v-model="wcs_id_timePeriod"
-          :label="$gettext('Time interval / Time of year')"
-          :select-options="timePeriodOptions"></var-select>
+    <var-select
+      v-model="wcs_id_timePeriod"
+      :label="$gettext('Time interval / Time of year')"
+      :select-options="timePeriodOptions"></var-select>
 
-        <var-select
-          v-model="valueType"
-          :label="$gettext('Value type')"
-          :select-options="valueTypeOptions"></var-select>
+    <var-select
+      v-model="valueType"
+      :label="$gettext('Value type')"
+      :select-options="valueTypeOptions"></var-select>
 
-        <var-select
-          v-model="percentile"
-          :label="$gettext('Ensemble percentile')"
-          :info-text="[infoSupportDeskModelOutput, infoPercentile]"
-          :select-options="percentileOptions"></var-select>
+    <var-select
+      v-model="percentile"
+      :label="$gettext('Ensemble percentile')"
+      :info-text="[infoSupportDeskModelOutput, infoPercentile]"
+      :select-options="percentileOptions"></var-select>
 
-        <fieldset v-show="!pointDownloadOn">
-          <legend v-translate>Date range</legend>
+    <fieldset v-show="!pointClickOn">
+      <legend v-translate>Date range</legend>
 
-          <option-radio
-            v-model="rangeType"
-            :label="$gettext('Time range type')"
-            :radio-inline="true"
-            :radio-options="rangeTypeOptions"></option-radio>
+      <option-radio
+        v-model="rangeType"
+        :label="$gettext('Time range type')"
+        :radio-inline="true"
+        :radio-options="rangeTypeOptions"></option-radio>
 
-          <div id="historical-date-range" v-show="scenarioType === 'HISTO' && rangeType !=='year20'">
-            <date-select
-              v-model="dateHistStart"
-              :label="$gettext('Historical start date')"
-              :minimum-view="dateConfigs.minimumView"
-              :format="dateConfigs.format"
-              :required="timePeriodIsMonthly"
-              :min-date="dateConfigs.dateMin"
-              :max-date="dateConfigs.dateMax"
-              :custom-error-msg="dateRangeErrorMessage"
-              :placeholder="dateConfigs.placeholder"></date-select>
+      <div id="historical-date-range" v-show="scenarioType === 'HISTO' && rangeType !=='year20'">
+        <date-select
+          v-model="dateHistStart"
+          :label="$gettext('Historical start date')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :required="timePeriodIsMonthly"
+          :min-date="dateConfigs.dateMin"
+          :max-date="dateConfigs.dateMax"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-            <date-select
-              v-model="dateHistEnd"
-              :label="$gettext('Historical end date')"
-              :minimum-view="dateConfigs.minimumView"
-              :format="dateConfigs.format"
-              :required="timePeriodIsMonthly"
-              :min-date="dateConfigs.dateMin"
-              :max-date="dateConfigs.dateMax"
-              :custom-error-msg="dateRangeErrorMessage"
-              :placeholder="dateConfigs.placeholder"></date-select>
+        <date-select
+          v-model="dateHistEnd"
+          :label="$gettext('Historical end date')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :required="timePeriodIsMonthly"
+          :min-date="dateConfigs.dateMin"
+          :max-date="dateConfigs.dateMax"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-            <button
-              id="clear-hist-dates-btn"
-              class="btn btn-default"
-              type="button"
-              @click="clearDates"
-              v-translate>Clear dates</button>
-          </div>
-          <div id="rcp-date-range" v-show="scenarioType === 'RCP' && rangeType !=='year20'">
-            <date-select
-              v-model="dateRcpStart"
-              :label="$gettext('Start date')"
-              :minimum-view="dateConfigs.minimumView"
-              :format="dateConfigs.format"
-              :required="timePeriodIsMonthly"
-              :min-date="dateConfigs.dateMin"
-              :max-date="dateConfigs.dateMax"
-              :custom-error-msg="dateRangeErrorMessage"
-              :placeholder="dateConfigs.placeholder"></date-select>
+        <button
+          id="clear-hist-dates-btn"
+          class="btn btn-default"
+          type="button"
+          @click="clearDates"
+          v-translate>Clear dates</button>
+      </div>
+      <div id="rcp-date-range" v-show="scenarioType === 'RCP' && rangeType !=='year20'">
+        <date-select
+          v-model="dateRcpStart"
+          :label="$gettext('Start date')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :required="timePeriodIsMonthly"
+          :min-date="dateConfigs.dateMin"
+          :max-date="dateConfigs.dateMax"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-            <date-select
-              v-model="dateRcpEnd"
-              :label="$gettext('End date')"
-              :minimum-view="dateConfigs.minimumView"
-              :format="dateConfigs.format"
-              :required="timePeriodIsMonthly"
-              :min-date="dateConfigs.dateMin"
-              :max-date="dateConfigs.dateMax"
-              :custom-error-msg="dateRangeErrorMessage"
-              :placeholder="dateConfigs.placeholder"></date-select>
+        <date-select
+          v-model="dateRcpEnd"
+          :label="$gettext('End date')"
+          :minimum-view="dateConfigs.minimumView"
+          :format="dateConfigs.format"
+          :required="timePeriodIsMonthly"
+          :min-date="dateConfigs.dateMin"
+          :max-date="dateConfigs.dateMax"
+          :custom-error-msg="dateRangeErrorMessage"
+          :placeholder="dateConfigs.placeholder"></date-select>
 
-            <button
-              id="clear-dates-btn"
-              class="btn btn-default"
-              type="button"
-              @click="clearDates"
-              v-translate>Clear dates</button>
-          </div>
+        <button
+          id="clear-dates-btn"
+          class="btn btn-default"
+          type="button"
+          @click="clearDates"
+          v-translate>Clear dates</button>
+      </div>
 
-          <var-select
-            v-show="rangeType === 'year20' && valueType === 'ANO'"
-            v-model="avg20Year"
-            :label="$gettext('20-Year average range')"
-            :select-options="avg20YearOptions"></var-select>
-        </fieldset>
+      <var-select
+        v-show="rangeType === 'year20' && valueType === 'ANO'"
+        v-model="avg20Year"
+        :label="$gettext('20-Year average range')"
+        :select-options="avg20YearOptions"></var-select>
+    </fieldset>
 
-        <format-select-raster
-          class="mrgn-tp-md"
-          v-show="!pointDownloadOn"
-          v-model="wcs_format"></format-select-raster>
+    <format-select-raster
+      class="mrgn-tp-md"
+      v-show="!pointClickOn"
+      v-model="wcs_format"></format-select-raster>
 
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-show="pointDownloadOn"
-          v-model="wps_format"></format-select-vector>
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-show="pointClickOn"
+      v-model="wps_format"></format-select-vector>
 
-        <details
-          :open="toggleDetailsAdvState"
-          v-show="!pointDownloadOn">
-          <summary @click="toggleDetailsAdv"
-            v-translate>Advanced options</summary>
-          <var-select
-            v-model="ows_crs"
-            :label="crsLabel"
-            :select-options="crsOptions"></var-select>
-        </details>
+    <details
+      v-show="!pointClickOn">
+      <summary v-translate>Advanced options</summary>
+      <var-select
+        v-model="ows_crs"
+        :label="crsLabel"
+        :select-options="crsOptions"></var-select>
+    </details>
 
-        <url-box
-          v-show="!pointDownloadOn"
-          :layer-options="selectedCoverageIdOption"
-          :ows-url-formatter="wcs_download_url"
-          :layer-format="wcs_format"
-          :wcs-common-url="wcsCommonUrl"
-          :wcs-band-chunks="chunkedBandsParam"
-          :wcs-num-bands="dateRangeNumBands"
-          :band-range-format="bandRangeFormat"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
+    <url-box
+      v-show="!pointClickOn"
+      :layer-options="selectedCoverageIdOption"
+      :ows-url-formatter="wcs_download_url"
+      :layer-format="wcs_format"
+      :wcs-common-url="wcsCommonUrl"
+      :wcs-band-chunks="chunkedBandsParam"
+      :wcs-num-bands="dateRangeNumBands"
+      :band-range-format="bandRangeFormat"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
 
-        <point-download-box
-          v-show="pointDownloadOn"
-          :title="titlePointDownload"
-          :hasErrors="invalidPointDownloadInputs"
-          :point-inputs="pointInputs" />
-      </main>
-      <dataset-menu></dataset-menu>
-    </div>
-  </div>
+    <point-download-box
+      v-show="pointClickOn"
+      :title="titlePointDownload"
+      :hasErrors="invalidPointDownloadInputs"
+      :point-inputs="pointInputs" />
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
 import BBOXMap from '@/components/BBOXMap'
 import FormatSelectRaster from '@/components/FormatSelectRaster'
 import FormatSelectVector from '@/components/FormatSelectVector'
-import VarSelect from '@/components/VarSelect'
+import VarSelect from '@/components/VarSelect.vue'
 import ScenarioSelect from '@/components/ScenarioSelect'
 import DateSelect from '@/components/DateSelect'
 import OptionRadio from '@/components/OptionRadio'
@@ -204,7 +195,6 @@ export default {
   name: 'CMIP5Form',
   mixins: [wcs, ows, datasets, DCSCMIP5, wps],
   components: {
-    DatasetMenu,
     'bbox-map': BBOXMap,
     FormatSelectRaster,
     FormatSelectVector,

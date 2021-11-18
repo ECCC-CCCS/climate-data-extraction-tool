@@ -39,13 +39,18 @@
         class="mrgn-tp-md"
         v-show="wfs3CommonUrl !== null && numRecords !== null && hasErrors === false">
 
-        <p>
-          <strong
-          v-show="numRecords !== null"
-          v-text="totalRecords"
-          aria-live="polite"
-          id="num-records-wfs3-download"></strong>
-        </p>
+        <div v-show="numRecords !== null">
+          <p>
+            <strong
+              v-text="totalRecords"
+              aria-live="polite"
+              id="num-records-wfs3-download"></strong>
+          </p>
+          <div v-show="numRecords > 600000" class="alert alert-warning">
+            <p v-html="tooManyRecordsWarning"></p>
+          </div>
+
+        </div>
 
         <div id="wfs3-link-list" class="list-group" aria-live="polite">
           <a
@@ -82,19 +87,20 @@
     <div
       v-show="numRecords === 0">
       <p>
-        <translate>Your form selection contains no data to download.</translate>
-        <translate>Please change your form selection.</translate>
+        <span v-translate>Your form selection contains no data to download.</span> <span v-translate>Please change your form selection.</span>
       </p>
     </div>
   </div>
 </template>
 
 <script>
+import { datasets } from './mixins/datasets'
 import axios from 'axios'
 import { PulseLoader } from '@saeris/vue-spinners'
 
 export default {
   name: 'URLBox',
+  mixins: [datasets],
   components: {
     PulseLoader
   },
@@ -186,6 +192,9 @@ export default {
     },
     totalRecords: function () {
       return this.$_i(this.$gettext('Total number of records: {numRecords}'), this)
+    },
+    tooManyRecordsWarning: function () {
+      return this.$_i(this.$gettext('Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href="{supportDeskUrl}" target="_blank">Climate Services Support Desk</a>.'), this)
     }
   },
   data () {

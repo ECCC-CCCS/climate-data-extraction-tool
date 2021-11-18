@@ -193,6 +193,20 @@ npm run csv2po
 7. Compile the translations into the UI: `npm run gettext-compile`
 8. Rebuild: `npm run build`
 
+## Tagging and Releases
+
+Releases are created in Github with a tag (X.Y.Z). Descriptions of each release must be in English and French where it is seperated by 2 new lines (carriage returns). The header of each version must be included as the first line in each language.
+
+Here is an example format:
+```
+Release version 1.12.2:
+- Fix to single location download by CSV
+
+
+Version 1.12.2:
+- Correction du téléchargement des données pour un point de grille unique sous forme CSV
+```
+
 ## Testing
 
 Cypress E2E testing is used as the UI heavily relies on the web services to work.

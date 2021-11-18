@@ -1,167 +1,164 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-        <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
+  <section>
+    <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-        <p v-html="ltceIntroBlurbHtml"></p>
+    <p>{{ textIntroTip.station.instructions }}</p>
 
-        <p>{{ introDatasetText.station.instructions }}</p>
-        <p>
-          <strong>{{ introDatasetText.station.tipTitle }}</strong>
-          <ul>
-            <li
-              v-for="(pointText, index) in introDatasetText.station.tipPoints"
-              :key="index">{{ pointText }}</li>
-          </ul>
-        </p>
-
-        <data-access-doc-link></data-access-doc-link>
-
-        <details :open="toggleDetailsState">
-          <summary @click="toggleDetails"
-            v-translate>Dataset description, technical information and metadata</summary>
-          <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.</p>
-
-          <p>
-            <span v-translate>This data provides:</span>
-            <ol>
-              <li v-translate>The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.</li>
-              <li v-translate>The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.</li>
-              <li v-translate>The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.</li>
-            </ol>
-          </p>
-
-          <p v-html="virtualClimateStnDescHtml"></p>
-
-          <p v-html="techDocHtml"></p>
-
-          <open-portal-links
-            :open-portal-list-html="openPortalListHtml"
-            :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
-
-          <strong v-translate>Virtual climate station list download:</strong>
-          <ul>
-            <li><station-list-link
-              :url-station-list="urlStationList"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station')"></station-list-link></li>
-            <li><station-list-link
-              :url-station-list="urlStationListElements.temperature"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with temperature record type only')"></station-list-link></li>
-            <li><station-list-link
-              :url-station-list="urlStationListElements.precipitation"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with precipitation record type only')"></station-list-link></li>
-            <li><station-list-link
-              :url-station-list="urlStationListElements.snowfall"
-              :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with snowfall record type only')"></station-list-link></li>
-          </ul>
-        </details>
-
-        <info-contact-support></info-contact-support>
-
-        <bbox-map
-          v-model="ows_bbox"
-          :max-zoom="18"
-          :readable-columns="popup_props_display"
-          :select-disabled="provinceSelected"
-          :geojson="ltceStationsGeoJson"
-          :stn-primary-id="stnPrimaryId"></bbox-map>
-
-        <var-select
-          class="mrgn-tp-md"
-          v-model="wfs_layer"
-          :label="$gettext('Climate element / record type')"
-          :required="true"
-          :select-options="layer_options"></var-select>
-
-        <province-select
-          v-model="wfs_province"></province-select>
-
-        <station-select
-          v-model="wfs_selected_station_ids"
-          :select-disabled="provinceSelected"
-          :station-data="ltceStationsGeoJson.features"
-          :station-prop-display="station_props_display"
-          :station-prov-col="stationProvCol"
-          :no-province-station-selected="noProvinceStationSelected"
-          :stn-primary-id="stnPrimaryId"></station-select>
-
-        <div class="row mrgn-tp-md">
-          <div id="local-month-selection" class="form-group col-md-3 col-sm-4 col-xs-6">
-            <label
-              for="var-sel-local_month" v-translate>Month</label>
-            <select
-              class="form-control"
-              id="var-sel-local_month"
-              aria-controls="local-day-selection"
-              v-model="local_month">
-                <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
-            </select>
-          </div>
-
-          <div id="local-day-selection" class="form-group col-md-9 col-sm-8 col-xs-6">
-            <label
-              for="var-sel-local_day" v-translate>Day</label>
-            <select
-              class="form-control"
-              id="var-sel-local_day"
-              aria-live="polite"
-              v-model="local_day">
-                <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
-            </select>
-          </div>
-        </div>
-
-        <format-select-vector
-          class="mrgn-tp-md"
-          v-model="wfs_format"></format-select-vector>
-
-        <url-box
-          :layer-options="selectedLayerOption"
-          :ows-url-formatter="wfs3_download_url"
-          :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-          :wfs3-download-limit="wfs_limit"
-          :layer-format="wfs_format"
-          :has-errors="hasErrors"
-          :url-box-title="$gettext('Data download link')">
-        </url-box>
-      </main>
-      <dataset-menu></dataset-menu>
+    <div class="alert alert-warning">
+      <p><span v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</span> <span v-html="htmlReferAHCCD"></span></p>
     </div>
-  </div>
+
+    <tips-using-tool></tips-using-tool>
+
+    <details>
+      <summary v-translate>Technical information and metadata</summary>
+
+      <p v-html="ltceIntroBlurbHtml"></p>
+
+      <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.</p>
+
+      <p>
+        <span v-translate>This data provides:</span>
+        <ol>
+          <li v-translate>The daily extremes of record for temperature for each day of the year. Daily elements include: high maximum, low maximum, high minimum, low minimum.</li>
+          <li v-translate>The daily extremes of record for precipitation for each day of the year. Daily elements include: greatest precipitation.</li>
+          <li v-translate>The daily extremes of record for snowfall for each day of the year. Daily elements include: greatest snowfall.</li>
+        </ol>
+      </p>
+
+      <p v-html="virtualClimateStnDescHtml"></p>
+
+      <p v-html="techDocHtml"></p>
+
+      <open-portal-links
+        :open-portal-list-html="openPortalListHtml"
+        :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
+
+      <strong v-translate>Virtual climate station list download:</strong>
+      <ul>
+        <li><station-list-link
+          :url-station-list="urlStationList"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station')"></station-list-link></li>
+        <li><station-list-link
+          :url-station-list="urlStationListElements.temperature"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with temperature record type only')"></station-list-link></li>
+        <li><station-list-link
+          :url-station-list="urlStationListElements.precipitation"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with precipitation record type only')"></station-list-link></li>
+        <li><station-list-link
+          :url-station-list="urlStationListElements.snowfall"
+          :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with snowfall record type only')"></station-list-link></li>
+      </ul>
+    </details>
+
+    <data-access-doc-link></data-access-doc-link>
+
+    <details>
+      <summary v-translate>Map filters</summary>
+
+      <var-select
+        class="mrgn-tp-md"
+        v-model="wfs_layer"
+        :label="$gettext('Climate element / record type')"
+        :required="true"
+        :select-options="layer_options"></var-select>
+
+      <province-select
+        v-model="wfs_province"></province-select>
+    </details>
+
+    <bbox-map
+      v-model="ows_bbox"
+      :max-zoom="18"
+      :readable-columns="popup_props_display"
+      :select-disabled="provinceSelected"
+      :geojson="ltceStationGeoJson"
+      :stn-primary-id="stnPrimaryId"></bbox-map>
+
+    <station-select
+      v-model="wfs_selected_station_ids"
+      :select-disabled="provinceSelected"
+      :station-data="ltceStationGeoJson.features"
+      :station-prop-display="station_props_display"
+      :station-prov-col="stationProvCol"
+      :no-province-station-selected="noProvinceStationSelected"
+      :stn-primary-id="stnPrimaryId"></station-select>
+
+    <div class="row mrgn-tp-md">
+      <div id="local-month-selection" class="form-group col-md-3 col-sm-4 col-xs-6">
+        <label
+          for="var-sel-local_month" v-translate>Month</label>
+        <select
+          class="form-control"
+          id="var-sel-local_month"
+          aria-controls="local-day-selection"
+          v-model="local_month">
+            <option v-for="(option, index) in sortedMonthOptions" :key="index" :value="option.val">{{ option.text }}</option>
+        </select>
+      </div>
+
+      <div id="local-day-selection" class="form-group col-md-9 col-sm-8 col-xs-6">
+        <label
+          for="var-sel-local_day" v-translate>Day</label>
+        <select
+          class="form-control"
+          id="var-sel-local_day"
+          aria-live="polite"
+          v-model="local_day">
+            <option v-for="(option, index) in sortedDayOptions" :key="index" :value="option.val">{{ option.text }}</option>
+        </select>
+      </div>
+    </div>
+
+    <format-select-vector
+      class="mrgn-tp-md"
+      v-model="wfs_format"></format-select-vector>
+
+    <url-box
+      :layer-options="selectedLayerOption"
+      :ows-url-formatter="wfs3_download_url"
+      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
+      :wfs3-download-limit="wfs_limit"
+      :layer-format="wfs_format"
+      :has-errors="hasErrors"
+      :url-box-title="$gettext('Data download link')">
+    </url-box>
+
+    <more-resources></more-resources>
+  </section>
 </template>
 
 <script>
-import DatasetMenu from '@/components/DatasetMenu'
-import VarSelect from '@/components/VarSelect'
-import BBOXMap from '@/components/BBOXMap'
-import ProvinceSelect from '@/components/ProvinceSelect'
-import StationSelect from '@/components/StationSelect'
-import FormatSelectVector from '@/components/FormatSelectVector'
-import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
-import StationListLink from '@/components/StationListLink'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import OpenPortalLinks from '@/components/OpenPortalLinks'
-import { wfs } from '@/components/mixins/wfs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
+import VarSelect from '@/components/VarSelect.vue'
+import BBOXMap from '@/components/BBOXMap.vue'
+import ProvinceSelect from '@/components/ProvinceSelect.vue'
+import StationSelect from '@/components/StationSelect.vue'
+import FormatSelectVector from '@/components/FormatSelectVector.vue'
+import URLBox from '@/components/URLBox.vue'
+import StationListLink from '@/components/StationListLink.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import datasetPaths from '@/static/datasetPaths.js'
+import { wfs } from '@/components/mixins/wfs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'LTCEForm',
   mixins: [wfs, ows, datasets],
   components: {
-    'dataset-menu': DatasetMenu,
+    VarSelect,
     'bbox-map': BBOXMap,
-    'province-select': ProvinceSelect,
-    'station-select': StationSelect,
-    'format-select-vector': FormatSelectVector,
-    'var-select': VarSelect,
+    ProvinceSelect,
+    StationSelect,
+    FormatSelectVector,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
-    'station-list-link': StationListLink,
+    StationListLink,
     DataAccessDocLink,
-    OpenPortalLinks
+    TipsUsingTool,
+    MoreResources,
   },
   data () {
     return {
@@ -182,15 +179,15 @@ export default {
   },
   watch: {
     wfs_province: function (newVal) {
-      this.$store.dispatch('changeProvince', newVal) // to share with bbox
+      this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     wfs_layer: function () {
       // different layer has different stations
-      this.$store.dispatch('clearStationIdSelected') // clear existing selection
-      this.$store.dispatch('retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
+      this.$store.dispatch('stations/clearStationIdSelected') // clear existing selection
+      this.$store.dispatch('stations/retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
     },
     ows_bbox: function (newVal) {
-      this.$store.dispatch('changeBBOX', newVal) // to share with station select table
+      this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     },
     activeLocale3: function (newLang3) {
       this.datasetToNameColName.ltce = `VIRTUAL_STATION_NAME_${newLang3[0]}`
@@ -204,8 +201,8 @@ export default {
   },
   beforeMount () {
     // Load ahccd stations
-    if (this.ltceStationsGeoJson.features.length === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
+    if (this.numStationLtce === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
     }
   },
   computed: {
@@ -222,9 +219,12 @@ export default {
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.stnPrimaryId},ELEMENT_NAME_E&ELEMENT_NAME_E=${this.ltceLayerToElementKey[this.wfs_layer]}`
     },
-    ltceStationsGeoJson: function () {
-      return this.$store.getters.getLtceStations
-    },
+    ...mapState('stations', [
+      'ltceStationGeoJson'
+    ]),
+    ...mapGetters('stations', [
+      'numStationLtce'
+    ]),
     station_props_display: function () {
       let props = {}
       props[this.datasetToNameColName[this.$route.name]] = this.$gettext('Virtual station name')
@@ -370,6 +370,10 @@ export default {
       }
       days.push({val: 'all', text: this.$_i(textMax, {maxDays: maxDays})})
       return days
+    },
+    htmlReferAHCCD: function () {
+      const ahccdPath = datasetPaths.ahccd[this.$i18n.activeLocale]
+      return this.$_i(this.$gettext('Please refer to the <a href="#{ahccdPath}">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.'), {ahccdPath: ahccdPath})
     }
   }
 }

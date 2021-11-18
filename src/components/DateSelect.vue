@@ -37,7 +37,7 @@
       :use-utc="useUtc"
       :disabled="disabled"
       :readonly="readonly"
-      @input="emitUpdatedValue"></datepicker>
+      @input="debounceValue"></datepicker>
   </div>
 </template>
 
@@ -97,6 +97,8 @@ export default {
   },
   data () {
     return {
+      dateValue: this.value,
+      debounce: null,
       dateConfig: {
         lang: {
           en: en,
@@ -107,12 +109,12 @@ export default {
   },
   watch: {
     format: function (newFormat, oldFormat) {
-      let dateValue = this.value
+      this.dateValue = this.value
       // avoid moment parse warnings
       if (typeof this.value === 'string') {
-        dateValue = this.$moment.utc(this.value, oldFormat).toDate()
+        this.dateValue = this.$moment.utc(this.value, oldFormat).toDate()
       }
-      this.emitUpdatedValue(dateValue)
+      this.emitUpdatedValue(this.dateValue)
     }
   },
   computed: {
@@ -190,6 +192,12 @@ export default {
     }
   },
   methods: {
+    debounceValue: function(updDate) {
+      clearTimeout(this.debounce) // debounce input
+      this.debounce = setTimeout(() => {
+        this.emitUpdatedValue(updDate)
+      }, 400)
+    },
     emitUpdatedValue: function (updDate) {
       this.$emit('input', this.dateFormatter(updDate))
     },
@@ -201,5 +209,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.vdp-datepicker__calendar {
+  z-index: 500 !important; /* go over leaflet map */
+}
 </style>

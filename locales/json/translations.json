@@ -911,6 +911,12 @@
 					"British Columbia"
 				]
 			},
+			"Bulk downloads": {
+				"msgid": "Bulk downloads",
+				"msgstr": [
+					""
+				]
+			},
 			"Canada Atlas Lambert (EPSG:3978)": {
 				"msgid": "Canada Atlas Lambert (EPSG:3978)",
 				"msgstr": [
@@ -939,6 +945,12 @@
 				"msgid": "Clear selected",
 				"msgstr": [
 					"Clear selected"
+				]
+			},
+			"Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided": {
+				"msgid": "Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided",
+				"msgstr": [
+					""
 				]
 			},
 			"Climate change": {
@@ -977,10 +989,10 @@
 					"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
 				]
 			},
-			"Climate simulations": {
-				"msgid": "Climate simulations",
+			"Climate projections": {
+				"msgid": "Climate projections",
 				"msgstr": [
-					"Climate simulations"
+					""
 				]
 			},
 			"Contact the Climate Services Support Desk": {
@@ -1053,12 +1065,6 @@
 				"msgid": "Data download links",
 				"msgstr": [
 					"Data download links"
-				]
-			},
-			"Dataset description, technical information and metadata": {
-				"msgid": "Dataset description, technical information and metadata",
-				"msgstr": [
-					"Dataset description, technical information and metadata"
 				]
 			},
 			"Date range": {
@@ -1379,6 +1385,18 @@
 					"Geopotential height at 500mb"
 				]
 			},
+			"Get started": {
+				"msgid": "Get started",
+				"msgstr": [
+					""
+				]
+			},
+			"Help us improve!": {
+				"msgid": "Help us improve!",
+				"msgstr": [
+					""
+				]
+			},
 			"Hide discontinued stations": {
 				"msgid": "Hide discontinued stations",
 				"msgstr": [
@@ -1533,6 +1551,12 @@
 				"msgid": "Manitoba",
 				"msgstr": [
 					"Manitoba"
+				]
+			},
+			"Map filters": {
+				"msgid": "Map filters",
+				"msgstr": [
+					""
 				]
 			},
 			"Map Projection": {
@@ -1703,6 +1727,12 @@
 					"only 20 stations can be selected at once"
 				]
 			},
+			"Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.": {
+				"msgid": "Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.",
+				"msgstr": [
+					""
+				]
+			},
 			"Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.": {
 				"msgid": "Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.",
 				"msgstr": [
@@ -1743,6 +1773,12 @@
 				"msgid": "Please press the \"Reset map\" button to see the stations in this table.",
 				"msgstr": [
 					"Please press the \"Reset map\" button to see the stations in this table."
+				]
+			},
+			"Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.": {
+				"msgid": "Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.",
+				"msgstr": [
+					""
 				]
 			},
 			"Please select a different location within the dataset boundary or change your form selection.": {
@@ -1853,10 +1889,22 @@
 					"see FAQ"
 				]
 			},
+			"Select a dataset from the menu to the left": {
+				"msgid": "Select a dataset from the menu to the left",
+				"msgstr": [
+					""
+				]
+			},
 			"select stations on the map or in the table by clicking on them": {
 				"msgid": "select stations on the map or in the table by clicking on them",
 				"msgstr": [
 					"select stations on the map or in the table by clicking on them"
+				]
+			},
+			"Select your locations/stations of interest": {
+				"msgid": "Select your locations/stations of interest",
+				"msgstr": [
+					""
 				]
 			},
 			"Show discontinued stations": {
@@ -1925,6 +1973,12 @@
 					"Spatial selection"
 				]
 			},
+			"Specify the rest of your download request": {
+				"msgid": "Specify the rest of your download request",
+				"msgstr": [
+					""
+				]
+			},
 			"Spring (March-May)": {
 				"msgid": "Spring (March-May)",
 				"msgstr": [
@@ -1971,6 +2025,12 @@
 				"msgid": "Surface wind speed",
 				"msgstr": [
 					"Surface wind speed"
+				]
+			},
+			"Technical information and metadata": {
+				"msgid": "Technical information and metadata",
+				"msgstr": [
+					""
 				]
 			},
 			"Temperature - Daily extremes of record": {
@@ -2141,6 +2201,12 @@
 					"There are no stations available to download data from your current map display."
 				]
 			},
+			"These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.": {
+				"msgid": "These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.",
+				"msgstr": [
+					""
+				]
+			},
 			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
 				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
 				"msgstr": [
@@ -2201,6 +2267,12 @@
 					"Tips for using the tool"
 				]
 			},
+			"to": {
+				"msgid": "to",
+				"msgstr": [
+					""
+				]
+			},
 			"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.": {
 				"msgid": "To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.",
 				"msgstr": [
@@ -2235,6 +2307,12 @@
 				"msgid": "Trend values",
 				"msgstr": [
 					"Trend values"
+				]
+			},
+			"use map filters to narrow down the selection on the map": {
+				"msgid": "use map filters to narrow down the selection on the map",
+				"msgstr": [
+					""
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets.": {
@@ -3313,6 +3391,12 @@
 					"Colombie-Britannique"
 				]
 			},
+			"Bulk downloads": {
+				"msgid": "Bulk downloads",
+				"msgstr": [
+					"Téléchargements en masse"
+				]
+			},
 			"Canada Atlas Lambert (EPSG:3978)": {
 				"msgid": "Canada Atlas Lambert (EPSG:3978)",
 				"msgstr": [
@@ -3341,6 +3425,12 @@
 				"msgid": "Clear selected",
 				"msgstr": [
 					"Effacer la sélection"
+				]
+			},
+			"Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided": {
+				"msgid": "Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided",
+				"msgstr": [
+					"Cliquez sur \"Extraire les liens de téléchargement\" en bas de la page puis téléchargez les données à partir des liens fournis"
 				]
 			},
 			"Climate change": {
@@ -3379,10 +3469,10 @@
 					"Les normales climatiques 1981-2010servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiquesoffertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
 				]
 			},
-			"Climate simulations": {
-				"msgid": "Climate simulations",
+			"Climate projections": {
+				"msgid": "Climate projections",
 				"msgstr": [
-					"Simulations climatiques"
+					"Projections climatiques"
 				]
 			},
 			"Contact the Climate Services Support Desk": {
@@ -3455,12 +3545,6 @@
 				"msgid": "Data download links",
 				"msgstr": [
 					"Liens de téléchargement de données"
-				]
-			},
-			"Dataset description, technical information and metadata": {
-				"msgid": "Dataset description, technical information and metadata",
-				"msgstr": [
-					"Description de l’ensemble de données, informations techniques et métadonnées"
 				]
 			},
 			"Date range": {
@@ -3781,6 +3865,18 @@
 					"Hauteur géopotentielle à 500 mb"
 				]
 			},
+			"Get started": {
+				"msgid": "Get started",
+				"msgstr": [
+					"Commencez"
+				]
+			},
+			"Help us improve!": {
+				"msgid": "Help us improve!",
+				"msgstr": [
+					"Aidez-nous à améliorer !"
+				]
+			},
 			"Hide discontinued stations": {
 				"msgid": "Hide discontinued stations",
 				"msgstr": [
@@ -3935,6 +4031,12 @@
 				"msgid": "Manitoba",
 				"msgstr": [
 					"Manitoba"
+				]
+			},
+			"Map filters": {
+				"msgid": "Map filters",
+				"msgstr": [
+					"Filtres de la carte"
 				]
 			},
 			"Map Projection": {
@@ -4105,6 +4207,12 @@
 					"vous ne pouvez sélectionner qu’un maximum de 20 stations à la fois"
 				]
 			},
+			"Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.": {
+				"msgid": "Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.",
+				"msgstr": [
+					"Seuls 600000 enregistrements peuvent être téléchargés en une seule fois. Si vous souhaitez en télécharger davantage, veuillez contacter le <a href=\"{supportDeskUrl}\" target=\"_blank\">Centre d&rsquo;aide des Services climatiques</a>."
+				]
+			},
 			"Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.": {
 				"msgid": "Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.",
 				"msgstr": [
@@ -4145,6 +4253,12 @@
 				"msgid": "Please press the \"Reset map\" button to see the stations in this table.",
 				"msgstr": [
 					"Appuyiez sur « réinitialiser la carte » pour voir les stations dans ce tableau sur la carte."
+				]
+			},
+			"Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.": {
+				"msgid": "Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.",
+				"msgstr": [
+					"Veuillez consulter les <a href=\"#{ahccdPath}\">Données Climatiques Canadiennes Ajustées et Homogénéisées (DCCAH)</a> pour tout ce qui concerne les changements climatiques."
 				]
 			},
 			"Please select a different location within the dataset boundary or change your form selection.": {
@@ -4255,10 +4369,22 @@
 					"voir la FAQ"
 				]
 			},
+			"Select a dataset from the menu to the left": {
+				"msgid": "Select a dataset from the menu to the left",
+				"msgstr": [
+					"Sélectionnez un jeu de données dans le menu à gauche"
+				]
+			},
 			"select stations on the map or in the table by clicking on them": {
 				"msgid": "select stations on the map or in the table by clicking on them",
 				"msgstr": [
 					"cliquez sur les stations sur la carte ou dans le tableau pour les sélectionner"
+				]
+			},
+			"Select your locations/stations of interest": {
+				"msgid": "Select your locations/stations of interest",
+				"msgstr": [
+					"Sélectionnez vos lieux/stations d'intérêt"
 				]
 			},
 			"Show discontinued stations": {
@@ -4327,6 +4453,12 @@
 					"Sélection spatiale"
 				]
 			},
+			"Specify the rest of your download request": {
+				"msgid": "Specify the rest of your download request",
+				"msgstr": [
+					"Précisez le reste de votre demande de téléchargement"
+				]
+			},
 			"Spring (March-May)": {
 				"msgid": "Spring (March-May)",
 				"msgstr": [
@@ -4373,6 +4505,12 @@
 				"msgid": "Surface wind speed",
 				"msgstr": [
 					"Vitesse du vent à la surface"
+				]
+			},
+			"Technical information and metadata": {
+				"msgid": "Technical information and metadata",
+				"msgstr": [
+					"Informations techniques et métadonnées"
 				]
 			},
 			"Temperature - Daily extremes of record": {
@@ -4543,6 +4681,12 @@
 					"L’affichage actuel de votre carte ne contient aucune station pour télécharger des données."
 				]
 			},
+			"These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.": {
+				"msgid": "These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.",
+				"msgstr": [
+					"Ces données ne doivent pas être utilisées pour répondre à des questions sur les changements climatiques. Pour les changements climatiques ou la détection des tendances, les données devraient être ajustées pour éliminer les artefacts tels que les discontinuités et les tendances non climatiques."
+				]
+			},
 			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
 				"msgid": "This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface",
 				"msgstr": [
@@ -4603,6 +4747,12 @@
 					"Conseils d'utilisation de l'outil"
 				]
 			},
+			"to": {
+				"msgid": "to",
+				"msgstr": [
+					"à"
+				]
+			},
 			"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.": {
 				"msgid": "To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.",
 				"msgstr": [
@@ -4637,6 +4787,12 @@
 				"msgid": "Trend values",
 				"msgstr": [
 					"Valeurs des tendances"
+				]
+			},
+			"use map filters to narrow down the selection on the map": {
+				"msgid": "use map filters to narrow down the selection on the map",
+				"msgstr": [
+					"utiliser les filtres de la carte pour réduire la sélection sur la carte"
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets.": {
