@@ -94,7 +94,7 @@ import 'leaflet.markercluster'
 import 'proj4leaflet'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 import OptionRadio from './OptionRadio'
 
@@ -175,6 +175,18 @@ export default {
     hydroStationDisplay: { // special display purposes for hydro stations
       type: Boolean,
       default: false
+    },
+    dateStartProp: {
+      type: String,
+      default: null
+    },
+    dateEndProp: {
+      type: String,
+      default: null
+    },
+    useDateRangeFilter: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -237,7 +249,8 @@ export default {
       },
       geoJsonOptions: {
         // filter: this.filterHydroStationActive,
-        pointToLayer: this.pointToLayer
+        pointToLayer: this.pointToLayer,
+        filter: this.dateRangeFilter
       },
       selectedMarkerOptions: {
         radius: 6,
@@ -313,10 +326,9 @@ export default {
         this.numStationsSelected = newStations.length
 
         // If province selected, zoom to province features
-        let routeName = this.$route.name
-        if (this.province !== 'null' && Object.prototype.hasOwnProperty.call(this.datasetToStnProvColName, routeName)) {
+        if (this.province !== 'null' && Object.prototype.hasOwnProperty.call(this.datasetToStnProvColName, this.$route.name)) {
           let stationMarkers = this.getStationMarkers()
-          let provCol = this.datasetToStnProvColName[routeName]
+          let provCol = this.datasetToStnProvColName[this.$route.name]
 
           let provSelectedMarkers = stationMarkers.filter(marker => marker.feature.properties[provCol] === this.province)
           let provSelectedGroup = new L.featureGroup(provSelectedMarkers)
@@ -347,15 +359,26 @@ export default {
     },
     geojson: function (newJson) {
       if (newJson !== undefined) { // update geojson layer if new data
-        // add marker-clustering
-        let map = this.$refs.BBOXMap.mapObject
-        this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
-        this.markerClusters.clearLayers().addLayer(this.geojsonLayer)
-        map.addLayer(this.markerClusters)
+        this.reAddGeoJsonLayer()
 
+        // mark province selection if applicable
         if (this.province !== 'null') {
           this.selectMarkersByProvince(this.province, this.getStationMarkers())
         }
+      }
+    },
+    dateStart: function (newDate, oldDate) {
+      console.log('Change in dateStart. Old date: ' + oldDate)
+      // prevent triggering on initial load
+      if (oldDate !== null && newDate != null && this.useDateRangeFilter) {
+        this.reAddGeoJsonLayer()
+      }
+    },
+    dateEnd: function (newDate, oldDate) {
+      console.log('Change in dateEnd. Old date: ' + oldDate)
+      // prevent triggering on initial load
+      if (oldDate !== null && newDate != null && this.useDateRangeFilter) {
+        this.reAddGeoJsonLayer()
       }
     },
     windowWidth: function (newWidth) {
@@ -400,6 +423,10 @@ export default {
     window.removeEventListener('resize', this.onResize)
   },
   computed: {
+    ...mapGetters('stations', [
+      'dateStart',
+      'dateEnd'
+    ]),
     pointClickError: function () {
       if (this.pointClickOn === 'on' && this.clickLatLng === null) {
         return true
@@ -581,6 +608,46 @@ export default {
     },
     onResize: function () {
       this.windowWidth = window.innerWidth
+    },
+    reAddGeoJsonLayer: function () {
+      // re-add layer to update new display of geoJson features
+      console.log('Readding geojson layer to refresh changes')
+      let map = this.$refs.BBOXMap.mapObject
+      this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
+      this.markerClusters.clearLayers().addLayer(this.geojsonLayer)
+      map.addLayer(this.markerClusters)
+    },
+    dateRangeFilter: function (geoJsonFeature) {
+      // date values use momentjs for filtering comparison
+      const rowDateStart = this.$moment.utc(geoJsonFeature.properties[this.dateStartProp])
+      const rowDateEnd = this.$moment.utc(geoJsonFeature.properties[this.dateEndProp])
+      // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + rowDateStart+ ' | row end date: ' + rowDateEnd)
+
+      // no date range filter applied
+      if (this.dateStart == null || this.dateEnd == null || !this.useDateRangeFilter) {
+        return true
+      }
+
+      // within range completely
+      if (this.dateStart.isSameOrAfter(rowDateStart) && this.dateEnd.isSameOrBefore(rowDateEnd)) {
+        return true
+      // within range of end date only
+      } else if (this.dateStart.isBefore(rowDateStart)) {
+        if (this.dateEnd.isSameOrAfter(rowDateStart)) {
+          return true
+        } else {
+          return false
+        }
+      // within range of start date only
+      } else if (this.dateEnd.isAfter(rowDateEnd)) {
+        if (this.dateStart.isSameOrBefore(rowDateEnd)) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
     }
   }
 }

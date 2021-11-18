@@ -74,7 +74,10 @@
       :readable-columns="popup_props_display"
       :select-disabled="provinceSelected"
       :geojson="climateDailyStationGeoJson"
-      :stn-primary-id="stnPrimaryId"></bbox-map>
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></bbox-map>
 
     <station-select
       v-model="wfs_selected_station_ids"
