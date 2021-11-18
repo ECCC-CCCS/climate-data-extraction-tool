@@ -947,6 +947,12 @@
 					"Clear selected"
 				]
 			},
+			"Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided": {
+				"msgid": "Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided",
+				"msgstr": [
+					""
+				]
+			},
 			"Climate change": {
 				"msgid": "Climate change",
 				"msgstr": [
@@ -983,10 +989,10 @@
 					"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
 				]
 			},
-			"Climate simulations": {
-				"msgid": "Climate simulations",
+			"Climate projections": {
+				"msgid": "Climate projections",
 				"msgstr": [
-					"Climate simulations"
+					""
 				]
 			},
 			"Contact the Climate Services Support Desk": {
@@ -1059,12 +1065,6 @@
 				"msgid": "Data download links",
 				"msgstr": [
 					"Data download links"
-				]
-			},
-			"Dataset description, technical information and metadata": {
-				"msgid": "Dataset description, technical information and metadata",
-				"msgstr": [
-					"Dataset description, technical information and metadata"
 				]
 			},
 			"Date range": {
@@ -1853,12 +1853,6 @@
 					"Retrieve download links"
 				]
 			},
-			"Retrieve your download links and then download the data from the links provided": {
-				"msgid": "Retrieve your download links and then download the data from the links provided",
-				"msgstr": [
-					""
-				]
-			},
 			"Saskatchewan": {
 				"msgid": "Saskatchewan",
 				"msgstr": [
@@ -2031,6 +2025,12 @@
 				"msgid": "Surface wind speed",
 				"msgstr": [
 					"Surface wind speed"
+				]
+			},
+			"Technical information and metadata": {
+				"msgid": "Technical information and metadata",
+				"msgstr": [
+					""
 				]
 			},
 			"Temperature - Daily extremes of record": {
@@ -2267,6 +2267,12 @@
 					"Tips for using the tool"
 				]
 			},
+			"to": {
+				"msgid": "to",
+				"msgstr": [
+					""
+				]
+			},
 			"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.": {
 				"msgid": "To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.",
 				"msgstr": [
@@ -2301,6 +2307,12 @@
 				"msgid": "Trend values",
 				"msgstr": [
 					"Trend values"
+				]
+			},
+			"use map filters to narrow down the selection on the map": {
+				"msgid": "use map filters to narrow down the selection on the map",
+				"msgstr": [
+					""
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets.": {
@@ -3415,6 +3427,12 @@
 					"Effacer la sélection"
 				]
 			},
+			"Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided": {
+				"msgid": "Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided",
+				"msgstr": [
+					"Cliquez sur \"Extraire les liens de téléchargement\" en bas de la page puis téléchargez les données à partir des liens fournis"
+				]
+			},
 			"Climate change": {
 				"msgid": "Climate change",
 				"msgstr": [
@@ -3451,10 +3469,10 @@
 					"Les normales climatiques 1981-2010servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiquesoffertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
 				]
 			},
-			"Climate simulations": {
-				"msgid": "Climate simulations",
+			"Climate projections": {
+				"msgid": "Climate projections",
 				"msgstr": [
-					"Simulations climatiques"
+					"Projections climatiques"
 				]
 			},
 			"Contact the Climate Services Support Desk": {
@@ -3527,12 +3545,6 @@
 				"msgid": "Data download links",
 				"msgstr": [
 					"Liens de téléchargement de données"
-				]
-			},
-			"Dataset description, technical information and metadata": {
-				"msgid": "Dataset description, technical information and metadata",
-				"msgstr": [
-					"Description de l’ensemble de données, informations techniques et métadonnées"
 				]
 			},
 			"Date range": {
@@ -4321,12 +4333,6 @@
 					"Extraire les liens de téléchargement"
 				]
 			},
-			"Retrieve your download links and then download the data from the links provided": {
-				"msgid": "Retrieve your download links and then download the data from the links provided",
-				"msgstr": [
-					"Récupérez vos liens de téléchargement, puis téléchargez les données à partir des liens fournis"
-				]
-			},
 			"Saskatchewan": {
 				"msgid": "Saskatchewan",
 				"msgstr": [
@@ -4499,6 +4505,12 @@
 				"msgid": "Surface wind speed",
 				"msgstr": [
 					"Vitesse du vent à la surface"
+				]
+			},
+			"Technical information and metadata": {
+				"msgid": "Technical information and metadata",
+				"msgstr": [
+					"Informations techniques et métadonnées"
 				]
 			},
 			"Temperature - Daily extremes of record": {
@@ -4735,6 +4747,12 @@
 					"Conseils d'utilisation de l'outil"
 				]
 			},
+			"to": {
+				"msgid": "to",
+				"msgstr": [
+					"à"
+				]
+			},
 			"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.": {
 				"msgid": "To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.",
 				"msgstr": [
@@ -4769,6 +4787,12 @@
 				"msgid": "Trend values",
 				"msgstr": [
 					"Valeurs des tendances"
+				]
+			},
+			"use map filters to narrow down the selection on the map": {
+				"msgid": "use map filters to narrow down the selection on the map",
+				"msgstr": [
+					"utiliser les filtres de la carte pour réduire la sélection sur la carte"
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets.": {
