@@ -295,7 +295,11 @@ export default {
   },
   watch: {
     pointClickOn: function (newStatus) {
-      this.resetPointClick(newStatus)
+      if (newStatus === 'on') {
+        this.resetPointClick(true)
+      } else {
+        this.resetPointClick(false)
+      }
     },
     stationIdSelected: function (newStations, oldStations) {
       /* Update marker styles and popups when station selection changes are made */
@@ -409,7 +413,7 @@ export default {
     })
 
     // reset point click
-    this.resetPointClick('off')
+    this.resetPointClick(false)
 
     // reset bbox value
     this.$store.dispatch('map/changeBBOX', this.bbox_value)
@@ -495,7 +499,7 @@ export default {
     },
     resetPointClick: function (newStatus) {
       this.$store.dispatch('map/setPointClickStatus', newStatus)
-      if (newStatus === 'off') {
+      if (newStatus === false) {
         this.clickLatLng = null
         this.$store.dispatch('map/setClickLatLng', this.clickLatLng)
       }
