@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ textIntroTip.station.instructions }}</p>
+    <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>
@@ -12,7 +12,6 @@
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
 
       <p v-html="techDocHtml"></p>
 

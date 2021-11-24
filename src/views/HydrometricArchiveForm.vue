@@ -2,12 +2,12 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ textIntroTip.station.instructions }}</p>
+    <p v-translate>Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.</p>
+
     <tips-using-tool></tips-using-tool>
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>Historical hydrometric data are standardized water resource data and information. They are collected, interpreted and disseminated by the Water Survey of Canada (WSC) in partnership with the provinces, territories and other agencies through the National Hydrometric Program. These data sets include daily mean, monthly mean, annual maximum and minimum daily mean and instantaneous peak water level and discharge information for over 2700 active and 5080 discontinued hydrometric monitoring stations across Canada.</p>
 
       <p v-html="techDocHtml"></p>
 

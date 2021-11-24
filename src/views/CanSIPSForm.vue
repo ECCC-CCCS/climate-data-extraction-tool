@@ -2,14 +2,14 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ textIntroTip.gridded.use }}</p>
-    <p>{{ textIntroTip.gridded.instructions }}</p>
+    <p v-translate>The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.</p>
+
+    <tips-using-tool></tips-using-tool>
 
     <data-access-doc-link></data-access-doc-link>
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.</p>
 
       <p v-html="openPortalHtml"></p>
     </details>
@@ -81,21 +81,24 @@
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download link')">
     </url-box>
+
+    <more-resources></more-resources>
   </section>
 </template>
 
 <script>
-import BBOXMap from '@/components/BBOXMap'
-import FormatSelectRaster from '@/components/FormatSelectRaster'
+import BBOXMap from '@/components/BBOXMap.vue'
+import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
 import VarSelect from '@/components/VarSelect.vue'
-import NumSelect from '@/components/NumSelect'
-import DateSelect from '@/components/DateSelect'
-import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import { wcs } from '@/components/mixins/wcs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
+import NumSelect from '@/components/NumSelect.vue'
+import DateSelect from '@/components/DateSelect.vue'
+import URLBox from '@/components/URLBox.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import { wcs } from '@/components/mixins/wcs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
 
 export default {
   name: 'CanSIPSForm',
@@ -107,8 +110,9 @@ export default {
     'num-select': NumSelect,
     'date-select': DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
-    DataAccessDocLink
+    DataAccessDocLink,
+    TipsUsingTool,
+    MoreResources
   },
   data () {
     return {

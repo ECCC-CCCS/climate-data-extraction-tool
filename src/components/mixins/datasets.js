@@ -403,17 +403,6 @@ export const datasets = {
     climateLibraryUrl: function () {
       return this.climateLibraryLink[this.activeLocale]
     },
-    textIntroTip: function () {
-      return {
-        gridded: {
-          use: this.$gettext('Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada\'s datasets.'),
-          instructions: this.$gettext('You can specify the date ranges, variables, download format and other options. Use the map to select a geographic subset of the data. The geographic subset of the data that you download will match the area shown on the map. Download the data by clicking on the data download link at the bottom of the page.')
-        },
-        station: {
-          instructions: this.$gettext('Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada\'s datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page.')
-        }
-      }
-    },
     infoSupportDeskGridPoint: function () {
       return {
         text: this.$gettext('Visit <a href="{link}" target="_blank">ClimateData.ca</a> if you\'d like data for a single grid point only'),

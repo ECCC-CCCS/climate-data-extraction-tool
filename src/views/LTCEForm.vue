@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ textIntroTip.station.instructions }}</p>
+    <p v-html="ltceIntroBlurbHtml"></p>
 
     <div class="alert alert-warning">
       <p><span v-translate>These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.</span> <span v-html="htmlReferAHCCD"></span></p>
@@ -12,8 +12,6 @@
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-
-      <p v-html="ltceIntroBlurbHtml"></p>
 
       <p v-translate>Anomalous weather resulting in Temperature and Precipitation extremes occurs almost every day somewhere in Canada. For the purpose of identifying and tabulating daily extremes of record for temperature, precipitation and snowfall, the Meteorological Service of Canada has threaded or put together data from closely related stations to compile a long time series of data for about 750 locations in Canada to monitor for record-breaking weather.</p>
 

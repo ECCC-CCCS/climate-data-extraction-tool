@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ textIntroTip.station.instructions }}</p>
+    <p v-translate>Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>
@@ -12,7 +12,6 @@
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.</p>
 
       <p v-html="techDocHtml"></p>
 

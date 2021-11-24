@@ -368,14 +368,12 @@ export default {
       }
     },
     dateStart: function (newDate, oldDate) {
-      console.log('Change in dateStart. Old date: ' + oldDate)
       // prevent triggering on initial load
       if (oldDate !== null && newDate != null && this.useDateRangeFilter) {
         this.reAddGeoJsonLayer()
       }
     },
     dateEnd: function (newDate, oldDate) {
-      console.log('Change in dateEnd. Old date: ' + oldDate)
       // prevent triggering on initial load
       if (oldDate !== null && newDate != null && this.useDateRangeFilter) {
         this.reAddGeoJsonLayer()

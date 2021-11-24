@@ -2,8 +2,9 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ textIntroTip.gridded.use }}</p>
-    <p>{{ textIntroTip.gridded.instructions }}</p>
+    <p v-translate>Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download.</p>
+
+    <tips-using-tool></tips-using-tool>
 
     <data-access-doc-link></data-access-doc-link>
 
@@ -117,23 +118,26 @@
       :title="titlePointDownload"
       :hasErrors="invalidPointDownloadInputs"
       :point-inputs="pointInputs" />
+
+    <more-resources></more-resources>
   </section>
 </template>
 
 <script>
-import BBOXMap from '@/components/BBOXMap'
-import FormatSelectRaster from '@/components/FormatSelectRaster'
-import FormatSelectVector from '@/components/FormatSelectVector'
+import BBOXMap from '@/components/BBOXMap.vue'
+import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
+import FormatSelectVector from '@/components/FormatSelectVector.vue'
 import VarSelect from '@/components/VarSelect.vue'
-import DateSelect from '@/components/DateSelect'
-import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import PointDownloadBox from '@/components/PointDownloadBox'
-import { wcs } from '@/components/mixins/wcs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
-import { wps } from '@/components/mixins/wps'
+import DateSelect from '@/components/DateSelect.vue'
+import URLBox from '@/components/URLBox.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import PointDownloadBox from '@/components/PointDownloadBox.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import { wcs } from '@/components/mixins/wcs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
+import { wps } from '@/components/mixins/wps.js'
 
 export default {
   name: 'CanGRDForm',
@@ -144,10 +148,11 @@ export default {
     VarSelect,
     DateSelect,
     'url-box': URLBox,
-    InfoContactSupport,
     DataAccessDocLink,
     PointDownloadBox,
-    FormatSelectVector
+    FormatSelectVector,
+    TipsUsingTool,
+    MoreResources
   },
   data () {
     return {

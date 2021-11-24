@@ -2,12 +2,12 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ textIntroTip.station.instructions }}</p>
+    <p v-translate>Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.</p>
+
     <tips-using-tool></tips-using-tool>
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.</p>
 
       <p v-html="techDocHtml"></p>
 
@@ -219,6 +219,12 @@ export default {
         prov: {
           col: stationCols[2],
           label: this.station_props_display[stationCols[2]] + this.$pgettext('Colon', ':')
+        },
+        dateRange: {
+          colStart: this.prop_date_start,
+          colEnd: this.prop_date_end,
+          label: this.$gettext('Date range') + this.$pgettext('Colon', ':'),
+          format: this.dateConfigs.format
         }
       }
     },

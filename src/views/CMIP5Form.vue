@@ -2,14 +2,14 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ textIntroTip.gridded.use }}</p>
-    <p>{{ textIntroTip.gridded.instructions }}</p>
+    <p v-translate>The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.</p>
+
+    <tips-using-tool></tips-using-tool>
 
     <data-access-doc-link></data-access-doc-link>
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download.</p>
 
       <p v-html="techDocHtml"></p>
 
@@ -17,8 +17,6 @@
         :open-portal-list-html="openPortalListHtml"
         :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
     </details>
-
-    <info-contact-support></info-contact-support>
 
     <bbox-map
       v-model="ows_bbox"
@@ -169,27 +167,30 @@
       :title="titlePointDownload"
       :hasErrors="invalidPointDownloadInputs"
       :point-inputs="pointInputs" />
+
+    <more-resources></more-resources>
   </section>
 </template>
 
 <script>
-import BBOXMap from '@/components/BBOXMap'
-import FormatSelectRaster from '@/components/FormatSelectRaster'
-import FormatSelectVector from '@/components/FormatSelectVector'
+import BBOXMap from '@/components/BBOXMap.vue'
+import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
+import FormatSelectVector from '@/components/FormatSelectVector.vue'
 import VarSelect from '@/components/VarSelect.vue'
-import ScenarioSelect from '@/components/ScenarioSelect'
-import DateSelect from '@/components/DateSelect'
-import OptionRadio from '@/components/OptionRadio'
-import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
-import OpenPortalLinks from '@/components/OpenPortalLinks'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import PointDownloadBox from '@/components/PointDownloadBox'
-import { wcs } from '@/components/mixins/wcs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
-import { DCSCMIP5 } from '@/components/mixins/dcs-cmip5'
-import { wps } from '@/components/mixins/wps'
+import ScenarioSelect from '@/components/ScenarioSelect.vue'
+import DateSelect from '@/components/DateSelect.vue'
+import OptionRadio from '@/components/OptionRadio.vue'
+import URLBox from '@/components/URLBox.vue'
+import OpenPortalLinks from '@/components/OpenPortalLinks.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import PointDownloadBox from '@/components/PointDownloadBox.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import { wcs } from '@/components/mixins/wcs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
+import { DCSCMIP5 } from '@/components/mixins/dcs-cmip5.js'
+import { wps } from '@/components/mixins/wps.js'
 
 export default {
   name: 'CMIP5Form',
@@ -203,10 +204,11 @@ export default {
     DateSelect,
     OptionRadio,
     'url-box': URLBox,
-    InfoContactSupport,
     OpenPortalLinks,
     DataAccessDocLink,
-    PointDownloadBox
+    PointDownloadBox,
+    TipsUsingTool,
+    MoreResources
   },
   data () {
     return {

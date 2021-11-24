@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p>{{ textIntroTip.station.instructions }}</p>
+    <p v-translate>Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>
@@ -12,7 +12,6 @@
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.</p>
 
       <p v-html="techDocHtml"></p>
 

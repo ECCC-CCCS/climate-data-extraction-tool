@@ -2,14 +2,14 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p>{{ textIntroTip.gridded.use }}</p>
-    <p>{{ textIntroTip.gridded.instructions }}</p>
+    <p v-translate>The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.</p>
+
+    <tips-using-tool></tips-using-tool>
 
     <data-access-doc-link></data-access-doc-link>
 
     <details>
       <summary v-translate>Technical information and metadata</summary>
-      <p v-translate>The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.</p>
 
       <p v-html="techDocHtml"></p>
 
@@ -69,20 +69,23 @@
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download link')">
     </url-box>
+
+    <more-resources></more-resources>
   </section>
 </template>
 
 <script>
-import BBOXMap from '@/components/BBOXMap'
-import FormatSelectRaster from '@/components/FormatSelectRaster'
+import BBOXMap from '@/components/BBOXMap.vue'
+import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
 import VarSelect from '@/components/VarSelect.vue'
-import DateSelect from '@/components/DateSelect'
-import URLBox from '@/components/URLBox'
-import InfoContactSupport from '@/components/InfoContactSupport'
-import DataAccessDocLink from '@/components/DataAccessDocLink'
-import { wcs } from '@/components/mixins/wcs'
-import { ows } from '@/components/mixins/ows'
-import { datasets } from '@/components/mixins/datasets'
+import DateSelect from '@/components/DateSelect.vue'
+import URLBox from '@/components/URLBox.vue'
+import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
+import TipsUsingTool from '@/components/TipsUsingTool.vue'
+import MoreResources from '@/components/MoreResources.vue'
+import { wcs } from '@/components/mixins/wcs.js'
+import { ows } from '@/components/mixins/ows.js'
+import { datasets } from '@/components/mixins/datasets.js'
 
 export default {
   name: 'RDPAForm',
@@ -93,8 +96,9 @@ export default {
     'var-select': VarSelect,
     'date-select': DateSelect,
     'url-box': URLBox,
-    'info-contact-support': InfoContactSupport,
-    DataAccessDocLink
+    DataAccessDocLink,
+    TipsUsingTool,
+    MoreResources
   },
   data () {
     return {
