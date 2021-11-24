@@ -2327,12 +2327,6 @@
 					"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options."
 				]
 			},
-			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page.": {
-				"msgid": "Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page.",
-				"msgstr": [
-					"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page."
-				]
-			},
 			"Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.": {
 				"msgid": "Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.",
 				"msgstr": [
@@ -4805,12 +4799,6 @@
 				"msgid": "Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options.",
 				"msgstr": [
 					"Utilisez l’outil d’extraction de données climatiques pour télécharger des données climatiques à partir des ensembles de données d’Environnement et Changement climatique Canada. Vous pouvez préciser la période, les variables, le format de téléchargement et d’autres options."
-				]
-			},
-			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page.": {
-				"msgid": "Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options. Download the data by clicking on the data download link at the bottom of the page.",
-				"msgstr": [
-					"Utilisez l’outil d’extraction de données climatiques pour télécharger des données climatiques à partir des ensembles de données d’Environnement et Changement climatique Canada. Vous pouvez préciser la période, les variables, le format de téléchargement et d’autres options. Téléchargez les données en cliquant sur le lien de téléchargement des données en bas de la page."
 				]
 			},
 			"Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.": {
