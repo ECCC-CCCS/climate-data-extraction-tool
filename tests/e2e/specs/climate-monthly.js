@@ -6,6 +6,10 @@ describe('E2E test for climate monthly data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*HAS_MONTHLY_SUMMARY=Y.*f=json.*/).as('stationData')
     cy.intercept('GET', /.*\/collections\/climate-monthly\/items\?.*sortby=LOCAL_DATE&limit=1.*f=json.*/).as('dateRangeData')
     cy.visit('/#/monthly-climate-summaries')
+
+    // open map filters box
+    cy.get('#map-filters-header').scrollIntoView().wait(250).click()
+
     cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')

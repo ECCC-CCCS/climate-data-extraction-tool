@@ -4,6 +4,10 @@ describe('E2E test for AHCCD data with various form options', () => {
   it('Check AHCCD stations and download trend values as CSV', () => {
     cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*/).as('stationData')
     cy.visit('/#/adjusted-station-data')
+
+    // open map filters box
+    cy.get('#map-filters-header').scrollIntoView().wait(250).click()
+
     cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')

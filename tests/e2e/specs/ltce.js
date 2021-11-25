@@ -5,6 +5,10 @@ describe('E2E test for LTCE data with various form options', () => {
     // station data
     cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=TEMPERATURE.*/).as('stationData')
     cy.visit('/#/daily-climate-records')
+
+    // open map filters box
+    cy.get('#map-filters-header').scrollIntoView().wait(250).click()
+
     cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')

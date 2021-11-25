@@ -6,6 +6,10 @@ describe('E2E test for climate daily data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*properties=PROV_STATE_TERR_CODE,STATION_NAME,CLIMATE_IDENTIFIER.*/).as('stationData')
     cy.intercept('GET', /.*\/collections\/climate-daily\/items\?.*sortby=LOCAL_DATE&limit=1.*/).as('dateRangeData')
     cy.visit('/#/daily-climate-data')
+
+    // open map filters box
+    cy.get('#map-filters-header').scrollIntoView().wait(250).click()
+
     cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')

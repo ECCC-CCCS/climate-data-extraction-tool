@@ -6,6 +6,10 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*/).as('stationData')
     cy.visit('/#/water-quantity-data')
     const minNumStations = 2780
+
+    // open map filters box
+    cy.get('#map-filters-header').scrollIntoView().wait(250).click()
+
     cy.wait('@stationData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')

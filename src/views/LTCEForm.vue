@@ -52,7 +52,7 @@
     <data-access-doc-link></data-access-doc-link>
 
     <details>
-      <summary v-translate>Map filters</summary>
+      <summary id="map-filters-header" v-translate>Map filters</summary>
 
       <var-select
         class="mrgn-tp-md"

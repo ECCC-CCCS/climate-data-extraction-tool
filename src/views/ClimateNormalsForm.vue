@@ -25,7 +25,7 @@
     <data-access-doc-link></data-access-doc-link>
 
     <details>
-      <summary v-translate>Map filters</summary>
+      <summary id="map-filters-header" v-translate>Map filters</summary>
 
       <province-select
         v-model="wfs_province"></province-select>
