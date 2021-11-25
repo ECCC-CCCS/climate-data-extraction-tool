@@ -250,7 +250,7 @@ export default {
       geoJsonOptions: {
         // filter: this.filterHydroStationActive,
         pointToLayer: this.pointToLayer,
-        filter: this.dateRangeFilter
+        filter: this.filterGeoJson
       },
       selectedMarkerOptions: {
         radius: 6,
@@ -326,22 +326,11 @@ export default {
             this.markSelectedPoint(marker)
           }
         })
-
-        this.numStationsSelected = newStations.length
-
-        // If province selected, zoom to province features
-        if (this.province !== 'null' && Object.prototype.hasOwnProperty.call(this.datasetToStnProvColName, this.$route.name)) {
-          let stationMarkers = this.getStationMarkers()
-          let provCol = this.datasetToStnProvColName[this.$route.name]
-
-          let provSelectedMarkers = stationMarkers.filter(marker => marker.feature.properties[provCol] === this.province)
-          let provSelectedGroup = new L.featureGroup(provSelectedMarkers)
-          let map = this.$refs.BBOXMap.mapObject
-          map.fitBounds(provSelectedGroup.getBounds())
-        }
       }
     },
     province: function (newProvince) {
+      this.reAddGeoJsonLayer() // update geojson layer for new province selection
+
       /* Update marker styles and popups when province selection changes are made */
       let stationMarkers = this.getStationMarkers()
 
@@ -357,6 +346,9 @@ export default {
 
       if (newProvince !== 'null') {
         this.selectMarkersByProvince(newProvince, stationMarkers)
+        // If province selected, zoom to province features
+        let map = this.$refs.BBOXMap.mapObject
+        map.fitBounds(this.geojsonLayer.getBounds())
       } else if (newProvince === 'null') {
         this.resetBBOX()
       }
@@ -586,7 +578,8 @@ export default {
       return stationMarker
     },
     filterGeoJson: function (geoJsonFeature) {
-      return this.stationIdSelected.includes(geoJsonFeature.properties.IDENTIFIER)
+      return this.dateRangeFilter(geoJsonFeature) &&
+        this.provinceFilter(geoJsonFeature)
     },
     activeClass: function (statusEn) {
       if (statusEn === 'Active') {
@@ -613,11 +606,20 @@ export default {
     },
     reAddGeoJsonLayer: function () {
       // re-add layer to update new display of geoJson features
-      console.log('Readding geojson layer to refresh changes')
       let map = this.$refs.BBOXMap.mapObject
       this.geojsonLayer = L.geoJSON(this.geojson, this.geoJsonOptions)
       this.markerClusters.clearLayers().addLayer(this.geojsonLayer)
       map.addLayer(this.markerClusters)
+    },
+    selectedFilter: function (geoJsonFeature) {
+      return this.stationIdSelected.includes(geoJsonFeature.properties.IDENTIFIER)
+    },
+    provinceFilter: function (geoJsonFeature) {
+      if (this.province == 'null') {
+        return true
+      }
+      const provCol = this.datasetToStnProvColName[this.$route.name]
+      return geoJsonFeature.properties[provCol] === this.province
     },
     dateRangeFilter: function (geoJsonFeature) {
       // date values use momentjs for filtering comparison
