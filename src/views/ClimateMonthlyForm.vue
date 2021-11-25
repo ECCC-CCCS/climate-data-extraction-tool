@@ -135,9 +135,9 @@ export default {
     return {
       wfs_layer: 'climate-monthly',
       wfs_layer_station: 'climate-stations',
-      date_start: this.$moment.utc('1908-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_start: this.$moment.utc('1865-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_end: this.$moment.utc().toDate(),
-      date_min: this.$moment.utc('1908-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_min: this.$moment.utc('1865-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_max: this.$moment.utc().toDate(),
       prop_date_start: 'DLY_FIRST_DATE',
       prop_date_end: 'DLY_LAST_DATE'
