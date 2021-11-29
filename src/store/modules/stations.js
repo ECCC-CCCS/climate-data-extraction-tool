@@ -10,6 +10,9 @@ const state = {
   climateDailyStationGeoJson: {
     features: []
   },
+  climateHourlyStationGeoJson: {
+    features: []
+  },
   climateNormalsStationGeoJson: {
     features: []
   },
@@ -30,6 +33,7 @@ const state = {
   stationIdSelected: [],
   maxStationSelection: 20,
   minDateClimateDaily: null,
+  minDateClimateHourly: null,
   minDateClimateMonthly: null,
   dateStart: null, // momentjs date
   dateEnd: null, // momentjs date
@@ -40,6 +44,9 @@ const state = {
 
 // getters
 const getters = {
+  numStationClimateHourly (state) {
+    return state.climateHourlyStationGeoJson.features.length
+  },
   numStationClimateDaily (state) {
     return state.climateDailyStationGeoJson.features.length
   },
@@ -57,6 +64,9 @@ const getters = {
   },
   numStationHydro (state) {
     return state.hydroStationGeoJson.features.length
+  },
+  getClimateHourlyMinDate (state) {
+    return state.minDateClimateHourly
   },
   getClimateDailyMinDate (state) {
     return state.minDateClimateDaily
@@ -85,6 +95,9 @@ const mutations = {
   changeStationState (state, payload) { // universal state mutation changer
     // payload is object with {stateProp, stateValue}
     state[payload.stateProp] = payload.stateValue
+  },
+  changeHourlyStation (state, payload) {
+    state.climateHourlyStationGeoJson = payload
   },
   changeDailyStation (state, payload) {
     state.climateDailyStationGeoJson = payload
@@ -186,6 +199,18 @@ const actions = {
         commit('finishLoadingStations')
       })
   },
+  retrieveClimateHourlyStations: function ({ state, commit }, url) {
+    state.cancelSourceStation.cancel('Cancelling existing station request')
+    state.cancelSourceStation = axios.CancelToken.source()
+    commit('startLoadingStations')
+    axios.get(url, { cancelToken: state.cancelSourceStation.token })
+      .then((response) => {
+        commit('changeHourlyStation', response.data)
+      })
+      .finally(() => {
+        commit('finishLoadingStations')
+      })
+  },
   retrieveClimateNormalsStations: function ({ state, commit }, url) {
     state.cancelSourceStation.cancel('Cancelling existing station request')
     state.cancelSourceStation = axios.CancelToken.source()
@@ -256,6 +281,12 @@ const actions = {
   },
   clearStationIdSelected: function ({ commit }) {
     commit('clearStationIdSelectedMutation')
+  },
+  setClimateHourlyMinDate: function ({ commit }, minDate) {
+    commit('changeStationState', {
+      stateProp: 'minDateClimateHourly',
+      stateValue: minDate
+    })
   },
   setClimateDailyMinDate: function ({ commit }, minDate) {
     commit('changeStationState', {

@@ -49,7 +49,7 @@ export const wfs = {
   computed: {
     stationProvCol: function () { // province column for station table
       const routeName = this.$route.name
-      const climateStationSets = ['monthly', 'daily', 'normals']
+      const climateStationSets = ['monthly', 'daily', 'normals', 'hourly']
       if (climateStationSets.indexOf(routeName) !== -1) {
         return 'PROV_STATE_TERR_CODE'
       } else {
@@ -120,7 +120,7 @@ export const wfs = {
           let format = this.dateConfigs.format
           let start = this.$moment.utc(this.date_start).format(format)
           let end = this.$moment.utc(this.date_end).format(format)
-          if (this.wfs_layer === 'climate-daily') {
+          if (this.wfs_layer === 'climate-daily' || this.wfs_layer === 'climate-hourly') {
             // format = 'YYYY-MM-DD HH:mm:ss'
             start += ' 00:00:00'
             end += ' 00:00:00'

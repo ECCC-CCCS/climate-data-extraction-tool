@@ -7,6 +7,10 @@ const datasetPaths = {
     en: '/climate-normals',
     fr: '/normales-climatiques'
   },
+  hourly: {
+    en: '/hourly-climate-data',
+    fr: '/donnees-climatiques-horaire'
+  },
   daily: {
     en: '/daily-climate-data',
     fr: '/donnees-climatiques-quotidennes'

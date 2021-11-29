@@ -288,6 +288,7 @@ export default {
         hydrometric: 'PROV_TERR_STATE_LOC',
         normals: 'PROV_STATE_TERR_CODE',
         daily: 'PROV_STATE_TERR_CODE',
+        hourly: 'PROV_STATE_TERR_CODE',
         monthly: 'PROV_STATE_TERR_CODE',
         ltce: 'PROVINCE_CODE'
       }

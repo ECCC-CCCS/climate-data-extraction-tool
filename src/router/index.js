@@ -133,6 +133,19 @@ const routes = [ // order matters for dataset menu
     component: () => import(/* webpackChunkName: "climateDaily" */ '../views/ClimateDailyForm.vue')
   },
   {
+    path: datasetPaths.hourly.en,
+    alias: datasetPaths.hourly.fr,
+    name: 'hourly',
+    // component: ClimateHourlyForm,
+    meta: {
+      datasetSectionMenu: true,
+      en_path: datasetPaths.hourly.en,
+      fr_path: datasetPaths.hourly.fr,
+      group: 'histClimateRiver'
+    },
+    component: () => import(/* webpackChunkName: "climateHourly" */ '../views/ClimateHourlyForm.vue')
+  },
+  {
     path: datasetPaths.ltce.en,
     alias: datasetPaths.ltce.fr,
     name: 'ltce',

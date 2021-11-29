@@ -88,6 +88,21 @@ export const datasets = {
             phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
+        hourly: {
+          title: this.$pgettext('Dataset Name', 'Hourly climate data'),
+          abbr: null,
+          abbrName: null,
+          techDoc: {
+            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-hourly-data.html',
+            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-horaires.html',
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Hourly climate data</a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
+          }
+        },
         ltce: {
           title: this.$pgettext('Dataset Name', 'Daily climate records'),
           abbr: this.$pgettext('Abbreviation: Long Term Climate Extremes', 'LTCE'),

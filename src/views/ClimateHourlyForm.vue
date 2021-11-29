@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p v-translate>Monthly climate summaries are cross-country summaries of the averages and extremes for the month, including precipitation totals, max-min temperatures, and degree days. These data are available from stations that produce daily data.</p>
+    <p v-translate>Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>
@@ -19,7 +19,7 @@
 
       <station-list-link
         :url-station-list="urlStationList"
-        :download-text="$gettext('Download a list of detailed information for each Monthly climate summaries station.')"></station-list-link>
+        :download-text="$gettext('Download a list of detailed information for each Hourly climate station.')"></station-list-link>
     </details>
 
     <data-access-doc-link></data-access-doc-link>
@@ -32,25 +32,31 @@
 
       <fieldset>
         <legend v-translate>Date range</legend>
-        <date-select
-          v-model="date_start"
-          :label="$gettext('Start date')"
-          :placeholder="$gettext('YYYY-MM-DD')"
-          :minimum-view="dateConfigs.minimumView"
-          :format="dateConfigs.format"
-          :min-date="date_min"
-          :max-date="date_max"
-          :custom-error-msg="dateRangeErrorMessage"></date-select>
+        <div class="row">
+          <div class="col-sm-6">
+            <date-select
+              v-model="date_start"
+              :label="$gettext('Start date')"
+              :placeholder="$gettext('YYYY-MM-DD')"
+              :minimum-view="dateConfigs.minimumView"
+              :format="dateConfigs.format"
+              :min-date="date_min"
+              :max-date="date_max"
+              :custom-error-msg="dateRangeErrorMessage"></date-select>
+          </div>
 
-        <date-select
-          v-model="date_end"
-          :label="$gettext('End date')"
-          :placeholder="$gettext('YYYY-MM-DD')"
-          :minimum-view="dateConfigs.minimumView"
-          :format="dateConfigs.format"
-          :min-date="date_min"
-          :max-date="date_max"
-          :custom-error-msg="dateRangeErrorMessage"></date-select>
+          <div class="col-sm-6">
+            <date-select
+              v-model="date_end"
+              :label="$gettext('End date')"
+              :placeholder="$gettext('YYYY-MM-DD')"
+              :minimum-view="dateConfigs.minimumView"
+              :format="dateConfigs.format"
+              :min-date="date_min"
+              :max-date="date_max"
+              :custom-error-msg="dateRangeErrorMessage"></date-select>
+          </div>
+        </div>
 
         <button
           id="clear-dates-btn"
@@ -66,13 +72,16 @@
       :max-zoom="mapMaxZoom"
       :readable-columns="popup_props_display"
       :select-disabled="provinceSelected"
-      :geojson="climateMonthlyStationGeoJson"
-      :stn-primary-id="stnPrimaryId"></bbox-map>
+      :geojson="climateHourlyStationGeoJson"
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></bbox-map>
 
     <station-select
       v-model="wfs_selected_station_ids"
       :select-disabled="provinceSelected"
-      :station-data="climateMonthlyStationGeoJson.features"
+      :station-data="climateHourlyStationGeoJson.features"
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"
       :no-province-station-selected="noProvinceStationSelected"
@@ -117,7 +126,7 @@ import axios from 'axios'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
-  name: 'ClimateMonthlyForm',
+  name: 'ClimateHourlyForm',
   mixins: [wfs, ows, datasets],
   components: {
     'bbox-map': BBOXMap,
@@ -133,14 +142,14 @@ export default {
   },
   data () {
     return {
-      wfs_layer: 'climate-monthly',
+      wfs_layer: 'climate-hourly',
       wfs_layer_station: 'climate-stations',
-      date_start: this.$moment.utc('1865-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_start: this.$moment.utc('1840-03-01', 'YYYY-MM-DD').toDate(),
       date_end: this.$moment.utc().toDate(),
-      date_min: this.$moment.utc('1865-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      date_min: this.$moment.utc('1840-03-01', 'YYYY-MM-DD').toDate(),
       date_max: this.$moment.utc().toDate(),
-      prop_date_start: 'MLY_FIRST_DATE',
-      prop_date_end: 'MLY_LAST_DATE'
+      prop_date_start: 'HLY_FIRST_DATE',
+      prop_date_end: 'HLY_LAST_DATE'
     }
   },
   watch: {
@@ -153,12 +162,12 @@ export default {
   },
   beforeMount () {
     // Load climate stations
-    if (this.numStationClimateMonthly === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('stations/retrieveClimateMonthlyStations', this.urlStationMapList)
+    if (this.numStationClimateHourly === 0) { // prevent duplicate AJAX
+      this.$store.dispatch('stations/retrieveClimateHourlyStations', this.urlStationMapList)
     }
 
     // Get min local_date dynamically to set date_min
-    let minDate = this.$store.getters['stations/getClimateMonthlyMinDate']
+    let minDate = this.$store.getters['stations/getClimateHourlyMinDate']
     if (minDate === null) { // prevent duplicate AJAX
       let this_ = this // for reference in axios response; "this" reserved in axios
 
@@ -166,32 +175,32 @@ export default {
         .then(function (response) {
           if (Object.prototype.hasOwnProperty.call(response.data, 'features')) {
             minDate = response.data.features[0].properties.LOCAL_DATE
-            this_.$store.dispatch('stations/setClimateMonthlyMinDate', minDate)
-            this_.date_start = this_.$moment.utc(minDate, 'YYYY-MM').toDate()
-            this_.date_min = this_.$moment.utc(minDate, 'YYYY-MM').toDate()
+            this_.$store.dispatch('stations/setClimateHourlyMinDate', minDate)
+            this_.date_start = this_.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
+            this_.date_min = this_.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
             this_.date_end = this_.$moment.utc(this_.date_end).toDate() // initialize dateEnd in store
           }
         })
     } else {
-      this.date_start = this.$moment.utc(minDate, 'YYYY-MM').toDate()
-      this.date_min = this.$moment.utc(minDate, 'YYYY-MM').toDate()
+      this.date_start = this.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
+      this.date_min = this.$moment.utc(minDate.substring(0, 10), 'YYYY-MM-DD').toDate()
     }
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_MONTHLY_SUMMARY=Y&f=json&limit=' + this.wfs_station_limit
+      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?HAS_HOURLY_DATA=Y&f=json&limit=' + this.wfs_station_limit
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},${this.prop_date_start},${this.prop_date_end}`
     },
     urlDatasetMinDate: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer + '/items?sortby=LOCAL_DATE&limit=1&f=json'
+      return this.wfs3_url_base + '/' + this.wfs_layer + '/items?f=json&limit=1&sortby=LOCAL_DATE'
     },
     ...mapState('stations', [
-      'climateMonthlyStationGeoJson'
+      'climateHourlyStationGeoJson'
     ]),
     ...mapGetters('stations', [
-      'numStationClimateMonthly'
+      'numStationClimateHourly'
     ]),
     station_props_display: function () {
       let props = {}
@@ -229,11 +238,11 @@ export default {
     },
     htmlNoteMoreData: function () {
       const url = {
-        en: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_EN + '/prods_servs/cdn_climate_summary_e.html',
-        fr: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_FR + '/prods_servs/cdn_climate_summary_f.html'
+        en: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_EN + '/historical_data/search_historic_data_e.html',
+        fr: process.env.VUE_APP_CLIMATE_HISTORICAL_SERVER_FR + '/historical_data/search_historic_data_f.html'
       }
       const website = `<a href="${url[this.$i18n.activeLocale]}" target="_blank">` + this.$pgettext('a phrase that is mid sentence', 'Government of Canada Historical Climate Data website') + '</a>'
-      return this.$_i(this.$gettext('Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.'), {website: website})
+      return this.$_i(this.$gettext('Hourly data for some stations and variables can be found on the {website}.'), {website: website})
     }
   }
 }

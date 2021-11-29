@@ -98,7 +98,9 @@ export default {
   data () {
     return {
       wfs_layer: 'climate-normals',
-      wfs_layer_station: 'climate-stations'
+      wfs_layer_station: 'climate-stations',
+      prop_date_start: 'DLY_FIRST_DATE',
+      prop_date_end: 'DLY_LAST_DATE'
     }
   },
   watch: {
@@ -120,7 +122,7 @@ export default {
       return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit
     },
     urlStationMapList: function () {
-      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},DLY_FIRST_DATE,DLY_LAST_DATE`
+      return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},${this.prop_date_start},${this.prop_date_end}`
     },
     ...mapState('stations', [
       'climateNormalsStationGeoJson'
@@ -135,8 +137,8 @@ export default {
       props['PROV_STATE_TERR_CODE'] = this.$gettext('Province') + '&nbsp/<br>' + this.$gettext('Territory')
       props['LATITUDE'] = this.$gettext('Latitude')
       props['LONGITUDE'] = this.$gettext('Longitude')
-      props['DLY_FIRST_DATE'] = this.$gettext('First date')
-      props['DLY_LAST_DATE'] = this.$gettext('Last date')
+      props[this.prop_date_start] = this.$gettext('First date')
+      props[this.prop_date_end] = this.$gettext('Last date')
       return props
     },
     popup_props_display: function () {
