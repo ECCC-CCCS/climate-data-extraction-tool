@@ -51,7 +51,7 @@
 
     <data-access-doc-link></data-access-doc-link>
 
-    <details>
+    <details open>
       <summary id="map-filters-header" v-translate>Map filters</summary>
 
       <var-select

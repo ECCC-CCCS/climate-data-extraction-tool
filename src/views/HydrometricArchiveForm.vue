@@ -26,13 +26,6 @@
       <province-select
         v-model="wfs_province"></province-select>
 
-      <var-select
-          class="mrgn-tp-md"
-          v-model="wfs_layer"
-          :label="$gettext('Value type / Time interval')"
-          :required="true"
-          :select-options="layer_options"></var-select>
-
       <fieldset>
         <legend v-translate>Date range</legend>
 
@@ -83,6 +76,13 @@
       :no-province-station-selected="noProvinceStationSelected"
       :stn-primary-id="stnPrimaryId"
       :hydro-station-display="true"></station-select>
+
+    <var-select
+      class="mrgn-tp-md"
+      v-model="wfs_layer"
+      :label="$gettext('Value type / Time interval')"
+      :required="true"
+      :select-options="layer_options"></var-select>
 
     <format-select-vector
       class="mrgn-tp-md"
