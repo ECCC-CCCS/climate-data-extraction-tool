@@ -24,7 +24,7 @@
       @change="splitBBOXString"></bbox-map>
 
     <var-select
-      v-model="wcs_id_variable"
+      v-model="oapic_id_variable"
       :select-options="variableOptions"></var-select>
 
     <option-radio
@@ -34,11 +34,11 @@
 
     <scenario-select
       v-show="scenarioType === 'RCP'"
-      v-model="wcs_id_scenario"
+      v-model="oapic_id_scenario"
       :select-options="scenarioOptions"></scenario-select>
 
     <var-select
-      v-model="wcs_id_timePeriod"
+      v-model="oapic_id_timePeriod"
       :label="$gettext('Time interval / Time of year')"
       :select-options="timePeriodOptions"></var-select>
 
@@ -133,7 +133,7 @@
     <format-select-raster
       class="mrgn-tp-md"
       v-show="!pointClickOn"
-      v-model="wcs_format"></format-select-raster>
+      v-model="oapic_format"></format-select-raster>
 
     <format-select-vector
       class="mrgn-tp-md"
@@ -152,9 +152,9 @@
     <url-box
       v-show="!pointClickOn"
       :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="wcs_download_url"
-      :layer-format="wcs_format"
-      :wcs-common-url="wcsCommonUrl"
+      :ows-url-formatter="oapic_download_url"
+      :layer-format="oapic_format"
+      :wcs-common-url="oapicUrl"
       :wcs-band-chunks="chunkedBandsParam"
       :wcs-num-bands="dateRangeNumBands"
       :band-range-format="bandRangeFormat"
@@ -186,15 +186,16 @@ import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import PointDownloadBox from '@/components/PointDownloadBox.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { wcs } from '@/components/mixins/wcs.js'
+// import { wcs } from '@/components/mixins/wcs.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
-import { DCSCMIP5 } from '@/components/mixins/dcs-cmip5.js'
+import { DCSCMIP5 } from '@/components/mixins/oapi-coverage-dcs-cmip5.js'
 import { wps } from '@/components/mixins/wps.js'
 
 export default {
   name: 'CMIP5Form',
-  mixins: [wcs, ows, datasets, DCSCMIP5, wps],
+  mixins: [oapiCoverage, ows, datasets, DCSCMIP5, wps],
   components: {
     'bbox-map': BBOXMap,
     FormatSelectRaster,
@@ -212,8 +213,10 @@ export default {
   },
   data () {
     return {
-      wcs_id_dataset: 'CMIP5',
-      wcs_id_variable: 'TT',
+      oapic_id_dataset: 'CMIP5',
+      oapic_id_variable: 'TT',
+      oapic_id_scenario: 'RCP26',
+      oapic_id_timePeriod: 'YEAR',
       avg20YearOptions: {
         '2021-2040': '2021-2040',
         '2041-2060': '2041-2060',
@@ -225,33 +228,33 @@ export default {
   watch: {
     scenarioType: function (newVal) { // overwrites dcs-cmip5 mixin
       // remember last selected RCP if any
-      if (this.wcs_id_scenario.includes('RCP')) {
-        this.lastSelectedRCP = this.wcs_id_scenario
+      if (this.oapic_id_scenario.includes('RCP')) {
+        this.lastSelectedRCP = this.oapic_id_scenario
       }
 
-      // adjust wcs_id_scenario selection for History or Future
+      // adjust oapic_id_scenario selection for History or Future
       if (newVal === 'HISTO') {
-        this.wcs_id_scenario = newVal
+        this.oapic_id_scenario = newVal
         this.rangeType = 'custom'
 
         // Auto correct dates for Temp and Precip
-        if (this.wcs_id_variable === 'TT' || this.wcs_id_variable === 'PR') {
+        if (this.oapic_id_variable === 'TT' || this.oapic_id_variable === 'PR') {
           this.correctDatesTT_PR()
         }
       } else {
-        this.wcs_id_scenario = this.lastSelectedRCP
+        this.oapic_id_scenario = this.lastSelectedRCP
       }
     },
-    wcs_id_timePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
+    oapic_id_timePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
       // Auto select Absolute and custom time period for Monthly Ensembles
       if (newVal === 'ENS') {
         this.valueType = 'ABS'
         this.rangeType = 'custom'
 
         // Auto correct dates for wind selection
-        if (this.wcs_id_variable === 'SFCWIND') {
+        if (this.oapic_id_variable === 'SFCWIND') {
           this.correctDatesSFCWIND()
-        } else if (this.wcs_id_variable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
+        } else if (this.oapic_id_variable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
           // this.valueType = 'ANO'
         }
       }
@@ -259,7 +262,7 @@ export default {
       this.dateRcpStart = this.formatDateToMoment(this.dateRcpStart).format(this.dateConfigs.format)
       this.dateRcpEnd = this.formatDateToMoment(this.dateRcpEnd).format(this.dateConfigs.format)
     },
-    wcs_id_variable: function (newVal) {
+    oapic_id_variable: function (newVal) {
       // Auto correct dates for Temp and Precip
       if (newVal === 'TT' || newVal === 'PR') {
         this.correctDatesTT_PR()
@@ -267,14 +270,14 @@ export default {
 
       // some variables not yet supported for non-monthly ABS; auto correct selectio
       if (newVal === 'SND') {
-        if (this.valueType === 'ABS' && this.wcs_id_timePeriod !== 'ENS') {
-          // this.wcs_id_timePeriod = 'ENS'
+        if (this.valueType === 'ABS' && this.oapic_id_timePeriod !== 'ENS') {
+          // this.oapic_id_timePeriod = 'ENS'
           this.valueType = 'ANO'
         }
       }
 
       // Auto correct dates for monthly wind
-      if (this.wcs_id_timePeriod === 'ENS') {
+      if (this.oapic_id_timePeriod === 'ENS') {
         if (newVal === 'SFCWIND') {
           this.correctDatesSFCWIND()
         }
@@ -291,8 +294,8 @@ export default {
         this.rangeType = 'custom'
 
         // Some variables not yet supported for non-monthly ABS; auto correct selection
-        if (this.wcs_id_variable === 'SND') {
-          this.wcs_id_timePeriod = 'ENS'
+        if (this.oapic_id_variable === 'SND') {
+          this.oapic_id_timePeriod = 'ENS'
         }
       }
     }
@@ -336,14 +339,14 @@ export default {
       }
     },
     dateHistMin: function () {
-      if (this.wcs_id_variable === 'TT' || this.wcs_id_variable === 'PR') {
+      if (this.oapic_id_variable === 'TT' || this.oapic_id_variable === 'PR') {
         return this.$moment.utc('1901-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('1900-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       }
     },
     dateHistMax: function () {
-      if (this.wcs_id_timePeriod === 'ENS' && this.wcs_id_variable === 'SFCWIND') {
+      if (this.oapic_id_timePeriod === 'ENS' && this.oapic_id_variable === 'SFCWIND') {
         return this.$moment.utc('2005-11-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('2005-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
@@ -355,10 +358,10 @@ export default {
       let historicalYearEnd = ''
 
       // special case for Monthly surface wind dates
-      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.wcs_id_timePeriod === 'ENS' && this.wcs_id_variable === 'SFCWIND') {
+      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.oapic_id_timePeriod === 'ENS' && this.oapic_id_variable === 'SFCWIND') {
         historicalYearStart = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
-      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.wcs_id_timePeriod === 'ENS' && this.wcs_id_variable === 'SFCWIND') {
+      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.oapic_id_timePeriod === 'ENS' && this.oapic_id_variable === 'SFCWIND') {
         historicalYearEnd = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
 
