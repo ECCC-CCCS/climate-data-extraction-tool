@@ -62,8 +62,7 @@
       :max-date="forePeriodDateRange.max"></date-select>
 
     <format-select-raster
-      v-model="wcs_format"
-      :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+      v-model="wcs_format"></format-select-raster>
 
     <details>
       <summary v-translate>Advanced options</summary>
