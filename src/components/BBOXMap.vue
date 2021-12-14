@@ -432,7 +432,7 @@ export default {
     pointClickOptions: function () {
       return {
         'on': this.$gettext('Download data for a single location as a CSV or GeoJSON'),
-        'off': this.$gettext('Download a region')
+        'off': this.$gettext('Download a region as a GeoTIFF or NetCDF')
       }
     },
     attributionOSM: function () {

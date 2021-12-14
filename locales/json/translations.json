@@ -470,6 +470,13 @@
 					"Historical hydrometric data"
 				]
 			},
+			"Hourly climate data": {
+				"msgid": "Hourly climate data",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					""
+				]
+			},
 			"Monthly climate summaries": {
 				"msgid": "Monthly climate summaries",
 				"msgctxt": "Dataset Name",
@@ -1151,6 +1158,12 @@
 					"Download a list of detailed information for each Historical hydrometric station."
 				]
 			},
+			"Download a list of detailed information for each Hourly climate station.": {
+				"msgid": "Download a list of detailed information for each Hourly climate station.",
+				"msgstr": [
+					""
+				]
+			},
 			"Download a list of detailed information for each LTCE virtual climate station": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station",
 				"msgstr": [
@@ -1181,10 +1194,10 @@
 					"Download a list of detailed information for each Monthly climate summaries station."
 				]
 			},
-			"Download a region": {
-				"msgid": "Download a region",
+			"Download a region as a GeoTIFF or NetCDF": {
+				"msgid": "Download a region as a GeoTIFF or NetCDF",
 				"msgstr": [
-					"Download a region"
+					""
 				]
 			},
 			"Download data for a single location as a CSV or GeoJSON": {
@@ -1343,6 +1356,12 @@
 					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Historical hydrometric data</a>."
 				]
 			},
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Hourly climate data</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Hourly climate data</a>.",
+				"msgstr": [
+					""
+				]
+			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.",
 				"msgstr": [
@@ -1437,6 +1456,12 @@
 				"msgid": "Historical start date",
 				"msgstr": [
 					"Historical start date"
+				]
+			},
+			"Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
+				"msgid": "Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
+				"msgstr": [
+					""
 				]
 			},
 			"Hourly data for some stations and variables can be found on the {website}.": {
@@ -2097,6 +2122,12 @@
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Monthly climate summaries</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -2944,6 +2975,13 @@
 					"Données hydrométriques historiques"
 				]
 			},
+			"Hourly climate data": {
+				"msgid": "Hourly climate data",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					"Données climatiques horaires"
+				]
+			},
 			"Monthly climate summaries": {
 				"msgid": "Monthly climate summaries",
 				"msgctxt": "Dataset Name",
@@ -3625,6 +3663,12 @@
 					"Télécharger la liste des informations détaillées pour chaque station hydrométrique historique."
 				]
 			},
+			"Download a list of detailed information for each Hourly climate station.": {
+				"msgid": "Download a list of detailed information for each Hourly climate station.",
+				"msgstr": [
+					"Téléchargez une liste d'informations détaillées pour chaque station climatique horaire."
+				]
+			},
 			"Download a list of detailed information for each LTCE virtual climate station": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station",
 				"msgstr": [
@@ -3655,10 +3699,10 @@
 					"Télécharger la liste des informations détaillées pour chaque station pour l’ensemble des données sur les Sommaires climatiques mensuels."
 				]
 			},
-			"Download a region": {
-				"msgid": "Download a region",
+			"Download a region as a GeoTIFF or NetCDF": {
+				"msgid": "Download a region as a GeoTIFF or NetCDF",
 				"msgstr": [
-					"Télécharger la région"
+					"Télécharger une région sous forme de GeoTIFF ou NetCDF"
 				]
 			},
 			"Download data for a single location as a CSV or GeoJSON": {
@@ -3817,6 +3861,12 @@
 					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Données hydrométriques historiques</a>."
 				]
 			},
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Hourly climate data</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Hourly climate data</a>.",
+				"msgstr": [
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Données climatiques horaires</a>."
+				]
+			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.",
 				"msgstr": [
@@ -3911,6 +3961,12 @@
 				"msgid": "Historical start date",
 				"msgstr": [
 					"Date de début de l'historique"
+				]
+			},
+			"Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
+				"msgid": "Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
+				"msgstr": [
+					"Les données climatiques horaires sont dérivées de deux sources de données; les stations climatologiques horaires qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
 				]
 			},
 			"Hourly data for some stations and variables can be found on the {website}.": {
@@ -4571,6 +4627,12 @@
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Historical hydrometric data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Données hydrométriques historiques</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Données climatiques horaires</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Monthly climate summaries</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
