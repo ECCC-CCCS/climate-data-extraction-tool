@@ -24,7 +24,7 @@
       @change="splitBBOXString"></bbox-map>
 
     <var-select
-      v-model="oapic_id_variable"
+      v-model="oapicIdVariable"
       :select-options="variableOptions"></var-select>
 
     <option-radio
@@ -33,12 +33,12 @@
       :radio-options="scenarioTypeOptions"></option-radio>
 
     <scenario-select
-      v-show="scenarioType === 'RCP'"
-      v-model="oapic_id_scenario"
+      v-show="scenarioType === 'projected'"
+      v-model="oapicIdScenario"
       :select-options="scenarioOptions"></scenario-select>
 
     <var-select
-      v-model="oapic_id_timePeriod"
+      v-model="oapicIdTimePeriod"
       :label="$gettext('Time interval / Time of year')"
       :select-options="timePeriodOptions"></var-select>
 
@@ -62,7 +62,7 @@
         :radio-inline="true"
         :radio-options="rangeTypeOptions"></option-radio>
 
-      <div id="historical-date-range" v-show="scenarioType === 'HISTO' && rangeType !=='year20'">
+      <div id="historical-date-range" v-show="scenarioType === 'historical' && rangeType !=='year20'">
         <date-select
           v-model="dateHistStart"
           :label="$gettext('Historical start date')"
@@ -92,7 +92,7 @@
           @click="clearDates"
           v-translate>Clear dates</button>
       </div>
-      <div id="rcp-date-range" v-show="scenarioType === 'RCP' && rangeType !=='year20'">
+      <div id="rcp-date-range" v-show="scenarioType === 'projected' && rangeType !=='year20'">
         <date-select
           v-model="dateRcpStart"
           :label="$gettext('Start date')"
@@ -124,7 +124,7 @@
       </div>
 
       <var-select
-        v-show="rangeType === 'year20' && valueType === 'ANO'"
+        v-show="rangeType === 'year20' && valueType === 'anaomaly'"
         v-model="avg20Year"
         :label="$gettext('20-Year average range')"
         :select-options="avg20YearOptions"></var-select>
@@ -186,7 +186,6 @@ import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import PointDownloadBox from '@/components/PointDownloadBox.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-// import { wcs } from '@/components/mixins/wcs.js'
 import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
@@ -214,9 +213,9 @@ export default {
   data () {
     return {
       oapic_id_dataset: 'CMIP5',
-      oapic_id_variable: 'TT',
-      oapic_id_scenario: 'RCP26',
-      oapic_id_timePeriod: 'YEAR',
+      oapicIdVariable: 'TT',
+      oapicIdScenario: 'RCP26',
+      oapicIdTimePeriod: 'YEAR',
       avg20YearOptions: {
         '2021-2040': '2021-2040',
         '2041-2060': '2041-2060',
@@ -228,41 +227,41 @@ export default {
   watch: {
     scenarioType: function (newVal) { // overwrites dcs-cmip5 mixin
       // remember last selected RCP if any
-      if (this.oapic_id_scenario.includes('RCP')) {
-        this.lastSelectedRCP = this.oapic_id_scenario
+      if (this.oapicIdScenario.includes('RCP')) {
+        this.lastSelectedRCP = this.oapicIdScenario
       }
 
-      // adjust oapic_id_scenario selection for History or Future
-      if (newVal === 'HISTO') {
-        this.oapic_id_scenario = newVal
+      // adjust oapicIdScenario selection for History or Future
+      if (newVal === 'historical') {
+        this.oapicIdScenario = newVal
         this.rangeType = 'custom'
 
         // Auto correct dates for Temp and Precip
-        if (this.oapic_id_variable === 'TT' || this.oapic_id_variable === 'PR') {
+        if (this.oapicIdVariable === 'TT' || this.oapicIdVariable === 'PR') {
           this.correctDatesTT_PR()
         }
       } else {
-        this.oapic_id_scenario = this.lastSelectedRCP
+        this.oapicIdScenario = this.lastSelectedRCP
       }
     },
-    oapic_id_timePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
+    oapicIdTimePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
       // Auto select Absolute and custom time period for Monthly Ensembles
       if (newVal === 'ENS') {
         this.valueType = 'ABS'
         this.rangeType = 'custom'
 
         // Auto correct dates for wind selection
-        if (this.oapic_id_variable === 'SFCWIND') {
+        if (this.oapicIdVariable === 'SFCWIND') {
           this.correctDatesSFCWIND()
-        } else if (this.oapic_id_variable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
-          // this.valueType = 'ANO'
+        } else if (this.oapicIdVariable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
+          // this.valueType = 'anomaly'
         }
       }
       // adjust dates if they are strings to match new date format
       this.dateRcpStart = this.formatDateToMoment(this.dateRcpStart).format(this.dateConfigs.format)
       this.dateRcpEnd = this.formatDateToMoment(this.dateRcpEnd).format(this.dateConfigs.format)
     },
-    oapic_id_variable: function (newVal) {
+    oapicIdVariable: function (newVal) {
       // Auto correct dates for Temp and Precip
       if (newVal === 'TT' || newVal === 'PR') {
         this.correctDatesTT_PR()
@@ -270,14 +269,14 @@ export default {
 
       // some variables not yet supported for non-monthly ABS; auto correct selectio
       if (newVal === 'SND') {
-        if (this.valueType === 'ABS' && this.oapic_id_timePeriod !== 'ENS') {
-          // this.oapic_id_timePeriod = 'ENS'
-          this.valueType = 'ANO'
+        if (this.valueType === 'ABS' && this.oapicIdTimePeriod !== 'ENS') {
+          // this.oapicIdTimePeriod = 'ENS'
+          this.valueType = 'anomaly'
         }
       }
 
       // Auto correct dates for monthly wind
-      if (this.oapic_id_timePeriod === 'ENS') {
+      if (this.oapicIdTimePeriod === 'ENS') {
         if (newVal === 'SFCWIND') {
           this.correctDatesSFCWIND()
         }
@@ -294,8 +293,8 @@ export default {
         this.rangeType = 'custom'
 
         // Some variables not yet supported for non-monthly ABS; auto correct selection
-        if (this.oapic_id_variable === 'SND') {
-          this.oapic_id_timePeriod = 'ENS'
+        if (this.oapicIdVariable === 'SND') {
+          this.oapicIdTimePeriod = 'ENS'
         }
       }
     }
@@ -339,14 +338,14 @@ export default {
       }
     },
     dateHistMin: function () {
-      if (this.oapic_id_variable === 'TT' || this.oapic_id_variable === 'PR') {
+      if (this.oapicIdVariable === 'TT' || this.oapicIdVariable === 'PR') {
         return this.$moment.utc('1901-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('1900-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       }
     },
     dateHistMax: function () {
-      if (this.oapic_id_timePeriod === 'ENS' && this.oapic_id_variable === 'SFCWIND') {
+      if (this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'SFCWIND') {
         return this.$moment.utc('2005-11-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('2005-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
@@ -358,10 +357,10 @@ export default {
       let historicalYearEnd = ''
 
       // special case for Monthly surface wind dates
-      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.oapic_id_timePeriod === 'ENS' && this.oapic_id_variable === 'SFCWIND') {
+      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'SFCWIND') {
         historicalYearStart = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
-      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.oapic_id_timePeriod === 'ENS' && this.oapic_id_variable === 'SFCWIND') {
+      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'SFCWIND') {
         historicalYearEnd = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
 
