@@ -124,7 +124,7 @@
       </div>
 
       <var-select
-        v-show="rangeType === 'year20' && valueType === 'anaomaly'"
+        v-show="rangeType === 'year20' && valueType === 'anomaly'"
         v-model="avg20Year"
         :label="$gettext('20-Year average range')"
         :select-options="avg20YearOptions"></var-select>
@@ -133,7 +133,7 @@
     <format-select-raster
       class="mrgn-tp-md"
       v-show="!pointClickOn"
-      v-model="oapic_format"></format-select-raster>
+      v-model="oapicFormat"></format-select-raster>
 
     <format-select-vector
       class="mrgn-tp-md"
@@ -152,8 +152,8 @@
     <url-box
       v-show="!pointClickOn"
       :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="oapic_download_url"
-      :layer-format="oapic_format"
+      :ows-url-formatter="oapicUrlFormatter"
+      :layer-format="oapicFormat"
       :wcs-common-url="oapicUrl"
       :wcs-band-chunks="chunkedBandsParam"
       :wcs-num-bands="dateRangeNumBands"
