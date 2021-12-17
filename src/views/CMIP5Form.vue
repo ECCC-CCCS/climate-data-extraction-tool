@@ -34,7 +34,7 @@
 
     <scenario-select
       v-show="scenarioType === 'projected'"
-      v-model="oapicIdScenario"
+      v-model="oapicScenario"
       :select-options="scenarioOptions"></scenario-select>
 
     <var-select
@@ -214,7 +214,7 @@ export default {
     return {
       oapic_id_dataset: 'CMIP5',
       oapicIdVariable: 'TT',
-      oapicIdScenario: 'RCP26',
+      oapicScenario: 'RCP2.6',
       oapicIdTimePeriod: 'YEAR',
       avg20YearOptions: {
         '2021-2040': '2021-2040',
@@ -227,13 +227,13 @@ export default {
   watch: {
     scenarioType: function (newVal) { // overwrites dcs-cmip5 mixin
       // remember last selected RCP if any
-      if (this.oapicIdScenario.includes('RCP')) {
-        this.lastSelectedRCP = this.oapicIdScenario
+      if (this.oapicScenario.includes('RCP')) {
+        this.lastSelectedRCP = this.oapicScenario
       }
 
-      // adjust oapicIdScenario selection for History or Future
+      // adjust oapicScenario selection for History or Future
       if (newVal === 'historical') {
-        this.oapicIdScenario = newVal
+        this.oapicScenario = newVal
         this.rangeType = 'custom'
 
         // Auto correct dates for Temp and Precip
@@ -241,7 +241,7 @@ export default {
           this.correctDatesTT_PR()
         }
       } else {
-        this.oapicIdScenario = this.lastSelectedRCP
+        this.oapicScenario = this.lastSelectedRCP
       }
     },
     oapicIdTimePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
@@ -285,7 +285,7 @@ export default {
     rangeType: function (newVal) {
       // Force percentile to 50th
       if (newVal === 'year20') {
-        this.percentile = 'PCTL50'
+        this.percentile = '50'
       }
     },
     valueType: function (newVal) {
@@ -315,15 +315,15 @@ export default {
     percentileOptions: function () {
       if (this.rangeType === 'year20') {
         return {
-          PCTL50: this.$gettext('50th percentile')
+          50: this.$gettext('50th percentile')
         }
       } else {
         return {
-          PCTL5: this.$gettext('5th percentile'),
-          PCTL25: this.$gettext('25th percentile'),
-          PCTL50: this.$gettext('50th percentile'),
-          PCTL75: this.$gettext('75th percentile'),
-          PCTL95: this.$gettext('95th percentile')
+          5: this.$gettext('5th percentile'),
+          25: this.$gettext('25th percentile'),
+          50: this.$gettext('50th percentile'),
+          75: this.$gettext('75th percentile'),
+          95: this.$gettext('95th percentile')
         }
       }
     },
