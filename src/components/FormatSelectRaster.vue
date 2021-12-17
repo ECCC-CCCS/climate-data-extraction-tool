@@ -56,8 +56,8 @@ export default {
   data () {
     return {
       formats: {
-        'image/tiff': 'GeoTIFF',
-        'image/netcdf': 'NetCDF'
+        //'image/tiff': 'GeoTIFF', // not supported yet in oapiCov
+        'NetCDF': 'NetCDF'
       },
       linkTo: {
         r: '<a href="https://www.r-project.org/" class="alert-link" target="_blank">R</a>',
@@ -75,7 +75,7 @@ export default {
           linkToR: this.linkTo.r,
           linkToPython: this.linkTo.python
         }),
-        'image/netcdf': this.$_i(this.$gettext('{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.'), {
+        'NetCDF': this.$_i(this.$gettext('{formatName} files can be opened, viewed and manipulated with some Geographic Information System (GIS) software or scientific programming tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}.'), {
           formatName: '<strong>NetCDF</strong>',
           linkToR: this.linkTo.r,
           linkToPython: this.linkTo.python,

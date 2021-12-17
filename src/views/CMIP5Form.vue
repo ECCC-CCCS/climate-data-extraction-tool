@@ -213,7 +213,7 @@ export default {
   data () {
     return {
       oapic_id_dataset: 'CMIP5',
-      oapicIdVariable: 'TT',
+      oapicIdVariable: 'tas',
       oapicScenario: 'RCP2.6',
       oapicIdTimePeriod: 'YEAR',
       avg20YearOptions: {
@@ -237,8 +237,8 @@ export default {
         this.rangeType = 'custom'
 
         // Auto correct dates for Temp and Precip
-        if (this.oapicIdVariable === 'TT' || this.oapicIdVariable === 'PR') {
-          this.correctDatesTT_PR()
+        if (this.oapicIdVariable === 'tas' || this.oapicIdVariable === 'pr') {
+          this.correctDatestas_pr()
         }
       } else {
         this.oapicScenario = this.lastSelectedRCP
@@ -247,13 +247,13 @@ export default {
     oapicIdTimePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
       // Auto select Absolute and custom time period for Monthly Ensembles
       if (newVal === 'ENS') {
-        this.valueType = 'ABS'
+        this.valueType = 'absolute'
         this.rangeType = 'custom'
 
         // Auto correct dates for wind selection
-        if (this.oapicIdVariable === 'SFCWIND') {
-          this.correctDatesSFCWIND()
-        } else if (this.oapicIdVariable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
+        if (this.oapicIdVariable === 'sfcWind') {
+          this.correctDatessfcWind()
+        } else if (this.oapicIdVariable === 'snd') { // some variables not yet supported for non-monthly absolute; auto correct selection
           // this.valueType = 'anomaly'
         }
       }
@@ -263,13 +263,13 @@ export default {
     },
     oapicIdVariable: function (newVal) {
       // Auto correct dates for Temp and Precip
-      if (newVal === 'TT' || newVal === 'PR') {
-        this.correctDatesTT_PR()
+      if (newVal === 'tas' || newVal === 'pr') {
+        this.correctDatestas_pr()
       }
 
-      // some variables not yet supported for non-monthly ABS; auto correct selectio
-      if (newVal === 'SND') {
-        if (this.valueType === 'ABS' && this.oapicIdTimePeriod !== 'ENS') {
+      // some variables not yet supported for non-monthly absolute; auto correct selectio
+      if (newVal === 'snd') {
+        if (this.valueType === 'absolute' && this.oapicIdTimePeriod !== 'ENS') {
           // this.oapicIdTimePeriod = 'ENS'
           this.valueType = 'anomaly'
         }
@@ -277,8 +277,8 @@ export default {
 
       // Auto correct dates for monthly wind
       if (this.oapicIdTimePeriod === 'ENS') {
-        if (newVal === 'SFCWIND') {
-          this.correctDatesSFCWIND()
+        if (newVal === 'sfcWind') {
+          this.correctDatessfcWind()
         }
       }
     },
@@ -289,23 +289,23 @@ export default {
       }
     },
     valueType: function (newVal) {
-      if (newVal === 'ABS') {
+      if (newVal === 'absolute') {
         this.rangeType = 'custom'
 
-        // Some variables not yet supported for non-monthly ABS; auto correct selection
-        if (this.oapicIdVariable === 'SND') {
+        // Some variables not yet supported for non-monthly absolute; auto correct selection
+        if (this.oapicIdVariable === 'snd') {
           this.oapicIdTimePeriod = 'ENS'
         }
       }
     }
   },
   methods: {
-    correctDatesTT_PR: function () {
+    correctDatestas_pr: function () {
       if (this.bandMoments.histStart.isBefore(this.$moment.utc(this.dateHistMin))) {
         this.dateHistStart = this.$moment.utc(this.dateHistMin).toDate()
       }
     },
-    correctDatesSFCWIND: function () {
+    correctDatessfcWind: function () {
       if (this.bandMoments.histEnd.isAfter(this.$moment.utc(this.dateHistMax))) {
         this.dateHistEnd = this.$moment.utc(this.dateHistMax).toDate()
       }
@@ -329,23 +329,23 @@ export default {
     },
     variableOptions: function () {
       return {
-        TT: this.$gettext('Mean temperature'),
-        PR: this.$gettext('Mean precipitation'),
-        SND: this.$gettext('Snow depth'),
-        SIT: this.$gettext('Sea ice thickness'),
-        SIC: this.$gettext('Sea ice concentration'),
-        SFCWIND: this.$gettext('Near surface wind speed')
+        tas: this.$gettext('Mean temperature'),
+        pr: this.$gettext('Mean precipitation'),
+        snd: this.$gettext('Snow depth'),
+        Sea_Ice_Thickness: this.$gettext('Sea ice thickness'),
+        sic: this.$gettext('Sea ice concentration'),
+        sfcWind: this.$gettext('Near surface wind speed')
       }
     },
     dateHistMin: function () {
-      if (this.oapicIdVariable === 'TT' || this.oapicIdVariable === 'PR') {
+      if (this.oapicIdVariable === 'tas' || this.oapicIdVariable === 'pr') {
         return this.$moment.utc('1901-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('1900-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       }
     },
     dateHistMax: function () {
-      if (this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'SFCWIND') {
+      if (this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'sfcWind') {
         return this.$moment.utc('2005-11-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('2005-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
@@ -357,10 +357,10 @@ export default {
       let historicalYearEnd = ''
 
       // special case for Monthly surface wind dates
-      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'SFCWIND') {
+      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'sfcWind') {
         historicalYearStart = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
-      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'SFCWIND') {
+      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.oapicIdTimePeriod === 'ENS' && this.oapicIdVariable === 'sfcWind') {
         historicalYearEnd = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
 
