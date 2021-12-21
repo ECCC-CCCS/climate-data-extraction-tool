@@ -62,7 +62,7 @@
         :radio-inline="true"
         :radio-options="rangeTypeOptions"></option-radio>
 
-      <div id="historical-date-range" v-show="scenarioType === 'historical' && rangeType !=='year20'">
+      <div id="historical-date-range" v-show="scenarioType === 'historical' && rangeType !=='P20Y-Avg'">
         <date-select
           v-model="dateHistStart"
           :label="$gettext('Historical start date')"
@@ -92,7 +92,7 @@
           @click="clearDates"
           v-translate>Clear dates</button>
       </div>
-      <div id="rcp-date-range" v-show="scenarioType === 'projected' && rangeType !=='year20'">
+      <div id="rcp-date-range" v-show="scenarioType === 'projected' && rangeType !=='P20Y-Avg'">
         <date-select
           v-model="dateRcpStart"
           :label="$gettext('Start date')"
@@ -124,7 +124,7 @@
       </div>
 
       <var-select
-        v-show="rangeType === 'year20' && valueType === 'anomaly'"
+        v-show="rangeType === 'P20Y-Avg' && valueType === 'anomaly'"
         v-model="avg20Year"
         :label="$gettext('20-Year average range')"
         :select-options="avg20YearOptions"></var-select>
@@ -284,7 +284,7 @@ export default {
     },
     rangeType: function (newVal) {
       // Force percentile to 50th
-      if (newVal === 'year20') {
+      if (newVal === 'P20Y-Avg') {
         this.percentile = '50'
       }
     },
@@ -313,7 +313,7 @@ export default {
   },
   computed: {
     percentileOptions: function () {
-      if (this.rangeType === 'year20') {
+      if (this.rangeType === 'P20Y-Avg') {
         return {
           50: this.$gettext('50th percentile')
         }
