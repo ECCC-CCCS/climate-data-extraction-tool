@@ -473,8 +473,8 @@ export default {
     },
     urlWMS_CMBT: function () {
       return {
-        en: 'https://geogratis.gc.ca/maps/CBMT?',
-        fr: 'https://geogratis.gc.ca/cartes/CBCT?'
+        en: 'https://maps.geogratis.gc.ca/wms/CBMT?',
+        fr: 'https://cartes.geogratis.gc.ca/wms/CBCT?'
       }
     }
   },
