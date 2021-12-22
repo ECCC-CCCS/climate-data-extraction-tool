@@ -259,12 +259,12 @@ export default {
         return this.$gettext('Download:') + ' ' + title
       }
     },
-    wcs_download_url_chunk: function (bandChunk) {
-      let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
+    wcs_download_url_chunk: function (/*bandChunk*/) {
+      // let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
       let url = this.wcsCommonUrl
-      if (rangeSubset !== null) {
-        url += '&RANGESUBSET=' + rangeSubset
-      }
+      // if (rangeSubset !== null) {
+      //   url += '&RANGESUBSET=' + rangeSubset
+      // }
       return url
     },
     chunkDownload: function (data) {
