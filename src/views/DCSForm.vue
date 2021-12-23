@@ -165,6 +165,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
+
 import BBOXMap from '@/components/BBOXMap.vue'
 import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
 import FormatSelectVector from '@/components/FormatSelectVector.vue'
@@ -209,12 +211,38 @@ export default {
     }
   },
   computed: {
+    ...mapState('map', [
+      'clickLatLng'
+    ]),
     variableOptions: function () {
       return {
         tm: this.$gettext('Mean temperature'),
         tn: this.$gettext('Minimum temperature'),
         tx: this.$gettext('Maximum temperature'),
         pr: this.$gettext('Total precipitation')
+      }
+    },
+    pointInputs: function () {
+      const varToLayerVar = {
+        tm: 'TM',
+        tn: 'TN',
+        tx: 'TX',
+        pr: 'PR'
+      }
+      const timeToLayerTime = {
+        MAM: 'SPRING',
+        JJA: 'SUMMER',
+        SON: 'FALL',
+        DJF: 'WINTER',
+        annual: 'YEAR',
+        monthly: 'ENS'
+      }
+      let layer = this.oapicIdDataset + '.' + varToLayerVar[this.oapicIdVariable] + '.' + this.oapicScenario.replace('.', '') + '.' + timeToLayerTime[this.oapicIdTimePeriod] + '.PCTL' + this.percentile
+      return {
+        layer: layer,
+        y: this.clickLatLng === null ? null : this.clickLatLng.lat,
+        x: this.clickLatLng === null ? null : this.clickLatLng.lng,
+        format: this.wps_format
       }
     }
   }
