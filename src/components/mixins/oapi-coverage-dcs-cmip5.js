@@ -10,7 +10,7 @@ export const DCSCMIP5 = {
       dateRcpMax: this.$moment.utc('2100-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       dateHistStart: this.$moment.utc('1900-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       dateHistEnd: this.$moment.utc('2005-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      oapicIdVariable: 'TT',
+      oapicIdVariable: 'tas',
       oapicScenario: 'RCP2.6',
       oapicIdTimePeriod: 'annual',
       ows_bbox: '-154,38,-49,81',
@@ -35,25 +35,34 @@ export const DCSCMIP5 = {
 
       // adjust oapicScenario selection for History or Future
       if (newVal === 'historical') {
-        this.oapicScenario = newVal
         this.rangeType = 'custom'
 
         // Autocorrect histStart date for DCS if out of range
-        if (this.oapic_id_dataset === 'DCS') {
+        if (this.oapicIdDataset === 'DCS') {
           let histStart = this.$moment.utc(this.dateHistStart, this.dateConfigs.format)
           if (histStart.isBefore(this.dateConfigs.dateMin) || histStart.isAfter(this.dateConfigs.dateMax)) {
             this.dateHistStart = this.$moment.utc(this.dateConfigs.dateMin).toDate()
+          }
+        } else { // CMIP5
+          // Auto correct dates for Temp and Precip
+          if (this.oapicIdVariable === 'tas' || this.oapicIdVariable === 'pr') {
+            this.correctDatestas_pr()
           }
         }
       } else {
         this.oapicScenario = this.lastSelectedRCP
       }
     },
-    oapicIdTimePeriod: function (newVal) {
+    oapicIdTimePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
       // Auto select Absolute and custom time period for Monthly Ensembles
-      if (newVal === 'ENS') {
+      if (newVal === 'monthly') {
         this.valueType = 'absolute'
         this.rangeType = 'custom'
+
+        // Auto correct dates for wind selection (CMIP5)
+        if (this.oapicIdVariable === 'sfcWind' && this.oapicIdDataset === 'CMIP5') {
+          this.correctDatessfcWind()
+        }
       }
       // adjust dates if they are strings to match new date format
       this.dateRcpStart = this.formatDateToMoment(this.dateRcpStart).format(this.dateConfigs.format)
@@ -62,6 +71,12 @@ export const DCSCMIP5 = {
     valueType: function (newVal) {
       if (newVal === 'absolute') {
         this.rangeType = 'custom'
+      }
+    },
+    rangeType: function (newVal) {
+      // Force percentile to 50th
+      if (newVal === 'P20Y-Avg') {
+        this.percentile = '50'
       }
     }
   },
@@ -86,8 +101,31 @@ export const DCSCMIP5 = {
     }
   },
   computed: {
+    avg20YearOptions: function () {
+      return {
+        '2021-2040': '2021-2040',
+        '2041-2060': '2041-2060',
+        '2061-2080': '2061-2080',
+        '2081-2100': '2081-2100'
+      }
+    },
+    percentileOptions: function () {
+      if (this.rangeType === 'P20Y-Avg') {
+        return {
+          50: this.$gettext('50th percentile')
+        }
+      } else {
+        return {
+          5: this.$gettext('5th percentile'),
+          25: this.$gettext('25th percentile'),
+          50: this.$gettext('50th percentile'),
+          75: this.$gettext('75th percentile'),
+          95: this.$gettext('95th percentile')
+        }
+      }
+    },
     oapicCoverageId: function () {
-      return 'climate:' + this.oapic_id_dataset + ':' + this.scenarioType + ':' + this.timePeriodType + ':' + this.oapicValueType
+      return 'climate:' + this.oapicIdDataset + ':' + this.scenarioType + ':' + this.timePeriodType + ':' + this.oapicValueType
     },
     oapicBand: function () {
       if (this.rangeType === 'P20Y-Avg') {
@@ -106,7 +144,7 @@ export const DCSCMIP5 = {
       }
     },
     valueTypeOptions: function () {
-      if (this.oapicIdTimePeriod === 'ENS') {
+      if (this.oapicIdTimePeriod === 'monthly') {
         return { // monthly ensembles are absolute only
           absolute: this.$gettext('Actual values')
         }
@@ -122,7 +160,7 @@ export const DCSCMIP5 = {
         return {
           'custom': this.$gettext('User defined range')
         }
-      } else if (this.oapicIdTimePeriod === 'ENS' || this.valueType === 'ABS') {
+      } else if (this.oapicIdTimePeriod === 'monthly' || this.valueType === 'absolute') {
         return {
           'custom': this.$gettext('User defined range')
         }
@@ -140,22 +178,24 @@ export const DCSCMIP5 = {
         'RCP8.5': this.$gettext('High emissions scenario (RCP 8.5)')
       }
     },
-    timePeriodOptions: function () {
-      let options = {
-        SPRING: this.$gettext('Spring (March-May)'),
-        SUMMER: this.$gettext('Summer (June-August)'),
-        FALL: this.$gettext('Fall (September-November)'),
-        WINTER: this.$gettext('Winter (December-February)'),
-        YEAR: this.$gettext('Annual'),
-        ENS: this.$gettext('Monthly')
+    seasonOptions: function () {
+      return {
+        MAM: this.$gettext('Spring (March-May)'),
+        JJA: this.$gettext('Summer (June-August)'),
+        SON: this.$gettext('Fall (September-November)'),
+        DJF: this.$gettext('Winter (December-February)')
       }
-      return options
+    },
+    timePeriodOptions: function () {
+      return {
+        ...this.seasonOptions,
+        annual: this.$gettext('Annual'),
+        monthly: this.$gettext('Monthly')
+      }
     },
     timePeriodType: function () {
-      if (this.oapicIdTimePeriod === 'YEAR') {
-        return 'annual'
-      } else if (this.oapicIdTimePeriod === 'ENS') {
-        return 'monthly'
+      if (['annual', 'monthly'].includes(this.oapicIdTimePeriod)) {
+        return this.oapicIdTimePeriod
       } else {
         return 'seasonal'
       }
@@ -167,7 +207,7 @@ export const DCSCMIP5 = {
       }
     },
     dateHistMin: function () {
-      if (this.oapic_id_dataset === 'DCS' && this.scenarioType === 'historical') {
+      if (this.oapicIdDataset === 'DCS' && this.scenarioType === 'historical') {
         return this.$moment.utc('1951-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('1900-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
@@ -179,7 +219,7 @@ export const DCSCMIP5 = {
     dateConfigs: function () {
       let dateMin = this.scenarioType === 'projected' ? this.dateRcpMin : this.dateHistMin
       let dateMax = this.scenarioType === 'projected' ? this.dateRcpMax : this.dateHistMax
-      if (this.oapicIdTimePeriod === 'ENS') {
+      if (this.oapicIdTimePeriod === 'monthly') {
         return {
           minimumView: 'month',
           format: 'YYYY-MM',

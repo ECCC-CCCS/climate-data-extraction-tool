@@ -18,15 +18,13 @@
         :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
     </details>
 
-    <info-contact-support></info-contact-support>
-
     <bbox-map
       v-model="ows_bbox"
       :allow-click-point="true"
       @change="splitBBOXString"></bbox-map>
 
     <var-select
-      v-model="wcs_id_variable"
+      v-model="oapicIdVariable"
       :select-options="variableOptions"></var-select>
 
     <option-radio
@@ -35,12 +33,12 @@
       :radio-options="scenarioTypeOptions"></option-radio>
 
     <scenario-select
-      v-show="scenarioType === 'RCP'"
-      v-model="wcs_id_scenario"
+      v-show="scenarioType === 'projected'"
+      v-model="oapicScenario"
       :select-options="scenarioOptions"></scenario-select>
 
     <var-select
-      v-model="wcs_id_timePeriod"
+      v-model="oapicIdTimePeriod"
       :label="$gettext('Time interval / Time of year')"
       :info-text="[infoDailyData]"
       :select-options="timePeriodOptions"></var-select>
@@ -65,7 +63,7 @@
         :radio-inline="true"
         :radio-options="rangeTypeOptions"></option-radio>
 
-      <div id="historical-date-range" v-show="scenarioType === 'HISTO' && rangeType !=='year20'">
+      <div id="historical-date-range" v-show="scenarioType === 'historical' && rangeType !=='P20Y-Avg'">
         <date-select
           v-model="dateHistStart"
           :label="$gettext('Historical start date')"
@@ -95,7 +93,7 @@
           @click="clearDates"
           v-translate>Clear dates</button>
       </div>
-      <div id="rcp-date-range" v-show="scenarioType === 'RCP' && rangeType !=='year20'">
+      <div id="rcp-date-range" v-show="scenarioType === 'projected' && rangeType !=='P20Y-Avg'">
         <date-select
           v-model="dateRcpStart"
           :label="$gettext('Start date')"
@@ -127,7 +125,7 @@
       </div>
 
       <var-select
-        v-show="rangeType === 'year20' && valueType === 'ANO'"
+        v-show="rangeType === 'P20Y-Avg' && valueType === 'anomaly'"
         v-model="avg20Year"
         :label="$gettext('20-Year average range')"
         :select-options="avg20YearOptions"></var-select>
@@ -136,7 +134,7 @@
     <format-select-raster
       class="mrgn-tp-md"
       v-show="!pointClickOn"
-      v-model="wcs_format"
+      v-model="oapicFormat"
       :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
 
     <format-select-vector
@@ -144,20 +142,12 @@
       v-show="pointClickOn"
       v-model="wps_format"></format-select-vector>
 
-    <details v-show="!pointClickOn">
-      <summary v-translate>Advanced options</summary>
-      <var-select
-        v-model="ows_crs"
-        :label="crsLabel"
-        :select-options="crsOptions"></var-select>
-    </details>
-
     <url-box
       v-show="!pointClickOn"
       :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="wcs_download_url"
-      :layer-format="wcs_format"
-      :wcs-common-url="wcsCommonUrl"
+      :ows-url-formatter="oapicUrlFormatter"
+      :layer-format="oapicFormat"
+      :wcs-common-url="oapicUrl"
       :wcs-band-chunks="chunkedBandsParam"
       :wcs-num-bands="dateRangeNumBands"
       :band-range-format="bandRangeFormat"
@@ -189,15 +179,15 @@ import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import PointDownloadBox from '@/components/PointDownloadBox.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { wcs } from '@/components/mixins/wcs.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
-import { DCSCMIP5 } from '@/components/mixins/dcs-cmip5.js'
+import { DCSCMIP5 } from '@/components/mixins/oapi-coverage-dcs-cmip5.js'
 import { wps } from '@/components/mixins/wps.js'
 
 export default {
   name: 'DCSForm',
-  mixins: [wcs, ows, datasets, DCSCMIP5, wps],
+  mixins: [oapiCoverage, ows, datasets, DCSCMIP5, wps],
   components: {
     'bbox-map': BBOXMap,
     FormatSelectRaster,
@@ -215,50 +205,18 @@ export default {
   },
   data () {
     return {
-      wcs_id_dataset: 'DCS',
-      wcs_id_variable: 'TM',
+      oapicIdDataset: 'DCS',
+      oapicIdVariable: 'tm',
       MAX_BANDS: 100
     }
   },
-  watch: {
-    rangeType: function (newVal) {
-      // Auto select 50th percentile for 20 year averages
-      if (newVal === 'year20') {
-        this.percentile = 'PCTL50'
-      }
-    }
-  },
   computed: {
-    percentileOptions: function () {
-      if (this.rangeType === 'year20') {
-        return {
-          PCTL50: this.$gettext('50th percentile')
-        }
-      } else {
-        return {
-          PCTL5: this.$gettext('5th percentile'),
-          PCTL25: this.$gettext('25th percentile'),
-          PCTL50: this.$gettext('50th percentile'),
-          PCTL75: this.$gettext('75th percentile'),
-          PCTL95: this.$gettext('95th percentile')
-        }
-      }
-    },
     variableOptions: function () {
       return {
-        TM: this.$gettext('Mean temperature'),
-        TN: this.$gettext('Minimum temperature'),
-        TX: this.$gettext('Maximum temperature'),
-        PR: this.$gettext('Total precipitation')
-      }
-    },
-    avg20YearOptions: function () {
-      return {
-        // '1986-2005': '1986-2005',
-        '2021-2040': '2021-2040',
-        '2041-2060': '2041-2060',
-        '2061-2080': '2061-2080',
-        '2081-2100': '2081-2100'
+        tm: this.$gettext('Mean temperature'),
+        tn: this.$gettext('Minimum temperature'),
+        tx: this.$gettext('Maximum temperature'),
+        pr: this.$gettext('Total precipitation')
       }
     }
   }

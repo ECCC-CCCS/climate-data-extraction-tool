@@ -28,8 +28,8 @@ export const oapiCoverage = {
       return this.dateRangeNumBands > this.MAX_BANDS // default; only applies to CanGRD, CMIP5 and DCS
     },
     timePeriodIsMonthly: function () {
-      // MONTHLY for CanGRD; ENS for DCS/CMIP5
-      return (this.oapicIdTimePeriod === 'MONTHLY' || this.oapicIdTimePeriod === 'ENS')
+      // MONTHLY for CanGRD; monthly for DCS/CMIP5
+      return (this.oapicIdTimePeriod === 'MONTHLY' || this.oapicIdTimePeriod === 'monthly')
     },
     bandsEmptyOnMonthly: function () {
       let startDate = this.$moment.utc(this.dateStartMoment).format(this.dateConfigs.format)
@@ -74,7 +74,7 @@ export const oapiCoverage = {
 
         return chunkedBands
       } else { // no bands (empty)
-        if (this.oapic_id_dataset === 'CANGRD' && this.oapic_id_cangrdType === 'TREND') {
+        if (this.oapicIdDataset === 'CANGRD' && this.oapic_id_cangrdType === 'TREND') {
           // CanGRD trends special title
           return [{
             'start': null,
@@ -82,7 +82,7 @@ export const oapiCoverage = {
             'duration': 0,
             'specialTitle': this.variableTypeOptions[this.oapic_id_cangrdType]
           }]
-        } else if (this.rangeType === 'P20Y-Avg' && (this.oapic_id_dataset === 'DCS' || this.oapic_id_dataset === 'CMIP5')) {
+        } else if (this.rangeType === 'P20Y-Avg' && (this.oapicIdDataset === 'DCS' || this.oapicIdDataset === 'CMIP5')) {
           // DCS or CMIP5 20-year average special title
           return [{
             'start': null,
@@ -144,14 +144,24 @@ export const oapiCoverage = {
     getOapicCommonParams: function () {
       let urlParams = []
       urlParams.push('f=' + this.oapicFormat)
-      urlParams.push(`range-subset=${this.oapicIdVariable.toLowerCase()}`)
+      urlParams.push(`range-subset=${this.oapicIdVariable}`)
 
       // subset
+      let subset = []
       if (this.rangeType === 'P20Y-Avg' && this.valueType === 'anomaly') {
-        urlParams.push(`subset=P20Y-Avg("${this.avg20Year}"),scenario("${this.oapicScenario}")`)
+        subset.push(`subset=P20Y-Avg("${this.avg20Year}")`)
       } else {
-        urlParams.push(`subset=scenario("${this.oapicScenario}"),percentile(${this.percentile})`)
+        subset.push(`subset=percentile(${this.percentile})`)
       }
+      // subset: scenario
+      if (this.scenarioType === 'projected') {
+        subset.push(`scenario("${this.oapicScenario}")`)
+      }
+      // subset: seasonal
+      if (this.timePeriodType === 'seasonal') {
+        subset.push(`season("${this.oapicIdTimePeriod}")`)
+      }
+      urlParams.push(subset.join(','))
 
       // bbox
       this.splitBBOXString()
@@ -161,6 +171,7 @@ export const oapiCoverage = {
       if (this.rangeType !== 'P20Y-Avg') {
         urlParams.push(`datetime=${this.dateStartMoment.format(this.dateConfigs.format)}/${this.dateEndMoment.format(this.dateConfigs.format)}`)
       }
+      console.info(urlParams)
       return urlParams
     },
     oapicUrlFormatter: function () {
@@ -202,7 +213,7 @@ export const oapiCoverage = {
       if (start === null || end === null) {
         return 0
       } else if (this.timePeriodIsMonthly && this.bandsInRange) {
-        // MONTHLY for CanGRD; ENS for DCS/CMIP5
+        // MONTHLY for CanGRD; monthly for DCS/CMIP5
         return Math.ceil(this.$moment.duration(end.diff(start)).asMonths()) + 1 // +1 for range is inclusive
       } else if (this.bandsInRange) { // yearly date range
         return Math.ceil(this.$moment.duration(end.diff(start)).asYears())
