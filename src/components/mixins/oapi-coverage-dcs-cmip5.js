@@ -157,10 +157,11 @@ export const DCSCMIP5 = {
     },
     rangeTypeOptions: function () {
       if (this.scenarioType === 'historical') {
+        console.log('Historical only')
         return {
           'custom': this.$gettext('User defined range')
         }
-      } else if (this.oapicIdTimePeriod === 'monthly' || this.valueType === 'absolute') {
+      } else if (this.oapicIdTimePeriod === 'monthly' || (this.valueType === 'absolute' && this.oapicIdTimePeriod === 'monthly')) {
         return {
           'custom': this.$gettext('User defined range')
         }

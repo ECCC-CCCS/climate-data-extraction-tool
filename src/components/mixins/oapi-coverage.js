@@ -11,21 +11,14 @@ export const oapiCoverage = {
       oapic_height: '',
       oapic_id: 'ABCDEFG',
       date_start: '',
-      date_end: '',
-      MAX_BANDS: 255
+      date_end: ''
     }
   },
   computed: {
-    MAX_YEARS: function () {
-      return parseInt(this.MAX_BANDS / 12)
-    },
     selectedCoverageIdOption: function () {
       let wcsCoverage = {}
       wcsCoverage[this.oapicCoverageId] = this.currentRouteTitle
       return wcsCoverage
-    },
-    tooManyBands: function () {
-      return this.dateRangeNumBands > this.MAX_BANDS // default; only applies to CanGRD, CMIP5 and DCS
     },
     timePeriodIsMonthly: function () {
       // MONTHLY for CanGRD; monthly for DCS/CMIP5
@@ -36,43 +29,16 @@ export const oapiCoverage = {
       let endDate = this.$moment.utc(this.dateEndMoment).format(this.dateConfigs.format)
       return (startDate === 'Invalid date' && endDate === 'Invalid date' && this.timePeriodIsMonthly)
     },
-    chunkedBandsParam: function () {
-      let momentDateUnit = this.timePeriodIsMonthly ? 'M' : 'y' // Month or year
-      let chunkStartMoment = this.$moment.utc(this.dateStartMoment)
-      let chunkEndMoment = this.$moment.utc(this.dateStartMoment)
-      let chunkDuration
-
+    dateRangeParams: function () {
       if (this.hasCommonBandErrors) { // range 0 or errors
         return []
       } else if (this.usesBands) {
-        let chunkedBands = []
-        let chunkLimit = this.MAX_BANDS
-        do {
-          let chunkStartDate = chunkStartMoment.format(this.dateConfigs.format)
-          chunkEndMoment.add(chunkLimit, momentDateUnit)
-          if (chunkEndMoment.isAfter(this.dateEndMoment)) { // max date
-            chunkEndMoment = this.$moment.utc(this.dateEndMoment)
-          }
-          let chunkEndDate = chunkEndMoment.format(this.dateConfigs.format)
-
-          chunkDuration = this.$moment.duration(chunkEndMoment.diff(chunkStartMoment))
-          chunkDuration = Math.ceil(this.timePeriodIsMonthly ? chunkDuration.asMonths() : (chunkDuration.asYears() - 1))
-          if (chunkDuration <= 0) {
-            chunkDuration = 1 // case when start === end
-          }
-
-          let bandChunk = {
-            'start': chunkStartDate,
-            'end': chunkEndDate,
-            'duration': chunkDuration
-          }
-          chunkedBands.push(bandChunk)
-
-          // Next chunk
-          chunkStartMoment = this.$moment.utc(chunkEndMoment).add(1, momentDateUnit)
-        } while (chunkEndMoment.isBefore(this.dateEndMoment))
-
-        return chunkedBands
+        return [{
+          'start': this.dateStartMoment.format(this.dateConfigs.format),
+          'end': this.dateEndMoment.format(this.dateConfigs.format),
+          'duration': 0,
+          'specialTitle': this.rangeTypeOptions[this.rangeType]
+        }]
       } else { // no bands (empty)
         if (this.oapicIdDataset === 'CANGRD' && this.oapic_id_cangrdType === 'TREND') {
           // CanGRD trends special title
@@ -92,6 +58,7 @@ export const oapiCoverage = {
           }]
         }
 
+        // default
         return [{
           'start': null,
           'end': null,
@@ -101,9 +68,6 @@ export const oapiCoverage = {
     },
     usesBands: function () {
       return (this.oapicBand !== null && this.oapicBand !== 'Invalid date')
-    },
-    dateRangeNumBands: function () {
-      return 0 // default; only applies to CanGRD, CMIP5 and DCS
     },
     dateRangeErrorMessage: function () {
       if (this.bandStartIsEmptyOnly || this.bandEndIsEmptyOnly) {

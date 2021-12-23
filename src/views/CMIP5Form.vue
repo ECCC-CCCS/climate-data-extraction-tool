@@ -140,18 +140,17 @@
       v-show="pointClickOn"
       v-model="wps_format"></format-select-vector>
 
-    <url-box
+    <data-download-box
       v-show="!pointClickOn"
       :layer-options="selectedCoverageIdOption"
       :ows-url-formatter="oapicUrlFormatter"
       :layer-format="oapicFormat"
-      :wcs-common-url="oapicUrl"
-      :wcs-band-chunks="chunkedBandsParam"
-      :wcs-num-bands="dateRangeNumBands"
+      :oapic-common-url="oapicUrl"
+      :date-range-chunks="dateRangeParams"
       :band-range-format="bandRangeFormat"
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download link')">
-    </url-box>
+    </data-download-box>
 
     <point-download-box
       v-show="pointClickOn"
@@ -171,7 +170,7 @@ import VarSelect from '@/components/VarSelect.vue'
 import ScenarioSelect from '@/components/ScenarioSelect.vue'
 import DateSelect from '@/components/DateSelect.vue'
 import OptionRadio from '@/components/OptionRadio.vue'
-import URLBox from '@/components/URLBox.vue'
+import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import OpenPortalLinks from '@/components/OpenPortalLinks.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import PointDownloadBox from '@/components/PointDownloadBox.vue'
@@ -194,7 +193,7 @@ export default {
     ScenarioSelect,
     DateSelect,
     OptionRadio,
-    'url-box': URLBox,
+    DataDownloadBox,
     OpenPortalLinks,
     DataAccessDocLink,
     PointDownloadBox,
