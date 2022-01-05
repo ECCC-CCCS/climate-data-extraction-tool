@@ -131,11 +131,12 @@
         :select-options="avg20YearOptions"></var-select>
     </fieldset>
 
-    <format-select-raster
+    <format-select-file
       class="mrgn-tp-md"
       v-show="!pointClickOn"
       v-model="oapicFormat"
-      :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+      :formats="fileFormats"
+      :info-text="[infoSupportDeskGridPoint]"></format-select-file>
 
     <format-select-vector
       class="mrgn-tp-md"
@@ -168,7 +169,7 @@
 import { mapState } from "vuex"
 
 import BBOXMap from '@/components/BBOXMap.vue'
-import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
+import FormatSelectFile from '@/components/FormatSelectFile.vue'
 import FormatSelectVector from '@/components/FormatSelectVector.vue'
 import VarSelect from '@/components/VarSelect.vue'
 import ScenarioSelect from '@/components/ScenarioSelect.vue'
@@ -191,7 +192,7 @@ export default {
   mixins: [oapiCoverage, ows, datasets, DCSCMIP5, wps],
   components: {
     'bbox-map': BBOXMap,
-    FormatSelectRaster,
+    FormatSelectFile,
     FormatSelectVector,
     VarSelect,
     ScenarioSelect,

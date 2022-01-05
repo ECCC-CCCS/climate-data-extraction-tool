@@ -61,8 +61,9 @@
       :min-date="forePeriodDateRange.min"
       :max-date="forePeriodDateRange.max"></date-select>
 
-    <format-select-raster
-      v-model="wcs_format"></format-select-raster>
+    <format-select-file
+      v-model="wcs_format"
+      :formats="fileFormats"></format-select-file>
 
     <details>
       <summary v-translate>Advanced options</summary>
@@ -87,7 +88,7 @@
 
 <script>
 import BBOXMap from '@/components/BBOXMap.vue'
-import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
+import FormatSelectFile from '@/components/FormatSelectFile.vue'
 import VarSelect from '@/components/VarSelect.vue'
 import NumSelect from '@/components/NumSelect.vue'
 import DateSelect from '@/components/DateSelect.vue'
@@ -104,7 +105,7 @@ export default {
   mixins: [wcs, ows, datasets],
   components: {
     'bbox-map': BBOXMap,
-    'format-select-raster': FormatSelectRaster,
+    FormatSelectFile,
     'var-select': VarSelect,
     'num-select': NumSelect,
     'date-select': DateSelect,
@@ -130,6 +131,10 @@ export default {
         minimumView: 'month',
         format: 'YYYY-MM',
         placeholder: 'YYYY-MM'
+      },
+      fileFormats: {
+        json: 'json',
+        GRIB: 'GRIB'
       }
     }
   },
