@@ -223,9 +223,9 @@ export default {
       }
     },
     selectedCoverageIdOption: function () {
-      let wcsCoverage = {}
-      wcsCoverage[this.wcs_coverage_id] = this.currentRouteTitle + ' (' + this.wcs_coverage_id + ')'
-      return wcsCoverage
+      let options = {}
+      options[this.wcs_coverage_id] = this.currentRouteTitle + ' (' + this.wcs_coverage_id + ')'
+      return options
     },
     forecastDateMoment: function () {
       return this.$moment.utc(this.forecastDate)

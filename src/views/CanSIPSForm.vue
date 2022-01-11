@@ -14,26 +14,24 @@
       <p v-html="openPortalHtml"></p>
     </details>
 
-    <info-contact-support></info-contact-support>
-
     <bbox-map
       v-model="ows_bbox"
       @change="splitBBOXString"></bbox-map>
 
     <var-select
-      v-model="wcs_id_variable"
+      v-model="oapicIdVariable"
       :label="$gettext('Variable')"
       :select-options="variableOptions"></var-select>
 
     <var-select
-      v-model="wcs_id_type"
+      v-model="oapicIdType"
       :label="$gettext('Model type')"
       :disabled="true"
       :readonly="true"
       :select-options="typeOptions"></var-select>
 
     <num-select
-      v-model="wcs_id_member"
+      v-model="oapicMember"
       :label="$gettext('Member')"
       :required="true"
       :max="20"
@@ -62,7 +60,7 @@
       :max-date="forePeriodDateRange.max"></date-select>
 
     <format-select-file
-      v-model="wcs_format"
+      v-model="oapicFormat"
       :formats="fileFormats"></format-select-file>
 
     <details>
@@ -74,13 +72,13 @@
         :select-options="crsOptions"></var-select>
     </details>
 
-    <url-box
-      :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="wcs_download_url"
-      :layer-format="wcs_format"
-      :has-errors="hasErrors"
-      :url-box-title="$gettext('Data download link')">
-    </url-box>
+    <code>{{ oapicUrl }}</code>
+    <data-download-box
+      :file-name="filename"
+      :file-format="oapicFormat"
+      :download-url="oapicUrl"
+      :has-errors="hasErrors">
+    </data-download-box>
 
     <more-resources></more-resources>
   </section>
@@ -92,35 +90,36 @@ import FormatSelectFile from '@/components/FormatSelectFile.vue'
 import VarSelect from '@/components/VarSelect.vue'
 import NumSelect from '@/components/NumSelect.vue'
 import DateSelect from '@/components/DateSelect.vue'
-import URLBox from '@/components/URLBox.vue'
+import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { wcs } from '@/components/mixins/wcs.js'
 import { ows } from '@/components/mixins/ows.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
 import { datasets } from '@/components/mixins/datasets.js'
 
 export default {
   name: 'CanSIPSForm',
-  mixins: [wcs, ows, datasets],
+  mixins: [ows, oapiCoverage, datasets],
   components: {
     'bbox-map': BBOXMap,
     FormatSelectFile,
-    'var-select': VarSelect,
-    'num-select': NumSelect,
-    'date-select': DateSelect,
-    'url-box': URLBox,
+    VarSelect,
+    NumSelect,
+    DateSelect,
+    DataDownloadBox,
     DataAccessDocLink,
     TipsUsingTool,
     MoreResources
   },
   data () {
     return {
-      wcs_id_dataset: 'CANSIPS',
-      wcs_id_type: 'FORE',
-      wcs_id_product: 'MEM',
-      wcs_id_variable: 'ETA_PN-SLP',
-      wcs_id_member: 1,
+      oapicIdDataset: 'CanSIPS',
+      oapicIdType: 'forecast',
+      oapicIdProduct: 'members',
+      oapicIdVariable: '1',
+      oapicMember: 1,
+      oapicFormat: 'json',
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       foreRunMomentMin: this.$moment.utc('2013-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
@@ -139,7 +138,7 @@ export default {
     }
   },
   watch: {
-    wcs_id_type: function (newVal) {
+    oapicIdType: function (newVal) {
       // Auto adjust model run date if out of range
       if (newVal === 'HIND') { // Hindcast type
         if (!this.modelRunMoment.isBetween(this.hindRunMomentMin, this.hindRunMomentMax, 'month', '[]')) {
@@ -157,40 +156,28 @@ export default {
     }
   },
   computed: {
-    wcs_coverage_id: function () {
-      // generate coverageID
-      let coverageIdParts = []
-      coverageIdParts.push(this.wcs_id_dataset)
-      if (this.wcs_id_type === 'HIND') {
-        coverageIdParts.push(this.wcs_id_type)
-      }
-      coverageIdParts.push(this.wcs_id_product)
-      coverageIdParts.push(this.wcs_id_variable)
-      coverageIdParts.push((this.wcs_id_member < 10 ? '0' : '') + this.wcs_id_member)
-      return coverageIdParts.join('.')
+    oapicCoverageId: function () {
+      return `weather:${this.oapicIdDataset}:250km:${this.oapicIdType}:${this.oapicIdProduct}`
     },
     typeOptions: function () {
       return {
         // 'HIND': this.$gettext('Hindcast'),
-        'FORE': this.$gettext('Forecast')
+        'forecast': this.$gettext('Forecast')
       }
     },
     variableOptions: function () {
       return {
-        'ETA_PN-SLP': this.$gettext('Sea level pressure'),
-        'ETA_RT': this.$gettext('Instantaneous precipitation rate (m/s)'),
-        'ETA_TT': this.$gettext('Air temperature'),
-        'ETA_WTMP': this.$gettext('Water temperature'),
-        'PRES_GZ.500': this.$gettext('Geopotential height at 500mb'),
-        'PRES_TT.850': this.$gettext('Air temperature at 850mb')
-        // 'PRES_UU.200': this.$gettext('Winds at 200mb'), // PRES_UU currently not served, never was
+        '4': this.$gettext('Sea level pressure'),
+        '3': this.$gettext('Instantaneous precipitation rate (m/s)'),
+        '1': this.$gettext('Air temperature'),
+        '6': this.$gettext('Water temperature'),
+        '2': this.$gettext('Geopotential height at 500mb'),
+        '5': this.$gettext('Air temperature at 850mb')
         // 'PRES_UU.850': this.$gettext('Winds at 850mb')
       }
     },
-    selectedCoverageIdOption: function () {
-      let wcsCoverage = {}
-      wcsCoverage[this.wcs_coverage_id] = this.variableOptions[this.wcs_id_variable] + ' (' + this.wcs_coverage_id + ')'
-      return wcsCoverage
+    filename: function () {
+      return this.variableOptions[this.oapicIdVariable] + ' (' + this.oapicCoverageId + ')'
     },
     forecastPeriodMoment: function () {
       return this.$moment.utc(this.forecastPeriod)
@@ -212,7 +199,7 @@ export default {
     },
     modelRunRangeMoment: function () {
       // Model run range limits based on what type selected
-      if (this.wcs_id_type === 'HIND') {
+      if (this.oapicIdType === 'HIND') {
         return {
           min: this.hindRunMomentMin,
           max: this.hindRunMomentMax
@@ -275,31 +262,22 @@ export default {
     }
   },
   methods: {
-    wcs_download_url: function (coverageId) { // replaces existing function from wcs mixin
-      this.splitBBOXString()
-      let url = this.wcs2_weather_url_base + '&'
-      let urlParams = this.getWCSCommonParams(coverageId)
-
-      // Model Run
-      let mr = this.modelRunISO
-      if (mr !== '' && mr !== null) {
-        urlParams.push('DIM_REFERENCE_TIME=' + mr)
-      }
-
-      // Forecast Time
-      let ft = this.forecastPeriodISO
-      if (ft !== '' && ft !== null) {
-        urlParams.push('TIME=' + ft)
-      }
-
-      url += urlParams.join('&')
-      return url
-    },
     adjustForePeriod: function () {
       // Auto adjust forecast period date if out of range
       if (!this.forecastPeriodMoment.isBetween(this.forePeriodMomentRange.min, this.forePeriodMomentRange.max, 'month')) {
         this.forecastPeriod = this.forePeriodMomentRange.min.format('YYYY-MM')
       }
+    },
+    getOapicParams: function () {
+      let urlParams = []
+      urlParams.push('f=' + this.oapicFormat)
+      urlParams.push(`range-subset=${this.oapicIdVariable}`)
+
+      // bbox
+      this.splitBBOXString()
+      urlParams.push(`bbox=${this.bbox_parts.min_x.toFixed(3)},${this.bbox_parts.min_y.toFixed(3)},${this.bbox_parts.max_x.toFixed(3)},${this.bbox_parts.max_y.toFixed(3)}`)
+
+      return urlParams
     }
   }
 }

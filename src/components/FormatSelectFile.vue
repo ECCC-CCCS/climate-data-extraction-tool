@@ -31,7 +31,8 @@
         </option>
     </select>
 
-    <div id="fileFormatDescriptions" class="alert alert-info mrgn-tp-md" aria-live="polite" role="region">
+    <div id="fileFormatDescriptions" class="alert alert-info mrgn-tp-md" aria-live="polite" role="region"
+      v-if="Object.prototype.hasOwnProperty.call(formatDescriptionsHtml, value)">
       <p>
         <span v-html="formatDescriptionsHtml[value]"></span>
       </p>

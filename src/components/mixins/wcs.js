@@ -18,9 +18,9 @@ export const wcs = {
       return parseInt(this.MAX_BANDS / 12)
     },
     selectedCoverageIdOption: function () {
-      let wcsCoverage = {}
-      wcsCoverage[this.wcs_coverage_id] = this.currentRouteTitle
-      return wcsCoverage
+      let options = {}
+      options[this.wcs_coverage_id] = this.currentRouteTitle
+      return options
     },
     tooManyBands: function () {
       return this.dateRangeNumBands > this.MAX_BANDS // default; only applies to CanGRD, CMIP5 and DCS

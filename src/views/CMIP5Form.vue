@@ -143,14 +143,12 @@
 
     <data-download-box
       v-show="!pointClickOn"
-      :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="oapicUrlFormatter"
-      :layer-format="oapicFormat"
-      :oapic-common-url="oapicUrl"
+      :file-name="filename"
+      :file-format="oapicFormat"
+      :download-url="oapicUrl"
       :date-range-chunks="dateRangeParams"
       :band-range-format="bandRangeFormat"
-      :has-errors="hasErrors"
-      :url-box-title="$gettext('Data download link')">
+      :has-errors="hasErrors">
     </data-download-box>
 
     <point-download-box

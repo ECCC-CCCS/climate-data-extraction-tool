@@ -85,6 +85,38 @@ export const DCSCMIP5 = {
     }
   },
   methods: {
+    getOapicParams: function () {
+      let urlParams = []
+      urlParams.push('f=' + this.oapicFormat)
+      urlParams.push(`range-subset=${this.oapicIdVariable}`)
+
+      // subset
+      let subset = []
+      if (this.rangeType === 'P20Y-Avg' && this.valueType === 'anomaly') {
+        subset.push(`subset=P20Y-Avg("${this.avg20Year}")`)
+      } else {
+        subset.push(`subset=percentile(${this.percentile})`)
+      }
+      // subset: scenario
+      if (this.scenarioType === 'projected') {
+        subset.push(`scenario("${this.oapicScenario}")`)
+      }
+      // subset: seasonal
+      if (this.timePeriodType === 'seasonal') {
+        subset.push(`season("${this.oapicIdTimePeriod}")`)
+      }
+      urlParams.push(subset.join(','))
+
+      // bbox
+      this.splitBBOXString()
+      urlParams.push(`bbox=${this.bbox_parts.min_x.toFixed(3)},${this.bbox_parts.min_y.toFixed(3)},${this.bbox_parts.max_x.toFixed(3)},${this.bbox_parts.max_y.toFixed(3)}`)
+
+      // datetime
+      if (this.rangeType !== 'P20Y-Avg') {
+        urlParams.push(`datetime=${this.dateStartMoment.format(this.dateConfigs.format)}/${this.dateEndMoment.format(this.dateConfigs.format)}`)
+      }
+      return urlParams
+    },
     dateIsString: function (date) {
       return typeof date === 'string'
     },
@@ -161,7 +193,6 @@ export const DCSCMIP5 = {
     },
     rangeTypeOptions: function () {
       if (this.scenarioType === 'historical') {
-        console.log('Historical only')
         return {
           'custom': this.$gettext('User defined range')
         }
