@@ -534,6 +534,12 @@
 			}
 		},
 		"$$NOCONTEXT": {
+			":": {
+				"msgid": ":",
+				"msgstr": [
+					""
+				]
+			},
 			": 1-833-517-0376; get help finding, understanding and using climate information": {
 				"msgid": ": 1-833-517-0376; get help finding, understanding and using climate information",
 				"msgstr": [
@@ -3039,6 +3045,12 @@
 			}
 		},
 		"$$NOCONTEXT": {
+			":": {
+				"msgid": ":",
+				"msgstr": [
+					" :"
+				]
+			},
 			": 1-833-517-0376; get help finding, understanding and using climate information": {
 				"msgid": ": 1-833-517-0376; get help finding, understanding and using climate information",
 				"msgstr": [
