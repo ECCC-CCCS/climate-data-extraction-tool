@@ -24,23 +24,23 @@
       :allow-click-point="true"
       @change="splitBBOXString"></bbox-map>
     <var-select
-      v-model="wcs_id_cangrdType"
+      v-model="oapicValueType"
       :label="$gettext('Value type')"
       :select-options="variableTypeOptions"></var-select>
 
     <var-select
-      v-model="wcs_id_variable"
+      v-model="oapicIdVariable"
       :label="$gettext('Variable')"
       :select-options="variableOptions"></var-select>
 
     <var-select
-      v-model="wcs_id_timePeriod"
+      v-model="oapicIdTimePeriod"
       :label="$gettext('Time interval / Time of year')"
       :select-options="timePeriodOptions"></var-select>
 
     <fieldset v-show="!pointClickOn">
       <legend v-translate>Date range</legend>
-      <div v-show="wcs_id_cangrdType === 'ANO'">
+      <div v-show="oapicValueType === 'anomaly'">
         <date-select
           v-model="date_start"
           :label="$gettext('Start date')"
@@ -74,44 +74,31 @@
 
     <div
       id="info-date-not-required-trends"
-      v-show="wcs_id_cangrdType !== 'ANO'"
+      v-show="oapicValueType !== 'anomaly'"
       class="alert alert-info">
       <p v-translate>Date ranges not required for CanGRD trends</p>
     </div>
 
-    <format-select-raster
+    <format-select-file
       class="mrgn-tp-md"
       v-show="!pointClickOn"
-      v-model="wcs_format"
-      :info-text="[infoSupportDeskGridPoint]"></format-select-raster>
+      v-model="oapicFormat"
+      :formats="fileFormats"
+      :info-text="[infoSupportDeskGridPoint]"></format-select-file>
 
     <format-select-vector
       class="mrgn-tp-md"
       v-show="pointClickOn"
       v-model="wps_format"></format-select-vector>
 
-    <details
-      class="mrgn-tp-md"
-      v-show="!pointClickOn">
-      <summary v-translate>Advanced options</summary>
-      <var-select
-        v-model="ows_crs"
-        :label="crsLabel"
-        :select-options="crsOptions"></var-select>
-    </details>
-
-    <url-box
+    <data-download-box
       v-show="!pointClickOn"
-      :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="wcs_download_url"
-      :layer-format="wcs_format"
-      :wcs-common-url="wcsCommonUrl"
-      :wcs-band-chunks="chunkedBandsParam"
-      :wcs-num-bands="dateRangeNumBands"
-      :band-range-format="bandRangeFormat"
-      :has-errors="hasErrors"
-      :url-box-title="$gettext('Data download link')">
-    </url-box>
+      :file-name="filename"
+      :file-format="oapicFormat"
+      :download-url="oapicUrl"
+      :date-range-chunks="dateRangeParams"
+      :has-errors="hasErrors">
+    </data-download-box>
 
     <point-download-box
       v-show="pointClickOn"
@@ -125,64 +112,66 @@
 
 <script>
 import BBOXMap from '@/components/BBOXMap.vue'
-import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
+import FormatSelectFile from '@/components/FormatSelectFile.vue'
 import FormatSelectVector from '@/components/FormatSelectVector.vue'
 import VarSelect from '@/components/VarSelect.vue'
 import DateSelect from '@/components/DateSelect.vue'
-import URLBox from '@/components/URLBox.vue'
+import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import PointDownloadBox from '@/components/PointDownloadBox.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { wcs } from '@/components/mixins/wcs.js'
 import { ows } from '@/components/mixins/ows.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
 import { datasets } from '@/components/mixins/datasets.js'
 import { wps } from '@/components/mixins/wps.js'
 
 export default {
   name: 'CanGRDForm',
-  mixins: [wcs, ows, datasets, wps],
+  mixins: [oapiCoverage, ows, datasets, wps],
   components: {
     'bbox-map': BBOXMap,
-    FormatSelectRaster,
+    FormatSelectFile,
     VarSelect,
     DateSelect,
-    'url-box': URLBox,
     DataAccessDocLink,
     PointDownloadBox,
     FormatSelectVector,
     TipsUsingTool,
-    MoreResources
+    MoreResources,
+    DataDownloadBox
   },
   data () {
     return {
       wcs_id: '',
-      wcs_id_dataset: 'CANGRD',
-      wcs_id_variable: 'TM',
-      wcs_id_cangrdType: 'ANO',
-      wcs_id_timePeriod: 'ANNUAL',
+      oapicIdDataset: 'CanGRD',
+      oapicIdVariable: 'tmean',
+      oapicValueType: 'anomaly',
+      oapicScenarioType: 'historical',
+      oapicIdTimePeriod: 'annual',
+      oapicFormat: 'json',
       ows_bbox: '-154,38,-49,81',
       date_start: this.$moment.utc('1948-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_end: this.$moment.utc('2018-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_min: this.$moment.utc('1948-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_max: this.$moment.utc('2018-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      date_max_pr: this.$moment.utc('2014-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
+      date_max_pcp: this.$moment.utc('2014-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
     }
   },
   watch: {
-    wcs_id_cangrdType: function () {
-      // reset unsupported selections for TREND
-      if (this.wcs_id_cangrdType === 'TREND') {
-        // autocorrect dependent selections to the first option for TREND
-        if (!(this.wcs_id_variable in this.variableOptions)) {
-          this.wcs_id_variable = Object.keys(this.variableOptions)[0]
+    oapicValueType: function () {
+      // reset unsupported selections for trend
+      if (this.oapicValueType === 'trend') {
+        // autocorrect dependent selections to the first option for trend
+        if (!(this.oapicIdVariable in this.variableOptions)) {
+          this.oapicIdVariable = Object.keys(this.variableOptions)[0]
         }
-        if (!(this.wcs_id_timePeriod in this.timePeriodOptions)) {
-          this.wcs_id_timePeriod = Object.keys(this.timePeriodOptions)[0]
+        if (!(this.oapicIdTimePeriod in this.timePeriodOptions)) {
+          this.oapicIdTimePeriod = Object.keys(this.timePeriodOptions)[0]
         }
       }
     },
-    wcs_id_variable: function () {
+    oapicIdVariable: function () {
       // Auto adjust start/end dates if goes over maximum range
       if (this.bandStartMoment.isAfter(this.dateConfigs.dateMax, this.dateConfigs.minimumView)) {
         this.date_start = this.dateConfigs.dateMax
@@ -193,11 +182,23 @@ export default {
     }
   },
   computed: {
-    wcs_coverage_id: function () {
-      return this.wcs_id_dataset + '.' + this.wcs_id_cangrdType + '.' + this.wcs_id_variable + '_' + this.wcs_id_timePeriod
+    oapicCoverageId: function () {
+      return 'climate:' + this.oapicIdDataset + ':' + this.oapicScenarioType + ':' + this.timePeriodType + ':' + this.oapicValueType
+    },
+    dateRangeParams: function () {
+      return [{
+        specialTitle: `${this.variableOptions[this.oapicIdVariable]} / ${this.timePeriodOptions[this.oapicIdTimePeriod]} / ${this.variableTypeOptions[this.oapicValueType]}`
+      }]
+    },
+    timePeriodType: function () {
+      if (['annual', 'monthly'].includes(this.oapicIdTimePeriod)) {
+        return this.oapicIdTimePeriod
+      } else {
+        return 'seasonal'
+      }
     },
     wcs_band: function () {
-      if (this.wcs_id_cangrdType === 'TREND') {
+      if (this.oapicValueType === 'trend') {
         return null
       } else {
         return this.bandRangeFormat(this.bandStart, this.bandEnd)
@@ -235,52 +236,61 @@ export default {
         end.isAfter(this.dateConfigs.dateMax, minimumView)
     },
     variableOptions: function () {
-      if (this.wcs_id_cangrdType === 'ANO') {
+      if (this.oapicValueType === 'anomaly') {
         return {
-          'TM': this.$gettext('Mean temperature'),
-          'TN': this.$gettext('Minimum temperature'),
-          'TX': this.$gettext('Maximum temperature'),
-          'PR': this.$gettext('Total precipitation')
+          'tmean': this.$gettext('Mean temperature'),
+          'tmin': this.$gettext('Minimum temperature'),
+          'tmax': this.$gettext('Maximum temperature'),
+          'pcp': this.$gettext('Total precipitation')
         }
       } else { // Trends
         return {
-          'TM': this.$gettext('Mean temperature'),
-          'PR': this.$gettext('Total precipitation')
+          'tmean': this.$gettext('Mean temperature'),
+          'pcp': this.$gettext('Total precipitation')
         }
       }
     },
     timePeriodOptions: function () {
-      if (this.wcs_id_cangrdType === 'ANO') {
+      if (this.oapicValueType === 'anomaly') {
         return {
-          MONTHLY: this.$gettext('Monthly'),
-          SPRING: this.$gettext('Spring (March-May)'),
-          SUMMER: this.$gettext('Summer (June-August)'),
-          FALL: this.$gettext('Fall (September-November)'),
-          WINTER: this.$gettext('Winter (December-February)'),
-          ANNUAL: this.$gettext('Annual')
+          monthly: this.$gettext('Monthly'),
+          MAM: this.$gettext('Spring (March-May)'),
+          JJA: this.$gettext('Summer (June-August)'),
+          SON: this.$gettext('Fall (September-November)'),
+          DJF: this.$gettext('Winter (December-February)'),
+          annual: this.$gettext('Annual')
         }
       } else {
         return {
-          SPRING: this.$gettext('Spring (March-May)'),
-          SUMMER: this.$gettext('Summer (June-August)'),
-          FALL: this.$gettext('Fall (September-November)'),
-          WINTER: this.$gettext('Winter (December-February)'),
-          ANNUAL: this.$gettext('Annual')
+          MAM: this.$gettext('Spring (March-May)'),
+          JJA: this.$gettext('Summer (June-August)'),
+          SON: this.$gettext('Fall (September-November)'),
+          DJF: this.$gettext('Winter (December-February)'),
+          annual: this.$gettext('Annual')
         }
       }
     },
     variableTypeOptions: function () {
       let options = {
-        'ANO': this.$gettext('Anomaly values')
+        'anomaly': this.$gettext('Anomaly values')
       }
       if (!this.pointClickOn) {
-        options['TREND'] = this.$gettext('Trend values')
+        options['trend'] = this.$gettext('Trend values')
       }
       return options
     },
+    fileFormats: function () {
+      return {
+        json: 'json',
+        GTiff: 'GeoTIFF'
+      }
+    },
+    filename: function () {
+      return this.variableOptions[this.oapicIdVariable] + ' (' + this.oapicCoverageId + ')'
+    },
     dateConfigs: function () {
-      let dateMax = this.wcs_id_variable === 'PR' ? this.date_max_pr : this.date_max
-      if (this.wcs_id_timePeriod === 'MONTHLY') {
+      let dateMax = this.oapicIdVariable === 'pcp' ? this.date_max_pcp : this.date_max
+      if (this.oapicIdTimePeriod === 'monthly') {
         return {
           minimumView: 'month',
           format: 'YYYY-MM',
@@ -305,6 +315,39 @@ export default {
       let start = this.bandStartMoment
       let end = this.bandEndMoment
       return this.calcDateRangeNumBands(start, end)
+    }
+  },
+  methods: {
+    getOapicParams: function () {
+      let urlParams = []
+      urlParams.push('f=' + this.oapicFormat)
+      urlParams.push(`range-subset=${this.oapicIdVariable}`)
+
+      // bbox
+      this.splitBBOXString()
+      urlParams.push(`bbox=${this.bbox_parts.min_x.toFixed(3)},${this.bbox_parts.min_y.toFixed(3)},${this.bbox_parts.max_x.toFixed(3)},${this.bbox_parts.max_y.toFixed(3)}`)
+
+      // subset
+      let subset = []
+      if (this.rangeType === 'P20Y-Avg' && this.oapicValueType === 'anomaly') {
+        subset.push(`subset=P20Y-Avg("${this.avg20Year}")`)
+      } else {
+        subset.push(`subset=percentile(${this.percentile})`)
+      }
+      // subset: scenario
+      if (this.scenarioType === 'projected') {
+        subset.push(`scenario("${this.oapicScenario}")`)
+      }
+      // subset: seasonal
+      if (this.timePeriodType === 'seasonal') {
+        subset.push(`season("${this.oapicIdTimePeriod}")`)
+      }
+      urlParams.push(subset.join(','))
+
+      // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
+      urlParams.push(`datetime=${this.oapicDatetime}`)
+
+      return urlParams
     }
   }
 }

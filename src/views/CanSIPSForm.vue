@@ -279,14 +279,12 @@ export default {
       this.splitBBOXString()
       urlParams.push(`bbox=${this.bbox_parts.min_x.toFixed(3)},${this.bbox_parts.min_y.toFixed(3)},${this.bbox_parts.max_x.toFixed(3)},${this.bbox_parts.max_y.toFixed(3)}`)
 
+      // subset
       let subset = []
-
-      // member (1-20)
+      // subset: member (1-20)
       subset.push(`member(${this.oapicMember})`)
-
-      // dim_reference_time (2013-04 to 2022-01)
+      // subset: dim_reference_time (2013-04 to 2022-01)
       subset.push(`dim_reference_time("${this.oapicModelRun}")`)
-
       urlParams.push(`subset=${subset.join(',')}`)
 
       // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
