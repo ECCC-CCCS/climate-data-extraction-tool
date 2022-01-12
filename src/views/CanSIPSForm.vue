@@ -262,7 +262,7 @@ export default {
     },
     dateRangeParams: function () {
       return [{
-        specialTitle: `${this.$gettext('Model run month')}${this.$gettext(':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$gettext(':')} ${this.oapicDatetime}`
+        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.$gettext('Member')}${this.$gettext(':')} ${this.oapicMember} | ${this.$gettext('Model run month')}${this.$gettext(':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$gettext(':')} ${this.oapicDatetime}`
       }]
     },
     hasErrors: function () {
