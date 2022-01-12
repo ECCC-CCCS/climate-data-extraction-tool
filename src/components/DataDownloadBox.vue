@@ -69,8 +69,14 @@ export default {
         case 'geojson':
           format = 'json'
           break
+        case 'json':
+          format = 'json'
+          break
         case 'csv':
           format = 'csv'
+          break
+        case 'GRIB':
+          format = 'GRIB'
           break
         default:
           format = ''

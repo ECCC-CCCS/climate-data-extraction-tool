@@ -72,11 +72,11 @@
         :select-options="crsOptions"></var-select>
     </details>
 
-    <code>{{ oapicUrl }}</code>
     <data-download-box
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
+      :date-range-chunks="dateRangeParams"
       :has-errors="hasErrors">
     </data-download-box>
 
@@ -123,9 +123,9 @@ export default {
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       foreRunMomentMin: this.$moment.utc('2013-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMomentMax: this.$moment.utc('2018-07-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), missing Aug and Sept 2018 source data
-      modelRun: this.$moment.utc('2018-07-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      forecastPeriod: this.$moment.utc('2018-08-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      foreRunMomentMax: this.$moment.utc('2022-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), missing Aug and Sept 2018 source data
+      modelRun: this.$moment.utc('2022-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      forecastPeriod: this.$moment.utc('2022-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       dateConfigs: {
         minimumView: 'month',
         format: 'YYYY-MM',
@@ -185,6 +185,9 @@ export default {
     forecastPeriodISO: function () {
       return this.forecastPeriodMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
     },
+    oapicDatetime: function() {
+      return this.forecastPeriodMoment.format('YYYY-MM')
+    },
     modelRunMoment: function () {
       return this.$moment.utc(this.modelRun)
     },
@@ -196,6 +199,9 @@ export default {
     },
     modelRunISO: function () {
       return this.modelRunMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
+    },
+    oapicModelRun: function () {
+      return this.modelRunMoment.format('YYYY-MM')
     },
     modelRunRangeMoment: function () {
       // Model run range limits based on what type selected
@@ -254,6 +260,11 @@ export default {
       return modelDate.isBefore(this.modelRunRangeMoment.min, minimumView) ||
         modelDate.isAfter(this.modelRunRangeMoment.max, minimumView)
     },
+    dateRangeParams: function () {
+      return [{
+        specialTitle: `${this.$gettext('Model run month')}${this.$gettext(':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$gettext(':')} ${this.oapicDatetime}`
+      }]
+    },
     hasErrors: function () {
       return this.forePeriodOutOfRange ||
         this.modelRunOutOfRange ||
@@ -276,6 +287,19 @@ export default {
       // bbox
       this.splitBBOXString()
       urlParams.push(`bbox=${this.bbox_parts.min_x.toFixed(3)},${this.bbox_parts.min_y.toFixed(3)},${this.bbox_parts.max_x.toFixed(3)},${this.bbox_parts.max_y.toFixed(3)}`)
+
+      let subset = []
+
+      // member (1-20)
+      subset.push(`member(${this.oapicMember})`)
+
+      // dim_reference_time (2013-04 to 2022-01)
+      subset.push(`dim_reference_time("${this.oapicModelRun}")`)
+
+      urlParams.push(`subset=${subset.join(',')}`)
+
+      // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
+      urlParams.push(`datetime=${this.oapicDatetime}`)
 
       return urlParams
     }
