@@ -17,8 +17,6 @@
       <p v-html="openPortalHtml"></p>
     </details>
 
-    <info-contact-support></info-contact-support>
-
     <bbox-map
       v-model="ows_bbox"
       :allow-click-point="true"
