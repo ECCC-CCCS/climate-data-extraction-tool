@@ -63,15 +63,6 @@
       v-model="oapicFormat"
       :formats="fileFormats"></format-select-file>
 
-    <details>
-      <summary v-translate>Advanced options</summary>
-      <var-select
-        v-model="ows_crs"
-        :label="crsLabel"
-        :initial-variable="ows_crs"
-        :select-options="crsOptions"></var-select>
-    </details>
-
     <data-download-box
       :file-name="filename"
       :file-format="oapicFormat"
