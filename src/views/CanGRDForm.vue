@@ -322,6 +322,29 @@ export default {
       let start = this.dateStartMoment
       let end = this.dateEndMoment
       return this.calcDateRangeNumBands(start, end)
+    },
+    pointInputs: function () { // raster drill process
+      const varToLayerVar = {
+        tmean: 'TM',
+        tmin: 'TN',
+        tmax: 'TX',
+        pcp: 'PR'
+      }
+      const timeToLayerTime = {
+        monthly: 'MONTHLY',
+        MAM: 'SPRING',
+        JJA: 'SUMMER',
+        SON: 'FALL',
+        DJF: 'WINTER',
+        annual: 'ANNUAL'
+      }
+
+      return {
+        layer: 'CANGRD.ANO.' + varToLayerVar[this.oapicIdVariable] + '_' + timeToLayerTime[this.oapicIdTimePeriod],
+        y: this.clickLatLng === null ? null : this.clickLatLng.lat,
+        x: this.clickLatLng === null ? null : this.clickLatLng.lng,
+        format: this.wps_format
+      }
     }
   },
   methods: {
