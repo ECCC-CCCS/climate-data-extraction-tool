@@ -52,6 +52,7 @@
 
         <date-select
           v-model="date_end"
+          :disabled="oapicFormat === 'json'"
           :label="$gettext('End date')"
           :minimum-view="dateConfigs.minimumView"
           :format="dateConfigs.format"
@@ -171,11 +172,17 @@ export default {
     },
     oapicIdVariable: function () {
       // Auto adjust start/end dates if goes over maximum range
-      if (this.bandStartMoment.isAfter(this.dateConfigs.dateMax, this.dateConfigs.minimumView)) {
+      if (this.dateStartMoment.isAfter(this.dateConfigs.dateMax, this.dateConfigs.minimumView)) {
         this.date_start = this.dateConfigs.dateMax
       }
-      if (this.bandEndMoment.isAfter(this.dateConfigs.dateMax, this.dateConfigs.minimumView)) {
+      if (this.dateEndMoment.isAfter(this.dateConfigs.dateMax, this.dateConfigs.minimumView)) {
         this.date_end = this.dateConfigs.dateMax
+      }
+    },
+    date_start: function (newStartDate) {
+      // Auto adjust date end because date range not supported in covJson
+      if (this.oapicFormat === 'json') {
+        this.date_end = newStartDate
       }
     }
   },
@@ -183,9 +190,18 @@ export default {
     oapicCoverageId: function () {
       return 'climate:' + this.oapicIdDataset + ':' + this.oapicScenarioType + ':' + this.timePeriodType + ':' + this.oapicValueType
     },
+    oapicDatetime: function() {
+      if (this.oapicFormat === 'json') { // date range not supported in covJson
+        return this.dateStartFormatted // single date
+      } else if (this.dateEndFormatted === this.dateStartFormatted) {
+        return this.dateStartFormatted // single date
+      } else {
+        return `${this.dateStartFormatted}/${this.dateEndFormatted}`
+      }
+    },
     dateRangeParams: function () {
       return [{
-        specialTitle: `${this.variableOptions[this.oapicIdVariable]} / ${this.timePeriodOptions[this.oapicIdTimePeriod]} / ${this.variableTypeOptions[this.oapicValueType]}`
+        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.timePeriodOptions[this.oapicIdTimePeriod]} | ${this.variableTypeOptions[this.oapicValueType]} | ${this.oapicDatetime}`
       }]
     },
     timePeriodType: function () {
@@ -195,35 +211,28 @@ export default {
         return 'seasonal'
       }
     },
-    wcs_band: function () {
-      if (this.oapicValueType === 'trend') {
-        return null
-      } else {
-        return this.bandRangeFormat(this.bandStart, this.bandEnd)
-      }
-    },
-    bandStartMoment: function () {
+    dateStartMoment: function () {
       return this.$moment.utc(this.date_start, this.dateConfigs.format)
     },
-    bandEndMoment: function () {
+    dateEndMoment: function () {
       return this.$moment.utc(this.date_end, this.dateConfigs.format)
     },
-    bandStart: function () {
-      return this.bandStartMoment.format(this.dateConfigs.format)
+    dateStartFormatted: function () {
+      return this.dateStartMoment.format(this.dateConfigs.format)
     },
-    bandEnd: function () {
-      return this.bandEndMoment.format(this.dateConfigs.format)
+    dateEndFormatted: function () {
+      return this.dateEndMoment.format(this.dateConfigs.format)
     },
     bandsInRange: function () {
-      return this.datesInRange(this.bandStart, this.bandEnd)
+      return this.checkDatesInRange(this.dateStartFormatted, this.dateEndFormatted)
     },
     bandStartIsEmptyOnly: function () {
-      return this.dateStartIsEmptyOnly(this.bandStart, this.bandEnd)
+      return this.checkDateStartIsEmptyOnly(this.dateStartFormatted, this.dateEndFormatted)
     },
     bandEndIsEmptyOnly: function () {
-      return this.dateEndIsEmptyOnly(this.bandStart, this.bandEnd)
+      return this.checkDateEndIsEmptyOnly(this.dateStartFormatted, this.dateEndFormatted)
     },
-    bandsPastLimits: function () {
+    dateRangePastLimits: function () {
       let start = this.$moment.utc(this.date_start, this.dateConfigs.format)
       let end = this.$moment.utc(this.date_end, this.dateConfigs.format)
       let minimumView = this.dateConfigs.minimumView
@@ -310,8 +319,8 @@ export default {
       return this.hasCommonBandErrors
     },
     dateRangeNumBands: function () {
-      let start = this.bandStartMoment
-      let end = this.bandEndMoment
+      let start = this.dateStartMoment
+      let end = this.dateEndMoment
       return this.calcDateRangeNumBands(start, end)
     }
   },
@@ -327,15 +336,6 @@ export default {
 
       // subset
       let subset = []
-      if (this.rangeType === 'P20Y-Avg' && this.oapicValueType === 'anomaly') {
-        subset.push(`subset=P20Y-Avg("${this.avg20Year}")`)
-      } else {
-        subset.push(`subset=percentile(${this.percentile})`)
-      }
-      // subset: scenario
-      if (this.scenarioType === 'projected') {
-        subset.push(`scenario("${this.oapicScenario}")`)
-      }
       // subset: seasonal
       if (this.timePeriodType === 'seasonal') {
         subset.push(`season("${this.oapicIdTimePeriod}")`)
@@ -343,7 +343,9 @@ export default {
       urlParams.push(subset.join(','))
 
       // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
-      urlParams.push(`datetime=${this.oapicDatetime}`)
+      if (this.oapicValueType === 'anomaly') {
+        urlParams.push(`datetime=${this.oapicDatetime}`)
+      }
 
       return urlParams
     }

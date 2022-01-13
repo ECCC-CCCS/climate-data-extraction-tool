@@ -193,23 +193,23 @@ export const DCSCMIP5 = {
     },
     bandsInRange: function () {
       if (this.scenarioType === 'RCP') {
-        return this.datesInRange(this.bandMoments.rcpStart, this.bandMoments.rcpEnd)
+        return this.checkDatesInRange(this.bandMoments.rcpStart, this.bandMoments.rcpEnd)
       } else { // history
-        return this.datesInRange(this.bandMoments.histStart, this.bandMoments.histEnd)
+        return this.checkDatesInRange(this.bandMoments.histStart, this.bandMoments.histEnd)
       }
     },
     bandStartIsEmptyOnly: function () {
       if (this.scenarioType === 'RCP') {
-        return this.dateStartIsEmptyOnly(this.dateRcpStart, this.dateRcpEnd)
+        return this.checkDateStartIsEmptyOnly(this.dateRcpStart, this.dateRcpEnd)
       } else { // history
-        return this.dateStartIsEmptyOnly(this.dateHistStart, this.dateHistEnd)
+        return this.checkDateStartIsEmptyOnly(this.dateHistStart, this.dateHistEnd)
       }
     },
     bandEndIsEmptyOnly: function () {
       if (this.scenarioType === 'RCP') {
-        return this.dateEndIsEmptyOnly(this.dateRcpStart, this.dateRcpEnd)
+        return this.checkDateEndIsEmptyOnly(this.dateRcpStart, this.dateRcpEnd)
       } else { // history
-        return this.dateEndIsEmptyOnly(this.dateHistStart, this.dateHistEnd)
+        return this.checkDateEndIsEmptyOnly(this.dateHistStart, this.dateHistEnd)
       }
     },
     bandMoments: function () {

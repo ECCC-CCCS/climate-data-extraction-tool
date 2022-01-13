@@ -190,7 +190,7 @@ export const wcs = {
       this.date_start = null
       this.date_end = null
     },
-    dateStartIsEmptyOnly: function (dateStart, dateEnd) {
+    checkDateStartIsEmptyOnly: function (dateStart, dateEnd) {
       if (dateStart === 'Invalid date' && dateEnd !== 'Invalid date') {
         return true
       } else {
@@ -204,7 +204,7 @@ export const wcs = {
         return false
       }
     },
-    datesInRange: function (dateStart, dateEnd) {
+    checkDatesInRange: function (dateStart, dateEnd) {
       if (dateStart === 'Invalid date' || dateEnd === 'Invalid date') {
         return true
       } else if (dateStart > dateEnd) {

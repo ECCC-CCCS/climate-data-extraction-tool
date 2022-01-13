@@ -67,6 +67,29 @@ export const oapiCoverage = {
     usesBands: function () {
       return (this.oapicBand !== null && this.oapicBand !== 'Invalid date')
     },
+    dateStartEmpty: function () {
+      return this.date_start === null || this.date_start === 'Invalid date'
+    },
+    dateEndEmpty: function () {
+      return this.date_end === null || this.date_end === 'Invalid date'
+    },
+    dateRangeHasNull: function () {
+      return this.dateStartEmpty || this.dateEndEmpty
+    },
+    dateStartIsEmptyOnly: function () {
+      if (this.dateStartEmpty && !this.dateEndEmpty) {
+        return true
+      } else {
+        return false
+      }
+    },
+    dateEndIsEmptyOnly: function () {
+      if (this.dateEndEmpty && !this.dateStartEmpty) {
+        return true
+      } else {
+        return false
+      }
+    },
     dateRangeErrorMessage: function () {
       if (this.bandStartIsEmptyOnly || this.bandEndIsEmptyOnly) {
         return this.$gettext('Date range fields must be all set or cleared.')
@@ -108,21 +131,21 @@ export const oapiCoverage = {
       this.date_start = null
       this.date_end = null
     },
-    dateStartIsEmptyOnly: function (dateStart, dateEnd) {
+    checkDateStartIsEmptyOnly: function (dateStart, dateEnd) {
       if (dateStart === 'Invalid date' && dateEnd !== 'Invalid date') {
         return true
       } else {
         return false
       }
     },
-    dateEndIsEmptyOnly: function (dateStart, dateEnd) {
+    checkDateEndIsEmptyOnly: function (dateStart, dateEnd) {
       if (dateStart !== 'Invalid date' && dateEnd === 'Invalid date') {
         return true
       } else {
         return false
       }
     },
-    datesInRange: function (dateStart, dateEnd) {
+    checkDatesInRange: function (dateStart, dateEnd) {
       if (dateStart === 'Invalid date' || dateEnd === 'Invalid date') {
         return true
       } else if (dateStart > dateEnd) {
