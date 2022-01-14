@@ -13,11 +13,11 @@ export const wps = {
     pointClickOn: function (newVal) {
       if (newVal === true) {
         this.rangeType = 'custom'
-        if (this.wcs_id_timePeriod === 'ENS') { // DCS, CMIP5
-          this.wcs_id_timePeriod = 'YEAR'
+        if (this.oapicIdTimePeriod === 'monthly') { // DCS, CMIP5
+          this.oapicIdTimePeriod = 'YEAR'
         }
-        if (this.wcs_id_cangrdType === 'TREND') {
-          this.wcs_id_cangrdType = 'ANO'
+        if (this.$route.name === 'cangrd' && this.oapicValueType === 'trend') { // canGRD
+          this.oapicValueType = 'anomaly'
         }
       }
     }
