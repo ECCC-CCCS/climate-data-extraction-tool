@@ -67,7 +67,7 @@
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
-      :date-range-chunks="dateRangeParams"
+      :date-range-chunks="downloadLinkTitleBreakdown"
       :has-errors="hasErrors">
     </data-download-box>
 
@@ -247,7 +247,7 @@ export default {
       return modelDate.isBefore(this.modelRunRangeMoment.min, minimumView) ||
         modelDate.isAfter(this.modelRunRangeMoment.max, minimumView)
     },
-    dateRangeParams: function () {
+    downloadLinkTitleBreakdown: function () {
       return [{
         specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.$gettext('Member')}${this.$gettext(':')} ${this.oapicMember} | ${this.$gettext('Model run month')}${this.$gettext(':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$gettext(':')} ${this.oapicDatetime}`
       }]

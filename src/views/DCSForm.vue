@@ -148,7 +148,7 @@
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
-      :date-range-chunks="dateRangeParams"
+      :date-range-chunks="downloadLinkTitleBreakdown"
       :band-range-format="bandRangeFormat"
       :has-errors="hasErrors">
     </data-download-box>

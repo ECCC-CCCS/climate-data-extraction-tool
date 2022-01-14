@@ -113,7 +113,7 @@ export const DCSCMIP5 = {
 
       // datetime
       if (this.rangeType !== 'P20Y-Avg') {
-        urlParams.push(`datetime=${this.dateStartMoment.format(this.dateConfigs.format)}/${this.dateEndMoment.format(this.dateConfigs.format)}`)
+        urlParams.push(`datetime=${this.oapicDatetime}`)
       }
       return urlParams
     },
@@ -137,6 +137,11 @@ export const DCSCMIP5 = {
     }
   },
   computed: {
+    downloadLinkTitleBreakdown: function () {
+      return [{
+        specialTitle: `${this.oapicIdDataset} | ${this.variableOptions[this.oapicIdVariable]} | ${this.scenarioTypeOptions[this.scenarioType]} | ${this.oapicScenario} | ${this.timePeriodOptions[this.oapicIdTimePeriod]} | ${this.valueTypeOptions[this.valueType]} | ${this.percentileOptions[this.percentile]} | ${this.rangeType === 'P20Y-Avg' ? this.avg20Year : this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
+      }]
+    },
     avg20YearOptions: function () {
       return {
         '2021-2040': '2021-2040',
@@ -162,6 +167,9 @@ export const DCSCMIP5 = {
     },
     oapicCoverageId: function () {
       return 'climate:' + this.oapicIdDataset + ':' + this.scenarioType + ':' + this.timePeriodType + ':' + this.oapicValueType
+    },
+    oapicDatetime: function () {
+      return this.dateStartMoment.format(this.dateConfigs.format) + '/' + this.dateEndMoment.format(this.dateConfigs.format)
     },
     oapicBand: function () {
       if (this.rangeType === 'P20Y-Avg') {

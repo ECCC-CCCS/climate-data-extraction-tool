@@ -95,7 +95,7 @@
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
-      :date-range-chunks="dateRangeParams"
+      :date-range-chunks="downloadLinkTitleBreakdown"
       :has-errors="hasErrors">
     </data-download-box>
 
@@ -199,9 +199,9 @@ export default {
         return `${this.dateStartFormatted}/${this.dateEndFormatted}`
       }
     },
-    dateRangeParams: function () {
+    downloadLinkTitleBreakdown: function () {
       return [{
-        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.timePeriodOptions[this.oapicIdTimePeriod]} | ${this.variableTypeOptions[this.oapicValueType]} | ${this.oapicDatetime}`
+        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.variableTypeOptions[this.oapicValueType]} | ${this.timePeriodOptions[this.oapicIdTimePeriod]} ${this.oapicValueType === 'trend' ? '' : '| '+ this.oapicDatetime}`
       }]
     },
     timePeriodType: function () {

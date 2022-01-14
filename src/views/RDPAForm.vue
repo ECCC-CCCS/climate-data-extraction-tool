@@ -62,7 +62,7 @@
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
-      :date-range-chunks="dateRangeParams"
+      :date-range-chunks="downloadLinkTitleBreakdown"
       :has-errors="hasErrors">
     </data-download-box>
 
@@ -212,7 +212,7 @@ export default {
         }
       }
     },
-    dateRangeParams: function () {
+    downloadLinkTitleBreakdown: function () {
       return [{
         specialTitle: `${this.oapicIdDataset} | ${this.oapicIdResolution} | ${this.oapicIdTime} | ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
       }]

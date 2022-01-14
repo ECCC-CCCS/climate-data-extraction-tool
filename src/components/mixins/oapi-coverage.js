@@ -33,43 +33,6 @@ export const oapiCoverage = {
       let endDate = this.$moment.utc(this.dateEndMoment).format(this.dateConfigs.format)
       return (startDate === 'Invalid date' && endDate === 'Invalid date' && this.timePeriodIsMonthly)
     },
-    dateRangeParams: function () {
-      if (this.hasCommonBandErrors) { // range 0 or errors
-        return []
-      } else if (this.usesBands) {
-        return [{
-          'start': this.dateStartMoment.format(this.dateConfigs.format),
-          'end': this.dateEndMoment.format(this.dateConfigs.format),
-          'duration': 0,
-          'specialTitle': this.rangeTypeOptions[this.rangeType]
-        }]
-      } else { // no bands (empty)
-        if (this.oapicIdDataset === 'CANGRD' && this.oapic_id_cangrdType === 'TREND') {
-          // CanGRD trends special title
-          return [{
-            'start': null,
-            'end': null,
-            'duration': 0,
-            'specialTitle': this.variableTypeOptions[this.oapic_id_cangrdType]
-          }]
-        } else if (this.rangeType === 'P20Y-Avg' && (this.oapicIdDataset === 'DCS' || this.oapicIdDataset === 'CMIP5')) {
-          // DCS or CMIP5 20-year average special title
-          return [{
-            'start': null,
-            'end': null,
-            'duration': 0,
-            'specialTitle': this.rangeTypeOptions[this.rangeType]
-          }]
-        }
-
-        // default
-        return [{
-          'start': null,
-          'end': null,
-          'duration': 0
-        }]
-      }
-    },
     usesBands: function () {
       return (this.oapicBand !== null && this.oapicBand !== 'Invalid date')
     },
