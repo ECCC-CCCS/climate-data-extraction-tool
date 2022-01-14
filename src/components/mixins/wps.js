@@ -1,7 +1,7 @@
 import { mapState } from "vuex"
 
 /*
-Anything common to wps setup; works in conjunction with wcs mixin data()
+Anything common to wps setup (raster drill)
 */
 export const wps = {
   data () {

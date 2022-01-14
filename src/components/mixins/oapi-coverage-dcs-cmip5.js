@@ -27,7 +27,7 @@ export const DCSCMIP5 = {
       fileFormats: {
         // 'image/tiff': 'GeoTIFF', // not supported yet in oapiCov
         'NetCDF': 'NetCDF',
-        'json': 'json'
+        'json': 'CoverageJSON'
       }
     }
   },

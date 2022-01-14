@@ -31,7 +31,7 @@
       :disabled="disabled || oneOptionOnly"
       :readonly="readonly"
       :required="required">
-        <option v-for="(value, key) in selectOptions" :key="key" :value="key">{{ value }}</option>
+        <option v-for="(value, key) in selectOptions" :key="key" :value="key" v-html="value"></option>
     </select>
   </div>
 </template>
