@@ -142,13 +142,11 @@ export default {
   },
   data () {
     return {
-      wcs_id: '',
       oapicIdDataset: 'CanGRD',
       oapicIdVariable: 'tmean',
       oapicValueType: 'anomaly',
       oapicScenarioType: 'historical',
       oapicIdTimePeriod: 'annual',
-      oapicFormat: 'json',
       ows_bbox: '-154,38,-49,81',
       date_start: this.$moment.utc('1948-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_end: this.$moment.utc('2018-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
@@ -285,12 +283,6 @@ export default {
         options['trend'] = this.$gettext('Trend values')
       }
       return options
-    },
-    fileFormats: function () {
-      return {
-        json: this.$pgettext('File format', 'CoverageJSON'),
-        GTiff: this.$pgettext('File format', 'GeoTIFF')
-      }
     },
     filename: function () {
       return this.variableOptions[this.oapicIdVariable] + ' (' + this.oapicCoverageId + ')'

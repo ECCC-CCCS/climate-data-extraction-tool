@@ -23,10 +23,6 @@ export const DCSCMIP5 = {
       percentileLink: {
         en: process.env.VUE_APP_CANADA_SERVER_EN + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/basics/scenario-models.html#toc2',
         fr: process.env.VUE_APP_CANADA_SERVER_FR + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels/scenarios-modeles.html#toc2'
-      },
-      fileFormats: {
-        NetCDF: this.$pgettext('File format', 'NetCDF'),
-        json: this.$pgettext('File format', 'CoverageJSON')
       }
     }
   },

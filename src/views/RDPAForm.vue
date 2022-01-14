@@ -102,7 +102,6 @@ export default {
       oapicIdTime: '6F', // 6F, 6P, 24F, 24P
       oapicIdResolution: '10km', // 10km, 15km
       oapicIdVariable: '1', // Quantity of Precip
-      oapicFormat: 'json',
       arc15RunMoment06FMin: this.$moment.utc('2011-04-06 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       arc15RunMoment06FMax: this.$moment.utc('2012-10-03 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       arc15RunMoment24FMin: this.$moment.utc('2011-04-06 12:00:00', 'YYYY-MM-DD HH:mm:ss'),

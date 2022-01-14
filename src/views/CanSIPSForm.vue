@@ -110,7 +110,6 @@ export default {
       oapicIdProduct: 'members',
       oapicIdVariable: '1',
       oapicMember: 1,
-      oapicFormat: 'json',
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       foreRunMomentMin: this.$moment.utc('2013-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
@@ -249,7 +248,7 @@ export default {
     },
     downloadLinkTitleBreakdown: function () {
       return [{
-        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.$gettext('Member')}${this.$gettext(':')} ${this.oapicMember} | ${this.$gettext('Model run month')}${this.$gettext(':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$gettext(':')} ${this.oapicDatetime}`
+        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.$gettext('Member')}${this.$gettext(':')} ${this.oapicMember} | ${this.$gettext('Model run month')}${this.$gettext(':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$gettext(':')} ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
       }]
     },
     hasErrors: function () {

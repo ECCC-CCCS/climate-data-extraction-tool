@@ -6,10 +6,7 @@ export const oapiCoverage = {
     return {
       oapicServer: process.env.VUE_APP_OPENAPI_SERVER,
       oapicPath: '/collections',
-      oapicFormat: 'NetCDF',
-      oapic_width: '',
-      oapic_height: '',
-      oapic_id: 'ABCDEFG',
+      oapicFormat: 'json',
       date_start: '',
       date_end: ''
     }
@@ -19,10 +16,17 @@ export const oapiCoverage = {
       return this.oapicCoverageId
     },
     fileFormats: function () {
-      return {
-        json: this.$pgettext('File format', 'CoverageJSON'),
-        GRIB: this.$pgettext('File format','GRIB')
+      let formats = {
+        'json': this.$pgettext('File format', 'CoverageJSON')
       }
+      if (['cmip5', 'dcs'].includes(this.$route.name)) {
+        formats['NetCDF'] = this.$pgettext('File format', 'NetCDF')
+      } else if (this.$route.name === 'cangrd') {
+        formats['GTiff'] = this.$pgettext('File format', 'GeoTIFF')
+      } else {
+        formats['GRIB'] = this.$pgettext('File format','GRIB')
+      }
+      return formats
     },
     timePeriodIsMonthly: function () {
       // MONTHLY for CanGRD; monthly for DCS/CMIP5
