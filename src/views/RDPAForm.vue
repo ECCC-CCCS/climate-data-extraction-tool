@@ -212,12 +212,6 @@ export default {
         }
       }
     },
-    fileFormats: function () {
-      return {
-        json: this.$gettext('CoverageJSON'),
-        GRIB: this.$gettext('GRIB')
-      }
-    },
     dateRangeParams: function () {
       return [{
         specialTitle: `${this.oapicIdDataset} | ${this.oapicIdResolution} | ${this.oapicIdTime} | ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`

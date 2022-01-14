@@ -499,6 +499,36 @@
 				]
 			}
 		},
+		"File format": {
+			"CoverageJSON": {
+				"msgid": "CoverageJSON",
+				"msgctxt": "File format",
+				"msgstr": [
+					""
+				]
+			},
+			"GeoTIFF": {
+				"msgid": "GeoTIFF",
+				"msgctxt": "File format",
+				"msgstr": [
+					""
+				]
+			},
+			"GRIB": {
+				"msgid": "GRIB",
+				"msgctxt": "File format",
+				"msgstr": [
+					""
+				]
+			},
+			"NetCDF": {
+				"msgid": "NetCDF",
+				"msgctxt": "File format",
+				"msgstr": [
+					""
+				]
+			}
+		},
 		"Select option for None in a dropdown menu": {
 			"-- None --": {
 				"msgid": "-- None --",
@@ -562,6 +592,12 @@
 				"msgid": ": search, explore and visualize climate data",
 				"msgstr": [
 					": search, explore and visualize climate data"
+				]
+			},
+			"(prodType 0, cat 1, subcat 193) [-]": {
+				"msgid": "(prodType 0, cat 1, subcat 193) [-]",
+				"msgstr": [
+					""
 				]
 			},
 			"(Required)": {
@@ -708,12 +744,6 @@
 					"12Z"
 				]
 			},
-			"15km": {
-				"msgid": "15km",
-				"msgstr": [
-					"15km"
-				]
-			},
 			"18Z": {
 				"msgid": "18Z",
 				"msgstr": [
@@ -750,6 +780,18 @@
 					"24 hours"
 				]
 			},
+			"24 hours preliminary": {
+				"msgid": "24 hours preliminary",
+				"msgstr": [
+					""
+				]
+			},
+			"24 hr Total precipitation [{units}]": {
+				"msgid": "24 hr Total precipitation [{units}]",
+				"msgstr": [
+					""
+				]
+			},
 			"25th percentile": {
 				"msgid": "25th percentile",
 				"msgstr": [
@@ -780,6 +822,12 @@
 					"6 hours"
 				]
 			},
+			"6 hours preliminary": {
+				"msgid": "6 hours preliminary",
+				"msgstr": [
+					""
+				]
+			},
 			"75th percentile": {
 				"msgid": "75th percentile",
 				"msgstr": [
@@ -808,12 +856,6 @@
 				"msgid": "Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.",
 				"msgstr": [
 					"Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated."
-				]
-			},
-			"Advanced options": {
-				"msgid": "Advanced options",
-				"msgstr": [
-					"Advanced options"
 				]
 			},
 			"Air temperature": {
@@ -1864,6 +1906,12 @@
 				"msgid": "Pseudo-Mercator (EPSG:3857)",
 				"msgstr": [
 					"Pseudo-Mercator (EPSG:3857)"
+				]
+			},
+			"Quantity type": {
+				"msgid": "Quantity type",
+				"msgstr": [
+					""
 				]
 			},
 			"Quebec": {
@@ -3010,6 +3058,36 @@
 				]
 			}
 		},
+		"File format": {
+			"CoverageJSON": {
+				"msgid": "CoverageJSON",
+				"msgctxt": "File format",
+				"msgstr": [
+					"CoverageJSON"
+				]
+			},
+			"GeoTIFF": {
+				"msgid": "GeoTIFF",
+				"msgctxt": "File format",
+				"msgstr": [
+					"GeoTIFF"
+				]
+			},
+			"GRIB": {
+				"msgid": "GRIB",
+				"msgctxt": "File format",
+				"msgstr": [
+					"GRIB"
+				]
+			},
+			"NetCDF": {
+				"msgid": "NetCDF",
+				"msgctxt": "File format",
+				"msgstr": [
+					"NetCDF"
+				]
+			}
+		},
 		"Select option for None in a dropdown menu": {
 			"-- None --": {
 				"msgid": "-- None --",
@@ -3073,6 +3151,12 @@
 				"msgid": ": search, explore and visualize climate data",
 				"msgstr": [
 					" : chercher, explorer et visualiser des données climatiques"
+				]
+			},
+			"(prodType 0, cat 1, subcat 193) [-]": {
+				"msgid": "(prodType 0, cat 1, subcat 193) [-]",
+				"msgstr": [
+					"(prodType 0, cat 1, subcat 193) [-]"
 				]
 			},
 			"(Required)": {
@@ -3219,12 +3303,6 @@
 					"12Z"
 				]
 			},
-			"15km": {
-				"msgid": "15km",
-				"msgstr": [
-					"15 km"
-				]
-			},
 			"18Z": {
 				"msgid": "18Z",
 				"msgstr": [
@@ -3261,6 +3339,18 @@
 					"24 heures"
 				]
 			},
+			"24 hours preliminary": {
+				"msgid": "24 hours preliminary",
+				"msgstr": [
+					"24 heures préliminaire"
+				]
+			},
+			"24 hr Total precipitation [{units}]": {
+				"msgid": "24 hr Total precipitation [{units}]",
+				"msgstr": [
+					"Précipitations totales par 24h [{units}]"
+				]
+			},
 			"25th percentile": {
 				"msgid": "25th percentile",
 				"msgstr": [
@@ -3291,6 +3381,12 @@
 					"6 heures"
 				]
 			},
+			"6 hours preliminary": {
+				"msgid": "6 hours preliminary",
+				"msgstr": [
+					"6 heures préliminaire"
+				]
+			},
 			"75th percentile": {
 				"msgid": "75th percentile",
 				"msgstr": [
@@ -3319,12 +3415,6 @@
 				"msgid": "Adjusted and Homogenized Canadian Climate Data (AHCCD) are climate station datasets that incorporate adjustments (derived from statistical procedures) to the original historical station data to account for discontinuities from non-climatic factors, such as instrument changes or station relocation. Data are provided for temperature, precipitation, pressure and wind speed. Station trend data are provided when available. Trends are calculated using the Theil-Sen method using the station's full period of available data. The availability of trends will vary by station; if more than 5 consecutive years are missing data or more than 10% of the data within the time series is missing, a trend was not calculated.",
 				"msgstr": [
 					"Les données climatiques canadiennes ajustées et homogénéisées (DCCAH) sont des ensembles de données de stations climatologiques qui incluent des ajustements (calculs à l’aide de méthodes statistiques) aux données historiques originales des stations afin de tenir compte de facteurs non climatiques tels que des changements aux instruments et des changements d’emplacement de station. Extrayez un sous-ensemble de l’ensemble de données d’une ou de plusieurs stations à l’aide de l’outil d’extraction de données climatiques."
-				]
-			},
-			"Advanced options": {
-				"msgid": "Advanced options",
-				"msgstr": [
-					"Options avancées"
 				]
 			},
 			"Air temperature": {
@@ -4375,6 +4465,12 @@
 				"msgid": "Pseudo-Mercator (EPSG:3857)",
 				"msgstr": [
 					"Pseudo-Mercator (EPSG:3857)"
+				]
+			},
+			"Quantity type": {
+				"msgid": "Quantity type",
+				"msgstr": [
+					"Type de quantité"
 				]
 			},
 			"Quebec": {

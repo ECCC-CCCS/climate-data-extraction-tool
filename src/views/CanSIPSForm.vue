@@ -121,10 +121,6 @@ export default {
         minimumView: 'month',
         format: 'YYYY-MM',
         placeholder: 'YYYY-MM'
-      },
-      fileFormats: {
-        json: 'json',
-        GRIB: 'GRIB'
       }
     }
   },

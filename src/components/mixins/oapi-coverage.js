@@ -18,6 +18,12 @@ export const oapiCoverage = {
     filename: function () {
       return this.oapicCoverageId
     },
+    fileFormats: function () {
+      return {
+        json: this.$pgettext('File format', 'CoverageJSON'),
+        GRIB: this.$pgettext('File format','GRIB')
+      }
+    },
     timePeriodIsMonthly: function () {
       // MONTHLY for CanGRD; monthly for DCS/CMIP5
       return (this.oapicIdTimePeriod === 'MONTHLY' || this.oapicIdTimePeriod === 'monthly')

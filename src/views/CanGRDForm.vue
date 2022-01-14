@@ -288,8 +288,8 @@ export default {
     },
     fileFormats: function () {
       return {
-        json: 'json',
-        GTiff: 'GeoTIFF'
+        json: this.$pgettext('File format', 'CoverageJSON'),
+        GTiff: this.$pgettext('File format', 'GeoTIFF')
       }
     },
     filename: function () {

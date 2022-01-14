@@ -25,9 +25,8 @@ export const DCSCMIP5 = {
         fr: process.env.VUE_APP_CANADA_SERVER_FR + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels/scenarios-modeles.html#toc2'
       },
       fileFormats: {
-        // 'image/tiff': 'GeoTIFF', // not supported yet in oapiCov
-        'NetCDF': 'NetCDF',
-        'json': 'CoverageJSON'
+        NetCDF: this.$pgettext('File format', 'NetCDF'),
+        json: this.$pgettext('File format', 'CoverageJSON')
       }
     }
   },
