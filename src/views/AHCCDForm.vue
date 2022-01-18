@@ -24,11 +24,11 @@
       <summary id="map-filters-header" v-translate>Map filters</summary>
 
       <province-select
-        v-model="wfs_province"></province-select>
+        v-model="oapif_province"></province-select>
 
       <fieldset
         id="date-range-field"
-        v-show="wfs_layer !== 'ahccd-trends'">
+        v-show="oapif_layer !== 'ahccd-trends'">
         <legend v-translate>Date range</legend>
         <date-select
           v-model="date_start"
@@ -69,7 +69,7 @@
 
 
     <station-select
-      v-model="wfs_selected_station_ids"
+      v-model="oapif_selected_station_ids"
       :select-disabled="provinceSelected"
       :station-data="ahccdStationGeoJson.features"
       :station-prop-display="station_props_display"
@@ -82,21 +82,21 @@
 
     <var-select
       class="mrgn-tp-md"
-      v-model="wfs_layer"
+      v-model="oapif_layer"
       :label="$gettext('Value type / Time interval')"
       :required="true"
       :select-options="layer_options"></var-select>
 
     <format-select-vector
       class="mrgn-tp-md"
-      v-model="wfs_format"></format-select-vector>
+      v-model="oapif_format"></format-select-vector>
 
     <url-box
       :layer-options="selectedLayerOption"
-      :ows-url-formatter="wfs3_download_url"
-      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-      :wfs3-download-limit="wfs_limit"
-      :layer-format="wfs_format"
+      :ows-url-formatter="oapif_download_url"
+      :oapif-common-url="getWFS3CommonURL(oapif_layer)"
+      :oapif-download-Limit="oapif_limit"
+      :layer-format="oapif_format"
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download link')">
     </url-box>
@@ -117,14 +117,14 @@ import StationListLink from '@/components/StationListLink.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import MoreResources from '@/components/MoreResources.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
-import { wfs } from '@/components/mixins/wfs.js'
+import { oapif } from '@/components/mixins/oapi-features.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'AHCCDForm',
-  mixins: [wfs, ows, datasets],
+  mixins: [oapif, ows, datasets],
   components: {
     VarSelect,
     'bbox-map': BBOXMap,
@@ -140,8 +140,8 @@ export default {
   },
   data () {
     return {
-      wfs_layer: 'ahccd-annual',
-      wfs_layer_station: 'ahccd-stations',
+      oapif_layer: 'ahccd-annual',
+      oapif_layer_station: 'ahccd-stations',
       date_start: this.$moment.utc('1840-01-01', 'YYYY-MM-DD').toDate(),
       date_end: this.$moment.utc('2020-12-31', 'YYYY-MM-DD').toDate(),
       date_min: this.$moment.utc('1840-01-01', 'YYYY-MM-DD').toDate(),
@@ -151,7 +151,7 @@ export default {
     }
   },
   watch: {
-    wfs_province: function (newVal) {
+    oapif_province: function (newVal) {
       this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
@@ -170,7 +170,7 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
+      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&limit=' + this.oapif_station_limit
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},start_date__date_debut,end_date__date_fin`
@@ -202,7 +202,7 @@ export default {
     },
     selectedLayerOption: function () {
       let selLayer = {}
-      selLayer[this.wfs_layer] = this.layer_options[this.wfs_layer]
+      selLayer[this.oapif_layer] = this.layer_options[this.oapif_layer]
       return selLayer
     },
     popup_props_display: function () {
@@ -229,13 +229,13 @@ export default {
       }
     },
     dateConfigs: function () {
-      if (this.wfs_layer === 'ahccd-annual' || this.wfs_layer === 'ahccd-seasonal') {
+      if (this.oapif_layer === 'ahccd-annual' || this.oapif_layer === 'ahccd-seasonal') {
         return {
           minimumView: 'year',
           format: 'YYYY',
           placeholder: 'YYYY'
         }
-      } else if (this.wfs_layer === 'ahccd-monthly') {
+      } else if (this.oapif_layer === 'ahccd-monthly') {
         return {
           minimumView: 'month',
           format: 'YYYY-MM',
@@ -251,7 +251,7 @@ export default {
     },
     hasErrors: function () {
       // special case to ignore date errors for trends
-      if (this.wfs_layer === 'ahccd-trends') {
+      if (this.oapif_layer === 'ahccd-trends') {
         return false
       } else {
         return this.dateRangeHasBadRange ||
@@ -262,7 +262,7 @@ export default {
     },
     temporal: function () {
       // return the temporal param depending on which ahccd layer is selected
-      if (this.wfs_layer === 'ahccd-trends') {
+      if (this.oapif_layer === 'ahccd-trends') {
         return null
       } else if (this.dateRangeIsValid) {
         let format = this.dateConfigs.format

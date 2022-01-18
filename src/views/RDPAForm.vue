@@ -16,21 +16,25 @@
       <p v-html="openPortalHtml"></p>
     </details>
 
-    <info-contact-support></info-contact-support>
-
     <bbox-map
       v-model="ows_bbox"
       @change="splitBBOXString"></bbox-map>
 
     <var-select
-      v-model="wcs_id_type"
+      v-model="oapicIdResolution"
       :label="$gettext('Model type')"
       :details-text="typeDetailsText"
       :details-title="typeDetailsTitle"
-      :select-options="typeOptions"></var-select>
+      :select-options="modelTypeOptions"></var-select>
 
     <var-select
-      v-model="wcs_id_time"
+      v-model="oapicIdVariable"
+      :disabled="true"
+      :label="$gettext('Quantity type')"
+      :select-options="variableOptions"></var-select>
+
+    <var-select
+      v-model="oapicIdTime"
       :label="$gettext('Precipitation accumulation interval')"
       :select-options="timeOptions"></var-select>
 
@@ -49,25 +53,18 @@
       :label="$gettext('Analysis run hour')"
       :select-options="timeZOptions"></var-select>
 
-    <format-select-raster
-      v-model="wcs_format"></format-select-raster>
+    <format-select-file
+      class="mrgn-tp-md"
+      v-model="oapicFormat"
+      :formats="fileFormats"></format-select-file>
 
-    <details>
-      <summary v-translate>Advanced options</summary>
-      <var-select
-        v-model="ows_crs"
-        :label="crsLabel"
-        :initial-variable="ows_crs"
-        :select-options="crsOptions"></var-select>
-    </details>
-
-    <url-box
-      :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="wcs_download_url"
-      :layer-format="wcs_format"
-      :has-errors="hasErrors"
-      :url-box-title="$gettext('Data download link')">
-    </url-box>
+    <data-download-box
+      :file-name="filename"
+      :file-format="oapicFormat"
+      :download-url="oapicUrl"
+      :date-range-chunks="downloadLinkTitleBreakdown"
+      :has-errors="hasErrors">
+    </data-download-box>
 
     <more-resources></more-resources>
   </section>
@@ -75,37 +72,36 @@
 
 <script>
 import BBOXMap from '@/components/BBOXMap.vue'
-import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
+import FormatSelectFile from '@/components/FormatSelectFile.vue'
 import VarSelect from '@/components/VarSelect.vue'
 import DateSelect from '@/components/DateSelect.vue'
-import URLBox from '@/components/URLBox.vue'
+import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { wcs } from '@/components/mixins/wcs.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
 
 export default {
   name: 'RDPAForm',
-  mixins: [wcs, ows, datasets],
+  mixins: [oapiCoverage, ows, datasets],
   components: {
     'bbox-map': BBOXMap,
-    'format-select-raster': FormatSelectRaster,
-    'var-select': VarSelect,
-    'date-select': DateSelect,
-    'url-box': URLBox,
+    FormatSelectFile,
+    VarSelect,
+    DateSelect,
+    DataDownloadBox,
     DataAccessDocLink,
     TipsUsingTool,
     MoreResources
   },
   data () {
     return {
-      wcs_id_dataset: 'RDPA',
-      wcs_id_type: 'FORE', // FORE or ARC
-      wcs_id_time: '6F', // 6F, 6P, 24F, 24P
-      wcs_id_resolution: '15km', // 10km, 15km
-      wcs_id_variable: 'PR', // Quantity of Precip
+      oapicIdDataset: 'RDPA',
+      oapicIdTime: '6F', // 6F, 6P, 24F, 24P
+      oapicIdResolution: '10km', // 10km, 15km
+      oapicIdVariable: '1', // Quantity of Precip
       arc15RunMoment06FMin: this.$moment.utc('2011-04-06 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       arc15RunMoment06FMax: this.$moment.utc('2012-10-03 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       arc15RunMoment24FMin: this.$moment.utc('2011-04-06 12:00:00', 'YYYY-MM-DD HH:mm:ss'),
@@ -122,13 +118,10 @@ export default {
     }
   },
   watch: {
-    wcs_id_type: function () {
+    oapicIdResolution: function () {
       this.adjustForePeriod()
     },
-    wcs_id_resolution: function () {
-      this.adjustForePeriod()
-    },
-    wcs_id_time: function () {
+    oapicIdTime: function () {
       if (this.timeZis24) {
         this.forecastTimeZ = '12Z'
       }
@@ -138,20 +131,22 @@ export default {
     }
   },
   computed: {
-    wcs_coverage_id: function () {
-      // generate coverageID
-      let coverageIdParts = []
-      coverageIdParts.push(this.wcs_id_dataset)
-      if (this.wcs_id_type === 'ARC') {
-        coverageIdParts.push(this.wcs_id_type + '_' + this.wcs_id_resolution)
-      }
-      coverageIdParts.push(this.wcs_id_time + '_' + this.wcs_id_variable)
-      return coverageIdParts.join('.')
+    oapicCoverageId: function () {
+      return `weather:${this.oapicIdDataset}:${this.oapicIdResolution}:${this.oapicIdTime}`
     },
-    typeOptions: function () {
+    oapicDatetime: function () {
+      return this.forecastDateMoment.format('YYYY-MM-DD') + 'T' + this.forecastTimeZ
+    },
+    variableOptions: function () {
       return {
-        'FORE': this.$gettext('Analysis'), // Forecast
-        'ARC': this.$gettext('Archive')
+        '1': this.$_i(this.$gettext('24 hr Total precipitation [{units}]'),{units: 'kg/(m&sup2;)'}),
+        '2': this.$gettext('(prodType 0, cat 1, subcat 193) [-]')
+      }
+    },
+    modelTypeOptions: function () {
+      return {
+        '10km': this.$gettext('Analysis') + ' (10km)', // Forecast
+        '15km': this.$gettext('Archive') + ' (15km)'
       }
     },
     typeDetailsText: function () {
@@ -163,14 +158,8 @@ export default {
     typeDetailsTitle: function () {
       return this.$gettext('Explanation of model types')
     },
-    resoOptions: function () {
-      return {
-        // '10km': this.$gettext('10km'),
-        '15km': this.$gettext('15km')
-      }
-    },
     timeOptions: function () {
-      if (this.wcs_id_type === 'ARC') {
+      if (this.oapicIdResolution === '15km') {
         return {
           '6F': this.$gettext('6 hours'),
           '24F': this.$gettext('24 hours')
@@ -178,14 +167,14 @@ export default {
       } else {
         return {
           '6F': this.$gettext('6 hours'),
-          // '6P': this.$gettext('6 hours preliminary'),
-          '24F': this.$gettext('24 hours')
-          // '24P': this.$gettext('24 hours preliminary')
+          '6P': this.$gettext('6 hours preliminary'),
+          '24F': this.$gettext('24 hours'),
+          '24P': this.$gettext('24 hours preliminary')
         }
       }
     },
     timeZis24: function () {
-      return this.wcs_id_time.includes('24', 0)
+      return this.oapicIdTime.includes('24', 0)
     },
     timeZOptions: function () {
       let allZOptions = {
@@ -222,10 +211,10 @@ export default {
         }
       }
     },
-    selectedCoverageIdOption: function () {
-      let wcsCoverage = {}
-      wcsCoverage[this.wcs_coverage_id] = this.currentRouteTitle + ' (' + this.wcs_coverage_id + ')'
-      return wcsCoverage
+    downloadLinkTitleBreakdown: function () {
+      return [{
+        specialTitle: `${this.oapicIdDataset} | ${this.oapicIdResolution} | ${this.oapicIdTime} | ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
+      }]
     },
     forecastDateMoment: function () {
       return this.$moment.utc(this.forecastDate)
@@ -244,22 +233,22 @@ export default {
     },
     forecastDateMomentRange: function () {
       // Forecast period range limits based on what type selected
-      if (this.wcs_id_type === 'ARC' && this.wcs_id_resolution === '15km' && this.wcs_id_time === '6F') {
+      if (this.oapicIdResolution === '15km' && this.oapicIdTime === '6F') {
         return {
           min: this.arc15RunMoment06FMin,
           max: this.arc15RunMoment06FMax
         }
-      } else if (this.wcs_id_type === 'ARC' && this.wcs_id_resolution === '15km' && this.wcs_id_time === '24F') {
+      } else if (this.oapicIdResolution === '15km' && this.oapicIdTime === '24F') {
         return {
           min: this.arc15RunMoment24FMin,
           max: this.arc15RunMoment24FMax
         }
-      } else if (this.wcs_id_type === 'FORE' && this.wcs_id_time === '6F') { // Analysis (Forecast) type
+      } else if (this.oapicIdResolution === '10km' && this.oapicIdTime === '6F') { // Analysis (Forecast) type
         return {
           min: this.foreRunMoment06FMin,
           max: this.foreRunMoment06FMax
         }
-      } else if (this.wcs_id_type === 'FORE' && this.wcs_id_time === '24F') { // Analysis (Forecast) type
+      } else if (this.oapicIdResolution === '10km' && this.oapicIdTime === '24F') { // Analysis (Forecast) type
         return {
           min: this.foreRunMoment24FMin,
           max: this.foreRunMoment24FMax
@@ -301,19 +290,19 @@ export default {
     }
   },
   methods: {
-    wcs_download_url: function (coverageId) { // replaces existing function from wcs mixin
+    getOapicParams: function () {
+      let urlParams = []
+      urlParams.push('f=' + this.oapicFormat)
+      urlParams.push(`range-subset=${this.oapicIdVariable}`)
+
+      // bbox
       this.splitBBOXString()
-      let url = this.wcs2_weather_url_base + '&'
-      let urlParams = this.getWCSCommonParams(coverageId)
+      urlParams.push(`bbox=${this.bbox_parts.min_x.toFixed(3)},${this.bbox_parts.min_y.toFixed(3)},${this.bbox_parts.max_x.toFixed(3)},${this.bbox_parts.max_y.toFixed(3)}`)
 
-      // Forecast Time
-      let ft = this.forecastDateISO
-      if (ft !== '' && ft !== null) {
-        urlParams.push('TIME=' + ft)
-      }
+      // datetime
+      urlParams.push(`datetime=${this.oapicDatetime}`)
 
-      url += urlParams.join('&')
-      return url
+      return urlParams
     },
     adjustForePeriod: function () {
       // Auto adjust forecast period date if out of range

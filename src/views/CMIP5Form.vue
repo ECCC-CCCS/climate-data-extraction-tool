@@ -21,10 +21,11 @@
     <bbox-map
       v-model="ows_bbox"
       :allow-click-point="true"
+      :file-formats="fileFormats"
       @change="splitBBOXString"></bbox-map>
 
     <var-select
-      v-model="wcs_id_variable"
+      v-model="oapicIdVariable"
       :select-options="variableOptions"></var-select>
 
     <option-radio
@@ -33,12 +34,12 @@
       :radio-options="scenarioTypeOptions"></option-radio>
 
     <scenario-select
-      v-show="scenarioType === 'RCP'"
-      v-model="wcs_id_scenario"
+      v-show="scenarioType === 'projected'"
+      v-model="oapicScenario"
       :select-options="scenarioOptions"></scenario-select>
 
     <var-select
-      v-model="wcs_id_timePeriod"
+      v-model="oapicIdTimePeriod"
       :label="$gettext('Time interval / Time of year')"
       :select-options="timePeriodOptions"></var-select>
 
@@ -62,7 +63,7 @@
         :radio-inline="true"
         :radio-options="rangeTypeOptions"></option-radio>
 
-      <div id="historical-date-range" v-show="scenarioType === 'HISTO' && rangeType !=='year20'">
+      <div id="historical-date-range" v-show="scenarioType === 'historical' && rangeType !=='P20Y-Avg'">
         <date-select
           v-model="dateHistStart"
           :label="$gettext('Historical start date')"
@@ -92,7 +93,7 @@
           @click="clearDates"
           v-translate>Clear dates</button>
       </div>
-      <div id="rcp-date-range" v-show="scenarioType === 'RCP' && rangeType !=='year20'">
+      <div id="rcp-date-range" v-show="scenarioType === 'projected' && rangeType !=='P20Y-Avg'">
         <date-select
           v-model="dateRcpStart"
           :label="$gettext('Start date')"
@@ -124,43 +125,32 @@
       </div>
 
       <var-select
-        v-show="rangeType === 'year20' && valueType === 'ANO'"
+        v-show="rangeType === 'P20Y-Avg' && valueType === 'anomaly'"
         v-model="avg20Year"
         :label="$gettext('20-Year average range')"
         :select-options="avg20YearOptions"></var-select>
     </fieldset>
 
-    <format-select-raster
+    <format-select-file
       class="mrgn-tp-md"
       v-show="!pointClickOn"
-      v-model="wcs_format"></format-select-raster>
+      v-model="oapicFormat"
+      :formats="fileFormats"></format-select-file>
 
     <format-select-vector
       class="mrgn-tp-md"
       v-show="pointClickOn"
       v-model="wps_format"></format-select-vector>
 
-    <details
-      v-show="!pointClickOn">
-      <summary v-translate>Advanced options</summary>
-      <var-select
-        v-model="ows_crs"
-        :label="crsLabel"
-        :select-options="crsOptions"></var-select>
-    </details>
-
-    <url-box
+    <data-download-box
       v-show="!pointClickOn"
-      :layer-options="selectedCoverageIdOption"
-      :ows-url-formatter="wcs_download_url"
-      :layer-format="wcs_format"
-      :wcs-common-url="wcsCommonUrl"
-      :wcs-band-chunks="chunkedBandsParam"
-      :wcs-num-bands="dateRangeNumBands"
+      :file-name="filename"
+      :file-format="oapicFormat"
+      :download-url="oapicUrl"
+      :date-range-chunks="downloadLinkTitleBreakdown"
       :band-range-format="bandRangeFormat"
-      :has-errors="hasErrors"
-      :url-box-title="$gettext('Data download link')">
-    </url-box>
+      :has-errors="hasErrors">
+    </data-download-box>
 
     <point-download-box
       v-show="pointClickOn"
@@ -173,37 +163,39 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
+
 import BBOXMap from '@/components/BBOXMap.vue'
-import FormatSelectRaster from '@/components/FormatSelectRaster.vue'
+import FormatSelectFile from '@/components/FormatSelectFile.vue'
 import FormatSelectVector from '@/components/FormatSelectVector.vue'
 import VarSelect from '@/components/VarSelect.vue'
 import ScenarioSelect from '@/components/ScenarioSelect.vue'
 import DateSelect from '@/components/DateSelect.vue'
 import OptionRadio from '@/components/OptionRadio.vue'
-import URLBox from '@/components/URLBox.vue'
+import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import OpenPortalLinks from '@/components/OpenPortalLinks.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import PointDownloadBox from '@/components/PointDownloadBox.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { wcs } from '@/components/mixins/wcs.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
-import { DCSCMIP5 } from '@/components/mixins/dcs-cmip5.js'
+import { DCSCMIP5 } from '@/components/mixins/oapi-coverage-dcs-cmip5.js'
 import { wps } from '@/components/mixins/wps.js'
 
 export default {
   name: 'CMIP5Form',
-  mixins: [wcs, ows, datasets, DCSCMIP5, wps],
+  mixins: [oapiCoverage, ows, datasets, DCSCMIP5, wps],
   components: {
     'bbox-map': BBOXMap,
-    FormatSelectRaster,
+    FormatSelectFile,
     FormatSelectVector,
     VarSelect,
     ScenarioSelect,
     DateSelect,
     OptionRadio,
-    'url-box': URLBox,
+    DataDownloadBox,
     OpenPortalLinks,
     DataAccessDocLink,
     PointDownloadBox,
@@ -212,138 +204,68 @@ export default {
   },
   data () {
     return {
-      wcs_id_dataset: 'CMIP5',
-      wcs_id_variable: 'TT',
-      avg20YearOptions: {
-        '2021-2040': '2021-2040',
-        '2041-2060': '2041-2060',
-        '2061-2080': '2061-2080',
-        '2081-2100': '2081-2100'
-      }
+      oapicIdDataset: 'CMIP5',
+      oapicIdVariable: 'tas'
     }
   },
   watch: {
-    scenarioType: function (newVal) { // overwrites dcs-cmip5 mixin
-      // remember last selected RCP if any
-      if (this.wcs_id_scenario.includes('RCP')) {
-        this.lastSelectedRCP = this.wcs_id_scenario
-      }
-
-      // adjust wcs_id_scenario selection for History or Future
-      if (newVal === 'HISTO') {
-        this.wcs_id_scenario = newVal
-        this.rangeType = 'custom'
-
-        // Auto correct dates for Temp and Precip
-        if (this.wcs_id_variable === 'TT' || this.wcs_id_variable === 'PR') {
-          this.correctDatesTT_PR()
-        }
-      } else {
-        this.wcs_id_scenario = this.lastSelectedRCP
-      }
-    },
-    wcs_id_timePeriod: function (newVal) { // overwrites dcs-cmip5 mixin
-      // Auto select Absolute and custom time period for Monthly Ensembles
-      if (newVal === 'ENS') {
-        this.valueType = 'ABS'
-        this.rangeType = 'custom'
-
-        // Auto correct dates for wind selection
-        if (this.wcs_id_variable === 'SFCWIND') {
-          this.correctDatesSFCWIND()
-        } else if (this.wcs_id_variable === 'SND') { // some variables not yet supported for non-monthly ABS; auto correct selection
-          // this.valueType = 'ANO'
-        }
-      }
-      // adjust dates if they are strings to match new date format
-      this.dateRcpStart = this.formatDateToMoment(this.dateRcpStart).format(this.dateConfigs.format)
-      this.dateRcpEnd = this.formatDateToMoment(this.dateRcpEnd).format(this.dateConfigs.format)
-    },
-    wcs_id_variable: function (newVal) {
+    oapicIdVariable: function (newVal) {
       // Auto correct dates for Temp and Precip
-      if (newVal === 'TT' || newVal === 'PR') {
-        this.correctDatesTT_PR()
+      if (newVal === 'tas' || newVal === 'pr') {
+        this.correctDatestas_pr()
       }
 
-      // some variables not yet supported for non-monthly ABS; auto correct selectio
-      if (newVal === 'SND') {
-        if (this.valueType === 'ABS' && this.wcs_id_timePeriod !== 'ENS') {
-          // this.wcs_id_timePeriod = 'ENS'
-          this.valueType = 'ANO'
+      // some variables not yet supported for non-monthly absolute; auto correct selectio
+      if (newVal === 'snd') {
+        if (this.valueType === 'absolute' && this.oapicIdTimePeriod !== 'monthly') {
+          // this.oapicIdTimePeriod = 'monthly'
+          this.valueType = 'anomaly'
         }
       }
 
       // Auto correct dates for monthly wind
-      if (this.wcs_id_timePeriod === 'ENS') {
-        if (newVal === 'SFCWIND') {
-          this.correctDatesSFCWIND()
-        }
-      }
-    },
-    rangeType: function (newVal) {
-      // Force percentile to 50th
-      if (newVal === 'year20') {
-        this.percentile = 'PCTL50'
-      }
-    },
-    valueType: function (newVal) {
-      if (newVal === 'ABS') {
-        this.rangeType = 'custom'
-
-        // Some variables not yet supported for non-monthly ABS; auto correct selection
-        if (this.wcs_id_variable === 'SND') {
-          this.wcs_id_timePeriod = 'ENS'
+      if (this.oapicIdTimePeriod === 'monthly') {
+        if (newVal === 'sfcWind') {
+          this.correctDatessfcWind()
         }
       }
     }
   },
   methods: {
-    correctDatesTT_PR: function () {
+    correctDatestas_pr: function () {
       if (this.bandMoments.histStart.isBefore(this.$moment.utc(this.dateHistMin))) {
         this.dateHistStart = this.$moment.utc(this.dateHistMin).toDate()
       }
     },
-    correctDatesSFCWIND: function () {
+    correctDatessfcWind: function () {
       if (this.bandMoments.histEnd.isAfter(this.$moment.utc(this.dateHistMax))) {
         this.dateHistEnd = this.$moment.utc(this.dateHistMax).toDate()
       }
     }
   },
   computed: {
-    percentileOptions: function () {
-      if (this.rangeType === 'year20') {
-        return {
-          PCTL50: this.$gettext('50th percentile')
-        }
-      } else {
-        return {
-          PCTL5: this.$gettext('5th percentile'),
-          PCTL25: this.$gettext('25th percentile'),
-          PCTL50: this.$gettext('50th percentile'),
-          PCTL75: this.$gettext('75th percentile'),
-          PCTL95: this.$gettext('95th percentile')
-        }
-      }
-    },
+    ...mapState('map', [
+      'clickLatLng'
+    ]),
     variableOptions: function () {
       return {
-        TT: this.$gettext('Mean temperature'),
-        PR: this.$gettext('Mean precipitation'),
-        SND: this.$gettext('Snow depth'),
-        SIT: this.$gettext('Sea ice thickness'),
-        SIC: this.$gettext('Sea ice concentration'),
-        SFCWIND: this.$gettext('Near surface wind speed')
+        tas: this.$gettext('Mean temperature'),
+        pr: this.$gettext('Mean precipitation'),
+        snd: this.$gettext('Snow depth'),
+        sit: this.$gettext('Sea ice thickness'),
+        sic: this.$gettext('Sea ice concentration'),
+        sfcWind: this.$gettext('Near surface wind speed')
       }
     },
     dateHistMin: function () {
-      if (this.wcs_id_variable === 'TT' || this.wcs_id_variable === 'PR') {
+      if (this.oapicIdVariable === 'tas' || this.oapicIdVariable === 'pr') {
         return this.$moment.utc('1901-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('1900-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       }
     },
     dateHistMax: function () {
-      if (this.wcs_id_timePeriod === 'ENS' && this.wcs_id_variable === 'SFCWIND') {
+      if (this.oapicIdTimePeriod === 'monthly' && this.oapicIdVariable === 'sfcWind') {
         return this.$moment.utc('2005-11-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('2005-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
@@ -355,16 +277,41 @@ export default {
       let historicalYearEnd = ''
 
       // special case for Monthly surface wind dates
-      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.wcs_id_timePeriod === 'ENS' && this.wcs_id_variable === 'SFCWIND') {
+      if (this.bandHistoricalYearStart >= this.historicalMax.year && this.bandHistoricalMonthStart > this.historicalMax.month && this.oapicIdTimePeriod === 'monthly' && this.oapicIdVariable === 'sfcWind') {
         historicalYearStart = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
-      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.wcs_id_timePeriod === 'ENS' && this.wcs_id_variable === 'SFCWIND') {
+      if (this.bandHistoricalYearEnd >= this.historicalMax.year && this.bandHistoricalMonthEnd > this.historicalMax.month && this.oapicIdTimePeriod === 'monthly' && this.oapicIdVariable === 'sfcWind') {
         historicalYearEnd = this.$gettext('Maximum date for near surface wind speed is:') + ' ' + this.historicalMax.year + '-' + this.historicalMax.month
       }
 
       return {
         historicalYearStart: historicalYearStart,
         historicalYearEnd: historicalYearEnd
+      }
+    },
+    pointInputs: function () {
+      const varToLayerVar = {
+        tas: 'TT',
+        pr: 'PR',
+        snd: 'SND',
+        sit: 'SIT',
+        sic: 'SIC',
+        sfcWind: 'SFCWIND'
+      }
+      const timeToLayerTime = {
+        MAM: 'SPRING',
+        JJA: 'SUMMER',
+        SON: 'FALL',
+        DJF: 'WINTER',
+        annual: 'YEAR',
+        monthly: 'ENS'
+      }
+      let layer = this.oapicIdDataset + '.' + varToLayerVar[this.oapicIdVariable] + '.' + this.oapicScenario.replace('.', '') + '.' + timeToLayerTime[this.oapicIdTimePeriod] + '.PCTL' + this.percentile
+      return {
+        layer: layer,
+        y: this.clickLatLng === null ? null : this.clickLatLng.lat,
+        x: this.clickLatLng === null ? null : this.clickLatLng.lng,
+        format: this.wps_format
       }
     }
   }

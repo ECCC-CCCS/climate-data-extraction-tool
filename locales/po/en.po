@@ -36,7 +36,12 @@ msgstr ": links to datasets, tools, guidance and related resources"
 msgid ": search, explore and visualize climate data"
 msgstr ": search, explore and visualize climate data"
 
+#: src/views/RDPAForm.vue:143
+msgid "(prodType 0, cat 1, subcat 193) [-]"
+msgstr ""
+
 #: src/components/DateSelect.vue:12
+#: src/components/FormatSelectFile.vue:7
 #: src/components/FormatSelectRaster.vue:7
 #: src/components/FormatSelectVector.vue:7
 #: src/components/NumSelect.vue:8
@@ -53,7 +58,8 @@ msgstr ""
 "{formatName} files can be opened, viewed and manipulated with any word "
 "processor or spreadsheet software."
 
-#: src/components/FormatSelectRaster.vue:75
+#: src/components/FormatSelectFile.vue:78
+#: src/components/FormatSelectRaster.vue:73
 #: src/components/FormatSelectVector.vue:63
 msgid ""
 "{formatName} files can be opened, viewed and manipulated with Geographic "
@@ -64,7 +70,8 @@ msgstr ""
 "Information System (GIS) software or scientific programming tools such as "
 "{linkToR} or {linkToPython}."
 
-#: src/components/FormatSelectRaster.vue:80
+#: src/components/FormatSelectFile.vue:83
+#: src/components/FormatSelectRaster.vue:78
 msgid ""
 "{formatName} files can be opened, viewed and manipulated with some "
 "Geographic Information System (GIS) software or scientific programming "
@@ -74,8 +81,7 @@ msgstr ""
 "Geographic Information System (GIS) software or scientific programming "
 "tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}."
 
-#: src/components/mixins/dcs-cmip5.js:268
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:275
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:354
 msgid ""
 "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support "
 "Desk</a> if you're interested in individual model output"
@@ -83,16 +89,15 @@ msgstr ""
 "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support "
 "Desk</a> if you're interested in individual model output"
 
-#: src/components/mixins/dcs-cmip5.js:262
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:269
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:348
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 
-#: src/components/BBOXMap.vue:439
+#: src/components/BBOXMap.vue:448
 msgid "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
 msgstr "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
 
-#: src/views/RDPAForm.vue:160
+#: src/views/RDPAForm.vue:154
 msgid ""
 "<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 "
 "Coordinated Universal Time (UTC) up until today."
@@ -100,7 +105,7 @@ msgstr ""
 "<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 "
 "Coordinated Universal Time (UTC) up until today."
 
-#: src/views/RDPAForm.vue:161
+#: src/views/RDPAForm.vue:155
 msgid ""
 "<strong>Archive</strong> data is the 15km archives and are available from "
 "2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC."
@@ -108,138 +113,141 @@ msgstr ""
 "<strong>Archive</strong> data is the 15km archives and are available from "
 "2011-04-06 12:00 UTC to 2012-10-02 12:00 UTC."
 
-#: src/views/RDPAForm.vue:193
+#: src/views/RDPAForm.vue:181
 msgid "00Z"
 msgstr "00Z"
 
-#: src/views/LTCEForm.vue:333
+#: src/views/LTCEForm.vue:329
 msgid "01 - January"
 msgstr "01 - January"
 
-#: src/views/LTCEForm.vue:334
+#: src/views/LTCEForm.vue:330
 msgid "02 - February"
 msgstr "02 - February"
 
-#: src/views/LTCEForm.vue:335
+#: src/views/LTCEForm.vue:331
 msgid "03 - March"
 msgstr "03 - March"
 
-#: src/views/LTCEForm.vue:336
+#: src/views/LTCEForm.vue:332
 msgid "04 - April"
 msgstr "04 - April"
 
-#: src/views/LTCEForm.vue:337
+#: src/views/LTCEForm.vue:333
 msgid "05 - May"
 msgstr "05 - May"
 
-#: src/views/LTCEForm.vue:338
+#: src/views/LTCEForm.vue:334
 msgid "06 - June"
 msgstr "06 - June"
 
-#: src/views/RDPAForm.vue:194
+#: src/views/RDPAForm.vue:182
 msgid "06Z"
 msgstr "06Z"
 
-#: src/views/LTCEForm.vue:339
+#: src/views/LTCEForm.vue:335
 msgid "07 - July"
 msgstr "07 - July"
 
-#: src/views/LTCEForm.vue:340
+#: src/views/LTCEForm.vue:336
 msgid "08 - August"
 msgstr "08 - August"
 
-#: src/views/LTCEForm.vue:341
+#: src/views/LTCEForm.vue:337
 msgid "09 - September"
 msgstr "09 - September"
 
-#: src/views/LTCEForm.vue:342
+#: src/views/LTCEForm.vue:338
 msgid "10 - October"
 msgstr "10 - October"
 
-#: src/views/LTCEForm.vue:343
+#: src/views/LTCEForm.vue:339
 msgid "11 - November"
 msgstr "11 - November"
 
-#: src/views/LTCEForm.vue:344
+#: src/views/LTCEForm.vue:340
 msgid "12 - December"
 msgstr "12 - December"
 
-#: src/views/RDPAForm.vue:195
-#: src/views/RDPAForm.vue:205
+#: src/views/RDPAForm.vue:183
+#: src/views/RDPAForm.vue:193
 msgid "12Z"
 msgstr "12Z"
 
-#: src/views/RDPAForm.vue:170
-msgid "15km"
-msgstr "15km"
-
-#: src/views/RDPAForm.vue:196
+#: src/views/RDPAForm.vue:184
 msgid "18Z"
 msgstr "18Z"
 
-#: src/components/DateSelect.vue:176
+#: src/components/DateSelect.vue:177
 msgid "2 digit day of month"
 msgstr "2 digit day of month"
 
-#: src/components/DateSelect.vue:175
+#: src/components/DateSelect.vue:176
 msgid "2 digit month"
 msgstr "2 digit month"
 
-#: src/components/mixins/dcs-cmip5.js:131
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:132
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:209
 msgid "20-Year average"
 msgstr "20-Year average"
 
-#: src/views/CMIP5Form.vue:129
-#: src/views/DCSForm.vue:132
+#: src/views/CMIP5Form.vue:130
+#: src/views/DCSForm.vue:131
 msgid "20-Year average range"
 msgstr "20-Year average range"
 
-#: src/views/RDPAForm.vue:177
-#: src/views/RDPAForm.vue:183
+#: src/views/RDPAForm.vue:165
+#: src/views/RDPAForm.vue:171
 msgid "24 hours"
 msgstr "24 hours"
 
-#: src/views/CMIP5Form.vue:324
-#: src/views/DCSForm.vue:240
+#: src/views/RDPAForm.vue:172
+msgid "24 hours preliminary"
+msgstr ""
+
+#: src/views/RDPAForm.vue:142
+msgid "24 hr Total precipitation [{units}]"
+msgstr ""
+
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:157
 msgid "25th percentile"
 msgstr "25th percentile"
 
-#: src/components/DateSelect.vue:174
+#: src/components/DateSelect.vue:175
 msgid "4 digit year"
 msgstr "4 digit year"
 
-#: src/views/CMIP5Form.vue:319
-#: src/views/CMIP5Form.vue:325
-#: src/views/DCSForm.vue:235
-#: src/views/DCSForm.vue:241
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:152
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:158
 msgid "50th percentile"
 msgstr "50th percentile"
 
-#: src/views/CMIP5Form.vue:323
-#: src/views/DCSForm.vue:239
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:156
 msgid "5th percentile"
 msgstr "5th percentile"
 
-#: src/views/RDPAForm.vue:176
-#: src/views/RDPAForm.vue:181
+#: src/views/RDPAForm.vue:164
+#: src/views/RDPAForm.vue:169
 msgid "6 hours"
 msgstr "6 hours"
 
-#: src/views/CMIP5Form.vue:326
-#: src/views/DCSForm.vue:242
+#: src/views/RDPAForm.vue:170
+msgid "6 hours preliminary"
+msgstr ""
+
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:159
 msgid "75th percentile"
 msgstr "75th percentile"
 
-#: src/views/CMIP5Form.vue:327
-#: src/views/DCSForm.vue:243
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:160
 msgid "95th percentile"
 msgstr "95th percentile"
 
-#: src/components/mixins/dcs-cmip5.js:111
-#: src/components/mixins/dcs-cmip5.js:116
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:112
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:117
+#: src/components/BBOXMap.vue:443
+msgid "A single location as a CSV or GeoJSON"
+msgstr ""
+
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:189
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:194
 msgid "Actual values"
 msgstr "Actual values"
 
@@ -271,19 +279,11 @@ msgstr ""
 "years are missing data or more than 10% of the data within the time series "
 "is missing, a trend was not calculated."
 
-#: src/views/CanGRDForm.vue:96
-#: src/views/CanSIPSForm.vue:69
-#: src/views/CMIP5Form.vue:145
-#: src/views/DCSForm.vue:148
-#: src/views/RDPAForm.vue:57
-msgid "Advanced options"
-msgstr "Advanced options"
-
-#: src/views/CanSIPSForm.vue:178
+#: src/views/CanSIPSForm.vue:158
 msgid "Air temperature"
 msgstr "Air temperature"
 
-#: src/views/CanSIPSForm.vue:181
+#: src/views/CanSIPSForm.vue:161
 msgid "Air temperature at 850mb"
 msgstr "Air temperature at 850mb"
 
@@ -291,23 +291,23 @@ msgstr "Air temperature at 850mb"
 msgid "Alberta"
 msgstr "Alberta"
 
-#: src/components/StationSelect.vue:124
+#: src/components/StationSelect.vue:132
 msgid "All"
 msgstr "All"
 
-#: src/views/LTCEForm.vue:360
+#: src/views/LTCEForm.vue:356
 msgid "All {maxDays} days of the month"
 msgstr "All {maxDays} days of the month"
 
-#: src/views/LTCEForm.vue:360
+#: src/views/LTCEForm.vue:356
 msgid "All {maxDays} days of the year"
 msgstr "All {maxDays} days of the year"
 
-#: src/views/LTCEForm.vue:345
+#: src/views/LTCEForm.vue:341
 msgid "All months"
 msgstr "All months"
 
-#: src/components/TipsUsingTool.vue:34
+#: src/components/TipsUsingTool.vue:35
 msgid ""
 "alternatively, for most datasets, you can select all stations within a "
 "province or territory with the \"Province/Territory\" menu"
@@ -315,22 +315,21 @@ msgstr ""
 "alternatively, for most datasets, you can select all stations within a "
 "province or territory with the \"Province/Territory\" menu"
 
-#: src/views/RDPAForm.vue:154
+#: src/views/RDPAForm.vue:148
 msgid "Analysis"
 msgstr "Analysis"
 
-#: src/views/RDPAForm.vue:39
+#: src/views/RDPAForm.vue:43
 msgid "Analysis date"
 msgstr "Analysis date"
 
-#: src/views/RDPAForm.vue:49
+#: src/views/RDPAForm.vue:53
 msgid "Analysis run hour"
 msgstr "Analysis run hour"
 
-#: src/components/mixins/dcs-cmip5.js:149
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:150
-#: src/views/CanGRDForm.vue:260
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:232
 #: src/views/CanGRDForm.vue:268
+#: src/views/CanGRDForm.vue:276
 msgid "Annual"
 msgstr "Annual"
 
@@ -358,13 +357,12 @@ msgstr ""
 "data from closely related stations to compile a long time series of data "
 "for about 750 locations in Canada to monitor for record-breaking weather."
 
-#: src/components/mixins/dcs-cmip5.js:115
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:116
-#: src/views/CanGRDForm.vue:274
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:193
+#: src/views/CanGRDForm.vue:282
 msgid "Anomaly values"
 msgstr "Anomaly values"
 
-#: src/views/RDPAForm.vue:155
+#: src/views/RDPAForm.vue:149
 msgid "Archive"
 msgstr "Archive"
 
@@ -410,19 +408,19 @@ msgstr ""
 "precipitation change (%) for 1948-2012 are also available for download."
 
 #: src/views/AHCCDForm.vue:53
-#: src/views/CanGRDForm.vue:66
+#: src/views/CanGRDForm.vue:67
 #: src/views/ClimateDailyForm.vue:61
 #: src/views/ClimateHourlyForm.vue:61
 #: src/views/ClimateMonthlyForm.vue:55
-#: src/views/CMIP5Form.vue:118
-#: src/views/CMIP5Form.vue:88
-#: src/views/DCSForm.vue:121
-#: src/views/DCSForm.vue:91
+#: src/views/CMIP5Form.vue:119
+#: src/views/CMIP5Form.vue:89
+#: src/views/DCSForm.vue:120
+#: src/views/DCSForm.vue:90
 #: src/views/HydrometricArchiveForm.vue:52
 msgid "Clear dates"
 msgstr "Clear dates"
 
-#: src/components/StationSelect.vue:48
+#: src/components/StationSelect.vue:55
 #. Button to clear selected stations
 msgid "Clear selected"
 msgstr "Clear selected"
@@ -441,14 +439,14 @@ msgstr "Climate change"
 msgid "Climate data extraction tool"
 msgstr "Climate data extraction tool"
 
-#: src/views/LTCEForm.vue:60
+#: src/views/LTCEForm.vue:56
 msgid "Climate element / record type"
 msgstr "Climate element / record type"
 
 #: src/views/ClimateDailyForm.vue:208
 #: src/views/ClimateHourlyForm.vue:208
 #: src/views/ClimateMonthlyForm.vue:199
-#: src/views/ClimateNormalsForm.vue:136
+#: src/views/ClimateNormalsForm.vue:134
 msgid "Climate ID"
 msgstr "Climate ID"
 
@@ -520,22 +518,19 @@ msgstr "Daily mean"
 msgid "Daily minimum temperature"
 msgstr "Daily minimum temperature"
 
+#: src/components/FormatSelectFile.vue:6
 #: src/components/FormatSelectRaster.vue:6
 #: src/components/FormatSelectVector.vue:6
 msgid "Data download format"
 msgstr "Data download format"
 
+#: src/components/DataDownloadBox.vue:41
 #: src/views/AHCCDForm.vue:101
-#: src/views/CanGRDForm.vue:113
-#: src/views/CanSIPSForm.vue:82
 #: src/views/ClimateDailyForm.vue:104
 #: src/views/ClimateHourlyForm.vue:104
 #: src/views/ClimateMonthlyForm.vue:95
-#: src/views/ClimateNormalsForm.vue:62
-#: src/views/CMIP5Form.vue:162
-#: src/views/DCSForm.vue:165
-#: src/views/LTCEForm.vue:122
-#: src/views/RDPAForm.vue:70
+#: src/views/ClimateNormalsForm.vue:60
+#: src/views/LTCEForm.vue:118
 msgid "Data download link"
 msgstr "Data download link"
 
@@ -552,19 +547,18 @@ msgstr "Data download links"
 #: src/views/ClimateHourlyForm.vue:34
 #: src/views/ClimateMonthlyForm.vue:225
 #: src/views/ClimateMonthlyForm.vue:34
-#: src/views/CMIP5Form.vue:57
-#: src/views/DCSForm.vue:60
+#: src/views/CMIP5Form.vue:58
+#: src/views/DCSForm.vue:59
 #: src/views/HydrometricArchiveForm.vue:30
 msgid "Date range"
 msgstr "Date range"
 
-#: src/components/mixins/oapi-coverage.js:110
-#: src/components/mixins/wcs.js:108
-#: src/components/mixins/wfs.js:108
+#: src/components/mixins/oapi-coverage.js:68
+#: src/components/mixins/oapi-features.js:108
 msgid "Date range fields must be all set or cleared."
 msgstr "Date range fields must be all set or cleared."
 
-#: src/views/CanGRDForm.vue:79
+#: src/views/CanGRDForm.vue:80
 msgid "Date ranges not required for CanGRD trends"
 msgstr "Date ranges not required for CanGRD trends"
 
@@ -572,15 +566,15 @@ msgstr "Date ranges not required for CanGRD trends"
 msgid "Date:"
 msgstr "Date:"
 
-#: src/views/LTCEForm.vue:99
+#: src/views/LTCEForm.vue:95
 msgid "Day"
 msgstr "Day"
 
-#: src/components/TipsUsingTool.vue:31
+#: src/components/TipsUsingTool.vue:32
 msgid "deselect a station by clicking on it again in the table"
 msgstr "deselect a station by clicking on it again in the table"
 
-#: src/components/TipsUsingTool.vue:32
+#: src/components/TipsUsingTool.vue:33
 msgid "deselect all stations by clicking the \"Clear selected\" button"
 msgstr "deselect all stations by clicking the \"Clear selected\" button"
 
@@ -620,7 +614,7 @@ msgstr ""
 msgid "Download a list of detailed information for each Hourly climate station."
 msgstr ""
 
-#: src/views/LTCEForm.vue:39
+#: src/views/LTCEForm.vue:35
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station"
@@ -628,7 +622,7 @@ msgstr ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station"
 
-#: src/views/LTCEForm.vue:45
+#: src/views/LTCEForm.vue:41
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with precipitation record type only"
@@ -636,7 +630,7 @@ msgstr ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with precipitation record type only"
 
-#: src/views/LTCEForm.vue:48
+#: src/views/LTCEForm.vue:44
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with snowfall record type only"
@@ -644,7 +638,7 @@ msgstr ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with snowfall record type only"
 
-#: src/views/LTCEForm.vue:42
+#: src/views/LTCEForm.vue:38
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with temperature record type only"
@@ -660,15 +654,7 @@ msgstr ""
 "Download a list of detailed information for each Monthly climate summaries "
 "station."
 
-#: src/components/BBOXMap.vue:435
-msgid "Download a region as a GeoTIFF or NetCDF"
-msgstr ""
-
-#: src/components/BBOXMap.vue:434
-msgid "Download data for a single location as a CSV or GeoJSON"
-msgstr "Download data for a single location as a CSV or GeoJSON"
-
-#: src/components/URLBox.vue:256
+#: src/components/URLBox.vue:248
 msgid "Download records {startNum} - {endNum}"
 msgstr "Download records {startNum} - {endNum}"
 
@@ -676,17 +662,18 @@ msgstr "Download records {startNum} - {endNum}"
 msgid "Download station list for this dataset."
 msgstr "Download station list for this dataset."
 
+#: src/components/DataDownloadBox.vue:109
 #: src/components/URLBox.vue:19
-#: src/components/URLBox.vue:265
-#: src/components/URLBox.vue:267
+#: src/components/URLBox.vue:257
+#: src/components/URLBox.vue:259
 msgid "Download:"
 msgstr "Download:"
 
-#: src/components/URLBox.vue:261
+#: src/components/URLBox.vue:253
 msgid "Download: {date}"
 msgstr "Download: {date}"
 
-#: src/components/URLBox.vue:263
+#: src/components/URLBox.vue:255
 msgid "Download: {startNum} - {endNum}"
 msgstr "Download: {startNum} - {endNum}"
 
@@ -702,7 +689,7 @@ msgstr ""
 msgid "Downloads not working"
 msgstr "Downloads not working"
 
-#: src/views/LTCEForm.vue:231
+#: src/views/LTCEForm.vue:227
 msgid "Element name"
 msgstr "Element name"
 
@@ -711,18 +698,18 @@ msgid "Emissions scenario"
 msgstr "Emissions scenario"
 
 #: src/views/AHCCDForm.vue:45
-#: src/views/CanGRDForm.vue:57
+#: src/views/CanGRDForm.vue:58
 #: src/views/ClimateDailyForm.vue:51
 #: src/views/ClimateHourlyForm.vue:51
 #: src/views/ClimateMonthlyForm.vue:47
-#: src/views/CMIP5Form.vue:109
-#: src/views/DCSForm.vue:112
+#: src/views/CMIP5Form.vue:110
+#: src/views/DCSForm.vue:111
 #: src/views/HydrometricArchiveForm.vue:44
 msgid "End date"
 msgstr "End date"
 
-#: src/views/CMIP5Form.vue:52
-#: src/views/DCSForm.vue:55
+#: src/views/CMIP5Form.vue:53
+#: src/views/DCSForm.vue:54
 msgid "Ensemble percentile"
 msgstr "Ensemble percentile"
 
@@ -735,14 +722,13 @@ msgstr "Environment and natural resources"
 msgid "Error:"
 msgstr "Error:"
 
-#: src/views/RDPAForm.vue:165
+#: src/views/RDPAForm.vue:159
 msgid "Explanation of model types"
 msgstr "Explanation of model types"
 
-#: src/components/mixins/dcs-cmip5.js:147
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:148
-#: src/views/CanGRDForm.vue:258
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:225
 #: src/views/CanGRDForm.vue:266
+#: src/views/CanGRDForm.vue:274
 msgid "Fall (September-November)"
 msgstr "Fall (September-November)"
 
@@ -750,7 +736,7 @@ msgstr "Fall (September-November)"
 #: src/views/ClimateDailyForm.vue:212
 #: src/views/ClimateHourlyForm.vue:212
 #: src/views/ClimateMonthlyForm.vue:203
-#: src/views/ClimateNormalsForm.vue:140
+#: src/views/ClimateNormalsForm.vue:138
 msgid "First date"
 msgstr ""
 
@@ -871,24 +857,24 @@ msgstr ""
 "href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the "
 "Statistically downscaled climate scenarios</a>."
 
-#: src/views/CanSIPSForm.vue:171
+#: src/views/CanSIPSForm.vue:151
 msgid "Forecast"
 msgstr "Forecast"
 
-#: src/views/CanSIPSForm.vue:54
+#: src/views/CanSIPSForm.vue:251
+#: src/views/CanSIPSForm.vue:52
 msgid "Forecast month"
 msgstr "Forecast month"
 
-#: src/views/LTCEForm.vue:309
+#: src/views/LTCEForm.vue:305
 msgid "Frequently asked questions about LTCE"
 msgstr "Frequently asked questions about LTCE"
 
-#: src/components/mixins/dcs-cmip5.js:159
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:166
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:245
 msgid "Future"
 msgstr "Future"
 
-#: src/views/CanSIPSForm.vue:180
+#: src/views/CanSIPSForm.vue:160
 msgid "Geopotential height at 500mb"
 msgstr "Geopotential height at 500mb"
 
@@ -900,17 +886,15 @@ msgstr ""
 msgid "Help us improve!"
 msgstr ""
 
-#: src/components/StationSelect.vue:37
+#: src/components/StationSelect.vue:44
 msgid "Hide discontinued stations"
 msgstr "Hide discontinued stations"
 
-#: src/components/mixins/dcs-cmip5.js:140
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:141
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:218
 msgid "High emissions scenario (RCP 8.5)"
 msgstr "High emissions scenario (RCP 8.5)"
 
-#: src/components/mixins/dcs-cmip5.js:160
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:167
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:246
 msgid "Historical"
 msgstr "Historical"
 
@@ -918,8 +902,8 @@ msgstr "Historical"
 msgid "Historical climate and river data"
 msgstr "Historical climate and river data"
 
-#: src/views/CMIP5Form.vue:79
-#: src/views/DCSForm.vue:82
+#: src/views/CMIP5Form.vue:80
+#: src/views/DCSForm.vue:81
 msgid "Historical end date"
 msgstr "Historical end date"
 
@@ -941,8 +925,8 @@ msgstr ""
 "instantaneous peak water level and discharge information for over 2700 "
 "active and 5080 discontinued hydrometric monitoring stations across Canada."
 
-#: src/views/CMIP5Form.vue:68
-#: src/views/DCSForm.vue:71
+#: src/views/CMIP5Form.vue:69
+#: src/views/DCSForm.vue:70
 msgid "Historical start date"
 msgstr "Historical start date"
 
@@ -983,7 +967,7 @@ msgstr ""
 msgid "Information"
 msgstr "Information"
 
-#: src/views/CanSIPSForm.vue:177
+#: src/views/CanSIPSForm.vue:157
 msgid "Instantaneous precipitation rate (m/s)"
 msgstr "Instantaneous precipitation rate (m/s)"
 
@@ -1000,7 +984,7 @@ msgstr ""
 #: src/views/ClimateDailyForm.vue:213
 #: src/views/ClimateHourlyForm.vue:213
 #: src/views/ClimateMonthlyForm.vue:204
-#: src/views/ClimateNormalsForm.vue:141
+#: src/views/ClimateNormalsForm.vue:139
 msgid "Last date"
 msgstr ""
 
@@ -1012,9 +996,9 @@ msgstr "Latest changes"
 #: src/views/ClimateDailyForm.vue:210
 #: src/views/ClimateHourlyForm.vue:210
 #: src/views/ClimateMonthlyForm.vue:201
-#: src/views/ClimateNormalsForm.vue:138
+#: src/views/ClimateNormalsForm.vue:136
 #: src/views/HydrometricArchiveForm.vue:217
-#: src/views/LTCEForm.vue:232
+#: src/views/LTCEForm.vue:228
 msgid "Latitude"
 msgstr "Latitude"
 
@@ -1031,7 +1015,7 @@ msgid "Library of climate resources"
 msgstr "Library of climate resources"
 
 #: src/components/BBOXMap.vue:45
-#: src/components/StationSelect.vue:52
+#: src/components/StationSelect.vue:60
 msgid "Loading stations... please wait"
 msgstr "Loading stations... please wait"
 
@@ -1043,9 +1027,9 @@ msgstr "Long Term Climate Extremes, Virtual Climate Stations"
 #: src/views/ClimateDailyForm.vue:211
 #: src/views/ClimateHourlyForm.vue:211
 #: src/views/ClimateMonthlyForm.vue:202
-#: src/views/ClimateNormalsForm.vue:139
+#: src/views/ClimateNormalsForm.vue:137
 #: src/views/HydrometricArchiveForm.vue:218
-#: src/views/LTCEForm.vue:233
+#: src/views/LTCEForm.vue:229
 msgid "Longitude"
 msgstr "Longitude"
 
@@ -1053,8 +1037,7 @@ msgstr "Longitude"
 msgid "Longitude:"
 msgstr "Longitude:"
 
-#: src/components/mixins/dcs-cmip5.js:138
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:139
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:216
 msgid "Low emissions scenario (RCP 2.6)"
 msgstr "Low emissions scenario (RCP 2.6)"
 
@@ -1068,7 +1051,7 @@ msgstr "Manitoba"
 #: src/views/ClimateMonthlyForm.vue:28
 #: src/views/ClimateNormalsForm.vue:28
 #: src/views/HydrometricArchiveForm.vue:24
-#: src/views/LTCEForm.vue:55
+#: src/views/LTCEForm.vue:51
 msgid "Map filters"
 msgstr ""
 
@@ -1084,60 +1067,60 @@ msgstr "Map selection type"
 msgid "Max number of stations selected"
 msgstr "Max number of stations selected"
 
-#: src/views/CMIP5Form.vue:362
-#: src/views/CMIP5Form.vue:365
+#: src/views/CMIP5Form.vue:281
+#: src/views/CMIP5Form.vue:284
 msgid "Maximum date for near surface wind speed is:"
 msgstr "Maximum date for near surface wind speed is:"
 
-#: src/views/CanGRDForm.vue:242
-#: src/views/DCSForm.vue:251
+#: src/views/CanGRDForm.vue:250
+#: src/views/DCSForm.vue:221
 msgid "Maximum temperature"
 msgstr "Maximum temperature"
 
 #: src/components/mixins/datasets.js:198
-#: src/views/CMIP5Form.vue:334
+#: src/views/CMIP5Form.vue:253
 msgid "Mean precipitation"
 msgstr "Mean precipitation"
 
 #: src/components/mixins/datasets.js:192
 #: src/components/mixins/datasets.js:245
-#: src/views/CanGRDForm.vue:240
-#: src/views/CanGRDForm.vue:247
-#: src/views/CMIP5Form.vue:333
-#: src/views/DCSForm.vue:249
+#: src/views/CanGRDForm.vue:248
+#: src/views/CanGRDForm.vue:255
+#: src/views/CMIP5Form.vue:252
+#: src/views/DCSForm.vue:219
 msgid "Mean temperature"
 msgstr "Mean temperature"
 
-#: src/views/CanSIPSForm.vue:37
+#: src/views/CanSIPSForm.vue:251
+#: src/views/CanSIPSForm.vue:35
 msgid "Member"
 msgstr "Member"
 
-#: src/views/CanGRDForm.vue:241
-#: src/views/DCSForm.vue:250
+#: src/views/CanGRDForm.vue:249
+#: src/views/DCSForm.vue:220
 msgid "Minimum temperature"
 msgstr "Minimum temperature"
 
-#: src/views/CanSIPSForm.vue:44
+#: src/views/CanSIPSForm.vue:251
+#: src/views/CanSIPSForm.vue:42
 msgid "Model run month"
 msgstr "Model run month"
 
-#: src/views/CanSIPSForm.vue:30
-#: src/views/RDPAForm.vue:27
+#: src/views/CanSIPSForm.vue:28
+#: src/views/RDPAForm.vue:25
 msgid "Model type"
 msgstr "Model type"
 
-#: src/components/mixins/dcs-cmip5.js:139
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:140
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:217
 msgid "Moderate emissions scenario (RCP 4.5)"
 msgstr "Moderate emissions scenario (RCP 4.5)"
 
-#: src/views/LTCEForm.vue:87
+#: src/views/LTCEForm.vue:83
 msgid "Month"
 msgstr "Month"
 
-#: src/components/mixins/dcs-cmip5.js:150
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:151
-#: src/views/CanGRDForm.vue:255
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:233
+#: src/views/CanGRDForm.vue:263
 msgid "Monthly"
 msgstr "Monthly"
 
@@ -1180,7 +1163,7 @@ msgstr ""
 msgid "More resources from the Canadian Centre for Climate Services"
 msgstr "More resources from the Canadian Centre for Climate Services"
 
-#: src/views/CMIP5Form.vue:338
+#: src/views/CMIP5Form.vue:257
 msgid "Near surface wind speed"
 msgstr "Near surface wind speed"
 
@@ -1192,7 +1175,7 @@ msgstr "New Brunswick"
 msgid "Newfoundland and Labrador"
 msgstr "Newfoundland and Labrador"
 
-#: src/components/StationSelect.vue:110
+#: src/components/StationSelect.vue:118
 msgid "Next"
 msgstr "Next"
 
@@ -1208,18 +1191,18 @@ msgstr "Nova Scotia"
 msgid "Nunavut"
 msgstr "Nunavut"
 
-#: src/components/TipsUsingTool.vue:33
+#: src/components/TipsUsingTool.vue:34
 msgid "only 20 stations can be selected at once"
 msgstr "only 20 stations can be selected at once"
 
-#: src/components/URLBox.vue:205
+#: src/components/URLBox.vue:197
 msgid ""
 "Only 600000 records can be downloaded at once. If you are looking to "
 "download more, please contact the <a href=\"{supportDeskUrl}\" "
 "target=\"_blank\">Climate Services Support Desk</a>."
 msgstr ""
 
-#: src/views/ClimateNormalsForm.vue:167
+#: src/views/ClimateNormalsForm.vue:165
 msgid ""
 "Only a subset of Climate Normals stations with the longest period of record "
 "between 1981-2010 are available on this site. A complete list of all "
@@ -1230,7 +1213,7 @@ msgstr ""
 msgid "Ontario"
 msgstr "Ontario"
 
-#: src/components/StationSelect.vue:116
+#: src/components/StationSelect.vue:124
 msgid "Page size"
 msgstr "Page size"
 
@@ -1238,20 +1221,21 @@ msgstr "Page size"
 msgid "Panning:"
 msgstr "Panning:"
 
-#: src/components/URLBox.vue:97
+#: src/components/URLBox.vue:90
 msgid "Please change your form selection."
 msgstr "Please change your form selection."
 
+#: src/components/DataDownloadBox.vue:24
 #: src/components/PointDownloadBox.vue:20
-#: src/components/URLBox.vue:92
+#: src/components/URLBox.vue:85
 msgid "Please correct all form errors to download data."
 msgstr "Please correct all form errors to download data."
 
-#: src/components/StationSelect.vue:513
+#: src/components/StationSelect.vue:531
 msgid "Please press the \"Reset map\" button to see the stations in this table."
 msgstr "Please press the \"Reset map\" button to see the stations in this table."
 
-#: src/views/LTCEForm.vue:374
+#: src/views/LTCEForm.vue:370
 msgid ""
 "Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized "
 "Canadian Climate Data (AHCCD)</a> for climate change purposes."
@@ -1270,15 +1254,15 @@ msgstr ""
 msgid "Please select a point on the map."
 msgstr "Please select a point on the map."
 
-#: src/views/LTCEForm.vue:239
+#: src/views/LTCEForm.vue:235
 msgid "Precipitation - Daily extremes of record"
 msgstr "Precipitation - Daily extremes of record"
 
-#: src/views/RDPAForm.vue:34
+#: src/views/RDPAForm.vue:38
 msgid "Precipitation accumulation interval"
 msgstr "Precipitation accumulation interval"
 
-#: src/components/StationSelect.vue:105
+#: src/components/StationSelect.vue:113
 msgid "Previous"
 msgstr "Previous"
 
@@ -1293,9 +1277,9 @@ msgstr "Prince Edward Island"
 #: src/views/ClimateHourlyForm.vue:229
 #: src/views/ClimateMonthlyForm.vue:200
 #: src/views/ClimateMonthlyForm.vue:220
-#: src/views/ClimateNormalsForm.vue:137
+#: src/views/ClimateNormalsForm.vue:135
 #: src/views/HydrometricArchiveForm.vue:216
-#: src/views/LTCEForm.vue:230
+#: src/views/LTCEForm.vue:226
 msgid "Province"
 msgstr ""
 
@@ -1307,6 +1291,10 @@ msgstr "Province/Territory"
 msgid "Pseudo-Mercator (EPSG:3857)"
 msgstr "Pseudo-Mercator (EPSG:3857)"
 
+#: src/views/RDPAForm.vue:33
+msgid "Quantity type"
+msgstr ""
+
 #: src/components/ProvinceSelect.vue:47
 msgid "Quebec"
 msgstr "Quebec"
@@ -1315,7 +1303,7 @@ msgstr "Quebec"
 msgid "Reset map"
 msgstr "Reset map"
 
-#: src/components/URLBox.vue:31
+#: src/components/URLBox.vue:30
 msgid "Retrieve download links"
 msgstr "Retrieve download links"
 
@@ -1324,16 +1312,16 @@ msgid "Saskatchewan"
 msgstr "Saskatchewan"
 
 #: src/components/mixins/datasets.js:216
-#: src/views/CMIP5Form.vue:337
+#: src/views/CMIP5Form.vue:256
 msgid "Sea ice concentration"
 msgstr "Sea ice concentration"
 
 #: src/components/mixins/datasets.js:210
-#: src/views/CMIP5Form.vue:336
+#: src/views/CMIP5Form.vue:255
 msgid "Sea ice thickness"
 msgstr "Sea ice thickness"
 
-#: src/views/CanSIPSForm.vue:176
+#: src/views/CanSIPSForm.vue:156
 msgid "Sea level pressure"
 msgstr "Sea level pressure"
 
@@ -1341,7 +1329,7 @@ msgstr "Sea level pressure"
 msgid "Seasonal values"
 msgstr "Seasonal values"
 
-#: src/views/LTCEForm.vue:309
+#: src/views/LTCEForm.vue:305
 msgid "see FAQ"
 msgstr "see FAQ"
 
@@ -1349,7 +1337,11 @@ msgstr "see FAQ"
 msgid "Select a dataset from the menu to the left"
 msgstr ""
 
-#: src/components/TipsUsingTool.vue:29
+#: src/components/StationSelect.vue:30
+msgid "Select all stations shown"
+msgstr ""
+
+#: src/components/TipsUsingTool.vue:30
 msgid "select stations on the map or in the table by clicking on them"
 msgstr "select stations on the map or in the table by clicking on them"
 
@@ -1357,20 +1349,20 @@ msgstr "select stations on the map or in the table by clicking on them"
 msgid "Select your locations/stations of interest"
 msgstr ""
 
-#: src/components/StationSelect.vue:36
+#: src/components/StationSelect.vue:43
 msgid "Show discontinued stations"
 msgstr "Show discontinued stations"
 
-#: src/components/StationSelect.vue:23
+#: src/components/StationSelect.vue:24
 #. Toggle button to show selected stations in a table
 msgid "Show selected"
 msgstr "Show selected"
 
-#: src/components/StationSelect.vue:473
+#: src/components/StationSelect.vue:491
 msgid "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 msgstr "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries}"
 
-#: src/components/StationSelect.vue:469
+#: src/components/StationSelect.vue:487
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entries)"
@@ -1378,7 +1370,7 @@ msgstr ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entries)"
 
-#: src/components/StationSelect.vue:466
+#: src/components/StationSelect.vue:484
 msgid ""
 "Showing {startEntryOfPage} to {lastEntryOfPage} of {filteredNumEntries} "
 "(filtered from {totalSize} total entry)"
@@ -1404,26 +1396,25 @@ msgid "Single location download unavailable"
 msgstr "Single location download unavailable"
 
 #: src/components/mixins/datasets.js:204
-#: src/views/CMIP5Form.vue:335
+#: src/views/CMIP5Form.vue:254
 msgid "Snow depth"
 msgstr "Snow depth"
 
-#: src/views/LTCEForm.vue:240
+#: src/views/LTCEForm.vue:236
 msgid "Snowfall - Daily extremes of record"
 msgstr "Snowfall - Daily extremes of record"
 
 #: src/components/BBOXMap.vue:4
-msgid "Spatial selection"
-msgstr "Spatial selection"
+msgid "Spatial selection download"
+msgstr ""
 
 #: src/views/Home.vue:16
 msgid "Specify the rest of your download request"
 msgstr ""
 
-#: src/components/mixins/dcs-cmip5.js:145
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:146
-#: src/views/CanGRDForm.vue:256
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:223
 #: src/views/CanGRDForm.vue:264
+#: src/views/CanGRDForm.vue:272
 msgid "Spring (March-May)"
 msgstr "Spring (March-May)"
 
@@ -1432,8 +1423,8 @@ msgstr "Spring (March-May)"
 #: src/views/ClimateDailyForm.vue:39
 #: src/views/ClimateHourlyForm.vue:39
 #: src/views/ClimateMonthlyForm.vue:37
-#: src/views/CMIP5Form.vue:98
-#: src/views/DCSForm.vue:101
+#: src/views/CMIP5Form.vue:99
+#: src/views/DCSForm.vue:100
 #: src/views/HydrometricArchiveForm.vue:34
 msgid "Start date"
 msgstr "Start date"
@@ -1451,7 +1442,7 @@ msgstr "Station ID"
 #: src/views/ClimateDailyForm.vue:207
 #: src/views/ClimateHourlyForm.vue:207
 #: src/views/ClimateMonthlyForm.vue:198
-#: src/views/ClimateNormalsForm.vue:135
+#: src/views/ClimateNormalsForm.vue:133
 #: src/views/HydrometricArchiveForm.vue:214
 msgid "Station name"
 msgstr "Station name"
@@ -1460,10 +1451,9 @@ msgstr "Station name"
 msgid "Station table"
 msgstr "Station table"
 
-#: src/components/mixins/dcs-cmip5.js:146
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:147
-#: src/views/CanGRDForm.vue:257
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:224
 #: src/views/CanGRDForm.vue:265
+#: src/views/CanGRDForm.vue:273
 msgid "Summer (June-August)"
 msgstr "Summer (June-August)"
 
@@ -1486,7 +1476,7 @@ msgstr "Surface wind speed"
 msgid "Technical information and metadata"
 msgstr ""
 
-#: src/views/LTCEForm.vue:238
+#: src/views/LTCEForm.vue:234
 msgid "Temperature - Daily extremes of record"
 msgstr "Temperature - Daily extremes of record"
 
@@ -1497,9 +1487,9 @@ msgstr "Temperature - Daily extremes of record"
 #: src/views/ClimateHourlyForm.vue:229
 #: src/views/ClimateMonthlyForm.vue:200
 #: src/views/ClimateMonthlyForm.vue:220
-#: src/views/ClimateNormalsForm.vue:137
+#: src/views/ClimateNormalsForm.vue:135
 #: src/views/HydrometricArchiveForm.vue:216
-#: src/views/LTCEForm.vue:230
+#: src/views/LTCEForm.vue:226
 msgid "Territory"
 msgstr ""
 
@@ -1664,7 +1654,7 @@ msgstr ""
 "available on a grid at a horizontal resolution of 2.5 degrees and for a few "
 "selected vertical levels. Predictions are made available monthly."
 
-#: src/views/LTCEForm.vue:312
+#: src/views/LTCEForm.vue:308
 msgid ""
 "The daily climate records database, also known as Long Term Climate "
 "Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation "
@@ -1798,9 +1788,8 @@ msgstr ""
 "end of the accumulation period, and revised 6h after in order to assimilate "
 "gauge data arriving later."
 
-#: src/components/mixins/oapi-coverage.js:113
-#: src/components/mixins/wcs.js:111
-#: src/components/mixins/wfs.js:111
+#: src/components/mixins/oapi-coverage.js:71
+#: src/components/mixins/oapi-features.js:111
 msgid "The start date cannot be greater than the end date."
 msgstr "The start date cannot be greater than the end date."
 
@@ -1820,7 +1809,7 @@ msgstr ""
 "Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected "
 "changes across the downscaled multi-model ensemble are shown."
 
-#: src/components/StationSelect.vue:96
+#: src/components/StationSelect.vue:104
 #. Warning message when user has no stations selected and no stations are contained in the map viewport
 msgid ""
 "There are no stations available to download data from your current map "
@@ -1836,7 +1825,7 @@ msgid ""
 "remove such artifacts as discontinuities and non-climate trends."
 msgstr ""
 
-#: src/components/StationSelect.vue:32
+#: src/components/StationSelect.vue:39
 msgid ""
 "This button will retrieve more than 7000 stations and may cause a "
 "performance loss on this graphical user interface"
@@ -1848,16 +1837,15 @@ msgstr ""
 msgid "This data provides:"
 msgstr "This data provides:"
 
-#: src/components/DateSelect.vue:160
+#: src/components/DateSelect.vue:161
 msgid "This field is not within the date range limits."
 msgstr "This field is not within the date range limits."
 
-#: src/components/mixins/oapi-coverage.js:116
-#: src/components/mixins/wcs.js:114
+#: src/components/mixins/oapi-coverage.js:74
 msgid "This field is required for monthly time intervals."
 msgstr "This field is required for monthly time intervals."
 
-#: src/components/DateSelect.vue:158
+#: src/components/DateSelect.vue:159
 #: src/components/NumSelect.vue:72
 msgid "This field is required."
 msgstr "This field is required."
@@ -1871,13 +1859,13 @@ msgid "This field must be less than or equal to:"
 msgstr "This field must be less than or equal to:"
 
 #: src/views/CanGRDForm.vue:38
-#: src/views/CMIP5Form.vue:42
-#: src/views/DCSForm.vue:44
+#: src/views/CMIP5Form.vue:43
+#: src/views/DCSForm.vue:43
 msgid "Time interval / Time of year"
 msgstr "Time interval / Time of year"
 
-#: src/views/CMIP5Form.vue:61
-#: src/views/DCSForm.vue:64
+#: src/views/CMIP5Form.vue:62
+#: src/views/DCSForm.vue:63
 msgid "Time range type"
 msgstr "Time range type"
 
@@ -1885,7 +1873,7 @@ msgstr "Time range type"
 msgid "Tips for using the tool"
 msgstr "Tips for using the tool"
 
-#: src/components/BBOXMap.vue:558
+#: src/components/BBOXMap.vue:567
 msgid "to"
 msgstr ""
 
@@ -1900,7 +1888,7 @@ msgstr ""
 "<kbd>tab</kbd> focus to the interactive map box and then press the arrow "
 "keys."
 
-#: src/components/TipsUsingTool.vue:30
+#: src/components/TipsUsingTool.vue:31
 msgid ""
 "to see only selected stations in the table, click the \"Show selected\" "
 "button"
@@ -1927,27 +1915,27 @@ msgstr ""
 "Sign\">+</abbr></kbd> or <kbd><abbr title=\"Minus Sign\">-</abbr></kbd> "
 "keys."
 
-#: src/components/URLBox.vue:202
+#: src/components/URLBox.vue:194
 msgid "Total number of records: {numRecords}"
 msgstr "Total number of records: {numRecords}"
 
 #: src/components/mixins/datasets.js:263
-#: src/views/CanGRDForm.vue:243
-#: src/views/CanGRDForm.vue:248
-#: src/views/DCSForm.vue:252
+#: src/views/CanGRDForm.vue:251
+#: src/views/CanGRDForm.vue:256
+#: src/views/DCSForm.vue:222
 msgid "Total precipitation"
 msgstr "Total precipitation"
 
 #: src/views/AHCCDForm.vue:200
-#: src/views/CanGRDForm.vue:277
+#: src/views/CanGRDForm.vue:285
 msgid "Trend values"
 msgstr "Trend values"
 
-#: src/components/TipsUsingTool.vue:28
+#: src/components/TipsUsingTool.vue:29
 msgid "use map filters to narrow down the selection on the map"
 msgstr ""
 
-#: src/components/TipsUsingTool.vue:40
+#: src/components/TipsUsingTool.vue:41
 msgid ""
 "Use the climate data extraction tool to download climate data from the "
 "selected Environment and Climate Change Canada's datasets."
@@ -1973,18 +1961,15 @@ msgstr ""
 "Use this map to select a geographic subset of the data. The geographic "
 "subset of the downloaded data will match the area shown in the map."
 
-#: src/components/mixins/dcs-cmip5.js:123
-#: src/components/mixins/dcs-cmip5.js:127
-#: src/components/mixins/dcs-cmip5.js:132
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:124
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:128
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:133
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:201
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:205
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:210
 msgid "User defined range"
 msgstr "User defined range"
 
 #: src/views/CanGRDForm.vue:28
-#: src/views/CMIP5Form.vue:47
-#: src/views/DCSForm.vue:50
+#: src/views/CMIP5Form.vue:48
+#: src/views/DCSForm.vue:49
 msgid "Value type"
 msgstr "Value type"
 
@@ -1998,7 +1983,7 @@ msgid "Value-added historical climate data products"
 msgstr "Value-added historical climate data products"
 
 #: src/views/CanGRDForm.vue:33
-#: src/views/CanSIPSForm.vue:25
+#: src/views/CanSIPSForm.vue:23
 msgid "Variable"
 msgstr "Variable"
 
@@ -2006,11 +1991,11 @@ msgstr "Variable"
 msgid "View releases on GitHub"
 msgstr "View releases on GitHub"
 
-#: src/views/LTCEForm.vue:35
+#: src/views/LTCEForm.vue:31
 msgid "Virtual climate station list download:"
 msgstr "Virtual climate station list download:"
 
-#: src/views/LTCEForm.vue:302
+#: src/views/LTCEForm.vue:298
 msgid ""
 "Virtual Climate stations correspond with the city pages of "
 "{weatherOfficeLink}. A Virtual Climate station is the result of threading "
@@ -2030,11 +2015,11 @@ msgstr ""
 "indicate that the data are drawn from that area(within a 20km radius from "
 "the urban center) rather than a single precise location."
 
-#: src/views/LTCEForm.vue:229
+#: src/views/LTCEForm.vue:225
 msgid "Virtual station ID"
 msgstr "Virtual station ID"
 
-#: src/views/LTCEForm.vue:228
+#: src/views/LTCEForm.vue:224
 msgid "Virtual station name"
 msgstr "Virtual station name"
 
@@ -2046,8 +2031,7 @@ msgstr ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like "
 "data for a single grid point only"
 
-#: src/components/mixins/dcs-cmip5.js:281
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:288
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:367
 msgid ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
 "daily data"
@@ -2055,8 +2039,7 @@ msgstr ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
 "daily data"
 
-#: src/components/mixins/dcs-cmip5.js:274
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:281
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:360
 msgid ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
 "individual model output"
@@ -2064,7 +2047,7 @@ msgstr ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
 "individual model output"
 
-#: src/views/CanSIPSForm.vue:179
+#: src/views/CanSIPSForm.vue:159
 msgid "Water temperature"
 msgstr "Water temperature"
 
@@ -2084,10 +2067,9 @@ msgstr ""
 msgid "Weather, climate and hazards"
 msgstr "Weather, climate and hazards"
 
-#: src/components/mixins/dcs-cmip5.js:148
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:149
-#: src/views/CanGRDForm.vue:259
+#: src/components/mixins/oapi-coverage-dcs-cmip5.js:226
 #: src/views/CanGRDForm.vue:267
+#: src/views/CanGRDForm.vue:275
 msgid "Winter (December-February)"
 msgstr "Winter (December-February)"
 
@@ -2095,7 +2077,7 @@ msgstr "Winter (December-February)"
 msgid "World Geodetic System 1984 (EPSG:4326)"
 msgstr "World Geodetic System 1984 (EPSG:4326)"
 
-#: src/components/TipsUsingTool.vue:41
+#: src/components/TipsUsingTool.vue:42
 msgid ""
 "You can specify the date ranges, variables, download format and other "
 "options. Use the map to select a geographic subset of the data. The "
@@ -2109,7 +2091,7 @@ msgstr ""
 "on the map. Download the data by clicking on the data download link at the "
 "bottom of the page."
 
-#: src/components/URLBox.vue:97
+#: src/components/URLBox.vue:90
 msgid "Your form selection contains no data to download."
 msgstr "Your form selection contains no data to download."
 
@@ -2130,7 +2112,7 @@ msgstr "YYYY-MM-DD"
 msgid "Zooming:"
 msgstr "Zooming:"
 
-#: src/views/ClimateNormalsForm.vue:166
+#: src/views/ClimateNormalsForm.vue:164
 msgctxt "a phrase that is mid sentence"
 msgid "Government of Canada Canadian Climate Normals website"
 msgstr ""
@@ -2406,6 +2388,7 @@ msgstr "You are here:"
 #: src/views/AHCCDForm.vue:217
 #: src/views/AHCCDForm.vue:221
 #: src/views/AHCCDForm.vue:226
+#: src/views/CanSIPSForm.vue:251
 #: src/views/ClimateDailyForm.vue:221
 #: src/views/ClimateDailyForm.vue:225
 #: src/views/ClimateDailyForm.vue:229
@@ -2418,15 +2401,15 @@ msgstr "You are here:"
 #: src/views/ClimateMonthlyForm.vue:216
 #: src/views/ClimateMonthlyForm.vue:220
 #: src/views/ClimateMonthlyForm.vue:225
-#: src/views/ClimateNormalsForm.vue:149
-#: src/views/ClimateNormalsForm.vue:153
-#: src/views/ClimateNormalsForm.vue:157
+#: src/views/ClimateNormalsForm.vue:147
+#: src/views/ClimateNormalsForm.vue:151
+#: src/views/ClimateNormalsForm.vue:155
 #: src/views/HydrometricArchiveForm.vue:226
 #: src/views/HydrometricArchiveForm.vue:230
 #: src/views/HydrometricArchiveForm.vue:234
+#: src/views/LTCEForm.vue:249
 #: src/views/LTCEForm.vue:253
 #: src/views/LTCEForm.vue:257
-#: src/views/LTCEForm.vue:261
 msgctxt "Colon"
 msgid ":"
 msgstr ":"
@@ -2491,12 +2474,37 @@ msgctxt "Dataset Name"
 msgid "Statistically downscaled climate scenarios"
 msgstr "Statistically downscaled climate scenarios"
 
+#: src/components/mixins/oapi-coverage.js:20
+msgctxt "File format"
+msgid "CoverageJSON"
+msgstr ""
+
+#: src/components/mixins/oapi-coverage.js:25
+msgctxt "File format"
+msgid "GeoTIFF"
+msgstr ""
+
+#: src/components/mixins/oapi-coverage.js:27
+msgctxt "File format"
+msgid "GRIB"
+msgstr ""
+
+#: src/components/mixins/oapi-coverage.js:23
+msgctxt "File format"
+msgid "NetCDF"
+msgstr ""
+
 #: src/components/ProvinceSelect.vue:36
 msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr "-- None --"
 
-#: src/components/BBOXMap.vue:442
+#: src/components/BBOXMap.vue:444
+msgctxt "Template for different file formats"
+msgid "A region as a {format1} or {format2}"
+msgstr ""
+
+#: src/components/BBOXMap.vue:451
 msgctxt "Title"
 msgid "Canada Base Map Transportation"
 msgstr "Canada Base Map Transportation"

@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label
-      for="raster_download_format"
+      for="file_download_format"
       :class="{required: required}">
       <translate>Data download format</translate>&nbsp;
       <strong
@@ -19,7 +19,7 @@
         </div>
       </span>
     </label>
-    <select class="form-control" id="raster_download_format" aria-controls="rasterFormatDescriptions"
+    <select class="form-control" id="file_download_format" aria-controls="fileFormatDescriptions"
       :value="value"
       :required="required"
       @change="updateFormat">
@@ -31,7 +31,8 @@
         </option>
     </select>
 
-    <div id="rasterFormatDescriptions" class="alert alert-info mrgn-tp-md" aria-live="polite" role="region">
+    <div id="fileFormatDescriptions" class="alert alert-info mrgn-tp-md" aria-live="polite" role="region"
+      v-if="Object.prototype.hasOwnProperty.call(formatDescriptionsHtml, value)">
       <p>
         <span v-html="formatDescriptionsHtml[value]"></span>
       </p>
@@ -41,7 +42,7 @@
 
 <script>
 export default {
-  name: 'FormatSelectRaster',
+  name: 'FormatSelectFile',
   props: {
     value: String,
     required: {
@@ -51,14 +52,18 @@ export default {
     infoText: {
       type: Array,
       default: null
+    },
+    formats: {
+      type: Object,
+      default: () => {
+        return {
+          'NetCDF': 'NetCDF'
+        }
+      }
     }
   },
   data () {
     return {
-      formats: {
-        'image/tiff': 'GeoTIFF',
-        'NetCDF': 'NetCDF'
-      },
       linkTo: {
         r: '<a href="https://www.r-project.org/" class="alert-link" target="_blank">R</a>',
         python: '<a href="https://www.python.org/" class="alert-link" target="_blank">Python</a>',

@@ -1,7 +1,7 @@
 <template>
   <div id="bbox-map-container">
     <fieldset v-if="allowClickPoint">
-      <legend v-translate>Spatial selection</legend>
+      <legend v-translate>Spatial selection download</legend>
 
       <option-radio
         v-model="pointClickOn"
@@ -131,6 +131,14 @@ export default {
       type: Boolean,
       default: false
     },
+    fileFormats: {
+      type: Object,
+      default: function () {
+        return {
+          'json': 'CoverageJSON'
+        }
+      }
+    },
     initialBbox: {
       type: String,
       default: INIT_BBOX
@@ -248,7 +256,6 @@ export default {
         }
       },
       geoJsonOptions: {
-        // filter: this.filterHydroStationActive,
         pointToLayer: this.pointToLayer,
         filter: this.filterGeoJson
       },
@@ -346,7 +353,7 @@ export default {
       })
 
       if (newProvince !== 'null') {
-        this.selectMarkersByProvince(newProvince, stationMarkers)
+        // this.selectMarkersByProvince(newProvince, stationMarkers)
         // If province selected, zoom to province features
         let map = this.$refs.BBOXMap.mapObject
         map.fitBounds(this.geojsonLayer.getBounds())
@@ -360,7 +367,7 @@ export default {
 
         // mark province selection if applicable
         if (this.province !== 'null') {
-          this.selectMarkersByProvince(this.province, this.getStationMarkers())
+          // this.selectMarkersByProvince(this.province, this.getStationMarkers())
         }
       }
     },
@@ -430,9 +437,10 @@ export default {
       }
     },
     pointClickOptions: function () {
+      let oapicFormats = Object.values(this.fileFormats)
       return {
-        'on': this.$gettext('Download data for a single location as a CSV or GeoJSON'),
-        'off': this.$gettext('Download a region as a GeoTIFF or NetCDF')
+        'on': this.$gettext('A single location as a CSV or GeoJSON'),
+        'off': this.$_i(this.$pgettext('Template for different file formats', 'A region as a {format1} or {format2}'), {format1: oapicFormats[0], format2: oapicFormats[1]})
       }
     },
     attributionOSM: function () {

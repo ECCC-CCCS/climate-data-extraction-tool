@@ -10,7 +10,7 @@
       class="mrgn-tp-sm"
       :key="layerName">
       <a
-        v-show="wfs3CommonUrl === null && wcsCommonUrl === null"
+        v-show="oapifCommonUrl === null && wcsCommonUrl === null"
         :href="owsUrlFormatter(layerName)"
         target="_blank"
         class="btn btn-default"
@@ -23,8 +23,8 @@
         id="retrieve-download-links"
         class="btn btn-primary"
         type="button"
-        v-show="wfs3CommonUrl !== null"
-        aria-controls="wfs3-link-list num-records-wfs3-download"
+        v-show="oapifCommonUrl !== null"
+        aria-controls="oapif-link-list num-records-oapif-download"
         :disabled="retrieved || loading"
         @click="getNumRecords(layerName)">
           <translate>Retrieve download links</translate>
@@ -35,16 +35,16 @@
         </button>
 
       <div
-        id="wfs3-download-links-list"
+        id="oapif-download-links-list"
         class="mrgn-tp-md"
-        v-show="wfs3CommonUrl !== null && numRecords !== null && hasErrors === false">
+        v-show="oapifCommonUrl !== null && numRecords !== null && hasErrors === false">
 
         <div v-show="numRecords !== null">
           <p>
             <strong
               v-text="totalRecords"
               aria-live="polite"
-              id="num-records-wfs3-download"></strong>
+              id="num-records-oapif-download"></strong>
           </p>
           <div v-show="numRecords > 600000" class="alert alert-warning">
             <p v-html="tooManyRecordsWarning"></p>
@@ -52,14 +52,14 @@
 
         </div>
 
-        <div id="wfs3-link-list" class="list-group" aria-live="polite">
+        <div id="oapif-link-list" class="list-group" aria-live="polite">
           <a
             v-for="(startIndex, index) in chunkedStartIndexes"
             v-show="numRecords !== 0"
             :key="index"
-            :href="wfs3_download_url_chunk(startIndex)"
+            :href="oapif_download_url_chunk(startIndex)"
             target="_blank"
-            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="wfs3_download_name_chunk(startIndex, index)"></span>
+            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="oapif_download_name_chunk(startIndex, index)"></span>
           </a>
         </div>
       </div>
@@ -138,11 +138,11 @@ export default {
       type: Boolean,
       default: false
     },
-    wfs3DownloadLimit: {
+    oapiDownloadLimit: {
       type: Number,
       default: 10000
     },
-    wfs3CommonUrl: {
+    oapifCommonUrl: {
       type: String,
       default: null
     },
@@ -206,7 +206,7 @@ export default {
     }
   },
   watch: {
-    wfs3CommonUrl: function (newVal, oldVal) {
+    oapifCommonUrl: function (newVal, oldVal) {
       if (newVal !== oldVal) { // reset
         this.numRecords = null
         this.chunkedStartIndexes = []
@@ -223,7 +223,7 @@ export default {
       }
     },
     getNumRecords: function () {
-      let urlGetNumRecords = this.wfs3CommonUrl + '&resulttype=hits&f=json'
+      let urlGetNumRecords = this.oapifCommonUrl + '&resulttype=hits&f=json'
       this.loading = true
       axios.get(urlGetNumRecords)
         .then(response => (
@@ -234,14 +234,14 @@ export default {
           this.retrieved = true
         })
     },
-    wfs3_download_url_chunk: function (startIndex) {
+    oapif_download_url_chunk: function (startIndex) {
       startIndex = parseInt(startIndex)
-      let url = this.wfs3CommonUrl
+      let url = this.oapifCommonUrl
       url += '&f=' + this.fileFormat
-      url += '&limit=' + this.wfs3DownloadLimit + '&startindex=' + startIndex
+      url += '&limit=' + this.oapiDownloadLimit + '&startindex=' + startIndex
       return url
     },
-    wfs3_download_name_chunk: function (startIndex, chunkIndex) {
+    oapif_download_name_chunk: function (startIndex, chunkIndex) {
       startIndex = parseInt(startIndex)
       let startNum = startIndex + 1
       let endNum = chunkIndex === (this.chunkedStartIndexes.length - 1) ? this.numRecords : this.chunkedStartIndexes[chunkIndex + 1]
@@ -259,12 +259,12 @@ export default {
         return this.$gettext('Download:') + ' ' + title
       }
     },
-    wcs_download_url_chunk: function (bandChunk) {
-      let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
+    wcs_download_url_chunk: function (/*bandChunk*/) {
+      // let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
       let url = this.wcsCommonUrl
-      if (rangeSubset !== null) {
-        url += '&RANGESUBSET=' + rangeSubset
-      }
+      // if (rangeSubset !== null) {
+      //   url += '&RANGESUBSET=' + rangeSubset
+      // }
       return url
     },
     chunkDownload: function (data) {
@@ -273,7 +273,7 @@ export default {
       let startIndex = 0
       do {
         this.chunkedStartIndexes.push(startIndex)
-        startIndex += this.wfs3DownloadLimit
+        startIndex += this.oapiDownloadLimit
       } while (startIndex < this.numRecords)
     }
   }

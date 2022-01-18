@@ -31,7 +31,7 @@ const state = {
   isLoadingStations: false,
   isLoadingAllHydroStations: false,
   stationIdSelected: [],
-  maxStationSelection: 20,
+  maxStationSelection: 9999,
   minDateClimateDaily: null,
   minDateClimateHourly: null,
   minDateClimateMonthly: null,
@@ -117,10 +117,13 @@ const mutations = {
   changeHydroStation (state, payload) {
     state.hydroStationGeoJson = payload
   },
-  addStationIdSelectedMutation (state, payload) {
+  addSingleStationIdSelected (state, payload) {
     if (state.stationIdSelected.length < state.maxStationSelection) { // at most 20
       state.stationIdSelected.push(payload)
     }
+  },
+  changeStationIdSelected (state, payload) {
+    state.stationIdSelected = payload
   },
   removeStationIdSelectedMutation (state, payload) {
     let index = state.stationIdSelected.indexOf(payload)
@@ -274,7 +277,10 @@ const actions = {
       })
   },
   addStationIdSelected: function ({ commit }, id) {
-    commit('addStationIdSelectedMutation', id)
+    commit('addSingleStationIdSelected', id)
+  },
+  setStationIdSelected: function ({ commit }, idList) {
+    commit('changeStationIdSelected', idList)
   },
   removeStationIdSelected: function ({ commit }, id) {
     commit('removeStationIdSelectedMutation', id)

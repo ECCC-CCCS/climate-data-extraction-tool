@@ -43,11 +43,11 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(87000)
     })
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
+    cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
-    cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
+    cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         try {
@@ -81,7 +81,7 @@ describe('E2E test for AHCCD data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/ahccd-annual\/items\?.*province__province=BC.*resulttype=hits.*f=json.*/).as('countProvinceAnnual')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
+    cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
     cy.wait('@countProvinceAnnual', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
@@ -90,8 +90,8 @@ describe('E2E test for AHCCD data with various form options', () => {
     })
 
     // visit download link (limit 1)
-    cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
+    cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
@@ -132,11 +132,11 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.equal(1392)
     })
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
+    cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
-    cy.get('#wfs3-link-list').should('be.visible')
-    cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#oapif-link-list').should('be.visible')
+    cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
@@ -182,11 +182,11 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(9800)
     })
-    cy.contains('#num-records-wfs3-download', /Total number of records: \d+/).should('be.visible')
+    cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (limit 1)
-    cy.get('#wfs3-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wfs3-link-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
+    cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
