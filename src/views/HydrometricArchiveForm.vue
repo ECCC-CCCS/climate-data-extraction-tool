@@ -24,7 +24,7 @@
       <summary id="map-filters-header" v-translate>Map filters</summary>
 
       <province-select
-        v-model="wfs_province"></province-select>
+        v-model="oapif_province"></province-select>
 
       <fieldset>
         <legend v-translate>Date range</legend>
@@ -68,7 +68,7 @@
       :hydro-station-display="true"></bbox-map>
 
     <station-select
-      v-model="wfs_selected_station_ids"
+      v-model="oapif_selected_station_ids"
       :select-disabled="provinceSelected"
       :station-data="hydroStationGeoJson.features"
       :station-prop-display="station_props_display"
@@ -79,21 +79,21 @@
 
     <var-select
       class="mrgn-tp-md"
-      v-model="wfs_layer"
+      v-model="oapif_layer"
       :label="$gettext('Value type / Time interval')"
       :required="true"
       :select-options="layer_options"></var-select>
 
     <format-select-vector
       class="mrgn-tp-md"
-      v-model="wfs_format"></format-select-vector>
+      v-model="oapif_format"></format-select-vector>
 
     <url-box
       :layer-options="selectedLayerOption"
-      :ows-url-formatter="wfs3_download_url"
-      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-      :wfs3-download-limit="wfs_limit"
-      :layer-format="wfs_format"
+      :ows-url-formatter="oapif_download_url"
+      :oapif-common-url="getWFS3CommonURL(oapif_layer)"
+      :oapif-download-Limit="oapif_limit"
+      :layer-format="oapif_format"
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download links')">
     </url-box>
@@ -114,14 +114,14 @@ import StationListLink from '@/components/StationListLink.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import MoreResources from '@/components/MoreResources.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
-import { wfs } from '@/components/mixins/wfs.js'
+import { oapif } from '@/components/mixins/oapi-features.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'HydrometricArchiveForm',
-  mixins: [wfs, ows, datasets],
+  mixins: [oapif, ows, datasets],
   components: {
     VarSelect,
     'bbox-map': BBOXMap,
@@ -137,8 +137,8 @@ export default {
   },
   data () {
     return {
-      wfs_layer: 'hydrometric-daily-mean',
-      wfs_layer_station: 'hydrometric-stations',
+      oapif_layer: 'hydrometric-daily-mean',
+      oapif_layer_station: 'hydrometric-stations',
       date_start: this.$moment.utc('1850-01-01', 'YYYY-MM-DD').toDate(),
       date_end: this.$moment.utc().toDate(),
       date_min: this.$moment.utc('1850-01-01', 'YYYY-MM-DD').toDate(),
@@ -146,7 +146,7 @@ export default {
     }
   },
   watch: {
-    wfs_province: function (newVal) {
+    oapif_province: function (newVal) {
       this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
@@ -187,7 +187,7 @@ export default {
       'numStationHydro'
     ]),
     urlStationList: function () {
-      let url = this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&limit=' + this.wfs_station_limit
+      let url = this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&limit=' + this.oapif_station_limit
       if (this.hydroStationActive) {
         url += '&STATUS_EN=Active'
       }
@@ -206,7 +206,7 @@ export default {
     },
     selectedLayerOption: function () {
       let selLayer = {}
-      selLayer[this.wfs_layer] = this.layer_options[this.wfs_layer]
+      selLayer[this.oapif_layer] = this.layer_options[this.oapif_layer]
       return selLayer
     },
     station_props_display: function () {
@@ -236,7 +236,7 @@ export default {
       }
     },
     dateConfigs: function () {
-      if (this.wfs_layer === 'hydrometric-monthly-mean') {
+      if (this.oapif_layer === 'hydrometric-monthly-mean') {
         return {
           minimumView: 'month',
           format: 'YYYY-MM',

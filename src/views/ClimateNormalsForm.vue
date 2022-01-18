@@ -28,20 +28,18 @@
       <summary id="map-filters-header" v-translate>Map filters</summary>
 
       <province-select
-        v-model="wfs_province"></province-select>
+        v-model="oapif_province"></province-select>
     </details>
 
     <bbox-map
       v-model="ows_bbox"
       :max-zoom="mapMaxZoom"
       :readable-columns="popup_props_display"
-      :select-disabled="provinceSelected"
       :geojson="climateNormalsStationGeoJson"
       :stn-primary-id="stnPrimaryId"></bbox-map>
 
     <station-select
-      v-model="wfs_selected_station_ids"
-      :select-disabled="provinceSelected"
+      v-model="oapif_selected_station_ids"
       :station-data="climateNormalsStationGeoJson.features"
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"
@@ -50,14 +48,14 @@
 
     <format-select-vector
       class="mrgn-tp-md"
-      v-model="wfs_format"></format-select-vector>
+      v-model="oapif_format"></format-select-vector>
 
     <url-box
       :layer-options="layer_options"
-      :ows-url-formatter="wfs3_download_url"
-      :wfs3-common-url="getWFS3CommonURL(wfs_layer)"
-      :wfs3-download-limit="wfs_limit"
-      :layer-format="wfs_format"
+      :ows-url-formatter="oapif_download_url"
+      :oapif-common-url="getWFS3CommonURL(oapif_layer)"
+      :oapif-download-Limit="oapif_limit"
+      :layer-format="oapif_format"
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download link')">
     </url-box>
@@ -76,14 +74,14 @@ import StationListLink from '@/components/StationListLink.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import MoreResources from '@/components/MoreResources.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
-import { wfs } from '@/components/mixins/wfs.js'
+import { oapif } from '@/components/mixins/oapi-features.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'ClimateNormalsForm',
-  mixins: [wfs, ows, datasets],
+  mixins: [oapif, ows, datasets],
   components: {
     'bbox-map': BBOXMap,
     ProvinceSelect,
@@ -97,14 +95,14 @@ export default {
   },
   data () {
     return {
-      wfs_layer: 'climate-normals',
-      wfs_layer_station: 'climate-stations',
+      oapif_layer: 'climate-normals',
+      oapif_layer_station: 'climate-stations',
       prop_date_start: 'DLY_FIRST_DATE',
       prop_date_end: 'DLY_LAST_DATE'
     }
   },
   watch: {
-    wfs_province: function (newVal) {
+    oapif_province: function (newVal) {
       this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
     ows_bbox: function (newVal) {
@@ -119,7 +117,7 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.wfs3_url_base + '/' + this.wfs_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.wfs_station_limit
+      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.oapif_station_limit
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},${this.prop_date_start},${this.prop_date_end}`

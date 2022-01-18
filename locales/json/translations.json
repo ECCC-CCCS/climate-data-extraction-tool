@@ -1971,6 +1971,12 @@
 					""
 				]
 			},
+			"Select all stations shown": {
+				"msgid": "Select all stations shown",
+				"msgstr": [
+					""
+				]
+			},
 			"select stations on the map or in the table by clicking on them": {
 				"msgid": "select stations on the map or in the table by clicking on them",
 				"msgstr": [
@@ -4525,6 +4531,12 @@
 				"msgid": "Select a dataset from the menu to the left",
 				"msgstr": [
 					"Sélectionnez un jeu de données dans le menu à gauche"
+				]
+			},
+			"Select all stations shown": {
+				"msgid": "Select all stations shown",
+				"msgstr": [
+					"Sélectionnez toutes les stations du tableau"
 				]
 			},
 			"select stations on the map or in the table by clicking on them": {

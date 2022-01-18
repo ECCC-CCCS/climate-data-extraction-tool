@@ -14,38 +14,46 @@
           class="form-control"
           placeholder="Search"
           v-model="searchText">
-        <button
-          id="show-selected-stations"
-          @click="toggleShowSelected"
-          type="button"
-          class="btn btn-sm"
-          :class="showSelected ? 'btn-primary active' : 'btn-default'"
-          :disabled="stationIdSelected.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
-            <span v-show="stationIdSelected.length > 0">({{ stationIdSelected.length }}/{{ maxStationSelection }})</span></button>
-        <button
-          id="toggle-discontinued-stations"
-          v-if="hydroStationDisplay"
-          @click="toggleActiveStation"
-          class="btn btn-sm"
-          :class="hydroStationActive ? 'btn-warning' : 'btn-primary active'"
-          type="button"
-          :title="$gettext('This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface')">
-            <span v-show="hydroStationActive" class="glyphicon glyphicon-warning-sign"></span>
-            <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
-            &nbsp;
-            <span v-show="hydroStationActive"><translate>Show discontinued stations</translate></span>
-            <span v-show="!hydroStationActive"><translate>Hide discontinued stations</translate></span>
-            <span><pulse-loader
-            :loading="isLoadingAllHydroStations"
-            class="loading"
-            :size="5"></pulse-loader></span>
-          </button>
-        <button
-          id="clear-selected-stations"
-          @click="clearSelected"
-          class="btn btn-sm btn-danger"
-          type="button"
-          :disabled="stationIdSelected.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
+        <div class="btn-group btn-group-sm">
+          <button
+            id="show-selected-stations"
+            @click="toggleShowSelected"
+            type="button"
+            class="btn"
+            :class="showSelected ? 'btn-primary active' : 'btn-default'"
+            :disabled="stationIdSelected.length === 0"><translate t-comment="Toggle button to show selected stations in a table">Show selected</translate>
+              <span v-show="stationIdSelected.length > 0">&nbsp;({{ stationIdSelected.length }}/{{ maxStationSelection }})</span></button>
+          <button
+            id="select-stations-showing"
+            @click="selectShownStations"
+            class="btn btn-primary">
+            <translate>Select all stations shown</translate>
+            </button>
+          <button
+            id="toggle-discontinued-stations"
+            v-if="hydroStationDisplay"
+            @click="toggleActiveStation"
+            class="btn"
+            :class="hydroStationActive ? 'btn-warning' : 'btn-primary active'"
+            type="button"
+            :title="$gettext('This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface')">
+              <span v-show="hydroStationActive" class="glyphicon glyphicon-warning-sign"></span>
+              <span v-show="hydroStationActive === false" class="glyphicon glyphicon-eye-open"></span>
+              &nbsp;
+              <span v-show="hydroStationActive"><translate>Show discontinued stations</translate></span>
+              <span v-show="!hydroStationActive"><translate>Hide discontinued stations</translate></span>
+              <span><pulse-loader
+              :loading="isLoadingAllHydroStations"
+              class="loading"
+              :size="5"></pulse-loader></span>
+            </button>
+          <button
+            id="clear-selected-stations"
+            @click="clearSelected"
+            class="btn btn-danger"
+            type="button"
+            :disabled="stationIdSelected.length === 0"><translate t-comment="Button to clear selected stations">Clear selected</translate></button>
+        </div>
       </div>
       <div id="station-select-container" class="vld-parent">
         <loading :active.sync="isLoadingStations" :is-full-page="false" aria-busy="true" role="alert"></loading>
@@ -260,6 +268,16 @@ export default {
         this.$store.dispatch('stations/addStationIdSelected', selectedStnId)
       }
       this.$emit('click', this.stationIdSelected)
+    },
+    selectShownStations: function () {
+      if (this.selectDisabled) {
+        return false // early exit
+      }
+      let shownStations = this.filteredStations.map(stn => stn.properties[this.stnPrimaryId])
+      if (shownStations.length !== 0) {
+        this.$store.dispatch('stations/setStationIdSelected', shownStations)
+        this.$emit('click', this.stationIdSelected)
+      }
     },
     selectedStationClass: function (stnId) {
       if (this.stationIdSelected.includes(stnId)) {

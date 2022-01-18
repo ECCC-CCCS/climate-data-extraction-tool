@@ -4,24 +4,24 @@ Anything common to WFS query UI goes here with default values provided in data()
 
 import datasetCols from '@/static/datasetCols.js'
 
-export const wfs = {
+export const oapif = {
   data () {
     return {
-      wfs_format: 'csv',
+      oapif_format: 'csv',
       bbox_parts: {
         min_x: 0,
         min_y: 0,
         max_x: 0,
         max_y: 0
       },
-      wfs_province: 'null',
-      wfs_layer: null,
-      wfs_layer_station: null,
-      wfs_selected_station_ids: [],
-      wfs_station_limit: 10000,
-      wfs_limit: 150000,
-      wfs_max_limit: 1000000,
-      wfs_min_limit: 1,
+      oapif_province: 'null',
+      oapif_layer: null,
+      oapif_layer_station: null,
+      oapif_selected_station_ids: [],
+      oapif_station_limit: 10000,
+      oapif_limit: 150000,
+      oapif_max_limit: 1000000,
+      oapif_min_limit: 1,
       date_start: null,
       date_end: null,
       mapMaxZoom: 12,
@@ -60,7 +60,7 @@ export const wfs = {
       return this.datasetToStnColName[this.$route.name]
     },
     dateConfigs: function () {
-      if (this.wfs_layer === 'climate-monthly') {
+      if (this.oapif_layer === 'climate-monthly') {
         return {
           minimumView: 'month',
           format: 'YYYY-MM',
@@ -120,7 +120,7 @@ export const wfs = {
           let format = this.dateConfigs.format
           let start = this.$moment.utc(this.date_start).format(format)
           let end = this.$moment.utc(this.date_end).format(format)
-          if (this.wfs_layer === 'climate-daily' || this.wfs_layer === 'climate-hourly') {
+          if (this.oapif_layer === 'climate-daily' || this.oapif_layer === 'climate-hourly') {
             // format = 'YYYY-MM-DD HH:mm:ss'
             start += ' 00:00:00'
             end += ' 00:00:00'
@@ -178,10 +178,10 @@ export const wfs = {
     },
     spatialSelectPriority: function () {
       // Determines spatial selection priority: point, province, bbox
-      if (this.wfs_province !== 'null') {
-        return 'province'
-      } else if (this.wfs_selected_station_ids.length > 0) {
+      if (this.oapif_selected_station_ids.length > 0) {
         return 'station'
+      } else if (this.oapif_province !== 'null') {
+        return 'province'
       } else if (this.ows_bbox !== null) {
         return 'bbox'
       } else {
@@ -189,17 +189,17 @@ export const wfs = {
       }
     },
     stationsSelected: function () {
-      return this.wfs_selected_station_ids.length > 0
+      return this.oapif_selected_station_ids.length > 0
     },
     provinceSelected: function () {
-      return this.wfs_province !== 'null'
+      return this.oapif_province !== 'null'
     },
     noProvinceStationSelected: function () {
       return !this.stationsSelected && !this.provinceSelected && this.$store.getters['map/getBboxStationsTotal'] === 0
     },
     layer_options: function () {
       let layers = {}
-      layers[this.wfs_layer] = this.currentRouteTitle
+      layers[this.oapif_layer] = this.currentRouteTitle
       return layers
     }
   },
@@ -222,7 +222,7 @@ export const wfs = {
       let urlParams = []
 
       if (typeof layerName === 'undefined') {
-        layerName = this.wfs_layer
+        layerName = this.oapif_layer
       }
 
       // temporal
@@ -236,10 +236,10 @@ export const wfs = {
       // Spatial selection priority: station, province, bbox
       switch (this.spatialSelectPriority) {
         case 'station':
-          urlParams.push(stnColName + '=' + this.wfs_selected_station_ids.join('|'))
+          urlParams.push(stnColName + '=' + this.oapif_selected_station_ids.join('|'))
           break
         case 'province':
-          urlParams.push(provColName + '=' + this.wfs_province)
+          urlParams.push(provColName + '=' + this.oapif_province)
           break
         case 'bbox':
           urlParams.push('bbox=' + this.ows_bbox)
@@ -268,7 +268,7 @@ export const wfs = {
       return urlParams
     },
     getWFS3CommonURL: function (layerName) {
-      let url = this.wfs3_url_base
+      let url = this.oapif_url_base
       url += '/' + layerName
       url += '/items?'
 
@@ -278,23 +278,23 @@ export const wfs = {
 
       return url
     },
-    wfs3_download_url: function (layerName) {
-      let url = this.wfs3_url_base
+    oapif_download_url: function (layerName) {
+      let url = this.oapif_url_base
       url += '/' + layerName
       url += '/items?'
 
       let urlParams = this.getWFS3CommonParams(layerName)
 
       // Limit validation
-      if (this.wfs_limit >= this.wfs_min_limit && this.wfs_limit <= this.wfs_max_limit) {
-        if (this.wfs_limit !== '') {
-          urlParams.push('limit=' + this.wfs_limit)
+      if (this.oapif_limit >= this.oapif_min_limit && this.oapif_limit <= this.oapif_max_limit) {
+        if (this.oapif_limit !== '') {
+          urlParams.push('limit=' + this.oapif_limit)
         }
       }
 
       // format selection
-      if (this.wfs_format !== 'geojson') { // default is geoJSON
-        urlParams.push('f=' + this.wfs_format)
+      if (this.oapif_format !== 'geojson') { // default is geoJSON
+        urlParams.push('f=' + this.oapif_format)
       }
 
       url += urlParams.join('&')

@@ -61,7 +61,7 @@ export const ows = {
     wcs2_weather_url_base: function () {
       return this.GEOMET_WEATHER_SERVER + '?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage'
     },
-    wfs3_url_base: function () {
+    oapif_url_base: function () {
       // complete url before layer & params
       return this.OPENAPI_SERVER +
         '/collections'

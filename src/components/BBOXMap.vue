@@ -354,7 +354,7 @@ export default {
       })
 
       if (newProvince !== 'null') {
-        this.selectMarkersByProvince(newProvince, stationMarkers)
+        // this.selectMarkersByProvince(newProvince, stationMarkers)
         // If province selected, zoom to province features
         let map = this.$refs.BBOXMap.mapObject
         map.fitBounds(this.geojsonLayer.getBounds())
