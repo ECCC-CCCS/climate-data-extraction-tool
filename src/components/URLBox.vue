@@ -9,16 +9,6 @@
       v-for="(title, layerName) in layerOptions"
       class="mrgn-tp-sm"
       :key="layerName">
-      <a
-        v-show="oapifCommonUrl === null && wcsCommonUrl === null"
-        :href="owsUrlFormatter(layerName)"
-        target="_blank"
-        class="btn btn-default"
-        :download="downloadFormat(layerName)">
-        <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
-        <translate>Download:</translate> {{ title }}
-      </a>
-
       <button
         id="retrieve-download-links"
         class="btn btn-primary"
@@ -63,22 +53,6 @@
           </a>
         </div>
       </div>
-
-      <div
-        id="wcs-download-links-list"
-        class="mrgn-tp-md"
-        v-show="wcsCommonUrl !== null && hasErrors === false">
-
-        <div id="wcs-link-list" class="list-group" aria-live="polite">
-          <a
-            v-for="(bandChunk, index) in wcsBandChunks"
-            :key="index"
-            :href="wcs_download_url_chunk(bandChunk)"
-            target="_blank"
-            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="wcs_download_name_chunk(bandChunk, title)"></span>
-          </a>
-        </div>
-      </div>
     </div>
     <div
       v-show="hasErrors">
@@ -112,18 +86,6 @@ export default {
         return layerName
       }
     },
-    bandRangeFormat: {
-      type: Function,
-      default: function (bandStart, bandEnd) {
-        if (bandStart === null || bandEnd === null || bandStart === 'Invalid date' || bandEnd === 'Invalid date' || typeof bandStart === 'undefined' || typeof bandEnd === 'undefined') {
-          return null
-        } else if (bandStart === bandEnd) { // single date
-          return 'B' + bandStart
-        } else { // date range
-          return 'B' + bandStart + ':B' + bandEnd
-        }
-      }
-    },
     layerOptions: {
       type: Object, // allows for multiple download links of different layers
       default: function () {
@@ -145,20 +107,6 @@ export default {
     oapifCommonUrl: {
       type: String,
       default: null
-    },
-    wcsCommonUrl: {
-      type: String,
-      default: null
-    },
-    wcsBandChunks: {
-      type: Array,
-      default: function () {
-        return []
-      }
-    },
-    wcsNumBands: {
-      type: Number,
-      default: 0
     }
   },
   computed: {
@@ -246,26 +194,6 @@ export default {
       let startNum = startIndex + 1
       let endNum = chunkIndex === (this.chunkedStartIndexes.length - 1) ? this.numRecords : this.chunkedStartIndexes[chunkIndex + 1]
       return this.$_i(this.$gettext('Download records {startNum} - {endNum}'), {'startNum': startNum, 'endNum': endNum})
-    },
-    wcs_download_name_chunk: function (bandChunk, title) {
-      let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
-      if (this.wcsNumBands === 0) {
-        return this.$_i(this.$gettext('Download: {date}'), {'date': bandChunk.start})
-      } else if (rangeSubset !== null) {
-        return this.$_i(this.$gettext('Download: {startNum} - {endNum}'), {'startNum': bandChunk.start, 'endNum': bandChunk.end})
-      } else if (Object.prototype.hasOwnProperty.call(bandChunk, 'specialTitle')) {
-        return this.$gettext('Download:') + ' ' + bandChunk.specialTitle
-      } else { // default
-        return this.$gettext('Download:') + ' ' + title
-      }
-    },
-    wcs_download_url_chunk: function (/*bandChunk*/) {
-      // let rangeSubset = this.bandRangeFormat(bandChunk.start, bandChunk.end)
-      let url = this.wcsCommonUrl
-      // if (rangeSubset !== null) {
-      //   url += '&RANGESUBSET=' + rangeSubset
-      // }
-      return url
     },
     chunkDownload: function (data) {
       this.numRecords = data.numberMatched
