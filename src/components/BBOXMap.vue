@@ -256,7 +256,6 @@ export default {
         }
       },
       geoJsonOptions: {
-        // filter: this.filterHydroStationActive,
         pointToLayer: this.pointToLayer,
         filter: this.filterGeoJson
       },
@@ -368,7 +367,7 @@ export default {
 
         // mark province selection if applicable
         if (this.province !== 'null') {
-          this.selectMarkersByProvince(this.province, this.getStationMarkers())
+          // this.selectMarkersByProvince(this.province, this.getStationMarkers())
         }
       }
     },
