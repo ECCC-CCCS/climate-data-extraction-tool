@@ -28,10 +28,6 @@
 
       <p v-html="techDocHtml"></p>
 
-      <open-portal-links
-        :open-portal-list-html="openPortalListHtml"
-        :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
-
       <strong v-translate>Virtual climate station list download:</strong>
       <ul>
         <li><station-list-link
