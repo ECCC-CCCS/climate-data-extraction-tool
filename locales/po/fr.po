@@ -13,10 +13,6 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/views/CanSIPSForm.vue:251
-msgid ":"
-msgstr " :"
-
 #: src/components/MoreResources.vue:32
 #. A title/word precedes this colon without spaces
 msgid ""
@@ -92,7 +88,6 @@ msgstr ""
 "de programmation scientifique comme {linkToR}, {linkToPython}, "
 "{linkToPanoply}, ou {linkToCDO}."
 
-#: src/components/mixins/dcs-cmip5.js:268
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:354
 msgid ""
 "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support "
@@ -102,12 +97,11 @@ msgstr ""
 "d&rsquo;aide des Services climatiques</a> pour obtenir les résultats d’un "
 "modèle individuel"
 
-#: src/components/mixins/dcs-cmip5.js:262
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:348
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr "<a href=\"{link}\" target=\"_blank\">En savoir plus sur les percentiles</a>"
 
-#: src/components/BBOXMap.vue:447
+#: src/components/BBOXMap.vue:448
 msgid "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
 msgstr "Contributeurs à <a href=\"http://osm.org/copyright\">OpenStreetMap</a>"
 
@@ -200,13 +194,12 @@ msgstr "2 chiffres du jour du mois"
 msgid "2 digit month"
 msgstr "2 chiffres du mois"
 
-#: src/components/mixins/dcs-cmip5.js:131
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:209
 msgid "20-Year average"
 msgstr "Moyenne sur 20 ans"
 
 #: src/views/CMIP5Form.vue:129
-#: src/views/DCSForm.vue:130
+#: src/views/DCSForm.vue:131
 msgid "20-Year average range"
 msgstr "Variation moyenne sur 20 ans"
 
@@ -257,8 +250,10 @@ msgstr "75e percentile"
 msgid "95th percentile"
 msgstr "95e percentile"
 
-#: src/components/mixins/dcs-cmip5.js:111
-#: src/components/mixins/dcs-cmip5.js:116
+#: src/components/BBOXMap.vue:443
+msgid "A single location as a CSV or GeoJSON"
+msgstr "Un point de grille unique sous forme CSV ou GeoJSON"
+
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:189
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:194
 msgid "Actual values"
@@ -339,7 +334,6 @@ msgstr "Date de l'analyse"
 msgid "Analysis run hour"
 msgstr "Heure de la passe d'analyse"
 
-#: src/components/mixins/dcs-cmip5.js:149
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:232
 #: src/views/CanGRDForm.vue:266
 #: src/views/CanGRDForm.vue:274
@@ -371,7 +365,6 @@ msgstr ""
 "liées pour compiler une longue série chronologique de données pour environ "
 "750 endroits au Canada."
 
-#: src/components/mixins/dcs-cmip5.js:115
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:193
 #: src/views/CanGRDForm.vue:280
 msgid "Anomaly values"
@@ -429,8 +422,8 @@ msgstr ""
 #: src/views/ClimateMonthlyForm.vue:68
 #: src/views/CMIP5Form.vue:118
 #: src/views/CMIP5Form.vue:88
-#: src/views/DCSForm.vue:119
-#: src/views/DCSForm.vue:89
+#: src/views/DCSForm.vue:120
+#: src/views/DCSForm.vue:90
 #: src/views/HydrometricArchiveForm.vue:65
 msgid "Clear dates"
 msgstr "Effacer les dates"
@@ -568,13 +561,12 @@ msgstr "Liens de téléchargement de données"
 #: src/views/ClimateMonthlyForm.vue:244
 #: src/views/ClimateMonthlyForm.vue:45
 #: src/views/CMIP5Form.vue:57
-#: src/views/DCSForm.vue:58
+#: src/views/DCSForm.vue:59
 #: src/views/HydrometricArchiveForm.vue:40
 msgid "Date range"
 msgstr "Plage de dates"
 
 #: src/components/mixins/oapi-coverage.js:68
-#: src/components/mixins/wcs.js:108
 #: src/components/mixins/wfs.js:108
 msgid "Date range fields must be all set or cleared."
 msgstr "Les champs de la plage de dates doivent tous être définis ou effacés."
@@ -688,16 +680,6 @@ msgstr ""
 "Télécharger la liste des informations détaillées pour chaque station pour "
 "l’ensemble des données sur les Sommaires climatiques mensuels."
 
-#: src/components/BBOXMap.vue:443
-msgid "Download a region as a GeoTIFF or NetCDF"
-msgstr "Télécharger une région sous forme de GeoTIFF ou NetCDF"
-
-#: src/components/BBOXMap.vue:442
-msgid "Download data for a single location as a CSV or GeoJSON"
-msgstr ""
-"Télécharger des données pour un point de grille unique sous forme CSV ou "
-"GeoJSON"
-
 #: src/components/URLBox.vue:248
 msgid "Download records {startNum} - {endNum}"
 msgstr "Télécharger des registres {startNum} - {endNum}"
@@ -748,13 +730,13 @@ msgstr "Scénario d'émissions"
 #: src/views/ClimateHourlyForm.vue:63
 #: src/views/ClimateMonthlyForm.vue:59
 #: src/views/CMIP5Form.vue:109
-#: src/views/DCSForm.vue:110
+#: src/views/DCSForm.vue:111
 #: src/views/HydrometricArchiveForm.vue:56
 msgid "End date"
 msgstr "Date de fin"
 
 #: src/views/CMIP5Form.vue:52
-#: src/views/DCSForm.vue:53
+#: src/views/DCSForm.vue:54
 msgid "Ensemble percentile"
 msgstr "Percentile de l'ensemble"
 
@@ -771,7 +753,6 @@ msgstr "Erreur :"
 msgid "Explanation of model types"
 msgstr "Interprétation des types de modèles"
 
-#: src/components/mixins/dcs-cmip5.js:147
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:225
 #: src/views/CanGRDForm.vue:264
 #: src/views/CanGRDForm.vue:272
@@ -919,7 +900,6 @@ msgstr "Mois de la prévision"
 msgid "Frequently asked questions about LTCE"
 msgstr "Foire aux questions à propos de l'ECLT"
 
-#: src/components/mixins/dcs-cmip5.js:159
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:245
 msgid "Future"
 msgstr "Futur"
@@ -940,12 +920,10 @@ msgstr "Aidez-nous à améliorer !"
 msgid "Hide discontinued stations"
 msgstr "Masquer les stations abandonnées"
 
-#: src/components/mixins/dcs-cmip5.js:140
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:218
 msgid "High emissions scenario (RCP 8.5)"
 msgstr "Scénario d'émissions élevées (RCP 8.5)"
 
-#: src/components/mixins/dcs-cmip5.js:160
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:246
 msgid "Historical"
 msgstr "Historique"
@@ -955,7 +933,7 @@ msgid "Historical climate and river data"
 msgstr "Données historiques météorologiques et fluviales"
 
 #: src/views/CMIP5Form.vue:79
-#: src/views/DCSForm.vue:80
+#: src/views/DCSForm.vue:81
 msgid "Historical end date"
 msgstr "Date de fin de l'historique"
 
@@ -981,7 +959,7 @@ msgstr ""
 "Canada."
 
 #: src/views/CMIP5Form.vue:68
-#: src/views/DCSForm.vue:69
+#: src/views/DCSForm.vue:70
 msgid "Historical start date"
 msgstr "Date de début de l'historique"
 
@@ -1006,7 +984,7 @@ msgstr ""
 "Les données horaires sont disponibles pour certaines stations et variables "
 "sur le site Web des {website}."
 
-#: src/components/BBOXMap.vue:36
+#: src/components/BBOXMap.vue:32
 msgid "How to use: interactive map"
 msgstr "Guide d'utilisation de la carte interactive"
 
@@ -1065,7 +1043,7 @@ msgstr "Récents changements"
 msgid "Latitude"
 msgstr "Latitude"
 
-#: src/components/BBOXMap.vue:76
+#: src/components/BBOXMap.vue:70
 msgid "Latitude:"
 msgstr "Latitude:"
 
@@ -1077,7 +1055,7 @@ msgstr "En savoir plus sur les scénarios d'émissions"
 msgid "Library of climate resources"
 msgstr "Répertoire de ressources climatiques"
 
-#: src/components/BBOXMap.vue:50
+#: src/components/BBOXMap.vue:45
 #: src/components/StationSelect.vue:52
 msgid "Loading stations... please wait"
 msgstr "Les stations sont en train de télécharger… Veuillez patienter"
@@ -1096,11 +1074,10 @@ msgstr "Extrêmes climatiques à long terme, les stations climatiques virtuelles
 msgid "Longitude"
 msgstr "Longitude"
 
-#: src/components/BBOXMap.vue:75
+#: src/components/BBOXMap.vue:69
 msgid "Longitude:"
 msgstr "Longitude:"
 
-#: src/components/mixins/dcs-cmip5.js:138
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:216
 msgid "Low emissions scenario (RCP 2.6)"
 msgstr "Scénario d'émissions faibles (RCP 2.6)"
@@ -1123,7 +1100,7 @@ msgstr "Filtres de la carte"
 msgid "Map Projection"
 msgstr "Projection cartographique"
 
-#: src/components/BBOXMap.vue:9
+#: src/components/BBOXMap.vue:8
 msgid "Map selection type"
 msgstr "Type de sélection de carte"
 
@@ -1137,7 +1114,7 @@ msgid "Maximum date for near surface wind speed is:"
 msgstr "La date limite de la vitesse du vent à la surface est :"
 
 #: src/views/CanGRDForm.vue:248
-#: src/views/DCSForm.vue:220
+#: src/views/DCSForm.vue:221
 msgid "Maximum temperature"
 msgstr "Température maximale"
 
@@ -1151,7 +1128,7 @@ msgstr "Moyenne des précipitations"
 #: src/views/CanGRDForm.vue:246
 #: src/views/CanGRDForm.vue:253
 #: src/views/CMIP5Form.vue:251
-#: src/views/DCSForm.vue:218
+#: src/views/DCSForm.vue:219
 msgid "Mean temperature"
 msgstr "Température moyenne"
 
@@ -1161,7 +1138,7 @@ msgid "Member"
 msgstr "Membre"
 
 #: src/views/CanGRDForm.vue:247
-#: src/views/DCSForm.vue:219
+#: src/views/DCSForm.vue:220
 msgid "Minimum temperature"
 msgstr "Température minimale"
 
@@ -1175,7 +1152,6 @@ msgstr "Mois de la simulation du modèle"
 msgid "Model type"
 msgstr "Type de modèle"
 
-#: src/components/mixins/dcs-cmip5.js:139
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:217
 msgid "Moderate emissions scenario (RCP 4.5)"
 msgstr "Scénario d'émissions modérées (RCP 4.5)"
@@ -1184,7 +1160,6 @@ msgstr "Scénario d'émissions modérées (RCP 4.5)"
 msgid "Month"
 msgstr "Mois"
 
-#: src/components/mixins/dcs-cmip5.js:150
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:233
 #: src/views/CanGRDForm.vue:261
 msgid "Monthly"
@@ -1295,7 +1270,7 @@ msgstr "Ontario"
 msgid "Page size"
 msgstr "Format de la page"
 
-#: src/components/BBOXMap.vue:38
+#: src/components/BBOXMap.vue:34
 msgid "Panning:"
 msgstr "Faire un panoramique:"
 
@@ -1335,7 +1310,7 @@ msgstr ""
 "Veuillez sélectionner un endroit différent dans la limite du jeu de données "
 "ou modifier votre sélection de saisie."
 
-#: src/components/BBOXMap.vue:20
+#: src/components/BBOXMap.vue:18
 msgid "Please select a point on the map."
 msgstr "Veuillez sélectionner un point sur la carte."
 
@@ -1384,7 +1359,7 @@ msgstr "Type de quantité"
 msgid "Quebec"
 msgstr "Québec"
 
-#: src/components/BBOXMap.vue:89
+#: src/components/BBOXMap.vue:82
 msgid "Reset map"
 msgstr "Réinitialiser la carte"
 
@@ -1491,14 +1466,13 @@ msgid "Snowfall - Daily extremes of record"
 msgstr "Neige - Extrêmes quotidiens"
 
 #: src/components/BBOXMap.vue:4
-msgid "Spatial selection"
-msgstr "Sélection spatiale"
+msgid "Spatial selection download"
+msgstr "Téléchargement de la sélection spatiale"
 
 #: src/views/Home.vue:16
 msgid "Specify the rest of your download request"
 msgstr "Précisez le reste de votre demande de téléchargement"
 
-#: src/components/mixins/dcs-cmip5.js:145
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:223
 #: src/views/CanGRDForm.vue:262
 #: src/views/CanGRDForm.vue:270
@@ -1511,7 +1485,7 @@ msgstr "Printemps (mars à mai)"
 #: src/views/ClimateHourlyForm.vue:50
 #: src/views/ClimateMonthlyForm.vue:48
 #: src/views/CMIP5Form.vue:98
-#: src/views/DCSForm.vue:99
+#: src/views/DCSForm.vue:100
 #: src/views/HydrometricArchiveForm.vue:45
 msgid "Start date"
 msgstr "Date de début"
@@ -1538,7 +1512,6 @@ msgstr "Nom de la station"
 msgid "Station table"
 msgstr "Table de la station"
 
-#: src/components/mixins/dcs-cmip5.js:146
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:224
 #: src/views/CanGRDForm.vue:263
 #: src/views/CanGRDForm.vue:271
@@ -1814,7 +1787,7 @@ msgstr ""
 "éléments quotidiens comprennent : maximum élevé, maximum bas, minimum "
 "élevé, minimum bas."
 
-#: src/components/BBOXMap.vue:30
+#: src/components/BBOXMap.vue:27
 msgid "The downloaded area will match the area shown in the map."
 msgstr "La zone téléchargée correspondra à la zone indiquée sur la carte."
 
@@ -1902,7 +1875,6 @@ msgstr ""
 "disponibles tardivement."
 
 #: src/components/mixins/oapi-coverage.js:71
-#: src/components/mixins/wcs.js:111
 #: src/components/mixins/wfs.js:111
 msgid "The start date cannot be greater than the end date."
 msgstr "La date de début ne peut pas être après la date de fin."
@@ -1965,7 +1937,6 @@ msgid "This field is not within the date range limits."
 msgstr "Ce champ n'est pas dans les limites de la plage de dates."
 
 #: src/components/mixins/oapi-coverage.js:74
-#: src/components/mixins/wcs.js:114
 msgid "This field is required for monthly time intervals."
 msgstr "Cette champ est obligatoire pour les intervalles de temps mensuels."
 
@@ -1984,12 +1955,12 @@ msgstr "La valeur de ce champ doit être inférieure ou égale à :"
 
 #: src/views/CanGRDForm.vue:36
 #: src/views/CMIP5Form.vue:42
-#: src/views/DCSForm.vue:42
+#: src/views/DCSForm.vue:43
 msgid "Time interval / Time of year"
 msgstr "Intervalle de temps / Période de l'année"
 
 #: src/views/CMIP5Form.vue:61
-#: src/views/DCSForm.vue:62
+#: src/views/DCSForm.vue:63
 msgid "Time range type"
 msgstr "Type de la plage de temps"
 
@@ -1997,11 +1968,11 @@ msgstr "Type de la plage de temps"
 msgid "Tips for using the tool"
 msgstr "Conseils d'utilisation de l'outil"
 
-#: src/components/BBOXMap.vue:566
+#: src/components/BBOXMap.vue:567
 msgid "to"
 msgstr "à"
 
-#: src/components/BBOXMap.vue:39
+#: src/components/BBOXMap.vue:35
 #. <kbd>Tab</kbd> represents the keyboard button name
 msgid ""
 "To pan the map, click and drag over the interactive map. Alternatively, "
@@ -2020,7 +1991,7 @@ msgstr ""
 "pour ne voir que les stations sélectionnées dans le tableau, cliquez sur le "
 "bouton « Afficher la sélection »"
 
-#: src/components/BBOXMap.vue:43
+#: src/components/BBOXMap.vue:39
 #. <kbd> tags represent a keyboard button name. Do not adjust spacing.
 msgid ""
 "To zoom in and out of the map, mouse scroll up and down while you mouse "
@@ -2047,7 +2018,7 @@ msgstr "Nombre total d'enregistrements : {numRecords}"
 #: src/components/mixins/datasets.js:263
 #: src/views/CanGRDForm.vue:249
 #: src/views/CanGRDForm.vue:254
-#: src/views/DCSForm.vue:221
+#: src/views/DCSForm.vue:222
 msgid "Total precipitation"
 msgstr "Précipitations totales"
 
@@ -2080,7 +2051,7 @@ msgstr ""
 "Changement climatique Canada. Vous pouvez préciser la période, les "
 "variables, le format de téléchargement et d’autres options."
 
-#: src/components/BBOXMap.vue:37
+#: src/components/BBOXMap.vue:33
 msgid ""
 "Use this map to select a geographic subset of the data. The geographic "
 "subset of the downloaded data will match the area shown in the map."
@@ -2089,9 +2060,6 @@ msgstr ""
 "données. Le sous-ensemble géographique des données que vous téléchargez "
 "correspondra à la zone indiquée sur la carte."
 
-#: src/components/mixins/dcs-cmip5.js:123
-#: src/components/mixins/dcs-cmip5.js:127
-#: src/components/mixins/dcs-cmip5.js:132
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:201
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:205
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:210
@@ -2100,7 +2068,7 @@ msgstr "Intervalle défini par l'utilisateur"
 
 #: src/views/CanGRDForm.vue:26
 #: src/views/CMIP5Form.vue:47
-#: src/views/DCSForm.vue:48
+#: src/views/DCSForm.vue:49
 msgid "Value type"
 msgstr "Type de valeur"
 
@@ -2163,7 +2131,6 @@ msgstr ""
 "Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> si "
 "vous désirez des données pour un seul point de grille"
 
-#: src/components/mixins/dcs-cmip5.js:281
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:367
 msgid ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
@@ -2172,7 +2139,6 @@ msgstr ""
 "Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> "
 "pour obtenir les données quotidiennes"
 
-#: src/components/mixins/dcs-cmip5.js:274
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:360
 msgid ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
@@ -2201,7 +2167,6 @@ msgstr ""
 msgid "Weather, climate and hazards"
 msgstr "Météo, climat et catastrophes naturelles"
 
-#: src/components/mixins/dcs-cmip5.js:148
 #: src/components/mixins/oapi-coverage-dcs-cmip5.js:226
 #: src/views/CanGRDForm.vue:265
 #: src/views/CanGRDForm.vue:273
@@ -2244,7 +2209,7 @@ msgstr "Yukon"
 msgid "YYYY-MM-DD"
 msgstr "AAAA-MM-JJ"
 
-#: src/components/BBOXMap.vue:42
+#: src/components/BBOXMap.vue:38
 msgid "Zooming:"
 msgstr "Zoom:"
 
@@ -2524,6 +2489,7 @@ msgstr "Vous êtes ici :"
 #: src/views/AHCCDForm.vue:237
 #: src/views/AHCCDForm.vue:241
 #: src/views/AHCCDForm.vue:246
+#: src/views/CanSIPSForm.vue:251
 #: src/views/ClimateDailyForm.vue:240
 #: src/views/ClimateDailyForm.vue:244
 #: src/views/ClimateDailyForm.vue:248
@@ -2634,7 +2600,12 @@ msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr "-- Aucun --"
 
-#: src/components/BBOXMap.vue:450
+#: src/components/BBOXMap.vue:444
+msgctxt "Template for different file formats"
+msgid "A region as a {format1} or {format2}"
+msgstr "une région sous forme de {format1} ou {format2}"
+
+#: src/components/BBOXMap.vue:451
 msgctxt "Title"
 msgid "Canada Base Map Transportation"
 msgstr "Carte de base du Canada - Transport"

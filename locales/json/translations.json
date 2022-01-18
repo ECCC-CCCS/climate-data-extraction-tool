@@ -538,6 +538,15 @@
 				]
 			}
 		},
+		"Template for different file formats": {
+			"A region as a {format1} or {format2}": {
+				"msgid": "A region as a {format1} or {format2}",
+				"msgctxt": "Template for different file formats",
+				"msgstr": [
+					""
+				]
+			}
+		},
 		"Title": {
 			"Canada Base Map Transportation": {
 				"msgid": "Canada Base Map Transportation",
@@ -564,12 +573,6 @@
 			}
 		},
 		"$$NOCONTEXT": {
-			":": {
-				"msgid": ":",
-				"msgstr": [
-					""
-				]
-			},
 			": 1-833-517-0376; get help finding, understanding and using climate information": {
 				"msgid": ": 1-833-517-0376; get help finding, understanding and using climate information",
 				"msgstr": [
@@ -838,6 +841,12 @@
 				"msgid": "95th percentile",
 				"msgstr": [
 					"95th percentile"
+				]
+			},
+			"A single location as a CSV or GeoJSON": {
+				"msgid": "A single location as a CSV or GeoJSON",
+				"msgstr": [
+					""
 				]
 			},
 			"Actual values": {
@@ -1240,18 +1249,6 @@
 				"msgid": "Download a list of detailed information for each Monthly climate summaries station.",
 				"msgstr": [
 					"Download a list of detailed information for each Monthly climate summaries station."
-				]
-			},
-			"Download a region as a GeoTIFF or NetCDF": {
-				"msgid": "Download a region as a GeoTIFF or NetCDF",
-				"msgstr": [
-					""
-				]
-			},
-			"Download data for a single location as a CSV or GeoJSON": {
-				"msgid": "Download data for a single location as a CSV or GeoJSON",
-				"msgstr": [
-					"Download data for a single location as a CSV or GeoJSON"
 				]
 			},
 			"Download records {startNum} - {endNum}": {
@@ -2046,10 +2043,10 @@
 					"Snowfall - Daily extremes of record"
 				]
 			},
-			"Spatial selection": {
-				"msgid": "Spatial selection",
+			"Spatial selection download": {
+				"msgid": "Spatial selection download",
 				"msgstr": [
-					"Spatial selection"
+					""
 				]
 			},
 			"Specify the rest of your download request": {
@@ -3097,6 +3094,15 @@
 				]
 			}
 		},
+		"Template for different file formats": {
+			"A region as a {format1} or {format2}": {
+				"msgid": "A region as a {format1} or {format2}",
+				"msgctxt": "Template for different file formats",
+				"msgstr": [
+					"une région sous forme de {format1} ou {format2}"
+				]
+			}
+		},
 		"Title": {
 			"Canada Base Map Transportation": {
 				"msgid": "Canada Base Map Transportation",
@@ -3123,12 +3129,6 @@
 			}
 		},
 		"$$NOCONTEXT": {
-			":": {
-				"msgid": ":",
-				"msgstr": [
-					" :"
-				]
-			},
 			": 1-833-517-0376; get help finding, understanding and using climate information": {
 				"msgid": ": 1-833-517-0376; get help finding, understanding and using climate information",
 				"msgstr": [
@@ -3397,6 +3397,12 @@
 				"msgid": "95th percentile",
 				"msgstr": [
 					"95e percentile"
+				]
+			},
+			"A single location as a CSV or GeoJSON": {
+				"msgid": "A single location as a CSV or GeoJSON",
+				"msgstr": [
+					"Un point de grille unique sous forme CSV ou GeoJSON"
 				]
 			},
 			"Actual values": {
@@ -3799,18 +3805,6 @@
 				"msgid": "Download a list of detailed information for each Monthly climate summaries station.",
 				"msgstr": [
 					"Télécharger la liste des informations détaillées pour chaque station pour l’ensemble des données sur les Sommaires climatiques mensuels."
-				]
-			},
-			"Download a region as a GeoTIFF or NetCDF": {
-				"msgid": "Download a region as a GeoTIFF or NetCDF",
-				"msgstr": [
-					"Télécharger une région sous forme de GeoTIFF ou NetCDF"
-				]
-			},
-			"Download data for a single location as a CSV or GeoJSON": {
-				"msgid": "Download data for a single location as a CSV or GeoJSON",
-				"msgstr": [
-					"Télécharger des données pour un point de grille unique sous forme CSV ou GeoJSON"
 				]
 			},
 			"Download records {startNum} - {endNum}": {
@@ -4605,10 +4599,10 @@
 					"Neige - Extrêmes quotidiens"
 				]
 			},
-			"Spatial selection": {
-				"msgid": "Spatial selection",
+			"Spatial selection download": {
+				"msgid": "Spatial selection download",
 				"msgstr": [
-					"Sélection spatiale"
+					"Téléchargement de la sélection spatiale"
 				]
 			},
 			"Specify the rest of your download request": {

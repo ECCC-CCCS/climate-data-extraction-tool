@@ -1,7 +1,7 @@
 <template>
   <div id="bbox-map-container">
     <fieldset v-if="allowClickPoint">
-      <legend v-translate>Spatial selection</legend>
+      <legend v-translate>Spatial selection download</legend>
 
       <option-radio
         v-model="pointClickOn"
@@ -130,6 +130,14 @@ export default {
     allowClickPoint: {
       type: Boolean,
       default: false
+    },
+    fileFormats: {
+      type: Object,
+      default: function () {
+        return {
+          'json': 'CoverageJSON'
+        }
+      }
     },
     initialBbox: {
       type: String,
@@ -430,9 +438,10 @@ export default {
       }
     },
     pointClickOptions: function () {
+      let oapicFormats = Object.values(this.fileFormats)
       return {
-        'on': this.$gettext('Download data for a single location as a CSV or GeoJSON'),
-        'off': this.$gettext('Download a region as a GeoTIFF or NetCDF')
+        'on': this.$gettext('A single location as a CSV or GeoJSON'),
+        'off': this.$_i(this.$pgettext('Template for different file formats', 'A region as a {format1} or {format2}'), {format1: oapicFormats[0], format2: oapicFormats[1]})
       }
     },
     attributionOSM: function () {

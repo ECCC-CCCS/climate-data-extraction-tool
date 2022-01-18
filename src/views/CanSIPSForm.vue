@@ -248,7 +248,7 @@ export default {
     },
     downloadLinkTitleBreakdown: function () {
       return [{
-        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.$gettext('Member')}${this.$gettext(':')} ${this.oapicMember} | ${this.$gettext('Model run month')}${this.$gettext(':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$gettext(':')} ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
+        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.$gettext('Member')}${this.$pgettext('Colon', ':')} ${this.oapicMember} | ${this.$gettext('Model run month')}${this.$pgettext('Colon', ':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$pgettext('Colon', ':')} ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
       }]
     },
     hasErrors: function () {

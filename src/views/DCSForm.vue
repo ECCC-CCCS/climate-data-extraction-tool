@@ -21,6 +21,7 @@
     <bbox-map
       v-model="ows_bbox"
       :allow-click-point="true"
+      :file-formats="fileFormats"
       @change="splitBBOXString"></bbox-map>
 
     <var-select
