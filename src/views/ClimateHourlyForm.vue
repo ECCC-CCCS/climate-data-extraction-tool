@@ -71,7 +71,6 @@
       v-model="ows_bbox"
       :max-zoom="mapMaxZoom"
       :readable-columns="popup_props_display"
-      :select-disabled="provinceSelected"
       :geojson="climateHourlyStationGeoJson"
       :stn-primary-id="stnPrimaryId"
       :date-start-prop="prop_date_start"
@@ -80,7 +79,6 @@
 
     <station-select
       v-model="oapif_selected_station_ids"
-      :select-disabled="provinceSelected"
       :station-data="climateHourlyStationGeoJson.features"
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"

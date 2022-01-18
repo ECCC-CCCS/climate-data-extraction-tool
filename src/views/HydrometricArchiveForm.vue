@@ -62,14 +62,12 @@
       v-model="ows_bbox"
       :max-zoom="mapMaxZoom"
       :readable-columns="popup_props_display"
-      :select-disabled="provinceSelected"
       :geojson="hydroStationGeoJson"
       :stn-primary-id="stnPrimaryId"
       :hydro-station-display="true"></bbox-map>
 
     <station-select
       v-model="oapif_selected_station_ids"
-      :select-disabled="provinceSelected"
       :station-data="hydroStationGeoJson.features"
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"

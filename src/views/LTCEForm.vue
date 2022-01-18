@@ -65,13 +65,11 @@
       v-model="ows_bbox"
       :max-zoom="18"
       :readable-columns="popup_props_display"
-      :select-disabled="provinceSelected"
       :geojson="ltceStationGeoJson"
       :stn-primary-id="stnPrimaryId"></bbox-map>
 
     <station-select
       v-model="oapif_selected_station_ids"
-      :select-disabled="provinceSelected"
       :station-data="ltceStationGeoJson.features"
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"
