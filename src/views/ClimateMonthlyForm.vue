@@ -66,7 +66,10 @@
       :max-zoom="mapMaxZoom"
       :readable-columns="popup_props_display"
       :geojson="climateMonthlyStationGeoJson"
-      :stn-primary-id="stnPrimaryId"></bbox-map>
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></bbox-map>
 
     <station-select
       v-model="oapif_selected_station_ids"

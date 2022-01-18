@@ -63,14 +63,14 @@
       v-model="ows_bbox"
       :max-zoom="18"
       :readable-columns="popup_props_display"
-      :select-disabled="provinceSelected"
       :geojson="ahccdStationGeoJson"
-      :stn-primary-id="stnPrimaryId"></bbox-map>
-
+      :stn-primary-id="stnPrimaryId"
+      :date-start-prop="prop_date_start"
+      :date-end-prop="prop_date_end"
+      :use-date-range-filter="true"></bbox-map>
 
     <station-select
       v-model="oapif_selected_station_ids"
-      :select-disabled="provinceSelected"
       :station-data="ahccdStationGeoJson.features"
       :station-prop-display="station_props_display"
       :station-prov-col="stationProvCol"
