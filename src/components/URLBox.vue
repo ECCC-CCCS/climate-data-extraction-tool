@@ -26,7 +26,7 @@
           <span
             v-for="context in downloadContext"
             :key="context"
-            >&nbsp;<span class="label label-info" v-html="context"></span>
+            >&nbsp;<span class="label label-info" v-text="context"></span>
           </span>
         </button>
 

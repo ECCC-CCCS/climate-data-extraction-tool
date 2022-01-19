@@ -105,7 +105,7 @@ export const DCSCMIP5 = {
 
       // bbox
       this.splitBBOXString()
-      urlParams.push(`bbox=${this.bbox_parts.min_x.toFixed(3)},${this.bbox_parts.min_y.toFixed(3)},${this.bbox_parts.max_x.toFixed(3)},${this.bbox_parts.max_y.toFixed(3)}`)
+      urlParams.push(`bbox=${this.bbox_parts.min_x},${this.bbox_parts.min_y},${this.bbox_parts.max_x},${this.bbox_parts.max_y}`)
 
       // datetime
       if (this.rangeType !== 'P20Y-Avg') {

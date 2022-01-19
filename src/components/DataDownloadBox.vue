@@ -2,27 +2,25 @@
   <div
     id="url-download-box"
     class="alert mrgn-tp-md"
-    :class="alertClass">
+    :class="alertClass"
+    aria-live="polite">
     <h2>{{ urlBoxTitle }}</h2>
     <div
       id="oapi-download-links-list"
-      class="mrgn-tp-md"
+      class="mrgn-tp-md list-group"
       v-show="downloadUrl !== null && !hasErrors">
 
-      <div id="oapi-link-list" aria-live="polite">
-        <a
-          :href="downloadUrl"
-          target="_blank"
-          class="btn btn-primary">
-          <span class="glyphicon glyphicon-download"></span>&nbsp;
-          <span><translate>Download</translate></span>
-          <span
-            v-for="context in downloadContext"
-            :key="context"
-            >&nbsp;<span class="label label-info" v-html="context"></span>
-          </span>
-        </a>
-      </div>
+      <a
+        :href="downloadUrl"
+        target="_blank"
+        class="downloadUrl list-group-item">
+        <span class="glyphicon glyphicon-download"></span> Download
+        <span
+          v-for="context in downloadContext"
+          :key="context"
+          >&nbsp;<span class="label label-info" v-text="context"></span>
+        </span>
+      </a>
     </div>
     <div
       v-show="hasErrors">
@@ -117,5 +115,9 @@ export default {
 <style scoped>
 .loading {
   display: inline;
+}
+a.downloadUrl {
+  text-decoration-line: none;
+  overflow-wrap: break-word;
 }
 </style>
