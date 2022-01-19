@@ -16,7 +16,8 @@
         v-show="oapifCommonUrl !== null"
         aria-controls="oapif-link-list num-records-oapif-download"
         :disabled="retrieved || loading"
-        @click="getNumRecords(layerName)">
+        @click="getNumRecords(layerName)"
+        aria-live="polite">
           <pulse-loader
             :loading="loading"
             class="loading"
@@ -99,7 +100,9 @@ export default {
     },
     urlBoxTitle: {
       type: String,
-      default: 'URL'
+      default: function () {
+        return this.$gettext('Data download link')
+      }
     },
     hasErrors: {
       type: Boolean,

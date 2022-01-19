@@ -209,7 +209,7 @@ export const oapif = {
       layers[this.oapif_layer] = this.currentRouteTitle
       return layers
     },
-    selectionContext: function () {
+    downloadContext: function () {
       let context = []
 
       // variable

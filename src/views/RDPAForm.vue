@@ -62,7 +62,7 @@
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
-      :date-range-chunks="downloadLinkTitleBreakdown"
+      :download-context="downloadContext"
       :has-errors="hasErrors">
     </data-download-box>
 
@@ -211,10 +211,14 @@ export default {
         }
       }
     },
-    downloadLinkTitleBreakdown: function () {
-      return [{
-        specialTitle: `${this.oapicIdDataset} | ${this.oapicIdResolution} | ${this.oapicIdTime} | ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
-      }]
+    downloadContext: function () {
+      let context = []
+      context.push(this.oapicIdDataset)
+      context.push(this.oapicIdResolution)
+      context.push(this.oapicIdTime)
+      context.push(this.oapicDatetime)
+      context.push(this.fileFormats[this.oapicFormat])
+      return context
     },
     forecastDateMoment: function () {
       return this.$moment.utc(this.forecastDate)

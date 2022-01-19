@@ -67,7 +67,7 @@
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
-      :date-range-chunks="downloadLinkTitleBreakdown"
+      :download-context="downloadContext"
       :has-errors="hasErrors">
     </data-download-box>
 
@@ -246,10 +246,14 @@ export default {
       return modelDate.isBefore(this.modelRunRangeMoment.min, minimumView) ||
         modelDate.isAfter(this.modelRunRangeMoment.max, minimumView)
     },
-    downloadLinkTitleBreakdown: function () {
-      return [{
-        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.$gettext('Member')}${this.$pgettext('Colon', ':')} ${this.oapicMember} | ${this.$gettext('Model run month')}${this.$pgettext('Colon', ':')} ${this.oapicModelRun} | ${this.$gettext('Forecast month')}${this.$pgettext('Colon', ':')} ${this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
-      }]
+    downloadContext: function () {
+      let context = []
+      context.push(this.variableOptions[this.oapicIdVariable])
+      context.push(`${this.$gettext('Member')}${this.$pgettext('Colon', ':')} ${this.oapicMember}`)
+      context.push(`${this.$gettext('Model run month')}${this.$pgettext('Colon', ':')} ${this.oapicModelRun}`)
+      context.push(`${this.$gettext('Forecast month')}${this.$pgettext('Colon', ':')} ${this.oapicDatetime}`)
+      context.push(this.fileFormats[this.oapicFormat])
+      return context
     },
     hasErrors: function () {
       return this.forePeriodOutOfRange ||

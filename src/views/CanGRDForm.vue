@@ -97,7 +97,7 @@
       :file-name="filename"
       :file-format="oapicFormat"
       :download-url="oapicUrl"
-      :date-range-chunks="downloadLinkTitleBreakdown"
+      :download-context="downloadContext"
       :has-errors="hasErrors">
     </data-download-box>
 
@@ -199,10 +199,16 @@ export default {
         return `${this.dateStartFormatted}/${this.dateEndFormatted}`
       }
     },
-    downloadLinkTitleBreakdown: function () {
-      return [{
-        specialTitle: `${this.variableOptions[this.oapicIdVariable]} | ${this.variableTypeOptions[this.oapicValueType]} | ${this.timePeriodOptions[this.oapicIdTimePeriod]} ${this.oapicValueType === 'trend' ? '' : '| '+ this.oapicDatetime}`
-      }]
+    downloadContext: function () {
+      let context = []
+      context.push(this.variableOptions[this.oapicIdVariable])
+      context.push(this.variableTypeOptions[this.oapicValueType])
+      context.push(this.timePeriodOptions[this.oapicIdTimePeriod])
+      if (this.oapicValueType !== 'trend') {
+        context.push(this.oapicDatetime)
+      }
+      context.push(this.fileFormats[this.oapicFormat])
+      return context
     },
     timePeriodType: function () {
       if (['annual', 'monthly'].includes(this.oapicIdTimePeriod)) {

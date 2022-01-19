@@ -133,10 +133,19 @@ export const DCSCMIP5 = {
     }
   },
   computed: {
-    downloadLinkTitleBreakdown: function () {
-      return [{
-        specialTitle: `${this.oapicIdDataset} | ${this.variableOptions[this.oapicIdVariable]} | ${this.scenarioTypeOptions[this.scenarioType]} | ${this.oapicScenario} | ${this.timePeriodOptions[this.oapicIdTimePeriod]} | ${this.valueTypeOptions[this.valueType]} | ${this.percentileOptions[this.percentile]} | ${this.rangeType === 'P20Y-Avg' ? this.avg20Year : this.oapicDatetime} | ${this.fileFormats[this.oapicFormat]}`
-      }]
+    downloadContext: function () {
+      let context = []
+      context.push(this.oapicIdDataset)
+      context.push(this.variableOptions[this.oapicIdVariable])
+      context.push(this.scenarioTypeOptions[this.scenarioType])
+      context.push(this.oapicScenario)
+      context.push(this.timePeriodOptions[this.oapicIdTimePeriod])
+      context.push(this.valueTypeOptions[this.valueType])
+      context.push(this.percentileOptions[this.percentile])
+      context.push(this.rangeType === 'P20Y-Avg' ? this.avg20Year : this.oapicDatetime)
+      context.push(this.fileFormats[this.oapicFormat])
+
+      return context
     },
     avg20YearOptions: function () {
       return {

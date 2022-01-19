@@ -9,13 +9,18 @@
       class="mrgn-tp-md"
       v-show="downloadUrl !== null && !hasErrors">
 
-      <div id="oapi-link-list" class="list-group" aria-live="polite">
+      <div id="oapi-link-list" aria-live="polite">
         <a
-          v-for="(dateRange, index) in dateRangeChunks"
-          :key="index"
           :href="downloadUrl"
           target="_blank"
-          class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="dataDownloadText(dateRange, fileName)"></span>
+          class="btn btn-primary">
+          <span class="glyphicon glyphicon-download"></span>&nbsp;
+          <span><translate>Download</translate></span>
+          <span
+            v-for="context in downloadContext"
+            :key="context"
+            >&nbsp;<span class="label label-info" v-html="context"></span>
+          </span>
         </a>
       </div>
     </div>
@@ -49,7 +54,7 @@ export default {
       type: String,
       default: null
     },
-    dateRangeChunks: {
+    downloadContext: {
       type: Array,
       default: function () {
         return []
@@ -103,22 +108,6 @@ export default {
       } else {
         return filename + '.' + this.fileFormatExt
       }
-    },
-    dataDownloadText: function (dateRange, title) {
-      let invalidDateRange = false
-      let downloadText = this.$gettext('Download:') + ' '
-      if (dateRange.start === null || dateRange.end === null || dateRange.start === 'Invalid date' || dateRange.end === 'Invalid date' || typeof dateRange.start === 'undefined' || typeof dateRange.end === 'undefined') {
-        invalidDateRange = true
-      }
-      if (!invalidDateRange) {
-        downloadText += this.$_i('{startDate} - {endDate}', {'startDate': dateRange.start, 'endDate': dateRange.end})
-      } else if (Object.prototype.hasOwnProperty.call(dateRange, 'specialTitle')) {
-        downloadText += dateRange.specialTitle
-      } else { // default
-        downloadText += title
-      }
-
-      return downloadText
     }
   }
 }

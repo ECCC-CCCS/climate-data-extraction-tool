@@ -94,7 +94,7 @@
       :layer-format="oapif_format"
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download links')"
-      :download-context="selectionContext">
+      :download-context="downloadContext">
     </url-box>
 
     <more-resources></more-resources>

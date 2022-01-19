@@ -99,8 +99,7 @@
       :oapif-download-Limit="oapif_limit"
       :layer-format="oapif_format"
       :has-errors="hasErrors"
-      :url-box-title="$gettext('Data download link')"
-      :download-context="selectionContext">
+      :download-context="downloadContext">
     </url-box>
 
     <more-resources></more-resources>
