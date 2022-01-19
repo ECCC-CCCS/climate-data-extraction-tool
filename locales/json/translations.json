@@ -609,6 +609,14 @@
 					"(Required)"
 				]
 			},
+			"{count} Station": {
+				"msgid": "{count} Station",
+				"msgid_plural": "{count} Stations",
+				"msgstr": [
+					"",
+					""
+				]
+			},
 			"{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.": {
 				"msgid": "{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.",
 				"msgstr": [
@@ -1267,18 +1275,6 @@
 				"msgid": "Download:",
 				"msgstr": [
 					"Download:"
-				]
-			},
-			"Download: {date}": {
-				"msgid": "Download: {date}",
-				"msgstr": [
-					"Download: {date}"
-				]
-			},
-			"Download: {startNum} - {endNum}": {
-				"msgid": "Download: {startNum} - {endNum}",
-				"msgstr": [
-					"Download: {startNum} - {endNum}"
 				]
 			},
 			"Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.": {
@@ -3171,6 +3167,14 @@
 					"(Obligatoire)"
 				]
 			},
+			"{count} Station": {
+				"msgid": "{count} Station",
+				"msgid_plural": "{count} Stations",
+				"msgstr": [
+					"{count} station",
+					"{count} stations"
+				]
+			},
 			"{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.": {
 				"msgid": "{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.",
 				"msgstr": [
@@ -3829,18 +3833,6 @@
 				"msgid": "Download:",
 				"msgstr": [
 					"Télécharger :"
-				]
-			},
-			"Download: {date}": {
-				"msgid": "Download: {date}",
-				"msgstr": [
-					"Télécharger : {date}"
-				]
-			},
-			"Download: {startNum} - {endNum}": {
-				"msgid": "Download: {startNum} - {endNum}",
-				"msgstr": [
-					"Télécharger : {startNum} - {endNum}"
 				]
 			},
 			"Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.": {
