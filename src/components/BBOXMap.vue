@@ -528,7 +528,7 @@ export default {
             east: bboxBounds.getEast() > 180 ? 180 : bboxBounds.getEast(), // lng
             north: bboxBounds.getNorth() > 90 ? 90 : bboxBounds.getNorth() // lat
           }
-          let fixedBounds = L.latLngBounds(L.latLng(fixedBbox.south, fixedBbox.west), L.latLng(fixedBbox.north, fixedBbox.east))
+          let fixedBounds = L.latLngBounds(L.latLng(fixedBbox.south.toFixed(3), fixedBbox.west.toFixed(3)), L.latLng(fixedBbox.north.toFixed(3), fixedBbox.east.toFixed(3)))
           this.bbox_value = fixedBounds.toBBoxString()
           this.updateBBOX()
         }

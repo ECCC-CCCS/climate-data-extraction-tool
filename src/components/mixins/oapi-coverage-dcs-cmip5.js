@@ -13,7 +13,7 @@ export const DCSCMIP5 = {
       oapicIdVariable: 'tas',
       oapicScenario: 'RCP2.6',
       oapicIdTimePeriod: 'annual',
-      ows_bbox: '-154,38,-49,81',
+      mapBBOX: '-154,38,-49,81',
       lastSelectedRCP: 'projected',
       scenarioType: 'projected',
       valueType: 'anomaly',

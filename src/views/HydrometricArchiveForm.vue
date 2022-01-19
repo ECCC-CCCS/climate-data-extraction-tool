@@ -59,7 +59,7 @@
     </details>
 
     <bbox-map
-      v-model="ows_bbox"
+      v-model="mapBBOX"
       :max-zoom="mapMaxZoom"
       :readable-columns="popup_props_display"
       :geojson="hydroStationGeoJson"
@@ -88,12 +88,13 @@
 
     <url-box
       :layer-options="selectedLayerOption"
-      :ows-url-formatter="oapif_download_url"
-      :oapif-common-url="getWFS3CommonURL(oapif_layer)"
+      :ows-url-formatter="getOapifDownloadURL"
+      :oapif-common-url="getOapifCommonURL(oapif_layer)"
       :oapif-download-Limit="oapif_limit"
       :layer-format="oapif_format"
       :has-errors="hasErrors"
-      :url-box-title="$gettext('Data download links')">
+      :url-box-title="$gettext('Data download links')"
+      :download-context="selectionContext">
     </url-box>
 
     <more-resources></more-resources>
@@ -147,7 +148,7 @@ export default {
     oapif_province: function (newVal) {
       this.$store.dispatch('stations/changeProvince', newVal) // to share with bbox
     },
-    ows_bbox: function (newVal) {
+    mapBBOX: function (newVal) {
       this.$store.dispatch('map/changeBBOX', newVal) // to share with station select table
     },
     hydroStationActive: function (newVal) { // display inactive stations

@@ -15,7 +15,7 @@
     </details>
 
     <bbox-map
-      v-model="ows_bbox"
+      v-model="mapBBOX"
       @change="splitBBOXString"></bbox-map>
 
     <var-select

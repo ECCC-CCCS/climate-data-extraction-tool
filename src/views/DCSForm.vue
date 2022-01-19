@@ -19,7 +19,7 @@
     </details>
 
     <bbox-map
-      v-model="ows_bbox"
+      v-model="mapBBOX"
       :allow-click-point="true"
       :file-formats="fileFormats"
       @change="splitBBOXString"></bbox-map>

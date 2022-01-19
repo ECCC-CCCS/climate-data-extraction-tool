@@ -21,7 +21,7 @@ export const ows = {
         en: process.env.VUE_APP_PUBLIC_PATH_EN,
         fr: process.env.VUE_APP_PUBLIC_PATH_FR
       },
-      ows_bbox: '-165,18,-20,87',
+      mapBBOX: '-165,18,-20,87',
       ows_crs: 'EPSG:4326',
       bbox_parts: {
         min_x: 0,
@@ -36,7 +36,7 @@ export const ows = {
       return langKey.substring(0, 2)
     },
     splitBBOXString: function () {
-      let bboxSplit = this.ows_bbox.split(',')
+      let bboxSplit = this.mapBBOX.split(',')
       this.bbox_parts.min_x = parseFloat(bboxSplit[0])
       this.bbox_parts.min_y = parseFloat(bboxSplit[1])
       this.bbox_parts.max_x = parseFloat(bboxSplit[2])

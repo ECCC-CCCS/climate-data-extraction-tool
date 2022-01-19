@@ -7,7 +7,6 @@ describe('E2E test for home page', () => {
     cy.visit('/') // App home page
     cy.wait('@apiGithubReleaseLatest').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
-      console.log(xhr)
       expect(xhr.response.statusCode).to.equal(200)
       expect(xhr.response.body).to.have.property('url')
       expect(xhr.response.body.url).to.match(/^https:\/\/api\.github\.com\/repos\/ECCC-CCCS\/climate-data-extraction-tool\/releases\/\d+$/)

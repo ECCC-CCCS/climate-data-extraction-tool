@@ -18,7 +18,7 @@
     </details>
 
     <bbox-map
-      v-model="ows_bbox"
+      v-model="mapBBOX"
       :allow-click-point="true"
       :file-formats="fileFormats"
       @change="splitBBOXString"></bbox-map>
@@ -149,7 +149,7 @@ export default {
       oapicValueType: 'anomaly',
       oapicScenarioType: 'historical',
       oapicIdTimePeriod: 'annual',
-      ows_bbox: '-154,38,-49,81',
+      mapBBOX: '-154,38,-49,81',
       date_start: this.$moment.utc('1948-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_end: this.$moment.utc('2018-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       date_min: this.$moment.utc('1948-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),

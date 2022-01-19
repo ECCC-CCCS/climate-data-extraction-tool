@@ -17,11 +17,16 @@
         aria-controls="oapif-link-list num-records-oapif-download"
         :disabled="retrieved || loading"
         @click="getNumRecords(layerName)">
-          <translate>Retrieve download links</translate>
           <pulse-loader
             :loading="loading"
             class="loading"
             :size="5"></pulse-loader>
+          <span><translate>Retrieve download links</translate></span>
+          <span
+            v-for="context in downloadContext"
+            :key="context"
+            >&nbsp;<span class="label label-info" v-html="context"></span>
+          </span>
         </button>
 
       <div
@@ -47,7 +52,7 @@
             v-for="(startIndex, index) in chunkedStartIndexes"
             v-show="numRecords !== 0"
             :key="index"
-            :href="oapif_download_url_chunk(startIndex)"
+            :href="getOapifDownloadURL_chunk(startIndex)"
             target="_blank"
             class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="oapif_download_name_chunk(startIndex, index)"></span>
           </a>
@@ -107,6 +112,12 @@ export default {
     oapifCommonUrl: {
       type: String,
       default: null
+    },
+    downloadContext: {
+      type: Array,
+      default: function () {
+        return []
+      }
     }
   },
   computed: {
@@ -182,7 +193,7 @@ export default {
           this.retrieved = true
         })
     },
-    oapif_download_url_chunk: function (startIndex) {
+    getOapifDownloadURL_chunk: function (startIndex) {
       startIndex = parseInt(startIndex)
       let url = this.oapifCommonUrl
       url += '&f=' + this.fileFormat

@@ -3,6 +3,7 @@ Anything common to WFS query UI goes here with default values provided in data()
 */
 
 import datasetCols from '@/static/datasetCols.js'
+import { mapState, mapGetters } from 'vuex'
 
 export const oapif = {
   data () {
@@ -47,6 +48,12 @@ export const oapif = {
     }
   },
   computed: {
+    ...mapState('stations', [
+      'stationIdSelected'
+    ]),
+    ...mapGetters('stations', [
+      'numStationSelected'
+    ]),
     stationProvCol: function () { // province column for station table
       const routeName = this.$route.name
       const climateStationSets = ['monthly', 'daily', 'normals', 'hourly']
@@ -118,8 +125,8 @@ export const oapif = {
           return null
         } else {
           let format = this.dateConfigs.format
-          let start = this.$moment.utc(this.date_start).format(format)
-          let end = this.$moment.utc(this.date_end).format(format)
+          let start = this.convertDateToMoment(this.date_start).format(format)
+          let end = this.convertDateToMoment(this.date_end).format(format)
           if (this.oapif_layer === 'climate-daily' || this.oapif_layer === 'climate-hourly') {
             // format = 'YYYY-MM-DD HH:mm:ss'
             start += ' 00:00:00'
@@ -133,8 +140,8 @@ export const oapif = {
     },
     hasInvalidMomentDate: function () {
       let format = this.dateConfigs.format
-      let start = this.$moment.utc(this.date_start, format).format(format)
-      let end = this.$moment.utc(this.date_end, format).format(format)
+      let start = this.convertDateToMoment(this.date_start).format(format)
+      let end = this.convertDateToMoment(this.date_end).format(format)
 
       return (start === 'Invalid date' || end === 'Invalid date')
     },
@@ -153,15 +160,15 @@ export const oapif = {
     dateRangeHasBadRange: function () {
       if (this.datesCleared) { // don't determine bad range if dates are cleared
         return false
-      } else if (this.$moment.utc(this.date_end, this.dateConfigs.format).format('YYYY-MM-DD') <= this.$moment.utc(this.date_start, this.dateConfigs.format).format('YYYY-MM-DD')) {
+      } else if (this.convertDateToMoment(this.date_end).format('YYYY-MM-DD') <= this.convertDateToMoment(this.date_start).format('YYYY-MM-DD')) {
         return true
       } else {
         return false
       }
     },
     dateRangePastLimits: function () {
-      let start = this.$moment.utc(this.date_start)
-      let end = this.$moment.utc(this.date_end)
+      let start = this.convertDateToMoment(this.date_start)
+      let end = this.convertDateToMoment(this.date_end)
       let minimumView = this.dateConfigs.minimumView
 
       return start.isBefore(this.date_min, minimumView) ||
@@ -178,18 +185,18 @@ export const oapif = {
     },
     spatialSelectPriority: function () {
       // Determines spatial selection priority: point, province, bbox
-      if (this.oapif_selected_station_ids.length > 0) {
+      if (this.numStationSelected > 0) {
         return 'station'
       } else if (this.oapif_province !== 'null') {
         return 'province'
-      } else if (this.ows_bbox !== null) {
+      } else if (this.mapBBOX !== null) {
         return 'bbox'
       } else {
         return true
       }
     },
     stationsSelected: function () {
-      return this.oapif_selected_station_ids.length > 0
+      return this.numStationSelected > 0
     },
     provinceSelected: function () {
       return this.oapif_province !== 'null'
@@ -201,24 +208,69 @@ export const oapif = {
       let layers = {}
       layers[this.oapif_layer] = this.currentRouteTitle
       return layers
+    },
+    selectionContext: function () {
+      let context = []
+
+      // variable
+      if (this.oapif_layer.includes('ahccd') || this.oapif_layer.includes('hydrometric') || this.oapif_layer.includes('ltce')) {
+        context.push(this.layer_options[this.oapif_layer])
+      }
+
+      // spatial selection
+      const count = this.numStationSelected
+      switch (this.spatialSelectPriority) {
+        case 'station':
+          context.push(this.$_i(this.$ngettext('{count} Station', '{count} Stations', count), {'count': count}))
+          break
+        case 'province':
+          context.push(this.oapif_province)
+          context.push(`BBOX(${this.mapBBOX})`)
+          break
+        case 'bbox':
+          context.push(`BBOX(${this.mapBBOX})`)
+          break
+        default:
+          // No spatial query applied
+      }
+
+      // date range
+      const oapifWithDateRange = [
+        'ahccd-annual', 'ahccd-seasonal', 'ahccd-monthly',
+        'climate-hourly', 'climate-daily', 'climate-monthly',
+        'hydrometric-daily-mean', 'hydrometric-monthly-mean', 'hydrometric-annual-peaks', 'hydrometric-annual-statistics'
+      ]
+      if (oapifWithDateRange.includes(this.oapif_layer)) {
+        let format = this.dateConfigs.format
+        let start = this.$moment.utc(this.date_start).format(format)
+        let end = this.$moment.utc(this.date_end).format(format)
+        context.push(`${start}/${end}`)
+      }
+
+      // single date
+      const oapifWithSingleDate = [
+        'ltce-temperature', 'ltce-precipitation', 'ltce-snowfall'
+      ]
+      if (oapifWithSingleDate.includes(this.oapif_layer)) {
+        context.push(`${this.local_month}-${this.local_day}`)
+      }
+
+      return context
     }
   },
   methods: {
     splitBBOXString: function () {
-      let bboxSplit = this.ows_bbox.split(',')
+      let bboxSplit = this.mapBBOX.split(',')
       this.bbox_parts.min_x = bboxSplit[0]
       this.bbox_parts.min_y = bboxSplit[1]
       this.bbox_parts.max_x = bboxSplit[2]
       this.bbox_parts.max_y = bboxSplit[3]
     },
-    generateWFSBBOXParam: function () {
-      return '&BBOX=' + this.ows_bbox
-    },
     clearDates: function () {
       this.date_start = null
       this.date_end = null
     },
-    getWFS3CommonParams: function (layerName) {
+    getOapifParams: function (layerName) {
       let urlParams = []
 
       if (typeof layerName === 'undefined') {
@@ -236,13 +288,14 @@ export const oapif = {
       // Spatial selection priority: station, province, bbox
       switch (this.spatialSelectPriority) {
         case 'station':
-          urlParams.push(stnColName + '=' + this.oapif_selected_station_ids.join('|'))
+          urlParams.push(stnColName + '=' + this.stationIdSelected.join('|'))
           break
         case 'province':
           urlParams.push(provColName + '=' + this.oapif_province)
+          urlParams.push('bbox=' + this.mapBBOX)
           break
         case 'bbox':
-          urlParams.push('bbox=' + this.ows_bbox)
+          urlParams.push('bbox=' + this.mapBBOX)
           break
         default:
           // No spatial query applied
@@ -267,23 +320,24 @@ export const oapif = {
 
       return urlParams
     },
-    getWFS3CommonURL: function (layerName) {
+    getOapifCommonURL: function (layerName) {
+      // Common url (excludes the limit and format)
       let url = this.oapif_url_base
       url += '/' + layerName
       url += '/items?'
 
-      let urlParams = this.getWFS3CommonParams(layerName)
+      let urlParams = this.getOapifParams(layerName)
 
       url += urlParams.join('&')
 
       return url
     },
-    oapif_download_url: function (layerName) {
+    getOapifDownloadURL: function (layerName) {
       let url = this.oapif_url_base
       url += '/' + layerName
       url += '/items?'
 
-      let urlParams = this.getWFS3CommonParams(layerName)
+      let urlParams = this.getOapifParams(layerName)
 
       // Limit validation
       if (this.oapif_limit >= this.oapif_min_limit && this.oapif_limit <= this.oapif_max_limit) {

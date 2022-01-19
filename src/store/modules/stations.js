@@ -31,7 +31,7 @@ const state = {
   isLoadingStations: false,
   isLoadingAllHydroStations: false,
   stationIdSelected: [],
-  maxStationSelection: 9999,
+  maxStationSelection: 1000,
   minDateClimateDaily: null,
   minDateClimateHourly: null,
   minDateClimateMonthly: null,
@@ -87,6 +87,9 @@ const getters = {
     } else {
       return state.dateEnd
     }
+  },
+  numStationSelected (state) {
+    return state.stationIdSelected.length
   }
 }
 
