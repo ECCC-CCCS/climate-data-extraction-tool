@@ -31,7 +31,7 @@ const state = {
   isLoadingStations: false,
   isLoadingAllHydroStations: false,
   stationIdSelected: [],
-  maxStationSelection: 1000,
+  maxStationSelection: 950,
   minDateClimateDaily: null,
   minDateClimateHourly: null,
   minDateClimateMonthly: null,
@@ -121,12 +121,16 @@ const mutations = {
     state.hydroStationGeoJson = payload
   },
   addSingleStationIdSelected (state, payload) {
-    if (state.stationIdSelected.length < state.maxStationSelection) { // at most 20
+    if (state.stationIdSelected.length < state.maxStationSelection) { // limitation
       state.stationIdSelected.push(payload)
     }
   },
   changeStationIdSelected (state, payload) {
-    state.stationIdSelected = payload
+    if (payload.length > state.maxStationSelection) {
+      state.stationIdSelected = payload.slice(0, state.maxStationSelection)
+    } else {
+      state.stationIdSelected = payload
+    }
   },
   removeStationIdSelectedMutation (state, payload) {
     let index = state.stationIdSelected.indexOf(payload)
