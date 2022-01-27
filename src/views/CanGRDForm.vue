@@ -201,6 +201,7 @@ export default {
     },
     downloadContext: function () {
       let context = []
+      context.push(this.oapicIdDataset)
       context.push(this.variableOptions[this.oapicIdVariable])
       context.push(this.variableTypeOptions[this.oapicValueType])
       context.push(this.timePeriodOptions[this.oapicIdTimePeriod])

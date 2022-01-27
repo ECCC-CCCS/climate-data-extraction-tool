@@ -248,6 +248,7 @@ export default {
     },
     downloadContext: function () {
       let context = []
+      context.push(this.oapicIdDataset)
       context.push(this.variableOptions[this.oapicIdVariable])
       context.push(`${this.$gettext('Member')}${this.$pgettext('Colon', ':')} ${this.oapicMember}`)
       context.push(`${this.$gettext('Model run month')}${this.$pgettext('Colon', ':')} ${this.oapicModelRun}`)

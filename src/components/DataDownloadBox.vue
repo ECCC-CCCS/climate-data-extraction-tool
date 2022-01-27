@@ -14,11 +14,11 @@
         :href="downloadUrl"
         target="_blank"
         class="downloadUrl list-group-item">
-        <span class="glyphicon glyphicon-download"></span> Download
+        <span class="glyphicon glyphicon-download"></span> Download<br>
         <span
           v-for="context in downloadContext"
           :key="context"
-          >&nbsp;<span class="label label-info" v-text="context"></span>
+          ><span class="label label-info" v-text="context"></span>&nbsp;
         </span>
       </a>
     </div>
