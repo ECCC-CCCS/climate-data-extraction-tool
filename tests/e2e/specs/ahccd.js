@@ -45,7 +45,7 @@ describe('E2E test for AHCCD data with various form options', () => {
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
@@ -68,7 +68,7 @@ describe('E2E test for AHCCD data with various form options', () => {
 
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
-    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectedStation').should(($tr) => {
+    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
       expect($tr.length).to.be.greaterThan(240)
     })
 
@@ -89,7 +89,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.response.body.numberMatched).to.be.greaterThan(20800) // 20888
     })
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
@@ -134,7 +134,7 @@ describe('E2E test for AHCCD data with various form options', () => {
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
@@ -184,7 +184,7 @@ describe('E2E test for AHCCD data with various form options', () => {
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')

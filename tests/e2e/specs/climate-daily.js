@@ -23,7 +23,7 @@ describe('E2E test for climate daily data with various form options', () => {
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.features.length).to.be.greaterThan(8400)
     })
-    cy.wait('@dateRangeData', {timeout: 20000}).then((xhr) => {
+    cy.wait('@dateRangeData', {timeout: 30000}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
@@ -37,20 +37,31 @@ describe('E2E test for climate daily data with various form options', () => {
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
+    // Zoom in and pan map to reduce number of stations for testing
+    cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
+    cy.wait(500) // mimic user pause after a zoom click
+    cy.get('a.leaflet-control-zoom-in').click() // zoom
+    cy.wait(500) // mimic user pause after a zoom click
+    cy.get('#bbox-map').focus().type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}')
+    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
+      expect($tr.length).to.be.lessThan(500)
+      expect($tr.length).to.be.greaterThan(400)
+    })
+
     // retrieve download list
     cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
+    cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(60450000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(600000)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.lengthOf', 405)
+    cy.get('#oapif-link-list').find('a').should('have.lengthOf', 266)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -72,7 +83,7 @@ describe('E2E test for climate daily data with various form options', () => {
 
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
-    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectedStation').should(($tr) => {
+    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
       expect($tr.length).to.be.greaterThan(1600)
     })
 
@@ -86,7 +97,7 @@ describe('E2E test for climate daily data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/climate-daily\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
+    cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -94,7 +105,7 @@ describe('E2E test for climate daily data with various form options', () => {
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
@@ -132,7 +143,7 @@ describe('E2E test for climate daily data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
-    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
+    cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -140,7 +151,7 @@ describe('E2E test for climate daily data with various form options', () => {
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
@@ -179,7 +190,7 @@ describe('E2E test for climate daily data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.wait('@countData', {timeout: 20000}).then((xhr) => {
+    cy.wait('@countData', {timeout: 30000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
@@ -187,7 +198,7 @@ describe('E2E test for climate daily data with various form options', () => {
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
-    // visit download link (limit 1)
+    // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
