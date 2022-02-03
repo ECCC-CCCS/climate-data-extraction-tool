@@ -143,7 +143,7 @@ describe('E2E test for DCS page with ogc-api-coverage data', () => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-type']).to.equal('application/x-netcdf')
-        expect(response.headers['content-disposition']).to.match(/.*CMIP5_rcp2\.6_annual_2081-2100_latlon1x1_pr_pctl50_P1Y\.nc.*$/)
+        expect(response.headers['content-disposition']).to.match(/.*DCS_rcp2\.6_annual_2081-2100_latlon0\.086x0\.086_pr_pctl50_P1Y\.nc.*$/)
       })
     })
 
@@ -184,7 +184,7 @@ describe('E2E test for DCS page with ogc-api-coverage data', () => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-type']).to.equal('application/x-netcdf')
-        expect(response.headers['content-disposition']).to.match(/.*CMIP5_rcp2\.6_annual_2081-2100_latlon1x1_pr_pctl50_P1Y\.nc.*$/)
+        expect(response.headers['content-disposition']).to.match(/.*DCS_rcp8\.5_monthly_abs_latlon0\.086x0\.086_tx_pctl50_P1M\.nc.*$/)
       })
     })
   })
