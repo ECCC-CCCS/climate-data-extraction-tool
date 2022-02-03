@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('E2E test for RDPA WCS data with various form options', () => {
+describe('E2E test for RDPA ogc-api-coverage data with various form options', () => {
   it('Test dynamic form changes for expected response', () => {
     cy.visit('/#/regional-deterministic-precipitation-analysis')
 
