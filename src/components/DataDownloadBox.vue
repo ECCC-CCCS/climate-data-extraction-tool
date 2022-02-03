@@ -12,6 +12,7 @@
 
       <a
         :href="downloadUrl"
+        id="download-url"
         target="_blank"
         class="downloadUrl list-group-item">
         <span class="glyphicon glyphicon-download"></span> Download<br>

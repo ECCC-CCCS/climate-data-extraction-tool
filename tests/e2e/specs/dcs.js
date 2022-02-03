@@ -29,7 +29,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.get('#var-sel-value-type').should('be.disabled')
     cy.selectVar('#rcp_scenario', 'High emissions scenario (RCP 8.5)', 'RCP85')
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Spring (March-May)', 'SPRING')
-    cy.selectVar('#var-sel-value-type', 'Anomaly values', 'ANO')
+    cy.selectVar('#var-sel-value-type', 'Anomaly values', 'anomaly')
     cy.get('#val-radio-20-year-average').should('exist')
   })
 
@@ -53,7 +53,7 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Annual', 'YEAR')
 
     // value type
-    cy.selectVar('#var-sel-value-type', 'Anomaly values', 'ANO')
+    cy.selectVar('#var-sel-value-type', 'Anomaly values', 'anomaly')
 
     // Ensemble percentile
     cy.get('#var-sel-ensemble-percentile').scrollIntoView().wait(250).should('be.disabled').should('have.value', 'PCTL50')
@@ -71,15 +71,15 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.get('#var-sel-20-year-average-range').should('be.hidden') // .select('2081-2100').should('have.value', '2081-2100')
 
     // download format
-    cy.selectVar('#raster_download_format', 'GeoTIFF', 'image/tiff')
+    cy.selectVar('#file_download_format', 'GeoTIFF', 'image/tiff')
 
     // URL download link
     cy.get('#url-download-box').should('be.visible')
     cy.get('#point-download-box').should('be.hidden')
 
     // visit download link
-    cy.get('#wcs-download-links-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.TM\.RCP26.*tif.*$/)
@@ -110,8 +110,8 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.inputText('#date-historical-end-date', '1999-12{enter}')
 
     // visit download link
-    cy.get('#wcs-download-links-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.TN\.HISTO\.ENS.*tif.*$/)
@@ -133,11 +133,11 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.selectVar('#var-sel-20-year-average-range', '2081-2100', '2081-2100')
 
     // download format
-    cy.selectVar('#raster_download_format', 'NetCDF', 'image/netcdf')
+    cy.selectVar('#file_download_format', 'NetCDF', 'image/netcdf')
 
     // visit download link
-    cy.get('#wcs-download-links-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.PR.*nc.*$/)
@@ -173,11 +173,11 @@ describe('E2E test for DCS page with WCS data', () => {
     cy.inputText('#date-end-date', '2010-02{enter}')
 
     // download format
-    cy.selectVar('#raster_download_format', 'NetCDF', 'image/netcdf')
+    cy.selectVar('#file_download_format', 'NetCDF', 'image/netcdf')
 
     // visit download link
-    cy.get('#wcs-download-links-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#wcs-download-links-list a:first').should('have.attr', 'href').then((href) => {
+    cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-climate-DCS\.TX\.RCP.*ENS\.ABS.*nc.*$/)

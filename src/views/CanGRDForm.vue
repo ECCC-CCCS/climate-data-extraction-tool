@@ -364,7 +364,9 @@ export default {
       if (this.timePeriodType === 'seasonal') {
         subset.push(`season("${this.oapicIdTimePeriod}")`)
       }
-      urlParams.push(subset.join(','))
+      if (subset.length > 0) {
+        urlParams.push(subset.join(','))
+      }
 
       // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
       if (this.oapicValueType === 'anomaly') {

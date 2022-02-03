@@ -26,11 +26,11 @@ describe('E2E test for CanSIPS WCS data with various form options', () => {
     cy.get('#date-forecast-month').should('have.value', forecastDate)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         // attachment; filename="geomet-weather_CANSIPS.MEM.ETA_PN-SLP.08_2018-09-01T0000Z_PT720H.tif"
@@ -69,11 +69,11 @@ describe('E2E test for CanSIPS WCS data with various form options', () => {
     cy.get('#date-forecast-month').should('have.value', forecastDate)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-weather_CANSIPS\.MEM\.ETA_TT\.02.*2018-06.*tif.*$/)
@@ -113,11 +113,11 @@ describe('E2E test for CanSIPS WCS data with various form options', () => {
     cy.get('#date-forecast-month').should('have.value', forecastDate)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-weather_CANSIPS\.MEM\.ETA_WTMP\.05.*2017-11.*tif.*$/)
@@ -151,11 +151,11 @@ describe('E2E test for CanSIPS WCS data with various form options', () => {
     cy.get('#date-forecast-month').should('have.value', forecastDate)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-weather_CANSIPS\.MEM\.PRES_TT\.850\.13.*2013-05.*nc.*$/)
@@ -195,11 +195,11 @@ describe('E2E test for CanSIPS WCS data with various form options', () => {
     cy.get('#date-forecast-month').should('have.value', forecastDate)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-weather_CANSIPS\.MEM\.ETA_RT\.10.*2016-08.*nc.*$/)

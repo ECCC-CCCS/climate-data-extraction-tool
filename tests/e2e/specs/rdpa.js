@@ -43,11 +43,11 @@ describe('E2E test for RDPA WCS data with various form options', () => {
     cy.selectVar('#var-sel-analysis-run-hour', runName, runVal)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.6F_PR_2018-08-08T1800Z.*tif.*$/)
@@ -86,11 +86,11 @@ describe('E2E test for RDPA WCS data with various form options', () => {
     cy.get('#var-sel-analysis-run-hour').should('be.disabled').should('have.value', runVal)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         // geomet-weather_RDPA.24F_PR_2018-08-08T1200Z.tif
@@ -132,11 +132,11 @@ describe('E2E test for RDPA WCS data with various form options', () => {
     cy.selectVar('#var-sel-analysis-run-hour', runName, runVal)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         // geomet-weather_RDPA.ARC_15km.6F_PR_2011-09-11T0600Z.nc
@@ -172,11 +172,11 @@ describe('E2E test for RDPA WCS data with various form options', () => {
     cy.selectVar('#var-sel-analysis-run-hour', runName, runVal)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.ARC_15km\.6F_PR_2012-10-02T0000Z.*nc.*$/)
@@ -217,11 +217,11 @@ describe('E2E test for RDPA WCS data with various form options', () => {
     cy.get('#var-sel-analysis-run-hour').should('be.disabled').should('have.value', runVal)
 
     // download format
-    cy.selectVar('#raster_download_format', formatName, formatVal)
+    cy.selectVar('#file_download_format', formatName, formatVal)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#url-download-box a:first').should('have.attr', 'href').then((href) => {
+    cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.ARC_15km\.24F_PR_2011-04-06T1200Z.*tif.*$/)
