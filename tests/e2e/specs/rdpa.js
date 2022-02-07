@@ -5,30 +5,30 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.visit('/#/regional-deterministic-precipitation-analysis')
 
     // model type to Archive changes analysis date
-    cy.selectVar('#var-sel-model-type', 'Archive', 'ARC')
+    cy.selectVar('#var-sel-model-type', 'Archive (15km)', '15km')
     cy.get('#date-analysis-date').should('have.value', '2011-04-06')
 
     // interval to 24 hours changes run hour
     cy.selectVar('#var-sel-precipitation-accumulation-interval', '24 hours', '24F')
     cy.get('#var-sel-analysis-run-hour').should('have.value', '12Z').should('be.disabled')
 
-    // model type to Analysis changes date
-    cy.selectVar('#var-sel-model-type', 'Analysis', 'FORE')
+    // model type to 10km changes date
+    cy.selectVar('#var-sel-model-type', 'Analysis (10km)', '10km')
     cy.get('#date-analysis-date').should('have.value', '2012-10-03')
   })
 
-  it('Download analysis 6F 18Z data as GeoTIFF', () => {
+  it('Download analysis 6F 18Z data as CoverageJSON', () => {
     cy.visit('/#/regional-deterministic-precipitation-analysis')
 
-    let modelName = 'Analysis'
-    let modelVal = 'FORE'
+    let modelName = 'Analysis (10km)'
+    let modelVal = '10km'
     let intervalName = '6 hours'
     let intervalVal = '6F'
     let date = '2018-08-08'
     let runName = '18Z'
     let runVal = runName
-    let formatName = 'GeoTIFF'
-    let formatVal = 'image/tiff'
+    let formatName = 'CoverageJSON'
+    let formatVal = 'json'
 
     // model type
     cy.selectVar('#var-sel-model-type', modelName, modelVal)
@@ -50,12 +50,13 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.6F_PR_2018-08-08T1800Z.*tif.*$/)
+        expect(response.body.type).to.equal('Coverage')
+        expect(response.headers['content-type']).to.equal('application/prs.coverage+json')
       })
     })
   })
 
-  it('Download analysis 24F data as GeoTIFF', () => {
+  it('Download analysis 24F data as CoverageJSON', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -63,15 +64,15 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
     cy.wait(500) // mimic user pause after a zoom click
 
-    let modelName = 'Analysis'
-    let modelVal = 'FORE'
+    let modelName = 'Analysis (10km)'
+    let modelVal = '10km'
     let intervalName = '24 hours'
     let intervalVal = '24F'
     let date = '2018-08-08'
     let runName = '12Z'
     let runVal = runName
-    let formatName = 'GeoTIFF'
-    let formatVal = 'image/tiff'
+    let formatName = 'CoverageJSON'
+    let formatVal = 'json'
 
     // model type
     cy.selectVar('#var-sel-model-type', modelName, modelVal)
@@ -93,13 +94,13 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        // geomet-weather_RDPA.24F_PR_2018-08-08T1200Z.tif
-        expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.24F_PR_2018-08-08T1200Z.*tif.*$/)
+        expect(response.body.type).to.equal('Coverage')
+        expect(response.headers['content-type']).to.equal('application/prs.coverage+json')
       })
     })
   })
 
-  it('Download archive 6F 06Z data as NetCDF', () => {
+  it('Download archive 6F 06Z data as GRIB', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -109,15 +110,15 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
     cy.wait(500)
 
-    let modelName = 'Archive'
-    let modelVal = 'ARC'
+    let modelName = 'Archive (15km)'
+    let modelVal = '15km'
     let intervalName = '6 hours'
     let intervalVal = '6F'
     let date = '2011-09-11'
     let runName = '06Z'
     let runVal = runName
-    let formatName = 'NetCDF'
-    let formatVal = 'image/netcdf'
+    let formatName = 'GRIB'
+    let formatVal = 'GRIB'
 
     // model type
     cy.selectVar('#var-sel-model-type', modelName, modelVal)
@@ -139,25 +140,25 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        // geomet-weather_RDPA.ARC_15km.6F_PR_2011-09-11T0600Z.nc
-        expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.ARC_15km\.6F_PR_2011-09-11T0600Z.*nc.*$/)
+        expect(response.headers['content-type']).to.equal('application/x-grib2')
+        expect(response.headers['content-disposition']).to.match(/.*CMC_RDPA_APCP-006-0700cutoff_SFC_0_ps15km_2011091106_000.grib2.*$/)
       })
     })
   })
 
-  it('Download archive 6F 00Z data as NetCDF', () => {
+  it('Download archive 6F 00Z data as GRIB', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
-    let modelName = 'Archive'
-    let modelVal = 'ARC'
+    let modelName = 'Archive (15km)'
+    let modelVal = '15km'
     let intervalName = '6 hours'
     let intervalVal = '6F'
     let date = '2012-10-02'
     let runName = '00Z'
     let runVal = runName
-    let formatName = 'NetCDF'
-    let formatVal = 'image/netcdf'
+    let formatName = 'GRIB'
+    let formatVal = 'GRIB'
 
     // model type
     cy.selectVar('#var-sel-model-type', modelName, modelVal)
@@ -179,12 +180,13 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.ARC_15km\.6F_PR_2012-10-02T0000Z.*nc.*$/)
+        expect(response.headers['content-type']).to.equal('application/x-grib2')
+        expect(response.headers['content-disposition']).to.match(/.*CMC_RDPA_APCP-006-0700cutoff_SFC_0_ps15km_2012100200_000\.grib2.*$/)
       })
     })
   })
 
-  it('Download archive 24F data as GeoTIFF', () => {
+  it('Download archive 24F data as CoverageJSON', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -194,15 +196,15 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
     cy.wait(500)
 
-    let modelName = 'Archive'
-    let modelVal = 'ARC'
+    let modelName = 'Archive (15km)'
+    let modelVal = '15km'
     let intervalName = '24 hours'
     let intervalVal = '24F'
     let date = '2011-04-06'
     let runName = '12Z'
     let runVal = runName
-    let formatName = 'GeoTIFF'
-    let formatVal = 'image/tiff'
+    let formatName = 'CoverageJSON'
+    let formatVal = 'json'
 
     // model type
     cy.selectVar('#var-sel-model-type', modelName, modelVal)
@@ -224,7 +226,8 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('a#download-url').should('have.attr', 'href').then((href) => {
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*geomet-weather_RDPA\.ARC_15km\.24F_PR_2011-04-06T1200Z.*tif.*$/)
+        expect(response.body.type).to.equal('Coverage')
+        expect(response.headers['content-type']).to.equal('application/prs.coverage+json')
       })
     })
   })
