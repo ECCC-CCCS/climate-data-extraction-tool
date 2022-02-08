@@ -25,7 +25,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
     cy.intercept('POST', /.*\/processes\/raster-drill\/jobs.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
-    cy.wait('@rasterDrillDownload', { timeout: 60000 }).then((xhr) => {
+    cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
       try {
         expect(xhr.response.headers).to.have.property('content-encoding')
         expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
@@ -62,7 +62,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
     cy.intercept('POST', /.*\/processes\/raster-drill\/jobs.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
-    cy.wait('@rasterDrillDownload', { timeout: 60000 }).then((xhr) => {
+    cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
       try {
         expect(xhr.response.headers).to.have.property('content-encoding')
         expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
@@ -99,7 +99,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
     cy.intercept('POST', /.*\/processes\/raster-drill\/jobs.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
-    cy.wait('@rasterDrillDownload', { timeout: 60000 }).then((xhr) => {
+    cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
       try {
         expect(xhr.response.headers).to.have.property('content-encoding')
         expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
