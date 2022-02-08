@@ -76,7 +76,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.lengthOf', 429)
+    cy.get('#oapif-link-list').find('a').should('have.lengthOf', 6429)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -178,7 +178,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.equal(34)
+        expect(response.body.numberMatched).to.equal(36)
       })
     })
   })
