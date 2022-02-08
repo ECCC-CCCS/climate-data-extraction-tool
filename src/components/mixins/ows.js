@@ -10,7 +10,6 @@ Anything common to OWS and web mapping configs
 export const ows = {
   data () {
     return {
-      GEOMET_WEATHER_SERVER: process.env.VUE_APP_GEOMET_WEATHER_SERVER,
       OPENAPI_SERVER: process.env.VUE_APP_OPENAPI_SERVER,
       GEOMET_CLIMATE_SERVER: process.env.VUE_APP_GEOMET_CLIMATE_SERVER,
       WEB_SERVER: {
@@ -57,9 +56,6 @@ export const ows = {
     wcs2_climate_url_base: function () {
       // complete url before layer & params
       return this.GEOMET_CLIMATE_SERVER + '?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage'
-    },
-    wcs2_weather_url_base: function () {
-      return this.GEOMET_WEATHER_SERVER + '?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage'
     },
     oapif_url_base: function () {
       // complete url before layer & params

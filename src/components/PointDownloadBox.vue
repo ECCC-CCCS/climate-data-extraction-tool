@@ -8,7 +8,7 @@
       type="button"
       class="btn btn-primary"
       :disabled="hasErrors || loading"
-      @click="wpsDownload">
+      @click="rasterDrillDownload">
         <translate>Download</translate>
         <pulse-loader
           :loading="loading"
@@ -47,8 +47,8 @@ export default {
     return {
       loading: false,
       downloadError: false,
-      WPS_SERVER: process.env.VUE_APP_OPENAPI_SERVER,
-      WPS_RASTER_DRILL: process.env.VUE_APP_WPS_RASTER_DRILL
+      OAPI_SERVER: process.env.VUE_APP_OPENAPI_SERVER,
+      RASTER_DRILL_PATH: process.env.VUE_APP_OPENAPI_RASTER_DRILL
     }
   },
   watch: {
@@ -86,23 +86,14 @@ export default {
     }
   },
   methods: {
-    wpsDownload: function () {
-      const inputs = [
-        {
-          id: 'layer',
-          value: this.pointInputs.layer
-        }, {
-          id: 'y',
-          value: this.pointInputs.y
-        }, {
-          id: 'x',
-          value: this.pointInputs.x
-        }, {
-          id: 'format',
-          value: this.caseSenFileFormat
-        }
-      ]
-      let rasterDrillUrl = this.WPS_SERVER + this.WPS_RASTER_DRILL
+    rasterDrillDownload: function () {
+      const inputs = {
+        'layer': this.pointInputs.layer,
+        'y': parseFloat(this.pointInputs.y.toFixed(3)),
+        'x': parseFloat(this.pointInputs.x.toFixed(3)),
+        'format': this.caseSenFileFormat
+      }
+      let rasterDrillUrl = this.OAPI_SERVER + this.RASTER_DRILL_PATH
 
       const inputData = {
         inputs: inputs

@@ -237,7 +237,15 @@ export default {
         annual: 'YEAR',
         monthly: 'ENS'
       }
-      let layer = this.oapicIdDataset + '.' + varToLayerVar[this.oapicIdVariable] + '.' + this.oapicScenario.replace('.', '') + '.' + timeToLayerTime[this.oapicIdTimePeriod] + '.PCTL' + this.percentile
+      const valTypeToLayerValType = {
+        anomaly: 'ANO',
+        absolute: 'ABS'
+      }
+      let scenarioTypeLayer = 'HISTO'
+      if (this.scenarioType === 'projected') {
+        scenarioTypeLayer = this.oapicScenario.replace('.', '')
+      }
+      let layer = this.oapicIdDataset + '.' + varToLayerVar[this.oapicIdVariable] + '.' + scenarioTypeLayer + '.' + timeToLayerTime[this.oapicIdTimePeriod] + '.' + valTypeToLayerValType[this.valueType] + '_PCTL' + this.percentile
       return {
         layer: layer,
         y: this.clickLatLng === null ? null : this.clickLatLng.lat,
