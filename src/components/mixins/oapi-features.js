@@ -244,7 +244,11 @@ export const oapif = {
         let format = this.dateConfigs.format
         let start = this.$moment.utc(this.date_start).format(format)
         let end = this.$moment.utc(this.date_end).format(format)
-        context.push(`${start}/${end}`)
+        if (this.dateStartEmpty && this.dateEndEmpty) {
+          // no date range
+        } else {
+          context.push(`${start}/${end}`)
+        }
       }
 
       // single date

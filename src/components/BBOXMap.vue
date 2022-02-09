@@ -364,22 +364,17 @@ export default {
     geojson: function (newJson) {
       if (newJson !== undefined) { // update geojson layer if new data
         this.reAddGeoJsonLayer()
-
-        // mark province selection if applicable
-        if (this.province !== 'null') {
-          // this.selectMarkersByProvince(this.province, this.getStationMarkers())
-        }
       }
     },
     dateStart: function (newDate, oldDate) {
       // prevent triggering on initial load
-      if (oldDate !== null && newDate != null && this.useDateRangeFilter) {
+      if (oldDate != null && newDate != null && this.useDateRangeFilter) {
         this.reAddGeoJsonLayer()
       }
     },
     dateEnd: function (newDate, oldDate) {
       // prevent triggering on initial load
-      if (oldDate !== null && newDate != null && this.useDateRangeFilter) {
+      if (oldDate != null && newDate != null && this.useDateRangeFilter) {
         this.reAddGeoJsonLayer()
       }
     },
@@ -637,7 +632,12 @@ export default {
       // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + rowDateStart+ ' | row end date: ' + rowDateEnd)
 
       // no date range filter applied
+      // initial
       if (this.dateStart == null || this.dateEnd == null || !this.useDateRangeFilter) {
+        return true
+      }
+      // date ranges are empty
+      if (!this.dateStart.isValid() && !this.dateEnd.isValid()) {
         return true
       }
 

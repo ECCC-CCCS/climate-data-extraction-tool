@@ -35,7 +35,7 @@
         <date-select
           v-model="date_start"
           :label="$gettext('Start date')"
-          :placeholder="$gettext('YYYY-MM-DD')"
+          :placeholder="dateConfigs.format"
           :minimum-view="dateConfigs.minimumView"
           :format="dateConfigs.format"
           :min-date="date_min"
@@ -45,7 +45,7 @@
         <date-select
           v-model="date_end"
           :label="$gettext('End date')"
-          :placeholder="$gettext('YYYY-MM-DD')"
+          :placeholder="dateConfigs.format"
           :minimum-view="dateConfigs.minimumView"
           :format="dateConfigs.format"
           :min-date="date_min"

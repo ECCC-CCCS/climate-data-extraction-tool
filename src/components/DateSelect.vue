@@ -196,7 +196,7 @@ export default {
       clearTimeout(this.debounce) // debounce input
       this.debounce = setTimeout(() => {
         this.emitUpdatedValue(updDate)
-      }, 600)
+      }, 1000)
     },
     emitUpdatedValue: function (updDate) {
       this.$emit('input', this.dateFormatter(updDate))

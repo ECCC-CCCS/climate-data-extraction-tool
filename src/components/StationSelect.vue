@@ -386,7 +386,12 @@ export default {
       // console.log('Date start: ' + this.dateStart + ' | Date end: ' + this.dateEnd + '\nrow start date: ' + rowDateStart+ ' | row end date: ' + rowDateEnd)
 
       // no date range filter applied
+      // initial
       if (this.dateStart == null || this.dateEnd == null || !this.useDateRangeFilter) {
+        return true
+      }
+      // date ranges are empty
+      if (!this.dateStart.isValid() && !this.dateEnd.isValid()) {
         return true
       }
 
