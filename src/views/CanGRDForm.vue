@@ -144,7 +144,7 @@ export default {
   },
   data () {
     return {
-      oapicIdDataset: 'CanGRD',
+      oapicIdDataset: 'cangrd',
       oapicIdVariable: 'tmean',
       oapicValueType: 'anomaly',
       oapicScenarioType: 'historical',

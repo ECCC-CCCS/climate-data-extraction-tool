@@ -105,7 +105,7 @@ export default {
   },
   data () {
     return {
-      oapicIdDataset: 'CanSIPS',
+      oapicIdDataset: 'cansips',
       oapicIdType: 'forecast',
       oapicIdProduct: 'members',
       oapicIdVariable: '1',
