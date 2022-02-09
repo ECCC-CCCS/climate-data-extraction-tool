@@ -204,7 +204,7 @@ export default {
   },
   data () {
     return {
-      oapicIdDataset: 'CMIP5',
+      oapicIdDataset: 'cmip5',
       oapicIdVariable: 'tas'
     }
   },

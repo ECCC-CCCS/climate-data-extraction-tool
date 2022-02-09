@@ -206,7 +206,7 @@ export default {
   },
   data () {
     return {
-      oapicIdDataset: 'DCS',
+      oapicIdDataset: 'dcs',
       oapicIdVariable: 'tm'
     }
   },

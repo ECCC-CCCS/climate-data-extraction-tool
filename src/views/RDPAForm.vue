@@ -98,7 +98,7 @@ export default {
   },
   data () {
     return {
-      oapicIdDataset: 'RDPA',
+      oapicIdDataset: 'rdpa',
       oapicIdTime: '6F', // 6F, 6P, 24F, 24P
       oapicIdResolution: '10km', // 10km, 15km
       oapicIdVariable: '1', // Quantity of Precip

@@ -38,7 +38,7 @@ export const DCSCMIP5 = {
         this.rangeType = 'custom'
 
         // Autocorrect histStart date for DCS if out of range
-        if (this.oapicIdDataset === 'DCS') {
+        if (this.oapicIdDataset === 'dcs') {
           let histStart = this.$moment.utc(this.dateHistStart, this.dateConfigs.format)
           if (histStart.isBefore(this.dateConfigs.dateMin) || histStart.isAfter(this.dateConfigs.dateMax)) {
             this.dateHistStart = this.$moment.utc(this.dateConfigs.dateMin).toDate()
@@ -60,7 +60,7 @@ export const DCSCMIP5 = {
         this.rangeType = 'custom'
 
         // Auto correct dates for wind selection (CMIP5)
-        if (this.oapicIdVariable === 'sfcWind' && this.oapicIdDataset === 'CMIP5') {
+        if (this.oapicIdVariable === 'sfcWind' && this.oapicIdDataset === 'cmip5') {
           this.correctDatessfcWind()
         }
       }
@@ -256,7 +256,7 @@ export const DCSCMIP5 = {
       }
     },
     dateHistMin: function () {
-      if (this.oapicIdDataset === 'DCS' && this.scenarioType === 'historical') {
+      if (this.oapicIdDataset === 'dcs' && this.scenarioType === 'historical') {
         return this.$moment.utc('1951-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
       } else {
         return this.$moment.utc('1900-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate()
