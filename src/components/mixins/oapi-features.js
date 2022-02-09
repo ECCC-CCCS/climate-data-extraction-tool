@@ -242,8 +242,8 @@ export const oapif = {
       ]
       if (oapifWithDateRange.includes(this.oapif_layer)) {
         let format = this.dateConfigs.format
-        let start = this.$moment.utc(this.date_start).format(format)
-        let end = this.$moment.utc(this.date_end).format(format)
+        let start = this.convertDateToMoment(this.date_start).format(format)
+        let end = this.convertDateToMoment(this.date_end).format(format)
         if (this.dateStartEmpty && this.dateEndEmpty) {
           // no date range
         } else {
