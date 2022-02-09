@@ -44,7 +44,7 @@ describe('E2E test for climate daily data with various form options', () => {
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('#bbox-map').focus().type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.lessThan(500)
+      expect($tr.length).to.be.lessThan(850)
       expect($tr.length).to.be.greaterThan(400)
     })
 
@@ -61,7 +61,7 @@ describe('E2E test for climate daily data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.lengthOf', 266)
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 475)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -177,7 +177,7 @@ describe('E2E test for climate daily data with various form options', () => {
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.lessThan(200)
+      expect($tr.length).to.be.lessThan(100)
     })
 
     // date change
@@ -194,7 +194,7 @@ describe('E2E test for climate daily data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(123500)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(120000)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
@@ -204,7 +204,7 @@ describe('E2E test for climate daily data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(123500)
+        expect(response.body.numberMatched).to.be.greaterThan(120000)
       })
     })
   })

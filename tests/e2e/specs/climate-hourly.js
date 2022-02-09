@@ -62,7 +62,7 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.lengthOf', 266)
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 266)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {

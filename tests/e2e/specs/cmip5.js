@@ -19,7 +19,7 @@ describe('E2E test for CMIP5 page with ogc-api-coverage data', () => {
     cy.get('#date-historical-start-date').should('have.attr', 'required', 'required')
     cy.get('#date-historical-end-date').should('have.attr', 'required', 'required')
     cy.get('#val-radio-20-year-average').should('not.exist')
-    cy.get('#oapi-download-links-list').find('a').should('have.lengthOf', 1)
+    cy.get('#oapi-download-links-list').find('a').should('have.length.of.at.most', 1)
     cy.get('button#clear-hist-dates-btn').click()
     cy.get('label[for="date-historical-start-date"').contains('This field is required')
     cy.get('label[for="date-historical-end-date"').contains('This field is required')
