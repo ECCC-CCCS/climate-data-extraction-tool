@@ -1271,12 +1271,6 @@
 					"Download station list for this dataset."
 				]
 			},
-			"Download:": {
-				"msgid": "Download:",
-				"msgstr": [
-					"Download:"
-				]
-			},
 			"Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.": {
 				"msgid": "Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.",
 				"msgstr": [
@@ -1499,8 +1493,8 @@
 					"Historical start date"
 				]
 			},
-			"Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
-				"msgid": "Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
+			"Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).": {
+				"msgid": "Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).",
 				"msgstr": [
 					""
 				]
@@ -1787,14 +1781,14 @@
 					"Nunavut"
 				]
 			},
-			"only 20 stations can be selected at once": {
-				"msgid": "only 20 stations can be selected at once",
-				"msgstr": [
-					"only 20 stations can be selected at once"
-				]
-			},
 			"Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.": {
 				"msgid": "Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.",
+				"msgstr": [
+					""
+				]
+			},
+			"only 950 stations can be selected at once": {
+				"msgid": "only 950 stations can be selected at once",
 				"msgstr": [
 					""
 				]
@@ -2541,12 +2535,6 @@
 				"msgid": "Yukon",
 				"msgstr": [
 					"Yukon"
-				]
-			},
-			"YYYY-MM-DD": {
-				"msgid": "YYYY-MM-DD",
-				"msgstr": [
-					"YYYY-MM-DD"
 				]
 			},
 			"Zooming:": {
@@ -3796,19 +3784,19 @@
 			"Download a list of detailed information for each LTCE virtual climate station with precipitation record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with precipitation record type only",
 				"msgstr": [
-					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de précipitation."
+					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de précipitation"
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with snowfall record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with snowfall record type only",
 				"msgstr": [
-					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de neige."
+					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de neige"
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station with temperature record type only": {
 				"msgid": "Download a list of detailed information for each LTCE virtual climate station with temperature record type only",
 				"msgstr": [
-					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de température."
+					"Téléchargez la liste d'informations détaillées pour chaque station climatologique virtuelle des ECLT qui présente uniquement les données de température"
 				]
 			},
 			"Download a list of detailed information for each Monthly climate summaries station.": {
@@ -3827,12 +3815,6 @@
 				"msgid": "Download station list for this dataset.",
 				"msgstr": [
 					"Télécharger la liste des stations pour cet ensemble de données."
-				]
-			},
-			"Download:": {
-				"msgid": "Download:",
-				"msgstr": [
-					"Télécharger :"
 				]
 			},
 			"Downloads for this dataset are currently not working. We apologize for any inconvenience and are working to rectify the problem.": {
@@ -4057,10 +4039,10 @@
 					"Date de début de l'historique"
 				]
 			},
-			"Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
-				"msgid": "Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.",
+			"Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).": {
+				"msgid": "Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).",
 				"msgstr": [
-					"Les données climatiques horaires sont dérivées de deux sources de données; les stations climatologiques horaires qui produisent une ou deux observations de température et de précipitations par jour, et les stations d’observation horaire (voir les séries de données horaires) qui produisent habituellement plus d’éléments météorologiques, p. ex, le vent ou la neige au sol."
+					""
 				]
 			},
 			"Hourly data for some stations and variables can be found on the {website}.": {
@@ -4345,16 +4327,16 @@
 					"Nunavut"
 				]
 			},
-			"only 20 stations can be selected at once": {
-				"msgid": "only 20 stations can be selected at once",
-				"msgstr": [
-					"vous ne pouvez sélectionner qu’un maximum de 20 stations à la fois"
-				]
-			},
 			"Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.": {
 				"msgid": "Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.",
 				"msgstr": [
 					"Seuls 600000 enregistrements peuvent être téléchargés en une seule fois. Si vous souhaitez en télécharger davantage, veuillez contacter le <a href=\"{supportDeskUrl}\" target=\"_blank\">Centre d&rsquo;aide des Services climatiques</a>."
+				]
+			},
+			"only 950 stations can be selected at once": {
+				"msgid": "only 950 stations can be selected at once",
+				"msgstr": [
+					"vous ne pouvez sélectionner qu’un maximum de 950 stations à la fois"
 				]
 			},
 			"Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.": {
@@ -5099,12 +5081,6 @@
 				"msgid": "Yukon",
 				"msgstr": [
 					"Yukon"
-				]
-			},
-			"YYYY-MM-DD": {
-				"msgid": "YYYY-MM-DD",
-				"msgstr": [
-					"AAAA-MM-JJ"
 				]
 			},
 			"Zooming:": {

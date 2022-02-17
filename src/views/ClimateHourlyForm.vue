@@ -2,7 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p v-translate>Hourly climate data is derived from two sources of data; Hourly Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.</p>
+    <p v-translate>Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).</p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>

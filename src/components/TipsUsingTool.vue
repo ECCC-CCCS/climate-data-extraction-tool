@@ -30,7 +30,7 @@ export default {
           this.$gettext('to see only selected stations in the table, click the "Show selected" button'),
           this.$gettext('deselect a station by clicking on it again in the table'),
           this.$gettext('deselect all stations by clicking the "Clear selected" button'),
-          this.$gettext('only 20 stations can be selected at once'),
+          this.$gettext('only 950 stations can be selected at once'),
           this.$gettext('alternatively, for most datasets, you can select all stations within a province or territory with the "Province/Territory" menu')
         ]
       }
