@@ -1,6 +1,6 @@
 <template>
   <details>
-    <summary v-translate>Tips for using the tool</summary>
+    <summary v-translate>How to use the Climate data extraction tool</summary>
     <div v-if="griddedRouteNames.includes($route.name)">
       <p v-text="textTipUsingToolGridded.use"></p>
       <p v-text="textTipUsingToolGridded.instructions"></p>

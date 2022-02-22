@@ -88,21 +88,6 @@ export const datasets = {
             phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Daily climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
-        hourly: {
-          title: this.$pgettext('Dataset Name', 'Hourly climate data'),
-          abbr: null,
-          abbrName: null,
-          techDoc: { // same as daily
-            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-daily-data.html',
-            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-quotidiennes.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Hourly climate data</a>.')
-          },
-          openPortal: {
-            en: 'https://open.canada.ca/data/en/dataset/',
-            fr: 'https://ouvert.canada.ca/data/fr/dataset/',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
-          }
-        },
         ltce: {
           title: this.$pgettext('Dataset Name', 'Daily climate records'),
           abbr: this.$pgettext('Abbreviation: Long Term Climate Extremes', 'LTCE'),
@@ -142,6 +127,21 @@ export const datasets = {
                 'fr': 'https://ouvert.canada.ca/data/fr/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652'
               }
             }]
+          }
+        },
+        hourly: {
+          title: this.$pgettext('Dataset Name', 'Hourly climate data'),
+          abbr: null,
+          abbrName: null,
+          techDoc: { // same as daily
+            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-daily-data.html',
+            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-donnees-quotidiennes.html',
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Hourly climate data</a>.')
+          },
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
         hydrometric: {
@@ -228,19 +228,19 @@ export const datasets = {
           }
         },
         dcs: {
-          title: this.$pgettext('Dataset Name', 'Statistically downscaled climate scenarios'),
+          title: this.$pgettext('Dataset Name', 'Canadian statistically downscaled climate scenarios'),
           abbr: null,
           abbrName: null,
           techDoc: {
             en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/technical-documentation-downscaled-climate-scenarios.html',
             fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/documentation-technique-scenarios-climatiques-echelle-reduite.html',
-            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">the technical documentation on the Statistically downscaled climate scenarios</a>.')
+            phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">the technical documentation on the Canadian statistically downscaled climate scenarios</a>.')
           },
           openPortal: {
             en: 'https://open.canada.ca/data/en/dataset/958b8357-3690-414d-8bec-d65951041636',
             fr: 'https://ouvert.canada.ca/data/fr/dataset/958b8357-3690-414d-8bec-d65951041636',
-            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.'),
-            phraseList: this.$gettext('The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:'),
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.'),
+            phraseList: this.$gettext('The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:'),
             variables: [{
               'name': this.$gettext('Mean temperature'),
               'url': {

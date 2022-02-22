@@ -837,11 +837,8 @@ msgstr ""
 msgid ""
 "For more detailed information on this dataset, see the <a "
 "href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the "
-"Statistically downscaled climate scenarios</a>."
+"Canadian statistically downscaled climate scenarios</a>."
 msgstr ""
-"For more detailed information on this dataset, see the <a "
-"href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the "
-"Statistically downscaled climate scenarios</a>."
 
 #: src/views/CanSIPSForm.vue:151
 msgid "Forecast"
@@ -928,6 +925,10 @@ msgstr ""
 #: src/views/ClimateDailyForm.vue:243
 #: src/views/ClimateHourlyForm.vue:243
 msgid "Hourly data for some stations and variables can be found on the {website}."
+msgstr ""
+
+#: src/components/TipsUsingTool.vue:3
+msgid "How to use the Climate data extraction tool"
 msgstr ""
 
 #: src/components/BBOXMap.vue:32
@@ -1528,6 +1529,14 @@ msgstr ""
 "metadata files for the dataset as well as other avenues for accessing the "
 "dataset."
 
+#: src/components/mixins/datasets.js:242
+msgid ""
+"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
+"page for the Canadian statistically downscaled climate scenarios</a> also "
+"provides metadata files for the dataset as well as other avenues for "
+"accessing the dataset."
+msgstr ""
+
 #: src/components/mixins/datasets.js:58
 msgid ""
 "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
@@ -1595,18 +1604,6 @@ msgstr ""
 "page for the Monthly climate summaries</a> also provides metadata files for "
 "the dataset as well as other avenues for accessing the dataset."
 
-#: src/components/mixins/datasets.js:242
-msgid ""
-"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
-"page for the Statistically downscaled climate scenarios</a> also provides "
-"metadata files for the dataset as well as other avenues for accessing the "
-"dataset."
-msgstr ""
-"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal "
-"page for the Statistically downscaled climate scenarios</a> also provides "
-"metadata files for the dataset as well as other avenues for accessing the "
-"dataset."
-
 #: src/components/DataAccessDocLink.vue:27
 msgid ""
 "The Canadian Centre for Climate Services also provides both a Datamart and "
@@ -1640,6 +1637,16 @@ msgstr ""
 "results of these calculations. Geographical coverage is global. Data is "
 "available on a grid at a horizontal resolution of 2.5 degrees and for a few "
 "selected vertical levels. Predictions are made available monthly."
+
+#: src/views/DCSForm.vue:5
+msgid ""
+"The Canadian statistically downscaled climate scenarios dataset provides "
+"projected changes in temperature and precipitation, with respect to the "
+"reference period of 1986-2005, for three emission scenarios at a 10km "
+"resolution. Downscaled data are based on global climate model projections "
+"from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median "
+"projected changes across the downscaled multi-model ensemble are shown."
+msgstr ""
 
 #: src/views/LTCEForm.vue:306
 msgid ""
@@ -1719,6 +1726,13 @@ msgstr ""
 "the reference period of 1986-2005. A range of percentiles across the "
 "multi-model ensembles are available for download."
 
+#: src/components/mixins/datasets.js:243
+msgid ""
+"The open government portal page for the Canadian statistically downscaled "
+"climate scenarios also provides metadata files for the dataset as well as "
+"other avenues for accessing the dataset:"
+msgstr ""
+
 #: src/components/mixins/datasets.js:119
 msgid ""
 "The open government portal page for the Daily climate records also provides "
@@ -1738,16 +1752,6 @@ msgstr ""
 "The open government portal page for the Global climate model scenarios also "
 "provides metadata files for the dataset as well as other avenues for "
 "accessing the dataset:"
-
-#: src/components/mixins/datasets.js:243
-msgid ""
-"The open government portal page for the Statistically downscaled climate "
-"scenarios also provides metadata files for the dataset as well as other "
-"avenues for accessing the dataset:"
-msgstr ""
-"The open government portal page for the Statistically downscaled climate "
-"scenarios also provides metadata files for the dataset as well as other "
-"avenues for accessing the dataset:"
 
 #: src/views/RDPAForm.vue:5
 msgid ""
@@ -1779,22 +1783,6 @@ msgstr ""
 #: src/components/mixins/oapi-features.js:118
 msgid "The start date cannot be greater than the end date."
 msgstr "The start date cannot be greater than the end date."
-
-#: src/views/DCSForm.vue:5
-msgid ""
-"The Statistically downscaled climate scenarios dataset provides projected "
-"changes in temperature and precipitation, with respect to the reference "
-"period of 1986-2005, for three emission scenarios at a 10km resolution. "
-"Downscaled data are based on global climate model projections from the "
-"Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected "
-"changes across the downscaled multi-model ensemble are shown."
-msgstr ""
-"The Statistically downscaled climate scenarios dataset provides projected "
-"changes in temperature and precipitation, with respect to the reference "
-"period of 1986-2005, for three emission scenarios at a 10km resolution. "
-"Downscaled data are based on global climate model projections from the "
-"Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected "
-"changes across the downscaled multi-model ensemble are shown."
 
 #: src/components/StationSelect.vue:104
 #. Warning message when user has no stations selected and no stations are contained in the map viewport
@@ -1855,10 +1843,6 @@ msgstr "Time interval / Time of year"
 #: src/views/DCSForm.vue:63
 msgid "Time range type"
 msgstr "Time range type"
-
-#: src/components/TipsUsingTool.vue:3
-msgid "Tips for using the tool"
-msgstr "Tips for using the tool"
 
 #: src/components/BBOXMap.vue:561
 msgid "to"
@@ -2409,6 +2393,11 @@ msgctxt "Dataset Name"
 msgid "Canadian Seasonal to Inter-annual Prediction System"
 msgstr "Canadian Seasonal to Inter-annual Prediction System"
 
+#: src/components/mixins/datasets.js:231
+msgctxt "Dataset Name"
+msgid "Canadian statistically downscaled climate scenarios"
+msgstr ""
+
 #: src/components/mixins/datasets.js:47
 msgctxt "Dataset Name"
 msgid "Climate normals 1981 - 2010"
@@ -2448,11 +2437,6 @@ msgstr "Monthly climate summaries"
 msgctxt "Dataset Name"
 msgid "Regional Deterministic Precipitation Analysis"
 msgstr "Regional Deterministic Precipitation Analysis"
-
-#: src/components/mixins/datasets.js:231
-msgctxt "Dataset Name"
-msgid "Statistically downscaled climate scenarios"
-msgstr "Statistically downscaled climate scenarios"
 
 #: src/components/mixins/oapi-coverage.js:20
 msgctxt "File format"

@@ -435,6 +435,13 @@
 					"Canadian Seasonal to Inter-annual Prediction System"
 				]
 			},
+			"Canadian statistically downscaled climate scenarios": {
+				"msgid": "Canadian statistically downscaled climate scenarios",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					""
+				]
+			},
 			"Climate normals 1981 - 2010": {
 				"msgid": "Climate normals 1981 - 2010",
 				"msgctxt": "Dataset Name",
@@ -489,13 +496,6 @@
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					"Regional Deterministic Precipitation Analysis"
-				]
-			},
-			"Statistically downscaled climate scenarios": {
-				"msgid": "Statistically downscaled climate scenarios",
-				"msgctxt": "Dataset Name",
-				"msgstr": [
-					"Statistically downscaled climate scenarios"
 				]
 			}
 		},
@@ -1403,10 +1403,10 @@
 					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>."
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Canadian statistically downscaled climate scenarios</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Canadian statistically downscaled climate scenarios</a>.",
 				"msgstr": [
-					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>."
+					""
 				]
 			},
 			"Forecast": {
@@ -1501,6 +1501,12 @@
 			},
 			"Hourly data for some stations and variables can be found on the {website}.": {
 				"msgid": "Hourly data for some stations and variables can be found on the {website}.",
+				"msgstr": [
+					""
+				]
+			},
+			"How to use the Climate data extraction tool": {
+				"msgid": "How to use the Climate data extraction tool",
 				"msgstr": [
 					""
 				]
@@ -2141,6 +2147,12 @@
 					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">RDPA</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
+				]
+			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
@@ -2183,12 +2195,6 @@
 					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Monthly climate summaries</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
-				"msgstr": [
-					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
-				]
-			},
 			"The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.": {
 				"msgid": "The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.",
 				"msgstr": [
@@ -2199,6 +2205,12 @@
 				"msgid": "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.",
 				"msgstr": [
 					"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly."
+				]
+			},
+			"The Canadian statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
+				"msgid": "The Canadian statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
+				"msgstr": [
+					""
 				]
 			},
 			"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
@@ -2237,6 +2249,12 @@
 					"The Global climate model scenarios dataset is based on an ensemble of global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5) are provided. Multi-model ensembles of modelled output (actual value) and projected change (anomaly) are available for historical simulations and three emission scenarios at a 1x1 degree grid resolution. Projected changes are expressed as anomalies with respect to the reference period of 1986-2005. A range of percentiles across the multi-model ensembles are available for download."
 				]
 			},
+			"The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
+				"msgstr": [
+					""
+				]
+			},
 			"The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
 				"msgid": "The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
@@ -2249,12 +2267,6 @@
 					"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:"
 				]
 			},
-			"The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
-				"msgid": "The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
-				"msgstr": [
-					"The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:"
-				]
-			},
 			"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.": {
 				"msgid": "The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.",
 				"msgstr": [
@@ -2265,12 +2277,6 @@
 				"msgid": "The start date cannot be greater than the end date.",
 				"msgstr": [
 					"The start date cannot be greater than the end date."
-				]
-			},
-			"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
-				"msgid": "The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
-				"msgstr": [
-					"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown."
 				]
 			},
 			"There are no stations available to download data from your current map display.": {
@@ -2337,12 +2343,6 @@
 				"msgid": "Time range type",
 				"msgstr": [
 					"Time range type"
-				]
-			},
-			"Tips for using the tool": {
-				"msgid": "Tips for using the tool",
-				"msgstr": [
-					"Tips for using the tool"
 				]
 			},
 			"to": {
@@ -2981,6 +2981,13 @@
 					"Système de prévision interannuelle et saisonnière canadien"
 				]
 			},
+			"Canadian statistically downscaled climate scenarios": {
+				"msgid": "Canadian statistically downscaled climate scenarios",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					"Scénarios climatiques canadiens mis à l’échelle de manière statistique"
+				]
+			},
 			"Climate normals 1981 - 2010": {
 				"msgid": "Climate normals 1981 - 2010",
 				"msgctxt": "Dataset Name",
@@ -3035,13 +3042,6 @@
 				"msgctxt": "Dataset Name",
 				"msgstr": [
 					"Analyse régionale déterministe de précipitation"
-				]
-			},
-			"Statistically downscaled climate scenarios": {
-				"msgid": "Statistically downscaled climate scenarios",
-				"msgctxt": "Dataset Name",
-				"msgstr": [
-					"Scénarios climatiques mis à l’échelle de manière statistique"
 				]
 			}
 		},
@@ -3949,10 +3949,10 @@
 					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Sommaires climatologiques mensuels</a>."
 				]
 			},
-			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>.": {
-				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Statistically downscaled climate scenarios</a>.",
+			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Canadian statistically downscaled climate scenarios</a>.": {
+				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Canadian statistically downscaled climate scenarios</a>.",
 				"msgstr": [
-					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Scénarios climatiques mis à l’échelle de manière statistique</a>."
+					"Pour de plus amples renseignements, voir la <a href=\"{techDocLink}\" target=\"_blank\">documentation technique relative aux Scénarios climatiques canadiens mis à l’échelle de manière statistique</a>."
 				]
 			},
 			"Forecast": {
@@ -4049,6 +4049,12 @@
 				"msgid": "Hourly data for some stations and variables can be found on the {website}.",
 				"msgstr": [
 					"Les données horaires sont disponibles pour certaines stations et variables sur le site Web des {website}."
+				]
+			},
+			"How to use the Climate data extraction tool": {
+				"msgid": "How to use the Climate data extraction tool",
+				"msgstr": [
+					"Comment utiliser l'Outil d'extraction de données climatiques"
 				]
 			},
 			"How to use: interactive map": {
@@ -4687,6 +4693,12 @@
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative à la <abbr title=\"{datasetName}\">ARDP</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Scénarios climatiques canadiens mis à l’échelle de manière statistique</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
@@ -4729,12 +4741,6 @@
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Sommaires climatologiques mensuels</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
-			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
-				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
-				"msgstr": [
-					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux Scénarios climatiques mis à l’échelle de manière statistique</a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
-				]
-			},
 			"The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.": {
 				"msgid": "The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.",
 				"msgstr": [
@@ -4745,6 +4751,12 @@
 				"msgid": "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.",
 				"msgstr": [
 					"Le Système de Prévision Interannuelle et Saisonnière Canadien (SPISCan) procède à des calculs physiques afin de produire des prévisions probabilistes d'éléments de l'atmosphère du début d'un mois jusqu'à 12 mois dans le futur. Les éléments de l'atmosphère incluent notamment la température, la précipitation, la vitesse et direction des vents. Ce produit contient les résultats numériques bruts de ces calculs. La couverture géographique est mondiale. Les données sont disponibles pour quelques niveaux verticaux choisis et sur une grille de résolution spatiale de 2.5 degrées. Ces prévisions sont disponibles mensuellement."
+				]
+			},
+			"The Canadian statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
+				"msgid": "The Canadian statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
+				"msgstr": [
+					"Des scénarios climatiques canadiens à réduction d’échelle statistique des changements projetés pour les températures et les précipitations, par rapport à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une résolution de 10 km. Les données avec réduction d’échelle statistique s’appuient sur les projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5). La médiane des changements projetés de l’ensemble multimodèles à réduction d’échelle statistique est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles à réduction d’échelle statistique mensuels, saisonniers et annuels, à l’aide de l’outil d’extraction de données climatiques."
 				]
 			},
 			"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
@@ -4783,6 +4795,12 @@
 					"Les données des Scénarios basés sur des modèles climatiques globaux s’appuient sur un ensemble de projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5) sont fournis. Les changements climatiques projetés, quant à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une grille de résolution de 1 degré x 1 degré. La médiane des changements projetés de l’ensemble multimodèles est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles \nmensuels, saisonniers et annuels du CMIP5, à l’aide de l’outil d’extraction de données climatiques."
 				]
 			},
+			"The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
+				"msgid": "The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
+				"msgstr": [
+					"La page du portail du gouvernement ouvert relative aux Scénarios climatiques canadiens mis à l’échelle de manière statistique fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données :"
+				]
+			},
 			"The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
 				"msgid": "The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
@@ -4795,12 +4813,6 @@
 					"La page du portail du gouvernement ouvert relative aux Scénarios basés sur des modèles climatiques globaux fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données :"
 				]
 			},
-			"The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
-				"msgid": "The open government portal page for the Statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
-				"msgstr": [
-					"La page du portail du gouvernement ouvert relative aux Scénarios climatiques mis à l’échelle de manière statistique fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données :"
-				]
-			},
 			"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.": {
 				"msgid": "The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.",
 				"msgstr": [
@@ -4811,12 +4823,6 @@
 				"msgid": "The start date cannot be greater than the end date.",
 				"msgstr": [
 					"La date de début ne peut pas être après la date de fin."
-				]
-			},
-			"The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
-				"msgid": "The Statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
-				"msgstr": [
-					"Des scénarios climatiques à réduction d’échelle statistique des changements projetés pour les températures et les précipitations, par rapport à la période de référence de 1986 à 2005, sont donnés selon trois scénarios d’émissions à une résolution de 10 km. Les données avec réduction d’échelle statistique s’appuient sur les projections du modèle climatique mondial issues de la phase 5 du projet d’intercomparaison de modèles couplés (CMIP5). La médiane des changements projetés de l’ensemble multimodèles à réduction d’échelle statistique est illustrée. Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des ensembles à réduction d’échelle statistique mensuels, saisonniers et annuels, à l’aide de l’outil d’extraction de données climatiques."
 				]
 			},
 			"There are no stations available to download data from your current map display.": {
@@ -4885,12 +4891,6 @@
 					"Type de la plage de temps"
 				]
 			},
-			"Tips for using the tool": {
-				"msgid": "Tips for using the tool",
-				"msgstr": [
-					"Conseils d'utilisation de l'outil"
-				]
-			},
 			"to": {
 				"msgid": "to",
 				"msgstr": [
@@ -4900,7 +4900,7 @@
 			"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.": {
 				"msgid": "To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.",
 				"msgstr": [
-					"Pour vous déplacer sur la carte, cliquez et faites glisser le curseur sur la carte interactive. Ou encore, à partir de la cible de saisies de la boîte de la carte interactive, appuyez sur les touches de direction."
+					"Pour vous déplacer sur la carte, cliquez et faites glisser le curseur sur la carte interactive. Ou encore, <kbd>tab</kbd> à partir de la cible de saisies de la boîte de la carte interactive, appuyez sur les touches de direction."
 				]
 			},
 			"to see only selected stations in the table, click the \"Show selected\" button": {

@@ -32,11 +32,11 @@
       <summary v-translate>How to use: interactive map</summary>
       <p v-translate>Use this map to select a geographic subset of the data. The geographic subset of the downloaded data will match the area shown in the map.</p>
       <p><strong v-translate>Panning:</strong>
-        <translate
-          t-comment="<kbd>Tab</kbd> represents the keyboard button name">To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.</translate>
+        <span v-translate
+          t-comment="<kbd>Tab</kbd> represents the keyboard button name">To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.</span>
       </p>
       <p><strong v-translate>Zooming:</strong>
-        <translate t-comment="<kbd> tags represent a keyboard button name. Do not adjust spacing.">To zoom in and out of the map, mouse scroll up and down while you mouse over the interactive map or click on the <kbd><abbr title="Plus Sign">+</abbr></kbd> and <kbd><abbr title="Minus Sign">-</abbr></kbd> buttons respectively. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the <kbd><abbr title="Plus Sign">+</abbr></kbd> or <kbd><abbr title="Minus Sign">-</abbr></kbd> keys.</translate>
+        <span v-translate t-comment="<kbd> tags represent a keyboard button name. Do not adjust spacing.">To zoom in and out of the map, mouse scroll up and down while you mouse over the interactive map or click on the <kbd><abbr title="Plus Sign">+</abbr></kbd> and <kbd><abbr title="Minus Sign">-</abbr></kbd> buttons respectively. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the <kbd><abbr title="Plus Sign">+</abbr></kbd> or <kbd><abbr title="Minus Sign">-</abbr></kbd> keys.</span>
       </p>
     </details>
 
