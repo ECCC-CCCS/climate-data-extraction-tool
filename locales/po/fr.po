@@ -957,6 +957,11 @@ msgid ""
 "precipitation) and non-daily elements (station pressure, relative humidity, "
 "visibility)."
 msgstr ""
+"Les observations climatiques horaires sont dérivées de la source de données "
+"HLY01. Il s'agit de stations qui produisent des observations "
+"météorologiques horaires, prises chaque heure de la journée pour les heures "
+"00h-23h, tant pour les éléments quotidiens (température, précipitations) "
+"que non quotidiens (pression de la station, humidité relative, visibilité)."
 
 #: src/views/ClimateDailyForm.vue:243
 #: src/views/ClimateHourlyForm.vue:243

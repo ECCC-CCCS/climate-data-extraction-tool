@@ -4042,7 +4042,7 @@
 			"Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).": {
 				"msgid": "Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).",
 				"msgstr": [
-					""
+					"Les observations climatiques horaires sont dérivées de la source de données HLY01. Il s'agit de stations qui produisent des observations météorologiques horaires, prises chaque heure de la journée pour les heures 00h-23h, tant pour les éléments quotidiens (température, précipitations) que non quotidiens (pression de la station, humidité relative, visibilité)."
 				]
 			},
 			"Hourly data for some stations and variables can be found on the {website}.": {
