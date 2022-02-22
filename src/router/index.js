@@ -133,6 +133,18 @@ const routes = [ // order matters for dataset menu
     component: () => import(/* webpackChunkName: "climateDaily" */ '../views/ClimateDailyForm.vue')
   },
   {
+    path: datasetPaths.ltce.en,
+    alias: datasetPaths.ltce.fr,
+    name: 'ltce',
+    meta: {
+      datasetSectionMenu: true,
+      en_path: datasetPaths.ltce.en,
+      fr_path: datasetPaths.ltce.fr,
+      group: 'histClimateRiver'
+    },
+    component: () => import(/* webpackChunkName: "ltce" */ '../views/LTCEForm.vue')
+  },
+  {
     path: datasetPaths.hourly.en,
     alias: datasetPaths.hourly.fr,
     name: 'hourly',
@@ -144,18 +156,6 @@ const routes = [ // order matters for dataset menu
       group: 'histClimateRiver'
     },
     component: () => import(/* webpackChunkName: "climateHourly" */ '../views/ClimateHourlyForm.vue')
-  },
-  {
-    path: datasetPaths.ltce.en,
-    alias: datasetPaths.ltce.fr,
-    name: 'ltce',
-    meta: {
-      datasetSectionMenu: true,
-      en_path: datasetPaths.ltce.en,
-      fr_path: datasetPaths.ltce.fr,
-      group: 'histClimateRiver'
-    },
-    component: () => import(/* webpackChunkName: "ltce" */ '../views/LTCEForm.vue')
   },
   {
     path: datasetPaths.hydrometric.en,
