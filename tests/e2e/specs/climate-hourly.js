@@ -4,7 +4,7 @@ describe('E2E test for climate hourly data with various form options', () => {
   it('Check hourly climate stations and download data as CSV', () => {
     // station data and daterange
     cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*properties=PROV_STATE_TERR_CODE,STATION_NAME,CLIMATE_IDENTIFIER,HLY_FIRST_DATE,HLY_LAST_DATE.*/).as('stationData')
-    cy.intercept('GET', /.*\/collections\/climate-hourly\/items\?.*sortby=LOCAL_DATE&limit=1.*/).as('dateRangeData')
+    cy.intercept('GET', /.*\/collections\/climate-hourly\/items\?.*limit=1&sortby=LOCAL_DATE.*/).as('dateRangeData')
     cy.visit('/#/hourly-climate-data')
 
     // open map filters box
@@ -33,7 +33,7 @@ describe('E2E test for climate hourly data with various form options', () => {
     })
 
     // Stations are loaded on the map as clusters
-    cy.checkMarkerClusters(10)
+    cy.checkMarkerClusters(20)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
@@ -45,24 +45,26 @@ describe('E2E test for climate hourly data with various form options', () => {
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('#bbox-map').focus().type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.lessThan(500)
-      expect($tr.length).to.be.greaterThan(400)
+      expect($tr.length).to.be.lessThan(150)
+      expect($tr.length).to.be.greaterThan(100)
     })
 
     // retrieve download list
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items.*/).as('countData')
+    const numMatched = 34560000
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.wait('@countData', {timeout: 60000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(6000000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 266)
+    const numLinks = 3500
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', numLinks)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -73,7 +75,7 @@ describe('E2E test for climate hourly data with various form options', () => {
           cy.log('content-encoding does not exist in response header. Test continued.')
         }
         expect(response.status).to.equal(200)
-        expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,LOCAL_DATE,PROVINCE_CODE,LOCAL_YEAR,LOCAL_MONTH,LOCAL_DAY,MEAN_TEMPERATURE.*/)
+        expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,LOCAL_DATE,PROVINCE_CODE,LOCAL_YEAR,LOCAL_MONTH,LOCAL_DAY,LOCAL_HOUR,TEMP.*/)
       })
     })
   })
@@ -89,20 +91,21 @@ describe('E2E test for climate hourly data with various form options', () => {
     })
 
     // date change
-    cy.inputText('input#date-start-date', '1899-01-01{enter}')
-    cy.inputText('input#date-end-date', '1899-01-31{enter}')
+    cy.inputText('input#date-start-date', '1999-01-01{enter}')
+    cy.inputText('input#date-end-date', '1999-01-31{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
+    const numMatched = 58800
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.wait('@countData', {timeout: 60000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(111222333)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
@@ -112,7 +115,7 @@ describe('E2E test for climate hourly data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(111222333)
+        expect(response.body.numberMatched).to.be.greaterThan(numMatched)
       })
     })
   })
@@ -123,6 +126,13 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
+    cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
+      expect($tr.length).to.be.greaterThan(170)
+    })
+
+    // date change
+    cy.inputText('input#date-start-date', '2020-01-01{enter}')
+    cy.inputText('input#date-end-date', '2020-01-02{enter}')
 
     // Select stations by table
     cy.get('table#station-select-table').scrollIntoView().wait(250)
@@ -134,21 +144,18 @@ describe('E2E test for climate hourly data with various form options', () => {
       expect($tr.length).to.equal(3)
     })
 
-    // date change
-    cy.inputText('input#date-start-date', '2000-01-01{enter}')
-    cy.inputText('input#date-end-date', '2000-01-02{enter}')
-
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
+    const numMatched = 70
     cy.wait('@countData', {timeout: 60000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(2900)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
@@ -158,7 +165,7 @@ describe('E2E test for climate hourly data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(2900)
+        expect(response.body.numberMatched).to.be.greaterThan(numMatched)
       })
     })
   })
@@ -190,12 +197,13 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items.*/).as('countData')
+    const numMatched = 730
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.wait('@countData', {timeout: 60000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(750)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
@@ -205,7 +213,7 @@ describe('E2E test for climate hourly data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(750)
+        expect(response.body.numberMatched).to.be.greaterThan(numMatched)
       })
     })
   })
