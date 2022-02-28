@@ -34,7 +34,7 @@ describe('E2E test for raster drill data with various form options', () => {
       }
       expect(xhr.request.method).to.equal('POST')
       expect(xhr.response.statusCode).to.equal(200)
-      expect(xhr.response.body.outputs.properties.values.length).to.be.greaterThan(90)
+      expect(xhr.response.body.properties.values.length).to.be.greaterThan(90)
     })
   })
 
@@ -108,7 +108,7 @@ describe('E2E test for raster drill data with various form options', () => {
       }
       expect(xhr.request.method).to.equal('POST')
       expect(xhr.response.statusCode).to.equal(200)
-      expect(xhr.response.body.outputs.properties.values.length).to.be.greaterThan(100)
+      expect(xhr.response.body.properties.values.length).to.be.greaterThan(100)
     })
   })
 })

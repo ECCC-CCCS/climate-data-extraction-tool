@@ -245,7 +245,7 @@ export default {
       if (this.scenarioType === 'projected') {
         scenarioTypeLayer = this.oapicScenario.replace('.', '')
       }
-      let layer = this.oapicIdDataset + '.' + varToLayerVar[this.oapicIdVariable] + '.' + scenarioTypeLayer + '.' + timeToLayerTime[this.oapicIdTimePeriod] + '.' + valTypeToLayerValType[this.valueType] + '_PCTL' + this.percentile
+      let layer = this.oapicIdDataset.toUpperCase() + '.' + varToLayerVar[this.oapicIdVariable] + '.' + scenarioTypeLayer + '.' + timeToLayerTime[this.oapicIdTimePeriod] + '.' + valTypeToLayerValType[this.valueType] + '_PCTL' + this.percentile
       return {
         layer: layer,
         y: this.clickLatLng === null ? null : this.clickLatLng.lat,
