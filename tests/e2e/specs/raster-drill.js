@@ -23,7 +23,7 @@ describe('E2E test for raster drill data with various form options', () => {
 
     // download url
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
-    cy.intercept('POST', /.*\/processes\/raster-drill\/jobs.*/).as('rasterDrillDownload')
+    cy.intercept('POST', /.*\/processes\/raster-drill\/execution.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
     cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
       try {
@@ -60,7 +60,7 @@ describe('E2E test for raster drill data with various form options', () => {
 
     // download url
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
-    cy.intercept('POST', /.*\/processes\/raster-drill\/jobs.*/).as('rasterDrillDownload')
+    cy.intercept('POST', /.*\/processes\/raster-drill\/execution.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
     cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
       try {
@@ -97,7 +97,7 @@ describe('E2E test for raster drill data with various form options', () => {
 
     // download url
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
-    cy.intercept('POST', /.*\/processes\/raster-drill\/jobs.*/).as('rasterDrillDownload')
+    cy.intercept('POST', /.*\/processes\/raster-drill\/execution.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
     cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
       try {
