@@ -25,6 +25,7 @@
     "proj4": "^2.7.5",
     "proj4leaflet": "^1.0.2",
     "vue": "^2.6.14",
+    "vue-carousel": "^0.18.0",
     "vue-gettext": "^2.1.12",
     "vue-gettext-tools": "0.0.7",
     "vue-i18n-gettext": "0.0.18",
