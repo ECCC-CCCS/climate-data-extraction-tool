@@ -86,7 +86,7 @@ import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
 import { ows } from '@/components/mixins/ows.js'
-import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverages.js'
 import { datasets } from '@/components/mixins/datasets.js'
 
 export default {

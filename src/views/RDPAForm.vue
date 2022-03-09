@@ -79,7 +79,7 @@ import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverages.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
 

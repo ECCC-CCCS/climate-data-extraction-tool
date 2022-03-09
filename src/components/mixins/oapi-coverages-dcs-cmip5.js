@@ -1,5 +1,5 @@
 /*
-Anything common to CMIP5 and DCS configurations with OGC API Coverage
+Anything common to CMIP5 and DCS configurations with OGC API - Coverages
 */
 export const DCSCMIP5 = {
   data () {

@@ -180,10 +180,10 @@ import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import PointDownloadBox from '@/components/PointDownloadBox.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverages.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
-import { DCSCMIP5 } from '@/components/mixins/oapi-coverage-dcs-cmip5.js'
+import { DCSCMIP5 } from '@/components/mixins/oapi-coverages-dcs-cmip5.js'
 import { wps } from '@/components/mixins/wps.js'
 
 export default {
