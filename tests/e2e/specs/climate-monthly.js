@@ -32,7 +32,7 @@ describe('E2E test for climate monthly data with various form options', () => {
     })
 
     // Stations are loaded on the map as clusters
-    cy.checkMarkerClusters(10)
+    cy.checkMarkerClusters(19)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
@@ -78,7 +78,7 @@ describe('E2E test for climate monthly data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '1899-01{enter}')
-    cy.inputText('input#date-end-date', '2020-12{enter}')
+    cy.inputText('input#date-end-date', '2020-12{enter}').wait(1000)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
@@ -112,19 +112,19 @@ describe('E2E test for climate monthly data with various form options', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
+    // date change
+    cy.inputText('input#date-start-date', '2000-01{enter}')
+    cy.inputText('input#date-end-date', '2010-12{enter}').wait(1000)
+
     // Select stations by table
     cy.get('table#station-select-table').scrollIntoView().wait(250)
-    cy.get('table#station-select-table tr.selectable:contains(1108395):first').click()
-    cy.get('table#station-select-table tr.selectable:contains(6158731):first').click()
-    cy.get('table#station-select-table tr.selectable:contains(702S006):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(1101158):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(6158667):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(7027322):first').click()
     cy.get('button#show-selected-stations').click()
     cy.get('table#station-select-table').find('tr.selectedStation').should(($tr) => {
       expect($tr.length).to.equal(3)
     })
-
-    // date change
-    cy.inputText('input#date-start-date', '2000-01{enter}')
-    cy.inputText('input#date-end-date', '2010-12{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
@@ -136,7 +136,7 @@ describe('E2E test for climate monthly data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.equal(85)
+      expect(xhr.response.body.numberMatched).to.equal(237)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
@@ -145,7 +145,7 @@ describe('E2E test for climate monthly data with various form options', () => {
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
-        expect(response.status).to.equal(703)
+        expect(response.status).to.equal(200)
         expect(response.body.numberMatched).to.be.greaterThan(80)
       })
     })
