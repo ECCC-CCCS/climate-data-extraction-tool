@@ -32,7 +32,7 @@ describe('E2E test for climate monthly data with various form options', () => {
     })
 
     // Stations are loaded on the map as clusters
-    cy.checkMarkerClusters(19)
+    cy.checkMarkerClusters(15)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
@@ -107,10 +107,10 @@ describe('E2E test for climate monthly data with various form options', () => {
 
   it('Download data as GeoJSON by a select few stations', () => {
     // Reset province
-    cy.selectVar('select#cccs_province', '-- None --', 'null')
+    cy.selectVar('select#cccs_province', '-- None --', 'null').wait(500)
 
     // Reset map
-    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click({force: true}).wait(500)
 
     // date change
     cy.inputText('input#date-start-date', '2000-01{enter}')
@@ -153,10 +153,10 @@ describe('E2E test for climate monthly data with various form options', () => {
 
   it('Download data as GeoJSON by a zoomed BBOX', () => {
     // Reset map
-    cy.get('#reset-map-view').scrollIntoView().wait(250).click()
+    cy.get('#reset-map-view').scrollIntoView().wait(250).click().wait(500)
 
     // Reset station selection
-    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click({force: true})
+    cy.get('#clear-selected-stations').scrollIntoView().wait(250).click({force: true}).wait(500)
 
     cy.get('#map-loading-screen').should('be.hidden')
 
@@ -171,7 +171,7 @@ describe('E2E test for climate monthly data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '2010-01{enter}')
-    cy.inputText('input#date-end-date', '2020-12{enter}')
+    cy.inputText('input#date-end-date', '2020-12{enter}').wait(1000)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
