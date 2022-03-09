@@ -258,9 +258,13 @@ export default {
           max: this.foreRunMoment24fMax
         }
       } else {
+        let maxMomentDate = this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(6, 'hours').toDate() // 6p
+        if (this.oapicIdTime === '24p') {
+          maxMomentDate = this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(24, 'hours').toDate()
+        }
         return {
           min: this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(31, 'days').toDate(),
-          max: this.$moment.utc('00:00:00', 'HH:mm:ss').toDate()
+          max: maxMomentDate
         }
       }
     },
