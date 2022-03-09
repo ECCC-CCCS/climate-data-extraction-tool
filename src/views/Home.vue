@@ -4,7 +4,7 @@
 
     <latest-release></latest-release>
 
-    <!-- <carousel :perPage="1" :autoplay="true" :loop="true" role="img" aria-live="polite">
+    <carousel :perPage="1" :autoplay="true" :loop="true" role="img" aria-live="polite">
       <slide>
         <img src="../assets/carousel/ExtAHCCD.png" class="img-responsive center" alt="Carousel image preview: AHCCD station point on map" />
       </slide>
@@ -29,7 +29,7 @@
       <slide>
         <img src="../assets/carousel/ExtNorm.png" class="img-responsive center" alt="Carousel image preview: Normals station point on map" />
       </slide>
-    </carousel> -->
+    </carousel>
 
     <p v-translate>Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets. You can specify the date ranges, variables, download format and other options.</p>
 
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-// import { Carousel, Slide } from 'vue-carousel'
+import { Carousel, Slide } from 'vue-carousel'
 import MoreResources from '@/components/MoreResources'
 import LatestRelease from '@/components/LatestRelease'
 import { ows } from '@/components/mixins/ows'
@@ -57,9 +57,9 @@ export default {
   mixins: [ows, datasets],
   components: {
     MoreResources,
-    LatestRelease
-    // Carousel,
-    // Slide
+    LatestRelease,
+    Carousel,
+    Slide
   }
 }
 </script>
