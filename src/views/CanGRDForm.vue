@@ -205,7 +205,7 @@ export default {
       context.push(this.variableOptions[this.oapicIdVariable])
       context.push(this.variableTypeOptions[this.oapicValueType])
       context.push(this.timePeriodOptions[this.oapicIdTimePeriod])
-      if (this.oapicValueType !== 'trend') {
+      if (this.oapicValueType !== 'trend' && this.oapicDatetime !== 'Invalid date') {
         context.push(this.oapicDatetime)
       }
       context.push(this.fileFormats[this.oapicFormat])
@@ -369,7 +369,7 @@ export default {
       }
 
       // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
-      if (this.oapicValueType === 'anomaly') {
+      if (this.oapicValueType === 'anomaly' && this.oapicDatetime !== 'Invalid date') {
         urlParams.push(`datetime=${this.oapicDatetime}`)
       }
 

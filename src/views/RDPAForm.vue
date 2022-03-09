@@ -258,6 +258,7 @@ export default {
           max: this.foreRunMoment24fMax
         }
       } else {
+        // 6p vs 24p
         let maxMomentDate = this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(6, 'hours').toDate() // 6p
         if (this.oapicIdTime === '24p') {
           maxMomentDate = this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(24, 'hours').toDate()
