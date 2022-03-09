@@ -1,5 +1,5 @@
 /*
-Anything default/common to OGC API Coverage querying goes here
+Anything default/common to OGC API - Coverages querying goes here
 */
 export const oapiCoverage = {
   data () {

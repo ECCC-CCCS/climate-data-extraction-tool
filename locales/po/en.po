@@ -87,7 +87,7 @@ msgstr ""
 "Geographic Information System (GIS) software or scientific programming "
 "tools such as {linkToR}, {linkToPython}, {linkToPanoply}, or {linkToCDO}."
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:363
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:363
 msgid ""
 "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support "
 "Desk</a> if you're interested in individual model output"
@@ -95,7 +95,7 @@ msgstr ""
 "<a href=\"{link}\" target=\"_blank\">Contact the Climate Services Support "
 "Desk</a> if you're interested in individual model output"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:357
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:357
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 
@@ -192,7 +192,7 @@ msgstr "2 digit day of month"
 msgid "2 digit month"
 msgstr "2 digit month"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:218
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:218
 msgid "20-Year average"
 msgstr "20-Year average"
 
@@ -214,7 +214,7 @@ msgstr ""
 msgid "24 hr Total precipitation [{units}]"
 msgstr ""
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:166
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:166
 msgid "25th percentile"
 msgstr "25th percentile"
 
@@ -222,12 +222,12 @@ msgstr "25th percentile"
 msgid "4 digit year"
 msgstr "4 digit year"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:161
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:167
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:161
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:167
 msgid "50th percentile"
 msgstr "50th percentile"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:165
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:165
 msgid "5th percentile"
 msgstr "5th percentile"
 
@@ -240,11 +240,11 @@ msgstr "6 hours"
 msgid "6 hours preliminary"
 msgstr ""
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:168
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:168
 msgid "75th percentile"
 msgstr "75th percentile"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:169
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:169
 msgid "95th percentile"
 msgstr "95th percentile"
 
@@ -252,8 +252,8 @@ msgstr "95th percentile"
 msgid "A single location as a CSV or GeoJSON"
 msgstr ""
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:198
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:203
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:198
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:203
 msgid "Actual values"
 msgstr "Actual values"
 
@@ -333,7 +333,7 @@ msgstr "Analysis date"
 msgid "Analysis run hour"
 msgstr "Analysis run hour"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:241
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:241
 #: src/views/CanGRDForm.vue:275
 #: src/views/CanGRDForm.vue:283
 msgid "Annual"
@@ -363,7 +363,7 @@ msgstr ""
 "data from closely related stations to compile a long time series of data "
 "for about 750 locations in Canada to monitor for record-breaking weather."
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:202
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:202
 #: src/views/CanGRDForm.vue:289
 msgid "Anomaly values"
 msgstr "Anomaly values"
@@ -554,7 +554,7 @@ msgstr "Data download links"
 msgid "Date range"
 msgstr "Date range"
 
-#: src/components/mixins/oapi-coverage.js:68
+#: src/components/mixins/oapi-coverages.js:68
 #: src/components/mixins/oapi-features.js:115
 msgid "Date range fields must be all set or cleared."
 msgstr "Date range fields must be all set or cleared."
@@ -712,7 +712,7 @@ msgstr "Error:"
 msgid "Explanation of model types"
 msgstr "Explanation of model types"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:234
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:234
 #: src/views/CanGRDForm.vue:273
 #: src/views/CanGRDForm.vue:281
 msgid "Fall (September-November)"
@@ -853,7 +853,7 @@ msgstr "Forecast month"
 msgid "Frequently asked questions about LTCE"
 msgstr "Frequently asked questions about LTCE"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:254
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:254
 msgid "Future"
 msgstr "Future"
 
@@ -873,11 +873,11 @@ msgstr ""
 msgid "Hide discontinued stations"
 msgstr "Hide discontinued stations"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:227
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:227
 msgid "High emissions scenario (RCP 8.5)"
 msgstr "High emissions scenario (RCP 8.5)"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:255
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:255
 msgid "Historical"
 msgstr "Historical"
 
@@ -1025,7 +1025,7 @@ msgstr "Longitude"
 msgid "Longitude:"
 msgstr "Longitude:"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:225
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:225
 msgid "Low emissions scenario (RCP 2.6)"
 msgstr "Low emissions scenario (RCP 2.6)"
 
@@ -1099,7 +1099,7 @@ msgstr "Model run month"
 msgid "Model type"
 msgstr "Model type"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:226
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:226
 msgid "Moderate emissions scenario (RCP 4.5)"
 msgstr "Moderate emissions scenario (RCP 4.5)"
 
@@ -1107,7 +1107,7 @@ msgstr "Moderate emissions scenario (RCP 4.5)"
 msgid "Month"
 msgstr "Month"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:242
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:242
 #: src/views/CanGRDForm.vue:270
 msgid "Monthly"
 msgstr "Monthly"
@@ -1400,7 +1400,7 @@ msgstr ""
 msgid "Specify the rest of your download request"
 msgstr ""
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:232
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:232
 #: src/views/CanGRDForm.vue:271
 #: src/views/CanGRDForm.vue:279
 msgid "Spring (March-May)"
@@ -1439,7 +1439,7 @@ msgstr "Station name"
 msgid "Station table"
 msgstr "Station table"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:233
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:233
 #: src/views/CanGRDForm.vue:272
 #: src/views/CanGRDForm.vue:280
 msgid "Summer (June-August)"
@@ -1779,7 +1779,7 @@ msgstr ""
 "end of the accumulation period, and revised 6h after in order to assimilate "
 "gauge data arriving later."
 
-#: src/components/mixins/oapi-coverage.js:71
+#: src/components/mixins/oapi-coverages.js:71
 #: src/components/mixins/oapi-features.js:118
 msgid "The start date cannot be greater than the end date."
 msgstr "The start date cannot be greater than the end date."
@@ -1816,7 +1816,7 @@ msgstr "This data provides:"
 msgid "This field is not within the date range limits."
 msgstr "This field is not within the date range limits."
 
-#: src/components/mixins/oapi-coverage.js:74
+#: src/components/mixins/oapi-coverages.js:74
 msgid "This field is required for monthly time intervals."
 msgstr "This field is required for monthly time intervals."
 
@@ -1932,9 +1932,9 @@ msgstr ""
 "Use this map to select a geographic subset of the data. The geographic "
 "subset of the downloaded data will match the area shown in the map."
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:210
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:214
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:219
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:210
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:214
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:219
 msgid "User defined range"
 msgstr "User defined range"
 
@@ -2002,7 +2002,7 @@ msgstr ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> if you'd like "
 "data for a single grid point only"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:376
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:376
 msgid ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
 "daily data"
@@ -2010,7 +2010,7 @@ msgstr ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
 "daily data"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:369
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:369
 msgid ""
 "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access "
 "individual model output"
@@ -2038,7 +2038,7 @@ msgstr ""
 msgid "Weather, climate and hazards"
 msgstr "Weather, climate and hazards"
 
-#: src/components/mixins/oapi-coverage-dcs-cmip5.js:235
+#: src/components/mixins/oapi-coverages-dcs-cmip5.js:235
 #: src/views/CanGRDForm.vue:274
 #: src/views/CanGRDForm.vue:282
 msgid "Winter (December-February)"
@@ -2438,22 +2438,22 @@ msgctxt "Dataset Name"
 msgid "Regional Deterministic Precipitation Analysis"
 msgstr "Regional Deterministic Precipitation Analysis"
 
-#: src/components/mixins/oapi-coverage.js:20
+#: src/components/mixins/oapi-coverages.js:20
 msgctxt "File format"
 msgid "CoverageJSON"
 msgstr ""
 
-#: src/components/mixins/oapi-coverage.js:25
+#: src/components/mixins/oapi-coverages.js:25
 msgctxt "File format"
 msgid "GeoTIFF"
 msgstr ""
 
-#: src/components/mixins/oapi-coverage.js:27
+#: src/components/mixins/oapi-coverages.js:27
 msgctxt "File format"
 msgid "GRIB"
 msgstr ""
 
-#: src/components/mixins/oapi-coverage.js:23
+#: src/components/mixins/oapi-coverages.js:23
 msgctxt "File format"
 msgid "NetCDF"
 msgstr ""
