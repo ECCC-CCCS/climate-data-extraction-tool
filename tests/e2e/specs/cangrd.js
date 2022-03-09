@@ -24,6 +24,9 @@ describe('E2E test for CANGRD ogc-api-coverage data with various form options', 
     cy.get('a.leaflet-control-zoom-in').scrollIntoView().wait(250).click()
     cy.wait(500) // mimic user pause after a zoom click
 
+    // download format
+    cy.selectVar('#file_download_format', 'GeoTIFF', 'GTiff')
+
     // value type
     cy.selectVar('#var-sel-value-type', 'Anomaly values', 'anomaly')
 
@@ -33,14 +36,12 @@ describe('E2E test for CANGRD ogc-api-coverage data with various form options', 
     // time interval
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Annual', 'annual')
 
-    // download format
-    cy.selectVar('#file_download_format', 'GeoTIFF', 'GTiff')
-
     // start date
-    cy.get('input#date-start-date').clear().type('1960{enter}')
+    cy.inputText('#date-start-date', '1960{enter}')
 
     // end date
-    cy.get('input#date-end-date').should('not.be.disabled').clear().type('1962{enter}')
+    cy.get('input#date-end-date').should('not.be.disabled')
+    cy.inputText('#date-end-date', '1962{enter}').wait(1000)
 
     // URL download link
     cy.get('#url-download-box').should('be.visible')
@@ -49,9 +50,10 @@ describe('E2E test for CANGRD ogc-api-coverage data with various form options', 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
     cy.get('a#download-url').should('have.attr', 'href').then((href) => {
+      console.log(href)
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*CANGRD_hist_annual_anom_ps50km_TMEAN_1960-2018\.tif.*/)
+        expect(response.headers['content-disposition']).to.match(/.*CANGRD_hist_annual_anom_ps50km_TMEAN_1960\-1962\.tif.*/)
       })
     })
   })
@@ -80,14 +82,15 @@ describe('E2E test for CANGRD ogc-api-coverage data with various form options', 
     // Date range
     cy.inputText('#date-start-date', '1999-11{enter}')
     cy.get('input#date-end-date').should('not.be.disabled')
-    cy.inputText('#date-end-date', '1999-12{enter}')
+    cy.inputText('#date-end-date', '1999-12{enter}').wait(1000)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
     cy.get('a#download-url').should('have.attr', 'href').then((href) => {
+      console.log(href)
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*CANGRD_hist_monthly_anom_ps50km_TMIN_1999-11-1948-01\.tif.*$/)
+        expect(response.headers['content-disposition']).to.match(/.*CANGRD_hist_monthly_anom_ps50km_TMIN_1999-11-1999-12\.tif.*$/)
       })
     })
   })
@@ -134,7 +137,7 @@ describe('E2E test for CANGRD ogc-api-coverage data with various form options', 
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Monthly', 'monthly')
 
     // Date range
-    cy.inputText('#date-start-date', '2010-01{enter}')
+    cy.inputText('#date-start-date', '2010-01{enter}').wait(1000)
     cy.get('input#date-end-date').should('be.disabled')
     //cy.inputText('#date-end-date', '2010-02{enter}')
 
