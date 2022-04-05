@@ -14,7 +14,7 @@
       <li v-translate>Click "retrieve your download links" at the bottom of the page and then download the data from the links provided</li>
     </ol>
 
-    <carousel :perPage="1" :autoplay="true" :loop="true" role="img" aria-live="polite">
+    <carousel :perPage="1" :autoplay="true" :loop="true" :navigationEnabled="true" role="img" aria-live="polite">
       <slide>
         <img src="../assets/carousel/ExtAHCCD.png" class="img-responsive center" alt="Carousel image preview: AHCCD station point on map" />
       </slide>
