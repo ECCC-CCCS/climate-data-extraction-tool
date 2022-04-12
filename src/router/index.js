@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home'
-import NotFound from '@/views/404'
+import HomeView from '@/views/HomeView.vue'
+import NotFound from '@/views/404View.vue'
 import datasetPaths from '@/static/datasetPaths.js'
 
 Vue.use(VueRouter)
@@ -10,7 +10,7 @@ const routes = [ // order matters for dataset menu
   {
     path: '/',
     name: 'home',
-    component: Home,
+    component: HomeView,
     meta: {
       datasetSectionMenu: false
     }

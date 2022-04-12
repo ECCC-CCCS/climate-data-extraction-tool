@@ -53,7 +53,7 @@ import { ows } from '@/components/mixins/ows'
 import { datasets } from '@/components/mixins/datasets'
 
 export default {
-  name: 'Home',
+  name: 'HomeView',
   mixins: [ows, datasets],
   components: {
     MoreResources,
