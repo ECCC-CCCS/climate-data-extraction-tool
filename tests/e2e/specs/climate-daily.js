@@ -66,8 +66,8 @@ describe('E2E test for climate daily data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         try {
-          expect(xhr.response.headers).to.have.property('content-encoding')
-          expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
+          expect(response.headers).to.have.property('content-encoding')
+          expect(response.headers['content-encoding']).to.match(/gzip/ig)
         } catch {
           cy.log('content-encoding does not exist in response header. Test continued.')
         }

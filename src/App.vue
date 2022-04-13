@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import GCWebHeader from './components/GCWebHeader'
-import GCWebFooter from './components/GCWebFooter'
-import GCWebSkip from './components/GCWebSkip'
-import { ows } from './components/mixins/ows'
-import { datasets } from './components/mixins/datasets'
-import DatasetMenu from './components/DatasetMenu'
+import GCWebHeader from './components/GCWebHeader.vue'
+import GCWebFooter from './components/GCWebFooter.vue'
+import GCWebSkip from './components/GCWebSkip.vue'
+import { ows } from './components/mixins/ows.js'
+import { datasets } from './components/mixins/datasets.js'
+import DatasetMenu from './components/DatasetMenu.vue'
 
 export default {
   name: 'App',

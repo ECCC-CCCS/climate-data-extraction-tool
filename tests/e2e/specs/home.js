@@ -17,11 +17,8 @@ describe('E2E test for home page', () => {
     cy.contains('h1', 'Climate data extraction tool').scrollIntoView().wait(250).should('be.visible')
 
     // Latest release details
-    cy.contains('#latest-release h3', 'Latest changes').scrollIntoView().wait(250).should('be.visible')
-    cy.contains('#latest-release', /Date: \d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/).should('be.visible')
-
-    // Information section
-    cy.get('#info-contact-support').scrollIntoView().wait(250).contains('h2', 'Information').should('be.visible')
+    cy.contains('#latest-release summary', 'Latest changes').scrollIntoView().wait(250).should('be.visible')
+    cy.contains('#latest-release', /Date: \d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])/).should('be.visible')
 
     // More resources
     cy.contains('#more-resources h5', 'More resources from the Canadian Centre for Climate Services').scrollIntoView().wait(250).should('be.visible')

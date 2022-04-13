@@ -53,7 +53,7 @@ describe('E2E test for CANGRD ogc-api-coverage data with various form options', 
       console.log(href)
       cy.request('GET', href).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.headers['content-disposition']).to.match(/.*CANGRD_hist_annual_anom_ps50km_TMEAN_1960\-1962\.tif.*/)
+        expect(response.headers['content-disposition']).to.match(/.*CANGRD_hist_annual_anom_ps50km_TMEAN_1960-1962\.tif.*/)
       })
     })
   })
