@@ -50,12 +50,12 @@
 
         <div id="oapif-link-list" class="list-group" aria-live="polite">
           <a
-            v-for="(startIndex, index) in chunkedStartIndexes"
+            v-for="(offset, index) in chunkedOffsets"
             v-show="numRecords !== 0"
             :key="index"
-            :href="getOapifDownloadURL_chunk(startIndex)"
+            :href="getOapifDownloadURL_chunk(offset)"
             target="_blank"
-            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="oapif_download_name_chunk(startIndex, index)"></span>
+            class="list-group-item"><span class="glyphicon glyphicon-download"></span> <span v-text="oapif_download_name_chunk(offset, index)"></span>
           </a>
         </div>
       </div>
@@ -161,7 +161,7 @@ export default {
   },
   data () {
     return {
-      chunkedStartIndexes: [],
+      chunkedOffsets: [],
       numRecords: null,
       retrieved: false,
       loading: false
@@ -171,7 +171,7 @@ export default {
     oapifCommonUrl: function (newVal, oldVal) {
       if (newVal !== oldVal) { // reset
         this.numRecords = null
-        this.chunkedStartIndexes = []
+        this.chunkedOffsets = []
         this.retrieved = false
       }
     }
@@ -196,27 +196,27 @@ export default {
           this.retrieved = true
         })
     },
-    getOapifDownloadURL_chunk: function (startIndex) {
-      startIndex = parseInt(startIndex)
+    getOapifDownloadURL_chunk: function (offset) {
+      offset = parseInt(offset)
       let url = this.oapifCommonUrl
       url += '&f=' + this.fileFormat
-      url += '&limit=' + this.oapiDownloadLimit + '&offset=' + startIndex
+      url += '&limit=' + this.oapiDownloadLimit + '&offset=' + offset
       return url
     },
-    oapif_download_name_chunk: function (startIndex, chunkIndex) {
-      startIndex = parseInt(startIndex)
-      let startNum = startIndex + 1
-      let endNum = chunkIndex === (this.chunkedStartIndexes.length - 1) ? this.numRecords : this.chunkedStartIndexes[chunkIndex + 1]
+    oapif_download_name_chunk: function (offset, chunkIndex) {
+      offset = parseInt(offset)
+      let startNum = offset + 1
+      let endNum = chunkIndex === (this.chunkedOffsets.length - 1) ? this.numRecords : this.chunkedOffsets[chunkIndex + 1]
       return this.$_i(this.$gettext('Download records {startNum} - {endNum}'), {'startNum': startNum, 'endNum': endNum})
     },
     chunkDownload: function (data) {
       this.numRecords = data.numberMatched
-      this.chunkedStartIndexes = []
-      let startIndex = 0
+      this.chunkedOffsets = []
+      let offset = 0
       do {
-        this.chunkedStartIndexes.push(startIndex)
-        startIndex += this.oapiDownloadLimit
-      } while (startIndex < this.numRecords)
+        this.chunkedOffsets.push(offset)
+        offset += this.oapiDownloadLimit
+      } while (offset < this.numRecords)
     }
   }
 }
