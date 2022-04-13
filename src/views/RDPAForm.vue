@@ -79,7 +79,7 @@ import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
 import MoreResources from '@/components/MoreResources.vue'
-import { oapiCoverage } from '@/components/mixins/oapi-coverage.js'
+import { oapiCoverage } from '@/components/mixins/oapi-coverages.js'
 import { ows } from '@/components/mixins/ows.js'
 import { datasets } from '@/components/mixins/datasets.js'
 
@@ -99,15 +99,15 @@ export default {
   data () {
     return {
       oapicIdDataset: 'rdpa',
-      oapicIdTime: '6F', // 6F, 6P, 24F, 24P
+      oapicIdTime: '6f', // 6f, 6p, 24f, 24p
       oapicIdResolution: '10km', // 10km, 15km
       oapicIdVariable: '1', // Quantity of Precip
-      arc15RunMoment06FMin: this.$moment.utc('2011-04-06 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      arc15RunMoment06FMax: this.$moment.utc('2012-10-03 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      arc15RunMoment24FMin: this.$moment.utc('2011-04-06 12:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      arc15RunMoment24FMax: this.$moment.utc('2012-10-02 12:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMoment06FMin: this.$moment.utc('2012-10-03 06:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMoment24FMin: this.$moment.utc('2012-10-03 12:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      arc15RunMoment06fMin: this.$moment.utc('2011-04-06 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      arc15RunMoment06fMax: this.$moment.utc('2012-10-03 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      arc15RunMoment24fMin: this.$moment.utc('2011-04-06 12:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      arc15RunMoment24fMax: this.$moment.utc('2012-10-02 12:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      foreRunMoment06fMin: this.$moment.utc('2012-10-03 06:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      foreRunMoment24fMin: this.$moment.utc('2012-10-03 12:00:00', 'YYYY-MM-DD HH:mm:ss'),
       forecastDate: this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(1, 'days').toDate(),
       forecastTimeZ: '00Z',
       dateConfigs: {
@@ -161,15 +161,15 @@ export default {
     timeOptions: function () {
       if (this.oapicIdResolution === '15km') {
         return {
-          '6F': this.$gettext('6 hours'),
-          '24F': this.$gettext('24 hours')
+          '6f': this.$gettext('6 hours'),
+          '24f': this.$gettext('24 hours')
         }
       } else {
         return {
-          '6F': this.$gettext('6 hours'),
-          '6P': this.$gettext('6 hours preliminary'),
-          '24F': this.$gettext('24 hours'),
-          '24P': this.$gettext('24 hours preliminary')
+          '6f': this.$gettext('6 hours'),
+          '6p': this.$gettext('6 hours preliminary'),
+          '24f': this.$gettext('24 hours'),
+          '24p': this.$gettext('24 hours preliminary')
         }
       }
     },
@@ -184,9 +184,9 @@ export default {
         '18Z': this.$gettext('18Z')
       }
 
-      let forecastDateYYYYMMDD = this.forecastDateMoment.format('YYYY-MM-DD')
+      let forecastDateYYYYMMDD = this.$moment.utc(this.forecastDateMoment).format('YYYY-MM-DD')
       let maxDateMoment = this.forecastDateMomentRange.max
-      let maxDateMomentYYYYMMDD = maxDateMoment.format('YYYY-MM-DD')
+      let maxDateMomentYYYYMMDD = this.$moment.utc(maxDateMoment).format('YYYY-MM-DD')
 
       if (this.timeZis24) { // PT24H; 24 hour interval only allows 12Z selection
         return {
@@ -196,7 +196,7 @@ export default {
         // Forecast date + hour options must not exceed max date limit
         if (forecastDateYYYYMMDD === maxDateMomentYYYYMMDD) {
           let pt6HOptions = ['00', '06', '12', '18']
-          let maxDateISO = maxDateMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
+          let maxDateISO = this.$moment.utc(maxDateMoment).format('YYYY-MM-DD[T]HH:mm:ss[Z]')
           let zOptions = {}
           for (let pt6 of pt6HOptions) {
             let testForecastPt6H = forecastDateYYYYMMDD + 'T' + pt6 + ':00:00Z'
@@ -227,47 +227,52 @@ export default {
       let hh = this.forecastTimeZ.substring(0, 2) // first 2 are HH
       return this.forecastDateMoment.format('YYYY-MM-DD') + 'T' + hh + ':00:00Z'
     },
-    foreRunMoment06FMax: function () {
+    foreRunMoment06fMax: function () {
       // 1 day from today
       return this.$moment.utc().subtract(1, 'days')
     },
-    foreRunMoment24FMax: function () {
+    foreRunMoment24fMax: function () {
       // 1 day from today
       return this.$moment.utc().subtract(1, 'days')
     },
     forecastDateMomentRange: function () {
       // Forecast period range limits based on what type selected
-      if (this.oapicIdResolution === '15km' && this.oapicIdTime === '6F') {
+      if (this.oapicIdResolution === '15km' && this.oapicIdTime === '6f') {
         return {
-          min: this.arc15RunMoment06FMin,
-          max: this.arc15RunMoment06FMax
+          min: this.arc15RunMoment06fMin,
+          max: this.arc15RunMoment06fMax
         }
-      } else if (this.oapicIdResolution === '15km' && this.oapicIdTime === '24F') {
+      } else if (this.oapicIdResolution === '15km' && this.oapicIdTime === '24f') {
         return {
-          min: this.arc15RunMoment24FMin,
-          max: this.arc15RunMoment24FMax
+          min: this.arc15RunMoment24fMin,
+          max: this.arc15RunMoment24fMax
         }
-      } else if (this.oapicIdResolution === '10km' && this.oapicIdTime === '6F') { // Analysis (Forecast) type
+      } else if (this.oapicIdResolution === '10km' && this.oapicIdTime === '6f') { // Analysis (Forecast) type
         return {
-          min: this.foreRunMoment06FMin,
-          max: this.foreRunMoment06FMax
+          min: this.foreRunMoment06fMin,
+          max: this.foreRunMoment06fMax
         }
-      } else if (this.oapicIdResolution === '10km' && this.oapicIdTime === '24F') { // Analysis (Forecast) type
+      } else if (this.oapicIdResolution === '10km' && this.oapicIdTime === '24f') { // Analysis (Forecast) type
         return {
-          min: this.foreRunMoment24FMin,
-          max: this.foreRunMoment24FMax
+          min: this.foreRunMoment24fMin,
+          max: this.foreRunMoment24fMax
         }
       } else {
+        // 6p vs 24p
+        let maxMomentDate = this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(6, 'hours').toDate() // 6p
+        if (this.oapicIdTime === '24p') {
+          maxMomentDate = this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(24, 'hours').toDate()
+        }
         return {
-          min: null,
-          max: null
+          min: this.$moment.utc('00:00:00', 'HH:mm:ss').subtract(31, 'days').toDate(),
+          max: maxMomentDate
         }
       }
     },
     forecastDateRange: function () {
       return {
-        min: this.forecastDateMomentRange.min.toDate(),
-        max: this.forecastDateMomentRange.max.toDate()
+        min: this.$moment.utc(this.forecastDateMomentRange.min).toDate(),
+        max: this.$moment.utc(this.forecastDateMomentRange.max).toDate()
       }
     },
     forecastDatetimeMoment: function () {

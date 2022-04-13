@@ -9,7 +9,7 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('#date-analysis-date').should('have.value', '2011-04-06')
 
     // interval to 24 hours changes run hour
-    cy.selectVar('#var-sel-precipitation-accumulation-interval', '24 hours', '24F')
+    cy.selectVar('#var-sel-precipitation-accumulation-interval', '24 hours', '24f')
     cy.get('#var-sel-analysis-run-hour').should('have.value', '12Z').should('be.disabled')
 
     // model type to 10km changes date
@@ -17,13 +17,13 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     cy.get('#date-analysis-date').should('have.value', '2012-10-03')
   })
 
-  it('Download analysis 6F 18Z data as CoverageJSON', () => {
+  it('Download analysis 6f 18Z data as CoverageJSON', () => {
     cy.visit('/#/regional-deterministic-precipitation-analysis')
 
     let modelName = 'Analysis (10km)'
     let modelVal = '10km'
     let intervalName = '6 hours'
-    let intervalVal = '6F'
+    let intervalVal = '6f'
     let date = '2018-08-08'
     let runName = '18Z'
     let runVal = runName
@@ -56,7 +56,7 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     })
   })
 
-  it('Download analysis 24F data as CoverageJSON', () => {
+  it('Download analysis 24f data as CoverageJSON', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -67,7 +67,7 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     let modelName = 'Analysis (10km)'
     let modelVal = '10km'
     let intervalName = '24 hours'
-    let intervalVal = '24F'
+    let intervalVal = '24f'
     let date = '2018-08-08'
     let runName = '12Z'
     let runVal = runName
@@ -100,7 +100,7 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     })
   })
 
-  it('Download archive 6F 06Z data as GRIB', () => {
+  it('Download archive 6f 06Z data as GRIB', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -113,7 +113,7 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     let modelName = 'Archive (15km)'
     let modelVal = '15km'
     let intervalName = '6 hours'
-    let intervalVal = '6F'
+    let intervalVal = '6f'
     let date = '2011-09-11'
     let runName = '06Z'
     let runVal = runName
@@ -146,14 +146,14 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     })
   })
 
-  it('Download archive 6F 00Z data as GRIB', () => {
+  it('Download archive 6f 00Z data as GRIB', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     let modelName = 'Archive (15km)'
     let modelVal = '15km'
     let intervalName = '6 hours'
-    let intervalVal = '6F'
+    let intervalVal = '6f'
     let date = '2012-10-02'
     let runName = '00Z'
     let runVal = runName
@@ -186,7 +186,7 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     })
   })
 
-  it('Download archive 24F data as CoverageJSON', () => {
+  it('Download archive 24f data as CoverageJSON', () => {
     // Reset map
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
@@ -199,7 +199,7 @@ describe('E2E test for RDPA ogc-api-coverage data with various form options', ()
     let modelName = 'Archive (15km)'
     let modelVal = '15km'
     let intervalName = '24 hours'
-    let intervalVal = '24F'
+    let intervalVal = '24f'
     let date = '2011-04-06'
     let runName = '12Z'
     let runVal = runName

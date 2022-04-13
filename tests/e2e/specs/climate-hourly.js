@@ -33,7 +33,7 @@ describe('E2E test for climate hourly data with various form options', () => {
     })
 
     // Stations are loaded on the map as clusters
-    cy.checkMarkerClusters(20)
+    cy.checkMarkerClusters(15)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')

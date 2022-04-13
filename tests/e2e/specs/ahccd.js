@@ -79,6 +79,7 @@ describe('E2E test for AHCCD data with various form options', () => {
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
+    const numberMatched = 20700
     cy.intercept('GET', /.*\/collections\/ahccd-annual\/items\?.*province__province=BC.*resulttype=hits.*f=json.*/).as('countProvinceAnnual')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
@@ -86,7 +87,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(20800) // 20888
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(numberMatched) // 20888
     })
 
     // visit download link (replace with limit 1)
@@ -95,7 +96,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(20800)
+        expect(response.body.numberMatched).to.be.greaterThan(numberMatched)
       })
     })
   })
@@ -174,13 +175,14 @@ describe('E2E test for AHCCD data with various form options', () => {
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
+    const numberMatched = 9200
     cy.intercept('GET', /.*\/collections\/ahccd-monthly\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.wait('@countData', {timeout: 20000}).then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(9800)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(numberMatched)
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
@@ -190,7 +192,7 @@ describe('E2E test for AHCCD data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(9800)
+        expect(response.body.numberMatched).to.be.greaterThan(numberMatched)
       })
     })
   })
