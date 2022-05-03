@@ -15,29 +15,8 @@
     </ol>
 
     <carousel :perPage="1" :autoplay="true" :loop="true" :navigationEnabled="true" role="img" aria-live="polite">
-      <slide>
-        <img src="../assets/carousel/ExtAHCCD.png" class="img-responsive center" alt="Carousel image preview: AHCCD station point on map" />
-      </slide>
-      <slide>
-        <img src="../assets/carousel/ExtCanGrd.png" class="img-responsive center" alt="Carousel image preview: CanGrd intro" />
-      </slide>
-      <slide>
-        <img src="../assets/carousel/ExtCMIP.png" class="img-responsive center" alt="Carousel image preview: CMIP5 map options"/>
-      </slide>
-      <slide>
-        <img src="../assets/carousel/ExtDaily.png" class="img-responsive center" alt="Carousel image preview: Daily station point on map" />
-      </slide>
-      <slide>
-        <img src="../assets/carousel/ExtDCSOptions.png" class="img-responsive center" alt="Carousel image preview: DCS page options" />
-      </slide>
-      <slide>
-        <img src="../assets/carousel/ExtHourly.png" class="img-responsive center" alt="Carousel image preview: Hourly station point on map" />
-      </slide>
-      <slide>
-        <img src="../assets/carousel/ExtLTCE.png" class="img-responsive center" alt="Carousel image preview: LTCE station point on map"/>
-      </slide>
-      <slide>
-        <img src="../assets/carousel/ExtNorm.png" class="img-responsive center" alt="Carousel image preview: Normals station point on map" />
+      <slide v-for="(altText, imgName) in altCarouselImg" :key="imgName">
+        <img :src="require(`@/assets/carousel_${$i18n.activeLocale}/${imgName}`)" class="img-responsive center" :alt="altText" />
       </slide>
     </carousel>
 
@@ -60,6 +39,18 @@ export default {
     LatestRelease,
     Carousel,
     Slide
+  },
+  computed: {
+    altCarouselImg: function () {
+      return {
+        'slide1.png': this.$gettext('Example page preview: Global climate model scenarios (CMIP5)'),
+        'slide2.png': this.$gettext('Example page preview: Canadian statistically downscaled climate scenarios'),
+        'slide3.png': this.$gettext('Example page preview: Adjusted and Homogenized Canadian Climate Data (AHCCD)'),
+        'slide4.png': this.$gettext('Example page preview: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)'),
+        'slide5.png': this.$gettext('Example page preview: 1981-2010 Climate Normals'),
+        'slide6.png': this.$gettext('Example page preview: Daily Data')
+      }
+    }
   }
 }
 </script>
