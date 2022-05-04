@@ -10,9 +10,9 @@
           <li><a :href="'https://www.canada.ca/' + activeLocale + '/news.html'" v-translate t-context="Canada.ca Theme">News</a></li>
           <li><a :href="'https://www.canada.ca/' + activeLocale + '/government/system/laws.html'" v-translate t-context="Canada.ca Theme">Treaties, laws and regulations</a></li>
           <li><a :href="'https://www.canada.ca/' + activeLocale + '/transparency/reporting.html'" v-translate t-context="Canada.ca Theme">Government-wide reporting</a></li>
-          <li><a :href="'http://pm.gc.ca/' + activeLocale3" v-translate t-context="Canada.ca Theme">Prime Minister</a></li>
+          <li><a :href="'https://pm.gc.ca/' + activeLocale3" v-translate t-context="Canada.ca Theme">Prime Minister</a></li>
           <li><a :href="'https://www.canada.ca/' + activeLocale + '/government/system.html'" v-translate t-context="Canada.ca Theme">How government works</a></li>
-          <li><a :href="'http://open.canada.ca/' + activeLocale + '/'" v-translate t-context="Canada.ca Theme">Open government</a></li>
+          <li><a :href="'https://open.canada.ca/' + activeLocale + '/'" v-translate t-context="Canada.ca Theme">Open government</a></li>
         </ul>
       </nav>
     </div>

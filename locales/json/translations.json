@@ -647,10 +647,10 @@
 					"<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 				]
 			},
-			"<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors": {
-				"msgid": "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
+			"<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors": {
+				"msgid": "<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
 				"msgstr": [
-					"<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+					"<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
 				]
 			},
 			"<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.": {
@@ -3193,10 +3193,10 @@
 					"<a href=\"{link}\" target=\"_blank\">En savoir plus sur les percentiles</a>"
 				]
 			},
-			"<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors": {
-				"msgid": "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
+			"<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors": {
+				"msgid": "<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
 				"msgstr": [
-					"Contributeurs à <a href=\"http://osm.org/copyright\">OpenStreetMap</a>"
+					"Contributeurs à <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>"
 				]
 			},
 			"<strong>Analysis data (10km)</strong> is available from 2012-10-03 12:00 Coordinated Universal Time (UTC) up until today.": {
