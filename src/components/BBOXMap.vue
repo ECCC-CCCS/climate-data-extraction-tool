@@ -243,7 +243,7 @@ export default {
         chunkInterval: 500
       }),
       geojsonLayer: L.geoJSON(null, this.geoJsonOptions),
-      urlOSM: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      urlOSM: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
       options: {
         style: function () {
           return {
@@ -439,7 +439,7 @@ export default {
       }
     },
     attributionOSM: function () {
-      return '&copy; ' + this.$gettext('<a href="http://osm.org/copyright">OpenStreetMap</a> contributors')
+      return '&copy; ' + this.$gettext('<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors')
     },
     attributionCBMT: function () {
       return '<a href="' + this.cbmtAttributionURL[this.$i18n.activeLocale] + '" target="_blank">' + this.$pgettext('Title', 'Canada Base Map Transportation') + '</a>'

@@ -97,8 +97,8 @@ msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 
 #: src/components/BBOXMap.vue:450
-msgid "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-msgstr "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+msgid "<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+msgstr "<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
 
 #: src/views/RDPAForm.vue:170
 msgid ""
