@@ -43,12 +43,12 @@ export default {
   computed: {
     altCarouselImg: function () {
       return {
-        'slide1.png': this.$gettext('Example page preview: Global climate model scenarios (CMIP5)'),
-        'slide2.png': this.$gettext('Example page preview: Canadian statistically downscaled climate scenarios'),
-        'slide3.png': this.$gettext('Example page preview: Adjusted and Homogenized Canadian Climate Data (AHCCD)'),
-        'slide4.png': this.$gettext('Example page preview: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)'),
-        'slide5.png': this.$gettext('Example page preview: 1981-2010 Climate Normals'),
-        'slide6.png': this.$gettext('Example page preview: Daily Data')
+        'slide1.png': this.$gettext('Example web page: Global climate model scenarios (CMIP5)'),
+        'slide2.png': this.$gettext('Example web page: Canadian statistically downscaled climate scenarios'),
+        'slide3.png': this.$gettext('Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)'),
+        'slide4.png': this.$gettext('Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)'),
+        'slide5.png': this.$gettext('Example web page: 1981-2010 Climate Normals'),
+        'slide6.png': this.$gettext('Example web page: Daily Climate Data')
       }
     }
   }

@@ -1319,6 +1319,42 @@
 					"Error:"
 				]
 			},
+			"Example web page: 1981-2010 Climate Normals": {
+				"msgid": "Example web page: 1981-2010 Climate Normals",
+				"msgstr": [
+					""
+				]
+			},
+			"Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)": {
+				"msgid": "Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)",
+				"msgstr": [
+					"Adjusted and Homogenized Canadian Climate Data"
+				]
+			},
+			"Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)": {
+				"msgid": "Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)",
+				"msgstr": [
+					"Canadian Gridded Temperature and Precipitation Anomalies"
+				]
+			},
+			"Example web page: Canadian statistically downscaled climate scenarios": {
+				"msgid": "Example web page: Canadian statistically downscaled climate scenarios",
+				"msgstr": [
+					""
+				]
+			},
+			"Example web page: Daily Climate Data": {
+				"msgid": "Example web page: Daily Climate Data",
+				"msgstr": [
+					""
+				]
+			},
+			"Example web page: Global climate model scenarios (CMIP5)": {
+				"msgid": "Example web page: Global climate model scenarios (CMIP5)",
+				"msgstr": [
+					"Global climate model scenarios"
+				]
+			},
 			"Explanation of model types": {
 				"msgid": "Explanation of model types",
 				"msgstr": [
@@ -3604,7 +3640,7 @@
 			"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
 				"msgid": "Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",
 				"msgstr": [
-					"Les normales climatiques 1981-2010servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiquesoffertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
+					"Les normales climatiques 1981-2010 servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiquesoffertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
 				]
 			},
 			"Climate projections": {
@@ -3863,6 +3899,42 @@
 				"msgid": "Error:",
 				"msgstr": [
 					"Erreur :"
+				]
+			},
+			"Example web page: 1981-2010 Climate Normals": {
+				"msgid": "Example web page: 1981-2010 Climate Normals",
+				"msgstr": [
+					"Exemple de page web : Les normales climatiques 1981-2010"
+				]
+			},
+			"Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)": {
+				"msgid": "Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)",
+				"msgstr": [
+					"Exemple de page web : Les données climatiques canadiennes ajustées et homogénéisées (DCCAH)"
+				]
+			},
+			"Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)": {
+				"msgid": "Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)",
+				"msgstr": [
+					"Exemple de page web : Les anomalies de température et précipitation interpolées pour le Canada (CANGRD)"
+				]
+			},
+			"Example web page: Canadian statistically downscaled climate scenarios": {
+				"msgid": "Example web page: Canadian statistically downscaled climate scenarios",
+				"msgstr": [
+					"Exemple de page web : Les scénarios climatiques canadiens mis à l’échelle de manière statistique"
+				]
+			},
+			"Example web page: Daily Climate Data": {
+				"msgid": "Example web page: Daily Climate Data",
+				"msgstr": [
+					"Exemple de page web : Les données climatiques quotidiennes"
+				]
+			},
+			"Example web page: Global climate model scenarios (CMIP5)": {
+				"msgid": "Example web page: Global climate model scenarios (CMIP5)",
+				"msgstr": [
+					"Exemple de page web : Les données des Scénarios basés sur des modèles climatiques globaux (CMIP5)"
 				]
 			},
 			"Explanation of model types": {
