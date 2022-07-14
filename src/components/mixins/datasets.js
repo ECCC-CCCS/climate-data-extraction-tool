@@ -105,26 +105,26 @@ export const datasets = {
             variables: [{
               'name': this.$gettext('Daily extremes of record (LTCE) - Temperature'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/8a12c7f4-b9c9-54bc-a72a-2d59faed4cd3',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/8a12c7f4-b9c9-54bc-a72a-2d59faed4cd3'
+                'en': 'https://open.canada.ca/data/en/dataset/e2233308-040e-47da-8c9d-2551ff99f810',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/e2233308-040e-47da-8c9d-2551ff99f810'
               }
             }, {
               'name': this.$gettext('Daily extremes of record (LTCE) - Precipitation'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/341ae11e-e29d-5f8e-a504-c29b26450e7e',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/341ae11e-e29d-5f8e-a504-c29b26450e7e'
+                'en': 'https://open.canada.ca/data/en/dataset/8fc6ad48-1a98-45fa-9eba-9a27ddae5014',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/8fc6ad48-1a98-45fa-9eba-9a27ddae5014'
               }
             }, {
               'name': this.$gettext('Daily extremes of record (LTCE) - Snowfall'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/b6915a49-f101-571d-952a-375021062172',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/b6915a49-f101-571d-952a-375021062172'
+                'en': 'https://open.canada.ca/data/en/dataset/a115568f-3edc-42cb-ad31-e99f3cf5e37e',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/a115568f-3edc-42cb-ad31-e99f3cf5e37e'
               }
             }, {
               'name': this.$gettext('Long Term Climate Extremes, Virtual Climate Stations'),
               'url': {
-                'en': 'https://open.canada.ca/data/en/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652',
-                'fr': 'https://ouvert.canada.ca/data/fr/dataset/746f9469-ab78-5dcc-b165-4b51e8ab8652'
+                'en': 'https://open.canada.ca/data/en/dataset/9dd32bce-c9d2-42d8-ac35-61bf62f6b5c4',
+                'fr': 'https://ouvert.canada.ca/data/fr/dataset/9dd32bce-c9d2-42d8-ac35-61bf62f6b5c4'
               }
             }]
           }

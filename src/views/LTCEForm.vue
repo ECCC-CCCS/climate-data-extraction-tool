@@ -28,6 +28,10 @@
 
       <p v-html="techDocHtml"></p>
 
+      <open-portal-links
+        :open-portal-list-html="openPortalListHtml"
+        :open-portal-variables="datasetTitles[$route.name].openPortal.variables"></open-portal-links>
+
       <strong v-translate>Virtual climate station list download:</strong>
       <ul>
         <li><station-list-link
@@ -128,6 +132,7 @@ import StationSelect from '@/components/StationSelect.vue'
 import FormatSelectVector from '@/components/FormatSelectVector.vue'
 import URLBox from '@/components/URLBox.vue'
 import StationListLink from '@/components/StationListLink.vue'
+import OpenPortalLinks from '@/components/OpenPortalLinks.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
 import MoreResources from '@/components/MoreResources.vue'
 import TipsUsingTool from '@/components/TipsUsingTool.vue'
@@ -148,6 +153,7 @@ export default {
     FormatSelectVector,
     'url-box': URLBox,
     StationListLink,
+    OpenPortalLinks,
     DataAccessDocLink,
     TipsUsingTool,
     MoreResources,
