@@ -228,7 +228,7 @@ describe('E2E test for climate daily data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.waitUntil(() => cy.wait('@countData', {timeout: 30000}).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')

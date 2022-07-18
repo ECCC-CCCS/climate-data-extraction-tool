@@ -27,7 +27,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body.features.length).to.be.greaterThan(minNumStations)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6000 ms
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
       customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
@@ -51,7 +51,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body.features.length).to.be.greaterThan(minNumStationsDiscontinued)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6000 ms
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
       customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
@@ -88,7 +88,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body.numberMatched).to.be.greaterThan(62976000)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6000 ms
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
       customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
@@ -143,7 +143,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body.numberMatched).to.be.greaterThan(430570)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6000 ms
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
       customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
@@ -198,7 +198,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body.numberMatched).to.equal(36)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6000 ms
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
       customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
@@ -254,7 +254,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body.numberMatched).to.be.greaterThan(500)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6000 ms
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
       customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
