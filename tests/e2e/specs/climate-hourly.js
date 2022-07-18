@@ -1,5 +1,8 @@
 // https://docs.cypress.io/api/introduction/api.html
 
+const TIMEOUT_MS = 6500;
+const INTERVAL_MS = 2000;
+
 describe('E2E test for climate hourly data with various form options', () => {
   it('Check hourly climate stations and download data as CSV', () => {
     // station data and daterange
@@ -10,7 +13,8 @@ describe('E2E test for climate hourly data with various form options', () => {
     // open map filters box
     cy.get('#map-filters-header').scrollIntoView().wait(250).click()
 
-    cy.wait('@stationData', {timeout: 60000}).then((xhr) => {
+
+    cy.waitUntil(() => cy.wait('@stationData').then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       try {
@@ -22,15 +26,32 @@ describe('E2E test for climate hourly data with various form options', () => {
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.features.length).to.be.greaterThan(1090)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+
     })
-    cy.wait('@dateRangeData', {timeout: 30000}).then((xhr) => {
+
+
+    cy.waitUntil(() => cy.wait('@dateRangeData').then((xhr) => {
       console.log(xhr)
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberReturned).to.be.equal(1)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+
     })
+
 
     // Stations are loaded on the map as clusters
     cy.checkMarkerClusters(15)
@@ -51,14 +72,22 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // retrieve download list
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items.*/).as('countData')
-    const numMatched = 34560000
+    const numMatched = 3060000
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.wait('@countData', {timeout: 60000}).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+
     })
+
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (replace with limit 1)
@@ -100,13 +129,24 @@ describe('E2E test for climate hourly data with various form options', () => {
     // retrieve download links
     const numMatched = 58800
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
+
+    
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.wait('@countData', {timeout: 60000}).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+
     })
+
+
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (replace with limit 1)
@@ -151,12 +191,21 @@ describe('E2E test for climate hourly data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
     const numMatched = 70
-    cy.wait('@countData', {timeout: 60000}).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+
     })
+      
+
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (replace with limit 1)
@@ -199,11 +248,18 @@ describe('E2E test for climate hourly data with various form options', () => {
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items.*/).as('countData')
     const numMatched = 730
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    cy.wait('@countData', {timeout: 60000}).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.numberMatched).to.be.greaterThan(numMatched)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 

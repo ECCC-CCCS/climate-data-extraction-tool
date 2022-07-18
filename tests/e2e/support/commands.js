@@ -25,6 +25,8 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 // VarSelect.vue or dropdown components
+import 'cypress-wait-until';
+
 Cypress.Commands.add('selectVar', (getInput, text, value) => {
   cy.get(getInput).scrollIntoView().wait(250).select(text).should('have.value', value)
   return cy.get(getInput)

@@ -1,5 +1,8 @@
 // https://docs.cypress.io/api/introduction/api.html
 
+const TIMEOUT_MS = 6500;
+const INTERVAL_MS = 2000;
+
 describe('E2E test for raster drill data with various form options', () => {
   it('Visits CMIP5 and perform raster drill downloads, as GeoJSON format', () => {
     cy.visit('/#/cmip5-data')
@@ -25,7 +28,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
     cy.intercept('POST', /.*\/processes\/raster-drill\/execution.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
-    cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@rasterDrillDownload').then((xhr) => {
       try {
         expect(xhr.response.headers).to.have.property('content-encoding')
         expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
@@ -35,6 +38,12 @@ describe('E2E test for raster drill data with various form options', () => {
       expect(xhr.request.method).to.equal('POST')
       expect(xhr.response.statusCode).to.equal(200)
       expect(xhr.response.body.properties.values.length).to.be.greaterThan(90)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
     })
   })
 
@@ -62,7 +71,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
     cy.intercept('POST', /.*\/processes\/raster-drill\/execution.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
-    cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@rasterDrillDownload').then((xhr) => {
       try {
         expect(xhr.response.headers).to.have.property('content-encoding')
         expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
@@ -72,6 +81,12 @@ describe('E2E test for raster drill data with various form options', () => {
       expect(xhr.request.method).to.equal('POST')
       expect(xhr.response.statusCode).to.equal(200)
       expect(xhr.response.body).to.contain('time_2006/2100/P1Y,values,longitude,latitude')
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
     })
   })
 
@@ -99,7 +114,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.get('#point-download-box').scrollIntoView().wait(250).should('have.class', 'alert-success')
     cy.intercept('POST', /.*\/processes\/raster-drill\/execution.*/).as('rasterDrillDownload')
     cy.get('#point-download-box button').click()
-    cy.wait('@rasterDrillDownload', { timeout: 120000 }).then((xhr) => {
+    cy.waitUntil(() => cy.wait('@rasterDrillDownload').then((xhr) => {
       try {
         expect(xhr.response.headers).to.have.property('content-encoding')
         expect(xhr.response.headers['content-encoding']).to.match(/gzip/ig)
@@ -109,6 +124,12 @@ describe('E2E test for raster drill data with various form options', () => {
       expect(xhr.request.method).to.equal('POST')
       expect(xhr.response.statusCode).to.equal(200)
       expect(xhr.response.body.properties.values.length).to.be.greaterThan(100)
+    }), {
+      errorMsg: 'Timeout reached', // overrides the default error message
+      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
+      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
+      verbose: true, // log the progress, default to false
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
     })
   })
 })
