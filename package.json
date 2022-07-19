@@ -52,7 +52,8 @@
     "eslint-plugin-vue": "^8.0.3",
     "html-webpack-plugin": "^4.5.2",
     "po-csv": "^1.0.2",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "cypress-wait-until": "^1.7.2"
   },
   "browserslist": [
     "> 1%",
