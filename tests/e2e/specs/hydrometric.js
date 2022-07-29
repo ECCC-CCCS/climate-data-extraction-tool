@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-const TIMEOUT_MS = 6500;
+const TIMEOUT_MS = 9500;
 const INTERVAL_MS = 2000;
 
 describe('E2E test for hydrometric data with various form options', () => {
@@ -8,7 +8,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // station data
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*/).as('stationData')
     cy.visit('/#/water-quantity-data')
-    const minNumStations = 2780
+    const minNumStations = 2790
 
     // open map filters box
     cy.get('#map-filters-header').scrollIntoView().wait(250).click()
@@ -97,10 +97,10 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 6439)
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 6467)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
-      cy.request('GET', hrefLimited).then((response) => {
+      cy.request('GET', hrefLimited, { timeout: 40000 }).then((response) => {
         try {
           expect(response.headers).to.have.property('content-encoding')
           expect(response.headers['content-encoding']).to.match(/gzip/ig)
@@ -154,7 +154,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
-      cy.request('GET', hrefLimited).then((response) => {
+      cy.request('GET', hrefLimited, { timeout: 40000 }).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.body.numberMatched).to.be.greaterThan(430570)
       })
@@ -195,7 +195,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.equal(36)
+      expect(xhr.response.body.numberMatched).to.equal(42)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -211,7 +211,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.equal(36)
+        expect(response.body.numberMatched).to.equal(42)
       })
     })
   })
