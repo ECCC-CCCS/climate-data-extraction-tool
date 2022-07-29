@@ -47,8 +47,8 @@ export default {
     return {
       loading: false,
       downloadError: false,
-      OAPI_SERVER: process.env.VUE_APP_GEOMET_API_SERVER,
-      RASTER_DRILL_PATH: process.env.VUE_APP_GEOMET_API_RASTER_DRILL
+      OAPI_SERVER: process.env.VUE_APP_OPENAPI_SERVER,
+      RASTER_DRILL_PATH: process.env.VUE_APP_OPENAPI_RASTER_DRILL
     }
   },
   watch: {

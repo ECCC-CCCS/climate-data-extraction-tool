@@ -10,7 +10,7 @@ Anything common to OWS and web mapping configs
 export const ows = {
   data () {
     return {
-      GEOMET_API_SERVER: process.env.VUE_APP_GEOMET_API_SERVER,
+      GEOMET_API_SERVER: process.env.VUE_APP_OPENAPI_SERVER,
       WEB_SERVER: {
         en: process.env.VUE_APP_WEB_SERVER_EN,
         fr: process.env.VUE_APP_WEB_SERVER_FR

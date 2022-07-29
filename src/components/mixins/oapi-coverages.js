@@ -4,7 +4,7 @@ Anything default/common to OGC API - Coverages querying goes here
 export const oapiCoverage = {
   data () {
     return {
-      oapicServer: process.env.VUE_APP_GEOMET_API_SERVER,
+      oapicServer: process.env.VUE_APP_OPENAPI_SERVER,
       oapicPath: '/collections',
       oapicFormat: 'json',
       date_start: '',
