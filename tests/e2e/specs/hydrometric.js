@@ -1,7 +1,7 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-const TIMEOUT_MS = 9500;
-const INTERVAL_MS = 2000;
+const TIMEOUT_MS = 50000;
+const INTERVAL_MS = 10000;
 
 describe('E2E test for hydrometric data with various form options', () => {
   it('Check hydrometric stations and download daily mean data as CSV', () => {
@@ -12,8 +12,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // open map filters box
     cy.get('#map-filters-header').scrollIntoView().wait(250).click()
-
-    cy.waitUntil(() => cy.wait('@stationData').then((xhr) => {
+    cy.wait('@stationData', {timeout: TIMEOUT_MS}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       try {
@@ -25,19 +24,13 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.features.length).to.be.greaterThan(minNumStations)
-    }), {
-      errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
-      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
-      verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
     })
 
     // discontinued stations
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?f=json&limit=10000&properties=PROV_TERR_STATE_LOC,STATION_NAME,STATION_NUMBER,STATUS_EN$/).as('entireStationData')
     cy.get('#toggle-discontinued-stations').click()
-    const minNumStationsDiscontinued = 7910
-    cy.waitUntil(() => cy.wait('@entireStationData').then((xhr) => {
+    const minNumStationsDiscontinued = 7930
+    cy.wait('@entireStationData', {timeout: TIMEOUT_MS}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       try {
@@ -49,12 +42,6 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
       expect(xhr.response.body.features.length).to.be.greaterThan(minNumStationsDiscontinued)
-    }), {
-      errorMsg: 'Timeout reached', // overrides the default error message
-      timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
-      interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
-      verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
     })
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
       expect($tr.length).to.be.greaterThan(minNumStationsDiscontinued)
@@ -73,7 +60,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#var-sel-value-type--time-interval', 'Daily mean', 'hydrometric-daily-mean')
 
     // date change
-    cy.inputText('input#date-end-date', '2021-05-10{enter}')
+    cy.inputText('input#date-end-date', '2022-08-09{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
@@ -85,7 +72,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(62976000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(64700000)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -97,7 +84,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 6467)
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 6480)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited, { timeout: 40000 }).then((response) => {
@@ -120,7 +107,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.greaterThan(430)
+      expect($tr.length).to.be.greaterThan(440)
     })
 
     // value type
@@ -128,7 +115,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '1899-01{enter}')
-    cy.inputText('input#date-end-date', '2021-05{enter}')
+    cy.inputText('input#date-end-date', '2022-08{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
@@ -183,7 +170,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '2010-01-01{enter}')
-    cy.inputText('input#date-end-date', '2021-05-10{enter}')
+    cy.inputText('input#date-end-date', '2022-08-09{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
@@ -239,7 +226,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '2010-01-01{enter}')
-    cy.inputText('input#date-end-date', '2021-05-10{enter}')
+    cy.inputText('input#date-end-date', '2022-08-09{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
