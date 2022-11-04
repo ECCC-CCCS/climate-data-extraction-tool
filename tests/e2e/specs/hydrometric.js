@@ -72,7 +72,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(64700000)
+      expect(xhr.response.body.numberMatched).to.be.at.most(65050000)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -84,7 +84,7 @@ describe('E2E test for hydrometric data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 6480)
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 6510)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited, { timeout: 40000 }).then((response) => {
@@ -107,7 +107,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.greaterThan(440)
+      expect($tr.length).to.be.at.most(450)
     })
 
     // value type
@@ -123,11 +123,12 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-monthly-mean\/items\?.*PROV_TERR_STATE_LOC=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
+    let maxMonthlyMean = 438600
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(430570)
+      expect(xhr.response.body.numberMatched).to.be.at.most(maxMonthlyMean)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -143,7 +144,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited, { timeout: 40000 }).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(430570)
+        expect(response.body.numberMatched).to.be.at.most(maxMonthlyMean)
       })
     })
   })
@@ -159,7 +160,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.get('table#station-select-table').scrollIntoView().wait(250)
     cy.get('table#station-select-table tr.selectable:contains(08GA030):first').click()
     cy.get('table#station-select-table tr.selectable:contains(02HC048):first').click()
-    cy.get('table#station-select-table tr.selectable:contains(02OA041):first').click()
+    cy.get('table#station-select-table tr.selectable:contains(02OA016):first').click()
     cy.get('button#show-selected-stations').click()
     cy.get('table#station-select-table').find('tr.selectedStation').should(($tr) => {
       expect($tr.length).to.equal(3)
@@ -178,11 +179,12 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-peaks\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
+    let maxAnnualPeaks = 63
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.equal(42)
+      expect(xhr.response.body.numberMatched).to.equal(maxAnnualPeaks)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -198,7 +200,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.equal(42)
+        expect(response.body.numberMatched).to.equal(maxAnnualPeaks)
       })
     })
   })
@@ -217,8 +219,9 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
     cy.wait(500) // mimic user pause after a zoom click
+    let maxNumStations = 50
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.lessThan(200)
+      expect($tr.length).to.be.lessThan(maxNumStations)
     })
 
     // value type
@@ -234,11 +237,12 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-statistics\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
+    let maxAnnualStats = 540
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(500)
+      expect(xhr.response.body.numberMatched).to.be.at.most(maxAnnualStats)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -254,7 +258,7 @@ describe('E2E test for hydrometric data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(500)
+        expect(response.body.numberMatched).to.be.at.most(maxAnnualStats)
       })
     })
   })
