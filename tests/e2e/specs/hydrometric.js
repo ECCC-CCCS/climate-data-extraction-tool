@@ -63,7 +63,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#var-sel-value-type--time-interval', 'Daily mean', 'hydrometric-daily-mean')
 
     // date change
-    cy.inputText('input#date-start-date', '1986-03{enter}')
+    cy.inputText('input#date-start-date', '1986-03-01{enter}')
     cy.inputText('input#date-end-date', `${CURRENT_YYYY_MM_DD}{enter}`)
 
     // geojson
