@@ -63,14 +63,14 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#var-sel-value-type--time-interval', 'Daily mean', 'hydrometric-daily-mean')
 
     // date change
-    cy.inputText('input#date-start-date', '1986-03-01{enter}')
+    cy.inputText('input#date-start-date', '2022-03-01{enter}')
     cy.inputText('input#date-end-date', `${CURRENT_YYYY_MM_DD}{enter}`)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
     // retrieve download list
-    const maxNumberMatched = 31276880 // actual: 31276878
+    const maxNumberMatched = 1253 // actual: 1253
     cy.intercept('GET', /.*\/collections\/hydrometric-daily-mean\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
