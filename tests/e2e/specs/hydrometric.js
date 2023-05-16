@@ -11,7 +11,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // station data
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*/).as('stationData')
     cy.visit('/#/water-quantity-data')
-    const maxNumStations = 2810 // actual 2809
+    const maxNumStations = 2820 // actual 2812
 
     // open map filters box
     cy.get('#map-filters-header').scrollIntoView().wait(250).click()
@@ -32,7 +32,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // discontinued stations
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?f=json&limit=10000&properties=PROV_TERR_STATE_LOC,STATION_NAME,STATION_NUMBER,STATUS_EN$/).as('entireStationData')
     cy.get('#toggle-discontinued-stations').click()
-    const maxNumStationsDiscontinued = 7950 // actual: 7949
+    const maxNumStationsDiscontinued = 7960 // actual: 7955
     cy.wait('@entireStationData', {timeout: TIMEOUT_MS}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
@@ -63,14 +63,14 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#var-sel-value-type--time-interval', 'Daily mean', 'hydrometric-daily-mean')
 
     // date change
-    cy.inputText('input#date-start-date', '2022-03-01{enter}')
+    cy.inputText('input#date-start-date', '2022-12-01{enter}')
     cy.inputText('input#date-end-date', `${CURRENT_YYYY_MM_DD}{enter}`)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
     // retrieve download list
-    const maxNumberMatched = 1253 // actual: 1253
+    const maxNumberMatched = 13206 // actual: 13206
     cy.intercept('GET', /.*\/collections\/hydrometric-daily-mean\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
@@ -129,7 +129,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-monthly-mean\/items\?.*PROV_TERR_STATE_LOC=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxMonthlyMean = 195280 // actual: 195270
+    let maxMonthlyMean = 197880 // actual: 197878
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
@@ -243,7 +243,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-statistics\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxAnnualStats = 570 // actual: 567
+    let maxAnnualStats = 590 // actual: 588
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
