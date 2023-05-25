@@ -30,6 +30,27 @@
         </li>
         <li>
           <details>
+            <summary class="list-group-item"><translate>Climate predictions</translate> <span v-text="`(${climatePredictionRoutes.length})`"></span></summary>
+            <ul class="list-group menu list-unstyled mrgn-lft-0-important">
+              <li
+                v-for="route in climatePredictionRoutes"
+                :key="route.name">
+                  <router-link
+                    :to="route.meta[currentLangPath]"
+                    class="list-group-item"
+                    :class="{'wb-navcurr': $route.name === route.name}">
+                    {{ datasetTitles[route.name].title }}
+                    <span v-if="datasetTitles[route.name].abbr !== null">
+                      (<abbr
+                        :title="datasetTitles[route.name].abbrName">{{ datasetTitles[route.name].abbr }}</abbr>)
+                    </span>
+                  </router-link>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
             <summary class="list-group-item"><translate>Value-added historical climate data products</translate> <span v-text="`(${valueAddedHistClimProdRoutes.length})`"></span></summary>
             <ul class="list-group menu list-unstyled mrgn-lft-0-important">
               <li
@@ -96,6 +117,12 @@ export default {
       return this.$router.options.routes.filter((row) => {
         // only return routes marked to display for dataset section menu
         return row.meta.datasetSectionMenu && (row.meta.group === 'climateSimulation')
+      })
+    },
+    climatePredictionRoutes: function () {
+      return this.$router.options.routes.filter((row) => {
+        // only return routes marked to display for dataset section menu
+        return row.meta.datasetSectionMenu && (row.meta.group === 'climatePrediction')
       })
     },
     valueAddedHistClimProdRoutes: function () {

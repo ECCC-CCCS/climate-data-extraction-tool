@@ -106,7 +106,7 @@ msgstr ""
 msgid "<a href=\"{link}\" target=\"_blank\">Learn more about percentiles</a>"
 msgstr "<a href=\"{link}\" target=\"_blank\">En savoir plus sur les percentiles</a>"
 
-#: src/components/BBOXMap.vue:450
+#: src/components/BBOXMap.vue:442
 msgid ""
 "<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> "
 "contributors"
@@ -134,27 +134,27 @@ msgstr ""
 msgid "00Z"
 msgstr "00Z"
 
-#: src/views/LTCEForm.vue:348
+#: src/views/LTCEForm.vue:333
 msgid "01 - January"
 msgstr "01 - Janvier"
 
-#: src/views/LTCEForm.vue:349
+#: src/views/LTCEForm.vue:334
 msgid "02 - February"
 msgstr "02 - Février"
 
-#: src/views/LTCEForm.vue:350
+#: src/views/LTCEForm.vue:335
 msgid "03 - March"
 msgstr "03 - Mars"
 
-#: src/views/LTCEForm.vue:351
+#: src/views/LTCEForm.vue:336
 msgid "04 - April"
 msgstr "04 - Avril"
 
-#: src/views/LTCEForm.vue:352
+#: src/views/LTCEForm.vue:337
 msgid "05 - May"
 msgstr "05 - Mai"
 
-#: src/views/LTCEForm.vue:353
+#: src/views/LTCEForm.vue:338
 msgid "06 - June"
 msgstr "06 - Juin"
 
@@ -162,27 +162,27 @@ msgstr "06 - Juin"
 msgid "06Z"
 msgstr "06Z"
 
-#: src/views/LTCEForm.vue:354
+#: src/views/LTCEForm.vue:339
 msgid "07 - July"
 msgstr "07 - Juillet"
 
-#: src/views/LTCEForm.vue:355
+#: src/views/LTCEForm.vue:340
 msgid "08 - August"
 msgstr "08 - Août"
 
-#: src/views/LTCEForm.vue:356
+#: src/views/LTCEForm.vue:341
 msgid "09 - September"
 msgstr "09 - Septembre"
 
-#: src/views/LTCEForm.vue:357
+#: src/views/LTCEForm.vue:342
 msgid "10 - October"
 msgstr "10 - Octobre"
 
-#: src/views/LTCEForm.vue:358
+#: src/views/LTCEForm.vue:343
 msgid "11 - November"
 msgstr "11 - Novembre"
 
-#: src/views/LTCEForm.vue:359
+#: src/views/LTCEForm.vue:344
 msgid "12 - December"
 msgstr "12- Décembre"
 
@@ -259,7 +259,7 @@ msgstr "75e percentile"
 msgid "95th percentile"
 msgstr "95e percentile"
 
-#: src/components/BBOXMap.vue:445
+#: src/components/BBOXMap.vue:437
 msgid "A single location as a CSV or GeoJSON"
 msgstr "Un point de grille unique sous forme CSV ou GeoJSON"
 
@@ -310,15 +310,15 @@ msgstr "Alberta"
 msgid "All"
 msgstr "Tous"
 
-#: src/views/LTCEForm.vue:375
+#: src/views/LTCEForm.vue:360
 msgid "All {maxDays} days of the month"
 msgstr "Tous les {maxDays} jours du moi"
 
-#: src/views/LTCEForm.vue:375
+#: src/views/LTCEForm.vue:360
 msgid "All {maxDays} days of the year"
 msgstr "Tous les {maxDays} jours de l'année"
 
-#: src/views/LTCEForm.vue:360
+#: src/views/LTCEForm.vue:345
 msgid "All months"
 msgstr "Tous les mois"
 
@@ -357,7 +357,7 @@ msgstr "Max/min annuel"
 msgid "Annual values"
 msgstr "Valeurs annuelles"
 
-#: src/views/LTCEForm.vue:21
+#: src/views/LTCEForm.vue:16
 msgid ""
 "Anomalous weather resulting in Temperature and Precipitation extremes "
 "occurs almost every day somewhere in Canada. For the purpose of identifying "
@@ -458,7 +458,7 @@ msgstr "Changements climatiques"
 msgid "Climate data extraction tool"
 msgstr "Outil d'extraction de données climatiques"
 
-#: src/views/LTCEForm.vue:68
+#: src/views/LTCEForm.vue:60
 msgid "Climate element / record type"
 msgstr "Élément climatique / type d'enregistrement"
 
@@ -491,6 +491,10 @@ msgstr ""
 "données entre 1981 à 2010."
 
 #: src/components/DatasetMenu.vue:12
+msgid "Climate predictions"
+msgstr "Prévisions climatiques"
+
+#: src/components/DatasetMenu.vue:33
 msgid "Climate projections"
 msgstr "Projections climatiques"
 
@@ -583,7 +587,7 @@ msgstr "Les plages de dates ne sont pas requises pour les tendances des CanGRD"
 msgid "Date:"
 msgstr "Date :"
 
-#: src/views/LTCEForm.vue:110
+#: src/views/LTCEForm.vue:97
 msgid "Day"
 msgstr "Jour"
 
@@ -641,7 +645,7 @@ msgstr ""
 "Téléchargez une liste d'informations détaillées pour chaque station "
 "climatique horaire."
 
-#: src/views/LTCEForm.vue:44
+#: src/views/LTCEForm.vue:39
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station"
@@ -649,7 +653,7 @@ msgstr ""
 "Téléchargez une liste d'informations détaillées pour chaque station "
 "climatologique virtuelle de la ECLT"
 
-#: src/views/LTCEForm.vue:50
+#: src/views/LTCEForm.vue:45
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with precipitation record type only"
@@ -658,7 +662,7 @@ msgstr ""
 "climatologique virtuelle des ECLT qui présente uniquement les données de "
 "précipitation"
 
-#: src/views/LTCEForm.vue:53
+#: src/views/LTCEForm.vue:48
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with snowfall record type only"
@@ -667,7 +671,7 @@ msgstr ""
 "climatologique virtuelle des ECLT qui présente uniquement les données de "
 "neige"
 
-#: src/views/LTCEForm.vue:47
+#: src/views/LTCEForm.vue:42
 msgid ""
 "Download a list of detailed information for each LTCE virtual climate "
 "station with temperature record type only"
@@ -705,7 +709,7 @@ msgstr ""
 msgid "Downloads not working"
 msgstr "Les téléchargements ne fonctionnent pas"
 
-#: src/views/LTCEForm.vue:246
+#: src/views/LTCEForm.vue:231
 msgid "Element name"
 msgstr "Nom de l'élément"
 
@@ -919,7 +923,7 @@ msgstr "Prévision"
 msgid "Forecast month"
 msgstr "Mois de la prévision"
 
-#: src/views/LTCEForm.vue:324
+#: src/views/LTCEForm.vue:309
 msgid "Frequently asked questions about LTCE"
 msgstr "Foire aux questions à propos de l'ECLT"
 
@@ -935,7 +939,7 @@ msgstr "Hauteur géopotentielle à 500 mb"
 msgid "Get started"
 msgstr "Commencez"
 
-#: src/components/DatasetMenu.vue:74
+#: src/components/DatasetMenu.vue:95
 msgid "Help us improve!"
 msgstr "Aidez-nous à améliorer !"
 
@@ -951,7 +955,7 @@ msgstr "Scénario d'émissions élevées (RCP 8.5)"
 msgid "Historical"
 msgstr "Historique"
 
-#: src/components/DatasetMenu.vue:54
+#: src/components/DatasetMenu.vue:75
 msgid "Historical climate and river data"
 msgstr "Données historiques météorologiques et fluviales"
 
@@ -1011,11 +1015,11 @@ msgstr ""
 msgid "How to use the Climate data extraction tool"
 msgstr "Comment utiliser l'Outil d'extraction de données climatiques"
 
-#: src/components/BBOXMap.vue:36
+#: src/components/BBOXMap.vue:32
 msgid "How to use: interactive map"
 msgstr "Guide d'utilisation de la carte interactive"
 
-#: src/components/PointDownloadBox.vue:84
+#: src/components/PointDownloadBox.vue:83
 msgid ""
 "If this error persists, please <a href=\"{supportDeskUrl}\">contact the "
 "Climate Services Support Desk</a>."
@@ -1066,11 +1070,11 @@ msgstr "Récents changements"
 #: src/views/ClimateMonthlyForm.vue:222
 #: src/views/ClimateNormalsForm.vue:152
 #: src/views/HydrometricArchiveForm.vue:236
-#: src/views/LTCEForm.vue:247
+#: src/views/LTCEForm.vue:232
 msgid "Latitude"
 msgstr "Latitude"
 
-#: src/components/BBOXMap.vue:76
+#: src/components/BBOXMap.vue:70
 msgid "Latitude:"
 msgstr "Latitude:"
 
@@ -1082,7 +1086,7 @@ msgstr "En savoir plus sur les scénarios d'émissions"
 msgid "Library of climate resources"
 msgstr "Répertoire de ressources climatiques"
 
-#: src/components/BBOXMap.vue:50
+#: src/components/BBOXMap.vue:45
 #: src/components/StationSelect.vue:60
 msgid "Loading stations... please wait"
 msgstr "Les stations sont en train de télécharger… Veuillez patienter"
@@ -1097,11 +1101,11 @@ msgstr "Extrêmes climatiques à long terme, les stations climatiques virtuelles
 #: src/views/ClimateMonthlyForm.vue:223
 #: src/views/ClimateNormalsForm.vue:153
 #: src/views/HydrometricArchiveForm.vue:237
-#: src/views/LTCEForm.vue:248
+#: src/views/LTCEForm.vue:233
 msgid "Longitude"
 msgstr "Longitude"
 
-#: src/components/BBOXMap.vue:75
+#: src/components/BBOXMap.vue:69
 msgid "Longitude:"
 msgstr "Longitude:"
 
@@ -1119,7 +1123,7 @@ msgstr "Manitoba"
 #: src/views/ClimateMonthlyForm.vue:37
 #: src/views/ClimateNormalsForm.vue:37
 #: src/views/HydrometricArchiveForm.vue:32
-#: src/views/LTCEForm.vue:62
+#: src/views/LTCEForm.vue:55
 msgid "Map filters"
 msgstr "Filtres de la carte"
 
@@ -1127,7 +1131,7 @@ msgstr "Filtres de la carte"
 msgid "Map Projection"
 msgstr "Projection cartographique"
 
-#: src/components/BBOXMap.vue:9
+#: src/components/BBOXMap.vue:8
 msgid "Map selection type"
 msgstr "Type de sélection de carte"
 
@@ -1183,7 +1187,7 @@ msgstr "Type de modèle"
 msgid "Moderate emissions scenario (RCP 4.5)"
 msgstr "Scénario d'émissions modérées (RCP 4.5)"
 
-#: src/views/LTCEForm.vue:97
+#: src/views/LTCEForm.vue:85
 msgid "Month"
 msgstr "Mois"
 
@@ -1297,7 +1301,7 @@ msgstr "Ontario"
 msgid "Page size"
 msgstr "Format de la page"
 
-#: src/components/BBOXMap.vue:38
+#: src/components/BBOXMap.vue:34
 msgid "Panning:"
 msgstr "Faire un panoramique:"
 
@@ -1319,7 +1323,7 @@ msgstr ""
 "Appuyiez sur « réinitialiser la carte » pour voir les stations dans ce "
 "tableau sur la carte."
 
-#: src/views/LTCEForm.vue:389
+#: src/views/LTCEForm.vue:374
 msgid ""
 "Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized "
 "Canadian Climate Data (AHCCD)</a> for climate change purposes."
@@ -1337,11 +1341,11 @@ msgstr ""
 "Veuillez sélectionner un endroit différent dans la limite du jeu de données "
 "ou modifier votre sélection de saisie."
 
-#: src/components/BBOXMap.vue:20
+#: src/components/BBOXMap.vue:18
 msgid "Please select a point on the map."
 msgstr "Veuillez sélectionner un point sur la carte."
 
-#: src/views/LTCEForm.vue:254
+#: src/views/LTCEForm.vue:239
 msgid "Precipitation - Daily extremes of record"
 msgstr "Précipitations - Extrêmes quotidiens"
 
@@ -1366,7 +1370,7 @@ msgstr "Île-du-Prince-Édouard"
 #: src/views/ClimateMonthlyForm.vue:241
 #: src/views/ClimateNormalsForm.vue:151
 #: src/views/HydrometricArchiveForm.vue:235
-#: src/views/LTCEForm.vue:245
+#: src/views/LTCEForm.vue:230
 msgid "Province"
 msgstr "Province"
 
@@ -1386,7 +1390,7 @@ msgstr "Type de quantité"
 msgid "Quebec"
 msgstr "Québec"
 
-#: src/components/BBOXMap.vue:89
+#: src/components/BBOXMap.vue:82
 msgid "Reset map"
 msgstr "Réinitialiser la carte"
 
@@ -1416,7 +1420,7 @@ msgstr "Pression au niveau de la mer"
 msgid "Seasonal values"
 msgstr "Valeurs saisonnières"
 
-#: src/views/LTCEForm.vue:324
+#: src/views/LTCEForm.vue:309
 msgid "see FAQ"
 msgstr "voir la FAQ"
 
@@ -1492,7 +1496,7 @@ msgstr "Téléchargement de point de grille unique n'est pas disponible"
 msgid "Snow depth"
 msgstr "Épaisseur de la neige"
 
-#: src/views/LTCEForm.vue:255
+#: src/views/LTCEForm.vue:240
 msgid "Snowfall - Daily extremes of record"
 msgstr "Neige - Extrêmes quotidiens"
 
@@ -1563,12 +1567,12 @@ msgstr "Vitesse du vent à la surface"
 #: src/views/CMIP5Form.vue:16
 #: src/views/DCSForm.vue:16
 #: src/views/HydrometricArchiveForm.vue:13
-#: src/views/LTCEForm.vue:18
+#: src/views/LTCEForm.vue:14
 #: src/views/RDPAForm.vue:16
 msgid "Technical information and metadata"
 msgstr "Informations techniques et métadonnées"
 
-#: src/views/LTCEForm.vue:253
+#: src/views/LTCEForm.vue:238
 msgid "Temperature - Daily extremes of record"
 msgstr "Température - Extrêmes quotidiens"
 
@@ -1581,7 +1585,7 @@ msgstr "Température - Extrêmes quotidiens"
 #: src/views/ClimateMonthlyForm.vue:241
 #: src/views/ClimateNormalsForm.vue:151
 #: src/views/HydrometricArchiveForm.vue:235
-#: src/views/LTCEForm.vue:245
+#: src/views/LTCEForm.vue:230
 msgid "Territory"
 msgstr "Territoire"
 
@@ -1784,7 +1788,7 @@ msgstr ""
 "à réduction d’échelle statistique mensuels, saisonniers et annuels, à "
 "l’aide de l’outil d’extraction de données climatiques."
 
-#: src/views/LTCEForm.vue:327
+#: src/views/LTCEForm.vue:312
 msgid ""
 "The daily climate records database, also known as Long Term Climate "
 "Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation "
@@ -1812,7 +1816,7 @@ msgstr ""
 "chute de neige enregistrée pour chaque jour de l'année pour la zone urbaine "
 "sélectionnée."
 
-#: src/views/LTCEForm.vue:28
+#: src/views/LTCEForm.vue:22
 msgid ""
 "The daily extremes of record for precipitation for each day of the year. "
 "Daily elements include: greatest precipitation."
@@ -1820,7 +1824,7 @@ msgstr ""
 "Les extrêmes quotidiens des précipitations pour chaque jour de l'année. Les "
 "éléments quotidiens comprennent : les plus grandes précipitations."
 
-#: src/views/LTCEForm.vue:29
+#: src/views/LTCEForm.vue:23
 msgid ""
 "The daily extremes of record for snowfall for each day of the year. Daily "
 "elements include: greatest snowfall."
@@ -1829,7 +1833,7 @@ msgstr ""
 "chaque jour de l'année. Les éléments quotidiens comprennent : la plus "
 "grande chute de neige."
 
-#: src/views/LTCEForm.vue:27
+#: src/views/LTCEForm.vue:21
 msgid ""
 "The daily extremes of record for temperature for each day of the year. "
 "Daily elements include: high maximum, low maximum, high minimum, low "
@@ -1839,7 +1843,7 @@ msgstr ""
 "éléments quotidiens comprennent : maximum élevé, maximum bas, minimum "
 "élevé, minimum bas."
 
-#: src/components/BBOXMap.vue:30
+#: src/components/BBOXMap.vue:27
 msgid "The downloaded area will match the area shown in the map."
 msgstr "La zone téléchargée correspondra à la zone indiquée sur la carte."
 
@@ -1940,7 +1944,7 @@ msgstr ""
 "L’affichage actuel de votre carte ne contient aucune station pour "
 "télécharger des données."
 
-#: src/views/LTCEForm.vue:10
+#: src/views/LTCEForm.vue:8
 msgid ""
 "These data should not be used to answer questions about climate change. For "
 "climate change or trend detection the data would have to be adjusted to "
@@ -1959,7 +1963,7 @@ msgstr ""
 "Ce bouton permet de récupérer plus de 7000 stations et peut causer une "
 "perte de performance sur cette interface utilisateur graphique"
 
-#: src/views/LTCEForm.vue:25
+#: src/views/LTCEForm.vue:19
 msgid "This data provides:"
 msgstr "Ces données fournissent :"
 
@@ -1995,11 +1999,11 @@ msgstr "Intervalle de temps / Période de l'année"
 msgid "Time range type"
 msgstr "Type de la plage de temps"
 
-#: src/components/BBOXMap.vue:569
+#: src/components/BBOXMap.vue:561
 msgid "to"
 msgstr "à"
 
-#: src/components/BBOXMap.vue:39
+#: src/components/BBOXMap.vue:35
 #. <kbd>Tab</kbd> represents the keyboard button name
 msgid ""
 "To pan the map, click and drag over the interactive map. Alternatively, "
@@ -2019,7 +2023,7 @@ msgstr ""
 "pour ne voir que les stations sélectionnées dans le tableau, cliquez sur le "
 "bouton « Afficher la sélection »"
 
-#: src/components/BBOXMap.vue:43
+#: src/components/BBOXMap.vue:39
 #. <kbd> tags represent a keyboard button name. Do not adjust spacing.
 msgid ""
 "To zoom in and out of the map, mouse scroll up and down while you mouse "
@@ -2079,7 +2083,7 @@ msgstr ""
 "Changement climatique Canada. Vous pouvez préciser la période, les "
 "variables, le format de téléchargement et d’autres options."
 
-#: src/components/BBOXMap.vue:37
+#: src/components/BBOXMap.vue:33
 msgid ""
 "Use this map to select a geographic subset of the data. The geographic "
 "subset of the downloaded data will match the area shown in the map."
@@ -2105,7 +2109,7 @@ msgstr "Type de valeur"
 msgid "Value type / Time interval"
 msgstr "Type de valeur / Intervalle de temps"
 
-#: src/components/DatasetMenu.vue:33
+#: src/components/DatasetMenu.vue:54
 msgid "Value-added historical climate data products"
 msgstr "Produits à valeur ajoutée dérivés de données climatiques historiques"
 
@@ -2118,11 +2122,11 @@ msgstr "Variables"
 msgid "View releases on GitHub"
 msgstr "Voir les communiqués sur GitHub"
 
-#: src/views/LTCEForm.vue:40
+#: src/views/LTCEForm.vue:35
 msgid "Virtual climate station list download:"
 msgstr "Téléchargement de la liste des stations climatiques virtuelles :"
 
-#: src/views/LTCEForm.vue:317
+#: src/views/LTCEForm.vue:302
 msgid ""
 "Virtual Climate stations correspond with the city pages of "
 "{weatherOfficeLink}. A Virtual Climate station is the result of threading "
@@ -2143,11 +2147,11 @@ msgstr ""
 "indiquer que les données sont tirées d’une région (avec un rayon de 20 km "
 "du centre urbain) plutôt qu’à un seul emplacement précis."
 
-#: src/views/LTCEForm.vue:244
+#: src/views/LTCEForm.vue:229
 msgid "Virtual station ID"
 msgstr "ID de la station virtuelle"
 
-#: src/views/LTCEForm.vue:243
+#: src/views/LTCEForm.vue:228
 msgid "Virtual station name"
 msgstr "Nom de la station virtuelle"
 
@@ -2228,7 +2232,7 @@ msgstr "Votre sélection de saisie ne contient aucun de données à télécharge
 msgid "Yukon"
 msgstr "Yukon"
 
-#: src/components/BBOXMap.vue:42
+#: src/components/BBOXMap.vue:38
 msgid "Zooming:"
 msgstr "Zoom:"
 
@@ -2529,9 +2533,9 @@ msgstr "Vous êtes ici :"
 #: src/views/HydrometricArchiveForm.vue:245
 #: src/views/HydrometricArchiveForm.vue:249
 #: src/views/HydrometricArchiveForm.vue:253
-#: src/views/LTCEForm.vue:268
-#: src/views/LTCEForm.vue:272
-#: src/views/LTCEForm.vue:276
+#: src/views/LTCEForm.vue:253
+#: src/views/LTCEForm.vue:257
+#: src/views/LTCEForm.vue:261
 msgctxt "Colon"
 msgid ":"
 msgstr ":"
@@ -2621,12 +2625,12 @@ msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr "-- Aucun --"
 
-#: src/components/BBOXMap.vue:446
+#: src/components/BBOXMap.vue:438
 msgctxt "Template for different file formats"
 msgid "A region as a {format1} or {format2}"
 msgstr "une région sous forme de {format1} ou {format2}"
 
-#: src/components/BBOXMap.vue:453
+#: src/components/BBOXMap.vue:445
 msgctxt "Title"
 msgid "Canada Base Map Transportation"
 msgstr "Carte de base du Canada - Transport"

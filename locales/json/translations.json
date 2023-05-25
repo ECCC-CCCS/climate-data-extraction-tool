@@ -1061,6 +1061,12 @@
 					"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010."
 				]
 			},
+			"Climate predictions": {
+				"msgid": "Climate predictions",
+				"msgstr": [
+					""
+				]
+			},
 			"Climate projections": {
 				"msgid": "Climate projections",
 				"msgstr": [
@@ -3641,6 +3647,12 @@
 				"msgid": "Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.",
 				"msgstr": [
 					"Les normales climatiques 1981-2010 servent à résumer ou à décrire les conditions climatiques moyennes d'un endroit donné. À la fin de chaque décennie, Environnement et Changement climatique Canada met à jour ses normales climatiques pour le plus grand nombre possible de stations et de caractéristiques climatiques. Les normales climatiquesoffertes ici reposent sur les stations climatologiques canadiennes ayant au moins 15 années de données entre 1981 à 2010."
+				]
+			},
+			"Climate predictions": {
+				"msgid": "Climate predictions",
+				"msgstr": [
+					"Prévisions climatiques"
 				]
 			},
 			"Climate projections": {

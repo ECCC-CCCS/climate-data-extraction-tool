@@ -89,7 +89,7 @@ const routes = [ // order matters for dataset menu
       datasetSectionMenu: true,
       en_path: datasetPaths.cansips.en,
       fr_path: datasetPaths.cansips.fr,
-      group: 'climateSimulation'
+      group: 'climatePrediction'
     },
     component: () => import(/* webpackChunkName: "cansips" */ '../views/CanSIPSForm.vue')
   },
