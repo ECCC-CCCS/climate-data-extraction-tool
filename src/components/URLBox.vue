@@ -200,7 +200,7 @@ export default {
       offset = parseInt(offset)
       let url = this.oapifCommonUrl
       url += '&f=' + this.fileFormat
-      url += '&limit=' + this.oapiDownloadLimit + '&startindex=' + offset
+      url += '&limit=' + this.oapiDownloadLimit + '&offset=' + offset
       return url
     },
     oapif_download_name_chunk: function (offset, chunkIndex) {
