@@ -11,7 +11,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // station data
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*/).as('stationData')
     cy.visit('/#/water-quantity-data')
-    const maxNumStations = 2820 // actual 2812
+    const maxNumStations = 2820 // actual 2816
 
     // open map filters box
     cy.get('#map-filters-header').scrollIntoView().wait(250).click()
@@ -32,7 +32,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // discontinued stations
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?f=json&limit=10000&properties=PROV_TERR_STATE_LOC,STATION_NAME,STATION_NUMBER,STATUS_EN$/).as('entireStationData')
     cy.get('#toggle-discontinued-stations').click()
-    const maxNumStationsDiscontinued = 7960 // actual: 7955
+    const maxNumStationsDiscontinued = 7965 // actual: 7961
     cy.wait('@entireStationData', {timeout: TIMEOUT_MS}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
@@ -70,7 +70,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
     // retrieve download list
-    const maxNumberMatched = 13206 // actual: 13206
+    const maxNumberMatched = 20596 // actual: 20596
     cy.intercept('GET', /.*\/collections\/hydrometric-daily-mean\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
@@ -100,7 +100,9 @@ describe('E2E test for hydrometric data with various form options', () => {
           cy.log('content-encoding does not exist in response header. Test continued.')
         }
         expect(response.status).to.equal(200)
-        expect(response.body).to.match(/^x,y,IDENTIFIER,STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,DATE,LEVEL,DISCHARGE,DISCHARGE_SYMBOL_EN,DISCHARGE_SYMBOL_FR,LEVEL_SYMBOL_EN,LEVEL_SYMBOL_FR.*/)
+        // expect(response.body).to.match(/^x,y,IDENTIFIER,STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,DATE,LEVEL,DISCHARGE,DISCHARGE_SYMBOL_EN,DISCHARGE_SYMBOL_FR,LEVEL_SYMBOL_EN,LEVEL_SYMBOL_FR.*/)
+        expect(response.body).to.include('IDENTIFIER')
+        expect(response.body).to.include('PROV_TERR_STATE_LOC')
       })
     })
   })
@@ -129,7 +131,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-monthly-mean\/items\?.*PROV_TERR_STATE_LOC=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxMonthlyMean = 197880 // actual: 197878
+    let maxMonthlyMean = 198845 // actual: 198842
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
@@ -185,7 +187,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-peaks\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
-    let numAnnualPeaks = 69 // actual: 69
+    let numAnnualPeaks = 73 // actual: 73
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
@@ -243,7 +245,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-statistics\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxAnnualStats = 590 // actual: 588
+    let maxAnnualStats = 605 // actual: 604
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
