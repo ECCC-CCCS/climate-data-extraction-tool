@@ -84,7 +84,7 @@ export const DCSCMIP5 = {
     getOapicParams: function () {
       let urlParams = []
       urlParams.push('f=' + this.oapicFormat)
-      urlParams.push(`range-subset=${this.oapicIdVariable}`)
+      urlParams.push(` properties=${this.oapicIdVariable}`)
 
       // subset
       let subset = []

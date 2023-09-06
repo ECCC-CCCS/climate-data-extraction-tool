@@ -302,7 +302,7 @@ export default {
     getOapicParams: function () {
       let urlParams = []
       urlParams.push('f=' + this.oapicFormat)
-      urlParams.push(`range-subset=${this.oapicIdVariable}`)
+      urlParams.push(`properties=${this.oapicIdVariable}`)
 
       // bbox
       this.splitBBOXString()
