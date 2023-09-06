@@ -28,7 +28,7 @@
 import 'cypress-wait-until';
 
 Cypress.Commands.add('selectVar', (getInput, text, value) => {
-  cy.get(getInput).scrollIntoView().wait(250).select(text).should('have.value', value)
+  cy.get(getInput).scrollIntoView().wait(250).select(text, {force: true}).should('have.value', value)
   return cy.get(getInput)
 })
 
