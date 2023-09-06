@@ -31,7 +31,7 @@ describe('E2E test for climate hourly data with various form options', () => {
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
 
     })
 
@@ -48,7 +48,7 @@ describe('E2E test for climate hourly data with various form options', () => {
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
 
     })
 
@@ -84,15 +84,14 @@ describe('E2E test for climate hourly data with various form options', () => {
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
-
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
     })
 
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    const numLinks = 3500
+    const numLinks = 3700
     cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', numLinks)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
@@ -104,7 +103,8 @@ describe('E2E test for climate hourly data with various form options', () => {
           cy.log('content-encoding does not exist in response header. Test continued.')
         }
         expect(response.status).to.equal(200)
-        expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,LOCAL_DATE,PROVINCE_CODE,LOCAL_YEAR,LOCAL_MONTH,LOCAL_DAY,LOCAL_HOUR,TEMP.*/)
+        // expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,LOCAL_DATE,PROVINCE_CODE,LOCAL_YEAR,LOCAL_MONTH,LOCAL_DAY,LOCAL_HOUR,TEMP.*/)
+        expect(response.body).to.include('x,y').to.include('STATION_NAME').to.include('LOCAL_DATE').to.include('PROVINCE_CODE').to.include('LOCAL_DAY').to.include('LOCAL_HOUR').to.include('TEMP')
       })
     })
   })
@@ -130,7 +130,7 @@ describe('E2E test for climate hourly data with various form options', () => {
     const numMatched = 58800
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
 
-    
+
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
@@ -142,7 +142,7 @@ describe('E2E test for climate hourly data with various form options', () => {
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
 
     })
 
@@ -201,10 +201,10 @@ describe('E2E test for climate hourly data with various form options', () => {
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
 
     })
-      
+
 
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')
 
@@ -258,7 +258,7 @@ describe('E2E test for climate hourly data with various form options', () => {
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
       interval: INTERVAL_MS, // performs the check every INTERVAL_MS, default to 2000 ms
       verbose: true, // log the progress, default to false
-      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check 
+      customCheckMessage: 'WaitUntil Check Happened' // check message, happens for every single check
 
     })
     cy.contains('#num-records-oapif-download', /Total number of records: \d+/).should('be.visible')

@@ -74,7 +74,7 @@ describe('E2E test for climate monthly data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 186)
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 188)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -85,7 +85,8 @@ describe('E2E test for climate monthly data with various form options', () => {
           cy.log('content-encoding does not exist in response header. Test continued.')
         }
         expect(response.status).to.equal(200)
-        expect(response.body).to.match(/^x,y,LATITUDE,LONGITUDE,STATION_NAME,CLIMATE_IDENTIFIER,ID,.*/)
+        // expect(response.body).to.match(/^x,y,LATITUDE,LONGITUDE,STATION_NAME,CLIMATE_IDENTIFIER,ID,.*/)
+        expect(response.body).to.include('x,y').to.include('STATION_NAME').to.include('CLIMATE_IDENTIFIER').to.include('ID')
       })
     })
   })

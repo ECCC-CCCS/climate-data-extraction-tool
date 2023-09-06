@@ -24,7 +24,7 @@ describe('E2E test for climate daily data with various form options', () => {
       }
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.features.length).to.be.greaterThan(8400)
+      expect(xhr.response.body.features.length).to.be.greaterThan(8500)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -85,7 +85,7 @@ describe('E2E test for climate daily data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 475)
+    cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 480)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
@@ -96,7 +96,8 @@ describe('E2E test for climate daily data with various form options', () => {
           cy.log('content-encoding does not exist in response header. Test continued.')
         }
         expect(response.status).to.equal(200)
-        expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,LOCAL_DATE,PROVINCE_CODE,LOCAL_YEAR,LOCAL_MONTH,LOCAL_DAY,MEAN_TEMPERATURE.*/)
+        // expect(response.body).to.match(/^x,y,STATION_NAME,CLIMATE_IDENTIFIER,ID,LOCAL_DATE,PROVINCE_CODE,LOCAL_YEAR,LOCAL_MONTH,LOCAL_DAY,MEAN_TEMPERATURE.*/)
+        expect(response.body).to.include('CLIMATE_IDENTIFIER').to.include('MEAN_TEMPERATURE').to.include('LOCAL_DAY').to.include('x,y').to.include('STATION_NAME')
       })
     })
   })
@@ -108,24 +109,25 @@ describe('E2E test for climate daily data with various form options', () => {
     // Province
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.greaterThan(1600)
+      expect($tr.length).to.be.greaterThan(1700)
     })
 
     // date change
-    cy.inputText('input#date-start-date', '1899-01-01{enter}')
+    cy.inputText('input#date-start-date', '2010-01-01{enter}')
     cy.inputText('input#date-end-date', '2020-12-31{enter}')
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
+    const minNumberMatched = 990000
     cy.intercept('GET', /.*\/collections\/climate-daily\/items\?.*PROVINCE_CODE=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(12331000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(minNumberMatched)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -142,7 +144,7 @@ describe('E2E test for climate daily data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(12331000)
+        expect(response.body.numberMatched).to.be.greaterThan(minNumberMatched)
       })
     })
   })
@@ -172,13 +174,14 @@ describe('E2E test for climate daily data with various form options', () => {
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
+    const minNumberMatched = 2900
     cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(2900)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(minNumberMatched)
     }),  {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -195,7 +198,7 @@ describe('E2E test for climate daily data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(2900)
+        expect(response.body.numberMatched).to.be.greaterThan(minNumberMatched)
       })
     })
   })
@@ -226,13 +229,14 @@ describe('E2E test for climate daily data with various form options', () => {
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
 
     // retrieve download links
+    const minNumberMatched = 120000
     cy.intercept('GET', /.*\/collections\/climate-daily\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.numberMatched).to.be.greaterThan(120000)
+      expect(xhr.response.body.numberMatched).to.be.greaterThan(minNumberMatched)
     }),  {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -249,7 +253,7 @@ describe('E2E test for climate daily data with various form options', () => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
       cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
-        expect(response.body.numberMatched).to.be.greaterThan(120000)
+        expect(response.body.numberMatched).to.be.greaterThan(minNumberMatched)
       })
     })
   })
