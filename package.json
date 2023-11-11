@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@saeris/vue-spinners": "^1.0.8",
-    "axios": "^0.26.1",
+    "axios": "^1.6.0",
     "core-js": "^3.8.3",
     "js-file-download": "^0.4.12",
     "leaflet": "^1.7.1",
