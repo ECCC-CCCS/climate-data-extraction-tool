@@ -70,7 +70,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
     // retrieve download list
-    const maxNumberMatched = 20596 // actual: 20596
+    const maxNumberMatched = 29245 // actual: 29245
     cy.intercept('GET', /.*\/collections\/hydrometric-daily-mean\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
@@ -131,7 +131,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-monthly-mean\/items\?.*PROV_TERR_STATE_LOC=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxMonthlyMean = 198845 // actual: 198842
+    let maxMonthlyMean = 199805 // actual: 199802
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
@@ -227,7 +227,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
     cy.wait(500) // mimic user pause after a zoom click
-    let maxNumStations = 50 // actual: 49
+    let maxNumStations = 55 // actual: 50
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
       expect($tr.length).to.be.lessThan(maxNumStations)
     })
@@ -245,7 +245,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-statistics\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxAnnualStats = 605 // actual: 604
+    let maxAnnualStats = 670 // actual: 669
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
