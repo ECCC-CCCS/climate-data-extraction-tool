@@ -139,8 +139,8 @@ export const datasets = {
             phrase: this.$gettext('For more detailed information on this dataset, see the <a href="{techDocLink}" target="_blank">technical documentation on the Hourly climate data</a>.')
           },
           openPortal: {
-            en: 'https://open.canada.ca/data/en/dataset/',
-            fr: 'https://ouvert.canada.ca/data/fr/dataset/',
+            en: 'https://open.canada.ca/data/en/dataset/df2e6e1a-6057-4c4d-a509-94aa57705a8c',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/df2e6e1a-6057-4c4d-a509-94aa57705a8c',
             phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.')
           }
         },
