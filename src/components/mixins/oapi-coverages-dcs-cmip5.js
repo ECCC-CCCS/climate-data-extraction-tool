@@ -108,7 +108,7 @@ export const DCSCMIP5 = {
       urlParams.push(`bbox=${this.bbox_parts.min_x},${this.bbox_parts.min_y},${this.bbox_parts.max_x},${this.bbox_parts.max_y}`)
 
       // datetime
-      if (this.rangeType !== 'P20Y-Avg') {
+      if (this.rangeType !== 'P20Y-Avg' && !this.oapicDatetime.includes('Invalid date')) {
         urlParams.push(`datetime=${this.oapicDatetime}`)
       }
       return urlParams
@@ -142,7 +142,11 @@ export const DCSCMIP5 = {
       context.push(this.timePeriodOptions[this.oapicIdTimePeriod])
       context.push(this.valueTypeOptions[this.valueType])
       context.push(this.percentileOptions[this.percentile])
-      context.push(this.rangeType === 'P20Y-Avg' ? this.avg20Year : this.oapicDatetime)
+      if (this.rangeType === 'P20Y-Avg') {
+        context.push(this.avg20Year)
+      } else if (!this.oapicDatetime.includes('Invalid date')) {
+        context.push(this.oapicDatetime)
+      }
       context.push(this.fileFormats[this.oapicFormat])
 
       return context
@@ -210,6 +214,10 @@ export const DCSCMIP5 = {
           'custom': this.$gettext('User defined range')
         }
       } else if (this.oapicIdTimePeriod === 'monthly' || (this.valueType === 'absolute' && this.oapicIdTimePeriod === 'monthly')) {
+        return {
+          'custom': this.$gettext('User defined range')
+        }
+      } else if (this.scenarioType === 'projected' && this.valueType === 'absolute') {
         return {
           'custom': this.$gettext('User defined range')
         }
