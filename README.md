@@ -81,7 +81,7 @@ This plugin is not officially released yet. But the advantage is that it provide
 
 ```sh
 # npm packages for vue-i18n-gettext
-npm install vue-i18n-gettext vue-gettext vue-gettext-tools
+npm install vue-i18n-gettext vue-gettext @kngai/vue-gettext-tools vue-server-renderer@{same version as vue}
 npm install babel-runtime vue-template-compiler --save-dev
 ```
 
