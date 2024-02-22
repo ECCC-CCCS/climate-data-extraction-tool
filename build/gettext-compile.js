@@ -1,4 +1,4 @@
-const { Compiler } = require('vue-gettext-tools')
+const { Compiler } = require('@kngai/vue-gettext-tools')
 const gettextOptions = require('./config/i18n')
 
 const compilerConfig = {verbose: true}

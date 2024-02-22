@@ -2,7 +2,15 @@
   <section>
     <h1>{{ currentRouteTitle }}</h1>
 
-    <p v-translate>Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).</p>
+    <p v-translate>Canadian hourly climate data are available for public access from the ECCC/MSC's National Climate Archive. These are surface weather stations that produce hourly meteorological observations, taken each hour of the day. Only a subset of the total stations found on Environment and Climate Change Canada's Historical Climate Data Page is shown due to size limitations. The criteria for station selection are listed as below.</p>
+
+    <p><span v-translate>The priorities for inclusion are as follows:</span>
+      <ul>
+        <li v-translate>Stations in cities with populations of 10000+</li>
+        <li v-translate>Stations that are Regional Basic Climatological Network status</li>
+        <li v-translate>Stations with 30+ years of data</li>
+      </ul>
+    </p>
 
     <div class="alert alert-info">
       <p v-html="htmlNoteMoreData"></p>

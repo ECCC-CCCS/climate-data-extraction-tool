@@ -5,14 +5,14 @@
 				"msgid": "Government of Canada Canadian Climate Normals website",
 				"msgctxt": "a phrase that is mid sentence",
 				"msgstr": [
-					""
+					"Government of Canada Canadian Climate Normals website"
 				]
 			},
 			"Government of Canada Historical Climate Data website": {
 				"msgid": "Government of Canada Historical Climate Data website",
 				"msgctxt": "a phrase that is mid sentence",
 				"msgstr": [
-					""
+					"Government of Canada Historical Climate Data website"
 				]
 			}
 		},
@@ -439,7 +439,7 @@
 				"msgid": "Canadian statistically downscaled climate scenarios",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Canadian statistically downscaled climate scenarios"
 				]
 			},
 			"Climate normals 1981 - 2010": {
@@ -481,7 +481,7 @@
 				"msgid": "Hourly climate data",
 				"msgctxt": "Dataset Name",
 				"msgstr": [
-					""
+					"Hourly climate data"
 				]
 			},
 			"Monthly climate summaries": {
@@ -504,28 +504,28 @@
 				"msgid": "CoverageJSON",
 				"msgctxt": "File format",
 				"msgstr": [
-					""
+					"CoverageJSON"
 				]
 			},
 			"GeoTIFF": {
 				"msgid": "GeoTIFF",
 				"msgctxt": "File format",
 				"msgstr": [
-					""
+					"GeoTIFF"
 				]
 			},
 			"GRIB": {
 				"msgid": "GRIB",
 				"msgctxt": "File format",
 				"msgstr": [
-					""
+					"GRIB"
 				]
 			},
 			"NetCDF": {
 				"msgid": "NetCDF",
 				"msgctxt": "File format",
 				"msgstr": [
-					""
+					"NetCDF"
 				]
 			}
 		},
@@ -543,7 +543,7 @@
 				"msgid": "A region as a {format1} or {format2}",
 				"msgctxt": "Template for different file formats",
 				"msgstr": [
-					""
+					"A region as a {format1} or {format2}"
 				]
 			}
 		},
@@ -600,7 +600,7 @@
 			"(prodType 0, cat 1, subcat 193) [-]": {
 				"msgid": "(prodType 0, cat 1, subcat 193) [-]",
 				"msgstr": [
-					""
+					"(prodType 0, cat 1, subcat 193) [-]"
 				]
 			},
 			"(Required)": {
@@ -613,8 +613,8 @@
 				"msgid": "{count} Station",
 				"msgid_plural": "{count} Stations",
 				"msgstr": [
-					"",
-					""
+					"{count} Station",
+					"{count} Stations"
 				]
 			},
 			"{formatName} files can be opened, viewed and manipulated with any word processor or spreadsheet software.": {
@@ -794,13 +794,13 @@
 			"24 hours preliminary": {
 				"msgid": "24 hours preliminary",
 				"msgstr": [
-					""
+					"24 hours preliminary"
 				]
 			},
 			"24 hr Total precipitation [{units}]": {
 				"msgid": "24 hr Total precipitation [{units}]",
 				"msgstr": [
-					""
+					"24 hr Total precipitation [{units}]"
 				]
 			},
 			"25th percentile": {
@@ -836,7 +836,7 @@
 			"6 hours preliminary": {
 				"msgid": "6 hours preliminary",
 				"msgstr": [
-					""
+					"6 hours preliminary"
 				]
 			},
 			"75th percentile": {
@@ -854,7 +854,7 @@
 			"A single location as a CSV or GeoJSON": {
 				"msgid": "A single location as a CSV or GeoJSON",
 				"msgstr": [
-					""
+					"A single location as a CSV or GeoJSON"
 				]
 			},
 			"Actual values": {
@@ -986,7 +986,7 @@
 			"Bulk downloads": {
 				"msgid": "Bulk downloads",
 				"msgstr": [
-					""
+					"Bulk downloads"
 				]
 			},
 			"Canada Atlas Lambert (EPSG:3978)": {
@@ -1007,6 +1007,12 @@
 					"Canadian gridded temperature and precipitation anomalies (CANGRD) are datasets of historical gridded temperature and precipitation anomalies, interpolated from adjusted and homogenized climate station data at a 50km resolution across Canada. Mean, minimum and maximum temperature and total precipitation anomalies represent the departure from a mean reference period (1961-1990). Temperature anomalies are expressed as degree Celsius (C) while precipitation anomalies are normalized by dividing by the mean reference period and expressed as percentage change (%). Trends of temperature change (C) for 1948-2018 and trends of relative total precipitation change (%) for 1948-2012 are also available for download."
 				]
 			},
+			"Canadian hourly climate data are available for public access from the ECCC/MSC's National Climate Archive. These are surface weather stations that produce hourly meteorological observations, taken each hour of the day. Only a subset of the total stations found on Environment and Climate Change Canada's Historical Climate Data Page is shown due to size limitations. The criteria for station selection are listed as below.": {
+				"msgid": "Canadian hourly climate data are available for public access from the ECCC/MSC's National Climate Archive. These are surface weather stations that produce hourly meteorological observations, taken each hour of the day. Only a subset of the total stations found on Environment and Climate Change Canada's Historical Climate Data Page is shown due to size limitations. The criteria for station selection are listed as below.",
+				"msgstr": [
+					"Canadian hourly climate data are available for public access from the ECCC/MSC's National Climate Archive. These are surface weather stations that produce hourly meteorological observations, taken each hour of the day. Only a subset of the total stations found on Environment and Climate Change Canada's Historical Climate Data Page is shown due to size limitations. The criteria for station selection are listed as below."
+				]
+			},
 			"Clear dates": {
 				"msgid": "Clear dates",
 				"msgstr": [
@@ -1022,7 +1028,7 @@
 			"Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided": {
 				"msgid": "Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided",
 				"msgstr": [
-					""
+					"Click &quot;retrieve your download links&quot; at the bottom of the page and then download the data from the links provided"
 				]
 			},
 			"Climate change": {
@@ -1064,13 +1070,13 @@
 			"Climate predictions": {
 				"msgid": "Climate predictions",
 				"msgstr": [
-					""
+					"Climate predictions"
 				]
 			},
 			"Climate projections": {
 				"msgid": "Climate projections",
 				"msgstr": [
-					""
+					"Climate projections"
 				]
 			},
 			"Contact the Climate Services Support Desk": {
@@ -1232,7 +1238,7 @@
 			"Download a list of detailed information for each Hourly climate station.": {
 				"msgid": "Download a list of detailed information for each Hourly climate station.",
 				"msgstr": [
-					""
+					"Download a list of detailed information for each Hourly climate station."
 				]
 			},
 			"Download a list of detailed information for each LTCE virtual climate station": {
@@ -1328,37 +1334,37 @@
 			"Example web page: 1981-2010 Climate Normals": {
 				"msgid": "Example web page: 1981-2010 Climate Normals",
 				"msgstr": [
-					""
+					"Example web page: 1981-2010 Climate Normals"
 				]
 			},
 			"Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)": {
 				"msgid": "Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)",
 				"msgstr": [
-					"Adjusted and Homogenized Canadian Climate Data"
+					"Example web page: Adjusted and Homogenized Canadian Climate Data (AHCCD)"
 				]
 			},
 			"Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)": {
 				"msgid": "Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)",
 				"msgstr": [
-					"Canadian Gridded Temperature and Precipitation Anomalies"
+					"Example web page: Canadian Gridded Temperature and Precipitation Anomalies (CANGRD)"
 				]
 			},
 			"Example web page: Canadian statistically downscaled climate scenarios": {
 				"msgid": "Example web page: Canadian statistically downscaled climate scenarios",
 				"msgstr": [
-					""
+					"Example web page: Canadian statistically downscaled climate scenarios"
 				]
 			},
 			"Example web page: Daily Climate Data": {
 				"msgid": "Example web page: Daily Climate Data",
 				"msgstr": [
-					""
+					"Example web page: Daily Climate Data"
 				]
 			},
 			"Example web page: Global climate model scenarios (CMIP5)": {
 				"msgid": "Example web page: Global climate model scenarios (CMIP5)",
 				"msgstr": [
-					"Global climate model scenarios"
+					"Example web page: Global climate model scenarios (CMIP5)"
 				]
 			},
 			"Explanation of model types": {
@@ -1376,7 +1382,7 @@
 			"First date": {
 				"msgid": "First date",
 				"msgstr": [
-					""
+					"First date"
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on <abbr title=\"{datasetName}\">AHCCD</abbr></a>.": {
@@ -1436,7 +1442,7 @@
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Hourly climate data</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Hourly climate data</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Hourly climate data</a>."
 				]
 			},
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">technical documentation on the Monthly climate summaries</a>.": {
@@ -1448,7 +1454,7 @@
 			"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Canadian statistically downscaled climate scenarios</a>.": {
 				"msgid": "For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Canadian statistically downscaled climate scenarios</a>.",
 				"msgstr": [
-					""
+					"For more detailed information on this dataset, see the <a href=\"{techDocLink}\" target=\"_blank\">the technical documentation on the Canadian statistically downscaled climate scenarios</a>."
 				]
 			},
 			"Forecast": {
@@ -1484,13 +1490,13 @@
 			"Get started": {
 				"msgid": "Get started",
 				"msgstr": [
-					""
+					"Get started"
 				]
 			},
 			"Help us improve!": {
 				"msgid": "Help us improve!",
 				"msgstr": [
-					""
+					"Help us improve!"
 				]
 			},
 			"Hide discontinued stations": {
@@ -1535,22 +1541,16 @@
 					"Historical start date"
 				]
 			},
-			"Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).": {
-				"msgid": "Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).",
-				"msgstr": [
-					""
-				]
-			},
 			"Hourly data for some stations and variables can be found on the {website}.": {
 				"msgid": "Hourly data for some stations and variables can be found on the {website}.",
 				"msgstr": [
-					""
+					"Hourly data for some stations and variables can be found on the {website}."
 				]
 			},
 			"How to use the Climate data extraction tool": {
 				"msgid": "How to use the Climate data extraction tool",
 				"msgstr": [
-					""
+					"How to use the Climate data extraction tool"
 				]
 			},
 			"How to use: interactive map": {
@@ -1592,7 +1592,7 @@
 			"Last date": {
 				"msgid": "Last date",
 				"msgstr": [
-					""
+					"Last date"
 				]
 			},
 			"Latest changes": {
@@ -1664,7 +1664,7 @@
 			"Map filters": {
 				"msgid": "Map filters",
 				"msgstr": [
-					""
+					"Map filters"
 				]
 			},
 			"Map Projection": {
@@ -1760,7 +1760,7 @@
 			"Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.": {
 				"msgid": "Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently.",
 				"msgstr": [
-					""
+					"Monthly climate summaries by province/territory are available for download on the {website}. The summaries available on each website are derived from the same data but some climate parameters are presented differently."
 				]
 			},
 			"Monthly mean": {
@@ -1832,19 +1832,19 @@
 			"Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.": {
 				"msgid": "Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>.",
 				"msgstr": [
-					""
+					"Only 600000 records can be downloaded at once. If you are looking to download more, please contact the <a href=\"{supportDeskUrl}\" target=\"_blank\">Climate Services Support Desk</a>."
 				]
 			},
 			"only 950 stations can be selected at once": {
 				"msgid": "only 950 stations can be selected at once",
 				"msgstr": [
-					""
+					"only 950 stations can be selected at once"
 				]
 			},
 			"Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.": {
 				"msgid": "Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}.",
 				"msgstr": [
-					""
+					"Only a subset of Climate Normals stations with the longest period of record between 1981-2010 are available on this site. A complete list of all available Climate Normals are available on the {website}."
 				]
 			},
 			"Ontario": {
@@ -1886,7 +1886,7 @@
 			"Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.": {
 				"msgid": "Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes.",
 				"msgstr": [
-					""
+					"Please refer to the <a href=\"#{ahccdPath}\">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a> for climate change purposes."
 				]
 			},
 			"Please select a different location within the dataset boundary or change your form selection.": {
@@ -1928,7 +1928,7 @@
 			"Province": {
 				"msgid": "Province",
 				"msgstr": [
-					""
+					"Province"
 				]
 			},
 			"Province/Territory": {
@@ -1946,7 +1946,7 @@
 			"Quantity type": {
 				"msgid": "Quantity type",
 				"msgstr": [
-					""
+					"Quantity type"
 				]
 			},
 			"Quebec": {
@@ -2006,13 +2006,13 @@
 			"Select a dataset from the menu to the left": {
 				"msgid": "Select a dataset from the menu to the left",
 				"msgstr": [
-					""
+					"Select a dataset from the menu to the left"
 				]
 			},
 			"Select all stations shown": {
 				"msgid": "Select all stations shown",
 				"msgstr": [
-					""
+					"Select all stations shown"
 				]
 			},
 			"select stations on the map or in the table by clicking on them": {
@@ -2024,7 +2024,7 @@
 			"Select your locations/stations of interest": {
 				"msgid": "Select your locations/stations of interest",
 				"msgstr": [
-					""
+					"Select your locations/stations of interest"
 				]
 			},
 			"Show discontinued stations": {
@@ -2090,13 +2090,13 @@
 			"Spatial selection download": {
 				"msgid": "Spatial selection download",
 				"msgstr": [
-					""
+					"Spatial selection download"
 				]
 			},
 			"Specify the rest of your download request": {
 				"msgid": "Specify the rest of your download request",
 				"msgstr": [
-					""
+					"Specify the rest of your download request"
 				]
 			},
 			"Spring (March-May)": {
@@ -2114,7 +2114,7 @@
 			"State": {
 				"msgid": "State",
 				"msgstr": [
-					""
+					"State"
 				]
 			},
 			"Station ID": {
@@ -2135,6 +2135,24 @@
 					"Station table"
 				]
 			},
+			"Stations in cities with populations of 10000+": {
+				"msgid": "Stations in cities with populations of 10000+",
+				"msgstr": [
+					"Stations in cities with populations of 10000+"
+				]
+			},
+			"Stations that are Regional Basic Climatological Network status": {
+				"msgid": "Stations that are Regional Basic Climatological Network status",
+				"msgstr": [
+					"Stations that are Regional Basic Climatological Network status"
+				]
+			},
+			"Stations with 30+ years of data": {
+				"msgid": "Stations with 30+ years of data",
+				"msgstr": [
+					"Stations with 30+ years of data"
+				]
+			},
 			"Summer (June-August)": {
 				"msgid": "Summer (June-August)",
 				"msgstr": [
@@ -2150,7 +2168,7 @@
 			"Technical information and metadata": {
 				"msgid": "Technical information and metadata",
 				"msgstr": [
-					""
+					"Technical information and metadata"
 				]
 			},
 			"Temperature - Daily extremes of record": {
@@ -2162,7 +2180,7 @@
 			"Territory": {
 				"msgid": "Territory",
 				"msgstr": [
-					""
+					"Territory"
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -2192,7 +2210,7 @@
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Canadian statistically downscaled climate scenarios</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Climate normals 1981-2010</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -2228,7 +2246,7 @@
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
-					""
+					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Hourly climate data</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for the Monthly climate summaries</a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
@@ -2252,7 +2270,7 @@
 			"The Canadian statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.": {
 				"msgid": "The Canadian statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown.",
 				"msgstr": [
-					""
+					"The Canadian statistically downscaled climate scenarios dataset provides projected changes in temperature and precipitation, with respect to the reference period of 1986-2005, for three emission scenarios at a 10km resolution. Downscaled data are based on global climate model projections from the Coupled Model Intercomparison Project Phase 5 (CMIP5). The median projected changes across the downscaled multi-model ensemble are shown."
 				]
 			},
 			"The daily climate records database, also known as Long Term Climate Extremes (LTCE; {seeFAQLink}), was developed to address the fragmentation of climate information due to station changes (opening, closing, relocation, etc.) over time. For approximately 750 locations in Canada, &quot;virtual&quot; climate stations have been developed by joining (threading) climate data for an urban location, from nearby stations to make long-term records. Each long-term record consists of the extremes (record values) of daily maximum/minimum temperatures, total precipitation and snowfall for each day of the year. Many of the longest data sets of extremes date as far back as the 1800s. This dataset identifies, for example, the highest temperature or the greatest snowfall on record for each day of the year for the selected urban area.": {
@@ -2294,7 +2312,7 @@
 			"The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
 				"msgid": "The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
-					""
+					"The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:"
 				]
 			},
 			"The open government portal page for the Daily climate records also provides metadata files for the dataset as well as other avenues for accessing the dataset:": {
@@ -2307,6 +2325,12 @@
 				"msgid": "The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
 					"The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:"
+				]
+			},
+			"The priorities for inclusion are as follows:": {
+				"msgid": "The priorities for inclusion are as follows:",
+				"msgstr": [
+					"The priorities for inclusion are as follows:"
 				]
 			},
 			"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.": {
@@ -2330,7 +2354,7 @@
 			"These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.": {
 				"msgid": "These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends.",
 				"msgstr": [
-					""
+					"These data should not be used to answer questions about climate change. For climate change or trend detection the data would have to be adjusted to remove such artifacts as discontinuities and non-climate trends."
 				]
 			},
 			"This button will retrieve more than 7000 stations and may cause a performance loss on this graphical user interface": {
@@ -2390,7 +2414,7 @@
 			"to": {
 				"msgid": "to",
 				"msgstr": [
-					""
+					"to"
 				]
 			},
 			"To pan the map, click and drag over the interactive map. Alternatively, <kbd>tab</kbd> focus to the interactive map box and then press the arrow keys.": {
@@ -2432,7 +2456,7 @@
 			"use map filters to narrow down the selection on the map": {
 				"msgid": "use map filters to narrow down the selection on the map",
 				"msgstr": [
-					""
+					"use map filters to narrow down the selection on the map"
 				]
 			},
 			"Use the climate data extraction tool to download climate data from the selected Environment and Climate Change Canada's datasets.": {
@@ -3595,6 +3619,12 @@
 					"Les anomalies de température et précipitation interpolées pour le Canada (CANGRD) sont des ensembles de données passées sur les anomalies de températures et de précipitations, interpolées à partir de données ajustées et homogénéisées de stations climatologiques à une résolution de 50 km, à l’échelle du Canada. Ce qui est illustré ici représente les tendances saisonnières et annuelles de 1948 à aujourd’hui, et un écart par rapport à la moyenne de la période de référence (1961 à 1990). Extrayez un sous-ensemble à partir de cet ensemble de données ou à partir des anomalies mensuelles, saisonnières et annuelles CANGRD, à l’aide de l’outil d’extraction de données climatiques."
 				]
 			},
+			"Canadian hourly climate data are available for public access from the ECCC/MSC's National Climate Archive. These are surface weather stations that produce hourly meteorological observations, taken each hour of the day. Only a subset of the total stations found on Environment and Climate Change Canada's Historical Climate Data Page is shown due to size limitations. The criteria for station selection are listed as below.": {
+				"msgid": "Canadian hourly climate data are available for public access from the ECCC/MSC's National Climate Archive. These are surface weather stations that produce hourly meteorological observations, taken each hour of the day. Only a subset of the total stations found on Environment and Climate Change Canada's Historical Climate Data Page is shown due to size limitations. The criteria for station selection are listed as below.",
+				"msgstr": [
+					"Les données climatiques horaires canadiennes sont accessibles au public à partir des Archives climatiques nationales du ECCC/SMC. Il s'agit de stations météorologiques de surface qui produisent des observations météorologiques horaires, prises à chaque heure de la journée. En raison des limites de taille, seul un sous-ensemble des stations trouvées sur la page des données climatiques historiques d'Environnement et Changement climatique Canada est présenté. Les critères de sélection des stations sont énumérés ci-dessous."
+				]
+			},
 			"Clear dates": {
 				"msgid": "Clear dates",
 				"msgstr": [
@@ -4121,12 +4151,6 @@
 				"msgid": "Historical start date",
 				"msgstr": [
 					"Date de début de l'historique"
-				]
-			},
-			"Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).": {
-				"msgid": "Hourly climate observations are derived from the data source HLY01. These are stations that produce hourly meteorological observations, taken each hour of the day for the hours 00h-23h, for both daily (temperature, precipitation) and non-daily elements (station pressure, relative humidity, visibility).",
-				"msgstr": [
-					"Les observations climatiques horaires sont dérivées de la source de données HLY01. Il s'agit de stations qui produisent des observations météorologiques horaires, prises chaque heure de la journée pour les heures 00h-23h, tant pour les éléments quotidiens (température, précipitations) que non quotidiens (pression de la station, humidité relative, visibilité)."
 				]
 			},
 			"Hourly data for some stations and variables can be found on the {website}.": {
@@ -4723,6 +4747,24 @@
 					"Table de la station"
 				]
 			},
+			"Stations in cities with populations of 10000+": {
+				"msgid": "Stations in cities with populations of 10000+",
+				"msgstr": [
+					"Les stations situées dans des villes de plus de 10 000 habitants"
+				]
+			},
+			"Stations that are Regional Basic Climatological Network status": {
+				"msgid": "Stations that are Regional Basic Climatological Network status",
+				"msgstr": [
+					"Les stations qui ont le statut de réseau climatologique régional de base (en anglais seulement)"
+				]
+			},
+			"Stations with 30+ years of data": {
+				"msgid": "Stations with 30+ years of data",
+				"msgstr": [
+					"Stations ayant plus de 30 ans de données"
+				]
+			},
 			"Summer (June-August)": {
 				"msgid": "Summer (June-August)",
 				"msgstr": [
@@ -4895,6 +4937,12 @@
 				"msgid": "The open government portal page for the Global climate model scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:",
 				"msgstr": [
 					"La page du portail du gouvernement ouvert relative aux Scénarios basés sur des modèles climatiques globaux fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données :"
+				]
+			},
+			"The priorities for inclusion are as follows:": {
+				"msgid": "The priorities for inclusion are as follows:",
+				"msgstr": [
+					"Les priorités d'inclusion sont les suivantes :"
 				]
 			},
 			"The Regional Deterministic Precipitation Analysis (RDPA) produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 or 24 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for 6h intervals and once a day for the 24h interval. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later.": {

@@ -1,4 +1,4 @@
-const { Extractor } = require('vue-gettext-tools')
+const { Extractor } = require('@kngai/vue-gettext-tools')
 
 const extractorConfig = {verbose: true}
 
