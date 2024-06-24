@@ -298,18 +298,14 @@ export default {
     }
   },
   beforeMount(){
-    
-
     // make api call to get the upper bound for date selector
     let this_ = this
 
     axios.get(this_.cansipsCoverageMetadata)
       .then(function (response) {
-        console.log(response)
         const upperBound = response.data.domainset.generalGrid.axis[3].upperBound
         this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
         this_.modelRun = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
-
       })
   }
 }
