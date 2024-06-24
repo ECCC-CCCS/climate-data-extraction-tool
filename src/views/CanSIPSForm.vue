@@ -88,6 +88,7 @@ import MoreResources from '@/components/MoreResources.vue'
 import { ows } from '@/components/mixins/ows.js'
 import { oapiCoverage } from '@/components/mixins/oapi-coverages.js'
 import { datasets } from '@/components/mixins/datasets.js'
+import axios from 'axios'
 
 export default {
   name: 'CanSIPSForm',
@@ -261,6 +262,9 @@ export default {
         this.modelRunOutOfRange ||
         this.forePeriodIsEmpty ||
         this.modelRunIsEmpty
+    },
+    cansipsCoverageMetadata: function () {
+      return `${this.oapicServer}/collections/weather:cansips:250km:forecast:members?f=json`
     }
   },
   methods: {
@@ -292,6 +296,21 @@ export default {
 
       return urlParams
     }
+  },
+  beforeMount(){
+    
+
+    // make api call to get the upper bound for date selector
+    let this_ = this
+
+    axios.get(this_.cansipsCoverageMetadata)
+      .then(function (response) {
+        console.log(response)
+        const upperBound = response.data.domainset.generalGrid.axis[3].upperBound
+        this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
+        this_.modelRun = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
+
+      })
   }
 }
 </script>
