@@ -419,7 +419,7 @@ export default {
     // Unset flag on leaflet map before the attribution text
     let map = this.$refs.BBOXMap.mapObject
     map.attributionControl.setPrefix('<a href="https://leafletjs.com/" target="_blank">Leaflet</a>')
-  
+
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
