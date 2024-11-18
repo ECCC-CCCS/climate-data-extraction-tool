@@ -365,7 +365,7 @@ export default {
         subset.push(`season("${this.oapicIdTimePeriod}")`)
       }
       if (subset.length > 0) {
-        urlParams.push(subset.join(','))
+        urlParams.push(`subset=${subset.join(',')}`)
       }
 
       // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
