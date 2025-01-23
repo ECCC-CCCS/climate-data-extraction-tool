@@ -19,6 +19,10 @@ export const datasets = {
       climateDataLink: {
         en: 'https://climatedata.ca',
         fr: 'https://donneesclimatiques.ca'
+      },
+      climateDataViewer: {
+        en: process.env.VUE_APP_CLIMATE_MAPS_EN,
+        fr: process.env.VUE_APP_CLIMATE_MAPS_FR
       }
     }
   },
@@ -362,10 +366,10 @@ export const datasets = {
           }
         },
         climateDisplay: {
-          title: this.$gettext('Display and Download Climate Data'),
+          title: this.$gettext('Climate data viewer'),
           url: {
-            en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download.html',
-            fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger.html'
+            en: this.climateDataViewer.en,
+            fr: this.climateDataViewer.fr
           }
         }
       }

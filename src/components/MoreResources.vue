@@ -11,7 +11,7 @@
             target="_blank"
             class="btn-default well text-left"
             style="display: block; text-decoration: none;">
-            <img src="../assets/cccs_icons/3book-icon-tr.png" alt="" width="30" height="30">&nbsp;<strong v-translate>Library of climate resources</strong><span v-translate t-comment="A title/word precedes this colon without spaces">: links to datasets, tools, guidance and related resources</span>
+            <img src="../assets/cccs_icons/3book-icon-tr.png" alt="" width="30" height="30">&nbsp;<strong v-translate>Library of climate resources</strong><span v-translate t-comment="A title/word precedes this colon without spaces">: links to other datasets, tools, guidance and related resources</span>
           </a>
         </li>
         <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -20,7 +20,7 @@
             target="_blank"
             class="btn-default well text-left"
             style="display: block; text-decoration: none;">
-            <img src="../assets/cccs_icons/book-icon-tr.png" width="30" alt="" height="30">&nbsp;<strong v-translate>Climate information basics</strong><span v-translate t-comment="A title/word precedes this colon without spaces">: climate change trends, climate science, climate services</span>
+            <img src="../assets/cccs_icons/book-icon-tr.png" width="30" alt="" height="30">&nbsp;<strong v-translate>Learn more about climate data from ECCC</strong><span v-translate t-comment="A title/word precedes this colon without spaces">: more details on ECCC's climate datasets</span>
           </a>
         </li>
         <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -38,7 +38,7 @@
             target="_blank"
             class="btn-default well text-left"
             style="display: block; text-decoration: none;">
-            <img src="../assets/cccs_icons/graph-icon-tr.png" alt="" width="30" height="30">&nbsp;<strong v-translate>Display and download climate data</strong><span v-translate t-comment="A title/word precedes this colon without spaces">: search, explore and visualize climate data</span>
+            <img src="../assets/cccs_icons/graph-icon-tr.png" alt="" width="30" height="30">&nbsp;<strong v-translate>Climate data viewer</strong><span v-translate t-comment="A title/word precedes this colon without spaces">: search, explore and visualize climate data</span>
           </a>
         </li>
       </ul>
@@ -55,8 +55,8 @@ export default {
   computed: {
     climateInfoBasic: function () {
       return {
-        en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/basics.html',
-        fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/essentiels.html'
+        en: this.canadaDomain.en + '/environment-climate-change/services/climate-change/canadian-centre-climate-services/display-download/climate-data.html',
+        fr: this.canadaDomain.fr + '/environnement-changement-climatique/services/changements-climatiques/centre-canadien-services-climatiques/afficher-telecharger/donnees-climatiques.html'
       }
     },
     titleMoreResourcesHtml: function () {
