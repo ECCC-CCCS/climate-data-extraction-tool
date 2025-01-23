@@ -579,16 +579,16 @@
 					": 1-833-517-0376; get help finding, understanding and using climate information"
 				]
 			},
-			": climate change trends, climate science, climate services": {
-				"msgid": ": climate change trends, climate science, climate services",
+			": links to other datasets, tools, guidance and related resources": {
+				"msgid": ": links to other datasets, tools, guidance and related resources",
 				"msgstr": [
-					": climate change trends, climate science, climate services"
+					": links to other datasets, tools, guidance and related resources"
 				]
 			},
-			": links to datasets, tools, guidance and related resources": {
-				"msgid": ": links to datasets, tools, guidance and related resources",
+			": more details on ECCC's climate datasets": {
+				"msgid": ": more details on ECCC's climate datasets",
 				"msgstr": [
-					": links to datasets, tools, guidance and related resources"
+					": more details on ECCC's climate datasets"
 				]
 			},
 			": search, explore and visualize climate data": {
@@ -1043,6 +1043,12 @@
 					"Climate data extraction tool"
 				]
 			},
+			"Climate data viewer": {
+				"msgid": "Climate data viewer",
+				"msgstr": [
+					"Climate data viewer"
+				]
+			},
 			"Climate element / record type": {
 				"msgid": "Climate element / record type",
 				"msgstr": [
@@ -1053,12 +1059,6 @@
 				"msgid": "Climate ID",
 				"msgstr": [
 					"Climate ID"
-				]
-			},
-			"Climate information basics": {
-				"msgid": "Climate information basics",
-				"msgstr": [
-					"Climate information basics"
 				]
 			},
 			"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
@@ -1191,18 +1191,6 @@
 				"msgid": "deselect all stations by clicking the \"Clear selected\" button",
 				"msgstr": [
 					"deselect all stations by clicking the \"Clear selected\" button"
-				]
-			},
-			"Display and download climate data": {
-				"msgid": "Display and download climate data",
-				"msgstr": [
-					"Display and download climate data"
-				]
-			},
-			"Display and Download Climate Data": {
-				"msgid": "Display and Download Climate Data",
-				"msgstr": [
-					"Display and Download Climate Data"
 				]
 			},
 			"Download": {
@@ -1611,6 +1599,12 @@
 				"msgid": "Latitude:",
 				"msgstr": [
 					"Latitude:"
+				]
+			},
+			"Learn more about climate data from ECCC": {
+				"msgid": "Learn more about climate data from ECCC",
+				"msgstr": [
+					"Learn more about climate data from ECCC"
 				]
 			},
 			"Learn more about emissions scenarios": {
@@ -3191,16 +3185,16 @@
 					" : 1-833-517-0376; obtenir de l&rsquo;aide afin de trouver, comprendre et utiliser des renseignements climatiques"
 				]
 			},
-			": climate change trends, climate science, climate services": {
-				"msgid": ": climate change trends, climate science, climate services",
+			": links to other datasets, tools, guidance and related resources": {
+				"msgid": ": links to other datasets, tools, guidance and related resources",
 				"msgstr": [
-					" : tendances  des changements climatiques, science climatique, services climatiques"
+					" : liens vers d'autres ensembles de données, des outils, des conseils et des ressources connexes"
 				]
 			},
-			": links to datasets, tools, guidance and related resources": {
-				"msgid": ": links to datasets, tools, guidance and related resources",
+			": more details on ECCC's climate datasets": {
+				"msgid": ": more details on ECCC's climate datasets",
 				"msgstr": [
-					" : liens vers des ensembles de données, des outils, des conseils et des ressources connexes"
+					" : lus de détails sur les ensembles de données climatiques de l'ECCC"
 				]
 			},
 			": search, explore and visualize climate data": {
@@ -3655,6 +3649,12 @@
 					"Outil d'extraction de données climatiques"
 				]
 			},
+			"Climate data viewer": {
+				"msgid": "Climate data viewer",
+				"msgstr": [
+					"Visualiseur de données climatiques"
+				]
+			},
 			"Climate element / record type": {
 				"msgid": "Climate element / record type",
 				"msgstr": [
@@ -3665,12 +3665,6 @@
 				"msgid": "Climate ID",
 				"msgstr": [
 					"ID climatique"
-				]
-			},
-			"Climate information basics": {
-				"msgid": "Climate information basics",
-				"msgstr": [
-					"Renseignements essentiels sur le climat"
 				]
 			},
 			"Climate Normals 1981-2010 are used to summarize or describe the average climatic conditions of a particular location. At the completion of each decade, Environment and Climate Change Canada updates its climate normals for as many locations and as many climatic characteristics as possible. The climate normals offered here are based on Canadian climate stations with at least 15 years of data between 1981 to 2010.": {
@@ -3803,18 +3797,6 @@
 				"msgid": "deselect all stations by clicking the \"Clear selected\" button",
 				"msgstr": [
 					"désélectionnez toutes les stations en cliquant sur le bouton d’annulation de la sélection"
-				]
-			},
-			"Display and download climate data": {
-				"msgid": "Display and download climate data",
-				"msgstr": [
-					"Afficher et télécharger les données climatiques"
-				]
-			},
-			"Display and Download Climate Data": {
-				"msgid": "Display and Download Climate Data",
-				"msgstr": [
-					"Afficher et télécharger les données climatiques"
 				]
 			},
 			"Download": {
@@ -4223,6 +4205,12 @@
 				"msgid": "Latitude:",
 				"msgstr": [
 					"Latitude:"
+				]
+			},
+			"Learn more about climate data from ECCC": {
+				"msgid": "Learn more about climate data from ECCC",
+				"msgstr": [
+					"En savoir plus au sujet des données climatiques d’ECCC"
 				]
 			},
 			"Learn more about emissions scenarios": {
