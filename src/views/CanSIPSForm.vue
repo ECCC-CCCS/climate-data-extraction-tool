@@ -109,7 +109,7 @@ export default {
       oapicIdDataset: 'cansips',
       oapicIdType: 'forecast',
       oapicIdProduct: 'members',
-      oapicIdVariable: '1',
+      oapicIdVariable: 'PRMSL_MSL_0',
       oapicMember: 1,
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
@@ -117,6 +117,7 @@ export default {
       foreRunMomentMax: this.$moment.utc('2022-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), missing Aug and Sept 2018 source data
       modelRun: this.$moment.utc('2022-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       forecastPeriod: this.$moment.utc('2022-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      schemaProperties: [],
       dateConfigs: {
         minimumView: 'month',
         format: 'YYYY-MM',
@@ -153,15 +154,20 @@ export default {
       }
     },
     variableOptions: function () {
-      return {
-        '4': this.$gettext('Sea level pressure'),
-        '3': this.$gettext('Instantaneous precipitation rate (m/s)'),
-        '1': this.$gettext('Air temperature'),
-        '6': this.$gettext('Water temperature'),
-        '2': this.$gettext('Geopotential height at 500mb'),
-        '5': this.$gettext('Air temperature at 850mb')
+      const supportedVariables = {
+        'PRMSL_MSL_0': this.$gettext('Sea level pressure'),
+        'PRATE_SFC_0': this.$gettext('Instantaneous precipitation rate (m/s)'),
+        'TMP_TGL_2m': this.$gettext('Air temperature'),
+        'WTMP_SFC_0': this.$gettext('Water temperature'),
+        'HGT_ISBL_0500': this.$gettext('Geopotential height at 500mb'),
+        'TMP_ISBL_0850': this.$gettext('Air temperature at 850mb')
         // 'PRES_UU.850': this.$gettext('Winds at 850mb')
       }
+
+      // ensure this list is validated against schema
+      return Object.fromEntries(
+        Object.entries(supportedVariables).filter(([key]) => this.schemaProperties.includes(key))
+      )
     },
     filename: function () {
       return this.variableOptions[this.oapicIdVariable] + ' (' + this.oapicCoverageId + ')'
@@ -265,6 +271,9 @@ export default {
     },
     cansipsCoverageMetadata: function () {
       return `${this.oapicServer}/collections/weather:cansips:250km:forecast:members?f=json`
+    },
+    cansipsMembersSchema: function () {
+      return `${this.oapicServer}/collections/weather:cansips:250km:forecast:members/schema?f=json`
     }
   },
   methods: {
@@ -287,8 +296,8 @@ export default {
       let subset = []
       // subset: member (1-20)
       subset.push(`member(${this.oapicMember})`)
-      // subset: dim_reference_time (2013-04 to 2022-01)
-      subset.push(`dim_reference_time("${this.oapicModelRun}")`)
+      // subset: reference_time (2013-04 to 2025-06)
+      subset.push(`reference_time("${this.oapicModelRun}")`)
       urlParams.push(`subset=${subset.join(',')}`)
 
       // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
@@ -303,9 +312,16 @@ export default {
 
     axios.get(this_.cansipsCoverageMetadata)
       .then(function (response) {
-        const upperBound = response.data.domainset.generalGrid.axis[3].upperBound
+        const upperBound = response.data.extent.reference_time.interval[0][1]
         this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
         this_.modelRun = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
+      })
+
+    // validate available variables
+    axios.get(this_.cansipsMembersSchema)
+      .then(function (response) {
+        const properties = response.data.properties
+        this_.schemaProperties = Object.keys(properties).sort()
       })
   }
 }
