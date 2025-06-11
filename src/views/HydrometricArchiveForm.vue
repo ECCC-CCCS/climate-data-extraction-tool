@@ -90,7 +90,7 @@
       :layer-options="selectedLayerOption"
       :ows-url-formatter="getOapifDownloadURL"
       :oapif-common-url="getOapifCommonURL(oapif_layer)"
-      :oapif-download-Limit="oapif_limit"
+      :oapi-download-limit="oapif_limit"
       :layer-format="oapif_format"
       :has-errors="hasErrors"
       :url-box-title="$gettext('Data download links')"
