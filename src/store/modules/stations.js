@@ -4,28 +4,38 @@ Vuex module for the climate stations and related selections
 
 import axios from 'axios'
 
+// temporary hard limit
+const OAPIFEATURES_LIMIT = 500
+
 // initial state
 const state = {
   province: 'null',
   climateDailyStationGeoJson: {
+    type: 'FeatureCollection',
     features: []
   },
   climateHourlyStationGeoJson: {
+    type: 'FeatureCollection',
     features: []
   },
   climateNormalsStationGeoJson: {
-    features: []
+    type: 'FeatureCollection',
+    features: [] // Start with an empty array
   },
   climateMonthlyStationGeoJson: {
+    type: 'FeatureCollection',
     features: []
   },
   ahccdStationGeoJson: {
+    type: 'FeatureCollection',
     features: []
   },
   hydroStationGeoJson: {
+    type: 'FeatureCollection',
     features: []
   },
   ltceStationGeoJson: {
+    type: 'FeatureCollection',
     features: []
   },
   isLoadingStations: false,
@@ -102,23 +112,135 @@ const mutations = {
   changeHourlyStation (state, payload) {
     state.climateHourlyStationGeoJson = payload
   },
+  appendHourlyStation (state, payload) {
+    if (
+      payload &&
+      Array.isArray(payload.features)
+    ) {
+      state.climateHourlyStationGeoJson = {
+        ...state.climateHourlyStationGeoJson,
+        features: [
+          ...state.climateHourlyStationGeoJson.features,
+          ...payload.features
+        ]
+      }
+    } else {
+      console.warn('Invalid GeoJSON payload', payload)
+    }
+  },
   changeDailyStation (state, payload) {
     state.climateDailyStationGeoJson = payload
+  },
+  appendDailyStation (state, payload) {
+    if (
+      payload &&
+      Array.isArray(payload.features)
+    ) {
+      state.climateDailyStationGeoJson = {
+        ...state.climateDailyStationGeoJson,
+        features: [
+          ...state.climateDailyStationGeoJson.features,
+          ...payload.features
+        ]
+      }
+    } else {
+      console.warn('Invalid GeoJSON payload', payload)
+    }
   },
   changeMonthlyStation (state, payload) {
     state.climateMonthlyStationGeoJson = payload
   },
+  appendMonthlyStation (state, payload) {
+    if (
+      payload &&
+      Array.isArray(payload.features)
+    ) {
+      state.climateMonthlyStationGeoJson = {
+        ...state.climateMonthlyStationGeoJson,
+        features: [
+          ...state.climateMonthlyStationGeoJson.features,
+          ...payload.features
+        ]
+      }
+    } else {
+      console.warn('Invalid GeoJSON payload', payload)
+    }
+  },
   changeNormalsStation (state, payload) {
     state.climateNormalsStationGeoJson = payload
+  },
+  appendNormalsStation (state, payload) {
+    if (
+      payload &&
+      Array.isArray(payload.features)
+    ) {
+      state.climateNormalsStationGeoJson = {
+        ...state.climateNormalsStationGeoJson,
+        features: [
+          ...state.climateNormalsStationGeoJson.features,
+          ...payload.features
+        ]
+      }
+    } else {
+      console.warn('Invalid GeoJSON payload', payload)
+    }
   },
   changeAhccdStation (state, payload) {
     state.ahccdStationGeoJson = payload
   },
+  appendAhccdStation (state, payload) {
+    if (
+      payload &&
+      Array.isArray(payload.features)
+    ) {
+      state.ahccdStationGeoJson = {
+        ...state.ahccdStationGeoJson,
+        features: [
+          ...state.ahccdStationGeoJson.features,
+          ...payload.features
+        ]
+      }
+    } else {
+      console.warn('Invalid GeoJSON payload', payload)
+    }
+  },
   changeLtceStation (state, payload) {
     state.ltceStationGeoJson = payload
   },
+  appendLtceStation (state, payload) {
+    if (
+      payload &&
+      Array.isArray(payload.features)
+    ) {
+      state.ltceStationGeoJson = {
+        ...state.ltceStationGeoJson,
+        features: [
+          ...state.ltceStationGeoJson.features,
+          ...payload.features
+        ]
+      }
+    } else {
+      console.warn('Invalid GeoJSON payload', payload)
+    }
+  },
   changeHydroStation (state, payload) {
     state.hydroStationGeoJson = payload
+  },
+  appendHydroStation (state, payload) {
+    if (
+      payload &&
+      Array.isArray(payload.features)
+    ) {
+      state.hydroStationGeoJson = {
+        ...state.hydroStationGeoJson,
+        features: [
+          ...state.hydroStationGeoJson.features,
+          ...payload.features
+        ]
+      }
+    } else {
+      console.warn('Invalid GeoJSON payload', payload)
+    }
   },
   addSingleStationIdSelected (state, payload) {
     if (state.stationIdSelected.length < state.maxStationSelection) { // limitation
@@ -169,7 +291,7 @@ const actions = {
       stateValue: newProv
     })
   },
-  retrieveHydroStations: function ({ state, commit }, url) {
+  retrieveHydroStations: async function ({ state, commit }, {url}) {
     const activeOnly = url.includes('STATUS_EN=Active')
     if (state.retrievedAllHydroStations) {
       return false
@@ -180,9 +302,31 @@ const actions = {
       commit('startLoadingAllHydroStations')
     }
     commit('startLoadingStations')
-    axios.get(url, { cancelToken: state.cancelSourceStation.token })
-      .then((response) => {
-        commit('changeHydroStation', response.data)
+
+    // Clear out existing data first
+    state.hydroStationGeoJson.features = []
+
+    try {
+      // Retrieve total number of stations first
+      const hitResponse = await axios.get(`${url}&resulttype=hits`)
+      const totalStations = hitResponse.data.numberMatched
+
+
+      // Paginate requests based on totalStations
+      const requests = []
+      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+          cancelToken: state.cancelSourceStation.token
+        })
+        requests.push(request)
+      }
+
+      // Wait for all paginated GETs to resolve
+      const responses = await Promise.all(requests)
+
+      // Commit results
+      responses.forEach(response => {
+        commit('appendHydroStation', response.data)
         if (state.hydroStationActive === false) {
           commit('changeStationState', {
             stateProp: 'retrievedAllHydroStations',
@@ -190,98 +334,279 @@ const actions = {
           })
         }
       })
-      .finally(() => {
-        commit('finishLoadingStations')
-        if (!activeOnly) {
-          commit('finishLoadingAllHydroStations')
-        }
-      })
+
+      commit('finishLoadingStations')
+
+      if (!activeOnly) {
+        commit('finishLoadingAllHydroStations')
+      }
+
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.warn('Station fetch canceled:', error.message)
+      } else {
+        console.error('Error fetching stations:', error)
+      }
+      commit('finishLoadingStations')
+      commit('finishLoadingAllHydroStations')
+    }
   },
-  retrieveClimateStations: function ({ state, commit }, url) { // daily
+  retrieveClimateStations: async function ({ state, commit }, {url}) { // daily
     state.cancelSourceStation.cancel('Cancelling existing station request')
     state.cancelSourceStation = axios.CancelToken.source()
     commit('startLoadingStations')
-    axios.get(url, { cancelToken: state.cancelSourceStation.token })
-      .then((response) => {
-        commit('changeDailyStation', response.data)
-      })
-      .finally(() => {
-        commit('finishLoadingStations')
-      })
-  },
-  retrieveClimateHourlyStations: function ({ state, commit }, url) {
-    state.cancelSourceStation.cancel('Cancelling existing station request')
-    state.cancelSourceStation = axios.CancelToken.source()
-    commit('startLoadingStations')
-    axios.get(url, { cancelToken: state.cancelSourceStation.token })
-      .then((response) => {
-        commit('changeHourlyStation', response.data)
-      })
-      .finally(() => {
-        commit('finishLoadingStations')
-      })
-  },
-  retrieveClimateNormalsStations: function ({ state, commit }, url) {
-    state.cancelSourceStation.cancel('Cancelling existing station request')
-    state.cancelSourceStation = axios.CancelToken.source()
-    commit('startLoadingStations')
-    axios.get(url, { cancelToken: state.cancelSourceStation.token })
-      .then((response) => {
-        commit('changeNormalsStation', response.data)
-      })
-      .finally(() => {
-        commit('finishLoadingStations')
-      })
-  },
-  retrieveClimateMonthlyStations: function ({ state, commit }, url) {
-    state.cancelSourceStation.cancel('Cancelling existing station request')
-    state.cancelSourceStation = axios.CancelToken.source()
-    commit('startLoadingStations')
-    axios.get(url, { cancelToken: state.cancelSourceStation.token })
-      .then((response) => {
-        commit('changeMonthlyStation', response.data)
-      })
-      .finally(() => {
-        commit('finishLoadingStations')
-      })
-  },
-  retrieveAhccdStations: function ({ state, commit }, url) {
-    state.cancelSourceStation.cancel('Cancelling existing station request')
-    state.cancelSourceStation = axios.CancelToken.source()
-    commit('startLoadingStations')
-    axios.get(url, { cancelToken: state.cancelSourceStation.token })
-      .then((response) => {
-        commit('changeAhccdStation', response.data)
-      })
-      .finally(() => {
-        commit('finishLoadingStations')
-      })
-  },
-  retrieveLtceStations: function ({ state, commit }, {url, uniqueCol}) {
-    state.cancelSourceStation.cancel('Cancelling existing station request')
-    state.cancelSourceStation = axios.CancelToken.source()
-    commit('startLoadingStations')
-    axios.get(url, { cancelToken: state.cancelSourceStation.token })
-      .then((response) => {
-        // reduce rows by uniqueCol
-        let uniqueResponseData = {
-          features: []
-        }
-        response.data.features.forEach((row) => {
-          let i = uniqueResponseData.features.findIndex(x => x.properties[uniqueCol] === row.properties[uniqueCol])
-          if (i <= -1) {
-            uniqueResponseData.features.push(row)
-          } else {
-            if (!uniqueResponseData.features[i].properties['ELEMENT_NAME_E'].includes(row.properties['ELEMENT_NAME_E'])) {
-              uniqueResponseData.features[i].properties['ELEMENT_NAME_E'] += ', ' + row.properties['ELEMENT_NAME_E']
-            }
-          }
+    state.climateDailyStationGeoJson.features = []
+
+    // GET via pagination of stations
+    try {
+      // 💡 Retrieve total number of stations first
+      const hitResponse = await axios.get(`${url}&resulttype=hits`)
+      const totalStations = hitResponse.data.numberMatched
+
+
+      // Paginate requests based on totalStations
+      const requests = []
+      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+          cancelToken: state.cancelSourceStation.token
         })
-        commit('changeLtceStation', uniqueResponseData)
+        requests.push(request)
+      }
+
+      // Wait for all paginated GETs to resolve
+      const responses = await Promise.all(requests)
+
+      // Commit results
+      responses.forEach(response => {
+        commit('appendDailyStation', response.data)
       })
-      .finally(() => {
-        commit('finishLoadingStations')
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.warn('Station fetch canceled:', error.message)
+      } else {
+        console.error('Error fetching stations:', error)
+      }
+    } finally {
+      // Always mark loading as finished
+      commit('finishLoadingStations')
+    }
+  },
+  retrieveClimateHourlyStations: async function ({ state, commit }, {url}) {
+    state.cancelSourceStation.cancel('Cancelling existing station request')
+    state.cancelSourceStation = axios.CancelToken.source()
+    commit('startLoadingStations')
+    state.climateHourlyStationGeoJson.features = []
+
+    // GET via pagination of stations
+    try {
+      // 💡 Retrieve total number of stations first
+      const hitResponse = await axios.get(`${url}&resulttype=hits`)
+      const totalStations = hitResponse.data.numberMatched
+
+
+      // Paginate requests based on totalStations
+      const requests = []
+      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+          cancelToken: state.cancelSourceStation.token
+        })
+        requests.push(request)
+      }
+
+      // Wait for all paginated GETs to resolve
+      const responses = await Promise.all(requests)
+
+      // Commit results
+      responses.forEach(response => {
+        commit('appendHourlyStation', response.data)
       })
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.warn('Station fetch canceled:', error.message)
+      } else {
+        console.error('Error fetching stations:', error)
+      }
+    } finally {
+      // Always mark loading as finished
+      commit('finishLoadingStations')
+    }
+  },
+  retrieveClimateNormalsStations: async function ({ state, commit }, {url}) {
+    state.cancelSourceStation.cancel('Cancelling existing station request')
+    state.cancelSourceStation = axios.CancelToken.source()
+    commit('startLoadingStations')
+    state.climateNormalsStationGeoJson.features = []
+
+    // GET via pagination of stations
+    try {
+      // 💡 Retrieve total number of stations first
+      const hitResponse = await axios.get(`${url}&resulttype=hits`)
+      const totalStations = hitResponse.data.numberMatched
+
+
+      // Paginate requests based on totalStations
+      const requests = []
+      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+          cancelToken: state.cancelSourceStation.token
+        })
+        requests.push(request)
+      }
+
+      // Wait for all paginated GETs to resolve
+      const responses = await Promise.all(requests)
+
+      // Commit results
+      responses.forEach(response => {
+        commit('appendNormalsStation', response.data)
+      })
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.warn('Station fetch canceled:', error.message)
+      } else {
+        console.error('Error fetching stations:', error)
+      }
+    } finally {
+      // Always mark loading as finished
+      commit('finishLoadingStations')
+    }
+  },
+  retrieveClimateMonthlyStations: async function ({ state, commit }, {url}) {
+    state.cancelSourceStation.cancel('Cancelling existing station request')
+    state.cancelSourceStation = axios.CancelToken.source()
+    commit('startLoadingStations')
+    state.climateMonthlyStationGeoJson.features = []
+
+    // GET via pagination of stations
+    try {
+      // 💡 Retrieve total number of stations first
+      const hitResponse = await axios.get(`${url}&resulttype=hits`)
+      const totalStations = hitResponse.data.numberMatched
+
+
+      // Paginate requests based on totalStations
+      const requests = []
+      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+          cancelToken: state.cancelSourceStation.token
+        })
+        requests.push(request)
+      }
+
+      // Wait for all paginated GETs to resolve
+      const responses = await Promise.all(requests)
+
+      // Commit results
+      responses.forEach(response => {
+        commit('appendMonthlyStation', response.data)
+      })
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.warn('Station fetch canceled:', error.message)
+      } else {
+        console.error('Error fetching stations:', error)
+      }
+    } finally {
+      // Always mark loading as finished
+      commit('finishLoadingStations')
+    }
+  },
+  retrieveAhccdStations: async function ({ state, commit }, {url}) {
+    state.cancelSourceStation.cancel('Cancelling existing station request')
+    state.cancelSourceStation = axios.CancelToken.source()
+    commit('startLoadingStations')
+    state.ahccdStationGeoJson.features = []
+
+    // GET via pagination of stations
+    try {
+      // 💡 Retrieve total number of stations first
+      const hitResponse = await axios.get(`${url}&resulttype=hits`)
+      const totalStations = hitResponse.data.numberMatched
+
+
+      // Paginate requests based on totalStations
+      const requests = []
+      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+          cancelToken: state.cancelSourceStation.token
+        })
+        requests.push(request)
+      }
+
+      // Wait for all paginated GETs to resolve
+      const responses = await Promise.all(requests)
+
+      // Commit results
+      responses.forEach(response => {
+        commit('appendAhccdStation', response.data)
+      })
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.warn('Station fetch canceled:', error.message)
+      } else {
+        console.error('Error fetching stations:', error)
+      }
+    } finally {
+      // Always mark loading as finished
+      commit('finishLoadingStations')
+    }
+  },
+  retrieveLtceStations: async function ({ state, commit }, {url, uniqueCol}) {
+    state.cancelSourceStation.cancel('Cancelling existing station request')
+    state.cancelSourceStation = axios.CancelToken.source()
+    commit('startLoadingStations')
+    state.ltceStationGeoJson.features = []
+
+    // GET via pagination of stations
+    try {
+      // 💡 Retrieve total number of stations first
+      const hitResponse = await axios.get(`${url}&resulttype=hits`)
+      const totalStations = hitResponse.data.numberMatched
+
+
+      // Paginate requests based on totalStations
+      const requests = []
+      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+          cancelToken: state.cancelSourceStation.token
+        })
+        requests.push(request)
+      }
+
+      // Wait for all paginated GETs to resolve
+      const responses = await Promise.all(requests)
+
+      // Commit results
+      responses.forEach(response => {
+        commit('appendLtceStation', response.data)
+      })
+
+      // reduce stations by uniqueCol
+      let uniqueFeatures = []
+      state.ltceStationGeoJson.features.forEach((row) => {
+        let i = uniqueFeatures.findIndex(x => x.properties[uniqueCol] === row.properties[uniqueCol])
+        if (i <= -1) {
+          uniqueFeatures.push(row)
+        } else {
+          if (!uniqueFeatures[i].properties['ELEMENT_NAME_E'].includes(row.properties['ELEMENT_NAME_E'])) {
+            uniqueFeatures[i].properties['ELEMENT_NAME_E'] += ', ' + row.properties['ELEMENT_NAME_E']
+          }
+        }
+      })
+      state.ltceStationGeoJson = {
+        ...state.ltceStationGeoJson,
+        features: uniqueFeatures
+      }
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.warn('Station fetch canceled:', error.message)
+      } else {
+        console.error('Error fetching stations:', error)
+      }
+    } finally {
+      // Always mark loading as finished
+      commit('finishLoadingStations')
+    }
   },
   addStationIdSelected: function ({ commit }, id) {
     commit('addSingleStationIdSelected', id)

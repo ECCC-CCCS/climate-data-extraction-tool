@@ -18,7 +18,7 @@
       <p v-html="openPortalHtml"></p>
 
       <station-list-link
-        :url-station-list="urlStationList"
+        :url-station-list="urlStationList + '&limit=' + oapif_station_limit"
         :download-text="$gettext('Download a list of detailed information for each Climate normals station.')"></station-list-link>
     </details>
 
@@ -112,12 +112,14 @@ export default {
   beforeMount () {
     // Load climate stations
     if (this.numStationClimateNormals === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('stations/retrieveClimateNormalsStations', this.urlStationMapList)
+      this.$store.dispatch('stations/retrieveClimateNormalsStations', {
+        url: this.urlStationMapList
+      })
     }
   },
   computed: {
     urlStationList: function () {
-      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y&limit=' + this.oapif_station_limit
+      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&HAS_NORMALS_DATA=Y'
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},${this.prop_date_start},${this.prop_date_end}`

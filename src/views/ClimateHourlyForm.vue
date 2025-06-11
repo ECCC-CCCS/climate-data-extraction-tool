@@ -26,7 +26,7 @@
       <p v-html="openPortalHtml"></p>
 
       <station-list-link
-        :url-station-list="urlStationList"
+        :url-station-list="urlStationList + '&limit=' + oapif_station_limit"
         :download-text="$gettext('Download a list of detailed information for each Hourly climate station.')"></station-list-link>
     </details>
 
@@ -169,7 +169,9 @@ export default {
   beforeMount () {
     // Load climate stations
     if (this.numStationClimateHourly === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('stations/retrieveClimateHourlyStations', this.urlStationMapList)
+      this.$store.dispatch('stations/retrieveClimateHourlyStations', {
+        url: this.urlStationMapList
+      })
     }
 
     // Get min local_date dynamically to set date_min
@@ -194,7 +196,7 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?HAS_HOURLY_DATA=Y&f=json&limit=' + this.oapif_station_limit
+      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?HAS_HOURLY_DATA=Y&f=json'
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},${this.prop_date_start},${this.prop_date_end}`

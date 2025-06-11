@@ -14,7 +14,7 @@
       <p v-html="openPortalHtml"></p>
 
       <station-list-link
-        :url-station-list="urlStationList"
+        :url-station-list="urlStationList + '&limit=' + oapif_station_limit"
         :download-text="$gettext('Download a list of detailed information for each Historical hydrometric station.')"></station-list-link>
     </details>
 
@@ -153,14 +153,18 @@ export default {
     },
     hydroStationActive: function (newVal) { // display inactive stations
       if (newVal === false) {
-        this.$store.dispatch('stations/retrieveHydroStations', this.urlStationMapList)
+        this.$store.dispatch('stations/retrieveHydroStations', {
+          url: this.urlStationMapList
+        })
       }
     }
   },
   beforeMount () {
     // Load hydrometric stations
     if (this.numStationHydro === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('stations/retrieveHydroStations', this.urlStationMapList)
+      this.$store.dispatch('stations/retrieveHydroStations', {
+        url: this.urlStationMapList
+      })
     }
   },
   computed: {
@@ -186,7 +190,7 @@ export default {
       'numStationHydro'
     ]),
     urlStationList: function () {
-      let url = this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&limit=' + this.oapif_station_limit
+      let url = this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json'
       if (this.hydroStationActive) {
         url += '&STATUS_EN=Active'
       }

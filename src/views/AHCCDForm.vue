@@ -14,7 +14,7 @@
       <p v-html="openPortalHtml"></p>
 
       <station-list-link
-        :url-station-list="urlStationList"
+        :url-station-list="urlStationList + '&limit=' + oapif_station_limit"
         :download-text="$gettext('Download a list of detailed information for each AHCCD station.')"></station-list-link>
     </details>
 
@@ -161,7 +161,9 @@ export default {
   beforeMount () {
     // Load ahccd stations
     if (this.numStationAhccd === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('stations/retrieveAhccdStations', this.urlStationMapList)
+      this.$store.dispatch('stations/retrieveAhccdStations', {
+        url: this.urlStationMapList
+      })
     }
 
     // Trigger save to store
@@ -170,7 +172,7 @@ export default {
   },
   computed: {
     urlStationList: function () {
-      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&limit=' + this.oapif_station_limit
+      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json'
     },
     urlStationMapList: function () {
       return this.urlStationList + `&properties=${this.stationProvCol},${this.datasetToNameColName[this.$route.name]},${this.datasetToStnColName[this.$route.name]},start_date__date_debut,end_date__date_fin`

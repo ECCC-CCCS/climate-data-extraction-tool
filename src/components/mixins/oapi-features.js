@@ -26,6 +26,7 @@ export const oapif = {
       date_start: null,
       date_end: null,
       mapMaxZoom: 12,
+      totalStations: null,
       ...datasetCols
     }
   },

@@ -35,16 +35,16 @@
       <strong v-translate>Virtual climate station list download:</strong>
       <ul>
         <li><station-list-link
-          :url-station-list="urlStationList"
+          :url-station-list="urlStationList + '&limit=' + oapif_station_limit"
           :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station')"></station-list-link></li>
         <li><station-list-link
-          :url-station-list="urlStationListElements.temperature"
+          :url-station-list="urlStationListElements.temperature + '&limit=' + oapif_station_limit"
           :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with temperature record type only')"></station-list-link></li>
         <li><station-list-link
-          :url-station-list="urlStationListElements.precipitation"
+          :url-station-list="urlStationListElements.precipitation + '&limit=' + oapif_station_limit"
           :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with precipitation record type only')"></station-list-link></li>
         <li><station-list-link
-          :url-station-list="urlStationListElements.snowfall"
+          :url-station-list="urlStationListElements.snowfall + '&limit=' + oapif_station_limit"
           :download-text="$gettext('Download a list of detailed information for each LTCE virtual climate station with snowfall record type only')"></station-list-link></li>
       </ul>
     </details>
@@ -198,14 +198,17 @@ export default {
     }
   },
   beforeMount () {
-    // Load ahccd stations
+    // Load LTCE stations
     if (this.numStationLtce === 0) { // prevent duplicate AJAX
-      this.$store.dispatch('stations/retrieveLtceStations', {url: this.urlStationMapList, uniqueCol: this.stnPrimaryId})
+      this.$store.dispatch('stations/retrieveLtceStations', {
+        url: this.urlStationMapList,
+        uniqueCol: this.stnPrimaryId
+      })
     }
   },
   computed: {
     urlStationList: function () {
-      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json&limit=' + this.oapif_station_limit
+      return this.oapif_url_base + '/' + this.oapif_layer_station + '/items?f=json'
     },
     urlStationListElements: function () {
       return {
