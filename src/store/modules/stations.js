@@ -4,8 +4,8 @@ Vuex module for the climate stations and related selections
 
 import axios from 'axios'
 
-// temporary hard limit
-const OAPIFEATURES_LIMIT = 500
+// Limit for pagination
+const OAPI_FEATURES_LIMIT = 10000
 
 // initial state
 const state = {
@@ -314,8 +314,8 @@ const actions = {
 
       // Paginate requests based on totalStations
       const requests = []
-      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
-        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+      for (let offset = 0; offset < totalStations; offset += OAPI_FEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPI_FEATURES_LIMIT}`, {
           cancelToken: state.cancelSourceStation.token
         })
         requests.push(request)
@@ -366,8 +366,8 @@ const actions = {
 
       // Paginate requests based on totalStations
       const requests = []
-      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
-        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+      for (let offset = 0; offset < totalStations; offset += OAPI_FEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPI_FEATURES_LIMIT}`, {
           cancelToken: state.cancelSourceStation.token
         })
         requests.push(request)
@@ -406,8 +406,8 @@ const actions = {
 
       // Paginate requests based on totalStations
       const requests = []
-      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
-        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+      for (let offset = 0; offset < totalStations; offset += OAPI_FEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPI_FEATURES_LIMIT}`, {
           cancelToken: state.cancelSourceStation.token
         })
         requests.push(request)
@@ -446,8 +446,8 @@ const actions = {
 
       // Paginate requests based on totalStations
       const requests = []
-      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
-        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+      for (let offset = 0; offset < totalStations; offset += OAPI_FEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPI_FEATURES_LIMIT}`, {
           cancelToken: state.cancelSourceStation.token
         })
         requests.push(request)
@@ -486,8 +486,8 @@ const actions = {
 
       // Paginate requests based on totalStations
       const requests = []
-      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
-        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+      for (let offset = 0; offset < totalStations; offset += OAPI_FEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPI_FEATURES_LIMIT}`, {
           cancelToken: state.cancelSourceStation.token
         })
         requests.push(request)
@@ -526,8 +526,8 @@ const actions = {
 
       // Paginate requests based on totalStations
       const requests = []
-      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
-        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+      for (let offset = 0; offset < totalStations; offset += OAPI_FEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPI_FEATURES_LIMIT}`, {
           cancelToken: state.cancelSourceStation.token
         })
         requests.push(request)
@@ -566,8 +566,8 @@ const actions = {
 
       // Paginate requests based on totalStations
       const requests = []
-      for (let offset = 0; offset < totalStations; offset += OAPIFEATURES_LIMIT) {
-        const request = axios.get(`${url}&offset=${offset}&limit=${OAPIFEATURES_LIMIT}`, {
+      for (let offset = 0; offset < totalStations; offset += OAPI_FEATURES_LIMIT) {
+        const request = axios.get(`${url}&offset=${offset}&limit=${OAPI_FEATURES_LIMIT}`, {
           cancelToken: state.cancelSourceStation.token
         })
         requests.push(request)

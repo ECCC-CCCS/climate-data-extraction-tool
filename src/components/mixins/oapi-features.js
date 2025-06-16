@@ -21,7 +21,7 @@ export const oapif = {
       oapif_selected_station_ids: [],
       oapif_station_limit: 10000,
       // oapif_limit: 150000,
-      oapif_limit: 500,
+      oapif_limit: 10000,
       oapif_max_limit: 1000000,
       oapif_min_limit: 1,
       date_start: null,
