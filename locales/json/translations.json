@@ -563,12 +563,30 @@
 				]
 			}
 		},
+		"startYYYYMM and endYYYYMM represent the start and end dates. periodValue represents the forecast period": {
+			"{startYYYYMM} to {endYYYYMM} ({periodValue})": {
+				"msgid": "{startYYYYMM} to {endYYYYMM} ({periodValue})",
+				"msgctxt": "startYYYYMM and endYYYYMM represent the start and end dates. periodValue represents the forecast period",
+				"msgstr": [
+					""
+				]
+			}
+		},
 		"Template for different file formats": {
 			"A region as a {format1} or {format2}": {
 				"msgid": "A region as a {format1} or {format2}",
 				"msgctxt": "Template for different file formats",
 				"msgstr": [
 					"A region as a {format1} or {format2}"
+				]
+			}
+		},
+		"The dropdown display for an exceedence product. option specifies the product, units depends on the variable type": {
+			"Probability greater than {exceedOption} {varUnits}": {
+				"msgid": "Probability greater than {exceedOption} {varUnits}",
+				"msgctxt": "The dropdown display for an exceedence product. option specifies the product, units depends on the variable type",
+				"msgstr": [
+					""
 				]
 			}
 		},
@@ -928,12 +946,6 @@
 				"msgid": "Air temperature",
 				"msgstr": [
 					"Air temperature"
-				]
-			},
-			"Air temperature at 850mb": {
-				"msgid": "Air temperature at 850mb",
-				"msgstr": [
-					"Air temperature at 850mb"
 				]
 			},
 			"Alberta": {
@@ -1512,6 +1524,18 @@
 					"Forecast month"
 				]
 			},
+			"Forecast months": {
+				"msgid": "Forecast months",
+				"msgstr": [
+					""
+				]
+			},
+			"Forecast period": {
+				"msgid": "Forecast period",
+				"msgstr": [
+					""
+				]
+			},
 			"Frequently asked questions about LTCE": {
 				"msgid": "Frequently asked questions about LTCE",
 				"msgstr": [
@@ -1522,12 +1546,6 @@
 				"msgid": "Future",
 				"msgstr": [
 					"Future"
-				]
-			},
-			"Geopotential height at 500mb": {
-				"msgid": "Geopotential height at 500mb",
-				"msgstr": [
-					"Geopotential height at 500mb"
 				]
 			},
 			"Get started": {
@@ -1620,10 +1638,10 @@
 					"Information"
 				]
 			},
-			"Instantaneous precipitation rate (m/s)": {
-				"msgid": "Instantaneous precipitation rate (m/s)",
+			"Interval type": {
+				"msgid": "Interval type",
 				"msgstr": [
-					"Instantaneous precipitation rate (m/s)"
+					""
 				]
 			},
 			"It's possible that your selected location is not within the dataset boundary.": {
@@ -1774,12 +1792,6 @@
 				"msgid": "Mean temperature",
 				"msgstr": [
 					"Mean temperature"
-				]
-			},
-			"Member": {
-				"msgid": "Member",
-				"msgstr": [
-					"Member"
 				]
 			},
 			"Minimum temperature": {
@@ -1968,6 +1980,12 @@
 					"Please select a point on the map."
 				]
 			},
+			"Precipitation": {
+				"msgid": "Precipitation",
+				"msgstr": [
+					""
+				]
+			},
 			"Precipitation - Daily extremes of record": {
 				"msgid": "Precipitation - Daily extremes of record",
 				"msgstr": [
@@ -1990,6 +2008,30 @@
 				"msgid": "Prince Edward Island",
 				"msgstr": [
 					"Prince Edward Island"
+				]
+			},
+			"Probability": {
+				"msgid": "Probability",
+				"msgstr": [
+					""
+				]
+			},
+			"Probability above normal": {
+				"msgid": "Probability above normal",
+				"msgstr": [
+					""
+				]
+			},
+			"Probability below normal": {
+				"msgid": "Probability below normal",
+				"msgstr": [
+					""
+				]
+			},
+			"Probability near normal": {
+				"msgid": "Probability near normal",
+				"msgstr": [
+					""
 				]
 			},
 			"Province": {
@@ -2052,16 +2094,16 @@
 					"Sea ice thickness"
 				]
 			},
-			"Sea level pressure": {
-				"msgid": "Sea level pressure",
-				"msgstr": [
-					"Sea level pressure"
-				]
-			},
 			"Seasonal values": {
 				"msgid": "Seasonal values",
 				"msgstr": [
 					"Seasonal values"
+				]
+			},
+			"Seasonally": {
+				"msgid": "Seasonally",
+				"msgstr": [
+					""
 				]
 			},
 			"see FAQ": {
@@ -2650,12 +2692,6 @@
 				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output",
 				"msgstr": [
 					"Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output"
-				]
-			},
-			"Water temperature": {
-				"msgid": "Water temperature",
-				"msgstr": [
-					"Water temperature"
 				]
 			},
 			"We value your feedback and are updating this tool continuously to ensure that it meets your needs. If you have any questions, comments or suggestions, <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.": {
@@ -3272,12 +3308,30 @@
 				]
 			}
 		},
+		"startYYYYMM and endYYYYMM represent the start and end dates. periodValue represents the forecast period": {
+			"{startYYYYMM} to {endYYYYMM} ({periodValue})": {
+				"msgid": "{startYYYYMM} to {endYYYYMM} ({periodValue})",
+				"msgctxt": "startYYYYMM and endYYYYMM represent the start and end dates. periodValue represents the forecast period",
+				"msgstr": [
+					"{startYYYYMM} à {endYYYYMM} ({periodValue})"
+				]
+			}
+		},
 		"Template for different file formats": {
 			"A region as a {format1} or {format2}": {
 				"msgid": "A region as a {format1} or {format2}",
 				"msgctxt": "Template for different file formats",
 				"msgstr": [
 					"une région sous forme de {format1} ou {format2}"
+				]
+			}
+		},
+		"The dropdown display for an exceedence product. option specifies the product, units depends on the variable type": {
+			"Probability greater than {exceedOption} {varUnits}": {
+				"msgid": "Probability greater than {exceedOption} {varUnits}",
+				"msgctxt": "The dropdown display for an exceedence product. option specifies the product, units depends on the variable type",
+				"msgstr": [
+					"Probabilité d'être plus que {exceedOption} {varUnits}"
 				]
 			}
 		},
@@ -3637,12 +3691,6 @@
 				"msgid": "Air temperature",
 				"msgstr": [
 					"Température de l'air"
-				]
-			},
-			"Air temperature at 850mb": {
-				"msgid": "Air temperature at 850mb",
-				"msgstr": [
-					"Température de l'air à 850 mb"
 				]
 			},
 			"Alberta": {
@@ -4221,6 +4269,18 @@
 					"Mois de la prévision"
 				]
 			},
+			"Forecast months": {
+				"msgid": "Forecast months",
+				"msgstr": [
+					"Les mois de la prévision"
+				]
+			},
+			"Forecast period": {
+				"msgid": "Forecast period",
+				"msgstr": [
+					"Période de la prévision"
+				]
+			},
 			"Frequently asked questions about LTCE": {
 				"msgid": "Frequently asked questions about LTCE",
 				"msgstr": [
@@ -4231,12 +4291,6 @@
 				"msgid": "Future",
 				"msgstr": [
 					"Futur"
-				]
-			},
-			"Geopotential height at 500mb": {
-				"msgid": "Geopotential height at 500mb",
-				"msgstr": [
-					"Hauteur géopotentielle à 500 mb"
 				]
 			},
 			"Get started": {
@@ -4329,10 +4383,10 @@
 					"Information"
 				]
 			},
-			"Instantaneous precipitation rate (m/s)": {
-				"msgid": "Instantaneous precipitation rate (m/s)",
+			"Interval type": {
+				"msgid": "Interval type",
 				"msgstr": [
-					"Taux instantané de précipitations (m/s)"
+					"Type d'intervalle"
 				]
 			},
 			"It's possible that your selected location is not within the dataset boundary.": {
@@ -4483,12 +4537,6 @@
 				"msgid": "Mean temperature",
 				"msgstr": [
 					"Température moyenne"
-				]
-			},
-			"Member": {
-				"msgid": "Member",
-				"msgstr": [
-					"Membre"
 				]
 			},
 			"Minimum temperature": {
@@ -4677,6 +4725,12 @@
 					"Veuillez sélectionner un point sur la carte."
 				]
 			},
+			"Precipitation": {
+				"msgid": "Precipitation",
+				"msgstr": [
+					"Précipitation"
+				]
+			},
 			"Precipitation - Daily extremes of record": {
 				"msgid": "Precipitation - Daily extremes of record",
 				"msgstr": [
@@ -4699,6 +4753,30 @@
 				"msgid": "Prince Edward Island",
 				"msgstr": [
 					"Île-du-Prince-Édouard"
+				]
+			},
+			"Probability": {
+				"msgid": "Probability",
+				"msgstr": [
+					"Probabilité"
+				]
+			},
+			"Probability above normal": {
+				"msgid": "Probability above normal",
+				"msgstr": [
+					"Probabilité d'être au-dessus de la normale"
+				]
+			},
+			"Probability below normal": {
+				"msgid": "Probability below normal",
+				"msgstr": [
+					"Probabilité d'être sous la normale"
+				]
+			},
+			"Probability near normal": {
+				"msgid": "Probability near normal",
+				"msgstr": [
+					"Probabilité d'être près de la normale"
 				]
 			},
 			"Province": {
@@ -4761,16 +4839,16 @@
 					"Épaisseur de la glace de mer"
 				]
 			},
-			"Sea level pressure": {
-				"msgid": "Sea level pressure",
-				"msgstr": [
-					"Pression au niveau de la mer"
-				]
-			},
 			"Seasonal values": {
 				"msgid": "Seasonal values",
 				"msgstr": [
 					"Valeurs saisonnières"
+				]
+			},
+			"Seasonally": {
+				"msgid": "Seasonally",
+				"msgstr": [
+					"Saisonnièrement"
 				]
 			},
 			"see FAQ": {
@@ -5359,12 +5437,6 @@
 				"msgid": "Visit <a href=\"{link}\" target=\"_blank\">ClimateData.ca</a> to access individual model output",
 				"msgstr": [
 					"Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> pour obtenir les résultats d’un modèle individuel"
-				]
-			},
-			"Water temperature": {
-				"msgid": "Water temperature",
-				"msgstr": [
-					"Température de l'eau"
 				]
 			},
 			"We value your feedback and are updating this tool continuously to ensure that it meets your needs. If you have any questions, comments or suggestions, <a href=\"{supportDeskUrl}\">contact the Climate Services Support Desk</a>.": {
