@@ -19,23 +19,19 @@
       @change="splitBBOXString"></bbox-map>
 
     <var-select
+      v-model="oapicIdProduct"
+      :label="$gettext('Interval type')"
+      :select-options="productOptions"></var-select>
+
+    <var-select
       v-model="oapicIdVariable"
       :label="$gettext('Variable')"
       :select-options="variableOptions"></var-select>
 
     <var-select
-      v-model="oapicIdType"
-      :label="$gettext('Model type')"
-      :disabled="true"
-      :readonly="true"
-      :select-options="typeOptions"></var-select>
-
-    <num-select
-      v-model="oapicMember"
-      :label="$gettext('Member')"
-      :required="true"
-      :max="20"
-      :min="1"></num-select>
+      v-model="oapicIdProbability"
+      :label="$gettext('Probability')"
+      :select-options="probabilityOptions"></var-select>
 
     <date-select
       v-model="modelRun"
@@ -47,17 +43,11 @@
       :min-date="modelRunRange.min"
       :max-date="modelRunRange.max"></date-select>
 
-    <date-select
+    <var-select
       v-model="forecastPeriod"
-      :label="$gettext('Forecast month')"
-      :minimum-view="dateConfigs.minimumView"
-      :format="dateConfigs.format"
-      :placeholder="dateConfigs.placeholder"
-      :required="true"
-      :disabled="true"
-      :readonly="true"
-      :min-date="forePeriodDateRange.min"
-      :max-date="forePeriodDateRange.max"></date-select>
+      :label="$gettext('Forecast period')"
+      :disabled="invalidModelMonth"
+      :select-options="monthOptions"></var-select>
 
     <format-select-file
       v-model="oapicFormat"
@@ -79,7 +69,6 @@
 import BBOXMap from '@/components/BBOXMap.vue'
 import FormatSelectFile from '@/components/FormatSelectFile.vue'
 import VarSelect from '@/components/VarSelect.vue'
-import NumSelect from '@/components/NumSelect.vue'
 import DateSelect from '@/components/DateSelect.vue'
 import DataDownloadBox from '@/components/DataDownloadBox.vue'
 import DataAccessDocLink from '@/components/DataAccessDocLink.vue'
@@ -97,7 +86,6 @@ export default {
     'bbox-map': BBOXMap,
     FormatSelectFile,
     VarSelect,
-    NumSelect,
     DateSelect,
     DataDownloadBox,
     DataAccessDocLink,
@@ -106,18 +94,18 @@ export default {
   },
   data () {
     return {
+      invalidModelMonth: false,
       oapicIdDataset: 'cansips',
       oapicIdType: 'forecast',
-      oapicIdProduct: 'members',
-      oapicIdVariable: 'PRMSL_MSL_0',
-      oapicMember: 1,
+      oapicIdProduct: 'monthly-products',
+      oapicIdVariable: 'AirTemp',
+      forecastPeriod: 'P00M',
+      oapicIdProbability: '-ProbNearNormal',
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMomentMin: this.$moment.utc('2013-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMomentMax: this.$moment.utc('2022-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), missing Aug and Sept 2018 source data
-      modelRun: this.$moment.utc('2022-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      forecastPeriod: this.$moment.utc('2022-02-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
-      schemaProperties: [],
+      foreRunMomentMin: this.$moment.utc('2025-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      foreRunMomentMax: this.$moment.utc('2025-05-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), missing Aug and Sept 2018 source data
+      modelRun: this.$moment.utc('2025-05-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       dateConfigs: {
         minimumView: 'month',
         format: 'YYYY-MM',
@@ -126,73 +114,192 @@ export default {
     }
   },
   watch: {
-    oapicIdType: function (newVal) {
-      // Auto adjust model run date if out of range
-      if (newVal === 'HIND') { // Hindcast type
-        if (!this.modelRunMoment.isBetween(this.hindRunMomentMin, this.hindRunMomentMax, 'month', '[]')) {
-          this.modelRun = this.hindRunMomentMin.format('YYYY-MM')
-        }
-      } else { // Forecast type
-        if (!this.modelRunMoment.isBetween(this.foreRunMomentMin, this.foreRunMomentMax, 'month', '[]')) {
-          this.modelRun = this.foreRunMomentMin.format('YYYY-MM')
-        }
-      }
-      this.adjustForePeriod()
-    },
     modelRun: function () {
-      this.adjustForePeriod()
-    }
+      // Locks forecast period option if using an invalid model run month
+      if(this.hasErrors){
+        this.invalidModelMonth = true
+      }else{
+        this.invalidModelMonth = false
+      }
+
+      // Adjustment for changing the interval type
+      if(this.oapicIdProduct === 'seasonal-products'){
+        this.forecastPeriod = 'P00M-P02M'
+      }else{
+        this.forecastPeriod = 'P00M'
+      }
+    },
+    oapicIdProduct: function (newVal){
+      // Changing the interval type. Lower date bound of seasonal and monthly probability products are different, might need to adjust.
+      // When changing intrval type, the date boundaries only need to be adjusted for probability dates
+      // All exceedence products have the same boundaries <- TODO if this changes need to fetch boundaries
+      const longRangeProducts = ['-ProbNearNormal', '-ProbAboveNormal', '-ProbBelowNormal']
+
+      if (newVal === 'seasonal-products'){
+        this.forecastPeriod = 'P00M-P02M'
+      }else{
+        this.forecastPeriod = 'P00M'
+      }
+      if(longRangeProducts.includes(this.oapicIdProbability)){
+        let this_ = this
+        axios.get(this_.cansipsCoverageMetadata)
+          .then(function (response) {
+            const upperBound = response.data.extent.reference_time.interval[0][1]
+            const lowerBound = response.data.extent.reference_time.interval[0][0]
+
+            if(this_.$moment.utc(this_.modelRun).isBefore(this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))
+              || this_.$moment.utc(this_.modelRun).isAfter(this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))){
+            
+              this_.modelRun = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
+            }
+            this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
+            this_.foreRunMomentMin = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
+          })
+      }
+    },
+    oapicIdProbability: function (newval){
+      const longRangeProducts = ['-ProbNearNormal', '-ProbAboveNormal', '-ProbBelowNormal']
+
+      // When changing from exceedence to probability seasonal product need to make sure
+      // forecast period is valid
+      const invalidProbPeriods = ['P02M-P04M', 'P04M-P06M', 'P05M-P07M', 'P07M-P09M', 'P08M-P10M']
+      if(invalidProbPeriods.includes(this.forecastPeriod) && longRangeProducts.includes(newval)){
+        this.forecastPeriod = 'P00M-P02M'
+      }
+
+      // TODO make dynamic when able to fetch date boundaries from request
+      if (!(longRangeProducts.includes(newval))){
+        // All exceedence products have a lower bound date at 2025-05 for now, this needs to be changed to
+        // be dynamic
+        const exceedMin = this.$moment.utc(`2025-05-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
+        if(this.foreRunMomentMin !== exceedMin){
+          // Changing from probability to exceedence product, check if need to adjust date
+          if(this.$moment.utc(this.modelRun).isBefore(exceedMin)){
+            this.modelRun = exceedMin.toDate()
+          }
+          this.foreRunMomentMin = exceedMin
+        }
+      }else{
+        let this_ = this
+        axios.get(this_.cansipsCoverageMetadata)
+          .then(function (response){
+            const upperBound = response.data.extent.reference_time.interval[0][1]
+            const lowerBound = response.data.extent.reference_time.interval[0][0]
+
+            if(this_.$moment.utc(this_.modelRun).isBefore(this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))
+            || this_.$moment.utc(this_.modelRun).isAfter(this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))){
+              this_.modelRun = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
+            }
+            this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
+            this_.foreRunMomentMin = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
+          })
+      }
+    },
   },
   computed: {
     oapicCoverageId: function () {
-      return `weather:${this.oapicIdDataset}:250km:${this.oapicIdType}:${this.oapicIdProduct}`
+      return `weather:${this.oapicIdDataset}:100km:${this.oapicIdType}:${this.oapicIdProduct}`
     },
     typeOptions: function () {
       return {
-        // 'HIND': this.$gettext('Hindcast'),
         'forecast': this.$gettext('Forecast')
       }
     },
     variableOptions: function () {
-      const supportedVariables = {
-        'PRMSL_MSL_0': this.$gettext('Sea level pressure'),
-        'PRATE_SFC_0': this.$gettext('Instantaneous precipitation rate (m/s)'),
-        'TMP_TGL_2m': this.$gettext('Air temperature'),
-        'WTMP_SFC_0': this.$gettext('Water temperature'),
-        'HGT_ISBL_0500': this.$gettext('Geopotential height at 500mb'),
-        'TMP_ISBL_0850': this.$gettext('Air temperature at 850mb')
-        // 'PRES_UU.850': this.$gettext('Winds at 850mb')
+      return {
+        'AirTemp': this.$gettext('Air temperature'),
+        'PrecipAccum' : this.$gettext('Precipitation')
       }
+    },
+    probabilityOptions: function (){
+      // With the current implementation there are 3 probability products and 9 exceedence products per variable type
+      var probOptions = {}
 
-      // ensure this list is validated against schema
-      return Object.fromEntries(
-        Object.entries(supportedVariables).filter(([key]) => this.schemaProperties.includes(key))
-      )
+      // Probability Products
+      // Couldn't hardcode due to needing to translate
+      probOptions['-ProbNearNormal'] = this.$gettext('Probability near normal')
+      probOptions['-ProbAboveNormal'] = this.$gettext('Probability above normal')
+      probOptions['-ProbBelowNormal'] = this.$gettext('Probability below normal')
+
+      // Exceedence products
+      const exceedProducts = ['10', '20', '30', '40', '50', '60', '70', '80', '90']
+      if (this.oapicIdVariable === 'AirTemp'){
+        var units = 'K'
+      }else{
+        units = 'kg/(m²)'
+      }
+      exceedProducts.forEach(option => {
+        probOptions[`-ProbGT${option}Pct`] = this.$_i(
+          this.$pgettext(
+            'The dropdown display for an exceedence product. option specifies the product, units depends on the variable type',
+            'Probability greater than {exceedOption} {varUnits}'),
+            {exceedOption: option, varUnits: units}
+          )
+      })
+      return probOptions
     },
+    monthOptions: function () {
+      var periodsWithMessages = {}
+      if (this.oapicIdProduct === 'monthly-products'){
+        const periods = ['P00M', 'P01M', 'P02M', 'P03M', 'P04M', 'P05M', 'P06M', 'P07M', 'P08M',
+          'P09M', 'P10M', 'P11M']
+        const periodsLen = periods.length
+        for (let i=0;i<periodsLen;i++){
+          periodsWithMessages[periods[i]] = `${this.$moment.utc(this.modelRunMoment).add(i, 'months').format('YYYY-MM')} (${periods[i]})`
+        }
+        return periodsWithMessages
+      }else{
+        // Need to reduce available periods for seasonal probability products
+        const probProducts = ['-ProbNearNormal', '-ProbAboveNormal', '-ProbBelowNormal']
+        if(probProducts.includes(this.oapicIdProbability)){
+          const periods = ['P00M-P02M', 'P01M-P03M', 'P03M-P05M', 'P06M-P08M', 'P09M-P11M']
+          var offsetter = 0
+          periods.forEach(period => {
+            periodsWithMessages[period] = this.$_i(
+                                              this.$pgettext(
+                                                'startYYYYMM and endYYYYMM represent the start and end dates. periodValue represents the forecast period', '{startYYYYMM} to {endYYYYMM} ({periodValue})'), 
+                                                {startYYYYMM: this.$moment.utc(this.modelRunMoment).add(offsetter, 'months').format('YYYY-MM'), endYYYYMM: this.$moment.utc(this.modelRunMoment).add(offsetter+2, 'months').format('YYYY-MM'), periodValue: period}
+                                            )
+            if(period === 'P00M-P02M'){
+              offsetter = offsetter+1
+            }else if(period === 'P01M-P03M'){
+              offsetter = offsetter+2
+            }else{
+              offsetter = offsetter+3
+            }
+          })
+          return periodsWithMessages
+        }
+        const periods = ['P00M-P02M', 'P01M-P03M', 'P02M-P04M', 'P03M-P05M', 'P04M-P06M', 'P05M-P07M', 'P06M-P08M', 'P07M-P09M', 'P08M-P10M', 'P09M-P11M']
+        const periodsLen = periods.length
+
+        for(let offsetter=0; offsetter<periodsLen; offsetter++){
+          periodsWithMessages[periods[offsetter]] = this.$_i(
+                                              this.$pgettext(
+                                                'startYYYYMM and endYYYYMM represent the start and end dates. periodValue represents the forecast period', '{startYYYYMM} to {endYYYYMM} ({periodValue})'), 
+                                                {startYYYYMM: this.$moment.utc(this.modelRunMoment).add(offsetter, 'months').format('YYYY-MM'), endYYYYMM: this.$moment.utc(this.modelRunMoment).add(offsetter+2, 'months').format('YYYY-MM'), periodValue: periods[offsetter]}
+                                            )
+        }
+        return periodsWithMessages
+      } 
+    },
+    productOptions: function () {
+      return {
+        'monthly-products': this.$gettext('Monthly'),
+        'seasonal-products': this.$gettext('Seasonally')
+      }
+    },
+
     filename: function () {
-      return this.variableOptions[this.oapicIdVariable] + ' (' + this.oapicCoverageId + ')'
-    },
-    forecastPeriodMoment: function () {
-      return this.$moment.utc(this.forecastPeriod)
-    },
-    forecastPeriodISO: function () {
-      return this.forecastPeriodMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
-    },
-    oapicDatetime: function() {
-      return this.forecastPeriodMoment.format('YYYY-MM')
+      return this.variableOptions[this.oapicIdVariable] + this.probabilityOptions[this.oapicIdProbability] + ' (' + this.oapicCoverageId + ')'
     },
     modelRunMoment: function () {
       return this.$moment.utc(this.modelRun)
     },
-    modeRunIsEmpty: function () {
+    modelRunIsEmpty: function () {
       return this.modelRun === null || this.modelRun === 'Invalid date'
     },
-    forePeriodIsEmpty: function () {
-      return this.forecastPeriod === null || this.forecastPeriod === 'Invalid date'
-    },
-    modelRunISO: function () {
-      return this.modelRunMoment.format('YYYY-MM-DD[T]HH:mm:ss[Z]')
-    },
+
     oapicModelRun: function () {
       return this.modelRunMoment.format('YYYY-MM')
     },
@@ -223,24 +330,6 @@ export default {
         max: this.$moment.utc(this.modelRunMoment).add(1, 'months') // // TEMP: set to 1 month default // 12 months ahead; can't add on computed value
       }
     },
-    forePeriodDateRange: function () {
-      return {
-        min: this.forePeriodMomentRange.min.toDate(),
-        max: this.forePeriodMomentRange.max.toDate()
-      }
-    },
-    forePeriodOutOfRange: function () {
-      let foreDate = this.forecastPeriodMoment
-      let minimumView = this.dateConfigs.minimumView
-
-      // ignore check if null
-      if (this.forePeriodIsEmpty) {
-        return false
-      }
-
-      return foreDate.isBefore(this.forePeriodMomentRange.min, minimumView) ||
-        foreDate.isAfter(this.forePeriodMomentRange.max, minimumView)
-    },
     modelRunOutOfRange: function () {
       let modelDate = this.modelRunMoment
       let minimumView = this.dateConfigs.minimumView
@@ -257,36 +346,30 @@ export default {
       let context = []
       context.push(this.oapicIdDataset)
       context.push(this.variableOptions[this.oapicIdVariable])
-      context.push(`${this.$gettext('Member')}${this.$pgettext('Colon', ':')} ${this.oapicMember}`)
+      context.push(this.probabilityOptions[this.oapicIdProbability])
+      
       context.push(`${this.$gettext('Model run month')}${this.$pgettext('Colon', ':')} ${this.oapicModelRun}`)
-      context.push(`${this.$gettext('Forecast month')}${this.$pgettext('Colon', ':')} ${this.oapicDatetime}`)
+      if (this.oapicIdProduct === 'monthly-products'){
+        context.push(`${this.$gettext('Forecast month')}${this.$pgettext('Colon', ':')} ${this.monthOptions[this.forecastPeriod].split(', ')[0]}`)
+      }else{
+        context.push(`${this.$gettext('Forecast months')}${this.$pgettext('Colon', ':')} ${this.monthOptions[this.forecastPeriod].split(', ')[0]}`)
+      }
       context.push(this.fileFormats[this.oapicFormat])
       return context
     },
     hasErrors: function () {
-      return this.forePeriodOutOfRange ||
-        this.modelRunOutOfRange ||
-        this.forePeriodIsEmpty ||
-        this.modelRunIsEmpty
+      return this.modelRunOutOfRange || this.modelRunIsEmpty
     },
     cansipsCoverageMetadata: function () {
-      return `${this.oapicServer}/collections/weather:cansips:250km:forecast:members?f=json`
-    },
-    cansipsMembersSchema: function () {
-      return `${this.oapicServer}/collections/weather:cansips:250km:forecast:members/schema?f=json`
+      // TODO may need to adjust URL when exceedence data is available
+      return `${this.oapicServer}/collections/weather:cansips:100km:forecast:${this.oapicIdProduct}?f=json`
     }
   },
   methods: {
-    adjustForePeriod: function () {
-      // Auto adjust forecast period date if out of range
-      if (!this.forecastPeriodMoment.isBetween(this.forePeriodMomentRange.min, this.forePeriodMomentRange.max, 'month')) {
-        this.forecastPeriod = this.forePeriodMomentRange.min.format('YYYY-MM')
-      }
-    },
     getOapicParams: function () {
       let urlParams = []
       urlParams.push('f=' + this.oapicFormat)
-      urlParams.push(`properties=${this.oapicIdVariable}`)
+      urlParams.push(`properties=${this.oapicIdVariable}${this.oapicIdProbability}`)
 
       // bbox
       this.splitBBOXString()
@@ -294,34 +377,25 @@ export default {
 
       // subset
       let subset = []
-      // subset: member (1-20)
-      subset.push(`member(${this.oapicMember})`)
-      // subset: reference_time (2013-04 to 2025-06)
+
+      subset.push(`period("${this.forecastPeriod}")`)
+
       subset.push(`reference_time("${this.oapicModelRun}")`)
       urlParams.push(`subset=${subset.join(',')}`)
-
-      // datetime (single YYYY-MM or range YYYY-MM/YYYY-MM)
-      urlParams.push(`datetime=${this.oapicDatetime}`)
-
       return urlParams
     }
   },
   beforeMount(){
     // make api call to get the upper bound for date selector
     let this_ = this
-
     axios.get(this_.cansipsCoverageMetadata)
       .then(function (response) {
         const upperBound = response.data.extent.reference_time.interval[0][1]
         this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
         this_.modelRun = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
-      })
 
-    // validate available variables
-    axios.get(this_.cansipsMembersSchema)
-      .then(function (response) {
-        const properties = response.data.properties
-        this_.schemaProperties = Object.keys(properties).sort()
+        const lowerBound = response.data.extent.reference_time.interval[0][0]
+        this_.foreRunMomentMin = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
       })
   }
 }
