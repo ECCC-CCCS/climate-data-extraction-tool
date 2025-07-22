@@ -6,7 +6,7 @@ const INTERVAL_MS = 2000;
 describe('E2E test for climate monthly data with various form options', () => {
   it('Check climate monthly stations and download data as CSV', () => {
     // station data and daterange
-    cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*HAS_MONTHLY_SUMMARY=Y.*f=json.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*HAS_MONTHLY_SUMMARY=Y.*f=json.*offset=0.*/).as('stationData')
     cy.intercept('GET', /.*\/collections\/climate-monthly\/items\?.*sortby=LOCAL_DATE&limit=1.*f=json.*/).as('dateRangeData')
     cy.visit('/#/monthly-climate-summaries')
 

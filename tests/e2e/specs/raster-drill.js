@@ -8,7 +8,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.visit('/#/cmip5-data')
 
     // point selection
-    cy.selectRadio('option-radio-map-selection-type', 'on')
+    cy.selectRadio('option-radio-map-selection-type', 'yes')
     cy.get('#point-download-box').scrollIntoView().wait(250).should('be.visible').should('have.class', 'alert-danger')
 
     // Zoom in to map
@@ -51,7 +51,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.visit('/#/downscaled-data')
 
     // point selection
-    cy.selectRadio('option-radio-map-selection-type', 'on')
+    cy.selectRadio('option-radio-map-selection-type', 'yes')
     cy.get('#point-download-box').scrollIntoView().wait(250).should('be.visible').should('have.class', 'alert-danger')
 
     // Pan map (to QC)
@@ -94,7 +94,7 @@ describe('E2E test for raster drill data with various form options', () => {
     cy.visit('/#/historical-gridded-data')
 
     // point selection
-    cy.selectRadio('option-radio-map-selection-type', 'on')
+    cy.selectRadio('option-radio-map-selection-type', 'yes')
     cy.get('#point-download-box').scrollIntoView().wait(250).should('be.visible').should('have.class', 'alert-danger')
 
     // Pan map (to Regina, SK)

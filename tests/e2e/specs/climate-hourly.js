@@ -6,7 +6,7 @@ const INTERVAL_MS = 2000;
 describe('E2E test for climate hourly data with various form options', () => {
   it('Check hourly climate stations and download data as CSV', () => {
     // station data and daterange
-    cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*properties=PROV_STATE_TERR_CODE,STATION_NAME,CLIMATE_IDENTIFIER,HLY_FIRST_DATE,HLY_LAST_DATE.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*properties=PROV_STATE_TERR_CODE,STATION_NAME,CLIMATE_IDENTIFIER,HLY_FIRST_DATE,HLY_LAST_DATE.*offset=0.*/).as('stationData')
     cy.intercept('GET', /.*\/collections\/climate-hourly\/items\?.*limit=1&sortby=LOCAL_DATE.*/).as('dateRangeData')
     cy.visit('/#/hourly-climate-data')
 

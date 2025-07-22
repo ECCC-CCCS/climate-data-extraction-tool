@@ -5,7 +5,7 @@ const INTERVAL_MS = 2000;
 
 describe('E2E test for climate normals data with various form options', () => {
   it('Check climate normals stations and download data as CSV', () => {
-    cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*HAS_NORMALS_DATA=Y.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/climate-stations\/items\?.*f=json.*HAS_NORMALS_DATA=Y.*offset=0.*/).as('stationData')
     cy.visit('/#/climate-normals')
 
     // open map filters box

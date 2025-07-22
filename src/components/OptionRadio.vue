@@ -12,7 +12,7 @@
         class="form-check-input"
         type="radio"
         :name="'option-radio-' + label_id"
-        :value="key"
+        :value="key+''"
         :checked="selectValue === key"
         @change="emitUpdatedValue">{{ radioLabel }}</label>
     </div>

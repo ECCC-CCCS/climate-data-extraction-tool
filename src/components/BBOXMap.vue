@@ -11,7 +11,7 @@
     </fieldset>
 
     <strong
-      v-show="clickLatLng === null && pointClickOn === 'on'"
+      v-show="clickLatLng === null && pointClickOn === 'yes'"
       class="warning">
       <span class="label label-warning">
         <span class="prefix"></span>
@@ -303,7 +303,7 @@ export default {
   },
   watch: {
     pointClickOn: function (newStatus) {
-      if (newStatus === 'on') {
+      if (newStatus === 'yes') {
         this.resetPointClick(true)
       } else {
         this.resetPointClick(false)
@@ -430,7 +430,7 @@ export default {
       'dateEnd'
     ]),
     pointClickError: function () {
-      if (this.pointClickOn === 'on' && this.clickLatLng === null) {
+      if (this.pointClickOn === 'yes' && this.clickLatLng === null) {
         return true
       } else {
         return false
@@ -439,7 +439,7 @@ export default {
     pointClickOptions: function () {
       let oapicFormats = Object.values(this.fileFormats)
       return {
-        'on': this.$gettext('A single location as a CSV or GeoJSON'),
+        'yes': this.$gettext('A single location as a CSV or GeoJSON'),
         'off': this.$_i(this.$pgettext('Template for different file formats', 'A region as a {format1} or {format2}'), {format1: oapicFormats[0], format2: oapicFormats[1]})
       }
     },
@@ -506,7 +506,7 @@ export default {
       }
     },
     mapClick: function (event) {
-      if (this.pointClickOn === 'on') {
+      if (this.pointClickOn === 'yes') {
         this.clickLatLng = event.latlng
         this.$store.dispatch('map/setClickLatLng', this.clickLatLng)
       }

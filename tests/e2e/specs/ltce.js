@@ -6,7 +6,7 @@ const INTERVAL_MS = 2000;
 describe('E2E test for LTCE data with various form options', () => {
   it('Check LTCE stations and download temperature data as CSV', () => {
     // station data
-    cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=TEMPERATURE.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=TEMPERATURE.*offset=0.*/).as('stationData')
     cy.visit('/#/daily-climate-records')
 
     // open map filters box
@@ -141,7 +141,7 @@ describe('E2E test for LTCE data with various form options', () => {
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // value type
-    cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=PRECIPITATION.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=PRECIPITATION.*offset=0.*/).as('stationData')
     cy.selectVar('select#var-sel-climate-element--record-type', 'Precipitation - Daily extremes of record', 'ltce-precipitation')
     cy.waitUntil(() => cy.wait('@stationData').then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
@@ -213,7 +213,7 @@ describe('E2E test for LTCE data with various form options', () => {
     cy.get('#clear-selected-stations').scrollIntoView().wait(250).click({force: true})
 
     // value type
-    cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=SNOWFALL.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/ltce-stations\/items\?.*f=json.*ELEMENT_NAME_E=SNOWFALL.*offset=0.*/).as('stationData')
     cy.selectVar('select#var-sel-climate-element--record-type', 'Snowfall - Daily extremes of record', 'ltce-snowfall')
     cy.waitUntil(() => cy.wait('@stationData').then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')

@@ -5,7 +5,7 @@ const INTERVAL_MS = 2000;
 
 describe('E2E test for AHCCD data with various form options', () => {
   it('Check AHCCD stations and download trend values as CSV', () => {
-    cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/ahccd-stations\/items\?.*f=json.*offset=0.*/).as('stationData')
     cy.visit('/#/adjusted-station-data')
 
     // open map filters box

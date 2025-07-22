@@ -9,7 +9,7 @@ const CURRENT_YYYY_MM = CURRENT_DATE.slice(0, 7) // ie. "2022-06"
 describe('E2E test for hydrometric data with various form options', () => {
   it('Check hydrometric stations and download daily mean data as CSV', () => {
     // station data
-    cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*/).as('stationData')
+    cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*offset=0.*/).as('stationData')
     cy.visit('/#/water-quantity-data')
     const maxNumStations = 2840 // actual 2839
 
@@ -30,7 +30,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     })
 
     // discontinued stations
-    cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?f=json&limit=10000&properties=PROV_TERR_STATE_LOC,STATION_NAME,STATION_NUMBER,STATUS_EN$/).as('entireStationData')
+    cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?f=json&properties=PROV_TERR_STATE_LOC,STATION_NAME,STATION_NUMBER,STATUS_EN&offset=0.*/).as('entireStationData')
     cy.get('#toggle-discontinued-stations').click()
     const maxNumStationsDiscontinued = 8010 // actual: 7970
     cy.wait('@entireStationData', {timeout: TIMEOUT_MS}).then((xhr) => {
