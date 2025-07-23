@@ -92,7 +92,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', 6510)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
-      cy.request('GET', hrefLimited, { timeout: 40000 }).then((response) => {
+      cy.request('GET', hrefLimited).then((response) => {
         try {
           expect(response.headers).to.have.property('content-encoding')
           expect(response.headers['content-encoding']).to.match(/gzip/ig)
@@ -150,7 +150,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
-      cy.request('GET', hrefLimited, { timeout: 40000 }).then((response) => {
+      cy.request('GET', hrefLimited).then((response) => {
         expect(response.status).to.equal(200)
         expect(response.body.numberMatched).to.be.at.most(maxMonthlyMean)
       })
