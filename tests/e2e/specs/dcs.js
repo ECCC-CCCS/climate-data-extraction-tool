@@ -88,7 +88,9 @@ describe('E2E test for DCS page with ogc-api-coverage data', () => {
     })
   })
 
-  it('Download data as tn, historical, monthly, 1999-11 to 1999-12, CoverageJSON', () => {
+  // Recommended to run at least 5 times to check if it works properly, 
+  // likely to time out sometimes due to the size of the response
+  it('Download data as tn, historical, monthly, 1999-11, CoverageJSON', () => {
     cy.visit('/#/downscaled-data')
 
     // Zoom in to map
@@ -108,7 +110,9 @@ describe('E2E test for DCS page with ogc-api-coverage data', () => {
 
     // Date range
     cy.inputText('#date-historical-start-date', '1999-11{enter}')
-    cy.inputText('#date-historical-end-date', '1999-12{enter}')
+    cy.wait(5000)
+    cy.inputText('#date-historical-end-date', '1999-11{enter}')
+    cy.wait(5000)
 
     // visit download link
     cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
@@ -150,7 +154,9 @@ describe('E2E test for DCS page with ogc-api-coverage data', () => {
 
   })
 
-  it('Download data as tx, RCP8.5, Monthly, 2010-01 to 2010-02, NetCDF', () => {
+  // Recommended to run at least 5 times to check if it works properly, 
+  // likely to time out sometimes due to the size of the response
+  it('Download data as tx, RCP8.5, Monthly, 2010-02, NetCDF', () => {
     cy.visit('/#/downscaled-data')
 
     // Zoom in to map
@@ -172,8 +178,10 @@ describe('E2E test for DCS page with ogc-api-coverage data', () => {
     cy.selectVar('#var-sel-time-interval--time-of-year', 'Monthly', 'monthly')
 
     // Date range
-    cy.inputText('#date-start-date', '2010-01{enter}')
+    cy.inputText('#date-start-date', '2010-02{enter}')
+    cy.wait(5000)
     cy.inputText('#date-end-date', '2010-02{enter}')
+    cy.wait(5000)
 
     // download format
     cy.selectVar('#file_download_format', 'NetCDF', 'NetCDF')

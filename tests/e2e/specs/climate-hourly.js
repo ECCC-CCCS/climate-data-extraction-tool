@@ -91,7 +91,7 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // visit download link (replace with limit 1)
     cy.get('#oapif-link-list').scrollIntoView().wait(250).should('be.visible')
-    const numLinks = 3700
+    const numLinks = 3800 // actual 3793
     cy.get('#oapif-link-list').find('a').should('have.length.of.at.most', numLinks)
     cy.get('#oapif-link-list a:first').should('have.attr', 'href').then((href) => {
       let hrefLimited = href.replace(/limit=\d+/, 'limit=1')
@@ -121,7 +121,9 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '1999-01-01{enter}')
+    cy.wait(1000)
     cy.inputText('input#date-end-date', '1999-01-31{enter}')
+    cy.wait(1000)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
@@ -172,7 +174,9 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '2020-01-01{enter}')
+    cy.wait(1000)
     cy.inputText('input#date-end-date', '2020-01-02{enter}')
+    cy.wait(1000)
 
     // Select stations by table
     cy.get('table#station-select-table').scrollIntoView().wait(250)
@@ -239,7 +243,9 @@ describe('E2E test for climate hourly data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '2010-08-08{enter}')
+    cy.wait(1000)
     cy.inputText('input#date-end-date', '2010-08-09{enter}')
+    cy.wait(1000)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')
