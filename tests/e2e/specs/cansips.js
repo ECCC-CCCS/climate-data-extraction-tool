@@ -5,7 +5,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     cy.visit('/#/seasonal-forecasts')
 
     let varName = 'Sea level pressure'
-    let varVal = '4'
+    let varVal = 'PRMSL_MSL_0'
     let member = '8'
     let modelDate = '2018-03'
     let forecastDate = '2018-04'
@@ -48,7 +48,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     cy.wait(500) // mimic user pause after a zoom click
 
     let varName = 'Air temperature'
-    let varVal = '1'
+    let varVal = 'TMP_TGL_2m'
     let member = '2'
     let modelDate = '2018-06'
     let forecastDate = '2018-07'
@@ -93,7 +93,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     cy.wait(500)
 
     let varName = 'Water temperature'
-    let varVal = '6'
+    let varVal = 'WTMP_SFC_0'
     let member = '5'
     let modelDate = '2017-11'
     let forecastDate = '2017-12'
@@ -132,7 +132,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     let varName = 'Air temperature at 850mb'
-    let varVal = '5'
+    let varVal = 'TMP_ISBL_0850'
     let member = '13'
     let modelDate = '2013-05'
     let forecastDate = '2013-06'
@@ -176,7 +176,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     cy.wait(500)
 
     let varName = 'Instantaneous precipitation rate (m/s)'
-    let varVal = '3'
+    let varVal = 'PRATE_SFC_0'
     let member = '10'
     let modelDate = '2016-08'
     let forecastDate = '2016-09'

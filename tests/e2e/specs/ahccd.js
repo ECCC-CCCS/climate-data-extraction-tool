@@ -196,7 +196,9 @@ describe('E2E test for AHCCD data with various form options', () => {
 
     // date change
     cy.inputText('input#date-start-date', '2000-01{enter}')
+    cy.wait(1000)
     cy.inputText('input#date-end-date', '2020-12{enter}')
+    cy.wait(1000)
 
     // geojson
     cy.selectVar('select#vector_download_format', 'GeoJSON', 'geojson')

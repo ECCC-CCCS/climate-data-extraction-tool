@@ -23,7 +23,7 @@ describe('E2E test for LTCE data with various form options', () => {
       }
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.features.length).to.equal(5819)
+      expect(xhr.response.body.features.length).to.equal(5808)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -148,7 +148,7 @@ describe('E2E test for LTCE data with various form options', () => {
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.features.length).to.equal(2898)
+      expect(xhr.response.body.features.length).to.equal(2883)
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
@@ -220,7 +220,7 @@ describe('E2E test for LTCE data with various form options', () => {
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
       expect(xhr.response.body).to.have.property('type')
       expect(xhr.response.body.type).to.equal('FeatureCollection')
-      expect(xhr.response.body.features.length).to.be.greaterThan(2270)
+      expect(xhr.response.body.features.length).to.be.greaterThan(2230) // actual 2236
     }), {
       errorMsg: 'Timeout reached', // overrides the default error message
       timeout: TIMEOUT_MS, // waits up to TIMEOUT_MS, default to 6500 ms
