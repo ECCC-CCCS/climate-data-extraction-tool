@@ -17,7 +17,7 @@
   "dependencies": {
     "@kngai/vue-gettext-tools": "^0.0.7",
     "@saeris/vue-spinners": "^1.0.8",
-    "axios": "^0.26.1",
+    "axios": "^0.30.2",
     "core-js": "^3.8.3",
     "js-file-download": "^0.4.12",
     "leaflet": "^1.7.1",
