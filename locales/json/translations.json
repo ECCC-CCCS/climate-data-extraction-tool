@@ -34,6 +34,15 @@
 				]
 			}
 		},
+		"Abbreviation definition for: CanDCSU6": {
+			"Canadian Downscaled Climate Scenarios-Univariate method from CMIP6": {
+				"msgid": "Canadian Downscaled Climate Scenarios-Univariate method from CMIP6",
+				"msgctxt": "Abbreviation definition for: CanDCSU6",
+				"msgstr": [
+					""
+				]
+			}
+		},
 		"Abbreviation definition for: CANGRD": {
 			"Canadian Gridded Temperature and Precipitation Anomalies": {
 				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
@@ -67,6 +76,15 @@
 				"msgctxt": "Abbreviation: Adjusted and Homogenized Canadian Climate Data",
 				"msgstr": [
 					"AHCCD"
+				]
+			}
+		},
+		"Abbreviation: Canadian Downscaled Climate Scenarios-Univariate method from CMIP6": {
+			"CanDCSU6": {
+				"msgid": "CanDCSU6",
+				"msgctxt": "Abbreviation: Canadian Downscaled Climate Scenarios-Univariate method from CMIP6",
+				"msgstr": [
+					""
 				]
 			}
 		},
@@ -421,6 +439,13 @@
 					"Adjusted and Homogenized Canadian Climate Data"
 				]
 			},
+			"Canadian Downscaled Climate Scenarios-Univariate method from CMIP6": {
+				"msgid": "Canadian Downscaled Climate Scenarios-Univariate method from CMIP6",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					""
+				]
+			},
 			"Canadian Gridded Temperature and Precipitation Anomalies": {
 				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
 				"msgctxt": "Dataset Name",
@@ -737,6 +762,12 @@
 					"10 - October"
 				]
 			},
+			"10th percentile": {
+				"msgid": "10th percentile",
+				"msgstr": [
+					""
+				]
+			},
 			"11 - November": {
 				"msgid": "11 - November",
 				"msgstr": [
@@ -809,6 +840,18 @@
 					"25th percentile"
 				]
 			},
+			"30-Year average": {
+				"msgid": "30-Year average",
+				"msgstr": [
+					""
+				]
+			},
+			"30-Year average range": {
+				"msgid": "30-Year average range",
+				"msgstr": [
+					""
+				]
+			},
 			"4 digit year": {
 				"msgid": "4 digit year",
 				"msgstr": [
@@ -843,6 +886,12 @@
 				"msgid": "75th percentile",
 				"msgstr": [
 					"75th percentile"
+				]
+			},
+			"90th percentile": {
+				"msgid": "90th percentile",
+				"msgstr": [
+					""
 				]
 			},
 			"95th percentile": {
@@ -1083,6 +1132,12 @@
 				"msgid": "Contact the Climate Services Support Desk",
 				"msgstr": [
 					"Contact the Climate Services Support Desk"
+				]
+			},
+			"Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.": {
+				"msgid": "Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.",
+				"msgstr": [
+					""
 				]
 			},
 			"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
@@ -1691,6 +1746,24 @@
 					"Maximum temperature"
 				]
 			},
+			"Mean daily max temperature": {
+				"msgid": "Mean daily max temperature",
+				"msgstr": [
+					""
+				]
+			},
+			"Mean daily mean temperature": {
+				"msgid": "Mean daily mean temperature",
+				"msgstr": [
+					""
+				]
+			},
+			"Mean daily min temperature": {
+				"msgid": "Mean daily min temperature",
+				"msgstr": [
+					""
+				]
+			},
 			"Mean precipitation": {
 				"msgid": "Mean precipitation",
 				"msgstr": [
@@ -2099,6 +2172,24 @@
 					"Spring (March-May)"
 				]
 			},
+			"SSP126": {
+				"msgid": "SSP126",
+				"msgstr": [
+					""
+				]
+			},
+			"SSP245": {
+				"msgid": "SSP245",
+				"msgstr": [
+					""
+				]
+			},
+			"SSP585": {
+				"msgid": "SSP585",
+				"msgstr": [
+					""
+				]
+			},
 			"Start date": {
 				"msgid": "Start date",
 				"msgstr": [
@@ -2183,6 +2274,12 @@
 					"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">AHCCD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset."
 				]
 			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanDCSU6</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanDCSU6</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					""
+				]
+			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
@@ -2253,6 +2350,12 @@
 				"msgid": "The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.",
 				"msgstr": [
 					"The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information."
+				]
+			},
+			"The Canadian Downscaled Climate Scenarios-Univariate method from CMIP6 (CanDCSU6) provides projected changes in temperature and precipitation for three emission scenarios at a 6x10km grid spatial resolution. Data is available for the 1950-2014 historical period and the 2015-2100 projected period. Statistically downscaled datasets have been produced from 26 CMIP6 Global Climate Models (GCMs) under three different emission scenarios (i.e., SSP1-2.6, SSP2-4.5, and SSP5-8.5) using the same downscaling method (Bias Correction/Constructed Analogues with Quantile mapping (BCCAQv2)) and downscaling target data (NRCANmet) as the CMIP5-based downscaled scenarios.": {
+				"msgid": "The Canadian Downscaled Climate Scenarios-Univariate method from CMIP6 (CanDCSU6) provides projected changes in temperature and precipitation for three emission scenarios at a 6x10km grid spatial resolution. Data is available for the 1950-2014 historical period and the 2015-2100 projected period. Statistically downscaled datasets have been produced from 26 CMIP6 Global Climate Models (GCMs) under three different emission scenarios (i.e., SSP1-2.6, SSP2-4.5, and SSP5-8.5) using the same downscaling method (Bias Correction/Constructed Analogues with Quantile mapping (BCCAQv2)) and downscaling target data (NRCANmet) as the CMIP5-based downscaled scenarios.",
+				"msgstr": [
+					""
 				]
 			},
 			"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.": {
@@ -2640,6 +2743,15 @@
 				]
 			}
 		},
+		"Abbreviation definition for: CanDCSU6": {
+			"Canadian Downscaled Climate Scenarios-Univariate method from CMIP6": {
+				"msgid": "Canadian Downscaled Climate Scenarios-Univariate method from CMIP6",
+				"msgctxt": "Abbreviation definition for: CanDCSU6",
+				"msgstr": [
+					"Scénarios climatiques canadiens à échelle réduite – méthode univariée de la CMIP6"
+				]
+			}
+		},
 		"Abbreviation definition for: CANGRD": {
 			"Canadian Gridded Temperature and Precipitation Anomalies": {
 				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
@@ -2673,6 +2785,15 @@
 				"msgctxt": "Abbreviation: Adjusted and Homogenized Canadian Climate Data",
 				"msgstr": [
 					"DCCAH"
+				]
+			}
+		},
+		"Abbreviation: Canadian Downscaled Climate Scenarios-Univariate method from CMIP6": {
+			"CanDCSU6": {
+				"msgid": "CanDCSU6",
+				"msgctxt": "Abbreviation: Canadian Downscaled Climate Scenarios-Univariate method from CMIP6",
+				"msgstr": [
+					"CanDCS-U6"
 				]
 			}
 		},
@@ -3027,6 +3148,13 @@
 					"Données climatiques canadiennes ajustées et homogénéisées"
 				]
 			},
+			"Canadian Downscaled Climate Scenarios-Univariate method from CMIP6": {
+				"msgid": "Canadian Downscaled Climate Scenarios-Univariate method from CMIP6",
+				"msgctxt": "Dataset Name",
+				"msgstr": [
+					"Scénarios climatiques canadiens à échelle réduite – méthode univariée de la CMIP6"
+				]
+			},
 			"Canadian Gridded Temperature and Precipitation Anomalies": {
 				"msgid": "Canadian Gridded Temperature and Precipitation Anomalies",
 				"msgctxt": "Dataset Name",
@@ -3343,6 +3471,12 @@
 					"10 - Octobre"
 				]
 			},
+			"10th percentile": {
+				"msgid": "10th percentile",
+				"msgstr": [
+					"10e percentile"
+				]
+			},
 			"11 - November": {
 				"msgid": "11 - November",
 				"msgstr": [
@@ -3415,6 +3549,18 @@
 					"25e percentile"
 				]
 			},
+			"30-Year average": {
+				"msgid": "30-Year average",
+				"msgstr": [
+					"Moyenne sur 30 ans"
+				]
+			},
+			"30-Year average range": {
+				"msgid": "30-Year average range",
+				"msgstr": [
+					"Variation moyenne sur 30 ans"
+				]
+			},
 			"4 digit year": {
 				"msgid": "4 digit year",
 				"msgstr": [
@@ -3449,6 +3595,12 @@
 				"msgid": "75th percentile",
 				"msgstr": [
 					"75e percentile"
+				]
+			},
+			"90th percentile": {
+				"msgid": "90th percentile",
+				"msgstr": [
+					"90e percentile"
 				]
 			},
 			"95th percentile": {
@@ -3689,6 +3841,12 @@
 				"msgid": "Contact the Climate Services Support Desk",
 				"msgstr": [
 					"Communiquez avec le Centre d&rsquo;aide des Services climatiques"
+				]
+			},
+			"Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.": {
+				"msgid": "Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.",
+				"msgstr": [
+					"La sélection des dates contient une grande quantité de données à traiter. L'exécution de la tâche va prendre longtemps, et il y a une chance que les données ne seront pas acquis."
 				]
 			},
 			"Daily climate data is derived from two sources of data; Daily Climate Stations producing one or two observations per day of temperature, precipitation, and hourly stations (see hourly data sets) that typically produce more weather elements e.g. wind or snow on ground.": {
@@ -4297,6 +4455,24 @@
 					"Température maximale"
 				]
 			},
+			"Mean daily max temperature": {
+				"msgid": "Mean daily max temperature",
+				"msgstr": [
+					"Moyenne des températures maximales quotidiennes"
+				]
+			},
+			"Mean daily mean temperature": {
+				"msgid": "Mean daily mean temperature",
+				"msgstr": [
+					"Moyenne des températures moyennes quotidiennes"
+				]
+			},
+			"Mean daily min temperature": {
+				"msgid": "Mean daily min temperature",
+				"msgstr": [
+					"Moyenne des températures minimales quotidiennes"
+				]
+			},
 			"Mean precipitation": {
 				"msgid": "Mean precipitation",
 				"msgstr": [
@@ -4705,6 +4881,24 @@
 					"Printemps (mars à mai)"
 				]
 			},
+			"SSP126": {
+				"msgid": "SSP126",
+				"msgstr": [
+					"SSP126"
+				]
+			},
+			"SSP245": {
+				"msgid": "SSP245",
+				"msgstr": [
+					"SSP245"
+				]
+			},
+			"SSP585": {
+				"msgid": "SSP585",
+				"msgstr": [
+					"SSP585"
+				]
+			},
 			"Start date": {
 				"msgid": "Start date",
 				"msgstr": [
@@ -4789,6 +4983,12 @@
 					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative aux <abbr title=\"{datasetName}\">DCCAH</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
 				]
 			},
+			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanDCSU6</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
+				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CanDCSU6</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
+				"msgstr": [
+					"La <a href=\"{openPortalLink}\" target=\"_blank\">page du portail du gouvernement ouvert relative au <abbr title=\"{datasetName}\">CanDCSU6</abbr></a> fournit aussi des fichiers de métadonnées pour l’ensemble de données, ainsi que d’autres moyens d’accéder à l’ensemble de données."
+				]
+			},
 			"The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.": {
 				"msgid": "The <a href=\"{openPortalLink}\" target=\"_blank\">open government portal page for <abbr title=\"{datasetName}\">CANGRD</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.",
 				"msgstr": [
@@ -4859,6 +5059,12 @@
 				"msgid": "The Canadian Centre for Climate Services also provides both a Datamart and application program interfaces (API) that will allow you to access this dataset in a bulk and/or automated fashion. Please refer to <a href=\"{link}\" target=\"_blank\">the documentation on these advanced tools</a> for more information.",
 				"msgstr": [
 					"Le Centre canadien des services climatiques offre aussi un Datamart et des interfaces pour la programmation d’application (API) qui permettent d’accéder à cet ensemble de données en masse et/ou de manière automatisée. Veuillez vous référer à <a href=\"{link}\" target=\"_blank\">la documentation sur ces outils avancés</a> pour plus d'information."
+				]
+			},
+			"The Canadian Downscaled Climate Scenarios-Univariate method from CMIP6 (CanDCSU6) provides projected changes in temperature and precipitation for three emission scenarios at a 6x10km grid spatial resolution. Data is available for the 1950-2014 historical period and the 2015-2100 projected period. Statistically downscaled datasets have been produced from 26 CMIP6 Global Climate Models (GCMs) under three different emission scenarios (i.e., SSP1-2.6, SSP2-4.5, and SSP5-8.5) using the same downscaling method (Bias Correction/Constructed Analogues with Quantile mapping (BCCAQv2)) and downscaling target data (NRCANmet) as the CMIP5-based downscaled scenarios.": {
+				"msgid": "The Canadian Downscaled Climate Scenarios-Univariate method from CMIP6 (CanDCSU6) provides projected changes in temperature and precipitation for three emission scenarios at a 6x10km grid spatial resolution. Data is available for the 1950-2014 historical period and the 2015-2100 projected period. Statistically downscaled datasets have been produced from 26 CMIP6 Global Climate Models (GCMs) under three different emission scenarios (i.e., SSP1-2.6, SSP2-4.5, and SSP5-8.5) using the same downscaling method (Bias Correction/Constructed Analogues with Quantile mapping (BCCAQv2)) and downscaling target data (NRCANmet) as the CMIP5-based downscaled scenarios.",
+				"msgstr": [
+					"Les scénarios climatiques canadiens à échelle réduite – méthode univariée de la CMIP6 (CanDCS-U6) fournissent des changements projetés de température et précipitation selon trois scénarios d’émissions à une résolution spatiale de grille de ~6x10 km. Les données sont disponibles pour la période historique de 1950 à 2014 et la période projetée de 2015 à 2100. Des ensembles de données statistiquement mis à l’échelle ont été produits à partir de 26 modèles climatiques globaux (MCG) de la CMIP6 et selon trois scénarios d’émissions différents (c.-à-d. SSP1-2.6, SSP2-4.5 et SSP5-8.5) en utilisant la même méthode de réduction d'échelle (correction de biais/construction d’analogues, avec reclassification des quantiles, version 2 (BCCAQv2)) et les mêmes données cibles de réduction d'échelle (NRCANmet) que les scénarios réduits à l'échelle basés sur le CMIP5."
 				]
 			},
 			"The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.": {

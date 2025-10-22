@@ -19,7 +19,7 @@ export const oapiCoverage = {
       let formats = {
         'json': this.$pgettext('File format', 'CoverageJSON')
       }
-      if (['cmip5', 'dcs'].includes(this.$route.name)) {
+      if (['cmip5', 'dcs', 'candcsu6'].includes(this.$route.name)) {
         formats['NetCDF'] = this.$pgettext('File format', 'NetCDF')
       } else if (this.$route.name === 'cangrd') {
         formats['GTiff'] = this.$pgettext('File format', 'GeoTIFF')
