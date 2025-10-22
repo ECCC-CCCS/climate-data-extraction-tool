@@ -3,7 +3,7 @@
     <label
       for="vector_download_format"
       :class="{required: required}">
-      <translate>Data download format</translate>&nbsp;
+      {{ this.label }}
       <strong
         v-if="required"
         class="required"
@@ -64,6 +64,9 @@ export default {
           linkToPython: this.linkTo.python
         })
       }
+    },
+    label: function () {
+      return this.$gettext('Data download format')
     }
   },
   methods: {

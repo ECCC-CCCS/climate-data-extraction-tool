@@ -15,7 +15,7 @@
         id="download-url"
         target="_blank"
         class="downloadUrl list-group-item">
-        <span class="glyphicon glyphicon-download"></span> Download<br>
+        <span class="glyphicon glyphicon-download"></span> <translate>Download</translate><br>
         <span
           v-for="context in downloadContext"
           :key="context"

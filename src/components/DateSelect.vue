@@ -111,10 +111,11 @@ export default {
     format: function (newFormat, oldFormat) {
       this.dateValue = this.value
       // avoid moment parse warnings
-      if (typeof this.value === 'string') {
+      if (typeof this.value === 'string' && this.$route.name !== 'candcsu6') {
         this.dateValue = this.$moment.utc(this.value, oldFormat).toDate()
+        this.emitUpdatedValue(this.dateValue)
       }
-      this.emitUpdatedValue(this.dateValue)
+      
     }
   },
   computed: {
