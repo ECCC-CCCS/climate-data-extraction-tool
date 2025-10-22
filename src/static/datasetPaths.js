@@ -39,6 +39,10 @@ const datasetPaths = {
     en: '/downscaled-data',
     fr: '/donnees-echelle-reduite'
   },
+  candcsu6: {
+    en: '/candcsu6-data',
+    fr: '/donnees-candcsu6'
+  },
   hydrometric: {
     en: '/water-quantity-data',
     fr: '/donnees-quantite-eau'

@@ -81,6 +81,18 @@ const routes = [ // order matters for dataset menu
     component: () => import(/* webpackChunkName: "dcs" */ '../views/DCSForm.vue')
   },
   {
+    path: datasetPaths.candcsu6.en,
+    alias: datasetPaths.candcsu6.fr,
+    name: 'candcsu6',
+    meta: {
+      datasetSectionMenu: true,
+      en_path: datasetPaths.candcsu6.en,
+      fr_path: datasetPaths.candcsu6.fr,
+      group: 'climateSimulation'
+    },
+    component: () => import(/* webpackChunkName: "candcs6" */ '../views/CanDCSU6Form.vue')
+  },
+  {
     path: datasetPaths.cansips.en,
     alias: datasetPaths.cansips.fr,
     name: 'cansips',
