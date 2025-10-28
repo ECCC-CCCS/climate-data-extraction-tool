@@ -11,6 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/components/MoreResources.vue:32
@@ -313,13 +314,9 @@ msgstr ""
 "données d’une ou de plusieurs stations à l’aide de l’outil d’extraction de "
 "données climatiques."
 
-#: src/views/CanSIPSForm.vue:175
+#: src/views/CanSIPSForm.vue:227
 msgid "Air temperature"
 msgstr "Température de l'air"
-
-#: src/views/CanSIPSForm.vue:178
-msgid "Air temperature at 850mb"
-msgstr "Température de l'air à 850 mb"
 
 #: src/components/ProvinceSelect.vue:37
 msgid "Alberta"
@@ -966,16 +963,23 @@ msgstr ""
 "target=\"_blank\">documentation technique relative aux Scénarios "
 "climatiques canadiens mis à l’échelle de manière statistique</a>."
 
-#: src/views/CanSIPSForm.vue:168
+#: src/views/CanSIPSForm.vue:222
 msgid "Forecast"
 msgstr "Prévision"
 
-#: src/views/CanSIPSForm.vue:277
-#: src/views/CanSIPSForm.vue:63
+#: src/views/CanSIPSForm.vue:364
 msgid "Forecast month"
 msgstr "Mois de la prévision"
 
-#: src/views/LTCEForm.vue:334
+#: src/views/CanSIPSForm.vue:366
+msgid "Forecast months"
+msgstr "Les mois de la prévision"
+
+#: src/views/CanSIPSForm.vue:59
+msgid "Forecast period"
+msgstr "Période de la prévision"
+
+#: src/views/LTCEForm.vue:331
 msgid "Frequently asked questions about LTCE"
 msgstr "Foire aux questions à propos de l'ECLT"
 
@@ -983,10 +987,6 @@ msgstr "Foire aux questions à propos de l'ECLT"
 #: src/views/CanDCSU6Form.vue:453
 msgid "Future"
 msgstr "Futur"
-
-#: src/views/CanSIPSForm.vue:177
-msgid "Geopotential height at 500mb"
-msgstr "Hauteur géopotentielle à 500 mb"
 
 #: src/views/HomeView.vue:12
 msgid "Get started"
@@ -1081,9 +1081,9 @@ msgstr ""
 msgid "Information"
 msgstr "Information"
 
-#: src/views/CanSIPSForm.vue:174
-msgid "Instantaneous precipitation rate (m/s)"
-msgstr "Taux instantané de précipitations (m/s)"
+#: src/views/CanSIPSForm.vue:30
+msgid "Interval type"
+msgstr "Type d'intervalle"
 
 #: src/components/PointDownloadBox.vue:25
 #. WPS error message
@@ -1221,22 +1221,16 @@ msgstr "Moyenne des précipitations"
 msgid "Mean temperature"
 msgstr "Température moyenne"
 
-#: src/views/CanSIPSForm.vue:275
-#: src/views/CanSIPSForm.vue:44
-msgid "Member"
-msgstr "Membre"
-
 #: src/views/CanGRDForm.vue:276
 #: src/views/DCSForm.vue:247
 msgid "Minimum temperature"
 msgstr "Température minimale"
 
-#: src/views/CanSIPSForm.vue:276
-#: src/views/CanSIPSForm.vue:52
+#: src/views/CanSIPSForm.vue:362
+#: src/views/CanSIPSForm.vue:48
 msgid "Model run month"
 msgstr "Mois de la simulation du modèle"
 
-#: src/views/CanSIPSForm.vue:36
 #: src/views/RDPAForm.vue:33
 msgid "Model type"
 msgstr "Type de modèle"
@@ -1252,6 +1246,7 @@ msgstr "Mois"
 #: src/components/mixins/oapi-coverages-dcs-cmip5.js:250
 #: src/views/CanDCSU6Form.vue:469
 #: src/views/CanGRDForm.vue:290
+#: src/views/CanSIPSForm.vue:299
 msgid "Monthly"
 msgstr "Mensuel"
 
@@ -1404,7 +1399,11 @@ msgstr ""
 msgid "Please select a point on the map."
 msgstr "Veuillez sélectionner un point sur la carte."
 
-#: src/views/LTCEForm.vue:264
+#: src/views/CanSIPSForm.vue:228
+msgid "Precipitation"
+msgstr "Précipitation"
+
+#: src/views/LTCEForm.vue:261
 msgid "Precipitation - Daily extremes of record"
 msgstr "Précipitations - Extrêmes quotidiens"
 
@@ -1420,16 +1419,32 @@ msgstr "Précédent"
 msgid "Prince Edward Island"
 msgstr "Île-du-Prince-Édouard"
 
-#: src/views/AHCCDForm.vue:209
-#: src/views/ClimateDailyForm.vue:228
-#: src/views/ClimateDailyForm.vue:248
-#: src/views/ClimateHourlyForm.vue:237
-#: src/views/ClimateHourlyForm.vue:257
-#: src/views/ClimateMonthlyForm.vue:223
-#: src/views/ClimateMonthlyForm.vue:243
-#: src/views/ClimateNormalsForm.vue:153
-#: src/views/HydrometricArchiveForm.vue:239
-#: src/views/LTCEForm.vue:255
+#: src/views/CanSIPSForm.vue:42
+msgid "Probability"
+msgstr "Probabilité"
+
+#: src/views/CanSIPSForm.vue:238
+msgid "Probability above normal"
+msgstr "Probabilité d'être au-dessus de la normale"
+
+#: src/views/CanSIPSForm.vue:239
+msgid "Probability below normal"
+msgstr "Probabilité d'être sous la normale"
+
+#: src/views/CanSIPSForm.vue:237
+msgid "Probability near normal"
+msgstr "Probabilité d'être près de la normale"
+
+#: src/views/AHCCDForm.vue:207
+#: src/views/ClimateDailyForm.vue:226
+#: src/views/ClimateDailyForm.vue:246
+#: src/views/ClimateHourlyForm.vue:235
+#: src/views/ClimateHourlyForm.vue:255
+#: src/views/ClimateMonthlyForm.vue:221
+#: src/views/ClimateMonthlyForm.vue:241
+#: src/views/ClimateNormalsForm.vue:151
+#: src/views/HydrometricArchiveForm.vue:235
+#: src/views/LTCEForm.vue:252
 msgid "Province"
 msgstr "Province"
 
@@ -1471,15 +1486,15 @@ msgstr "Concentration des glaces de mer"
 msgid "Sea ice thickness"
 msgstr "Épaisseur de la glace de mer"
 
-#: src/views/CanSIPSForm.vue:173
-msgid "Sea level pressure"
-msgstr "Pression au niveau de la mer"
-
 #: src/views/AHCCDForm.vue:219
 msgid "Seasonal values"
 msgstr "Valeurs saisonnières"
 
-#: src/views/LTCEForm.vue:334
+#: src/views/CanSIPSForm.vue:300
+msgid "Seasonally"
+msgstr "Saisonnièrement"
+
+#: src/views/LTCEForm.vue:331
 msgid "see FAQ"
 msgstr "voir la FAQ"
 
@@ -2253,7 +2268,7 @@ msgid "Value-added historical climate data products"
 msgstr "Produits à valeur ajoutée dérivés de données climatiques historiques"
 
 #: src/views/CanGRDForm.vue:42
-#: src/views/CanSIPSForm.vue:30
+#: src/views/CanSIPSForm.vue:36
 msgid "Variable"
 msgstr "Variables"
 
@@ -2319,10 +2334,6 @@ msgid ""
 msgstr ""
 "Consultez <a href=\"{link}\" target=\"_blank\">donneesclimatiques.ca</a> "
 "pour obtenir les résultats d’un modèle individuel"
-
-#: src/views/CanSIPSForm.vue:176
-msgid "Water temperature"
-msgstr "Température de l'eau"
 
 #: src/components/InfoContactSupport.vue:18
 msgid ""
@@ -2664,28 +2675,29 @@ msgctxt "Canada.ca Theme"
 msgid "You are here:"
 msgstr "Vous êtes ici :"
 
-#: src/views/AHCCDForm.vue:234
-#: src/views/AHCCDForm.vue:238
-#: src/views/AHCCDForm.vue:242
-#: src/views/AHCCDForm.vue:247
-#: src/views/CanSIPSForm.vue:275
-#: src/views/CanSIPSForm.vue:276
-#: src/views/CanSIPSForm.vue:277
-#: src/views/ClimateDailyForm.vue:240
-#: src/views/ClimateDailyForm.vue:244
-#: src/views/ClimateDailyForm.vue:248
-#: src/views/ClimateDailyForm.vue:253
-#: src/views/ClimateHourlyForm.vue:249
-#: src/views/ClimateHourlyForm.vue:253
-#: src/views/ClimateHourlyForm.vue:257
-#: src/views/ClimateHourlyForm.vue:262
-#: src/views/ClimateMonthlyForm.vue:235
-#: src/views/ClimateMonthlyForm.vue:239
-#: src/views/ClimateMonthlyForm.vue:243
-#: src/views/ClimateMonthlyForm.vue:248
-#: src/views/ClimateNormalsForm.vue:165
-#: src/views/ClimateNormalsForm.vue:169
-#: src/views/ClimateNormalsForm.vue:173
+#: src/views/AHCCDForm.vue:232
+#: src/views/AHCCDForm.vue:236
+#: src/views/AHCCDForm.vue:240
+#: src/views/AHCCDForm.vue:245
+#: src/views/CanSIPSForm.vue:362
+#: src/views/CanSIPSForm.vue:364
+#: src/views/CanSIPSForm.vue:366
+#: src/views/ClimateDailyForm.vue:238
+#: src/views/ClimateDailyForm.vue:242
+#: src/views/ClimateDailyForm.vue:246
+#: src/views/ClimateDailyForm.vue:251
+#: src/views/ClimateHourlyForm.vue:247
+#: src/views/ClimateHourlyForm.vue:251
+#: src/views/ClimateHourlyForm.vue:255
+#: src/views/ClimateHourlyForm.vue:260
+#: src/views/ClimateMonthlyForm.vue:233
+#: src/views/ClimateMonthlyForm.vue:237
+#: src/views/ClimateMonthlyForm.vue:241
+#: src/views/ClimateMonthlyForm.vue:246
+#: src/views/ClimateNormalsForm.vue:163
+#: src/views/ClimateNormalsForm.vue:167
+#: src/views/ClimateNormalsForm.vue:171
+#: src/views/HydrometricArchiveForm.vue:245
 #: src/views/HydrometricArchiveForm.vue:249
 #: src/views/HydrometricArchiveForm.vue:253
 #: src/views/HydrometricArchiveForm.vue:257
@@ -2788,10 +2800,25 @@ msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr "-- Aucun --"
 
+#: src/views/CanSIPSForm.vue:276
+#: src/views/CanSIPSForm.vue:289
+msgctxt ""
+"startYYYYMM and endYYYYMM represent the start and end dates. periodValue "
+"represents the forecast period"
+msgid "{startYYYYMM} to {endYYYYMM} ({periodValue})"
+msgstr "{startYYYYMM} à {endYYYYMM} ({periodValue})"
+
 #: src/components/BBOXMap.vue:451
 msgctxt "Template for different file formats"
 msgid "A region as a {format1} or {format2}"
 msgstr "une région sous forme de {format1} ou {format2}"
+
+#: src/views/CanSIPSForm.vue:250
+msgctxt ""
+"The dropdown display for an exceedence product. option specifies the "
+"product, units depends on the variable type"
+msgid "Probability greater than {exceedOption} {varUnits}"
+msgstr "Probabilité d'être plus que {exceedOption} {varUnits}"
 
 #: src/components/BBOXMap.vue:458
 msgctxt "Title"
