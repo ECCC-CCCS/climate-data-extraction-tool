@@ -272,6 +272,17 @@ export const datasets = {
             }]
           }
         },
+        candcsu6: {
+          title: this.$pgettext('Dataset Name', 'Canadian Downscaled Climate Scenarios-Univariate method from CMIP6'),
+          abbr: this.$pgettext('Abbreviation: Canadian Downscaled Climate Scenarios-Univariate method from CMIP6', 'CanDCSU6'),
+          abbrName: this.$pgettext('Abbreviation definition for: CanDCSU6', 'Canadian Downscaled Climate Scenarios-Univariate method from CMIP6'),
+          openPortal: {
+            en: 'https://open.canada.ca/data/en/dataset/f73d6939-912a-4add-a291-c233fc5d1946',
+            fr: 'https://ouvert.canada.ca/data/fr/dataset/f73d6939-912a-4add-a291-c233fc5d1946',
+            phrase: this.$gettext('The <a href="{openPortalLink}" target="_blank">open government portal page for <abbr title="{datasetName}">CanDCSU6</abbr></a> also provides metadata files for the dataset as well as other avenues for accessing the dataset.'),
+            phraseList: this.$gettext('The open government portal page for the Canadian statistically downscaled climate scenarios also provides metadata files for the dataset as well as other avenues for accessing the dataset:'),
+          }
+        },
         rdpa: {
           title: this.$pgettext('Dataset Name', 'Regional Deterministic Precipitation Analysis'),
           abbr: this.$pgettext('Abbreviation: Regional Deterministic Precipitation Analysis', 'RDPA'),

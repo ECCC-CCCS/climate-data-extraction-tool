@@ -3,7 +3,7 @@
     <label
       for="file_download_format"
       :class="{required: required}">
-      <translate>Data download format</translate>&nbsp;
+      {{ this.label }}
       <strong
         v-if="required"
         class="required"
@@ -88,6 +88,9 @@ export default {
           linkToCDO: this.linkTo.cdo
         })
       }
+    },
+    label: function () {
+      return this.$gettext('Data download format')
     }
   },
   methods: {

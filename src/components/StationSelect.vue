@@ -2,7 +2,7 @@
   <div>
     <fieldset>
       <legend>
-        <translate>Station table</translate>
+        {{ this.label }}
         <span
           class="label label-warning"
           v-show="stationIdSelected.length === maxStationSelection"
@@ -534,6 +534,9 @@ export default {
     },
     resetMapMessage: function () {
       return this.$gettext('Please press the "Reset map" button to see the stations in this table.')
+    },
+    label: function () {
+      return this.$gettext('Station table')
     }
   }
 }
