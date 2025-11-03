@@ -2,8 +2,7 @@
   <section>
     <h1>{{ currentRouteTitle }} <small>({{ currentRouteAbbr }})</small></h1>
 
-    <p v-translate>The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of atmospheric elements from the beginning of a month out to up to 12 months into the future. Atmospheric elements include temperature, precipitation, wind speed and direction and others. This product contains raw numerical results of these calculations. Geographical coverage is global. Data is available on a grid at a horizontal resolution of 2.5 degrees and for a few selected vertical levels. Predictions are made available monthly.</p>
-
+    <p v-html="cansips_summary"></p>
     <tips-using-tool></tips-using-tool>
 
     <data-access-doc-link></data-access-doc-link>
@@ -110,6 +109,10 @@ export default {
         minimumView: 'month',
         format: 'YYYY-MM',
         placeholder: 'YYYY-MM'
+      },
+      summaryLink: {
+        en: process.env.VUE_APP_CLIMATE_SCENARIOS_EN + '/?page=cansips-prob',
+        fr: process.env.VUE_APP_CLIMATE_SCENARIOS_FR + '/?page=cansips-prob'
       }
     }
   },
@@ -359,6 +362,9 @@ export default {
     },
     hasErrors: function () {
       return this.modelRunOutOfRange || this.modelRunIsEmpty
+    },
+    cansips_summary: function () {
+      return this.$_i(this.$gettext('The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries out physics calculations to arrive at probabilistic predictions of temperature and precipitation from the beginning of a month out to up to 12 months into the future. This product presents the probabilities of the upcoming seasons and months having temperature and precipitation above, near and below normal, as well as being above various historical percentiles. Geographical coverage is global. Data is available on a grid at a resolution of 1x1 degrees. New predictions are made available monthly. For data on a map, more variables, guidance and more information about skill please see <a href={link} target=_blank>Seasonal forecasts for Canada</a>'), {link: this.summaryLink[this.$i18n.activeLocale]})
     },
     cansipsCoverageMetadata: function () {
       // TODO may need to adjust URL when exceedence data is available
