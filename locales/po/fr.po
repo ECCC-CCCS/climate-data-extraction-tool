@@ -966,17 +966,21 @@ msgstr ""
 msgid "Forecast"
 msgstr "Prévision"
 
-#: src/views/CanSIPSForm.vue:370
+#: src/views/CanSIPSForm.vue:365
 msgid "Forecast month"
 msgstr "Mois de la prévision"
 
-#: src/views/CanSIPSForm.vue:372
+#: src/views/CanSIPSForm.vue:367
 msgid "Forecast months"
 msgstr "Les mois de la prévision"
 
 #: src/views/CanSIPSForm.vue:57
 msgid "Forecast period"
 msgstr "Période de la prévision"
+
+#: src/views/CanSIPSForm.vue:40
+msgid "Forecasted probability"
+msgstr "Probabilité prévue"
 
 #: src/views/LTCEForm.vue:334
 msgid "Frequently asked questions about LTCE"
@@ -1225,7 +1229,7 @@ msgstr "Température moyenne"
 msgid "Minimum temperature"
 msgstr "Température minimale"
 
-#: src/views/CanSIPSForm.vue:368
+#: src/views/CanSIPSForm.vue:363
 #: src/views/CanSIPSForm.vue:46
 msgid "Model run month"
 msgstr "Mois de la simulation du modèle"
@@ -1245,7 +1249,7 @@ msgstr "Mois"
 #: src/components/mixins/oapi-coverages-dcs-cmip5.js:250
 #: src/views/CanDCSU6Form.vue:469
 #: src/views/CanGRDForm.vue:290
-#: src/views/CanSIPSForm.vue:305
+#: src/views/CanSIPSForm.vue:300
 msgid "Monthly"
 msgstr "Mensuel"
 
@@ -1418,10 +1422,6 @@ msgstr "Précédent"
 msgid "Prince Edward Island"
 msgstr "Île-du-Prince-Édouard"
 
-#: src/views/CanSIPSForm.vue:40
-msgid "Probability"
-msgstr "Probabilité"
-
 #: src/views/CanSIPSForm.vue:238
 msgid "Probability above normal"
 msgstr "Probabilité d'être au-dessus de la normale"
@@ -1489,7 +1489,7 @@ msgstr "Épaisseur de la glace de mer"
 msgid "Seasonal values"
 msgstr "Valeurs saisonnières"
 
-#: src/views/CanSIPSForm.vue:306
+#: src/views/CanSIPSForm.vue:301
 msgid "Seasonally"
 msgstr "Saisonnièrement"
 
@@ -1887,7 +1887,7 @@ msgstr ""
 "version 2 (BCCAQv2)) et les mêmes données cibles de réduction d'échelle "
 "(NRCANmet) que les scénarios réduits à l'échelle basés sur le CMIP5."
 
-#: src/views/CanSIPSForm.vue:381
+#: src/views/CanSIPSForm.vue:376
 msgid ""
 "The Canadian Seasonal to Inter-annual Prediction System (CanSIPS) carries "
 "out physics calculations to arrive at probabilistic predictions of "
@@ -2684,9 +2684,9 @@ msgstr "Vous êtes ici :"
 #: src/views/AHCCDForm.vue:238
 #: src/views/AHCCDForm.vue:242
 #: src/views/AHCCDForm.vue:247
-#: src/views/CanSIPSForm.vue:368
-#: src/views/CanSIPSForm.vue:370
-#: src/views/CanSIPSForm.vue:372
+#: src/views/CanSIPSForm.vue:363
+#: src/views/CanSIPSForm.vue:365
+#: src/views/CanSIPSForm.vue:367
 #: src/views/ClimateDailyForm.vue:240
 #: src/views/ClimateDailyForm.vue:244
 #: src/views/ClimateDailyForm.vue:248
@@ -2804,8 +2804,8 @@ msgctxt "Select option for None in a dropdown menu"
 msgid "-- None --"
 msgstr "-- Aucun --"
 
-#: src/views/CanSIPSForm.vue:276
-#: src/views/CanSIPSForm.vue:295
+#: src/views/CanSIPSForm.vue:271
+#: src/views/CanSIPSForm.vue:290
 msgctxt ""
 "startYYYYMM and endYYYYMM represent the start and end dates. periodValue "
 "represents the forecast period"
@@ -2817,12 +2817,12 @@ msgctxt "Template for different file formats"
 msgid "A region as a {format1} or {format2}"
 msgstr "une région sous forme de {format1} ou {format2}"
 
-#: src/views/CanSIPSForm.vue:250
+#: src/views/CanSIPSForm.vue:245
 msgctxt ""
 "The dropdown display for an exceedence product. option specifies the "
 "product, units depends on the variable type"
-msgid "Probability greater than {exceedOption} {varUnits}"
-msgstr "Probabilité d'être plus que {exceedOption} {varUnits}"
+msgid "Probability above {exceedOption}th percentile"
+msgstr "Probabilité d'être plus que le {exceedOption}e percentile"
 
 #: src/components/BBOXMap.vue:458
 msgctxt "Title"

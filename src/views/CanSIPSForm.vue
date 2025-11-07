@@ -29,7 +29,7 @@
 
     <var-select
       v-model="oapicIdProbability"
-      :label="$gettext('Probability')"
+      :label="$gettext('Forecasted probability')"
       :select-options="probabilityOptions"></var-select>
 
     <date-select
@@ -219,24 +219,19 @@ export default {
       var probOptions = {}
 
       // Probability Products
-      // Couldn't hardcode due to needing to translate
+      // Had to hardcode due to needing to translate
       probOptions['-ProbNearNormal'] = this.$gettext('Probability near normal')
       probOptions['-ProbAboveNormal'] = this.$gettext('Probability above normal')
       probOptions['-ProbBelowNormal'] = this.$gettext('Probability below normal')
 
       // Exceedence products
       const exceedProducts = ['10', '20', '30', '40', '50', '60', '70', '80', '90']
-      if (this.oapicIdVariable === 'AirTemp'){
-        var units = 'K'
-      }else{
-        units = 'kg/(m²)'
-      }
       exceedProducts.forEach(option => {
         probOptions[`-ProbGT${option}Pct`] = this.$_i(
           this.$pgettext(
             'The dropdown display for an exceedence product. option specifies the product, units depends on the variable type',
-            'Probability greater than {exceedOption} {varUnits}'),
-            {exceedOption: option, varUnits: units}
+            'Probability above {exceedOption}th percentile'),
+            {exceedOption: option}
           )
       })
       return probOptions

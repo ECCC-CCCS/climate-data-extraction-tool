@@ -582,8 +582,8 @@
 			}
 		},
 		"The dropdown display for an exceedence product. option specifies the product, units depends on the variable type": {
-			"Probability greater than {exceedOption} {varUnits}": {
-				"msgid": "Probability greater than {exceedOption} {varUnits}",
+			"Probability above {exceedOption}th percentile": {
+				"msgid": "Probability above {exceedOption}th percentile",
 				"msgctxt": "The dropdown display for an exceedence product. option specifies the product, units depends on the variable type",
 				"msgstr": [
 					""
@@ -1536,6 +1536,12 @@
 					""
 				]
 			},
+			"Forecasted probability": {
+				"msgid": "Forecasted probability",
+				"msgstr": [
+					""
+				]
+			},
 			"Frequently asked questions about LTCE": {
 				"msgid": "Frequently asked questions about LTCE",
 				"msgstr": [
@@ -2008,12 +2014,6 @@
 				"msgid": "Prince Edward Island",
 				"msgstr": [
 					"Prince Edward Island"
-				]
-			},
-			"Probability": {
-				"msgid": "Probability",
-				"msgstr": [
-					""
 				]
 			},
 			"Probability above normal": {
@@ -3327,11 +3327,11 @@
 			}
 		},
 		"The dropdown display for an exceedence product. option specifies the product, units depends on the variable type": {
-			"Probability greater than {exceedOption} {varUnits}": {
-				"msgid": "Probability greater than {exceedOption} {varUnits}",
+			"Probability above {exceedOption}th percentile": {
+				"msgid": "Probability above {exceedOption}th percentile",
 				"msgctxt": "The dropdown display for an exceedence product. option specifies the product, units depends on the variable type",
 				"msgstr": [
-					"Probabilité d'être plus que {exceedOption} {varUnits}"
+					"Probabilité d'être plus que le {exceedOption}e percentile"
 				]
 			}
 		},
@@ -4281,6 +4281,12 @@
 					"Période de la prévision"
 				]
 			},
+			"Forecasted probability": {
+				"msgid": "Forecasted probability",
+				"msgstr": [
+					"Probabilité prévue"
+				]
+			},
 			"Frequently asked questions about LTCE": {
 				"msgid": "Frequently asked questions about LTCE",
 				"msgstr": [
@@ -4753,12 +4759,6 @@
 				"msgid": "Prince Edward Island",
 				"msgstr": [
 					"Île-du-Prince-Édouard"
-				]
-			},
-			"Probability": {
-				"msgid": "Probability",
-				"msgstr": [
-					"Probabilité"
 				]
 			},
 			"Probability above normal": {

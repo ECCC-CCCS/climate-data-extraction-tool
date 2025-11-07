@@ -6,7 +6,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
 
         cy.get('#var-sel-interval-type').should('have.value', 'monthly-products')
         cy.get('#var-sel-variable').should('have.value', 'AirTemp')
-        cy.get('#var-sel-probability').should('have.value', '-ProbNearNormal')
+        cy.get('#var-sel-forecasted-probability').should('have.value', '-ProbNearNormal')
 
         // Get the current month and year
         const currDate = new Date().toJSON().slice(0, 7);
@@ -18,7 +18,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     it('Test download monthly air temp data', () => {
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
-        cy.selectVar('#var-sel-probability', 'Probability near normal', '-ProbNearNormal')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability near normal', '-ProbNearNormal')
         cy.inputText('#date-model-run-month', '2025-03{enter}')
         cy.selectVar('#var-sel-forecast-period', '2025-03 (P00M)', 'P00M')
 
@@ -54,55 +54,12 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
             })
         })
     })
-    it('Test unit change according to Variable type', () => {
-        // First ensure that the monthly data is selected
-        cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
-        cy.inputText('#date-model-run-month', `2025-03{enter}`)
-        cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
-        cy.selectVar('#var-sel-probability', 'Probability greater than 40 K', '-ProbGT40Pct')
-
-        // Now we change the variable type
-        cy.selectVar('#var-sel-variable', 'Precipitation', 'PrecipAccum')
-        // Now the probability should be using the precipiation units
-
-        // Form text is retrieved all as one text
-        const expectedPrecip = 'Probability near normal' +
-                                'Probability above normal' +
-                                'Probability below normal' +
-                                'Probability greater than 10 kg/(m²)' +
-                                'Probability greater than 20 kg/(m²)' +
-                                'Probability greater than 30 kg/(m²)' +
-                                'Probability greater than 40 kg/(m²)' +
-                                'Probability greater than 50 kg/(m²)' +
-                                'Probability greater than 60 kg/(m²)' +
-                                'Probability greater than 70 kg/(m²)' +
-                                'Probability greater than 80 kg/(m²)' +
-                                'Probability greater than 90 kg/(m²)'
-        cy.get('#var-sel-probability').should('have.text', expectedPrecip)
-
-        // Now we change it back to air temperature to check if the units change as expected
-        cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
-
-        const expectedTemps = 'Probability near normal' +
-                                'Probability above normal' +
-                                'Probability below normal' +
-                                'Probability greater than 10 K' +
-                                'Probability greater than 20 K' +
-                                'Probability greater than 30 K' +
-                                'Probability greater than 40 K' +
-                                'Probability greater than 50 K' +
-                                'Probability greater than 60 K' +
-                                'Probability greater than 70 K' +
-                                'Probability greater than 80 K' +
-                                'Probability greater than 90 K'
-        cy.get('#var-sel-probability').should('have.text', expectedTemps)
-    })
     it("Test changing forecast periods for different interval types", () => {
         // Set values for monthly interval
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
         cy.inputText('#date-model-run-month', `2025-05{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
-        cy.selectVar('#var-sel-probability', 'Probability near normal', '-ProbNearNormal')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability near normal', '-ProbNearNormal')
         cy.selectVar('#var-sel-forecast-period', '2025-06 (P01M)', 'P01M')
 
         // Next, it is changed to the seasonal interval, and the forecast period should change as desired
@@ -148,7 +105,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
 
         // Also check that other seasonal is ok
         cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
-        cy.selectVar('#var-sel-probability', 'Probability greater than 40 K', '-ProbGT40Pct')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability above 40th percentile', '-ProbGT40Pct')
         cy.get('#var-sel-forecast-period').should('have.value', 'P00M-P02M').should('have.text', expectedPeriods)
 
     })
@@ -157,7 +114,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
         cy.inputText('#date-model-run-month', `2025-03{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
-        cy.selectVar('#var-sel-probability', 'Probability below normal', '-ProbBelowNormal')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability below normal', '-ProbBelowNormal')
 
         // Test that it works with this configuration
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
@@ -170,7 +127,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         })
 
         // Now change the probability and see that it can be downloaded
-        cy.selectVar('#var-sel-probability', 'Probability greater than 70 K', '-ProbGT70Pct')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability above 70th percentile', '-ProbGT70Pct')
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -182,7 +139,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
 
         // Next change to Precipitation data
         cy.selectVar('#var-sel-variable', 'Precipitation', 'PrecipAccum')
-        cy.selectVar('#var-sel-probability', 'Probability greater than 70 kg/(m²)', '-ProbGT70Pct')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability above 70th percentile', '-ProbGT70Pct')
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -193,7 +150,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         })
 
         // Lastly, test a different probability for Precipitation
-        cy.selectVar('#var-sel-probability', 'Probability below normal', '-ProbBelowNormal')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability below normal', '-ProbBelowNormal')
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -208,7 +165,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
         cy.inputText('#date-model-run-month', `2025-03{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
-        cy.selectVar('#var-sel-probability', 'Probability below normal', '-ProbBelowNormal')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability below normal', '-ProbBelowNormal')
 
         // Test that it works with this configuration
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
@@ -221,7 +178,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         })
 
         // Now change the probability and see that it can be downloaded
-        cy.selectVar('#var-sel-probability', 'Probability greater than 70 K', '-ProbGT70Pct')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability above 70th percentile', '-ProbGT70Pct')
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -233,7 +190,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
 
         // Next change to Precipitation data
         cy.selectVar('#var-sel-variable', 'Precipitation', 'PrecipAccum')
-        cy.selectVar('#var-sel-probability', 'Probability greater than 70 kg/(m²)', '-ProbGT70Pct')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability above 70th percentile', '-ProbGT70Pct')
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -244,7 +201,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         })
 
         // Lastly, test a different probability for Precipitation
-        cy.selectVar('#var-sel-probability', 'Probability below normal', '-ProbBelowNormal')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability below normal', '-ProbBelowNormal')
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -259,7 +216,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
         cy.inputText('#date-model-run-month', `2025-03{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
-        cy.selectVar('#var-sel-probability', 'Probability above normal', '-ProbAboveNormal')
+        cy.selectVar('#var-sel-forecasted-probability', 'Probability above normal', '-ProbAboveNormal')
         cy.selectVar('#var-sel-forecast-period', '2025-03 (P00M)', 'P00M')
         cy.selectVar('#file_download_format', 'GRIB', 'GRIB')
         // visit download link
