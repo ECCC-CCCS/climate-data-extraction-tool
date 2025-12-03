@@ -8,6 +8,10 @@ module.exports = defineConfig({
     : '/',
 
   configureWebpack: {
+    performance: {
+      maxEntrypointSize: 1024000, // 1 MB
+      maxAssetSize: 1024000 // 1 MB
+    },
     plugins: [
       // index.html customization
       new HtmlWebpackPlugin({
