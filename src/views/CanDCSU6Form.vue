@@ -432,7 +432,7 @@ export default {
         context.push(this.avg30Year)
       }
       
-      if(this.rangeType !== 'P30Y-Avg'){
+      if(this.rangeType !== 'P30Y-Avg' && !this.oapicDatetime.includes('Invalid date')){
         context.push(this.oapicDatetime)
       }
       return context
@@ -658,7 +658,10 @@ export default {
         return this.hasCommonBandErrors
       }
     },
-    
+
+    lotsOfDataWarning: function () {
+      return this.$gettext('Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.')
+    },
     datesTooFarMsg: function () {
       // Creates the warning when a lot of data would be processed and would potentially take
       // a long time to download. Returns false otherwise.
@@ -668,27 +671,51 @@ export default {
         // Get the difference in time between the start and end moments, then if it
         // is at least 10 years, put up the warning
         if(this.scenarioType === 'projected'){
+          if ((this.bandMoments.sspStart === null && this.bandMoments.sspEnd === null) || (this.bandMoments.sspStart === undefined && this.bandMoments.sspEnd === undefined)) {
+            return this.lotsOfDataWarning
+          }
+          if (this.bandMoments.sspStart === null || this.bandMoments.sspEnd === null || this.bandMoments.sspStart === undefined || this.bandMoments.sspEnd === undefined) {
+            return false
+          }
           var yearRange = this.bandMoments.sspEnd.diff(this.bandMoments.sspStart, 'years')
           if(yearRange+1 >= 10){
-            return this.$gettext('Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.')
+            return this.lotsOfDataWarning
           }
         }else{
+          if ((this.bandMoments.histStart === null && this.bandMoments.histEnd === null) || (this.bandMoments.histStart === undefined && this.bandMoments.histEnd === undefined)) {
+            return this.lotsOfDataWarning
+          }
+          if (this.bandMoments.histStart === null || this.bandMoments.histEnd === null || this.bandMoments.histStart === undefined || this.bandMoments.histEnd === undefined) {
+            return false
+          }
           yearRange = this.bandMoments.histEnd.diff(this.bandMoments.histStart, 'years')
           if(yearRange+1 >= 10){
-            return this.$gettext('Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.')
+            return this.lotsOfDataWarning
           }
         }
       }else{
         // Working with monthly data
         if(this.scenarioType === 'projected'){
+          if ((this.bandMoments.sspStart === null && this.bandMoments.sspEnd === null) || (this.bandMoments.sspStart === undefined && this.bandMoments.sspEnd === undefined)) {
+            return false
+          }
+          if (this.bandMoments.sspStart === null || this.bandMoments.sspEnd === null || this.bandMoments.sspStart === undefined || this.bandMoments.sspEnd === undefined) {
+            return false
+          }
           var monthRange = this.bandMoments.sspEnd.diff(this.bandMoments.sspStart, 'months')
           if(monthRange+1 >= 9){
-            return this.$gettext('Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.')
+            return this.lotsOfDataWarning
           }
         }else{
+          if ((this.bandMoments.histStart === null && this.bandMoments.histEnd === null) || (this.bandMoments.histStart === undefined && this.bandMoments.histEnd === undefined)) {
+            return false
+          }
+          if (this.bandMoments.histStart === null || this.bandMoments.histEnd === null || this.bandMoments.histStart === undefined || this.bandMoments.histEnd === undefined) {
+            return false
+          }
           monthRange = this.bandMoments.histEnd.diff(this.bandMoments.histStart, 'months')
           if(monthRange+1 >= 9){
-            return this.$gettext('Current date selection contains a lot of data to process. Execution will be slow and data may not be able to be retrieved.')
+            return this.lotsOfDataWarning
           }
         }
       }

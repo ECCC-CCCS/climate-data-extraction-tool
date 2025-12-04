@@ -532,10 +532,7 @@ msgstr "Climate projections"
 msgid "Contact the Climate Services Support Desk"
 msgstr "Contact the Climate Services Support Desk"
 
-#: src/views/CanDCSU6Form.vue:675
-#: src/views/CanDCSU6Form.vue:680
-#: src/views/CanDCSU6Form.vue:688
-#: src/views/CanDCSU6Form.vue:693
+#: src/views/CanDCSU6Form.vue:665
 msgid ""
 "Current date selection contains a lot of data to process. Execution will be "
 "slow and data may not be able to be retrieved."
