@@ -275,7 +275,7 @@ export default {
       
       // Check what value is when changing between historical and future data
       if(newVal === 'projected'){
-        if(this.oapicIdTimePeriod === 'monthly'){
+        if(this.oapicIdTimePeriod === 'monthly' && this.dateAdjustHelper){
           // Need to add in the stored months
           if(this.dateIsString(this.dateSspStart) && (this.dateSspStart.slice(-3,) === '-01' || !this.dateSspStart.includes('-'))){
             this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').add(this.sspStartMonth-1, 'M').format(this.dateConfigs.format)
@@ -289,7 +289,7 @@ export default {
           }
         }
       }else{
-        if(this.oapicIdTimePeriod === 'monthly'){
+        if(this.oapicIdTimePeriod === 'monthly' && this.dateAdjustHelper){
           this.sspStartMonth = Number(this.dateSspStart.slice(-2,))
           this.sspEndMonth = Number(this.dateSspEnd.slice(-2,))
         }
@@ -303,7 +303,7 @@ export default {
       }else{
         if(this.lastScenarioIsMonthly === true){
           // By this point, the dates should be stored as Strings
-          if(this.scenarioType === 'projected'){
+          if(this.scenarioType === 'projected' && this.dateAdjustHelper){
             this.sspStartMonth = Number(this.dateSspStart.slice(-2,))
             this.sspEndMonth = Number(this.dateSspEnd.slice(-2,))
             // Now store the last used year too
@@ -313,26 +313,30 @@ export default {
         }
         this.lastScenarioIsMonthly = false
       }
-      if(!this.dateIsString(this.dateSspStart)){
-        this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').format(this.dateConfigs.format)
-        this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').format(this.dateConfigs.format)
-      }else if(newVal === 'monthly' && this.rangeType === 'custom'){
-        if(this.scenarioType === 'projected'){
-          if(this.dateSspStart.slice(-3,) === '-01' || this.lastScenarioIsMonthly !== true){
-            this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').add(this.sspStartMonth-1, 'M').format(this.dateConfigs.format)
-          }else{
-            this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').format(this.dateConfigs.format)
+
+      if (this.dateAdjustHelper) {
+        if(!this.dateIsString(this.dateSspStart)){
+          this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').format(this.dateConfigs.format)
+          this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').format(this.dateConfigs.format)
+        }else if(newVal === 'monthly' && this.rangeType === 'custom'){
+          if(this.scenarioType === 'projected'){
+            if(this.dateSspStart.slice(-3,) === '-01' || this.lastScenarioIsMonthly !== true){
+              this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').add(this.sspStartMonth-1, 'M').format(this.dateConfigs.format)
+            }else{
+              this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').format(this.dateConfigs.format)
+            }
+            if(this.dateSspEnd.slice(-3,) === '-01' || this.lastScenarioIsMonthly !== true){
+              this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').add(this.sspEndMonth-1, 'M').format(this.dateConfigs.format)
+            }else{
+              this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').format(this.dateConfigs.format)
+            }
           }
-          if(this.dateSspEnd.slice(-3,) === '-01' || this.lastScenarioIsMonthly !== true){
-            this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').add(this.sspEndMonth-1, 'M').format(this.dateConfigs.format)
-          }else{
-            this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').format(this.dateConfigs.format)
-          }
+        }else{
+          this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').format(this.dateConfigs.format)
+          this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').format(this.dateConfigs.format)
         }
-      }else{
-        this.dateSspStart = this.formatDateToMoment(this.dateSspStart, 'sspStart').format(this.dateConfigs.format)
-        this.dateSspEnd = this.formatDateToMoment(this.dateSspEnd, 'sspEnd').format(this.dateConfigs.format)
       }
+
       if(newVal === 'monthly'){
         this.lastScenarioIsMonthly = true
       }
@@ -657,6 +661,12 @@ export default {
       } else {
         return this.hasCommonBandErrors
       }
+    },
+
+    dateAdjustHelper: function () {
+      // Checks if the current values for dateSspStart and dateSspEnd can be reformatted
+      const invalidValues = [null, undefined, 'Invalid date', '']
+      return !(invalidValues.includes(this.dateSspStart) || invalidValues.includes(this.dateSspEnd))
     },
 
     lotsOfDataWarning: function () {

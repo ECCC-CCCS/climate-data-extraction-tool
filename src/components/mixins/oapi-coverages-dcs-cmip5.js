@@ -65,8 +65,12 @@ export const DCSCMIP5 = {
         }
       }
       // adjust dates if they are strings to match new date format
-      this.dateRcpStart = this.formatDateToMoment(this.dateRcpStart).format(this.dateConfigs.format)
-      this.dateRcpEnd = this.formatDateToMoment(this.dateRcpEnd).format(this.dateConfigs.format)
+      if (this.dateRcpStart !== null && this.dateRcpStart !== 'Invalid date' && this.dateRcpStart !== '') {
+        this.dateRcpStart = this.formatDateToMoment(this.dateRcpStart).format(this.dateConfigs.format)
+      }
+      if (this.dateRcpEnd !== null && this.dateRcpEnd !== 'Invalid date' && this.dateRcpEnd !== '') {
+        this.dateRcpEnd = this.formatDateToMoment(this.dateRcpEnd).format(this.dateConfigs.format)
+      }
     },
     valueType: function (newVal) {
       if (newVal === 'absolute') {

@@ -147,7 +147,7 @@ export default {
     },
     dateWithinLimits: function () {
       // ignore check if empty
-      if (this.value === '' || this.value === null) {
+      if (this.value === '' || this.value === null || this.value === 'Invalid date') {
         return true
       }
       return this.dateMoment.isBetween(this.limitMoment.min, this.limitMoment.max, this.minimumView, '[]')
