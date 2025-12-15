@@ -241,6 +241,10 @@ export default {
       if (this.oapicIdProduct === 'monthly-products'){
         const periods = ['P00M', 'P01M', 'P02M', 'P03M', 'P04M', 'P05M', 'P06M', 'P07M', 'P08M',
           'P09M', 'P10M', 'P11M']
+        if (this.invalidModelMonth) {
+          periodsWithMessages[periods[0]] = this.$_i(this.$pgettext('Message for an Invalid date', 'Invalid model run month ({periodValue})'), {periodValue: periods[0]})
+          return periodsWithMessages
+        }
         const periodsLen = periods.length
         for (let i=0;i<periodsLen;i++){
           periodsWithMessages[periods[i]] = `${this.$moment.utc(this.modelRunMoment).add(i, 'months').format('YYYY-MM')} (${periods[i]})`
@@ -249,6 +253,10 @@ export default {
       }else{
         // Need to reduce available periods for seasonal probability products
         const probProducts = ['-ProbNearNormal', '-ProbAboveNormal', '-ProbBelowNormal']
+        if (this.invalidModelMonth) {
+          periodsWithMessages['P00M-P02M'] = this.$_i(this.$pgettext('Message for an Invalid date', 'Invalid model run month ({periodValue})'), {periodValue: 'P00M-P02M'})
+          return periodsWithMessages
+        }
         if(probProducts.includes(this.oapicIdProbability)){
           const periods = ['P00M-P02M', 'P01M-P03M', 'P03M-P05M', 'P06M-P08M', 'P09M-P11M']
           var offsetter = 0
