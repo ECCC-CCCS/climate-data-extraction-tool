@@ -554,6 +554,15 @@
 				]
 			}
 		},
+		"Message for an Invalid date": {
+			"Invalid model run month ({periodValue})": {
+				"msgid": "Invalid model run month ({periodValue})",
+				"msgctxt": "Message for an Invalid date",
+				"msgstr": [
+					""
+				]
+			}
+		},
 		"Select option for None in a dropdown menu": {
 			"-- None --": {
 				"msgid": "-- None --",
@@ -3296,6 +3305,15 @@
 				"msgctxt": "File format",
 				"msgstr": [
 					"NetCDF"
+				]
+			}
+		},
+		"Message for an Invalid date": {
+			"Invalid model run month ({periodValue})": {
+				"msgid": "Invalid model run month ({periodValue})",
+				"msgctxt": "Message for an Invalid date",
+				"msgstr": [
+					"Mois d'exécution du modèle non valide ({periodValue})"
 				]
 			}
 		},
