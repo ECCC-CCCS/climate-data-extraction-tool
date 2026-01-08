@@ -19,8 +19,8 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
         cy.selectVar('#var-sel-forecasted-probability', 'Probability near normal', '-ProbNearNormal')
-        cy.inputText('#date-model-run-month', '2025-03{enter}')
-        cy.selectVar('#var-sel-forecast-period', '2025-03 (P00M)', 'P00M')
+        cy.inputText('#date-model-run-month', '2025-06{enter}')
+        cy.selectVar('#var-sel-forecast-period', '2025-06 (P00M)', 'P00M')
 
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
@@ -32,7 +32,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         })
 
         // Change the period
-        cy.selectVar('#var-sel-forecast-period', '2026-02 (P11M)', 'P11M')
+        cy.selectVar('#var-sel-forecast-period', '2026-05 (P11M)', 'P11M')
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -44,7 +44,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     })
     it('Test download seasonal air temp data', () => {
         cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
-        cy.inputText('#date-model-run-month', `2023-10{enter}`)
+        cy.inputText('#date-model-run-month', `2025-10{enter}`)
         //cy.selectVar('#var-sel-forecast-period', '2023-10 to 2023-12 (P00M-P02M)', 'P00M-P02M')
         cy.get('a#download-url').should('have.attr', 'href').then((href) => {
             cy.request('GET', href).then((response) => {
@@ -57,31 +57,24 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     it("Test changing forecast periods for different interval types", () => {
         // Set values for monthly interval
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
-        cy.inputText('#date-model-run-month', `2025-05{enter}`)
+        cy.inputText('#date-model-run-month', `2025-06{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
         cy.selectVar('#var-sel-forecasted-probability', 'Probability near normal', '-ProbNearNormal')
-        cy.selectVar('#var-sel-forecast-period', '2025-06 (P01M)', 'P01M')
+        cy.selectVar('#var-sel-forecast-period', '2025-07 (P01M)', 'P01M')
 
         // Next, it is changed to the seasonal interval, and the forecast period should change as desired
 
-        // Periods for all seasonal gpt products
-        var expectedPeriods = '2025-05 to 2025-07 (P00M-P02M)' +
-                              '2025-06 to 2025-08 (P01M-P03M)' +
-                              '2025-07 to 2025-09 (P02M-P04M)' +
-                              '2025-08 to 2025-10 (P03M-P05M)' +
-                              '2025-09 to 2025-11 (P04M-P06M)' +
-                              '2025-10 to 2025-12 (P05M-P07M)' +
-                              '2025-11 to 2026-01 (P06M-P08M)' +
-                              '2025-12 to 2026-02 (P07M-P09M)' +
-                              '2026-01 to 2026-03 (P08M-P10M)' +
-                              '2026-02 to 2026-04 (P09M-P11M)'
-
         // Periods for seasonal probability products
-        const expectedPeriodsSeasonalProb = '2025-05 to 2025-07 (P00M-P02M)' +
-                                            '2025-06 to 2025-08 (P01M-P03M)' +
-                                            '2025-08 to 2025-10 (P03M-P05M)' +
-                                            '2025-11 to 2026-01 (P06M-P08M)' +
-                                            '2026-02 to 2026-04 (P09M-P11M)'
+        const expectedPeriodsSeasonalProb = '2025-06 to 2025-08 (P00M-P02M)' +
+                                            '2025-07 to 2025-09 (P01M-P03M)' +
+                                            '2025-08 to 2025-10 (P02M-P04M)' +
+                                            '2025-09 to 2025-11 (P03M-P05M)' +
+                                            '2025-10 to 2025-12 (P04M-P06M)' +
+                                            '2025-11 to 2026-01 (P05M-P07M)' +
+                                            '2025-12 to 2026-02 (P06M-P08M)' +
+                                            '2026-01 to 2026-03 (P07M-P09M)' +
+                                            '2026-02 to 2026-04 (P08M-P10M)' +
+                                            '2026-03 to 2026-05 (P09M-P11M)'
 
         cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
         cy.get('#var-sel-forecast-period').should('have.value', 'P00M-P02M').should('have.text', expectedPeriodsSeasonalProb)
@@ -89,30 +82,30 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
         // Then we change it back to monthly to ensure that the dates are displayed properly
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
 
-        const expectedPeriodsMonth = '2025-05 (P00M)' +
-                                     '2025-06 (P01M)' +
-                                     '2025-07 (P02M)' +
-                                     '2025-08 (P03M)' +
-                                     '2025-09 (P04M)' +
-                                     '2025-10 (P05M)' +
-                                     '2025-11 (P06M)' +
-                                     '2025-12 (P07M)' +
-                                     '2026-01 (P08M)' +
-                                     '2026-02 (P09M)' +
-                                     '2026-03 (P10M)' +
-                                     '2026-04 (P11M)'
+        const expectedPeriodsMonth = '2025-06 (P00M)' +
+                                     '2025-07 (P01M)' +
+                                     '2025-08 (P02M)' +
+                                     '2025-09 (P03M)' +
+                                     '2025-10 (P04M)' +
+                                     '2025-11 (P05M)' +
+                                     '2025-12 (P06M)' +
+                                     '2026-01 (P07M)' +
+                                     '2026-02 (P08M)' +
+                                     '2026-03 (P09M)' +
+                                     '2026-04 (P10M)' +
+                                     '2026-05 (P11M)'
         cy.get('#var-sel-forecast-period').should('have.value', 'P00M').should('have.text', expectedPeriodsMonth)
 
         // Also check that other seasonal is ok
         cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
         cy.selectVar('#var-sel-forecasted-probability', 'Probability above 40th percentile', '-ProbGT40Pct')
-        cy.get('#var-sel-forecast-period').should('have.value', 'P00M-P02M').should('have.text', expectedPeriods)
+        cy.get('#var-sel-forecast-period').should('have.value', 'P00M-P02M').should('have.text', expectedPeriodsSeasonalProb)
 
     })
     it("Testing that options for monthly data can be shown as JSON", () => {
         // First set the data download to monthly airtemp
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
-        cy.inputText('#date-model-run-month', `2025-03{enter}`)
+        cy.inputText('#date-model-run-month', `2025-06{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
         cy.selectVar('#var-sel-forecasted-probability', 'Probability below normal', '-ProbBelowNormal')
 
@@ -163,7 +156,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     it("Testing that options for seasonal data can be shown as JSON", () => {
         // First set the data download to seasonal airtemp
         cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
-        cy.inputText('#date-model-run-month', `2025-03{enter}`)
+        cy.inputText('#date-model-run-month', `2025-06{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
         cy.selectVar('#var-sel-forecasted-probability', 'Probability below normal', '-ProbBelowNormal')
 
@@ -214,10 +207,10 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
     it("Test download in GRIB format", () => {
         // For this test, specify the properties:
         cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
-        cy.inputText('#date-model-run-month', `2025-03{enter}`)
+        cy.inputText('#date-model-run-month', `2025-06{enter}`)
         cy.selectVar('#var-sel-variable', 'Air temperature', 'AirTemp')
         cy.selectVar('#var-sel-forecasted-probability', 'Probability above normal', '-ProbAboveNormal')
-        cy.selectVar('#var-sel-forecast-period', '2025-03 (P00M)', 'P00M')
+        cy.selectVar('#var-sel-forecast-period', '2025-06 (P00M)', 'P00M')
         cy.selectVar('#file_download_format', 'GRIB', 'GRIB')
         // visit download link
         cy.get('#url-download-box').scrollIntoView().wait(250).should('be.visible')
@@ -228,13 +221,35 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
             })
         })
     })
+    it("Test that error handling works", () => {
+        // Firstly, check that monthly data displays the intended errors
+        cy.selectVar('#var-sel-interval-type', 'Monthly', 'monthly-products')
+        const monthlyTestInvalids = [`2025-03{enter}`, `2100-03{enter}`, `{enter}`]
+        monthlyTestInvalids.forEach(val => {
+            if (val === `{enter}`) {
+                // Adding in this to see if it correctly registers the value as an empty string (which should be invalid)
+                cy.get('#date-model-run-month').clear()
+            }
+            cy.inputText('#date-model-run-month', val).wait(500)
+            cy.get('#var-sel-forecast-period').should('have.value', 'P00M').should('have.text', 'Invalid model run month (P00M)')
+        })
+        
+        // Next, check the seasonal data
+        cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
+        const seasonalTestInvalids = [`2023-02{enter}`, `2101-02{enter}`, `{enter}`]
+        seasonalTestInvalids.forEach(val => {
+            if (val === `{enter}`) {
+                // Adding in this to see if it correctly registers the value as an empty string (which should be invalid)
+                cy.get('#date-model-run-month').clear()
+            }
+            cy.inputText('#date-model-run-month', val).wait(500)
+            cy.get('#var-sel-forecast-period').should('have.value', 'P00M-P02M').should('have.text', 'Invalid model run month (P00M-P02M)')
+        })
+    })
 
     /**
      * The following are a series of tests created to check if data exists for all months and
      * periods of specified configurations.
-     *
-     * This no longer works due to the current implementation preventing users from selecting
-     * a period and date combination where data is not recorded.
      *
      * It can be reworked for extensive testing if it is needed to find specific combinations
      * where data is missing.
@@ -243,15 +258,15 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
      */
 
     /**
-    // When these tests were created seasonal probability products had a lower date bound of 2023-10
-    var firstDate = new Date('2023-10 12:00:00')
+    // At the time of writing, these products had a lower date bound of 2025-06
+    var firstDate = new Date('2025-06 12:00:00')
     const periods = ['P00M-P02M', "P01M-P03M",
                 "P02M-P04M", 'P03M-P05M', "P04M-P06M",
                 "P05M-P07M", 'P06M-P08M', "P07M-P09M",
                 "P08M-P10M", 'P09M-P11M']
     const valuesForTesting = []
-    // Between (and including) 2023-10 to 2025-06 there are 21 months
-    for(var i=0; i<21; i++){
+    // Between (and including) 2025-06 to 2025-12 there are 7 months
+    for(var i=0; i<7; i++){
         periods.forEach(period => {
             var needToChange = (period === 'P00M-P02M')
             valuesForTesting.push([i, period, needToChange])

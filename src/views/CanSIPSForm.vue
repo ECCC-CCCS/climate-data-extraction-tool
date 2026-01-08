@@ -102,9 +102,9 @@ export default {
       oapicIdProbability: '-ProbNearNormal',
       hindRunMomentMin: this.$moment.utc('1981-01-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
       hindRunMomentMax: this.$moment.utc('2010-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMomentMin: this.$moment.utc('2025-04-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
-      foreRunMomentMax: this.$moment.utc('2025-05-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), missing Aug and Sept 2018 source data
-      modelRun: this.$moment.utc('2025-05-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
+      foreRunMomentMin: this.$moment.utc('2025-06-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'),
+      foreRunMomentMax: this.$moment.utc('2025-12-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), // this.$moment.utc('2018-09-01 00:00:00', 'YYYY-MM-DD HH:mm:ss'), missing Aug and Sept 2018 source data
+      modelRun: this.$moment.utc('2025-06-01 00:00:00', 'YYYY-MM-DD HH:mm:ss').toDate(),
       dateConfigs: {
         minimumView: 'month',
         format: 'YYYY-MM',
@@ -133,69 +133,10 @@ export default {
       }
     },
     oapicIdProduct: function (newVal){
-      // Changing the interval type. Lower date bound of seasonal and monthly probability products are different, might need to adjust.
-      // When changing intrval type, the date boundaries only need to be adjusted for probability dates
-      // All exceedence products have the same boundaries <- TODO if this changes need to fetch boundaries
-      const longRangeProducts = ['-ProbNearNormal', '-ProbAboveNormal', '-ProbBelowNormal']
-
       if (newVal === 'seasonal-products'){
         this.forecastPeriod = 'P00M-P02M'
       }else{
         this.forecastPeriod = 'P00M'
-      }
-      if(longRangeProducts.includes(this.oapicIdProbability)){
-        let this_ = this
-        axios.get(this_.cansipsCoverageMetadata)
-          .then(function (response) {
-            const upperBound = response.data.extent.reference_time.interval[0][1]
-            const lowerBound = response.data.extent.reference_time.interval[0][0]
-
-            if(this_.$moment.utc(this_.modelRun).isBefore(this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))
-              || this_.$moment.utc(this_.modelRun).isAfter(this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))){
-            
-              this_.modelRun = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
-            }
-            this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
-            this_.foreRunMomentMin = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
-          })
-      }
-    },
-    oapicIdProbability: function (newval){
-      const longRangeProducts = ['-ProbNearNormal', '-ProbAboveNormal', '-ProbBelowNormal']
-
-      // When changing from exceedence to probability seasonal product need to make sure
-      // forecast period is valid
-      const invalidProbPeriods = ['P02M-P04M', 'P04M-P06M', 'P05M-P07M', 'P07M-P09M', 'P08M-P10M']
-      if(invalidProbPeriods.includes(this.forecastPeriod) && longRangeProducts.includes(newval)){
-        this.forecastPeriod = 'P00M-P02M'
-      }
-
-      // TODO make dynamic when able to fetch date boundaries from request
-      if (!(longRangeProducts.includes(newval))){
-        // All exceedence products have a lower bound date at 2025-05 for now, this needs to be changed to
-        // be dynamic
-        const exceedMin = this.$moment.utc(`2025-05-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
-        if(this.foreRunMomentMin !== exceedMin){
-          // Changing from probability to exceedence product, check if need to adjust date
-          if(this.$moment.utc(this.modelRun).isBefore(exceedMin)){
-            this.modelRun = exceedMin.toDate()
-          }
-          this.foreRunMomentMin = exceedMin
-        }
-      }else{
-        let this_ = this
-        axios.get(this_.cansipsCoverageMetadata)
-          .then(function (response){
-            const upperBound = response.data.extent.reference_time.interval[0][1]
-            const lowerBound = response.data.extent.reference_time.interval[0][0]
-
-            if(this_.$moment.utc(this_.modelRun).isBefore(this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))
-            || this_.$moment.utc(this_.modelRun).isAfter(this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss'))){
-              this_.modelRun = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss').toDate()
-            }
-            this_.foreRunMomentMax = this_.$moment.utc(`${upperBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
-            this_.foreRunMomentMin = this_.$moment.utc(`${lowerBound}-01 00:00:00`, 'YYYY-MM-DD HH:mm:ss')
-          })
       }
     },
   },
@@ -251,29 +192,8 @@ export default {
         }
         return periodsWithMessages
       }else{
-        // Need to reduce available periods for seasonal probability products
-        const probProducts = ['-ProbNearNormal', '-ProbAboveNormal', '-ProbBelowNormal']
         if (this.invalidModelMonth) {
           periodsWithMessages['P00M-P02M'] = this.$_i(this.$pgettext('Message for an Invalid date', 'Invalid model run month ({periodValue})'), {periodValue: 'P00M-P02M'})
-          return periodsWithMessages
-        }
-        if(probProducts.includes(this.oapicIdProbability)){
-          const periods = ['P00M-P02M', 'P01M-P03M', 'P03M-P05M', 'P06M-P08M', 'P09M-P11M']
-          var offsetter = 0
-          periods.forEach(period => {
-            periodsWithMessages[period] = this.$_i(
-                                              this.$pgettext(
-                                                'startYYYYMM and endYYYYMM represent the start and end dates. periodValue represents the forecast period', '{startYYYYMM} to {endYYYYMM} ({periodValue})'), 
-                                                {startYYYYMM: this.$moment.utc(this.modelRunMoment).add(offsetter, 'months').format('YYYY-MM'), endYYYYMM: this.$moment.utc(this.modelRunMoment).add(offsetter+2, 'months').format('YYYY-MM'), periodValue: period}
-                                            )
-            if(period === 'P00M-P02M'){
-              offsetter = offsetter+1
-            }else if(period === 'P01M-P03M'){
-              offsetter = offsetter+2
-            }else{
-              offsetter = offsetter+3
-            }
-          })
           return periodsWithMessages
         }
         const periods = ['P00M-P02M', 'P01M-P03M', 'P02M-P04M', 'P03M-P05M', 'P04M-P06M', 'P05M-P07M', 'P06M-P08M', 'P07M-P09M', 'P08M-P10M', 'P09M-P11M']
@@ -287,7 +207,7 @@ export default {
                                             )
         }
         return periodsWithMessages
-      } 
+      }
     },
     productOptions: function () {
       return {
