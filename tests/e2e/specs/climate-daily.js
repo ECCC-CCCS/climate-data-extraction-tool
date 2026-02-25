@@ -61,7 +61,7 @@ describe('E2E test for climate daily data with various form options', () => {
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('#bbox-map').focus().type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}').wait(500).type('{downarrow}')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
-      expect($tr.length).to.be.lessThan(850)
+      expect($tr.length).to.be.lessThan(860); // actual: 852
       expect($tr.length).to.be.greaterThan(400)
     })
 

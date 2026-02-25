@@ -233,7 +233,7 @@ describe('E2E test for CanSIPS ogc-api-coverage data with various form options',
             cy.inputText('#date-model-run-month', val).wait(500)
             cy.get('#var-sel-forecast-period').should('have.value', 'P00M').should('have.text', 'Invalid model run month (P00M)')
         })
-        
+
         // Next, check the seasonal data
         cy.selectVar('#var-sel-interval-type', 'Seasonally', 'seasonal-products')
         const seasonalTestInvalids = [`2023-02{enter}`, `2101-02{enter}`, `{enter}`]
