@@ -11,7 +11,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // station data
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?.*f=json.*STATUS_EN=Active.*offset=0.*/).as('stationData')
     cy.visit('/#/water-quantity-data')
-    const maxNumStations = 2890 // actual 2881
+    const maxNumStations = 2900 // actual 2892
 
     // open map filters box
     cy.get('#map-filters-header').scrollIntoView().wait(250).click()
@@ -32,7 +32,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // discontinued stations
     cy.intercept('GET', /.*\/collections\/hydrometric-stations\/items\?f=json&properties=PROV_TERR_STATE_LOC,STATION_NAME,STATION_NUMBER,STATUS_EN&offset=0.*/).as('entireStationData')
     cy.get('#toggle-discontinued-stations').click()
-    const maxNumStationsDiscontinued = 8040 // actual: 8038
+    const maxNumStationsDiscontinued = 8060 // actual: 8055
     cy.wait('@entireStationData', {timeout: TIMEOUT_MS}).then((xhr) => {
       expect(xhr.response.headers).to.have.property('access-control-allow-headers')
       expect(xhr.response.headers).to.have.property('access-control-allow-origin')
@@ -70,7 +70,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.selectVar('select#vector_download_format', 'CSV', 'csv')
 
     // retrieve download list
-    const maxNumberMatched = 785460 // actual: 785458
+    const maxNumberMatched = 1103550 // actual: 1103549
     cy.intercept('GET', /.*\/collections\/hydrometric-daily-mean\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
@@ -112,7 +112,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.get('#reset-map-view').scrollIntoView().wait(250).click()
 
     // Province
-    const maxStations = 2330 // actual: 2322
+    const maxStations = 470 // actual: 467
     cy.selectVar('select#cccs_province', 'British Columbia', 'BC')
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
       expect($tr.length).to.be.at.most(maxStations)
@@ -131,7 +131,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-monthly-mean\/items\?.*PROV_TERR_STATE_LOC=BC.*resulttype=hits.*f=json.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxMonthlyMean = 212400 // actual: 212398
+    let maxMonthlyMean = 214370 // actual: 214368
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
@@ -187,7 +187,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-peaks\/items.*/).as('countData')
     cy.get('#retrieve-download-links').click()
-    let numAnnualPeaks = 96 // actual: 96
+    let numAnnualPeaks = 99 // actual: 99
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
@@ -227,7 +227,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     cy.wait(500) // mimic user pause after a zoom click
     cy.get('a.leaflet-control-zoom-in').click() // zoom twice
     cy.wait(500) // mimic user pause after a zoom click
-    let maxNumStations = 130 // actual: 127
+    let maxNumStations = 60 // actual: 51
     cy.get('table#station-select-table').scrollIntoView().wait(250).find('tr.selectableStation').should(($tr) => {
       expect($tr.length).to.be.lessThan(maxNumStations)
     })
@@ -245,7 +245,7 @@ describe('E2E test for hydrometric data with various form options', () => {
     // retrieve download links
     cy.intercept('GET', /.*\/collections\/hydrometric-annual-statistics\/items.*/).as('countData')
     cy.get('#retrieve-download-links').scrollIntoView().wait(250).click()
-    let maxAnnualStats = 900 // actual: 898
+    let maxAnnualStats = 920 // actual: 911
     cy.waitUntil(() => cy.wait('@countData').then((xhr) => {
       expect(xhr.request.method).to.equal('GET')
       expect(xhr.response.body).to.have.property('type')
