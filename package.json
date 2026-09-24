@@ -3,7 +3,7 @@
   "version": "1.20.1",
   "private": true,
   "description": "Climate data extraction tool for CCCS",
-  "author": "Kevin Ngai <kevin.ngai@canada.ca>",
+  "author": "Kevin Ngai <kevin.ngai@ec.gc.ca>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -54,13 +54,8 @@
     "easygettext": "^2.17.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
-    "html-webpack-plugin": "^4.5.2",
+    "html-webpack-plugin": "^5.6.8",
     "po-csv": "^1.0.2",
     "vue-template-compiler": "^2.6.14"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
